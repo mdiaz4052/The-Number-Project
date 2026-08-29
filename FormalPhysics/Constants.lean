@@ -23,7 +23,5 @@ structure EntropicConstants where
   speedOfLight : ℝ
   /-- Reduced Planck constant, conventionally written `hbar`. -/
   reducedPlanckConstant : ℝ
-  deriving Repr
 
 end TheNumberProject.FormalPhysics
-
