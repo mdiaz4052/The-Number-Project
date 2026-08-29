@@ -1,0 +1,13 @@
+{
+  "name": "The Number Project",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "vscode",
+  "onCreateCommand": "lake update",
+  "customizations": {
+    "vscode": {
+      "extensions": ["leanprover.lean4"]
+    }
+  }
+}

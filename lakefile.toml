@@ -1,0 +1,17 @@
+name = "the_number_project"
+version = "0.1.0"
+defaultTargets = ["FormalPhysics"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+pp.unicode.fun = true
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.33.1"
+
+[[lean_lib]]
+name = "FormalPhysics"
+
