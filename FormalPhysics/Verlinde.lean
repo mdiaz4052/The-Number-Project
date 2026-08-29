@@ -1,7 +1,6 @@
 import FormalPhysics.Constants
 import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
 import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Ring
 
 /-!
 # Conditional algebraic core of a Verlinde-style argument
@@ -59,8 +58,6 @@ theorem force_eq_mass_mul_acceleration
               constants.reducedPlanckConstant) * deltaX) := by
         rw [hUnruhTemperature, hEntropyDisplacement]
     _ = (mass * acceleration) * deltaX := by
-        field_simp [hBoltzmann, hLightSpeed, hReducedPlanck, Real.pi_ne_zero] <;>
-          ring
+        field_simp [hBoltzmann, hLightSpeed, hReducedPlanck, Real.pi_ne_zero]
 
 end TheNumberProject.EntropicGravity
-
