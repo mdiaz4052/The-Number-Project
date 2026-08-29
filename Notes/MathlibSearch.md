@@ -14,3 +14,15 @@ algebra rather than rebuilding those foundations.
 This note records a scoped search result, not a claim that no relevant library can ever
 exist. The search should be repeated before substantially expanding the unit system.
 
+## Milestone 2 follow-up
+
+Before extending the vocabulary for the inverse-square model, the same pinned mathlib
+tree was searched again for physical-unit, SI-unit, dimension-vector, and dimensional-
+analysis infrastructure. No suitable general physical-units system was found, so
+Milestone 2 conservatively extends the existing seven-exponent representation with only
+area and dimensionless information count.
+
+The algebraic proofs reuse mathlib's ordinary real and rational arithmetic plus the
+kernel-checked `field_simp`, `ring`, `linarith`, and `linear_combination` tactics. The
+exact row-reduction layer belongs in Python because it is a transparent discovery tool;
+the corresponding exponent implications are separately proved over `ℚ` in Lean.

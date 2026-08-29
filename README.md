@@ -2,12 +2,19 @@
 
 The Number Project is a persistent laboratory for formal mathematics, mathematical
 physics, symbolic computation, and eventually machine-assisted mathematical discovery.
-Milestone 1 establishes two small, machine-verifiable experiments:
+Milestone 1 established two small, machine-verifiable experiments:
 
 1. a Lean 4 proof that `F = m * a` follows algebraically from explicitly stated
    Verlinde-style assumptions; and
 2. a Python search that treats dimensional consistency as a hard constraint while
    looking for expressions with the dimensions of Newton's gravitational constant `G`.
+
+Milestone 2 builds on that foundation with:
+
+1. a Lean-checked conditional derivation of `F = G * M * m / R^2` from the explicit
+   spherical-screen equations in §3.2 of Verlinde's paper; and
+2. an exact rational constraint solver that explains which monomial exponents follow
+   from dimensions alone and which require an added scaling assumption.
 
 The project is exploratory. A compiled implication is not experimental evidence for its
 premises, and a dimensionally valid numerical coincidence is not evidence of a physical
@@ -18,10 +25,14 @@ law.
 - `FormalPhysics/Verlinde.lean` contains
   `TheNumberProject.EntropicGravity.force_eq_mass_mul_acceleration`. Lean's kernel checks
   the proof from the stated hypotheses.
-- `FormalPhysics/Dimensions.lean` checks the dimensions of the three input relations.
+- `FormalPhysics/InverseSquare.lean` contains the principal inverse-square theorem, its
+  acceleration corollary, and exact rational proofs of the exponent-selection result.
+- `FormalPhysics/Dimensions.lean` checks the dimensions of both milestones' relations.
 - `Discovery/dimensional_search.py` enumerates and ranks dimensionally valid candidates.
+- `Discovery/monomial_constraints.py` exposes exact row reduction and affine solutions;
+  `Discovery/inverse_square_search.py` applies it to `(G, M, m, R)`.
 - `tests/` checks the Python dimension algebra, known Planck-unit rearrangements, and
-  search invariants.
+  both constrained and unconstrained inverse-square systems.
 - GitHub Actions builds Lean with the mathlib cache, audits the resulting declarations,
   and runs the Python tests.
 
@@ -35,9 +46,13 @@ These labels are part of the project's design, not merely documentation style.
 | **Assumption / hypothesis** | An input accepted temporarily inside a stated model or theorem. |
 | **Theorem** | A proposition whose proof term is accepted by Lean's kernel from its hypotheses. |
 | **Conjecture** | A precise proposed relationship for which no proof is currently supplied. |
+| **Symbolic result** | Exact output of a declared computational model, including any free parameters. |
 | **Numerical observation** | A computational pattern; dimensional validity and numerical proximity alone do not make it a law. |
+| **Physical interpretation** | A cautious reading of a result; not an additional proof or measurement. |
 
-## Track A: the algebraic core
+## Track A: conditional Lean derivations
+
+### Milestone 1: force and acceleration
 
 The formal target follows equations (3.6)--(3.8) of Erik Verlinde's 2010 paper,
 [On the Origin of Gravity and the Laws of Newton](https://arxiv.org/abs/1001.0785):
@@ -60,7 +75,46 @@ It deliberately places no model equation inside the definition. `Dimensions.lean
 the seven SI base dimensions as an integer-exponent vector and separately checks that the
 relations are dimensionally homogeneous.
 
-## Track B: dimensional search
+### Milestone 2: the inverse-square relation
+
+The new formal target uses equations (3.6), (3.7), and (3.10)--(3.12), plus the spherical
+area relation, to derive equation (3.13) of
+[§3.2 in the original paper](https://arxiv.org/html/1001.0785v1#S3.SS2):
+
+```text
+delta_S = (2 * pi * k_B * m * c / hbar) * delta_x
+F * delta_x = T * delta_S
+N = A * c^3 / (G * hbar)
+E = (1/2) * N * k_B * T
+E = M * c^2
+A = 4 * pi * R^2
+```
+
+`TheNumberProject.EntropicGravity.force_eq_gravitationalConstant_mul_masses_div_radius_sq`
+treats every displayed equation as a named hypothesis and concludes
+`F = G * M * m / R^2`. Its only nonzero premises are `delta_x`, `c`, `hbar`, `G`, and
+`R`: those are the quantities used as denominators or genuinely cancelled by the proof.
+The masses, temperature, bit count, area, energy, entropy change, force, and even `k_B`
+need no nonzero premise.
+
+The Unruh-temperature relation from Milestone 1 is intentionally absent. Verlinde says
+at the start of §3.2 that it is not needed for this argument. Equation (3.10) introduces
+`G` as the proportionality constant connecting area and information count; only after the
+algebra is completed is it identified with Newton's gravitational constant.
+
+The theorem is therefore conditional. **Assumptions** include the spherical screen,
+holographic bit count, equipartition, the adopted mass-energy relation, the entropy-
+displacement postulate, and entropic work. The **theorem** is the real-number implication
+from those assumptions. Lean does not prove that the model's premises are physically
+correct or that the result empirically supports entropic gravity.
+
+The file also composes an assumed `F = m * a` equality with the inverse-square equality:
+for a nonzero test mass it obtains `a = G * M / R^2`. This corollary does not independently
+validate either input relation.
+
+## Track B: exact dimensional computation
+
+### Milestone 1: bounded search for the dimensions of G
 
 The search represents a dimension as an exact seven-component vector over rational
 exponents, ordered as mass, length, time, electric current, temperature, amount of
@@ -100,6 +154,51 @@ It prints the leading candidates and regenerates
 `Experiments/GCoincidences/candidates.csv`. Use `--help` to see bounded rational-power,
 factor-count, and output options. The implementation uses only Python's standard library.
 
+### Milestone 2: exact monomial constraints
+
+For the explicitly chosen candidate form
+
+```text
+G^alpha * M^beta * m^gamma * R^delta,
+```
+
+matching the dimensions of force gives three independent equations:
+
+```text
+-alpha + beta + gamma = 1
+3*alpha + delta = 1
+-2*alpha = -2
+```
+
+Exact row reduction yields
+
+```text
+alpha = 1,  delta = -2,  beta + gamma = 2.
+```
+
+The particular solution `(1, 2, 0, -2)` plus nullspace direction `(0, -1, 1, 0)`
+describes the whole family. That direction shifts a power between `M` and `m`, or
+equivalently multiplies by a power of the dimensionless ratio `m/M`. Dimensional analysis
+cannot distinguish the two masses because they have the same SI dimension.
+
+The extra **assumption** `gamma = 1`—linearity in the test mass—selects the unique tuple
+`(1, 1, 1, -2)` within this four-factor monomial model. Source-mass linearity selects the
+same tuple. This uniqueness is not global: a dimensionless coefficient or function such
+as `Phi(m/M)` remains possible, and the factor set and monomial form define the search
+space rather than follow from dimensional analysis.
+
+Regenerate or check the exact artifact with:
+
+```bash
+python -m Discovery.inverse_square_search
+python -m Discovery.inverse_square_search --check
+```
+
+The machine-readable rank, nullity, RREF, affine family, constraints, exact tuple, and
+limitations are recorded in `Experiments/InverseSquare/solutions.json`. There is no
+numerical fitting or candidate ranking in this experiment. The same exponent implications
+are separately proved over `ℚ` in Lean.
+
 ## Lean and mathlib setup
 
 The repository pins the matching stable releases Lean `v4.33.1` and mathlib `v4.33.1`.
@@ -133,11 +232,13 @@ python -m unittest discover -s tests -v
 FormalPhysics/                 Lean definitions and proofs
 Discovery/                     Reusable Python search components
 Experiments/GCoincidences/     Reproducible search output and interpretation
+Experiments/InverseSquare/     Exact constraint artifact and interpretation
 Notes/                         Research decisions, literature, and tooling notes
 tests/                         Python unit tests
 .github/workflows/verify.yml   Lean, proof-audit, and Python CI
 .devcontainer/                Reproducible Codespaces setup
 ```
 
-The next formal-physics extension may study the additional assumptions behind the inverse
-square law, but those assumptions are intentionally outside Milestone 1.
+Promising extensions belong in `Notes/ToolingRoadmap.md`; this milestone intentionally
+stops before general relativity, empirical fitting, modified gravity, neural symbolic
+regression, LeanDojo integration, or a general physical-units library.

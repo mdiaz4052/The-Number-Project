@@ -3,7 +3,9 @@ import unittest
 
 from Discovery.dimensions import (
     ACTION,
+    AREA,
     ENERGY,
+    FORCE,
     GRAVITATIONAL_CONSTANT,
     LENGTH,
     MASS,
@@ -24,6 +26,10 @@ class DimensionTests(unittest.TestCase):
         self.assertEqual(ACTION, ENERGY * TIME)
         self.assertEqual(ACTION, MASS * LENGTH**2 / TIME)
 
+    def test_force_and_area_dimensions(self) -> None:
+        self.assertEqual(FORCE, Dimension.from_mapping({"M": 1, "L": 1, "T": -2}))
+        self.assertEqual(AREA, LENGTH**2)
+
     def test_rational_powers_remain_exact(self) -> None:
         square_root_area = (LENGTH**2) ** Fraction(1, 2)
         self.assertEqual(square_root_area, LENGTH)
@@ -35,4 +41,3 @@ class DimensionTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-

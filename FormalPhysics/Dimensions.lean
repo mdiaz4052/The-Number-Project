@@ -43,9 +43,11 @@ def mass : Dimension := ofExponents 1 0 0 0 0 0 0
 def length : Dimension := ofExponents 0 1 0 0 0 0 0
 def time : Dimension := ofExponents 0 0 1 0 0 0 0
 def temperature : Dimension := ofExponents 0 0 0 0 1 0 0
+def informationCount : Dimension := dimensionless
 
 def velocity : Dimension := length - time
 def acceleration : Dimension := length - 2 • time
+def area : Dimension := 2 • length
 def force : Dimension := mass + acceleration
 def energy : Dimension := force + length
 def entropy : Dimension := energy - temperature
@@ -84,6 +86,44 @@ theorem unruhTemperature_dimensionally_consistent :
     norm_num [reducedPlanckConstant, energy, force, acceleration, boltzmannConstant,
       speedOfLight, velocity, mass, length, time, temperature, ofExponents]
 
+/-- `A = 4 * pi * R^2` is homogeneous; `4 * pi` is dimensionless. -/
+theorem sphericalArea_dimensionally_consistent :
+    area = 2 • length := by
+  funext d
+  cases d <;> norm_num [area, length, ofExponents]
+
+/-- `N = A * c^3 / (G * hbar)` gives a dimensionless information count. -/
+theorem holographicBitCount_dimensionally_consistent :
+    informationCount =
+      area + 3 • speedOfLight - gravitationalConstant - reducedPlanckConstant := by
+  funext d
+  cases d <;>
+    norm_num [informationCount, dimensionless, area, speedOfLight, velocity,
+      gravitationalConstant, reducedPlanckConstant, energy, force, acceleration, mass,
+      length, time, ofExponents]
+
+/-- `E = (1 / 2) * N * k_B * T` is homogeneous; `1 / 2` is dimensionless. -/
+theorem equipartition_dimensionally_consistent :
+    energy = informationCount + boltzmannConstant + temperature := by
+  funext d
+  cases d <;>
+    norm_num [energy, force, acceleration, informationCount, dimensionless,
+      boltzmannConstant, mass, length, time, temperature, ofExponents]
+
+/-- The model input `E = M * c^2` is dimensionally homogeneous. -/
+theorem massEnergy_dimensionally_consistent :
+    energy = mass + 2 • speedOfLight := by
+  funext d
+  cases d <;>
+    norm_num [energy, force, acceleration, mass, speedOfLight, velocity, length, time,
+      temperature, ofExponents]
+
+/-- `F = G * M * m / R^2` is dimensionally homogeneous. -/
+theorem inverseSquareForce_dimensionally_consistent :
+    force = gravitationalConstant + mass + mass - 2 • length := by
+  funext d
+  cases d <;>
+    norm_num [force, acceleration, gravitationalConstant, mass, length, time, ofExponents]
+
 end Dimension
 end TheNumberProject.FormalPhysics
-
