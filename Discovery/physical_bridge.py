@@ -725,7 +725,7 @@ def build_inverse_square_model() -> MeasurementModel:
         comparison_reference_ids=("codata_2022_G",),
         comparison_node_ids=("post_estimation_comparison",),
         uncertainty_model=uncertainty,
-        lean_link_identifier="conditional_inverse_square_force_relation",
+        lean_link_identifier="conditional_inverse_square_estimator_correctness",
         evidence_level=STRUCTURAL_EXAMPLE,
         replication_identifiers=(),
         limitations=(

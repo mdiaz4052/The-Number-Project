@@ -19,12 +19,12 @@
     ]
   },
   "lean_linkage": {
-    "catalog_identifier": "conditional_inverse_square_force_relation",
-    "conditional_scope": "Lean kernel-checks the inverse-square conclusion only if every named physical equation and nonzero side condition in the theorem holds.",
-    "estimator_rearrangement_certified": false,
-    "fully_qualified_name": "TheNumberProject.EntropicGravity.force_eq_gravitationalConstant_mul_masses_div_radius_sq",
+    "catalog_identifier": "conditional_inverse_square_estimator_correctness",
+    "conditional_scope": "Lean kernel-checks the estimator equality only from the named inverse-square relation, estimator definition, and nonzero mass and separation hypotheses; it does not certify apparatus inputs or evidence.",
+    "estimator_rearrangement_certified": true,
+    "fully_qualified_name": "TheNumberProject.FormalPhysics.inverseSquareEstimator_eq_gravitationalConstant",
     "nonclaim": "The link does not certify that observations occurred, an apparatus obeyed the model, calibrations were correct, or uncertainties are complete.",
-    "relation": "F = G * M * m / r^2"
+    "relation": "F_hat = G * m_1 * m_2 / r^2 and G_hat = F_hat * r^2 / (m_1 * m_2) imply G_hat = G"
   },
   "limitations": [
     "This is not a complete torsion-balance, beam-balance, or atom-interferometer model.",

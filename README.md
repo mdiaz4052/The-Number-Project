@@ -41,6 +41,14 @@ Milestone 4 defines a non-circular physical bridge contract by:
 4. requiring uncertainty, covariance, traceability, and isolated comparison records; and
 5. reporting separate evidence axes instead of an aggregate success score.
 
+Milestone 4.1 hardens that bridge with byte-exact freshness checks for every generated
+artifact, a named 34-case leakage corpus, and a separate schema/validation/facade module
+boundary.
+
+Milestone 5A closes the formal estimator gap by proving that the inverse-square estimator
+equals `G` when the inverse-square relation, estimator definition, and nonzero denominator
+conditions are supplied explicitly. It does not populate the bridge or claim a measurement.
+
 The project is exploratory. A compiled implication is not experimental evidence for its
 premises, and a dimensionally valid numerical coincidence is not evidence of a physical
 law.
@@ -54,6 +62,8 @@ law.
   acceleration corollary, and exact rational proofs of the exponent-selection result.
 - `FormalPhysics/PlanckUnits.lean` proves four symbolic rearrangements of the conventional
   Planck length, mass, and time definitions as dependent controls.
+- `FormalPhysics/Estimator.lean` proves the generic inverse-square estimator expression
+  and a bridge-shaped `G_hat = G` correctness theorem from explicit hypotheses.
 - `FormalPhysics/Dimensions.lean` checks the dimensions of both milestones' relations.
 - `Discovery/dimensional_search.py` enumerates and ranks dimensionally valid candidates.
 - `Discovery/planck_identities.py` gives each certified Python control a stable identity,
@@ -183,6 +193,23 @@ precision and inherit uncertainty from measured `G`.
 
 The exact cross-language base ordering and literal shared vectors are recorded in
 [`Notes/DimensionContract.md`](Notes/DimensionContract.md).
+
+### Milestone 5A: conditional estimator certification
+
+`FormalPhysics/Estimator.lean` separates two claims that ordinary algebra often compresses.
+First, for nonzero masses and separation, the inverse-square relation implies
+
+```text
+F * r^2 / (m_1 * m_2) = G.
+```
+
+Second, if `G_hat` is explicitly defined by that expression, then `G_hat = G`. The
+inverse-square relation, estimator definition, and three nonzero denominator conditions
+are named theorem hypotheses. Neither theorem assumes that an observation occurred or
+that a force estimate, geometry model, calibration chain, correction, or uncertainty
+budget is valid. The physical-bridge catalog therefore marks only the exact estimator
+theorem as `estimator_rearrangement_certified: true`; the earlier relation-only theorem
+remains `false`.
 
 ## Track B: exact dimensional computation
 

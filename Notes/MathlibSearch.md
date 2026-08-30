@@ -26,3 +26,11 @@ The algebraic proofs reuse mathlib's ordinary real and rational arithmetic plus 
 kernel-checked `field_simp`, `ring`, `linarith`, and `linear_combination` tactics. The
 exact row-reduction layer belongs in Python because it is a transparent discovery tool;
 the corresponding exponent implications are separately proved over `ℚ` in Lean.
+
+## Milestone 5A follow-up
+
+Before formalizing the inverse-square estimator, the pinned project and mathlib API were
+checked for the field lemmas needed to clear its denominators. Mathlib's existing
+`eq_div_iff`, `mul_ne_zero`, and `pow_ne_zero` lemmas express the required steps directly;
+`ring` is used only to normalize multiplication. No project-specific division or field
+algebra lemma was introduced.

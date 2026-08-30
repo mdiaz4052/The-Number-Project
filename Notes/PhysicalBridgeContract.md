@@ -195,23 +195,45 @@ has not been populated. An empty covariance table is not automatically a zero ma
 
 ## 10. Lean checks implications, not experimental premises
 
-The example links through an explicit Python catalog to
+The explicit Python catalog retains two different formal boundaries. The original link
 
 ```text
 TheNumberProject.EntropicGravity.
 force_eq_gravitationalConstant_mul_masses_div_radius_sq
 ```
 
-Python does not parse Lean source. The existing theorem kernel-checks a conditional
-inverse-square force conclusion from its named equations and nonzero hypotheses. It does
-not directly certify the estimator rearrangement, so the machine-readable linkage says
-`estimator_rearrangement_certified: false`.
+kernel-checks a conditional inverse-square force conclusion from its named
+entropic-gravity equations. It does not prove the estimator rearrangement, so its
+machine-readable `estimator_rearrangement_certified` flag remains `false`.
 
-Even a direct rearrangement theorem could establish only: **if the stated relation and
-side conditions hold, then the algebraic estimator equals `G`**. Lean cannot establish
-that an apparatus obeyed the model, a reading occurred, a calibration was correct, every
-systematic effect was found, or nature selected a dimensionally valid candidate. Formal
-verification secures an inference from premises; empirical work must secure the premises.
+Milestone 5A adds the generic bridge-facing theorem
+
+```text
+TheNumberProject.FormalPhysics.
+inverseSquareEstimator_eq_gravitationalConstant
+```
+
+It keeps the inverse-square relation and estimator definition as separate hypotheses.
+For nonzero `m_1`, `m_2`, and `r`, Lean proves that
+
+```text
+F_hat = G * m_1 * m_2 / r^2
+G_hat = F_hat * r^2 / (m_1 * m_2)
+---------------------------------
+G_hat = G
+```
+
+No nonzero premise on `G` or `F_hat` is required. The structural example now links to
+this exact theorem and truthfully reports
+`estimator_rearrangement_certified: true`. Python still does not parse Lean source; the
+catalog name is checked against the compiled declaration during review and CI.
+
+This certification establishes only: **if the stated relation, estimator definition,
+and denominator conditions hold, then the algebraic estimate equals `G`**. Lean cannot
+establish that an apparatus obeyed the model, a reading occurred, a calibration was
+correct, every systematic effect was found, or nature selected a dimensionally valid
+candidate. Formal verification secures an inference from premises; empirical work must
+secure the premises.
 
 ## 11. Cross-method comparison tests more than repeated algebra
 
