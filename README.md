@@ -25,6 +25,14 @@ Milestone 2.1 hardens and translates those results by:
 3. recording paired Lean/Python dimension-vector contracts; and
 4. adding a learner-facing inverse-square exponent walkthrough.
 
+Milestone 3 adds exact dependency-aware candidate analysis by:
+
+1. expanding registered Planck definitions over a declared atomic basis with rational
+   exponents;
+2. separating dependency status from Lean certification and numerical proximity;
+3. grouping 21 surface candidates into 10 exact definitional-equivalence classes; and
+4. reporting the full generator system's rank-4/nullity-6 dimensional ambiguity.
+
 The project is exploratory. A compiled implication is not experimental evidence for its
 premises, and a dimensionally valid numerical coincidence is not evidence of a physical
 law.
@@ -42,10 +50,14 @@ law.
 - `Discovery/dimensional_search.py` enumerates and ranks dimensionally valid candidates.
 - `Discovery/planck_identities.py` gives each certified Python control a stable identity,
   dependency explanation, and corresponding Lean theorem name.
+- `Discovery/dependency_definitions.py` provides an immutable, dimension-validated exact
+  dependency catalog; `Discovery/dependency_analysis.py` expands and groups candidates.
 - `Discovery/monomial_constraints.py` exposes exact row reduction and affine solutions;
   `Discovery/inverse_square_search.py` applies it to `(G, M, m, R)`.
-- `tests/` checks the Python dimension algebra, known Planck-unit rearrangements, and
-  both constrained and unconstrained inverse-square systems.
+- `Experiments/GCoincidences/dependency_analysis.json` records exact signatures,
+  statuses, groups, certification links, rank, nullity, RREF, and limitations.
+- `tests/` checks the dimension algebra, Planck controls, dependency catalog and groups,
+  and both constrained and unconstrained dimensional systems.
 - GitHub Actions builds Lean with the mathlib cache, audits the resulting declarations,
   and runs the Python tests.
 
@@ -248,6 +260,40 @@ For a step-by-step explanation of monomials, exponent vectors, the affine soluti
 the nullspace direction, and the separate test-mass scaling premise, read
 [`Notes/InverseSquareWalkthrough.md`](Notes/InverseSquareWalkthrough.md).
 
+### Milestone 3: dependency-aware provenance
+
+The original bounded search answers which monomials have exactly the dimensions of `G`.
+Milestone 3 adds a second exact filter: it substitutes the registered Planck definitions
+using `Fraction` exponents and records which atomic symbols remain. This distinguishes an
+exact reconstruction of `G`, partial inherited dependence on `G`, no dependence found by
+the current catalog, and unresolved provenance.
+
+The default 21 candidates form 10 exact definitional-equivalence groups. Six expressions
+reduce exactly to `G`; four have linked declarations in `FormalPhysics/PlanckUnits.lean`,
+while two are deliberately labeled `exact_python_reduction_only`. All six remain
+dependent controls because the Planck inputs already contain `G`.
+
+The complete ten-generator dimension matrix has rank 4 and nullity 6. Its nullspace
+directions are dimensionless transformations—including mass ratios—so dimensional
+analysis cannot select a unique formula from this catalog. That is underdetermination by
+the stated dimensional information, not a claim that nature itself is underdetermined.
+
+Regenerate or check the deterministic artifact with:
+
+```bash
+python -m Discovery.dependency_analysis
+python -m Discovery.dependency_analysis --check
+```
+
+The artifact preserves every legacy candidate search field and appends exact surface and
+expanded signatures, target power, dependency and certification statuses, group identity,
+group size, and a plain-language explanation. Decimal proximity never determines an
+exact group or status.
+
+For the learner-facing derivation and the exact boundary between this computation and a
+physical determination or explanation of `G`, read
+[`Notes/DependencyAnalysis.md`](Notes/DependencyAnalysis.md).
+
 ## Lean and mathlib setup
 
 The repository pins the matching stable releases Lean `v4.33.1` and mathlib `v4.33.1`.
@@ -290,4 +336,6 @@ tests/                         Python unit tests
 
 Promising extensions belong in `Notes/ToolingRoadmap.md`; this milestone intentionally
 stops before general relativity, empirical fitting, modified gravity, neural symbolic
-regression, LeanDojo integration, or a general physical-units library.
+regression, LeanDojo integration, or a general physical-units library. A candidate with
+no registered dependence on `G` is not thereby an independent measurement or physical
+explanation of `G`; it has only passed the current catalog's algebraic provenance check.

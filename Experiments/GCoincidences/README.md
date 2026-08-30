@@ -15,3 +15,32 @@ Candidates involving a Planck unit are not independent predictions of `G`, becau
 standard Planck-unit definitions themselves contain `G`. They are retained as useful
 positive controls for the search implementation.
 
+`dependency_analysis.json` adds exact algebraic provenance without changing the CSV
+contract. Regenerate it or verify freshness with:
+
+```bash
+python -m Discovery.dependency_analysis
+python -m Discovery.dependency_analysis --check
+```
+
+The dependency pipeline is:
+
+```text
+dimensions -> candidates -> dependency expansion -> equivalence groups
+           -> certification status -> cautious interpretation
+```
+
+Under the registered exact Planck definitions, the 21 surface expressions form 10
+definitional-equivalence groups. Six reduce exactly to `G`; four are linked to compiled
+Lean declarations and two remain exact-Python reductions only. These are dependent
+controls, because the substituted Planck quantities already inherit `G`.
+
+The artifact also records the complete ten-generator dimensional system: rank 4,
+nullity 6, and an affine solution family. Its nullspace directions are dimensionless
+transformations, so the dimensions alone cannot select a unique candidate.
+
+`no_registered_target_dependency` means only that exact expansion under the current
+catalog leaves power zero for `G`. It must not be shortened to “independent,” and it is
+not an independent measurement or physical explanation of `G`. See
+[`Notes/DependencyAnalysis.md`](../../Notes/DependencyAnalysis.md) for the full learner
+walkthrough and the remaining empirical problem.
