@@ -28,7 +28,10 @@ class DimensionTests(unittest.TestCase):
 
     def test_force_and_area_dimensions(self) -> None:
         self.assertEqual(FORCE, Dimension.from_mapping({"M": 1, "L": 1, "T": -2}))
-        self.assertEqual(AREA, LENGTH**2)
+        self.assertEqual(AREA, Dimension.from_mapping({"L": 2}))
+
+    def test_energy_dimension_is_literal_contract_vector(self) -> None:
+        self.assertEqual(ENERGY, Dimension.from_mapping({"M": 1, "L": 2, "T": -2}))
 
     def test_rational_powers_remain_exact(self) -> None:
         square_root_area = (LENGTH**2) ** Fraction(1, 2)
