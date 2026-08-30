@@ -1,0 +1,1106 @@
+{
+  "artifact": "inverse-square physical bridge structural example",
+  "assessments": {
+    "algebraic_model_status": "satisfied",
+    "dimensional_status": "satisfied",
+    "empirical_population_status": "incomplete",
+    "metrological_provenance_status": "incomplete",
+    "registered_target_path_status": "no_registered_target_path",
+    "replication_status": "not_applicable",
+    "uncertainty_status": "incomplete"
+  },
+  "external_comparison": {
+    "comparison_node_ids": [
+      "post_estimation_comparison"
+    ],
+    "isolation_rule": "External G references may be consumed only by terminal post-estimation comparison nodes. They cannot calibrate, correct, tune, accept, or reject an estimate.",
+    "reference_ids": [
+      "codata_2022_G"
+    ]
+  },
+  "lean_linkage": {
+    "catalog_identifier": "conditional_inverse_square_force_relation",
+    "conditional_scope": "Lean kernel-checks the inverse-square conclusion only if every named physical equation and nonzero side condition in the theorem holds.",
+    "estimator_rearrangement_certified": false,
+    "fully_qualified_name": "TheNumberProject.EntropicGravity.force_eq_gravitationalConstant_mul_masses_div_radius_sq",
+    "nonclaim": "The link does not certify that observations occurred, an apparatus obeyed the model, calibrations were correct, or uncertainties are complete.",
+    "relation": "F = G * M * m / r^2"
+  },
+  "limitations": [
+    "This is not a complete torsion-balance, beam-balance, or atom-interferometer model.",
+    "The force-estimation submodel is represented by provenance edges, not an apparatus equation.",
+    "No instrument serial number, calibration certificate, observation, or dataset is present.",
+    "No acceptance threshold is defined by comparison with CODATA or any other reference G."
+  ],
+  "measurement_model": {
+    "domain_and_approximation_regime": [
+      "Newtonian weak-field, low-velocity educational scalar model",
+      "masses represented by an explicitly documented geometry and separation",
+      "apparatus-specific force inference and corrections must be supplied recursively"
+    ],
+    "estimator_dimension": [
+      "-1",
+      "3",
+      "-2",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "estimator_relation": "G_hat = F_hat * r^2 / (m_1 * m_2)",
+    "estimator_terms": [
+      {
+        "exponent": "1",
+        "quantity_id": "force_estimate"
+      },
+      {
+        "exponent": "-1",
+        "quantity_id": "mass_1"
+      },
+      {
+        "exponent": "-1",
+        "quantity_id": "mass_2"
+      },
+      {
+        "exponent": "2",
+        "quantity_id": "separation"
+      }
+    ],
+    "required_hypotheses": [
+      "the stated inverse-square measurement model is adequate in the declared regime",
+      "mass_1, mass_2, and separation are nonzero",
+      "the force inference, geometry model, calibrations, and corrections are documented",
+      "all material uncertainty contributions and correlations are evaluated"
+    ],
+    "theoretical_relation": "F = G * m_1 * m_2 / r^2"
+  },
+  "model_identifier": "educational_inverse_square_bridge_v1",
+  "nonclaims": [
+    "No value of G is measured or inferred by this artifact.",
+    "No apparatus is validated.",
+    "No target-clean algebraic status is called experimental independence.",
+    "No Lean theorem is treated as evidence that an observation occurred.",
+    "No uncertainty is fabricated as zero when information is missing."
+  ],
+  "provenance_graphs": {
+    "combined_cycle_status": "acyclic",
+    "definitional": {
+      "cycle_status": "acyclic",
+      "edges": [
+        {
+          "child": "G_hat",
+          "explanation": "The estimator numerator contains the inferred force.",
+          "kind": "definition",
+          "parent": "force_estimate"
+        },
+        {
+          "child": "G_hat",
+          "explanation": "The first mass appears in the estimator denominator.",
+          "kind": "definition",
+          "parent": "mass_1"
+        },
+        {
+          "child": "G_hat",
+          "explanation": "The second mass appears in the estimator denominator.",
+          "kind": "definition",
+          "parent": "mass_2"
+        },
+        {
+          "child": "G_hat",
+          "explanation": "The estimator contains the squared separation.",
+          "kind": "definition",
+          "parent": "separation"
+        }
+      ]
+    },
+    "edge_direction": "child depends on parent",
+    "metrological": {
+      "calibration_source_ids": [
+        "force_reference",
+        "length_reference",
+        "mass_reference"
+      ],
+      "correction_ids": [
+        "alignment_correction"
+      ],
+      "cycle_status": "acyclic",
+      "edges": [
+        {
+          "child": "alignment_correction",
+          "explanation": "The alignment correction depends on the observed angular geometry.",
+          "kind": "correction",
+          "parent": "angle_observation"
+        },
+        {
+          "child": "alignment_correction",
+          "explanation": "The alignment correction also depends on measured geometry.",
+          "kind": "correction",
+          "parent": "separation_observation"
+        },
+        {
+          "child": "force_estimate",
+          "explanation": "The inferred force includes the declared correction and its uncertainty.",
+          "kind": "correction",
+          "parent": "alignment_correction"
+        },
+        {
+          "child": "force_estimate",
+          "explanation": "A real apparatus can infer force from angle, torque, or acceleration data.",
+          "kind": "observation_derivation",
+          "parent": "angle_observation"
+        },
+        {
+          "child": "force_estimate",
+          "explanation": "The force inference requires a documented scale realization.",
+          "kind": "calibration",
+          "parent": "force_reference"
+        },
+        {
+          "child": "mass_1",
+          "explanation": "The calibrated mass estimate derives from an instrument observation.",
+          "kind": "observation_derivation",
+          "parent": "mass_1_observation"
+        },
+        {
+          "child": "mass_1",
+          "explanation": "The first mass is related to a mass reference through calibration.",
+          "kind": "calibration",
+          "parent": "mass_reference"
+        },
+        {
+          "child": "mass_2",
+          "explanation": "The calibrated mass estimate derives from an instrument observation.",
+          "kind": "observation_derivation",
+          "parent": "mass_2_observation"
+        },
+        {
+          "child": "mass_2",
+          "explanation": "The second mass is related to a mass reference through calibration.",
+          "kind": "calibration",
+          "parent": "mass_reference"
+        },
+        {
+          "child": "post_estimation_comparison",
+          "explanation": "Comparison occurs only after an estimate has been produced.",
+          "kind": "comparison",
+          "parent": "G_hat"
+        },
+        {
+          "child": "post_estimation_comparison",
+          "explanation": "The adjusted reference is isolated in the terminal comparison node.",
+          "kind": "comparison",
+          "parent": "codata_2022_G"
+        },
+        {
+          "child": "separation",
+          "explanation": "The separation estimate is traceable through a length calibration.",
+          "kind": "calibration",
+          "parent": "length_reference"
+        },
+        {
+          "child": "separation",
+          "explanation": "The calibrated separation derives from an instrument observation.",
+          "kind": "observation_derivation",
+          "parent": "separation_observation"
+        }
+      ]
+    }
+  },
+  "quantities": [
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "G_hat"
+          }
+        ]
+      },
+      "description": "Unpopulated target output of the estimator.",
+      "dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "G_hat",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "target_output",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "G_hat",
+      "unit": "m^3 kg^-1 s^-2"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "alignment_correction"
+          }
+        ]
+      },
+      "description": "Structural placeholder for an alignment correction. A real value would carry its own standard uncertainty.",
+      "dimension": [
+        "1",
+        "1",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "alignment_correction",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "correction",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "delta_F_align",
+      "unit": "N"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "angle_observation"
+          }
+        ]
+      },
+      "description": "Example lower-level observable showing that force must not be treated as an unexplained number.",
+      "dimension": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "angle_observation",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "direct_observation",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "theta_obs",
+      "unit": "rad"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "registered_expression",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "G"
+          }
+        ]
+      },
+      "description": "CODATA 2022 adjusted value, isolated for post-estimation comparison only; it is not an estimator input or acceptance threshold.",
+      "dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "codata_2022_G",
+      "metrological_provenance_evidence": "documented",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": "1.5E-15",
+        "uncertainty_unit": "m^3 kg^-1 s^-2",
+        "value_decimal": "6.67430E-11"
+      },
+      "role": "external_comparison_reference",
+      "source": {
+        "access_date": "2026-08-30",
+        "edition": "2022 CODATA adjustment, published 2025",
+        "identifier": "doi:10.1063/5.0279860"
+      },
+      "symbol": "G_CODATA_2022",
+      "unit": "m^3 kg^-1 s^-2"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "force_estimate"
+          }
+        ]
+      },
+      "description": "Force inferred from lower-level observations, calibration, and a correction; not a direct or populated force reading.",
+      "dimension": [
+        "1",
+        "1",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "force_estimate",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "derived_quantity",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "F_hat",
+      "unit": "N"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "force_reference"
+          }
+        ]
+      },
+      "description": "Placeholder force-scale realization or calibration reference.",
+      "dimension": [
+        "1",
+        "1",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "force_reference",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "definition",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "F_ref",
+      "unit": "N"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "length_reference"
+          }
+        ]
+      },
+      "description": "Placeholder realization of the metre used by a calibration chain.",
+      "dimension": [
+        "0",
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "length_reference",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "definition",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "L_ref",
+      "unit": "m"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_1"
+          }
+        ]
+      },
+      "description": "Unpopulated calibrated estimate of the first mass.",
+      "dimension": [
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "mass_1",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "calibrated_measurement",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "m_1",
+      "unit": "kg"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_1_observation"
+          }
+        ]
+      },
+      "description": "Structural balance or comparator observation for the first mass.",
+      "dimension": [
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "mass_1_observation",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "direct_observation",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "m_1_obs",
+      "unit": "kg"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_2"
+          }
+        ]
+      },
+      "description": "Unpopulated calibrated estimate of the second mass.",
+      "dimension": [
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "mass_2",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "calibrated_measurement",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "m_2",
+      "unit": "kg"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_2_observation"
+          }
+        ]
+      },
+      "description": "Structural balance or comparator observation for the second mass.",
+      "dimension": [
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "mass_2_observation",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "direct_observation",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "m_2_obs",
+      "unit": "kg"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_reference"
+          }
+        ]
+      },
+      "description": "Placeholder realization or calibrated standard of the kilogram.",
+      "dimension": [
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "mass_reference",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "definition",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "M_ref",
+      "unit": "kg"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "post_estimation_comparison"
+          }
+        ]
+      },
+      "description": "Terminal comparison node. It cannot feed the estimator, calibration, corrections, or an acceptance decision.",
+      "dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "post_estimation_comparison",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "derived_quantity",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "G_hat_minus_G_ref",
+      "unit": "m^3 kg^-1 s^-2"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "separation"
+          }
+        ]
+      },
+      "description": "Unpopulated calibrated centre-to-centre separation estimate.",
+      "dimension": [
+        "0",
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "separation",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "calibrated_measurement",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "r",
+      "unit": "m"
+    },
+    {
+      "algebraic_provenance": {
+        "caution": "Atomic or target-clean status in this catalog does not establish metrological independence.",
+        "kind": "declared_local_atom",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "separation_observation"
+          }
+        ]
+      },
+      "description": "Structural position or distance observation.",
+      "dimension": [
+        "0",
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "identifier": "separation_observation",
+      "metrological_provenance_evidence": "structural_placeholder",
+      "numerical_record": {
+        "exact": false,
+        "standard_uncertainty_decimal": null,
+        "uncertainty_unit": null,
+        "value_decimal": null
+      },
+      "role": "direct_observation",
+      "source": {
+        "access_date": null,
+        "edition": null,
+        "identifier": null
+      },
+      "symbol": "r_obs",
+      "unit": "m"
+    }
+  ],
+  "replication_identifiers": [],
+  "schema_version": 1,
+  "scope_and_evidence_level": {
+    "classification": "structural_measurement_model_skeleton",
+    "empirical_determination": false,
+    "evidence_level": "structural_example",
+    "statement": "This record validates a contract shape. It contains no experimental dataset and reports no measured value of G."
+  },
+  "target_measurand": {
+    "dimension": [
+      "-1",
+      "3",
+      "-2",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "quantity_id": "G_hat",
+    "symbolic_key": "G",
+    "unit": "m^3 kg^-1 s^-2"
+  },
+  "target_path_audit": {
+    "estimator_upstream_assessments": [
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "alignment_correction"
+          }
+        ],
+        "explanation": "No path to G exists under the current registered algebraic records. This is necessary for the target-clean gate but does not establish metrological independence.",
+        "identifier": "alignment_correction",
+        "power_of_G": "0",
+        "status": "no_registered_target_path",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "alignment_correction"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "angle_observation"
+          }
+        ],
+        "explanation": "No path to G exists under the current registered algebraic records. This is necessary for the target-clean gate but does not establish metrological independence.",
+        "identifier": "angle_observation",
+        "power_of_G": "0",
+        "status": "no_registered_target_path",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "angle_observation"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "force_estimate"
+          }
+        ],
+        "explanation": "No path to G exists under the current registered algebraic records. This is necessary for the target-clean gate but does not establish metrological independence.",
+        "identifier": "force_estimate",
+        "power_of_G": "0",
+        "status": "no_registered_target_path",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "force_estimate"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "force_reference"
+          }
+        ],
+        "explanation": "No path to G exists under the current registered algebraic records. This is necessary for the target-clean gate but does not establish metrological independence.",
+        "identifier": "force_reference",
+        "power_of_G": "0",
+        "status": "no_registered_target_path",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "force_reference"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "length_reference"
+          }
+        ],
+        "explanation": "No path to G exists under the current registered algebraic records. This is necessary for the target-clean gate but does not establish metrological independence.",
+        "identifier": "length_reference",
+        "power_of_G": "0",
+        "status": "no_registered_target_path",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "length_reference"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_1"
+          }
+        ],
+        "explanation": "No path to G exists under the current registered algebraic records. This is necessary for the target-clean gate but does not establish metrological independence.",
+        "identifier": "mass_1",
+        "power_of_G": "0",
+        "status": "no_registered_target_path",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_1"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_1_observation"
+          }
+        ],
+        "explanation": "No path to G exists under the current registered algebraic records. This is necessary for the target-clean gate but does not establish metrological independence.",
+        "identifier": "mass_1_observation",
+        "power_of_G": "0",
+        "status": "no_registered_target_path",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_1_observation"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_2"
+          }
+        ],
+        "explanation": "No path to G exists under the current registered algebraic records. This is necessary for the target-clean gate but does not establish metrological independence.",
+        "identifier": "mass_2",
+        "power_of_G": "0",
+        "status": "no_registered_target_path",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_2"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_2_observation"
+          }
+        ],
+        "explanation": "No path to G exists under the current registered algebraic records. This is necessary for the target-clean gate but does not establish metrological independence.",
+        "identifier": "mass_2_observation",
+        "power_of_G": "0",
+        "status": "no_registered_target_path",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_2_observation"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_reference"
+          }
+        ],
+        "explanation": "No path to G exists under the current registered algebraic records. This is necessary for the target-clean gate but does not establish metrological independence.",
+        "identifier": "mass_reference",
+        "power_of_G": "0",
+        "status": "no_registered_target_path",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "mass_reference"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "separation"
+          }
+        ],
+        "explanation": "No path to G exists under the current registered algebraic records. This is necessary for the target-clean gate but does not establish metrological independence.",
+        "identifier": "separation",
+        "power_of_G": "0",
+        "status": "no_registered_target_path",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "separation"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "separation_observation"
+          }
+        ],
+        "explanation": "No path to G exists under the current registered algebraic records. This is necessary for the target-clean gate but does not establish metrological independence.",
+        "identifier": "separation_observation",
+        "power_of_G": "0",
+        "status": "no_registered_target_path",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "separation_observation"
+          }
+        ],
+        "unresolved_factors": []
+      }
+    ],
+    "estimator_upstream_node_ids": [
+      "alignment_correction",
+      "angle_observation",
+      "force_estimate",
+      "force_reference",
+      "length_reference",
+      "mass_1",
+      "mass_1_observation",
+      "mass_2",
+      "mass_2_observation",
+      "mass_reference",
+      "separation",
+      "separation_observation"
+    ],
+    "gate_result": "no_registered_target_path",
+    "isolated_comparison_reference_assessments": [
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "G"
+          }
+        ],
+        "explanation": "Exact registered expansion reaches G with power 1.",
+        "identifier": "codata_2022_G",
+        "power_of_G": "1",
+        "status": "target_path_detected",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "G"
+          }
+        ],
+        "unresolved_factors": []
+      }
+    ],
+    "required_caution": "No registered algebraic path to G is necessary for a target-clean input, but it is not sufficient to establish experimental independence."
+  },
+  "uncertainty_gaps": [
+    "correlation or covariance evaluation is unpopulated",
+    "input estimate is unpopulated: alignment_correction",
+    "input estimate is unpopulated: force_estimate",
+    "input estimate is unpopulated: mass_1",
+    "input estimate is unpopulated: mass_2",
+    "input estimate is unpopulated: separation",
+    "uncertainty propagation method is unpopulated"
+  ],
+  "uncertainty_model": {
+    "correction_ids": [
+      "alignment_correction"
+    ],
+    "correlation_policy": "required_but_unpopulated",
+    "correlations": [],
+    "coverage": {
+      "basis": "not applicable until an empirical estimate exists",
+      "factor_decimal": null,
+      "probability_decimal": null
+    },
+    "input_ids": [
+      "force_estimate",
+      "mass_1",
+      "mass_2",
+      "separation"
+    ],
+    "limitations": [
+      "The record validates required uncertainty fields but does not propagate uncertainty.",
+      "A correction never implies that the corrected systematic effect has zero uncertainty."
+    ],
+    "measurand_id": "G_hat",
+    "propagation_method": "required_but_unpopulated",
+    "zero_correlation_justification": null
+  }
+}
