@@ -22,15 +22,11 @@ from Discovery.constants import (
     PhysicalConstant,
 )
 from Discovery.dimensions import DIMENSIONLESS, Dimension
-
-
-PLANCK_KEYS = frozenset({"l_P", "m_P", "t_P", "T_P"})
-KNOWN_PLANCK_IDENTITIES = {
-    frozenset({("hbar", Fraction(1)), ("c", Fraction(1)), ("m_P", Fraction(-2))}),
-    frozenset({("l_P", Fraction(2)), ("c", Fraction(3)), ("hbar", Fraction(-1))}),
-    frozenset({("c", Fraction(3)), ("t_P", Fraction(1)), ("m_P", Fraction(-1))}),
-    frozenset({("l_P", Fraction(1)), ("c", Fraction(2)), ("m_P", Fraction(-1))}),
-}
+from Discovery.planck_identities import (
+    PLANCK_IDENTITIES_BY_SIGNATURE,
+    PLANCK_UNIT_KEYS,
+    normalize_exponent_signature,
+)
 
 
 def _format_fraction(value: Fraction) -> str:
@@ -60,16 +56,17 @@ def _exponent_complexity(powers: Iterable[Fraction]) -> int:
 def _classification(
     constants: Sequence[PhysicalConstant], powers: Sequence[Fraction]
 ) -> tuple[str, str]:
-    signature = frozenset(
+    signature = normalize_exponent_signature(
         (constant.key, power) for constant, power in zip(constants, powers)
     )
     keys = {constant.key for constant in constants}
-    if signature in KNOWN_PLANCK_IDENTITIES:
+    identity = PLANCK_IDENTITIES_BY_SIGNATURE.get(signature)
+    if identity is not None:
         return (
-            "known Planck-unit identity",
-            "control: this rearranges a Planck-unit definition that already contains G",
+            identity.classification,
+            f"control ({identity.identifier}): {identity.dependency_explanation}",
         )
-    if keys & PLANCK_KEYS:
+    if keys & PLANCK_UNIT_KEYS:
         return (
             "Planck-unit rearrangement",
             "not independent of G; inspect algebraically before interpreting the ratio",
@@ -265,4 +262,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

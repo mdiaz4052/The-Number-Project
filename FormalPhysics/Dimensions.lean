@@ -8,6 +8,9 @@ Mathlib v4.33.1 contains the algebra needed below but no general physical-units 
 dimension system. We therefore use the conventional seven-dimensional SI exponent vector.
 The vector is a function into `ℤ`, so addition and subtraction are mathlib's pointwise
 function operations rather than a reimplemented algebraic hierarchy.
+
+`Notes/DimensionContract.md` records the exact ordering and the intentionally different
+coefficient domains used by this Lean representation and `Discovery/dimensions.py`.
 -/
 
 namespace TheNumberProject.FormalPhysics
@@ -56,6 +59,35 @@ def boltzmannConstant : Dimension := energy - temperature
 def speedOfLight : Dimension := velocity
 def reducedPlanckConstant : Dimension := energy + time
 def gravitationalConstant : Dimension := ofExponents (-1) 3 (-2) 0 0 0 0
+
+/-!
+The next four expansion theorems are executable sides of the Lean/Python dimension
+contract. They compare derived names with literal vectors rather than merely restating
+their defining formulas.
+-/
+
+/-- Area expands to `(0, 2, 0, 0, 0, 0, 0)` in `M, L, T, I, Theta, N, J` order. -/
+theorem area_expands_to_SI_vector :
+    area = ofExponents 0 2 0 0 0 0 0 := by
+  funext d
+  cases d <;> norm_num [area, length, ofExponents]
+
+/-- Force expands to `(1, 1, -2, 0, 0, 0, 0)` in the shared SI ordering. -/
+theorem force_expands_to_SI_vector :
+    force = ofExponents 1 1 (-2) 0 0 0 0 := by
+  funext d
+  cases d <;> norm_num [force, acceleration, mass, length, time, ofExponents]
+
+/-- Energy expands to `(1, 2, -2, 0, 0, 0, 0)` in the shared SI ordering. -/
+theorem energy_expands_to_SI_vector :
+    energy = ofExponents 1 2 (-2) 0 0 0 0 := by
+  funext d
+  cases d <;>
+    norm_num [energy, force, acceleration, mass, length, time, ofExponents]
+
+/-- `G` expands to `(-1, 3, -2, 0, 0, 0, 0)` in the shared SI ordering. -/
+theorem gravitationalConstant_expands_to_SI_vector :
+    gravitationalConstant = ofExponents (-1) 3 (-2) 0 0 0 0 := rfl
 
 /-- `F * delta_x = temperature * delta_S` is dimensionally homogeneous. -/
 theorem entropicWork_dimensionally_consistent :

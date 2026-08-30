@@ -16,6 +16,15 @@ Milestone 2 builds on that foundation with:
 2. an exact rational constraint solver that explains which monomial exponents follow
    from dimensions alone and which require an added scaling assumption.
 
+Milestone 2.1 hardens and translates those results by:
+
+1. certifying four Planck-unit controls symbolically in Lean, without equating rounded
+   CODATA decimals;
+2. replacing Python's anonymous signature set with a validated, traceable identity
+   catalog;
+3. recording paired Lean/Python dimension-vector contracts; and
+4. adding a learner-facing inverse-square exponent walkthrough.
+
 The project is exploratory. A compiled implication is not experimental evidence for its
 premises, and a dimensionally valid numerical coincidence is not evidence of a physical
 law.
@@ -27,8 +36,12 @@ law.
   the proof from the stated hypotheses.
 - `FormalPhysics/InverseSquare.lean` contains the principal inverse-square theorem, its
   acceleration corollary, and exact rational proofs of the exponent-selection result.
+- `FormalPhysics/PlanckUnits.lean` proves four symbolic rearrangements of the conventional
+  Planck length, mass, and time definitions as dependent controls.
 - `FormalPhysics/Dimensions.lean` checks the dimensions of both milestones' relations.
 - `Discovery/dimensional_search.py` enumerates and ranks dimensionally valid candidates.
+- `Discovery/planck_identities.py` gives each certified Python control a stable identity,
+  dependency explanation, and corresponding Lean theorem name.
 - `Discovery/monomial_constraints.py` exposes exact row reduction and affine solutions;
   `Discovery/inverse_square_search.py` applies it to `(G, M, m, R)`.
 - `tests/` checks the Python dimension algebra, known Planck-unit rearrangements, and
@@ -112,6 +125,36 @@ The file also composes an assumed `F = m * a` equality with the inverse-square e
 for a nonzero test mass it obtains `a = G * M / R^2`. This corollary does not independently
 validate either input relation.
 
+### Milestone 2.1: symbolic Planck-unit controls
+
+`FormalPhysics/PlanckUnits.lean` takes the conventional squared definitions
+
+```text
+l_P^2 = hbar * G / c^3
+m_P^2 = hbar * c / G
+t_P^2 = hbar * G / c^5
+```
+
+as explicit theorem hypotheses. Positivity selects the conventional positive-root branch
+where two squared expressions must be compared and supplies the nonzero denominators used
+by the algebra. Lean then certifies:
+
+```text
+G = c^2 * l_P / m_P
+G = hbar * c / m_P^2
+G = c^3 * t_P / m_P
+G = c^3 * l_P^2 / hbar
+```
+
+These are **dependent controls**, not new determinations of `G`: Planck length, mass, and
+time were defined using `G` in the first place. Lean proves the symbolic rearrangements;
+it does not assert equality among rounded measured decimals. The Python ratios are close
+to one rather than exactly one because the checked-in Planck-unit values have finite
+precision and inherit uncertainty from measured `G`.
+
+The exact cross-language base ordering and literal shared vectors are recorded in
+[`Notes/DimensionContract.md`](Notes/DimensionContract.md).
+
 ## Track B: exact dimensional computation
 
 ### Milestone 1: bounded search for the dimensions of G
@@ -135,9 +178,11 @@ The default search:
 
 Planck length, mass, and time are included intentionally as controls. Expressions such as
 `hbar * c * m_P^-2` should reconstruct `G` up to the rounding and measurement uncertainty
-of the tabulated values. The program labels these as known Planck-unit rearrangements,
-not discoveries. Expressions such as `hbar * c * m_e^-2` are dimensionally valid
-comparisons but are not thereby physical identities.
+of the tabulated values. The structured catalog certifies exactly four selected controls
+as `known Planck-unit identity`; other Planck-containing candidates retain the more
+cautious `Planck-unit rearrangement` label. Neither label is a discovery claim.
+Expressions such as `hbar * c * m_e^-2` are dimensionally valid comparisons but are not
+thereby physical identities.
 
 The constants are from the
 [NIST 2022 CODATA complete listing](https://physics.nist.gov/cuu/Constants/Table/allascii.txt).
@@ -198,6 +243,10 @@ The machine-readable rank, nullity, RREF, affine family, constraints, exact tupl
 limitations are recorded in `Experiments/InverseSquare/solutions.json`. There is no
 numerical fitting or candidate ranking in this experiment. The same exponent implications
 are separately proved over `ℚ` in Lean.
+
+For a step-by-step explanation of monomials, exponent vectors, the affine solution line,
+the nullspace direction, and the separate test-mass scaling premise, read
+[`Notes/InverseSquareWalkthrough.md`](Notes/InverseSquareWalkthrough.md).
 
 ## Lean and mathlib setup
 

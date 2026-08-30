@@ -2,6 +2,9 @@
 
 This module models dimensions only.  It does not attach physical meaning to a
 numerical relationship and it does not attempt automatic unit conversion.
+
+The cross-language ordering and coefficient-domain contract shared with
+``FormalPhysics/Dimensions.lean`` is recorded in ``Notes/DimensionContract.md``.
 """
 
 from __future__ import annotations
