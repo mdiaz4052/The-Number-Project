@@ -20,8 +20,8 @@ corrections, and uncertainty.
 ### Rothleitner and Schlamminger (2017)
 
 C. Rothleitner and S. Schlamminger,
-“Measurements of the Newtonian constant of gravitation, G,” *Review of Scientific
-Instruments* 88, 111101 (2017),
+“Invited Review Article: Measurements of the Newtonian constant of gravitation, G,”
+*Review of Scientific Instruments* 88, 111101 (2017),
 [doi:10.1063/1.4994619](https://doi.org/10.1063/1.4994619).
 
 The review compares the main modern approaches and emphasizes a metrological problem:
