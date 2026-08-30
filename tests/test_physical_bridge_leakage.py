@@ -149,6 +149,31 @@ def _remove_metrological_parents(identifier: str) -> Mutation:
     return mutate
 
 
+def _append_shadowed_registered_key(model: MeasurementModel) -> MeasurementModel:
+    template = next(
+        quantity
+        for quantity in model.quantities
+        if quantity.identifier == "mass_reference"
+    )
+    shadow = replace(
+        template,
+        identifier="m_P",
+        symbol="m_P",
+        registered_dependency_signature=None,
+        description=(
+            "Invalid local atom that collides with the registered Planck-mass key."
+        ),
+    )
+    return replace(model, quantities=(*model.quantities, shadow))
+
+
+def _duplicate_estimator_input(model: MeasurementModel) -> MeasurementModel:
+    return replace(
+        model,
+        estimator_terms=(*model.estimator_terms, model.estimator_terms[0]),
+    )
+
+
 def _multistep_registered_leak(model: MeasurementModel) -> MeasurementModel:
     model = _replace_quantity(
         model,
@@ -452,6 +477,26 @@ LEAKAGE_CASES = (
         expected_statuses=(("metrological_provenance_status", UNRESOLVED),),
     ),
     LeakageCase(
+        "local_atom_shadows_registered_key",
+        "fail_closed_provenance",
+        "Declare a local atom named m_P alongside the registered Planck-mass key.",
+        _append_shadowed_registered_key,
+        "rejection",
+        "registered_catalog_identity_gate",
+        "A local declaration must not override or obscure a registered dependency key.",
+        "local atom shadows registered key: m_P",
+    ),
+    LeakageCase(
+        "duplicate_estimator_input",
+        "fail_closed_provenance",
+        "Repeat force_estimate in the exact estimator-term sequence.",
+        _duplicate_estimator_input,
+        "rejection",
+        "estimator_identity_gate",
+        "Each estimator input identifier must occur exactly once.",
+        "duplicate estimator input identifier",
+    ),
+    LeakageCase(
         "unknown_provenance_parent",
         "fail_closed_provenance",
         "Add a metrological edge whose parent is undeclared.",
@@ -632,7 +677,26 @@ class PhysicalBridgeLeakageCorpusTests(unittest.TestCase):
     def test_case_catalog_has_stable_complete_metadata(self) -> None:
         identifiers = [case.identifier for case in LEAKAGE_CASES]
         self.assertEqual(len(identifiers), len(set(identifiers)))
-        self.assertGreaterEqual(len(LEAKAGE_CASES), 30)
+        self.assertEqual(len(LEAKAGE_CASES), 34)
+        self.assertEqual(
+            {
+                category: sum(
+                    case.category == category for case in LEAKAGE_CASES
+                )
+                for category in (
+                    "direct_algebraic_leakage",
+                    "inherited_leakage",
+                    "fail_closed_provenance",
+                    "positive_control",
+                )
+            },
+            {
+                "direct_algebraic_leakage": 10,
+                "inherited_leakage": 7,
+                "fail_closed_provenance": 12,
+                "positive_control": 5,
+            },
+        )
         for case in LEAKAGE_CASES:
             with self.subTest(case=case.identifier):
                 self.assertTrue(case.category)
