@@ -15,6 +15,7 @@ from Discovery.physical_bridge import (
     DEFAULT_EXAMPLE_OUTPUT,
     EXPLICIT_ZERO_ASSUMPTION,
     INCOMPLETE,
+    LEAN_THEOREMS_BY_ID,
     NO_REGISTERED_TARGET_PATH,
     REGISTERED_EXPRESSION,
     SATISFIED,
@@ -79,12 +80,35 @@ class PhysicalBridgeTests(unittest.TestCase):
                 )
         record = measurement_model_record(model)
         self.assertEqual(
-            record["lean_linkage"]["fully_qualified_name"],
-            "TheNumberProject.EntropicGravity."
-            "force_eq_gravitationalConstant_mul_masses_div_radius_sq",
+            record["lean_linkage"]["catalog_identifier"],
+            "conditional_inverse_square_estimator_correctness",
         )
-        self.assertFalse(
+        self.assertEqual(
+            record["lean_linkage"]["fully_qualified_name"],
+            "TheNumberProject.FormalPhysics."
+            "inverseSquareEstimator_eq_gravitationalConstant",
+        )
+        self.assertTrue(
             record["lean_linkage"]["estimator_rearrangement_certified"]
+        )
+
+    def test_lean_catalog_distinguishes_relation_from_estimator_proof(self) -> None:
+        relation = LEAN_THEOREMS_BY_ID[
+            "conditional_inverse_square_force_relation"
+        ]
+        estimator = LEAN_THEOREMS_BY_ID[
+            "conditional_inverse_square_estimator_correctness"
+        ]
+        self.assertFalse(relation.estimator_rearrangement_certified)
+        self.assertTrue(estimator.estimator_rearrangement_certified)
+        self.assertEqual(
+            estimator.fully_qualified_name,
+            "TheNumberProject.FormalPhysics."
+            "inverseSquareEstimator_eq_gravitationalConstant",
+        )
+        self.assertNotEqual(
+            relation.fully_qualified_name,
+            estimator.fully_qualified_name,
         )
 
     def test_m_planck_has_an_explicit_registered_target_path(self) -> None:

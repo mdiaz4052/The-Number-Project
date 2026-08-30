@@ -3,3 +3,4 @@ import FormalPhysics.Dimensions
 import FormalPhysics.PlanckUnits
 import FormalPhysics.Verlinde
 import FormalPhysics.InverseSquare
+import FormalPhysics.Estimator

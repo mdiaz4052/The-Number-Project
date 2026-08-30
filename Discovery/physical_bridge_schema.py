@@ -482,6 +482,23 @@ LEAN_THEOREM_CATALOG = (
         ),
         estimator_rearrangement_certified=False,
     ),
+    LeanTheoremLink(
+        identifier="conditional_inverse_square_estimator_correctness",
+        fully_qualified_name=(
+            "TheNumberProject.FormalPhysics."
+            "inverseSquareEstimator_eq_gravitationalConstant"
+        ),
+        relation=(
+            "F_hat = G * m_1 * m_2 / r^2 and "
+            "G_hat = F_hat * r^2 / (m_1 * m_2) imply G_hat = G"
+        ),
+        conditional_scope=(
+            "Lean kernel-checks the estimator equality only from the named "
+            "inverse-square relation, estimator definition, and nonzero mass and "
+            "separation hypotheses; it does not certify apparatus inputs or evidence."
+        ),
+        estimator_rearrangement_certified=True,
+    ),
 )
 LEAN_THEOREMS_BY_ID: Mapping[str, LeanTheoremLink] = MappingProxyType(
     {record.identifier: record for record in LEAN_THEOREM_CATALOG}

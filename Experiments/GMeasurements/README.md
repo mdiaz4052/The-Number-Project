@@ -21,6 +21,11 @@ masses and the separation. These are structural placeholders, not readings. The 
 2022 reference value is isolated in a terminal post-estimation comparison node and cannot
 flow into the estimator, a calibration, a correction, tuning, or acceptance.
 
+The example's Lean link certifies the conditional estimator algebra: if the displayed
+inverse-square relation and estimator definition hold with nonzero masses and separation,
+then `G_hat = G`. It does not certify the apparatus model or satisfy the empirical,
+metrological, uncertainty, or replication axes.
+
 ## Assessment axes
 
 The example reports seven separate statuses:
