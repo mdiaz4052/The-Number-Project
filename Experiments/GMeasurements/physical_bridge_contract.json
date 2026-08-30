@@ -1,0 +1,379 @@
+{
+  "artifact": "physical bridge contract for G",
+  "evidence_layers": [
+    {
+      "layer": "dimensional_compatibility",
+      "meaning": "same units as G; necessary but neither a law nor a value"
+    },
+    {
+      "layer": "definitional_identity",
+      "meaning": "exact reduction under registered definitions; may be circular"
+    },
+    {
+      "layer": "theoretical_measurement_model",
+      "meaning": "conditional relation between the measurand and operational inputs"
+    },
+    {
+      "layer": "empirical_observation",
+      "meaning": "external instrument or procedure readings; not proven by Lean"
+    },
+    {
+      "layer": "metrological_traceability",
+      "meaning": "documented calibration chain to a reference or unit realization"
+    },
+    {
+      "layer": "uncertainty",
+      "meaning": "input, correction, covariance, propagation, and coverage model"
+    },
+    {
+      "layer": "independent_comparison",
+      "meaning": "post-estimation comparison across results or methods only"
+    }
+  ],
+  "external_reference_boundary": {
+    "allowed_role": "external_comparison_reference",
+    "allowed_use": "isolated post-estimation comparison",
+    "checked_in_metadata": [
+      "edition",
+      "source",
+      "units",
+      "standard uncertainty",
+      "access date"
+    ],
+    "forbidden_uses": [
+      "estimator input",
+      "calibration",
+      "correction",
+      "candidate tuning",
+      "acceptance threshold"
+    ]
+  },
+  "input_roles": [
+    "direct_observation",
+    "calibrated_measurement",
+    "model_parameter",
+    "correction",
+    "derived_quantity",
+    "definition",
+    "external_comparison_reference",
+    "target_output"
+  ],
+  "lean_boundary": {
+    "can_establish": "conditional algebraic implications from explicit hypotheses and nonzero side conditions",
+    "cannot_establish": [
+      "that the physical model is complete",
+      "that an instrument behaved as modeled",
+      "that a reading occurred",
+      "that calibrations are correct",
+      "that every systematic effect is covered",
+      "that nature selected a dimensional candidate"
+    ],
+    "explicit_catalog": [
+      {
+        "conditional_scope": "Lean kernel-checks the inverse-square conclusion only if every named physical equation and nonzero side condition in the theorem holds.",
+        "estimator_rearrangement_certified": false,
+        "fully_qualified_name": "TheNumberProject.EntropicGravity.force_eq_gravitationalConstant_mul_masses_div_radius_sq",
+        "identifier": "conditional_inverse_square_force_relation",
+        "relation": "F = G * M * m / r^2"
+      }
+    ],
+    "source_parsing": "forbidden"
+  },
+  "limitations_and_nonclaims": [
+    "The contract does not contain a real experimental dataset.",
+    "The contract does not report a new or recommended value of G.",
+    "The structural example is not an empirical determination.",
+    "Passing the algebraic target gate is weaker than experimental independence.",
+    "Cross-method agreement is evidence beyond repeated algebra, not logical proof."
+  ],
+  "literature_identifiers": [
+    {
+      "document_type": "peer_reviewed_review",
+      "doi": "10.1063/1.4994619",
+      "identifier": "rothleitner_schlamminger_2017_review"
+    },
+    {
+      "document_type": "peer_reviewed_experiment",
+      "doi": "10.1103/PhysRevLett.85.2869",
+      "identifier": "gundlach_merkowitz_2000"
+    },
+    {
+      "document_type": "peer_reviewed_experiment",
+      "doi": "10.1103/PhysRevD.74.082001",
+      "identifier": "schlamminger_et_al_2006"
+    },
+    {
+      "document_type": "peer_reviewed_experiment",
+      "doi": "10.1038/nature13433",
+      "identifier": "rosi_et_al_2014"
+    },
+    {
+      "document_type": "peer_reviewed_experiment",
+      "doi": "10.1038/s41586-018-0431-5",
+      "identifier": "li_et_al_2018"
+    },
+    {
+      "document_type": "adjusted_external_comparison_reference",
+      "doi": "10.1063/5.0279860",
+      "identifier": "codata_2022_adjustment"
+    },
+    {
+      "document_type": "authoritative_metrology_standard",
+      "identifier": "jcgm_100_2008",
+      "url": "https://www.bipm.org/en/committees/jc/jcgm/publications"
+    },
+    {
+      "document_type": "authoritative_metrology_vocabulary",
+      "doi": "10.59161/JCGM200-2012",
+      "identifier": "jcgm_200_2012"
+    },
+    {
+      "document_type": "authoritative_si_reference",
+      "doi": "10.59161/AUEZ1291",
+      "identifier": "bipm_si_brochure_2026"
+    }
+  ],
+  "measurement_model_required_fields": [
+    "model identifier",
+    "target measurand",
+    "theoretical relation",
+    "estimator relation",
+    "domain and approximation regime",
+    "required hypotheses",
+    "input quantities and roles",
+    "units and exact dimensions",
+    "definitional and metrological provenance edges",
+    "calibration sources",
+    "corrections and their uncertainties",
+    "uncertainty and correlation policy",
+    "external comparison references",
+    "Lean theorem linkage when available",
+    "limitations and nonclaims"
+  ],
+  "provenance_graph_contract": {
+    "cross_layer_cycles": "rejected",
+    "definitional_cycles": "rejected",
+    "edge_direction": "child depends on parent",
+    "graph_order": "deterministically sorted by child, parent, and edge kind",
+    "metrological_cycles": "rejected",
+    "missing_required_provenance": "unresolved or rejected; never clean",
+    "unknown_parents": "rejected"
+  },
+  "schema_version": 1,
+  "scope_and_evidence_level": {
+    "evidence_level": "contract_definition",
+    "milestone": 4,
+    "not_supplied_here": "observations, apparatus validation, a propagated uncertainty, an empirical estimate, or replication",
+    "operational_definition": "Produce a non-circular, traceable, uncertainty-qualified estimate of G from documented observations under an explicitly stated physical measurement model, followed by reproducibility and preferably comparison across methods with materially different systematic effects.",
+    "supplied_here": "validated schema, graph rules, target-leakage gate, exact dimensional check, uncertainty requirements, and an unpopulated structural example"
+  },
+  "separate_assessment_axes": {
+    "algebraic_model_status": [
+      "satisfied",
+      "incomplete",
+      "unresolved",
+      "not_applicable"
+    ],
+    "bare_independent_status": "forbidden",
+    "dimensional_status": [
+      "satisfied",
+      "incomplete",
+      "unresolved",
+      "not_applicable"
+    ],
+    "empirical_population_status": [
+      "satisfied",
+      "incomplete",
+      "unresolved",
+      "not_applicable"
+    ],
+    "metrological_provenance_status": [
+      "satisfied",
+      "incomplete",
+      "unresolved",
+      "not_applicable"
+    ],
+    "registered_target_path_status": [
+      "target_path_detected",
+      "no_registered_target_path",
+      "unresolved",
+      "not_applicable"
+    ],
+    "replication_status": [
+      "satisfied",
+      "incomplete",
+      "unresolved",
+      "not_applicable"
+    ],
+    "single_score": "forbidden",
+    "uncertainty_status": [
+      "satisfied",
+      "incomplete",
+      "unresolved",
+      "not_applicable"
+    ]
+  },
+  "target_clean_gate": {
+    "atomic_catalog_caution": "Atomic means only that the current algebraic catalog stops expanding. It does not establish metrological independence.",
+    "required_caution": "No registered algebraic path to G is necessary for a target-clean input, but it is not sufficient to establish experimental independence.",
+    "required_target_dependent_controls": [
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1",
+            "factor": "G"
+          }
+        ],
+        "explanation": "Exact registered expansion reaches G with power 1.",
+        "identifier": "G",
+        "power_of_G": "1",
+        "status": "target_path_detected",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "G"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1/2",
+            "factor": "G"
+          },
+          {
+            "exponent": "-3/2",
+            "factor": "c"
+          },
+          {
+            "exponent": "1/2",
+            "factor": "hbar"
+          }
+        ],
+        "explanation": "Exact registered expansion reaches G with power 1/2.",
+        "identifier": "l_P",
+        "power_of_G": "1/2",
+        "status": "target_path_detected",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "l_P"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "-1/2",
+            "factor": "G"
+          },
+          {
+            "exponent": "1/2",
+            "factor": "c"
+          },
+          {
+            "exponent": "1/2",
+            "factor": "hbar"
+          }
+        ],
+        "explanation": "Exact registered expansion reaches G with power -1/2.",
+        "identifier": "m_P",
+        "power_of_G": "-1/2",
+        "status": "target_path_detected",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "m_P"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "1/2",
+            "factor": "G"
+          },
+          {
+            "exponent": "-5/2",
+            "factor": "c"
+          },
+          {
+            "exponent": "1/2",
+            "factor": "hbar"
+          }
+        ],
+        "explanation": "Exact registered expansion reaches G with power 1/2.",
+        "identifier": "t_P",
+        "power_of_G": "1/2",
+        "status": "target_path_detected",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "t_P"
+          }
+        ],
+        "unresolved_factors": []
+      },
+      {
+        "expanded_signature": [
+          {
+            "exponent": "-1/2",
+            "factor": "G"
+          },
+          {
+            "exponent": "5/2",
+            "factor": "c"
+          },
+          {
+            "exponent": "1/2",
+            "factor": "hbar"
+          },
+          {
+            "exponent": "-1",
+            "factor": "k_B"
+          }
+        ],
+        "explanation": "Exact registered expansion reaches G with power -1/2.",
+        "identifier": "T_P",
+        "power_of_G": "-1/2",
+        "status": "target_path_detected",
+        "surface_signature": [
+          {
+            "exponent": "1",
+            "factor": "T_P"
+          }
+        ],
+        "unresolved_factors": []
+      }
+    ],
+    "rules": [
+      "reject a direct G estimator input",
+      "reject any registered input expansion with nonzero power of G",
+      "reject any estimator ancestor whose registered expansion reaches G",
+      "reject a calibration or correction chain that consumes reference G",
+      "treat unresolved provenance as unresolved",
+      "permit reference G only in isolated terminal comparison nodes",
+      "fail closed when required provenance is absent"
+    ]
+  },
+  "uncertainty_requirements": {
+    "binary_floating_point_measurement_values": "rejected",
+    "exact_exponent_domain": "int or Fraction; bool and float rejected",
+    "missing_model_status": "incomplete",
+    "missing_uncertainty_is_zero": false,
+    "required": [
+      "measurand",
+      "input estimates",
+      "standard uncertainties",
+      "units",
+      "correlations or a documented zero-correlation justification",
+      "corrections",
+      "uncertainties associated with corrections",
+      "propagation method",
+      "coverage information when applicable"
+    ]
+  }
+}

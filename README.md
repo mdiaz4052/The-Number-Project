@@ -33,6 +33,14 @@ Milestone 3 adds exact dependency-aware candidate analysis by:
 3. grouping 21 surface candidates into 10 exact definitional-equivalence classes; and
 4. reporting the full generator system's rank-4/nullity-6 dimensional ambiguity.
 
+Milestone 4 defines a non-circular physical bridge contract by:
+
+1. separating algebraic dependency from metrological provenance;
+2. rejecting direct, inherited, calibrated, or corrected target leakage;
+3. validating an unpopulated inverse-square measurement-model skeleton;
+4. requiring uncertainty, covariance, traceability, and isolated comparison records; and
+5. reporting separate evidence axes instead of an aggregate success score.
+
 The project is exploratory. A compiled implication is not experimental evidence for its
 premises, and a dimensionally valid numerical coincidence is not evidence of a physical
 law.
@@ -54,10 +62,14 @@ law.
   dependency catalog; `Discovery/dependency_analysis.py` expands and groups candidates.
 - `Discovery/monomial_constraints.py` exposes exact row reduction and affine solutions;
   `Discovery/inverse_square_search.py` applies it to `(G, M, m, R)`.
+- `Discovery/physical_bridge.py` validates measurement-model records, separate provenance
+  graphs, exact target ancestry, uncertainty declarations, and comparison isolation.
 - `Experiments/GCoincidences/dependency_analysis.json` records exact signatures,
   statuses, groups, certification links, rank, nullity, RREF, and limitations.
+- `Experiments/GMeasurements/` records the general physical-bridge contract and an
+  explicitly unpopulated inverse-square structural example as deterministic JSON.
 - `tests/` checks the dimension algebra, Planck controls, dependency catalog and groups,
-  and both constrained and unconstrained dimensional systems.
+  constrained and unconstrained dimensional systems, and fail-closed bridge rules.
 - GitHub Actions builds Lean with the mathlib cache, audits the resulting declarations,
   and runs the Python tests.
 
@@ -73,6 +85,8 @@ These labels are part of the project's design, not merely documentation style.
 | **Conjecture** | A precise proposed relationship for which no proof is currently supplied. |
 | **Symbolic result** | Exact output of a declared computational model, including any free parameters. |
 | **Numerical observation** | A computational pattern; dimensional validity and numerical proximity alone do not make it a law. |
+| **Empirical observation** | Information supplied by an instrument or physical procedure; it is an external premise, not a theorem. |
+| **Measurement result** | An estimate of a stated measurand together with its uncertainty and relevant metrological information. |
 | **Physical interpretation** | A cautious reading of a result; not an additional proof or measurement. |
 
 ## Track A: conditional Lean derivations
@@ -294,6 +308,52 @@ For the learner-facing derivation and the exact boundary between this computatio
 physical determination or explanation of `G`, read
 [`Notes/DependencyAnalysis.md`](Notes/DependencyAnalysis.md).
 
+## Track C: physical evidence contracts
+
+### Milestone 4: non-circular bridge to G
+
+The physical bridge asks what would be required to move from a formal inverse-square
+expression to a defensible empirical estimate. The educational skeleton declares
+
+```text
+F = G * m_1 * m_2 / r^2
+G_hat = F_hat * r^2 / (m_1 * m_2),
+```
+
+then expands the provenance of `F_hat`, both masses, and the separation into structural
+observation, calibration, and correction parents. Exact dimensional arithmetic verifies
+that the estimator has the dimensions of `G`. No observation or estimated output is
+populated.
+
+The target-clean gate reuses Milestone 3's registered definitions. It rejects direct `G`,
+Planck-unit inputs that inherit a nonzero power of `G`, target-dependent ancestors, and a
+reference value of `G` used anywhere upstream. Unresolved ancestry remains `unresolved`.
+The status `no_registered_target_path` is catalog-relative algebraic information, not a
+claim of experimental independence.
+
+CODATA 2022 appears only as an editioned, sourced, uncertainty-bearing
+`external_comparison_reference` in a terminal post-estimation node. The example separately
+reports dimensional, algebraic-model, registered-target-path, metrological-provenance,
+uncertainty, empirical-population, and replication statuses. Its empirical and uncertainty
+axes remain incomplete.
+
+The existing Lean inverse-square theorem is linked by a small explicit catalog. It
+kernel-checks a conditional force implication from stated hypotheses; it does not directly
+certify the estimator rearrangement or establish observations, calibration, apparatus
+behavior, or uncertainty completeness.
+
+Regenerate or check both deterministic bridge artifacts with:
+
+```bash
+python3 -m Discovery.physical_bridge
+python3 -m Discovery.physical_bridge --check
+```
+
+Read [`Notes/PhysicalBridgeContract.md`](Notes/PhysicalBridgeContract.md) for the
+first-principles evidence boundary and
+[`Notes/GMeasurementLiterature.md`](Notes/GMeasurementLiterature.md) for the experimental
+and metrology foundation.
+
 ## Lean and mathlib setup
 
 The repository pins the matching stable releases Lean `v4.33.1` and mathlib `v4.33.1`.
@@ -328,6 +388,7 @@ FormalPhysics/                 Lean definitions and proofs
 Discovery/                     Reusable Python search components
 Experiments/GCoincidences/     Reproducible search output and interpretation
 Experiments/InverseSquare/     Exact constraint artifact and interpretation
+Experiments/GMeasurements/     Physical-bridge contract and structural example
 Notes/                         Research decisions, literature, and tooling notes
 tests/                         Python unit tests
 .github/workflows/verify.yml   Lean, proof-audit, and Python CI

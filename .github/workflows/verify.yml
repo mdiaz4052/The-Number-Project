@@ -36,3 +36,4 @@ jobs:
       - run: python -m Discovery.dimensional_search --output /tmp/g-candidates.csv
       - run: python -m Discovery.inverse_square_search --check
       - run: python -m Discovery.dependency_analysis --check
+      - run: python -m Discovery.physical_bridge --check
