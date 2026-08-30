@@ -226,7 +226,27 @@ not demonstrate that every method is bias-free. The experimental motivation for 
 separation is summarized in
 [`GMeasurementLiterature.md`](GMeasurementLiterature.md).
 
-## 12. What this milestone supplies—and what must come next
+## 12. Epistemic-label traceability
+
+The README's empirical labels are earned conditions, not synonyms for schema roles. The
+roles identify where information would belong; the assessment axes state whether the
+required evidence has actually been supplied.
+
+| Repository label | Structural counterpart in code | Condition required to earn the label |
+|---|---|---|
+| **Empirical observation** | A `QuantityRecord` with role `DIRECT_OBSERVATION`, assessed through `empirical_population_status` and metrological provenance | An actual instrument or physical-procedure indication is populated and documented with appropriate provenance. A record that merely names a possible future indication and carries `STRUCTURAL_PLACEHOLDER` is not an observation. |
+| **Measurement result** | The declared `TARGET_OUTPUT`, supported by `CALIBRATED_MEASUREMENT` inputs and the metrological-provenance, uncertainty, and empirical-population axes | An estimate of the declared measurand is populated together with its uncertainty and relevant model, calibration, correction, and provenance information. `empirical_population_status` alone is insufficient because the seven axes remain separate. |
+
+An unpopulated `TARGET_OUTPUT` is only a slot for a possible result. Likewise, a published
+headline value copied into an `EXTERNAL_COMPARISON_REFERENCE` is a terminal reference for
+post-estimation comparison, not a project-produced measurement result. The current
+inverse-square example earns neither empirical label: its
+`metrological_provenance_status`, `uncertainty_status`, and
+`empirical_population_status` are all `incomplete`. Its satisfied dimensional and
+algebraic axes do not promote any of those empirical axes, and the contract computes no
+aggregate score.
+
+## 13. What this milestone supplies—and what must come next
 
 Milestone 4 supplies:
 

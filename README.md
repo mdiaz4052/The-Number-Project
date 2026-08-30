@@ -62,14 +62,17 @@ law.
   dependency catalog; `Discovery/dependency_analysis.py` expands and groups candidates.
 - `Discovery/monomial_constraints.py` exposes exact row reduction and affine solutions;
   `Discovery/inverse_square_search.py` applies it to `(G, M, m, R)`.
-- `Discovery/physical_bridge.py` validates measurement-model records, separate provenance
-  graphs, exact target ancestry, uncertainty declarations, and comparison isolation.
+- `Discovery/physical_bridge_schema.py` defines the immutable records and strict scalar
+  boundary; `Discovery/physical_bridge_validation.py` contains the graph, target-leakage,
+  validation, and evaluation gates; `Discovery/physical_bridge.py` remains the public
+  artifact-building facade and command-line entry point.
 - `Experiments/GCoincidences/dependency_analysis.json` records exact signatures,
   statuses, groups, certification links, rank, nullity, RREF, and limitations.
 - `Experiments/GMeasurements/` records the general physical-bridge contract and an
   explicitly unpopulated inverse-square structural example as deterministic JSON.
 - `tests/` checks the dimension algebra, Planck controls, dependency catalog and groups,
-  constrained and unconstrained dimensional systems, and fail-closed bridge rules.
+  constrained and unconstrained dimensional systems, and a named adversarial corpus for
+  the fail-closed bridge rules.
 - GitHub Actions builds Lean with the mathlib cache, audits the resulting declarations,
   and runs the Python tests.
 

@@ -10,10 +10,12 @@ import argparse
 from dataclasses import dataclass
 import csv
 from fractions import Fraction
+import io
 from itertools import combinations, product
 import json
 import math
 from pathlib import Path
+import sys
 from typing import Iterable, Sequence
 
 from Discovery.constants import (
@@ -210,12 +212,19 @@ CSV_FIELDS = (
 )
 
 
+def render_candidates(candidates: Sequence[Candidate]) -> bytes:
+    """Render candidates as deterministic UTF-8 CSV bytes with CRLF records."""
+
+    output = io.StringIO(newline="")
+    writer = csv.DictWriter(output, fieldnames=CSV_FIELDS)
+    writer.writeheader()
+    writer.writerows(candidate.as_csv_row() for candidate in candidates)
+    return output.getvalue().encode("utf-8")
+
+
 def write_candidates(path: Path, candidates: Sequence[Candidate]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", newline="", encoding="utf-8") as output:
-        writer = csv.DictWriter(output, fieldnames=CSV_FIELDS)
-        writer.writeheader()
-        writer.writerows(candidate.as_csv_row() for candidate in candidates)
+    path.write_bytes(render_candidates(candidates))
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -234,6 +243,11 @@ def _parser() -> argparse.ArgumentParser:
         type=Path,
         default=Path("Experiments/GCoincidences/candidates.csv"),
     )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="fail instead of writing when the selected CSV artifact is missing or stale",
+    )
     return parser
 
 
@@ -245,7 +259,23 @@ def main() -> None:
         max_denominator=args.max_denominator,
     )
     selected = candidates[: max(args.limit, 0)]
-    write_candidates(args.output, selected)
+    rendered = render_candidates(selected)
+    if args.check:
+        if not args.output.exists() or args.output.read_bytes() != rendered:
+            print(
+                f"stale or missing dimensional-search artifact: {args.output}; "
+                "regenerate without --check",
+                file=sys.stderr,
+            )
+            raise SystemExit(1)
+        print(
+            f"Dimensional-search artifact is current: {args.output} "
+            f"({len(selected)} of {len(candidates)} matches)."
+        )
+        return
+
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_bytes(rendered)
 
     print(
         f"Found {len(candidates)} exact dimensional matches; "
