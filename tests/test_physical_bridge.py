@@ -3,6 +3,9 @@ from decimal import Decimal
 from fractions import Fraction
 import unittest
 
+from Discovery import physical_bridge as bridge_facade
+from Discovery import physical_bridge_schema as bridge_schema
+from Discovery import physical_bridge_validation as bridge_validation
 from Discovery.dependency_analysis import build_artifact as build_dependency_artifact
 from Discovery.dependency_definitions import DEFAULT_DEPENDENCY_CATALOG
 from Discovery.dimensions import GRAVITATIONAL_CONSTANT
@@ -48,6 +51,18 @@ def replace_quantity(model, identifier: str, **changes):
 
 
 class PhysicalBridgeTests(unittest.TestCase):
+    def test_public_facade_reexports_schema_and_validation_api(self) -> None:
+        self.assertIs(bridge_facade.MeasurementModel, bridge_schema.MeasurementModel)
+        self.assertIs(bridge_facade.QuantityRecord, bridge_schema.QuantityRecord)
+        self.assertIs(
+            bridge_facade.validate_measurement_model,
+            bridge_validation.validate_measurement_model,
+        )
+        self.assertIs(
+            bridge_facade.evaluate_measurement_model,
+            bridge_validation.evaluate_measurement_model,
+        )
+
     def test_inverse_square_estimator_dimension_is_exact(self) -> None:
         evaluation = evaluate_measurement_model(build_inverse_square_model())
         self.assertEqual(evaluation.dimensional_status, SATISFIED)
