@@ -10,12 +10,19 @@ from __future__ import annotations
 from fractions import Fraction
 from typing import Iterable, Mapping, Sequence
 
+from Discovery.constants import DEFAULT_SEARCH_CONSTANTS, GRAVITATIONAL_CONSTANT_G
 from Discovery.dependency_definitions import (
     DEFAULT_DEPENDENCY_CATALOG,
     DependencyCatalog,
     DependencyDefinition,
     build_dependency_catalog,
 )
+
+
+_REGISTERED_SYMBOL_TO_KEY = {
+    constant.symbol: constant.key
+    for constant in (GRAVITATIONAL_CONSTANT_G, *DEFAULT_SEARCH_CONSTANTS)
+}
 from Discovery.dimensions import (
     DIMENSIONLESS,
     GRAVITATIONAL_CONSTANT,
@@ -116,6 +123,12 @@ def build_model_dependency_catalog(model: MeasurementModel) -> DependencyCatalog
         if quantity.identifier in dimensions:
             raise BridgeValidationError(
                 f"local atom shadows registered key: {quantity.identifier}"
+            )
+        registered_key = _REGISTERED_SYMBOL_TO_KEY.get(quantity.symbol)
+        if registered_key is not None:
+            raise BridgeValidationError(
+                "local atom display symbol collides with registered catalog symbol: "
+                f"{quantity.symbol} (registered key {registered_key})"
             )
         definitions.append(DependencyDefinition(quantity.identifier))
         dimensions[quantity.identifier] = quantity.dimension
