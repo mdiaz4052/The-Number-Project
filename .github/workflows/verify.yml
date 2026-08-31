@@ -37,3 +37,6 @@ jobs:
       - run: python -m Discovery.inverse_square_search --check
       - run: python -m Discovery.dependency_analysis --check
       - run: python -m Discovery.physical_bridge --check
+      - run: python -m Discovery.falsification_preregistration --check
+      - run: python -m Discovery.null_experiments --check
+      - run: python -m Discovery.mutation_harness --check
