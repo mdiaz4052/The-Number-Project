@@ -442,6 +442,18 @@ class PhysicalBridgeTests(unittest.TestCase):
         with self.assertRaisesRegex(BridgeValidationError, "measurement model is missing"):
             validate_measurement_model(None)  # type: ignore[arg-type]
 
+    def test_local_atom_display_symbol_cannot_collide_with_catalog(self) -> None:
+        model = replace_quantity(
+            build_inverse_square_model(),
+            "mass_1",
+            symbol="m_P",
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "display symbol collides with registered catalog symbol: m_P",
+        ):
+            validate_measurement_model(model)
+
     def test_model_scope_and_nonclaims_cannot_be_omitted(self) -> None:
         model = build_inverse_square_model()
         for field_name in (
