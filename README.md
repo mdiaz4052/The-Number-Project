@@ -49,6 +49,12 @@ Milestone 5A closes the formal estimator gap by proving that the inverse-square 
 equals `G` when the inverse-square relation, estimator definition, and nonzero denominator
 conditions are supplied explicitly. It does not populate the bridge or claim a measurement.
 
+Milestone 5B-core makes selected methodological failure modes measurable by adding a
+machine-verifiable preregistration, provenance-stratified numerical nulls with an
+independent geometric oracle, planted-target recovery controls, and ephemeral mutation
+testing. These are methodological results about the project machinery, not evidence about
+gravity or a measurement of `G`.
+
 The project is exploratory. A compiled implication is not experimental evidence for its
 premises, and a dimensionally valid numerical coincidence is not evidence of a physical
 law.
@@ -80,6 +86,13 @@ law.
   statuses, groups, certification links, rank, nullity, RREF, and limitations.
 - `Experiments/GMeasurements/` records the general physical-bridge contract and an
   explicitly unpopulated inverse-square structural example as deterministic JSON.
+- `Experiments/Falsification/` records the immutable 5B-core preregistration, complete
+  provenance-stratified null and planted-control result, and disposable-worktree mutation
+  result with source and integrity metadata.
+- `Discovery/null_experiments.py` isolates numerical log-space sampling from exact
+  symbolic provenance and implements an independent interval-union CDF oracle;
+  `Discovery/mutation_harness.py` and `Discovery/mutation_test_runner.py` enforce
+  ephemeral mutation and in-process import-path integrity.
 - `tests/` checks the dimension algebra, Planck controls, dependency catalog and groups,
   constrained and unconstrained dimensional systems, and a named adversarial corpus for
   the fail-closed bridge rules.
@@ -100,6 +113,7 @@ These labels are part of the project's design, not merely documentation style.
 | **Numerical observation** | A computational pattern; dimensional validity and numerical proximity alone do not make it a law. |
 | **Empirical observation** | Information supplied by an instrument or physical procedure; it is an external premise, not a theorem. |
 | **Measurement result** | An estimate of a stated measurand together with its uncertainty and relevant metrological information. |
+| **Methodological result** | A reproducible result concerning the behavior, reliability, sensitivity, specificity, robustness, or failure mode of the project's methods or software. |
 | **Physical interpretation** | A cautious reading of a result; not an additional proof or measurement. |
 
 ## Track A: conditional Lean derivations

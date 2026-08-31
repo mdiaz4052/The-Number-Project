@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: leanprover/lean-action@v1.6.0
         with:
           build: true
@@ -29,6 +31,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
@@ -37,3 +41,6 @@ jobs:
       - run: python -m Discovery.inverse_square_search --check
       - run: python -m Discovery.dependency_analysis --check
       - run: python -m Discovery.physical_bridge --check
+      - run: python -m Discovery.falsification_preregistration --check
+      - run: python -m Discovery.null_experiments --check
+      - run: python -m Discovery.mutation_harness --check
