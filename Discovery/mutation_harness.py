@@ -25,9 +25,15 @@ from Discovery.falsification_preregistration import (
     load_preregistration,
     preregistration_sha256_bytes,
 )
+from Discovery.source_history import (
+    SourceVerificationError,
+    exit_for_source_verification_error,
+    repository_root,
+    verify_committed_source_state,
+)
 
 
-RESULT_SCHEMA_VERSION = 1
+RESULT_SCHEMA_VERSION = 2
 DEFAULT_OUTPUT = Path(
     "Experiments/Falsification/milestone_5b_core_v1.mutation_results.json"
 )
@@ -41,6 +47,7 @@ SOURCE_PATHS = (
     "Discovery/dimensional_search.py",
     "Discovery/dependency_analysis.py",
     "Discovery/physical_bridge_validation.py",
+    "Discovery/source_history.py",
     "tests/test_dimensional_search.py",
     "tests/test_dependency_analysis.py",
     "tests/test_physical_bridge.py",
@@ -202,10 +209,6 @@ def _run(
     )
 
 
-def repository_root(path: Path = Path(".")) -> Path:
-    return Path(_run(("git", "rev-parse", "--show-toplevel"), cwd=path).stdout.strip()).resolve()
-
-
 def canonical_head(root: Path) -> str:
     return _run(("git", "rev-parse", "HEAD"), cwd=root).stdout.strip()
 
@@ -232,23 +235,12 @@ def verify_source_state(
 ) -> None:
     """Detect stale mutation artifacts after any result-driving source change."""
 
-    resolved = _run(("git", "rev-parse", source_commit_sha), cwd=root).stdout.strip()
-    if resolved != source_commit_sha:
-        raise ValueError("mutation source commit SHA does not resolve exactly")
-    ancestor = subprocess.run(
-        ("git", "merge-base", "--is-ancestor", source_commit_sha, "HEAD"),
-        cwd=root,
-        check=False,
+    verify_committed_source_state(
+        root,
+        source_commit_sha,
+        source_paths=source_paths,
+        artifact_label="mutation result",
     )
-    if ancestor.returncode != 0:
-        raise ValueError("mutation source commit is not an ancestor of HEAD")
-    changed = subprocess.run(
-        ("git", "diff", "--quiet", source_commit_sha, "--", *source_paths),
-        cwd=root,
-        check=False,
-    )
-    if changed.returncode != 0:
-        raise ValueError("mutation result-driving source differs from recorded source")
 
 
 def apply_mutation(
@@ -424,6 +416,7 @@ def run_mutant(
     return {
         "mutant_identifier": mutant.identifier,
         "category": mutant.category,
+        "expected_classification": mutant.expected_calibration_classification,
         "intended_semantic_defect": mutant.intended_semantic_defect,
         "mutated_path": mutant.relative_path,
         "test_command": list(mutant.test_names),
@@ -498,6 +491,24 @@ def _git_log_sha(root: Path, path: Path) -> str:
     ).stdout.strip()
 
 
+def mutation_records_sha256(
+    calibration_results: Sequence[Mapping[str, Any]],
+    production_results: Sequence[Mapping[str, Any]],
+) -> str:
+    """Hash the complete, canonically serialized mutation-record arrays."""
+
+    payload = json.dumps(
+        {
+            "calibration_results": list(calibration_results),
+            "production_results": list(production_results),
+        },
+        ensure_ascii=False,
+        separators=(",", ":"),
+        sort_keys=True,
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
 def build_result(
     *,
     canonical_root: Path,
@@ -510,6 +521,9 @@ def build_result(
     if canonical_status_bytes(canonical_root):
         raise ValueError("canonical checkout must be clean before mutation-family execution")
     family = run_mutation_family(canonical_root, canonical_sha)
+    records_sha256 = mutation_records_sha256(
+        family["calibration_results"], family["production_results"]
+    )
     return {
         "result_schema_version": RESULT_SCHEMA_VERSION,
         "experiment_identifier": EXPERIMENT_IDENTIFIER,
@@ -530,6 +544,11 @@ def build_result(
             "seeds": dict(preregistration["randomness"]["seeds"]),
             "mutation_randomness": "none",
             "source_paths": list(SOURCE_PATHS),
+            "records_sha256": records_sha256,
+            "records_sha256_semantics": (
+                "SHA-256 of canonically serialized calibration_results and "
+                "production_results; a tamper-evidence pin, not a reproduction proof."
+            ),
         },
         "classifications": list(CLASSIFICATIONS),
         "calibration_rule": (
@@ -555,6 +574,65 @@ def serialize_artifact(artifact: Mapping[str, Any]) -> str:
     return json.dumps(artifact, indent=2, sort_keys=True) + "\n"
 
 
+def _validate_mutation_record(record: object, mutant: Mutant) -> str:
+    if not isinstance(record, Mapping):
+        raise ValueError("mutation record is malformed")
+    expected_fields = {
+        "mutant_identifier": mutant.identifier,
+        "category": mutant.category,
+        "expected_classification": mutant.expected_calibration_classification,
+        "intended_semantic_defect": mutant.intended_semantic_defect,
+        "mutated_path": mutant.relative_path,
+        "test_command": list(mutant.test_names),
+        "required_import_modules": list(mutant.required_modules),
+    }
+    for field, expected in expected_fields.items():
+        if record.get(field) != expected:
+            raise ValueError(
+                f"mutation record/catalog mismatch for {mutant.identifier}: {field}"
+            )
+
+    classification = record.get("classification")
+    if classification not in CLASSIFICATIONS:
+        raise ValueError(f"invalid classification for {mutant.identifier}")
+    killing_tests = record.get("killing_tests")
+    if not isinstance(killing_tests, list) or any(
+        not isinstance(item, str) for item in killing_tests
+    ):
+        raise ValueError(f"malformed killing_tests for {mutant.identifier}")
+    invalid_reason = record.get("invalid_reason")
+    if invalid_reason is not None and not isinstance(invalid_reason, str):
+        raise ValueError(f"malformed invalid_reason for {mutant.identifier}")
+
+    if classification == KILLED:
+        valid_killing_tests = all(
+            any(
+                killing_test == test_name
+                or killing_test.startswith(f"{test_name} ")
+                for test_name in mutant.test_names
+            )
+            for killing_test in killing_tests
+        )
+        if not killing_tests or not valid_killing_tests:
+            raise ValueError(f"killed mutant lacks valid killing tests: {mutant.identifier}")
+        if invalid_reason is not None:
+            raise ValueError(f"killed mutant has invalid_reason: {mutant.identifier}")
+    elif classification == SURVIVED:
+        if killing_tests or invalid_reason is not None:
+            raise ValueError(f"survived mutant has contradictory metadata: {mutant.identifier}")
+    elif killing_tests or not invalid_reason:
+        raise ValueError(f"invalid mutant has contradictory metadata: {mutant.identifier}")
+
+    import_integrity = record.get("import_path_integrity")
+    if not isinstance(import_integrity, Mapping) or not isinstance(
+        import_integrity.get("validated"), bool
+    ):
+        raise ValueError(f"malformed import-path integrity for {mutant.identifier}")
+    if classification in {KILLED, SURVIVED} and not import_integrity["validated"]:
+        raise ValueError(f"classifiable mutant lacks import validation: {mutant.identifier}")
+    return classification
+
+
 def validate_result_integrity(
     result: Mapping[str, Any],
     *,
@@ -572,6 +650,48 @@ def validate_result_integrity(
         raise ValueError("preregistration/mutation-result hash mismatch")
     if integrity.get("seeds") != preregistration["randomness"]["seeds"]:
         raise ValueError("preregistration/mutation-result seed mismatch")
+    if result.get("classifications") != list(CLASSIFICATIONS):
+        raise ValueError("mutation-result classification catalog mismatch")
+
+    calibrations = result.get("calibration_results")
+    production = result.get("production_results")
+    if not isinstance(calibrations, list) or not isinstance(production, list):
+        raise ValueError("mutation-result record arrays are malformed")
+    expected_digest = mutation_records_sha256(calibrations, production)
+    if integrity.get("records_sha256") != expected_digest:
+        raise ValueError("mutation-record hash mismatch")
+
+    if len(calibrations) != len(CALIBRATION_MUTANTS):
+        raise ValueError("mutation calibration-record count mismatch")
+    calibration_classifications = [
+        _validate_mutation_record(record, mutant)
+        for record, mutant in zip(calibrations, CALIBRATION_MUTANTS)
+    ]
+    calibration_valid = all(
+        classification == mutant.expected_calibration_classification
+        for classification, mutant in zip(
+            calibration_classifications, CALIBRATION_MUTANTS
+        )
+    )
+    expected_production_count = len(PRODUCTION_MUTANTS) if calibration_valid else 0
+    if len(production) != expected_production_count:
+        raise ValueError("mutation production-record count contradicts calibration")
+    for record, mutant in zip(production, PRODUCTION_MUTANTS):
+        _validate_mutation_record(record, mutant)
+
+    expected_family_status = "valid" if calibration_valid else INVALID
+    expected_interpretation = (
+        "meaningful" if calibration_valid else "withheld because calibration failed"
+    )
+    derived_fields = {
+        "calibration_valid": calibration_valid,
+        "family_status": expected_family_status,
+        "methodological_result_status": expected_family_status,
+        "production_interpretation": expected_interpretation,
+    }
+    for field, expected in derived_fields.items():
+        if result.get(field) != expected:
+            raise ValueError(f"mutation-result derived field mismatch: {field}")
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -591,18 +711,26 @@ def _parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     args = _parser().parse_args()
-    root = repository_root()
     if args.check:
-        if not args.output.exists():
-            print(f"missing mutation-result artifact: {args.output}", file=sys.stderr)
-            raise SystemExit(1)
-        result = json.loads(args.output.read_text(encoding="utf-8"))
-        validate_result_integrity(result, preregistration_path=args.preregistration)
-        source_sha = result["integrity"]["source_commit_sha"]
-        verify_source_state(root, source_sha)
-        if not result.get("calibration_valid"):
-            raise ValueError("committed mutation family failed calibration")
-        print("Mutation result metadata, preregistration, and calibration are valid.")
+        try:
+            if not args.output.exists():
+                print(f"missing mutation-result artifact: {args.output}", file=sys.stderr)
+                raise SystemExit(1)
+            result = json.loads(args.output.read_text(encoding="utf-8"))
+            validate_result_integrity(result, preregistration_path=args.preregistration)
+            source_sha = result["integrity"]["source_commit_sha"]
+            verify_source_state(repository_root(), source_sha)
+            if not result.get("calibration_valid"):
+                raise ValueError("committed mutation family failed calibration")
+        except SourceVerificationError as error:
+            exit_for_source_verification_error(error)
+        except (json.JSONDecodeError, KeyError, TypeError, ValueError) as error:
+            print(f"invalid mutation result: {error}", file=sys.stderr)
+            raise SystemExit(1) from None
+        print(
+            "Mutation result records, metadata, preregistration, and calibration "
+            "are integrity-checked."
+        )
         return
 
     if args.source_commit_sha is None:
@@ -616,7 +744,7 @@ def main() -> None:
         raise SystemExit(1)
     rendered = serialize_artifact(
         build_result(
-            canonical_root=root,
+            canonical_root=repository_root(),
             canonical_sha=args.source_commit_sha,
             preregistration_path=args.preregistration,
         )

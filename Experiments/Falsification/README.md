@@ -45,6 +45,13 @@ The current primary candidates are `hbar * c / m_e^2`, `hbar * c / m_p^2`, and
 weakness of gravitational coupling at particle-mass scales. Poor matching does not show
 that G is fundamentally special.
 
+At the current grammar, the local run is geometrically degenerate: every eligible
+position lies outside the local interval, no sampled trial enters the eligible-position
+hull, and the same class wins every trial. The recorded local analytic CDF value near
+`0.5` is forced by centering the interval on G; it is not a measured or informative
+percentile. The result artifact records these regime diagnostics explicitly so the
+calibration statistic cannot be mistaken for candidate competition.
+
 All excellent current matches to G belong to one registered definitional-reconstruction
 class whose Planck-unit definitions already contain G. Those expressions are excluded
 from the primary null to prevent target leakage. The current grammar therefore contains
@@ -101,3 +108,9 @@ Check the committed mutation metadata with:
 ```bash
 python -m Discovery.mutation_harness --check
 ```
+
+The mutation guard hashes the complete calibration and production record arrays and
+rederives their classifications, calibration validity, family status, and production
+interpretation from the frozen mutant catalog. This is a tamper-evidence pin: it makes
+accidental record edits machine-detectable, but it is not a reproduction proof. The
+null artifact remains the byte-for-byte deterministic reproduction guard.

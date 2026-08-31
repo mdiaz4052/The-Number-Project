@@ -37,9 +37,15 @@ from Discovery.falsification_preregistration import (
     preregistration_sha256_bytes,
 )
 from Discovery.planck_identities import ExponentSignature
+from Discovery.source_history import (
+    SourceVerificationError,
+    exit_for_source_verification_error,
+    repository_root as discover_repository_root,
+    verify_committed_source_state,
+)
 
 
-RESULT_SCHEMA_VERSION = 1
+RESULT_SCHEMA_VERSION = 2
 DEFAULT_OUTPUT = Path("Experiments/Falsification/milestone_5b_core_v1.null_results.json")
 TIE_TOLERANCE = 1e-12
 NUMERICAL_TOLERANCE = 1e-12
@@ -53,6 +59,7 @@ SOURCE_PATHS = (
     "Discovery/planck_identities.py",
     "Discovery/falsification_preregistration.py",
     "Discovery/null_experiments.py",
+    "Discovery/source_history.py",
     str(DEFAULT_PREREGISTRATION_OUTPUT),
 )
 
@@ -171,6 +178,71 @@ def unique_log_positions(classes: Sequence[CandidateClass]) -> tuple[float, ...]
     return tuple(sorted(positions))
 
 
+def calibration_regime_record(
+    classes: Sequence[CandidateClass],
+    lower: float,
+    upper: float,
+    samples: Sequence[float],
+    winning_class_sets: Sequence[Sequence[str]],
+) -> dict[str, Any]:
+    """Describe whether a null run actually exercises candidate competition."""
+
+    if len(samples) != len(winning_class_sets):
+        raise ValueError("calibration-regime samples and winners must align")
+    positions = unique_log_positions(classes)
+    separations = tuple(
+        right - left for left, right in zip(positions, positions[1:])
+    )
+    minimum_separation = min(separations) if separations else None
+    hull_lower = min(positions)
+    hull_upper = max(positions)
+    has_competing_positions = len(positions) >= 2
+    overlap_count = (
+        sum(hull_lower <= sample <= hull_upper for sample in samples)
+        if has_competing_positions
+        else 0
+    )
+    distinct_winners = sorted(
+        {identifier for winners in winning_class_sets for identifier in winners}
+    )
+    eligible_inside = any(lower <= position <= upper for position in positions)
+    if not eligible_inside and overlap_count == 0 and len(distinct_winners) == 1:
+        interpretation = (
+            "This run is geometrically degenerate for candidate competition: no eligible "
+            "position is inside the interval, no sampled target enters the eligible-position "
+            "hull, and every trial has the same winning class."
+        )
+    else:
+        interpretation = (
+            "These diagnostics report the geometric regime exercised by the null; CDF "
+            "calibration alone does not establish candidate overlap or winner diversity."
+        )
+    return {
+        "minimum_pairwise_position_separation_log10": (
+            None if minimum_separation is None else _float_record(minimum_separation)
+        ),
+        "eligible_position_inside_interval": eligible_inside,
+        "eligible_position_hull_log10": {
+            "lower": _float_record(hull_lower),
+            "upper": _float_record(hull_upper),
+        },
+        "overlap_regime": {
+            "definition": (
+                "A trial is in the overlap/competition regime when its sampled log10 "
+                "target lies inside the closed hull of at least two distinct eligible "
+                "numerical positions."
+            ),
+            "trial_count": overlap_count,
+            "trial_fraction": _float_record(
+                overlap_count / len(samples) if samples else 0.0
+            ),
+        },
+        "observed_distinct_winning_class_count": len(distinct_winners),
+        "observed_winning_class_identifiers": distinct_winners,
+        "interpretation": interpretation,
+    }
+
+
 def derive_global_interval(
     eligible_positions: Sequence[float],
     local_interval: tuple[float, float],
@@ -254,6 +326,26 @@ def analytic_nearest_distance_cdf(
     return min(1.0, max(0.0, covered / (upper - lower)))
 
 
+def analytic_cdf_is_forced_by_centering(
+    target_log10: float,
+    lower: float,
+    upper: float,
+    candidate_positions: Sequence[float],
+) -> bool:
+    """Detect the current geometry that forces the real-target CDF to one half."""
+
+    positions = tuple(set(candidate_positions))
+    centered = abs(target_log10 - ((lower + upper) / 2.0)) <= NUMERICAL_TOLERANCE
+    no_position_inside = all(
+        position < lower or position > upper for position in positions
+    )
+    all_on_one_side = bool(positions) and (
+        all(position < lower for position in positions)
+        or all(position > upper for position in positions)
+    )
+    return centered and no_position_inside and all_on_one_side
+
+
 def maximum_cdf_deviation(
     distances: Sequence[float],
     lower: float,
@@ -304,10 +396,12 @@ def _null_run_record(
     )
     trial_lines: list[str] = []
     distances: list[float] = []
+    winning_class_sets: list[tuple[str, ...]] = []
     tie_count = 0
     for index, target_log10 in enumerate(samples):
         distance, winners = nearest_classes(target_log10, classes)
         distances.append(distance)
+        winning_class_sets.append(winners)
         tie_count += len(winners) > 1
         trial_lines.append(
             "\t".join(
@@ -339,6 +433,9 @@ def _null_run_record(
         "eligible_class_count": len(classes),
         "unique_numerical_position_count": len(positions),
         "tie_trial_count": tie_count,
+        "calibration_regime": calibration_regime_record(
+            classes, lower, upper, samples, winning_class_sets
+        ),
         "calibration": {
             "statistic": "two_sided_maximum_empirical_analytic_cdf_deviation",
             "observed": _float_record(deviation),
@@ -472,25 +569,12 @@ def verify_source_state(
 ) -> None:
     """Verify that result-driving files still match the recorded committed source."""
 
-    if len(source_commit_sha) != 40 or any(c not in "0123456789abcdef" for c in source_commit_sha):
-        raise ValueError("result source commit SHA is invalid")
-    resolved = _git_output(["rev-parse", source_commit_sha], cwd=repository_root)
-    if resolved != source_commit_sha:
-        raise ValueError("result source commit SHA does not resolve exactly")
-    ancestor = subprocess.run(
-        ["git", "merge-base", "--is-ancestor", source_commit_sha, "HEAD"],
-        cwd=repository_root,
-        check=False,
+    verify_committed_source_state(
+        repository_root,
+        source_commit_sha,
+        source_paths=source_paths,
+        artifact_label="null result",
     )
-    if ancestor.returncode != 0:
-        raise ValueError("result source commit is not an ancestor of HEAD")
-    changed = subprocess.run(
-        ["git", "diff", "--quiet", source_commit_sha, "--", *source_paths],
-        cwd=repository_root,
-        check=False,
-    )
-    if changed.returncode != 0:
-        raise ValueError("result-driving source differs from recorded source commit")
 
 
 def _preregistration_commit_sha(
@@ -556,6 +640,9 @@ def build_result(
     real_analytic_cdf = analytic_nearest_distance_cdf(
         real_distance, *local_interval, primary_positions
     )
+    local_cdf_forced = analytic_cdf_is_forced_by_centering(
+        g_log10, *local_interval, primary_positions
+    )
     circular_distance, circular_winners = nearest_classes(g_log10, circularity)
 
     valid = (
@@ -617,8 +704,18 @@ def build_result(
             "primary_winning_class_identifiers": list(real_winners),
             "local_null_empirical_cdf_at_distance": _float_record(real_empirical_cdf),
             "local_null_analytic_cdf_at_distance": _float_record(real_analytic_cdf),
+            "local_null_analytic_cdf_is_forced_by_centering": local_cdf_forced,
             "interpretation": (
-                "This comparison calibrates the grammar; neither tail is physical evidence."
+                (
+                    "The analytic CDF value of one half is forced by centering the local "
+                    "interval on G while every eligible position lies outside that interval "
+                    "on the same side. It is not a measured or informative percentile."
+                )
+                if local_cdf_forced
+                else (
+                    "This comparison calibrates the grammar; neither tail is physical "
+                    "evidence."
+                )
             ),
         },
         "circularity_control": {
@@ -687,22 +784,30 @@ def _parser() -> argparse.ArgumentParser:
 def main() -> None:
     args = _parser().parse_args()
     if args.check:
-        if not args.output.exists():
-            print(f"missing null-result artifact: {args.output}", file=sys.stderr)
-            raise SystemExit(1)
-        existing = json.loads(args.output.read_text(encoding="utf-8"))
-        validate_result_integrity(existing, preregistration_path=args.preregistration)
-        source_sha = existing["integrity"]["source_commit_sha"]
-        verify_source_state(source_sha)
-        expected = serialize_artifact(
-            build_result(
-                source_commit_sha=source_sha,
-                preregistration_path=args.preregistration,
+        try:
+            if not args.output.exists():
+                print(f"missing null-result artifact: {args.output}", file=sys.stderr)
+                raise SystemExit(1)
+            existing = json.loads(args.output.read_text(encoding="utf-8"))
+            validate_result_integrity(existing, preregistration_path=args.preregistration)
+            source_sha = existing["integrity"]["source_commit_sha"]
+            root = discover_repository_root()
+            verify_source_state(source_sha, repository_root=root)
+            expected = serialize_artifact(
+                build_result(
+                    source_commit_sha=source_sha,
+                    preregistration_path=args.preregistration,
+                    repository_root=root,
+                )
             )
-        )
-        if args.output.read_text(encoding="utf-8") != expected:
-            print(f"stale null-result artifact: {args.output}", file=sys.stderr)
-            raise SystemExit(1)
+            if args.output.read_text(encoding="utf-8") != expected:
+                print(f"stale null-result artifact: {args.output}", file=sys.stderr)
+                raise SystemExit(1)
+        except SourceVerificationError as error:
+            exit_for_source_verification_error(error)
+        except (json.JSONDecodeError, KeyError, TypeError, ValueError) as error:
+            print(f"invalid null result: {error}", file=sys.stderr)
+            raise SystemExit(1) from None
         print("Null and planted-control result is current and integrity-checked.")
         return
 
@@ -713,6 +818,7 @@ def main() -> None:
         build_result(
             source_commit_sha=args.source_commit_sha,
             preregistration_path=args.preregistration,
+            repository_root=discover_repository_root(),
         )
     )
     if args.output.exists():

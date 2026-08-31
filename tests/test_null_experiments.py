@@ -12,8 +12,10 @@ from Discovery.dependency_analysis import (
 )
 from Discovery.null_experiments import (
     CandidateClass,
+    DEFAULT_OUTPUT,
     analytic_nearest_distance_cdf,
     build_candidate_classes,
+    calibration_regime_record,
     derive_global_interval,
     iter_trial_rows,
     maximum_cdf_deviation,
@@ -119,7 +121,7 @@ class NullExperimentTests(unittest.TestCase):
 
         preregistration, content = load_preregistration()
         base = {
-            "result_schema_version": 1,
+            "result_schema_version": 2,
             "experiment_identifier": preregistration["experiment_identifier"],
             "integrity": {
                 "preregistration_sha256": __import__("hashlib").sha256(content).hexdigest(),
@@ -146,6 +148,37 @@ class NullExperimentTests(unittest.TestCase):
         }
         with self.assertRaisesRegex(ValueError, "payload hash mismatch"):
             tuple(iter_trial_rows(run))
+
+    def test_calibration_regime_record_is_hand_checkable(self) -> None:
+        left = CandidateClass("a", NO_REGISTERED_TARGET_DEPENDENCY, (), ("a",), 0.0)
+        right = CandidateClass("b", NO_REGISTERED_TARGET_DEPENDENCY, (), ("b",), 2.0)
+        record = calibration_regime_record(
+            (left, right),
+            -1.0,
+            3.0,
+            (-1.0, 0.5, 1.0, 3.0),
+            (("a",), ("a",), ("a", "b"), ("b",)),
+        )
+        self.assertEqual(
+            record["minimum_pairwise_position_separation_log10"]["decimal"],
+            "2",
+        )
+        self.assertTrue(record["eligible_position_inside_interval"])
+        self.assertEqual(record["overlap_regime"]["trial_count"], 2)
+        self.assertEqual(record["overlap_regime"]["trial_fraction"]["decimal"], "0.5")
+        self.assertEqual(record["observed_distinct_winning_class_count"], 2)
+
+    def test_current_local_regime_is_explicitly_degenerate(self) -> None:
+        result = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
+        regime = result["local_null"]["calibration_regime"]
+        self.assertFalse(regime["eligible_position_inside_interval"])
+        self.assertEqual(regime["overlap_regime"]["trial_count"], 0)
+        self.assertEqual(regime["observed_distinct_winning_class_count"], 1)
+        self.assertTrue(
+            result["real_G_navigation"][
+                "local_null_analytic_cdf_is_forced_by_centering"
+            ]
+        )
 
 
 if __name__ == "__main__":

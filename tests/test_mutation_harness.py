@@ -1,10 +1,12 @@
 from pathlib import Path
+import json
 import sys
 import types
 import unittest
 
 from Discovery.mutation_harness import (
     CALIBRATION_MUTANTS,
+    DEFAULT_OUTPUT,
     INVALID,
     KILLED,
     SURVIVED,
@@ -13,6 +15,7 @@ from Discovery.mutation_harness import (
     canonical_head,
     canonical_status_bytes,
     classify_runner_record,
+    mutation_records_sha256,
     _sanitize_diagnostic,
     repository_root,
     run_mutant,
@@ -77,7 +80,7 @@ class MutationHarnessUnitTests(unittest.TestCase):
 
         preregistration, content = load_preregistration()
         record = {
-            "result_schema_version": 1,
+            "result_schema_version": 2,
             "experiment_identifier": preregistration["experiment_identifier"],
             "integrity": {
                 "preregistration_sha256": preregistration_sha256_bytes(content),
@@ -106,6 +109,53 @@ class MutationHarnessUnitTests(unittest.TestCase):
         )
         with self.assertRaisesRegex(RuntimeError, "not an established disposable"):
             apply_mutation(root, root, mutant)
+
+    def test_committed_record_tampering_is_rejected(self) -> None:
+        original = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
+
+        def changed() -> dict[str, object]:
+            return json.loads(json.dumps(original))
+
+        cases = []
+        record = changed()
+        record["production_results"][0]["classification"] = SURVIVED
+        cases.append(record)
+        record = changed()
+        record["calibration_results"][0]["classification"] = SURVIVED
+        cases.append(record)
+        record = changed()
+        record["production_results"][0]["killing_tests"] = []
+        cases.append(record)
+        record = changed()
+        record["calibration_results"][0]["import_path_integrity"]["validated"] = False
+        cases.append(record)
+        record = changed()
+        record["production_results"][1]["invalid_reason"] = "tampered"
+        cases.append(record)
+
+        for tampered in cases:
+            with self.subTest(field=tampered):
+                with self.assertRaisesRegex(ValueError, "mutation-record hash mismatch"):
+                    validate_result_integrity(tampered)
+
+    def test_calibration_status_is_rederived_from_records(self) -> None:
+        result = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
+        result["calibration_results"][0]["classification"] = SURVIVED
+        result["calibration_results"][0]["killing_tests"] = []
+        result["integrity"]["records_sha256"] = mutation_records_sha256(
+            result["calibration_results"], result["production_results"]
+        )
+        with self.assertRaisesRegex(ValueError, "production-record count"):
+            validate_result_integrity(result)
+
+    def test_serialized_expected_calibration_is_checked_against_catalog(self) -> None:
+        result = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
+        result["calibration_results"][0]["expected_classification"] = SURVIVED
+        result["integrity"]["records_sha256"] = mutation_records_sha256(
+            result["calibration_results"], result["production_results"]
+        )
+        with self.assertRaisesRegex(ValueError, "record/catalog mismatch"):
+            validate_result_integrity(result)
 
 
 class MutationHarnessIntegrationTests(unittest.TestCase):
