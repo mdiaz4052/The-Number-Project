@@ -375,12 +375,12 @@ reference value of `G` used anywhere upstream. Unresolved ancestry remains `unre
 The status `no_registered_target_path` is catalog-relative algebraic information, not a
 claim of experimental independence.
 
-The display-symbol namespace is a separate ambiguity guard. It applies Unicode NFC
-normalization and trims outer whitespace before exact comparison, rejects reuse of a
-registered catalog symbol for every provenance kind, and rejects duplicate normalized
-symbols among declared local atoms. It is deliberately not a visual-confusables or
-homoglyph detector; stable identifiers and exact registered dependency signatures remain
-the authoritative algebraic records.
+The display-symbol namespace is a separate ambiguity guard. It removes invisible Unicode
+format controls (category `Cf`), applies Unicode NFC normalization, and trims outer
+whitespace before exact comparison. It rejects reuse of a registered catalog symbol and
+duplicate normalized symbols across every provenance kind. It is deliberately not a
+visual-confusables or homoglyph detector; stable identifiers and exact registered
+dependency signatures remain the authoritative algebraic records.
 
 CODATA 2022 appears only as an editioned, sourced, uncertainty-bearing
 `external_comparison_reference` in a terminal post-estimation node. The example separately

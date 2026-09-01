@@ -112,9 +112,10 @@ python -m Discovery.mutation_harness --check
 The mutation guard hashes the recorded source commit, the Git blob object ID of every
 result-driving `SOURCE_PATHS` file at that commit, and the complete calibration and
 production record arrays. It also requires each record's worktree anchor to match that
-source commit and rederives the classifications, calibration validity, family status,
-and production interpretation from the frozen mutant catalog. A one-field source-SHA
-bump therefore cannot make stale records current. This remains a tamper-evidence pin,
-not a reproduction proof: a knowing editor can update the source snapshot, records,
-and digest together. The null artifact remains the byte-for-byte deterministic
-reproduction guard.
+source commit; requires clean, unchanged canonical status fingerprints, unchanged HEAD,
+and confirmed worktree cleanup; and rederives the classifications, calibration validity,
+family status, and production interpretation from the frozen mutant catalog. A one-field
+source-SHA bump or a rehashed false safety flag therefore cannot make stale or
+methodologically invalid records current. This remains a tamper-evidence pin, not a
+reproduction proof: a knowing editor can update the source snapshot, records, and digest
+together. The null artifact remains the byte-for-byte deterministic reproduction guard.

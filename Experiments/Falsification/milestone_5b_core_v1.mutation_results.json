@@ -2,9 +2,9 @@
   "anti_goodhart_rule": "A surviving mutant may be closed only by a behavioral assertion of the intended contract, never by source-text or patch detection.",
   "calibration_results": [
     {
-      "canonical_anchor_sha": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
-      "canonical_head_after": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
-      "canonical_head_before": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
+      "canonical_anchor_sha": "ae5fba452531801408cb86869805371799437a83",
+      "canonical_head_after": "ae5fba452531801408cb86869805371799437a83",
+      "canonical_head_before": "ae5fba452531801408cb86869805371799437a83",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -56,9 +56,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
-      "canonical_head_after": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
-      "canonical_head_before": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
+      "canonical_anchor_sha": "ae5fba452531801408cb86869805371799437a83",
+      "canonical_head_after": "ae5fba452531801408cb86869805371799437a83",
+      "canonical_head_before": "ae5fba452531801408cb86869805371799437a83",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -122,14 +122,14 @@
     "preregistration_commit_sha": "2a26ac6b8a3456a1548b09d56c9696058bc43b1a",
     "preregistration_path": "Experiments/Falsification/milestone_5b_core_v1.preregistration.json",
     "preregistration_sha256": "852e17885fb29fb46344d5176341a42b6c6f6690f9f1957698b859f068cab7bf",
-    "records_sha256": "ae055064127c5bcf85550697bbe0e90ca028a2b89c47a5a2693f77dadcb001b3",
+    "records_sha256": "500a1a9268fde8290d4692b360394b4203b3a5b97e3289cc5b7cc01fec57fdb9",
     "records_sha256_semantics": "SHA-256 of the canonical source commit, SOURCE_PATHS Git-blob snapshot, calibration_results, and production_results; a tamper-evidence pin, not a reproduction proof.",
     "seeds": {
       "global_null": 528492,
       "local_null": 528491
     },
     "source_commit_semantics": "Committed harness, mutant catalog, tests, and project source anchored into every disposable worktree.",
-    "source_commit_sha": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
+    "source_commit_sha": "ae5fba452531801408cb86869805371799437a83",
     "source_paths": [
       "Discovery/mutation_harness.py",
       "Discovery/mutation_test_runner.py",
@@ -148,15 +148,15 @@
       "path_blob_oids": {
         "Discovery/dependency_analysis.py": "bea35d1b839086b76a8121375a19716d776de7b1",
         "Discovery/dimensional_search.py": "b3f7e6b446e4488645cda1b1d8f11fa2a585bf48",
-        "Discovery/mutation_harness.py": "112f5294c961c8ee3eb5dd4185dce65f7566bf51",
+        "Discovery/mutation_harness.py": "5280a01647f8d7e44a6e6d5214fe1187dff412ce",
         "Discovery/mutation_test_runner.py": "5d883b53a0af99f94b6d4a818d3224aa0c06408c",
-        "Discovery/physical_bridge_validation.py": "163e58e37a86b86199b15f99b78f3eea697ff237",
+        "Discovery/physical_bridge_validation.py": "d2c02b11daceeda25e1ba183dd1e1ee0281c24a7",
         "Discovery/source_history.py": "8e53cf1e0f5b3425c11197c81b9000b10355e89e",
         "Experiments/Falsification/milestone_5b_core_v1.preregistration.json": "f2e19fdf1ca42ee332d6afa0d243ccf38a3edd65",
         "tests/test_dependency_analysis.py": "4322432eae85f1480452127442bf6cc51e43e978",
         "tests/test_dimensional_search.py": "cc0cefb866e52a115fae8490e85510b7790853c4",
-        "tests/test_mutation_harness.py": "c8244861b66db1634ad68965b1d5c1e64aea556f",
-        "tests/test_physical_bridge.py": "627e96ea33d236539c7fd070a6e1e7a6642e8e5f"
+        "tests/test_mutation_harness.py": "307b48bc2f5d317e7de45096c4bf0ad57d2c4693",
+        "tests/test_physical_bridge.py": "400b503d988c2f9622f61bf1ec71bebbf08a9640"
       }
     }
   },
@@ -171,9 +171,9 @@
   "production_interpretation": "meaningful",
   "production_results": [
     {
-      "canonical_anchor_sha": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
-      "canonical_head_after": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
-      "canonical_head_before": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
+      "canonical_anchor_sha": "ae5fba452531801408cb86869805371799437a83",
+      "canonical_head_after": "ae5fba452531801408cb86869805371799437a83",
+      "canonical_head_before": "ae5fba452531801408cb86869805371799437a83",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -235,9 +235,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
-      "canonical_head_after": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
-      "canonical_head_before": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
+      "canonical_anchor_sha": "ae5fba452531801408cb86869805371799437a83",
+      "canonical_head_after": "ae5fba452531801408cb86869805371799437a83",
+      "canonical_head_before": "ae5fba452531801408cb86869805371799437a83",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -287,15 +287,15 @@
       "required_import_modules": [
         "Discovery.physical_bridge_validation"
       ],
-      "runner_diagnostic": "test_m_planck_has_an_explicit_registered_target_path (tests.test_physical_bridge.PhysicalBridgeTests.test_m_planck_has_an_explicit_registered_target_path) ... ERROR\n\n======================================================================\nERROR: test_m_planck_has_an_explicit_registered_target_path (tests.test_physical_bridge.PhysicalBridgeTests.test_m_planck_has_an_explicit_registered_target_path)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<DISPOSABLE_WORKTREE>/tests/test_physical_bridge.py\", line 115, in test_m_planck_has_an_explicit_registered_target_path\n    audit = audit_registered_target_path(\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<DISPOSABLE_WORKTREE>/Discovery/physical_bridge_validation.py\", line 105, in audit_registered_target_path\n    expansion = catalog.expand_signature(\n                ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<DISPOSABLE_WORKTREE>/Discovery/dependency_definitions.py\", line 81, in expand_signature\n    normalized_surface = normalize_exponent_signature(surface)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<DISPOSABLE_WORKTREE>/Discovery/planck_identities.py\", line 52, in normalize_exponent_signature\n    raise ValueError(\"an exponent signature must contain at least one factor\")\nValueError: an exponent signature must contain at least one factor\n\n----------------------------------------------------------------------\nRan 1 test(s) in <ELAPSED>\n\nFAILED (errors=1)\n",
+      "runner_diagnostic": "test_m_planck_has_an_explicit_registered_target_path (tests.test_physical_bridge.PhysicalBridgeTests.test_m_planck_has_an_explicit_registered_target_path) ... ERROR\n\n======================================================================\nERROR: test_m_planck_has_an_explicit_registered_target_path (tests.test_physical_bridge.PhysicalBridgeTests.test_m_planck_has_an_explicit_registered_target_path)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<DISPOSABLE_WORKTREE>/tests/test_physical_bridge.py\", line 115, in test_m_planck_has_an_explicit_registered_target_path\n    audit = audit_registered_target_path(\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<DISPOSABLE_WORKTREE>/Discovery/physical_bridge_validation.py\", line 113, in audit_registered_target_path\n    expansion = catalog.expand_signature(\n                ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<DISPOSABLE_WORKTREE>/Discovery/dependency_definitions.py\", line 81, in expand_signature\n    normalized_surface = normalize_exponent_signature(surface)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<DISPOSABLE_WORKTREE>/Discovery/planck_identities.py\", line 52, in normalize_exponent_signature\n    raise ValueError(\"an exponent signature must contain at least one factor\")\nValueError: an exponent signature must contain at least one factor\n\n----------------------------------------------------------------------\nRan 1 test(s) in <ELAPSED>\n\nFAILED (errors=1)\n",
       "test_command": [
         "tests.test_physical_bridge.PhysicalBridgeTests.test_m_planck_has_an_explicit_registered_target_path"
       ]
     },
     {
-      "canonical_anchor_sha": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
-      "canonical_head_after": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
-      "canonical_head_before": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
+      "canonical_anchor_sha": "ae5fba452531801408cb86869805371799437a83",
+      "canonical_head_after": "ae5fba452531801408cb86869805371799437a83",
+      "canonical_head_before": "ae5fba452531801408cb86869805371799437a83",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -351,9 +351,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
-      "canonical_head_after": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
-      "canonical_head_before": "eab67e1887d3e98e5ccc3182c73cc25e3a92a95d",
+      "canonical_anchor_sha": "ae5fba452531801408cb86869805371799437a83",
+      "canonical_head_after": "ae5fba452531801408cb86869805371799437a83",
+      "canonical_head_before": "ae5fba452531801408cb86869805371799437a83",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",

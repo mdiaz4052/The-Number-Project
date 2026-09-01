@@ -62,7 +62,12 @@ from Discovery.physical_bridge_schema import (
 def _normalized_display_symbol(symbol: str) -> str:
     """Return the exact-match form used by the display namespace guard."""
 
-    return unicodedata.normalize("NFC", symbol).strip()
+    without_format_controls = "".join(
+        character
+        for character in symbol
+        if unicodedata.category(character) != "Cf"
+    )
+    return unicodedata.normalize("NFC", without_format_controls).strip()
 
 
 _REGISTERED_SYMBOL_TO_KEY = {
@@ -72,9 +77,14 @@ _REGISTERED_SYMBOL_TO_KEY = {
 
 
 def _validate_display_symbol_namespace(model: MeasurementModel) -> None:
-    local_symbol_owners: dict[str, str] = {}
+    symbol_owners: dict[str, str] = {}
     for quantity in sorted(model.quantities, key=lambda item: item.identifier):
         normalized_symbol = _normalized_display_symbol(quantity.symbol)
+        if not normalized_symbol:
+            raise BridgeValidationError(
+                "display symbol is empty after normalization: "
+                f"{quantity.identifier}"
+            )
         registered_key = _REGISTERED_SYMBOL_TO_KEY.get(normalized_symbol)
         if registered_key is not None:
             raise BridgeValidationError(
@@ -82,15 +92,13 @@ def _validate_display_symbol_namespace(model: MeasurementModel) -> None:
                 f"normalization: {normalized_symbol} (registered key {registered_key}; "
                 f"quantity {quantity.identifier})"
             )
-        if quantity.algebraic_provenance_kind != DECLARED_LOCAL_ATOM:
-            continue
-        previous_owner = local_symbol_owners.get(normalized_symbol)
+        previous_owner = symbol_owners.get(normalized_symbol)
         if previous_owner is not None:
             raise BridgeValidationError(
-                "duplicate local display symbol after normalization: "
+                "duplicate display symbol after normalization: "
                 f"{normalized_symbol} ({previous_owner}, {quantity.identifier})"
             )
-        local_symbol_owners[normalized_symbol] = quantity.identifier
+        symbol_owners[normalized_symbol] = quantity.identifier
 
 
 def audit_registered_target_path(
