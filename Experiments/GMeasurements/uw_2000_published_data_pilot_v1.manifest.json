@@ -1,0 +1,34 @@
+{
+  "decision": "NO-GO",
+  "documents": [
+    {
+      "path": "Experiments/GMeasurements/uw_2000_published_data_preregistration_v1.md",
+      "role": "governing_preregistration",
+      "sha256": "487d4d584e412b404815d8f22eb90d7b4690465d4984d91aa072fb1520326971"
+    },
+    {
+      "path": "Experiments/GMeasurements/uw_2000_published_data_preregistration_v1_clarification_1.md",
+      "role": "normative_clarification",
+      "sha256": "f2bac432714e8d480c51daf090d69463df2239deb704f0283c4b3274db5c5735"
+    },
+    {
+      "path": "Experiments/GMeasurements/uw_2000_source_audit_v1.md",
+      "role": "source_availability_audit",
+      "sha256": "fb5b1890f8c4a60e5c94d90c46bd37ba28bd0c6d7ed8c8ec912af010d2eb843d"
+    }
+  ],
+  "empirical_record_created": false,
+  "essential_missing_inputs": [
+    "fitted_2omega_d_gravitational_angular_acceleration",
+    "complete_numerical_attractor_multipole_coupling"
+  ],
+  "go_authorized": false,
+  "next_candidate": "hust_2018_angular_acceleration_feedback",
+  "nonclaims": [
+    "The UW publication is not disputed by this source-availability decision.",
+    "No UW empirical measurement record, G estimate, or replication claim was created.",
+    "The hashes make reviewed document changes visible; they do not make the repository unforgeable against a knowing editor."
+  ],
+  "pilot_identifier": "uw_2000_published_data_reproduction_v1",
+  "pilot_manifest_schema_version": 1
+}
