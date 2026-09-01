@@ -18,6 +18,7 @@ from typing import Any, Mapping
 PILOT_MANIFEST_SCHEMA_VERSION = 1
 PILOT_IDENTIFIER = "uw_2000_published_data_reproduction_v1"
 DECISION = "NO-GO"
+OUTCOME_CLASS = "INCOMPLETE_REPRODUCTION"
 EMPIRICAL_RECORD_CREATED = False
 PREREGISTRATION_PATH = Path(
     "Experiments/GMeasurements/uw_2000_published_data_preregistration_v1.md"
@@ -49,7 +50,7 @@ DOCUMENT_SPECS = (
     (
         "source_availability_audit",
         SOURCE_AUDIT_PATH,
-        "fb5b1890f8c4a60e5c94d90c46bd37ba28bd0c6d7ed8c8ec912af010d2eb843d",
+        "1ff8b755a1eb2c68af1a51c670fa81a5caa7a39a8e3b627cfa962707f00cc6b5",
     ),
 )
 ESSENTIAL_MISSING_INPUTS = (
@@ -73,6 +74,10 @@ def sha256_bytes(content: bytes) -> str:
     return hashlib.sha256(content).hexdigest()
 
 
+def _expected_source_audit_decision_line() -> str:
+    return f"**Decision: `{DECISION} ({OUTCOME_CLASS})`**"
+
+
 def _document_records(root: Path) -> list[dict[str, str]]:
     records: list[dict[str, str]] = []
     for role, relative_path, expected_sha256 in DOCUMENT_SPECS:
@@ -85,6 +90,20 @@ def _document_records(root: Path) -> list[dict[str, str]]:
             raise ValueError(
                 f"pinned pilot document hash mismatch: {relative_path}"
             )
+        if relative_path == SOURCE_AUDIT_PATH:
+            try:
+                audit_text = content.decode("utf-8")
+            except UnicodeDecodeError as error:
+                raise ValueError("pinned source audit is not valid UTF-8") from error
+            decision_lines = [
+                line.rstrip()
+                for line in audit_text.splitlines()
+                if line.startswith("**Decision:")
+            ]
+            if decision_lines != [_expected_source_audit_decision_line()]:
+                raise ValueError(
+                    "pinned source-audit decision line does not match canonical decision"
+                )
         records.append(
             {
                 "role": role,
@@ -102,6 +121,7 @@ def build_pilot_manifest(root: Path = Path(".")) -> dict[str, Any]:
         "pilot_manifest_schema_version": PILOT_MANIFEST_SCHEMA_VERSION,
         "pilot_identifier": PILOT_IDENTIFIER,
         "decision": DECISION,
+        "outcome_class": OUTCOME_CLASS,
         "go_authorized": False,
         "empirical_record_created": EMPIRICAL_RECORD_CREATED,
         "documents": _document_records(root),

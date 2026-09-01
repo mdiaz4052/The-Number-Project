@@ -39,10 +39,11 @@ premise or make dimensional coincidences into evidence.
 
 ## Published-data reproduction queue
 
-The UW 2000 source audit is an explicit `NO-GO`: the public record does not expose the
-main fitted acceleration amplitude or complete numerical multipole coupling, and its
-purported 2002 PRD companion is unrelated. This finding should not trigger a broader
-schema or hardening milestone.
+The UW 2000 source audit is an explicit `NO-GO (INCOMPLETE_REPRODUCTION)`: the public
+record does not expose the main fitted acceleration amplitude or complete numerical
+multipole coupling, and its purported 2002 PRD companion is unrelated. A 1999 predecessor
+provides tempting but inapplicable prototype and design values, now recorded as explicit
+exclusions. This finding should not trigger a broader schema or hardening milestone.
 
 The pilot's original preregistration remains unchanged. A normative clarification limits
 exact mathematical constants to the symbolic estimator layer under the current schema;

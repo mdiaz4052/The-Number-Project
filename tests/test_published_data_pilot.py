@@ -4,6 +4,7 @@ from pathlib import Path
 import shutil
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from Discovery.published_data_pilot import (
     CLARIFICATION_PATH,
@@ -70,6 +71,7 @@ class PublishedDataPilotTests(unittest.TestCase):
         original = load_pilot_manifest()
         mutations = (
             ("decision", "GO"),
+            ("outcome_class", "SUCCESSFUL_REPRODUCTION"),
             ("go_authorized", True),
             ("empirical_record_created", True),
             ("essential_missing_inputs", []),
@@ -84,6 +86,22 @@ class PublishedDataPilotTests(unittest.TestCase):
                     "canonical reviewed fields",
                 ):
                     validate_pilot_manifest_record(changed)
+
+    def test_canonical_decision_and_outcome_match_pinned_audit_line(self) -> None:
+        mutations = (
+            ("Discovery.published_data_pilot.DECISION", "GO"),
+            (
+                "Discovery.published_data_pilot.OUTCOME_CLASS",
+                "SUCCESSFUL_REPRODUCTION",
+            ),
+        )
+        for target, replacement in mutations:
+            with self.subTest(target=target), patch(target, replacement):
+                with self.assertRaisesRegex(
+                    ValueError,
+                    "source-audit decision line does not match canonical decision",
+                ):
+                    build_pilot_manifest()
 
 
 if __name__ == "__main__":

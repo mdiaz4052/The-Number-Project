@@ -56,11 +56,12 @@ testing. These are methodological results about the project machinery, not evide
 gravity or a measurement of `G`.
 
 The practical-evidence pilot preregisters and audits a published-data reproduction of the
-University of Washington 2000 torsion-balance result. The audit reaches `NO-GO`: the
-public record does not expose two indispensable numerical inputs, and the proposed 2002
-PRD companion is unrelated. The repository records the missing evidence rather than
-back-solving it from the published value. No empirical result or replication claim is
-created.
+University of Washington 2000 torsion-balance result. The audit reaches
+`NO-GO (INCOMPLETE_REPRODUCTION)`: the public record does not expose two indispensable
+numerical inputs, and the proposed 2002 PRD companion is unrelated. A 1999 prototype
+coupling, proposed budget, and design geometry are explicitly excluded from the 2000
+input set. The repository records the missing evidence rather than back-solving it from
+the published value. No empirical result or replication claim is created.
 
 The project is exploratory. A compiled implication is not experimental evidence for its
 premises, and a dimensionally valid numerical coincidence is not evidence of a physical
@@ -93,7 +94,8 @@ law.
   statuses, groups, certification links, rank, nullity, RREF, and limitations.
 - `Experiments/GMeasurements/` records the general physical-bridge contract, an
   explicitly unpopulated inverse-square structural example as deterministic JSON, and
-  the preregistered UW 2000 source audit with its explicit `NO-GO` decision.
+  the preregistered UW 2000 source audit with its explicit
+  `NO-GO (INCOMPLETE_REPRODUCTION)` decision.
 - `Experiments/Falsification/` records the immutable 5B-core preregistration, complete
   provenance-stratified null and planted-control result, and disposable-worktree mutation
   result with source and integrity metadata.
@@ -408,10 +410,11 @@ python3 -m Discovery.physical_bridge
 python3 -m Discovery.physical_bridge --check
 ```
 
-The first practical pilot is an explicit UW 2000 source-audit `NO-GO`, not a project
-measurement. Its original preregistration, review-time clarification about exact symbolic
-constants, and source audit are SHA-256-pinned by a deterministic manifest. Check those
-bytes and canonical decision fields with:
+The first practical pilot is an explicit UW 2000 source-audit
+`NO-GO (INCOMPLETE_REPRODUCTION)`, not a project measurement. Its original
+preregistration, review-time clarification about exact symbolic constants, and source
+audit are SHA-256-pinned by a deterministic manifest. Check those bytes and canonical
+decision fields with:
 
 ```bash
 python3 -m Discovery.published_data_pilot --check

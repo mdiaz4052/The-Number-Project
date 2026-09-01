@@ -314,11 +314,11 @@ an estimated value with coverage information, reproducibility evidence, and comp
 that was not used to tune or accept the result.
 
 The first practical source audit applied those requirements to the University of
-Washington 2000 torsion-balance publication. It reached `NO-GO`: the public paper omits
-the fitted gravitational angular-acceleration amplitude and complete numerical attractor
-multipole coupling needed to reconstruct the result, and the proposed 2002 PRD companion
-is unrelated. The later correction is identified in the CODATA review as a private
-communication. See the frozen
+Washington 2000 torsion-balance publication. It reached
+`NO-GO (INCOMPLETE_REPRODUCTION)`: the public paper omits the fitted gravitational
+angular-acceleration amplitude and complete numerical attractor multipole coupling needed
+to reconstruct the result, and the proposed 2002 PRD companion is unrelated. The later
+correction is identified in the CODATA review as a private communication. See the frozen
 [`preregistration`](../Experiments/GMeasurements/uw_2000_published_data_preregistration_v1.md)
 and its explicit
 [`clarification`](../Experiments/GMeasurements/uw_2000_published_data_preregistration_v1_clarification_1.md),
@@ -333,8 +333,8 @@ and next candidate. This makes reviewed changes detectable; it is not protection
 a knowing editor who rewrites the guard and its canonical constants as well.
 
 No real dataset, fit, apparatus validation, or new value of `G` was introduced. The
-pilot's practical result is that the contract stopped an incomplete publication record
-from being represented as a complete empirical reproduction.
+pilot's practical result is that the source audit identified an incomplete publication
+record and no complete empirical reproduction was created.
 
 ## Artifacts and commands
 

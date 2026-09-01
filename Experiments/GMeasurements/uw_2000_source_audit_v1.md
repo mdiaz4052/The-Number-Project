@@ -1,6 +1,7 @@
 # UW 2000 published-data source audit v1
 
-**Decision: `NO-GO`**  
+**Decision: `NO-GO (INCOMPLETE_REPRODUCTION)`**
+
 **Audit date:** 2026-09-01  
 **Governing preregistration:**
 [`uw_2000_published_data_preregistration_v1.md`](uw_2000_published_data_preregistration_v1.md)  
@@ -20,8 +21,9 @@ publication does not report the fitted gravitational angular-acceleration amplit
 the complete numerical attractor multipole field used with it. Either missing quantity
 could be manufactured by inverting the published `G`; this audit forbids that operation.
 
-This `NO-GO` is a result about independent transcribability from the identified public
-record. It does not challenge the authors' experiment or published result.
+This `NO-GO (INCOMPLETE_REPRODUCTION)` is a result about independent transcribability
+from the identified public record. It does not challenge the authors' experiment or
+published result.
 
 ## 1. Evidence set and bibliographic identity
 
@@ -36,6 +38,31 @@ record. It does not challenge the authors' experiment or published result.
 - The authors' public apparatus page was checked for additional numerical material. It
   repeats the method and headline result but supplies no missing fit or multipole table:
   [University of Washington Big G Measurement](https://asd.gsfc.nasa.gov/Stephen.Merkowitz/G/Big_G.html).
+
+### Explicitly excluded 1999 prototype and design values
+
+J. H. Gundlach, “A rotating torsion balance experiment to measure Newton's constant,”
+*Measurement Science and Technology* 10, 454--459 (1999), DOI
+[`10.1088/0957-0233/10/6/307`](https://doi.org/10.1088/0957-0233/10/6/307),
+is a real primary paper in the same apparatus lineage
+([author-hosted PDF](https://www.npl.washington.edu/eotwash/sites/sand.npl.washington.edu.eotwash/files/documents/mst10-454.pdf),
+accessed 2026-09-01). It documents a method under construction and proof-of-principle
+tests, not the final 2000 measurement input set. Three plausible-looking substitutions
+from it are therefore explicitly excluded:
+
+- Section 2.3, journal p. 456, reports “a lab-fixed Pb attractor with
+  `Q_22 = 0.52 g cm^-3`, which is roughly a factor five smaller than the source for the
+  `G` measurement.” Its exact unit conversion is `520 kg m^-3`, which has the required
+  dimension but not the required apparatus provenance. This is the proof-of-principle
+  attractor, not the rotating source masses used for the published 2000 result. The value
+  must not fill the missing 2000 coupling.
+- Table 1, journal p. 455, is an approximate proposed one-sigma error budget. The paper
+  says the apparatus is still under construction, so this table must not replace the
+  measured-result budget in PRL Table II.
+- Section 3, journal p. 457, gives design geometry of `125 mm` sphere diameter,
+  approximately `8 kg` per sphere, and `16.5 cm` radius. The as-built PRL values are an
+  average diameter of `124.89 mm`, approximately `8.140 kg`, and `16.76 cm` radius
+  (PRL p. 2870). The 1999 design values must not be substituted for the 2000 apparatus.
 
 ### The proposed 2002 “companion” does not exist as cited
 
@@ -150,7 +177,7 @@ correlation assessment. The table is enough to reproduce the displayed total aft
 interpreting the listed components as the paper instructs; it is not enough to verify
 that every material correlation or shared calibration source was modeled.
 
-## 6. Why the decision is `NO-GO`
+## 6. Why the decision is `NO-GO (INCOMPLETE_REPRODUCTION)`
 
 Each of the first two gaps is decisive; the remaining gaps reinforce the decision:
 

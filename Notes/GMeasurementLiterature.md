@@ -68,6 +68,22 @@ line-by-line source mapping. The authors' public
 also checked for additional numerical inputs; it is official supporting context, not a
 replacement for the paper.
 
+#### Gundlach (1999): prototype and design evidence, not 2000 inputs
+
+J. H. Gundlach, “A rotating torsion balance experiment to measure Newton's constant,”
+*Measurement Science and Technology* 10, 454--459 (1999),
+[doi:10.1088/0957-0233/10/6/307](https://doi.org/10.1088/0957-0233/10/6/307)
+([author-hosted PDF](https://www.npl.washington.edu/eotwash/sites/sand.npl.washington.edu.eotwash/files/documents/mst10-454.pdf)).
+
+This is a valid apparatus-lineage source, but it is explicitly excluded as a source of
+numerical inputs for the 2000 result. Its `Q_22 = 0.52 g cm^-3` belongs to a lab-fixed
+proof-of-principle Pb attractor that the paper says is about five times weaker than the
+planned `G` source. Its Table 1 is a proposed approximate budget, not the 2000 result's
+uncertainty budget. Its `125 mm`, approximately `8 kg`, `16.5 cm` design geometry also
+differs from the PRL's as-built `124.89 mm`, approximately `8.140 kg`, `16.76 cm` values.
+These plausible values must not be substituted for the missing 2000 coupling, measured
+budget, or apparatus geometry.
+
 The 2002 CODATA adjustment review, P. J. Mohr and B. N. Taylor, “CODATA recommended
 values of the fundamental physical constants: 2002,” *Reviews of Modern Physics* 77,
 1--107 (2005), [doi:10.1103/RevModPhys.77.1](https://doi.org/10.1103/RevModPhys.77.1)
