@@ -11,6 +11,7 @@ from __future__ import annotations
 from pathlib import Path
 import re
 import subprocess
+import sys
 from typing import Sequence
 
 
@@ -143,5 +144,5 @@ def verify_committed_source_state(
 def exit_for_source_verification_error(error: SourceVerificationError) -> None:
     """Print one stable diagnostic and terminate without a Python traceback."""
 
-    print(f"{error.status}: {error}", file=__import__("sys").stderr)
+    print(f"{error.status}: {error}", file=sys.stderr)
     raise SystemExit(error.exit_code)

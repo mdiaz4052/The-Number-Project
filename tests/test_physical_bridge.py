@@ -450,9 +450,66 @@ class PhysicalBridgeTests(unittest.TestCase):
         )
         with self.assertRaisesRegex(
             BridgeValidationError,
-            "display symbol collides with registered catalog symbol: m_P",
+            "display symbol collides with registered catalog symbol after "
+            "normalization: m_P",
         ):
             validate_measurement_model(model)
+
+    def test_registered_expression_display_symbol_cannot_collide_with_catalog(
+        self,
+    ) -> None:
+        model = replace_quantity(
+            build_inverse_square_model(),
+            "codata_2022_G",
+            symbol="m_P",
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "registered key m_P; quantity codata_2022_G",
+        ):
+            validate_measurement_model(model)
+
+    def test_registered_display_symbol_collision_ignores_outer_whitespace(
+        self,
+    ) -> None:
+        for symbol in (" m_P", "m_P ", "\u00a0m_P\u00a0"):
+            with self.subTest(symbol=repr(symbol)):
+                model = replace_quantity(
+                    build_inverse_square_model(),
+                    "codata_2022_G",
+                    symbol=symbol,
+                )
+                with self.assertRaisesRegex(
+                    BridgeValidationError,
+                    "registered catalog symbol after normalization: m_P",
+                ):
+                    validate_measurement_model(model)
+
+    def test_duplicate_local_display_symbols_are_normalized(self) -> None:
+        cases = (
+            ("shared_symbol", " shared_symbol "),
+            ("e\u0301", "\u00e9"),
+        )
+        for first_symbol, second_symbol in cases:
+            with self.subTest(
+                first_symbol=repr(first_symbol),
+                second_symbol=repr(second_symbol),
+            ):
+                model = replace_quantity(
+                    build_inverse_square_model(),
+                    "mass_1",
+                    symbol=first_symbol,
+                )
+                model = replace_quantity(
+                    model,
+                    "mass_2",
+                    symbol=second_symbol,
+                )
+                with self.assertRaisesRegex(
+                    BridgeValidationError,
+                    "duplicate local display symbol after normalization",
+                ):
+                    validate_measurement_model(model)
 
     def test_model_scope_and_nonclaims_cannot_be_omitted(self) -> None:
         model = build_inverse_square_model()
