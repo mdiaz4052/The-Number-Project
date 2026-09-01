@@ -2,9 +2,9 @@
   "anti_goodhart_rule": "A surviving mutant may be closed only by a behavioral assertion of the intended contract, never by source-text or patch detection.",
   "calibration_results": [
     {
-      "canonical_anchor_sha": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
-      "canonical_head_after": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
-      "canonical_head_before": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
+      "canonical_anchor_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_head_after": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_head_before": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -56,9 +56,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
-      "canonical_head_after": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
-      "canonical_head_before": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
+      "canonical_anchor_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_head_after": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_head_before": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -122,14 +122,14 @@
     "preregistration_commit_sha": "2a26ac6b8a3456a1548b09d56c9696058bc43b1a",
     "preregistration_path": "Experiments/Falsification/milestone_5b_core_v1.preregistration.json",
     "preregistration_sha256": "852e17885fb29fb46344d5176341a42b6c6f6690f9f1957698b859f068cab7bf",
-    "records_sha256": "23ac11dc9c9d0471ac348f4943d748ffe13b939c17ff83331ef6a6840d2f3d4d",
+    "records_sha256": "c209193f3667d5d9fc3d6bd0c9df359f94c78dd9e2d8accf69f4f133b092a94e",
     "records_sha256_semantics": "SHA-256 of the canonical source commit, SOURCE_PATHS Git-blob snapshot, calibration_results, and production_results; a tamper-evidence pin, not a reproduction proof.",
     "seeds": {
       "global_null": 528492,
       "local_null": 528491
     },
     "source_commit_semantics": "Committed harness, mutant catalog, tests, and project source anchored into every disposable worktree.",
-    "source_commit_sha": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
+    "source_commit_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
     "source_paths": [
       "Discovery/mutation_harness.py",
       "Discovery/mutation_test_runner.py",
@@ -148,9 +148,9 @@
       "path_blob_oids": {
         "Discovery/dependency_analysis.py": "bea35d1b839086b76a8121375a19716d776de7b1",
         "Discovery/dimensional_search.py": "b3f7e6b446e4488645cda1b1d8f11fa2a585bf48",
-        "Discovery/mutation_harness.py": "1f20666a3f9aede20391dc7889f8ea427665cb51",
+        "Discovery/mutation_harness.py": "666d253ee9a828785cd9ed64d66b256843e0b242",
         "Discovery/mutation_test_runner.py": "5d883b53a0af99f94b6d4a818d3224aa0c06408c",
-        "Discovery/physical_bridge_validation.py": "ff22eddb6ae66b01027294eb3d1d0457a289a546",
+        "Discovery/physical_bridge_validation.py": "1ad5995ef1fb9f153c0fb1d07063ae263fce05f9",
         "Discovery/source_history.py": "8e53cf1e0f5b3425c11197c81b9000b10355e89e",
         "Experiments/Falsification/milestone_5b_core_v1.preregistration.json": "f2e19fdf1ca42ee332d6afa0d243ccf38a3edd65",
         "tests/test_dependency_analysis.py": "c1c69b4b65482323576273f56f7e1f6f2e179caf",
@@ -163,6 +163,7 @@
   "methodological_result_status": "valid",
   "nonclaims": [
     "Killed means only that the predefined tests detected this selected defect.",
+    "A killed mutant may pin a diagnostic or defense-in-depth behavior rather than an independent acceptance barrier.",
     "Survived identifies a test blind spot, not correct mutated behavior.",
     "Invalid is never counted as a kill.",
     "This finite mutant set does not establish that the software is defect-free.",
@@ -171,9 +172,9 @@
   "production_interpretation": "meaningful",
   "production_results": [
     {
-      "canonical_anchor_sha": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
-      "canonical_head_after": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
-      "canonical_head_before": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
+      "canonical_anchor_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_head_after": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_head_before": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -235,9 +236,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
-      "canonical_head_after": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
-      "canonical_head_before": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
+      "canonical_anchor_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_head_after": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_head_before": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -295,9 +296,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
-      "canonical_head_after": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
-      "canonical_head_before": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
+      "canonical_anchor_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_head_after": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_head_before": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -328,7 +329,7 @@
           "tests.test_physical_bridge": "tests/test_physical_bridge.py"
         }
       },
-      "intended_semantic_defect": "Disable the explicit guard against reference G in calibration or corrections.",
+      "intended_semantic_defect": "Disable the dedicated calibration/correction reference diagnostic; the broader external-reference boundary still rejects the same models.",
       "invalid_reason": null,
       "isolated_test_process_command": [
         "<PYTHON_EXECUTABLE>",
@@ -346,7 +347,7 @@
         "tests.test_physical_bridge.PhysicalBridgeTests.test_reference_g_used_in_calibration_is_rejected",
         "tests.test_physical_bridge.PhysicalBridgeTests.test_reference_g_used_in_correction_is_rejected"
       ],
-      "mutant_identifier": "production_disable_calibration_reference_guard",
+      "mutant_identifier": "production_disable_calibration_reference_diagnostic",
       "mutated_path": "Discovery/physical_bridge_validation.py",
       "required_import_modules": [
         "Discovery.physical_bridge_validation"
@@ -358,9 +359,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
-      "canonical_head_after": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
-      "canonical_head_before": "d41dcdf1f4c7b8383b7b6bb23720674695758496",
+      "canonical_anchor_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_head_after": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_head_before": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",

@@ -89,16 +89,17 @@ behavior-preserving source transformation survived. The production results were:
 - substituting target-independent `m_e` for `m_P` before inherited dependency expansion
   was **killed** by the explicit registered-target-path assertion; the replacement keeps
   a valid mass dimension, so this is a behavioral kill rather than an invalid mutation;
-- disabling the explicit calibration-reference guard was **killed** by calibration and
-  correction fixtures that require its specific fail-closed diagnostic before the
-  broader terminal-comparison rule; and
+- disabling the dedicated calibration/correction reference diagnostic was **killed**
+  by fixtures that pin its precedence before the broader terminal-comparison rule. This
+  is a diagnostic-precedence, defense-in-depth kill, not an independent safety kill:
+  the broader rule still rejects the same paths; and
 - inverting the dependency artifact's `--check` comparison was **killed** by a subprocess
   test that exercises the module CLI against both current and stale artifacts.
 
-All four selected production mutants are now killed by behavioral assertions. No
-source-text, literal-string, or exact-patch detector was added to improve the mutation
-score; the two former survivors and the former invalid mutation were closed by exercising
-their intended contracts.
+All four selected production mutants are detected by behavioral assertions. Three
+exercise independent acceptance or checker decisions; the calibration-reference mutant
+pins an explicit defense-in-depth diagnostic without changing acceptance. No source-text,
+literal-string, or exact-patch detector was added to improve the mutation score.
 
 The mutation harness automatically creates detached worktrees at the recorded source
 SHA, proves relevant module `__file__` paths are under the disposable root inside the
