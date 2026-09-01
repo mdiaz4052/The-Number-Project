@@ -19,7 +19,9 @@ from Discovery.mutation_harness import (
     _sanitize_diagnostic,
     repository_root,
     run_mutant,
+    source_path_snapshot,
     validate_result_integrity,
+    verify_result_source_snapshot,
 )
 from Discovery.mutation_test_runner import validate_import_paths
 
@@ -80,7 +82,7 @@ class MutationHarnessUnitTests(unittest.TestCase):
 
         preregistration, content = load_preregistration()
         record = {
-            "result_schema_version": 2,
+            "result_schema_version": 3,
             "experiment_identifier": preregistration["experiment_identifier"],
             "integrity": {
                 "preregistration_sha256": preregistration_sha256_bytes(content),
@@ -143,7 +145,10 @@ class MutationHarnessUnitTests(unittest.TestCase):
         result["calibration_results"][0]["classification"] = SURVIVED
         result["calibration_results"][0]["killing_tests"] = []
         result["integrity"]["records_sha256"] = mutation_records_sha256(
-            result["calibration_results"], result["production_results"]
+            result["calibration_results"],
+            result["production_results"],
+            source_commit_sha=result["integrity"]["source_commit_sha"],
+            source_snapshot=result["integrity"]["source_snapshot"],
         )
         with self.assertRaisesRegex(ValueError, "production-record count"):
             validate_result_integrity(result)
@@ -152,10 +157,50 @@ class MutationHarnessUnitTests(unittest.TestCase):
         result = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
         result["calibration_results"][0]["expected_classification"] = SURVIVED
         result["integrity"]["records_sha256"] = mutation_records_sha256(
-            result["calibration_results"], result["production_results"]
+            result["calibration_results"],
+            result["production_results"],
+            source_commit_sha=result["integrity"]["source_commit_sha"],
+            source_snapshot=result["integrity"]["source_snapshot"],
         )
         with self.assertRaisesRegex(ValueError, "record/catalog mismatch"):
             validate_result_integrity(result)
+
+    def test_source_commit_is_bound_into_records_hash(self) -> None:
+        result = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
+        result["integrity"]["source_commit_sha"] = "0" * 40
+        with self.assertRaisesRegex(ValueError, "mutation-record hash mismatch"):
+            validate_result_integrity(result)
+
+    def test_rehashed_source_bump_cannot_reuse_old_record_anchors(self) -> None:
+        result = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
+        root = repository_root()
+        replacement_sha = canonical_head(root)
+        result["integrity"]["source_commit_sha"] = replacement_sha
+        result["integrity"]["source_snapshot"] = source_path_snapshot(
+            root, replacement_sha
+        )
+        result["integrity"]["records_sha256"] = mutation_records_sha256(
+            result["calibration_results"],
+            result["production_results"],
+            source_commit_sha=replacement_sha,
+            source_snapshot=result["integrity"]["source_snapshot"],
+        )
+        with self.assertRaisesRegex(ValueError, "canonical_anchor_sha"):
+            validate_result_integrity(result)
+
+    def test_source_blob_snapshot_is_bound_and_verified(self) -> None:
+        result = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
+        first_path = next(iter(result["integrity"]["source_snapshot"]["path_blob_oids"]))
+        result["integrity"]["source_snapshot"]["path_blob_oids"][first_path] = "0" * 40
+        result["integrity"]["records_sha256"] = mutation_records_sha256(
+            result["calibration_results"],
+            result["production_results"],
+            source_commit_sha=result["integrity"]["source_commit_sha"],
+            source_snapshot=result["integrity"]["source_snapshot"],
+        )
+        validate_result_integrity(result)
+        with self.assertRaisesRegex(ValueError, "blob snapshot mismatch"):
+            verify_result_source_snapshot(repository_root(), result)
 
 
 class MutationHarnessIntegrationTests(unittest.TestCase):
