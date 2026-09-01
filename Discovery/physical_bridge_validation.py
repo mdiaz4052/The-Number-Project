@@ -414,6 +414,15 @@ def validate_measurement_model(model: MeasurementModel) -> None:
             )
 
     all_edges = (*model.definition_edges, *model.metrological_edges)
+    for guarded_id in (*model.calibration_source_ids, *model.correction_ids):
+        guarded_upstream = set(_upstream_ids((guarded_id,), all_edges))
+        leaked = guarded_upstream & references
+        if leaked:
+            raise BridgeValidationError(
+                f"reference G is used in calibration or correction {guarded_id}: "
+                f"{sorted(leaked)}"
+            )
+
     for reference_id in references:
         for edge in all_edges:
             if edge.parent != reference_id:
@@ -450,15 +459,6 @@ def validate_measurement_model(model: MeasurementModel) -> None:
             "comparison reference or comparison result flows upstream of the estimator: "
             f"{sorted(leaked_reference)}"
         )
-    for guarded_id in (*model.calibration_source_ids, *model.correction_ids):
-        guarded_upstream = set(_upstream_ids((guarded_id,), all_edges))
-        leaked = guarded_upstream & references
-        if leaked:
-            raise BridgeValidationError(
-                f"reference G is used in calibration or correction {guarded_id}: "
-                f"{sorted(leaked)}"
-            )
-
     catalog = build_model_dependency_catalog(model)
     for identifier in sorted(estimator_upstream):
         audit = _audit_quantity(quantities[identifier], catalog)

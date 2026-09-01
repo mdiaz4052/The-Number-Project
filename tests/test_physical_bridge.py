@@ -160,7 +160,25 @@ class PhysicalBridgeTests(unittest.TestCase):
         )
         with self.assertRaisesRegex(
             BridgeValidationError,
-            "may feed comparison nodes only",
+            "reference G is used in calibration or correction force_reference",
+        ):
+            validate_measurement_model(model)
+
+    def test_reference_g_used_in_correction_is_rejected(self) -> None:
+        model = build_inverse_square_model()
+        edge = ProvenanceEdge(
+            "alignment_correction",
+            "codata_2022_G",
+            "correction",
+            "Forbidden attempt to derive a correction from reference G.",
+        )
+        model = replace(
+            model,
+            metrological_edges=(*model.metrological_edges, edge),
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "reference G is used in calibration or correction alignment_correction",
         ):
             validate_measurement_model(model)
 
