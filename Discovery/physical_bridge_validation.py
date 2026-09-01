@@ -414,6 +414,9 @@ def validate_measurement_model(model: MeasurementModel) -> None:
             )
 
     all_edges = (*model.definition_edges, *model.metrological_edges)
+    # Defense in depth: the general external-reference boundary below already
+    # rejects these paths. Keep this earlier check so calibration/correction misuse
+    # receives an explicit, auditable diagnostic; it is not an independent barrier.
     for guarded_id in (*model.calibration_source_ids, *model.correction_ids):
         guarded_upstream = set(_upstream_ids((guarded_id,), all_edges))
         leaked = guarded_upstream & references

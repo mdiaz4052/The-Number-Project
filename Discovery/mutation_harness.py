@@ -158,10 +158,11 @@ PRODUCTION_MUTANTS = (
         required_modules=("Discovery.physical_bridge_validation",),
     ),
     Mutant(
-        identifier="production_disable_calibration_reference_guard",
+        identifier="production_disable_calibration_reference_diagnostic",
         category="production",
         intended_semantic_defect=(
-            "Disable the explicit guard against reference G in calibration or corrections."
+            "Disable the dedicated calibration/correction reference diagnostic; the "
+            "broader external-reference boundary still rejects the same models."
         ),
         relative_path="Discovery/physical_bridge_validation.py",
         old_text="        if leaked:\n",
@@ -604,8 +605,12 @@ def build_result(
             "intended contract, never by source-text or patch detection."
         ),
         "nonclaims": [
-            "Killed means only that the predefined tests detected this selected defect.",
-            "Survived identifies a test blind spot, not correct mutated behavior.",
+        "Killed means only that the predefined tests detected this selected defect.",
+        (
+            "A killed mutant may pin a diagnostic or defense-in-depth behavior rather "
+            "than an independent acceptance barrier."
+        ),
+        "Survived identifies a test blind spot, not correct mutated behavior.",
             "Invalid is never counted as a kill.",
             "This finite mutant set does not establish that the software is defect-free.",
             "Mutation results are methodological, not empirical evidence about physics.",
