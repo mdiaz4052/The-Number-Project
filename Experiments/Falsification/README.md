@@ -109,8 +109,12 @@ Check the committed mutation metadata with:
 python -m Discovery.mutation_harness --check
 ```
 
-The mutation guard hashes the complete calibration and production record arrays and
-rederives their classifications, calibration validity, family status, and production
-interpretation from the frozen mutant catalog. This is a tamper-evidence pin: it makes
-accidental record edits machine-detectable, but it is not a reproduction proof. The
-null artifact remains the byte-for-byte deterministic reproduction guard.
+The mutation guard hashes the recorded source commit, the Git blob object ID of every
+result-driving `SOURCE_PATHS` file at that commit, and the complete calibration and
+production record arrays. It also requires each record's worktree anchor to match that
+source commit and rederives the classifications, calibration validity, family status,
+and production interpretation from the frozen mutant catalog. A one-field source-SHA
+bump therefore cannot make stale records current. This remains a tamper-evidence pin,
+not a reproduction proof: a knowing editor can update the source snapshot, records,
+and digest together. The null artifact remains the byte-for-byte deterministic
+reproduction guard.

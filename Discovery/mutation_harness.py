@@ -33,7 +33,7 @@ from Discovery.source_history import (
 )
 
 
-RESULT_SCHEMA_VERSION = 2
+RESULT_SCHEMA_VERSION = 3
 DEFAULT_OUTPUT = Path(
     "Experiments/Falsification/milestone_5b_core_v1.mutation_results.json"
 )
@@ -491,16 +491,47 @@ def _git_log_sha(root: Path, path: Path) -> str:
     ).stdout.strip()
 
 
+def source_path_snapshot(
+    root: Path,
+    source_commit_sha: str,
+    *,
+    source_paths: Sequence[str] = SOURCE_PATHS,
+) -> dict[str, Any]:
+    """Record the Git blob object for every result-driving path at the source commit."""
+
+    try:
+        object_format = _run(
+            ("git", "rev-parse", "--show-object-format"), cwd=root
+        ).stdout.strip()
+        path_blob_oids = {
+            path: _run(
+                ("git", "rev-parse", f"{source_commit_sha}:{path}"), cwd=root
+            ).stdout.strip()
+            for path in source_paths
+        }
+    except subprocess.SubprocessError as error:
+        raise ValueError("mutation source-path blob snapshot could not be resolved") from error
+    return {
+        "git_object_format": object_format,
+        "path_blob_oids": path_blob_oids,
+    }
+
+
 def mutation_records_sha256(
     calibration_results: Sequence[Mapping[str, Any]],
     production_results: Sequence[Mapping[str, Any]],
+    *,
+    source_commit_sha: str,
+    source_snapshot: Mapping[str, Any],
 ) -> str:
-    """Hash the complete, canonically serialized mutation-record arrays."""
+    """Hash records together with the exact source state they claim to describe."""
 
     payload = json.dumps(
         {
             "calibration_results": list(calibration_results),
             "production_results": list(production_results),
+            "source_commit_sha": source_commit_sha,
+            "source_snapshot": dict(source_snapshot),
         },
         ensure_ascii=False,
         separators=(",", ":"),
@@ -520,9 +551,13 @@ def build_result(
         raise ValueError("canonical HEAD does not equal the recorded mutation anchor")
     if canonical_status_bytes(canonical_root):
         raise ValueError("canonical checkout must be clean before mutation-family execution")
+    snapshot = source_path_snapshot(canonical_root, canonical_sha)
     family = run_mutation_family(canonical_root, canonical_sha)
     records_sha256 = mutation_records_sha256(
-        family["calibration_results"], family["production_results"]
+        family["calibration_results"],
+        family["production_results"],
+        source_commit_sha=canonical_sha,
+        source_snapshot=snapshot,
     )
     return {
         "result_schema_version": RESULT_SCHEMA_VERSION,
@@ -544,10 +579,12 @@ def build_result(
             "seeds": dict(preregistration["randomness"]["seeds"]),
             "mutation_randomness": "none",
             "source_paths": list(SOURCE_PATHS),
+            "source_snapshot": snapshot,
             "records_sha256": records_sha256,
             "records_sha256_semantics": (
-                "SHA-256 of canonically serialized calibration_results and "
-                "production_results; a tamper-evidence pin, not a reproduction proof."
+                "SHA-256 of the canonical source commit, SOURCE_PATHS Git-blob "
+                "snapshot, calibration_results, and production_results; a "
+                "tamper-evidence pin, not a reproduction proof."
             ),
         },
         "classifications": list(CLASSIFICATIONS),
@@ -574,7 +611,12 @@ def serialize_artifact(artifact: Mapping[str, Any]) -> str:
     return json.dumps(artifact, indent=2, sort_keys=True) + "\n"
 
 
-def _validate_mutation_record(record: object, mutant: Mutant) -> str:
+def _validate_mutation_record(
+    record: object,
+    mutant: Mutant,
+    *,
+    source_commit_sha: str,
+) -> str:
     if not isinstance(record, Mapping):
         raise ValueError("mutation record is malformed")
     expected_fields = {
@@ -585,6 +627,9 @@ def _validate_mutation_record(record: object, mutant: Mutant) -> str:
         "mutated_path": mutant.relative_path,
         "test_command": list(mutant.test_names),
         "required_import_modules": list(mutant.required_modules),
+        "canonical_anchor_sha": source_commit_sha,
+        "canonical_head_before": source_commit_sha,
+        "canonical_head_after": source_commit_sha,
     }
     for field, expected in expected_fields.items():
         if record.get(field) != expected:
@@ -633,6 +678,43 @@ def _validate_mutation_record(record: object, mutant: Mutant) -> str:
     return classification
 
 
+def _validate_source_snapshot_record(snapshot: object) -> Mapping[str, Any]:
+    if not isinstance(snapshot, Mapping):
+        raise ValueError("mutation source-path blob snapshot is missing")
+    object_format = snapshot.get("git_object_format")
+    if object_format not in {"sha1", "sha256"}:
+        raise ValueError("mutation source-path Git object format is invalid")
+    blob_oids = snapshot.get("path_blob_oids")
+    if not isinstance(blob_oids, Mapping) or set(blob_oids) != set(SOURCE_PATHS):
+        raise ValueError("mutation source-path blob catalog mismatch")
+    expected_length = 40 if object_format == "sha1" else 64
+    if any(
+        not isinstance(oid, str)
+        or re.fullmatch(rf"[0-9a-f]{{{expected_length}}}", oid) is None
+        for oid in blob_oids.values()
+    ):
+        raise ValueError("mutation source-path blob object ID is invalid")
+    return snapshot
+
+
+def verify_result_source_snapshot(
+    root: Path,
+    result: Mapping[str, Any],
+) -> None:
+    """Confirm that the hashed source snapshot matches Git at the recorded commit."""
+
+    integrity = result.get("integrity")
+    if not isinstance(integrity, Mapping):
+        raise ValueError("mutation-result integrity metadata is missing")
+    source_commit_sha = integrity.get("source_commit_sha")
+    if not isinstance(source_commit_sha, str):
+        raise ValueError("mutation source commit SHA is missing")
+    recorded = _validate_source_snapshot_record(integrity.get("source_snapshot"))
+    actual = source_path_snapshot(root, source_commit_sha)
+    if recorded != actual:
+        raise ValueError("mutation source-path blob snapshot mismatch")
+
+
 def validate_result_integrity(
     result: Mapping[str, Any],
     *,
@@ -650,6 +732,14 @@ def validate_result_integrity(
         raise ValueError("preregistration/mutation-result hash mismatch")
     if integrity.get("seeds") != preregistration["randomness"]["seeds"]:
         raise ValueError("preregistration/mutation-result seed mismatch")
+    if integrity.get("source_paths") != list(SOURCE_PATHS):
+        raise ValueError("mutation-result source-path catalog mismatch")
+    source_commit_sha = integrity.get("source_commit_sha")
+    if not isinstance(source_commit_sha, str) or re.fullmatch(
+        r"[0-9a-f]{40}", source_commit_sha
+    ) is None:
+        raise ValueError("mutation-result source commit SHA is invalid")
+    snapshot = _validate_source_snapshot_record(integrity.get("source_snapshot"))
     if result.get("classifications") != list(CLASSIFICATIONS):
         raise ValueError("mutation-result classification catalog mismatch")
 
@@ -657,14 +747,21 @@ def validate_result_integrity(
     production = result.get("production_results")
     if not isinstance(calibrations, list) or not isinstance(production, list):
         raise ValueError("mutation-result record arrays are malformed")
-    expected_digest = mutation_records_sha256(calibrations, production)
+    expected_digest = mutation_records_sha256(
+        calibrations,
+        production,
+        source_commit_sha=source_commit_sha,
+        source_snapshot=snapshot,
+    )
     if integrity.get("records_sha256") != expected_digest:
         raise ValueError("mutation-record hash mismatch")
 
     if len(calibrations) != len(CALIBRATION_MUTANTS):
         raise ValueError("mutation calibration-record count mismatch")
     calibration_classifications = [
-        _validate_mutation_record(record, mutant)
+        _validate_mutation_record(
+            record, mutant, source_commit_sha=source_commit_sha
+        )
         for record, mutant in zip(calibrations, CALIBRATION_MUTANTS)
     ]
     calibration_valid = all(
@@ -677,7 +774,9 @@ def validate_result_integrity(
     if len(production) != expected_production_count:
         raise ValueError("mutation production-record count contradicts calibration")
     for record, mutant in zip(production, PRODUCTION_MUTANTS):
-        _validate_mutation_record(record, mutant)
+        _validate_mutation_record(
+            record, mutant, source_commit_sha=source_commit_sha
+        )
 
     expected_family_status = "valid" if calibration_valid else INVALID
     expected_interpretation = (
@@ -719,7 +818,9 @@ def main() -> None:
             result = json.loads(args.output.read_text(encoding="utf-8"))
             validate_result_integrity(result, preregistration_path=args.preregistration)
             source_sha = result["integrity"]["source_commit_sha"]
-            verify_source_state(repository_root(), source_sha)
+            root = repository_root()
+            verify_source_state(root, source_sha)
+            verify_result_source_snapshot(root, result)
             if not result.get("calibration_valid"):
                 raise ValueError("committed mutation family failed calibration")
         except SourceVerificationError as error:

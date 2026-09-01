@@ -2,9 +2,9 @@
   "anti_goodhart_rule": "A surviving mutant may be closed only by a behavioral assertion of the intended contract, never by source-text or patch detection.",
   "calibration_results": [
     {
-      "canonical_anchor_sha": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
-      "canonical_head_after": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
-      "canonical_head_before": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
+      "canonical_anchor_sha": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
+      "canonical_head_after": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
+      "canonical_head_before": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -56,9 +56,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
-      "canonical_head_after": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
-      "canonical_head_before": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
+      "canonical_anchor_sha": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
+      "canonical_head_after": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
+      "canonical_head_before": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -122,14 +122,14 @@
     "preregistration_commit_sha": "2a26ac6b8a3456a1548b09d56c9696058bc43b1a",
     "preregistration_path": "Experiments/Falsification/milestone_5b_core_v1.preregistration.json",
     "preregistration_sha256": "852e17885fb29fb46344d5176341a42b6c6f6690f9f1957698b859f068cab7bf",
-    "records_sha256": "0839fb2769291b8cc686fa996d71eaff6d2551816d8f49eef7b3f501e33fd874",
-    "records_sha256_semantics": "SHA-256 of canonically serialized calibration_results and production_results; a tamper-evidence pin, not a reproduction proof.",
+    "records_sha256": "8fa09785ad177791f903e87e591c3c81e36ef9eca45cbc8c1cb898872f7ea5ac",
+    "records_sha256_semantics": "SHA-256 of the canonical source commit, SOURCE_PATHS Git-blob snapshot, calibration_results, and production_results; a tamper-evidence pin, not a reproduction proof.",
     "seeds": {
       "global_null": 528492,
       "local_null": 528491
     },
     "source_commit_semantics": "Committed harness, mutant catalog, tests, and project source anchored into every disposable worktree.",
-    "source_commit_sha": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
+    "source_commit_sha": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
     "source_paths": [
       "Discovery/mutation_harness.py",
       "Discovery/mutation_test_runner.py",
@@ -142,7 +142,23 @@
       "tests/test_physical_bridge.py",
       "tests/test_mutation_harness.py",
       "Experiments/Falsification/milestone_5b_core_v1.preregistration.json"
-    ]
+    ],
+    "source_snapshot": {
+      "git_object_format": "sha1",
+      "path_blob_oids": {
+        "Discovery/dependency_analysis.py": "bea35d1b839086b76a8121375a19716d776de7b1",
+        "Discovery/dimensional_search.py": "b3f7e6b446e4488645cda1b1d8f11fa2a585bf48",
+        "Discovery/mutation_harness.py": "112f5294c961c8ee3eb5dd4185dce65f7566bf51",
+        "Discovery/mutation_test_runner.py": "5d883b53a0af99f94b6d4a818d3224aa0c06408c",
+        "Discovery/physical_bridge_validation.py": "6a899c9e009608172846495874c1dd157540b9b1",
+        "Discovery/source_history.py": "c34c4537de3f6ff0c15fc314c556abdb2c2ffd12",
+        "Experiments/Falsification/milestone_5b_core_v1.preregistration.json": "f2e19fdf1ca42ee332d6afa0d243ccf38a3edd65",
+        "tests/test_dependency_analysis.py": "4322432eae85f1480452127442bf6cc51e43e978",
+        "tests/test_dimensional_search.py": "cc0cefb866e52a115fae8490e85510b7790853c4",
+        "tests/test_mutation_harness.py": "c8244861b66db1634ad68965b1d5c1e64aea556f",
+        "tests/test_physical_bridge.py": "bbabf1dd755e8654a8add8c3266d44dbd22a7507"
+      }
+    }
   },
   "methodological_result_status": "valid",
   "nonclaims": [
@@ -155,9 +171,9 @@
   "production_interpretation": "meaningful",
   "production_results": [
     {
-      "canonical_anchor_sha": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
-      "canonical_head_after": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
-      "canonical_head_before": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
+      "canonical_anchor_sha": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
+      "canonical_head_after": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
+      "canonical_head_before": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -219,9 +235,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
-      "canonical_head_after": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
-      "canonical_head_before": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
+      "canonical_anchor_sha": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
+      "canonical_head_after": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
+      "canonical_head_before": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -277,9 +293,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
-      "canonical_head_after": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
-      "canonical_head_before": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
+      "canonical_anchor_sha": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
+      "canonical_head_after": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
+      "canonical_head_before": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -335,9 +351,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
-      "canonical_head_after": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
-      "canonical_head_before": "19a52cbffd7ad56de0a7209a15be32ea0a8b2492",
+      "canonical_anchor_sha": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
+      "canonical_head_after": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
+      "canonical_head_before": "6f70179205df2d6fe015fbcf5c8b84c8e1ec7c3a",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -390,5 +406,5 @@
       ]
     }
   ],
-  "result_schema_version": 2
+  "result_schema_version": 3
 }
