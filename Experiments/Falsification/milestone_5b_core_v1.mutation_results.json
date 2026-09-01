@@ -2,9 +2,9 @@
   "anti_goodhart_rule": "A surviving mutant may be closed only by a behavioral assertion of the intended contract, never by source-text or patch detection.",
   "calibration_results": [
     {
-      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_anchor_sha": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_after": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_before": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -56,9 +56,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_anchor_sha": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_after": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_before": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -122,14 +122,14 @@
     "preregistration_commit_sha": "2a26ac6b8a3456a1548b09d56c9696058bc43b1a",
     "preregistration_path": "Experiments/Falsification/milestone_5b_core_v1.preregistration.json",
     "preregistration_sha256": "852e17885fb29fb46344d5176341a42b6c6f6690f9f1957698b859f068cab7bf",
-    "records_sha256": "d7cdb519503b03f432e715f3bd0c6d80f452a8387023b5488eef46bf9565587a",
+    "records_sha256": "dc6338651432fc6fd233fc1ff7180b8d9160f5c88abb76ca6cb2fe4fcf4931b4",
     "records_sha256_semantics": "SHA-256 of the canonical source commit, SOURCE_PATHS Git-blob snapshot, calibration_results, and production_results; a tamper-evidence pin, not a reproduction proof.",
     "seeds": {
       "global_null": 528492,
       "local_null": 528491
     },
     "source_commit_semantics": "Committed harness, mutant catalog, tests, and project source anchored into every disposable worktree.",
-    "source_commit_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+    "source_commit_sha": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
     "source_paths": [
       "Discovery/mutation_harness.py",
       "Discovery/mutation_test_runner.py",
@@ -172,9 +172,9 @@
   "production_interpretation": "meaningful",
   "production_results": [
     {
-      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_anchor_sha": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_after": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_before": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -236,9 +236,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_anchor_sha": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_after": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_before": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -296,9 +296,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_anchor_sha": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_after": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_before": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -359,9 +359,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_anchor_sha": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_after": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_before": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -419,9 +419,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
-      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_anchor_sha": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_after": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
+      "canonical_head_before": "ea8b1662ccfc45f850f85d9e4813f3a671b896d9",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
