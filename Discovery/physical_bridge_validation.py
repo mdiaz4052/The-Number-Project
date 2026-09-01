@@ -7,6 +7,7 @@ CLI behavior.
 
 from __future__ import annotations
 
+import unicodedata
 from fractions import Fraction
 from typing import Iterable, Mapping, Sequence
 
@@ -17,12 +18,6 @@ from Discovery.dependency_definitions import (
     DependencyDefinition,
     build_dependency_catalog,
 )
-
-
-_REGISTERED_SYMBOL_TO_KEY = {
-    constant.symbol: constant.key
-    for constant in (GRAVITATIONAL_CONSTANT_G, *DEFAULT_SEARCH_CONSTANTS)
-}
 from Discovery.dimensions import (
     DIMENSIONLESS,
     GRAVITATIONAL_CONSTANT,
@@ -62,6 +57,40 @@ from Discovery.physical_bridge_schema import (
     _target_power,
     fraction_text,
 )
+
+
+def _normalized_display_symbol(symbol: str) -> str:
+    """Return the exact-match form used by the display namespace guard."""
+
+    return unicodedata.normalize("NFC", symbol).strip()
+
+
+_REGISTERED_SYMBOL_TO_KEY = {
+    _normalized_display_symbol(constant.symbol): constant.key
+    for constant in (GRAVITATIONAL_CONSTANT_G, *DEFAULT_SEARCH_CONSTANTS)
+}
+
+
+def _validate_display_symbol_namespace(model: MeasurementModel) -> None:
+    local_symbol_owners: dict[str, str] = {}
+    for quantity in sorted(model.quantities, key=lambda item: item.identifier):
+        normalized_symbol = _normalized_display_symbol(quantity.symbol)
+        registered_key = _REGISTERED_SYMBOL_TO_KEY.get(normalized_symbol)
+        if registered_key is not None:
+            raise BridgeValidationError(
+                "display symbol collides with registered catalog symbol after "
+                f"normalization: {normalized_symbol} (registered key {registered_key}; "
+                f"quantity {quantity.identifier})"
+            )
+        if quantity.algebraic_provenance_kind != DECLARED_LOCAL_ATOM:
+            continue
+        previous_owner = local_symbol_owners.get(normalized_symbol)
+        if previous_owner is not None:
+            raise BridgeValidationError(
+                "duplicate local display symbol after normalization: "
+                f"{normalized_symbol} ({previous_owner}, {quantity.identifier})"
+            )
+        local_symbol_owners[normalized_symbol] = quantity.identifier
 
 
 def audit_registered_target_path(
@@ -117,19 +146,18 @@ def build_model_dependency_catalog(model: MeasurementModel) -> DependencyCatalog
 
     definitions = list(DEFAULT_DEPENDENCY_CATALOG.definitions.values())
     dimensions = dict(DEFAULT_DEPENDENCY_CATALOG.dimensions)
-    for quantity in sorted(model.quantities, key=lambda item: item.identifier):
-        if quantity.algebraic_provenance_kind != DECLARED_LOCAL_ATOM:
-            continue
+    local_quantities = tuple(
+        quantity
+        for quantity in sorted(model.quantities, key=lambda item: item.identifier)
+        if quantity.algebraic_provenance_kind == DECLARED_LOCAL_ATOM
+    )
+    for quantity in local_quantities:
         if quantity.identifier in dimensions:
             raise BridgeValidationError(
                 f"local atom shadows registered key: {quantity.identifier}"
             )
-        registered_key = _REGISTERED_SYMBOL_TO_KEY.get(quantity.symbol)
-        if registered_key is not None:
-            raise BridgeValidationError(
-                "local atom display symbol collides with registered catalog symbol: "
-                f"{quantity.symbol} (registered key {registered_key})"
-            )
+    _validate_display_symbol_namespace(model)
+    for quantity in local_quantities:
         definitions.append(DependencyDefinition(quantity.identifier))
         dimensions[quantity.identifier] = quantity.dimension
     return build_dependency_catalog(
