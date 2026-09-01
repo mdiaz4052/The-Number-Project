@@ -165,6 +165,34 @@ class MutationHarnessUnitTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "record/catalog mismatch"):
             validate_result_integrity(result)
 
+    def test_canonical_safety_invariants_are_rederived_from_records(self) -> None:
+        original = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
+
+        cases = (
+            ("canonical_head_unchanged", {"canonical_head_unchanged": False}),
+            ("canonical_status_unchanged", {"canonical_status_unchanged": False}),
+            ("cleanup_confirmed", {"cleanup_confirmed": False}),
+            (
+                "canonical_status_before_sha256",
+                {
+                    "canonical_status_before_sha256": "0" * 64,
+                    "canonical_status_after_sha256": "0" * 64,
+                },
+            ),
+        )
+        for rejected_field, changes in cases:
+            with self.subTest(field=rejected_field):
+                result = json.loads(json.dumps(original))
+                result["production_results"][0].update(changes)
+                result["integrity"]["records_sha256"] = mutation_records_sha256(
+                    result["calibration_results"],
+                    result["production_results"],
+                    source_commit_sha=result["integrity"]["source_commit_sha"],
+                    source_snapshot=result["integrity"]["source_snapshot"],
+                )
+                with self.assertRaisesRegex(ValueError, rejected_field):
+                    validate_result_integrity(result)
+
     def test_source_commit_is_bound_into_records_hash(self) -> None:
         result = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
         result["integrity"]["source_commit_sha"] = "0" * 40

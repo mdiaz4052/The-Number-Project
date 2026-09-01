@@ -637,6 +637,26 @@ def _validate_mutation_record(
                 f"mutation record/catalog mismatch for {mutant.identifier}: {field}"
             )
 
+    clean_status_sha256 = status_sha256(b"")
+    safety_invariants = {
+        "canonical_head_unchanged": True,
+        "canonical_status_before_sha256": clean_status_sha256,
+        "canonical_status_after_sha256": clean_status_sha256,
+        "canonical_status_unchanged": True,
+        "cleanup_confirmed": True,
+    }
+    for field, expected in safety_invariants.items():
+        actual = record.get(field)
+        if isinstance(expected, bool):
+            matches = actual is expected
+        else:
+            matches = actual == expected
+        if not matches:
+            raise ValueError(
+                f"mutation record safety invariant mismatch for "
+                f"{mutant.identifier}: {field}"
+            )
+
     classification = record.get("classification")
     if classification not in CLASSIFICATIONS:
         raise ValueError(f"invalid classification for {mutant.identifier}")

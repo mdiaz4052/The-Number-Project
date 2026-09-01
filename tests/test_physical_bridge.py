@@ -485,7 +485,7 @@ class PhysicalBridgeTests(unittest.TestCase):
                 ):
                     validate_measurement_model(model)
 
-    def test_duplicate_local_display_symbols_are_normalized(self) -> None:
+    def test_duplicate_display_symbols_are_normalized(self) -> None:
         cases = (
             ("shared_symbol", " shared_symbol "),
             ("e\u0301", "\u00e9"),
@@ -507,9 +507,67 @@ class PhysicalBridgeTests(unittest.TestCase):
                 )
                 with self.assertRaisesRegex(
                     BridgeValidationError,
-                    "duplicate local display symbol after normalization",
+                    "duplicate display symbol after normalization",
                 ):
                     validate_measurement_model(model)
+
+    def test_duplicate_display_symbols_are_provenance_kind_agnostic(self) -> None:
+        model = replace_quantity(
+            build_inverse_square_model(),
+            "mass_1",
+            symbol="shared_symbol",
+        )
+        model = replace_quantity(
+            model,
+            "codata_2022_G",
+            symbol="shared_symbol",
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "duplicate display symbol after normalization: shared_symbol",
+        ):
+            validate_measurement_model(model)
+
+    def test_unicode_format_controls_do_not_bypass_display_guards(self) -> None:
+        for format_control in ("\u200b", "\u200c", "\u200d", "\ufeff"):
+            with self.subTest(format_control=repr(format_control)):
+                model = replace_quantity(
+                    build_inverse_square_model(),
+                    "codata_2022_G",
+                    symbol=f"m_P{format_control}",
+                )
+                with self.assertRaisesRegex(
+                    BridgeValidationError,
+                    "registered catalog symbol after normalization: m_P",
+                ):
+                    validate_measurement_model(model)
+
+        model = replace_quantity(
+            build_inverse_square_model(),
+            "mass_1",
+            symbol="shared_symbol",
+        )
+        model = replace_quantity(
+            model,
+            "codata_2022_G",
+            symbol="shared_symbol\u200b",
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "duplicate display symbol after normalization: shared_symbol",
+        ):
+            validate_measurement_model(model)
+
+        model = replace_quantity(
+            build_inverse_square_model(),
+            "codata_2022_G",
+            symbol="\u200b",
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "display symbol is empty after normalization: codata_2022_G",
+        ):
+            validate_measurement_model(model)
 
     def test_model_scope_and_nonclaims_cannot_be_omitted(self) -> None:
         model = build_inverse_square_model()
