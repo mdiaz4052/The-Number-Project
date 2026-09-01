@@ -135,16 +135,20 @@ PRODUCTION_MUTANTS = (
         required_modules=("Discovery.physical_bridge_validation",),
     ),
     Mutant(
-        identifier="production_skip_inherited_m_planck_traversal",
+        identifier="production_substitute_m_planck_with_atomic_mass",
         category="production",
         intended_semantic_defect=(
-            "Drop m_P terms before registered dependency expansion, hiding inherited G."
+            "Substitute target-independent m_e for m_P before registered dependency "
+            "expansion, hiding inherited G while preserving the mass dimension."
         ),
         relative_path="Discovery/physical_bridge_validation.py",
         old_text="    expansion = catalog.expand_signature(surface)\n",
         new_text=(
             "    expansion = catalog.expand_signature(\n"
-            "        tuple(term for term in surface if term[0] != \"m_P\")\n"
+            "        tuple(\n"
+            "            (\"m_e\", exponent) if key == \"m_P\" else (key, exponent)\n"
+            "            for key, exponent in surface\n"
+            "        )\n"
             "    )\n"
         ),
         test_names=(
@@ -165,6 +169,8 @@ PRODUCTION_MUTANTS = (
         test_names=(
             "tests.test_physical_bridge.PhysicalBridgeTests."
             "test_reference_g_used_in_calibration_is_rejected",
+            "tests.test_physical_bridge.PhysicalBridgeTests."
+            "test_reference_g_used_in_correction_is_rejected",
         ),
         required_modules=("Discovery.physical_bridge_validation",),
     ),
@@ -185,7 +191,7 @@ PRODUCTION_MUTANTS = (
         ),
         test_names=(
             "tests.test_dependency_analysis.DependencyAnalysisTests."
-            "test_artifact_is_byte_deterministic_and_current",
+            "test_check_cli_accepts_current_and_rejects_stale_artifact",
         ),
         required_modules=("Discovery.dependency_analysis",),
     ),

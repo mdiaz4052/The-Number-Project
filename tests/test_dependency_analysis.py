@@ -1,5 +1,9 @@
 from dataclasses import replace
 from fractions import Fraction
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
 import unittest
 
 from Discovery.dependency_analysis import (
@@ -148,6 +152,45 @@ class DependencyAnalysisTests(unittest.TestCase):
         self.assertEqual(first.encode("utf-8"), second.encode("utf-8"))
         self.assertTrue(first.endswith("\n"))
         self.assertEqual(DEFAULT_OUTPUT.read_text(encoding="utf-8"), first)
+
+    def test_check_cli_accepts_current_and_rejects_stale_artifact(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            output = Path(temporary_directory) / "dependency_analysis.json"
+            output.write_text(
+                serialize_artifact(build_artifact()),
+                encoding="utf-8",
+            )
+            command = (
+                sys.executable,
+                "-m",
+                "Discovery.dependency_analysis",
+                "--check",
+                "--output",
+                str(output),
+            )
+            current = subprocess.run(
+                command,
+                cwd=root,
+                check=False,
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            self.assertEqual(current.returncode, 0, current.stderr)
+            self.assertIn("Dependency artifact is current", current.stdout)
+
+            output.write_text("{}\n", encoding="utf-8")
+            stale = subprocess.run(
+                command,
+                cwd=root,
+                check=False,
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            self.assertEqual(stale.returncode, 1, stale.stdout)
+            self.assertIn("stale or missing dependency artifact", stale.stderr)
 
     def test_candidate_signature_round_trip_uses_exact_fractions(self) -> None:
         for record in self.records:
