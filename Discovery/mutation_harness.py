@@ -41,6 +41,25 @@ KILLED = "killed"
 SURVIVED = "survived"
 INVALID = "invalid"
 CLASSIFICATIONS = (KILLED, SURVIVED, INVALID)
+CALIBRATION_RULE = (
+    "Production results are meaningful only if the known-killable mutant is "
+    "killed and the behaviorally equivalent mutant survives."
+)
+ANTI_GOODHART_RULE = (
+    "A surviving mutant may be closed only by a behavioral assertion of the "
+    "intended contract, never by source-text or patch detection."
+)
+NONCLAIMS = (
+    "Killed means only that the predefined tests detected this selected defect.",
+    (
+        "A killed mutant may pin a diagnostic or defense-in-depth behavior rather "
+        "than an independent acceptance barrier."
+    ),
+    "Survived identifies a test blind spot, not correct mutated behavior.",
+    "Invalid is never counted as a kill.",
+    "This finite mutant set does not establish that the software is defect-free.",
+    "Mutation results are methodological, not empirical evidence about physics.",
+)
 SOURCE_PATHS = (
     "Discovery/mutation_harness.py",
     "Discovery/mutation_test_runner.py",
@@ -172,6 +191,22 @@ PRODUCTION_MUTANTS = (
             "test_reference_g_used_in_calibration_is_rejected",
             "tests.test_physical_bridge.PhysicalBridgeTests."
             "test_reference_g_used_in_correction_is_rejected",
+        ),
+        required_modules=("Discovery.physical_bridge_validation",),
+    ),
+    Mutant(
+        identifier="production_disable_empirical_source_provenance",
+        category="production",
+        intended_semantic_defect=(
+            "Disable the fail-closed source-metadata requirement for populated "
+            "empirical estimator ancestry."
+        ),
+        relative_path="Discovery/physical_bridge_validation.py",
+        old_text="    if model.evidence_level == EMPIRICAL_RECORD:\n",
+        new_text="    if False and model.evidence_level == EMPIRICAL_RECORD:\n",
+        test_names=(
+            "tests.test_physical_bridge.PhysicalBridgeTests."
+            "test_populated_empirical_calibration_requires_source_provenance",
         ),
         required_modules=("Discovery.physical_bridge_validation",),
     ),
@@ -595,26 +630,10 @@ def build_result(
             ),
         },
         "classifications": list(CLASSIFICATIONS),
-        "calibration_rule": (
-            "Production results are meaningful only if the known-killable mutant is "
-            "killed and the behaviorally equivalent mutant survives."
-        ),
+        "calibration_rule": CALIBRATION_RULE,
         **family,
-        "anti_goodhart_rule": (
-            "A surviving mutant may be closed only by a behavioral assertion of the "
-            "intended contract, never by source-text or patch detection."
-        ),
-        "nonclaims": [
-        "Killed means only that the predefined tests detected this selected defect.",
-        (
-            "A killed mutant may pin a diagnostic or defense-in-depth behavior rather "
-            "than an independent acceptance barrier."
-        ),
-        "Survived identifies a test blind spot, not correct mutated behavior.",
-            "Invalid is never counted as a kill.",
-            "This finite mutant set does not establish that the software is defect-free.",
-            "Mutation results are methodological, not empirical evidence about physics.",
-        ],
+        "anti_goodhart_rule": ANTI_GOODHART_RULE,
+        "nonclaims": list(NONCLAIMS),
     }
 
 
@@ -773,6 +792,14 @@ def validate_result_integrity(
     snapshot = _validate_source_snapshot_record(integrity.get("source_snapshot"))
     if result.get("classifications") != list(CLASSIFICATIONS):
         raise ValueError("mutation-result classification catalog mismatch")
+    pinned_methodology = {
+        "calibration_rule": CALIBRATION_RULE,
+        "anti_goodhart_rule": ANTI_GOODHART_RULE,
+        "nonclaims": list(NONCLAIMS),
+    }
+    for field, expected in pinned_methodology.items():
+        if result.get(field) != expected:
+            raise ValueError(f"mutation-result pinned field mismatch: {field}")
 
     calibrations = result.get("calibration_results")
     production = result.get("production_results")

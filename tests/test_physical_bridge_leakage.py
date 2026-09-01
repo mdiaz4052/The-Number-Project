@@ -62,6 +62,33 @@ class LeakageCase:
     post_assertion: PostAssertion | None = None
 
 
+EXPECTED_GATE_REGISTRY = frozenset(
+    {
+        "calibration_reference_gate",
+        "combined_cycle_gate",
+        "definitional_cycle_gate",
+        "empirical_population_status",
+        "estimator_identity_gate",
+        "estimator_role_gate",
+        "external_reference_boundary",
+        "fail_closed_status_language",
+        "graph_identity_gate",
+        "metrological_cycle_gate",
+        "metrological_provenance_status",
+        "orthogonal_assessment_axes",
+        "registered_catalog_identity_gate",
+        "registered_target_path_gate",
+        "registered_target_path_status",
+        "required_provenance_gate",
+    }
+)
+
+
+def validate_expected_gate_name(name: str) -> None:
+    if name not in EXPECTED_GATE_REGISTRY:
+        raise ValueError(f"unknown leakage-corpus gate: {name}")
+
+
 def _identity(model: MeasurementModel) -> MeasurementModel:
     return model
 
@@ -702,8 +729,12 @@ class PhysicalBridgeLeakageCorpusTests(unittest.TestCase):
                 self.assertTrue(case.category)
                 self.assertTrue(case.attack)
                 self.assertIn(case.expected_outcome, {"rejection", "status"})
-                self.assertTrue(case.expected_gate)
+                validate_expected_gate_name(case.expected_gate)
                 self.assertTrue(case.reason)
+
+    def test_unknown_expected_gate_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ValueError, "unknown leakage-corpus gate"):
+            validate_expected_gate_name("invented_gate")
 
     def test_parameterized_leakage_and_positive_control_corpus(self) -> None:
         for case in LEAKAGE_CASES:

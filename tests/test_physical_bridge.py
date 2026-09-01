@@ -11,12 +11,18 @@ from Discovery.dependency_definitions import DEFAULT_DEPENDENCY_CATALOG
 from Discovery.dimensions import GRAVITATIONAL_CONSTANT
 from Discovery.physical_bridge import (
     COVARIANCE_MATRIX,
+    DECLARED_LOCAL_ATOM,
     DEFAULT_CONTRACT_OUTPUT,
     DEFAULT_EXAMPLE_OUTPUT,
+    DERIVED_QUANTITY,
+    DOCUMENTED,
+    EMPIRICAL_RECORD,
     EXPLICIT_ZERO_ASSUMPTION,
     INCOMPLETE,
     LEAN_THEOREMS_BY_ID,
+    MODEL_PARAMETER,
     NO_REGISTERED_TARGET_PATH,
+    NOT_APPLICABLE,
     REGISTERED_EXPRESSION,
     SATISFIED,
     STRUCTURAL_PLACEHOLDER,
@@ -146,6 +152,18 @@ class PhysicalBridgeTests(unittest.TestCase):
                 ):
                     validate_measurement_model(model)
 
+    def test_external_g_reference_cannot_be_an_estimator_input(self) -> None:
+        model = build_inverse_square_model()
+        terms = (
+            EstimatorTerm("codata_2022_G", Fraction(1)),
+            *model.estimator_terms[1:],
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "forbidden estimator input role for codata_2022_G",
+        ):
+            validate_measurement_model(replace(model, estimator_terms=terms))
+
     def test_reference_g_used_in_calibration_is_rejected(self) -> None:
         model = build_inverse_square_model()
         edge = ProvenanceEdge(
@@ -181,6 +199,71 @@ class PhysicalBridgeTests(unittest.TestCase):
             "reference G is used in calibration or correction alignment_correction",
         ):
             validate_measurement_model(model)
+
+    def test_reference_g_used_in_tuning_or_acceptance_is_rejected(self) -> None:
+        for identifier, role in (
+            ("tuning_parameter", MODEL_PARAMETER),
+            ("acceptance_decision", DERIVED_QUANTITY),
+        ):
+            with self.subTest(path=identifier):
+                model = build_inverse_square_model()
+                node = QuantityRecord(
+                    identifier,
+                    f"{identifier}_symbol",
+                    role,
+                    GRAVITATIONAL_CONSTANT,
+                    "m^3 kg^-1 s^-2",
+                    DECLARED_LOCAL_ATOM,
+                    None,
+                    STRUCTURAL_PLACEHOLDER,
+                    "Adversarial node that must not consume a comparison reference.",
+                )
+                edge = ProvenanceEdge(
+                    identifier,
+                    "codata_2022_G",
+                    "model_input",
+                    "Forbidden attempt to use reference G before terminal comparison.",
+                )
+                with self.assertRaisesRegex(
+                    BridgeValidationError,
+                    "may feed comparison nodes only",
+                ):
+                    validate_measurement_model(
+                        replace(
+                            model,
+                            quantities=(*model.quantities, node),
+                            metrological_edges=(*model.metrological_edges, edge),
+                        )
+                    )
+
+    def test_populated_empirical_calibration_requires_source_provenance(self) -> None:
+        model = replace(
+            build_inverse_square_model(),
+            evidence_level=EMPIRICAL_RECORD,
+        )
+        model = replace_quantity(
+            model,
+            "force_reference",
+            provenance_evidence=DOCUMENTED,
+            value=Decimal("1"),
+            standard_uncertainty=Decimal("0"),
+            uncertainty_unit="N",
+            exact=True,
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "source provenance metadata for force_reference",
+        ):
+            validate_measurement_model(model)
+
+    def test_unpopulated_empirical_record_stays_incomplete(self) -> None:
+        model = replace(
+            build_inverse_square_model(),
+            evidence_level=EMPIRICAL_RECORD,
+        )
+        evaluation = evaluate_measurement_model(model)
+        self.assertEqual(evaluation.empirical_population_status, INCOMPLETE)
+        self.assertEqual(evaluation.replication_status, NOT_APPLICABLE)
 
     def test_codata_reference_is_allowed_only_in_terminal_comparison(self) -> None:
         record = measurement_model_record(build_inverse_square_model())

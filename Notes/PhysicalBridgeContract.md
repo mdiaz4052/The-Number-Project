@@ -121,6 +121,19 @@ calibration and traceability vocabulary in
 [JCGM 200:2012 (VIM)](https://doi.org/10.59161/JCGM200-2012) and the SI realization
 context in the [BIPM SI Brochure](https://doi.org/10.59161/AUEZ1291).
 
+For an `empirical_record`, a populated numerical quantity anywhere in estimator ancestry,
+or declared as a calibration or correction, must additionally declare `documented`
+provenance, a source identifier, a source edition, and an access date. This narrow
+numeric-source gate prevents an unsourced calibration coefficient from masquerading as a
+completed empirical input. Leaving the coefficient unpopulated remains honest and
+incomplete.
+
+The gate verifies declarations, not laboratory history. A dishonest editor could cite an
+irrelevant source or back-solve a coefficient from the target and then attach plausible
+metadata. Source-by-source review is still required to establish that the cited record
+actually supplies the number without using the published output. Numerical closeness to
+a comparison value may motivate review, but cannot by itself establish circularity.
+
 ## 6. Algebraic target-cleanliness is weaker than independence
 
 Milestone 3 can expand a registered expression and ask whether a nonzero power of `G`
@@ -268,7 +281,7 @@ inverse-square example earns neither empirical label: its
 algebraic axes do not promote any of those empirical axes, and the contract computes no
 aggregate score.
 
-## 13. What this milestone supplies—and what must come next
+## 13. What the contract supplies—and what the first pilot found
 
 Milestone 4 supplies:
 
@@ -294,12 +307,24 @@ empirical_population_status
 replication_status
 ```
 
-Before reporting an empirical estimate, a future experiment would still need a complete
+Before reporting an empirical estimate, an experiment still needs a complete
 apparatus-specific model, documented observations, calibration records, recursively
 expanded force inference, evaluated corrections, an uncertainty and covariance budget,
 an estimated value with coverage information, reproducibility evidence, and comparison
-that was not used to tune or accept the result. No real dataset, fit, apparatus validation,
-or new value of `G` is part of this milestone.
+that was not used to tune or accept the result.
+
+The first practical source audit applied those requirements to the University of
+Washington 2000 torsion-balance publication. It reached `NO-GO`: the public paper omits
+the fitted gravitational angular-acceleration amplitude and complete numerical attractor
+multipole coupling needed to reconstruct the result, and the proposed 2002 PRD companion
+is unrelated. The later correction is identified in the CODATA review as a private
+communication. See the frozen
+[`preregistration`](../Experiments/GMeasurements/uw_2000_published_data_preregistration_v1.md)
+and [`source audit`](../Experiments/GMeasurements/uw_2000_source_audit_v1.md).
+
+No real dataset, fit, apparatus validation, or new value of `G` was introduced. The
+pilot's practical result is that the contract stopped an incomplete publication record
+from being represented as a complete empirical reproduction.
 
 ## Artifacts and commands
 

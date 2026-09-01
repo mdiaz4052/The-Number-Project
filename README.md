@@ -55,6 +55,13 @@ independent geometric oracle, planted-target recovery controls, and ephemeral mu
 testing. These are methodological results about the project machinery, not evidence about
 gravity or a measurement of `G`.
 
+The practical-evidence pilot preregisters and audits a published-data reproduction of the
+University of Washington 2000 torsion-balance result. The audit reaches `NO-GO`: the
+public record does not expose two indispensable numerical inputs, and the proposed 2002
+PRD companion is unrelated. The repository records the missing evidence rather than
+back-solving it from the published value. No empirical result or replication claim is
+created.
+
 The project is exploratory. A compiled implication is not experimental evidence for its
 premises, and a dimensionally valid numerical coincidence is not evidence of a physical
 law.
@@ -84,8 +91,9 @@ law.
   artifact-building facade and command-line entry point.
 - `Experiments/GCoincidences/dependency_analysis.json` records exact signatures,
   statuses, groups, certification links, rank, nullity, RREF, and limitations.
-- `Experiments/GMeasurements/` records the general physical-bridge contract and an
-  explicitly unpopulated inverse-square structural example as deterministic JSON.
+- `Experiments/GMeasurements/` records the general physical-bridge contract, an
+  explicitly unpopulated inverse-square structural example as deterministic JSON, and
+  the preregistered UW 2000 source audit with its explicit `NO-GO` decision.
 - `Experiments/Falsification/` records the immutable 5B-core preregistration, complete
   provenance-stratified null and planted-control result, and disposable-worktree mutation
   result with source and integrity metadata.

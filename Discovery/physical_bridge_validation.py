@@ -32,6 +32,7 @@ from Discovery.physical_bridge_schema import (
     DERIVED_QUANTITY,
     DIRECT_OBSERVATION,
     DOCUMENTED,
+    EMPIRICAL_RECORD,
     EXTERNAL_COMPARISON_REFERENCE,
     INCOMPLETE,
     LEAN_THEOREMS_BY_ID,
@@ -462,6 +463,35 @@ def validate_measurement_model(model: MeasurementModel) -> None:
             "comparison reference or comparison result flows upstream of the estimator: "
             f"{sorted(leaked_reference)}"
         )
+    if model.evidence_level == EMPIRICAL_RECORD:
+        source_required_ids = (
+            estimator_upstream
+            | set(model.calibration_source_ids)
+            | set(model.correction_ids)
+        )
+        for identifier in sorted(source_required_ids):
+            quantity = quantities[identifier]
+            if quantity.value is None:
+                continue
+            missing_metadata: list[str] = []
+            if quantity.provenance_evidence != DOCUMENTED:
+                missing_metadata.append("documented provenance")
+            missing_metadata.extend(
+                label
+                for label, value in (
+                    ("source identifier", quantity.source_identifier),
+                    ("source edition", quantity.edition),
+                    ("source access date", quantity.access_date),
+                )
+                if value is None
+            )
+            if missing_metadata:
+                raise BridgeValidationError(
+                    "populated empirical estimator/calibration ancestry requires "
+                    "documented "
+                    f"source provenance metadata for {identifier}; missing "
+                    f"{', '.join(missing_metadata)}"
+                )
     catalog = build_model_dependency_catalog(model)
     for identifier in sorted(estimator_upstream):
         audit = _audit_quantity(quantities[identifier], catalog)
