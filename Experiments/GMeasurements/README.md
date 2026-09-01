@@ -50,6 +50,12 @@ freezes the source, estimator, uncertainty, precision, leakage, acceptance, and 
 comparison rules for a proposed reproduction of the University of Washington 2000
 angular-acceleration-feedback result.
 
+The original file remains unchanged. A separately recorded
+[`clarification`](uw_2000_published_data_preregistration_v1_clarification_1.md) resolves
+one pre-transcription ambiguity: exact mathematical constants may remain in exact symbolic
+relations, but `exact=True` cannot turn an arbitrary populated decimal record into a
+provenance-exempt constant.
+
 [`uw_2000_source_audit_v1.md`](uw_2000_source_audit_v1.md) records the source map and an
 explicit **`NO-GO`**. The paper reports the symbolic multipole estimator, apparatus
 summaries, correction factors, one-sigma uncertainty budget, and headline result. It does
@@ -70,6 +76,12 @@ metadata fail closed. It does not prove that a cited value was experimentally in
 or protect against a knowing editor who fabricates a plausible citation; source auditing
 remains an evidence task.
 
+[`uw_2000_published_data_pilot_v1.manifest.json`](uw_2000_published_data_pilot_v1.manifest.json)
+pins the exact bytes of the original preregistration, the clarification, and the source
+audit, together with the canonical `NO-GO`, missing-input, and next-candidate fields. The
+guard is tamper evidence for review; it cannot stop a knowing editor from changing code,
+constants, documents, and artifacts together.
+
 ## Regeneration
 
 From the repository root, regenerate both JSON files with:
@@ -82,6 +94,7 @@ Check the committed bytes without rewriting them with:
 
 ```bash
 python3 -m Discovery.physical_bridge --check
+python3 -m Discovery.published_data_pilot --check
 ```
 
 The implementation uses only the Python standard library. Exponents and dimensions use

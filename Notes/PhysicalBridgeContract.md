@@ -320,7 +320,17 @@ multipole coupling needed to reconstruct the result, and the proposed 2002 PRD c
 is unrelated. The later correction is identified in the CODATA review as a private
 communication. See the frozen
 [`preregistration`](../Experiments/GMeasurements/uw_2000_published_data_preregistration_v1.md)
+and its explicit
+[`clarification`](../Experiments/GMeasurements/uw_2000_published_data_preregistration_v1_clarification_1.md),
 and [`source audit`](../Experiments/GMeasurements/uw_2000_source_audit_v1.md).
+
+The clarification keeps exact mathematical constants in the symbolic estimator layer
+under the current schema. It does not permit a populated decimal record to bypass source
+provenance merely because `exact=True`. A deterministic
+[`pilot manifest`](../Experiments/GMeasurements/uw_2000_published_data_pilot_v1.manifest.json)
+pins the exact preregistration, clarification, audit, decision, essential missing inputs,
+and next candidate. This makes reviewed changes detectable; it is not protection against
+a knowing editor who rewrites the guard and its canonical constants as well.
 
 No real dataset, fit, apparatus validation, or new value of `G` was introduced. The
 pilot's practical result is that the contract stopped an incomplete publication record
@@ -340,6 +350,7 @@ Regenerate them or verify their byte-stable committed form from the repository r
 ```bash
 python3 -m Discovery.physical_bridge
 python3 -m Discovery.physical_bridge --check
+python3 -m Discovery.published_data_pilot --check
 ```
 
 The example intentionally reports `empirical_population_status: incomplete`,

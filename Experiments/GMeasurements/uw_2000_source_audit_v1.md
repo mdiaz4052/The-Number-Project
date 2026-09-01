@@ -4,7 +4,14 @@
 **Audit date:** 2026-09-01  
 **Governing preregistration:**
 [`uw_2000_published_data_preregistration_v1.md`](uw_2000_published_data_preregistration_v1.md)  
+**Normative clarification:**
+[`uw_2000_published_data_preregistration_v1_clarification_1.md`](uw_2000_published_data_preregistration_v1_clarification_1.md)
 **Empirical record created:** no
+
+The original preregistration, its clarification, and this audit are content-pinned by
+[`uw_2000_published_data_pilot_v1.manifest.json`](uw_2000_published_data_pilot_v1.manifest.json).
+The clarification resolves how exact mathematical constants may be represented under the
+current schema; it does not alter the `NO-GO` decision or any UW result-sensitive rule.
 
 The public record is sufficient to understand the University of Washington method and
 to transcribe its published correction and uncertainty summaries. It is not sufficient

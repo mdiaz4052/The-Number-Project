@@ -211,6 +211,64 @@ PRODUCTION_MUTANTS = (
         required_modules=("Discovery.physical_bridge_validation",),
     ),
     Mutant(
+        identifier="production_disable_empirical_documented_provenance",
+        category="production",
+        intended_semantic_defect=(
+            "Allow a populated empirical input with source fields but without the "
+            "required documented-provenance classification."
+        ),
+        relative_path="Discovery/physical_bridge_validation.py",
+        old_text="            if quantity.provenance_evidence != DOCUMENTED:\n",
+        new_text=(
+            "            if False and quantity.provenance_evidence != DOCUMENTED:\n"
+        ),
+        test_names=(
+            "tests.test_physical_bridge.PhysicalBridgeTests."
+            "test_populated_empirical_calibration_requires_documented_provenance",
+        ),
+        required_modules=("Discovery.physical_bridge_validation",),
+    ),
+    Mutant(
+        identifier="production_disable_empirical_source_metadata_requirements",
+        category="production",
+        intended_semantic_defect=(
+            "Treat missing source identifier, edition, and access-date fields as present "
+            "for populated empirical input metadata."
+        ),
+        relative_path="Discovery/physical_bridge_validation.py",
+        old_text="                if value is None\n",
+        new_text="                if False and value is None\n",
+        test_names=(
+            "tests.test_physical_bridge.PhysicalBridgeTests."
+            "test_each_empirical_source_metadata_field_is_required",
+        ),
+        required_modules=("Discovery.physical_bridge_validation",),
+    ),
+    Mutant(
+        identifier="production_limit_empirical_source_gate_to_estimator_ancestry",
+        category="production",
+        intended_semantic_defect=(
+            "Stop checking declared calibration and correction records that sit "
+            "outside estimator graph ancestry."
+        ),
+        relative_path="Discovery/physical_bridge_validation.py",
+        old_text=(
+            "        source_required_ids = (\n"
+            "            estimator_upstream\n"
+            "            | set(model.calibration_source_ids)\n"
+            "            | set(model.correction_ids)\n"
+            "        )\n"
+        ),
+        new_text="        source_required_ids = estimator_upstream\n",
+        test_names=(
+            "tests.test_physical_bridge.PhysicalBridgeTests."
+            "test_declared_calibration_outside_estimator_ancestry_requires_source",
+            "tests.test_physical_bridge.PhysicalBridgeTests."
+            "test_declared_correction_outside_estimator_ancestry_requires_source",
+        ),
+        required_modules=("Discovery.physical_bridge_validation",),
+    ),
+    Mutant(
         identifier="production_invert_dependency_artifact_freshness",
         category="production",
         intended_semantic_defect=(

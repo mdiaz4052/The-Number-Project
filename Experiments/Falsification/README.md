@@ -92,17 +92,27 @@ behavior-preserving source transformation survived. The production results were:
 - disabling the dedicated calibration/correction reference diagnostic was **killed**
   by fixtures that pin its precedence before the broader terminal-comparison rule. This
   is a diagnostic-precedence, defense-in-depth kill, not an independent safety kill:
-  the broader rule still rejects the same paths; and
-- disabling the source-metadata requirement for populated empirical estimator ancestry
-  was **killed** by a behavioral test that populates an unsourced calibration coefficient;
-  this gate verifies declared provenance metadata, not real-world independence; and
+  the broader rule still rejects the same paths;
+- disabling the complete source-provenance gate for populated empirical estimator,
+  calibration, and correction records was **killed** by a behavioral test that populates
+  an unsourced calibration coefficient;
+- disabling the separate `documented` provenance classification was **killed** while all
+  three source fields were present;
+- disabling the source identifier, edition, and access-date requirements was **killed**
+  by a behavioral test that checks each field separately;
+- narrowing the gate back to estimator ancestry was **killed** by declared calibration and
+  correction records deliberately placed outside that ancestry;
 - inverting the dependency artifact's `--check` comparison was **killed** by a subprocess
   test that exercises the module CLI against both current and stale artifacts.
 
-All five selected production mutants are detected by behavioral assertions. Four
-exercise independent acceptance or checker decisions; the calibration-reference mutant
-pins an explicit defense-in-depth diagnostic without changing acceptance. No source-text,
-literal-string, or exact-patch detector was added to improve the mutation score.
+All eight selected production mutants are detected by behavioral assertions. Seven change
+acceptance or checker behavior; the calibration-reference mutant pins an explicit
+defense-in-depth diagnostic without changing acceptance. No source-text, literal-string,
+or exact-patch detector was added to improve the mutation score.
+
+An additional behavioral test confirms that `exact=True` cannot bypass empirical source
+metadata. These source gates verify declared provenance records, not real-world
+experimental independence.
 
 The mutation harness automatically creates detached worktrees at the recorded source
 SHA, proves relevant module `__file__` paths are under the disposable root inside the

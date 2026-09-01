@@ -44,6 +44,12 @@ main fitted acceleration amplitude or complete numerical multipole coupling, and
 purported 2002 PRD companion is unrelated. This finding should not trigger a broader
 schema or hardening milestone.
 
+The pilot's original preregistration remains unchanged. A normative clarification limits
+exact mathematical constants to the symbolic estimator layer under the current schema;
+`exact=True` is not a provenance bypass for populated empirical records. A deterministic
+manifest and CI guard pin the preregistration, clarification, audit, decision, essential
+missing inputs, and next candidate before the queue advances.
+
 The next audit should start with the HUST 2018 angular-acceleration-feedback method. Its
 official supplement reports an aggregate multipole coupling, average angular
 acceleration, magnetic-damper parameters, standard uncertainties, and a correlation rule

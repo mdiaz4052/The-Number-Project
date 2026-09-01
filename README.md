@@ -408,6 +408,19 @@ python3 -m Discovery.physical_bridge
 python3 -m Discovery.physical_bridge --check
 ```
 
+The first practical pilot is an explicit UW 2000 source-audit `NO-GO`, not a project
+measurement. Its original preregistration, review-time clarification about exact symbolic
+constants, and source audit are SHA-256-pinned by a deterministic manifest. Check those
+bytes and canonical decision fields with:
+
+```bash
+python3 -m Discovery.published_data_pilot --check
+```
+
+The manifest is tamper evidence, not an unforgeability claim. A populated empirical
+record receives no source-provenance exemption merely because its generic `exact` flag is
+set.
+
 Read [`Notes/PhysicalBridgeContract.md`](Notes/PhysicalBridgeContract.md) for the
 first-principles evidence boundary and
 [`Notes/GMeasurementLiterature.md`](Notes/GMeasurementLiterature.md) for the experimental

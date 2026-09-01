@@ -487,9 +487,9 @@ def validate_measurement_model(model: MeasurementModel) -> None:
             )
             if missing_metadata:
                 raise BridgeValidationError(
-                    "populated empirical estimator/calibration ancestry requires "
-                    "documented "
-                    f"source provenance metadata for {identifier}; missing "
+                    "populated empirical estimator, calibration, or correction "
+                    "record requires documented source provenance metadata for "
+                    f"{identifier}; missing "
                     f"{', '.join(missing_metadata)}"
                 )
     catalog = build_model_dependency_catalog(model)
