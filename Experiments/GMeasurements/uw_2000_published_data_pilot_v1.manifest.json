@@ -14,7 +14,7 @@
     {
       "path": "Experiments/GMeasurements/uw_2000_source_audit_v1.md",
       "role": "source_availability_audit",
-      "sha256": "fb5b1890f8c4a60e5c94d90c46bd37ba28bd0c6d7ed8c8ec912af010d2eb843d"
+      "sha256": "1ff8b755a1eb2c68af1a51c670fa81a5caa7a39a8e3b627cfa962707f00cc6b5"
     }
   ],
   "empirical_record_created": false,
@@ -29,6 +29,7 @@
     "No UW empirical measurement record, G estimate, or replication claim was created.",
     "The hashes make reviewed document changes visible; they do not make the repository unforgeable against a knowing editor."
   ],
+  "outcome_class": "INCOMPLETE_REPRODUCTION",
   "pilot_identifier": "uw_2000_published_data_reproduction_v1",
   "pilot_manifest_schema_version": 1
 }
