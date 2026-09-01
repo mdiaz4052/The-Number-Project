@@ -2,9 +2,9 @@
   "anti_goodhart_rule": "A surviving mutant may be closed only by a behavioral assertion of the intended contract, never by source-text or patch detection.",
   "calibration_results": [
     {
-      "canonical_anchor_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
-      "canonical_head_after": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
-      "canonical_head_before": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -56,9 +56,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
-      "canonical_head_after": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
-      "canonical_head_before": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -122,14 +122,14 @@
     "preregistration_commit_sha": "2a26ac6b8a3456a1548b09d56c9696058bc43b1a",
     "preregistration_path": "Experiments/Falsification/milestone_5b_core_v1.preregistration.json",
     "preregistration_sha256": "852e17885fb29fb46344d5176341a42b6c6f6690f9f1957698b859f068cab7bf",
-    "records_sha256": "c209193f3667d5d9fc3d6bd0c9df359f94c78dd9e2d8accf69f4f133b092a94e",
+    "records_sha256": "d7cdb519503b03f432e715f3bd0c6d80f452a8387023b5488eef46bf9565587a",
     "records_sha256_semantics": "SHA-256 of the canonical source commit, SOURCE_PATHS Git-blob snapshot, calibration_results, and production_results; a tamper-evidence pin, not a reproduction proof.",
     "seeds": {
       "global_null": 528492,
       "local_null": 528491
     },
     "source_commit_semantics": "Committed harness, mutant catalog, tests, and project source anchored into every disposable worktree.",
-    "source_commit_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+    "source_commit_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
     "source_paths": [
       "Discovery/mutation_harness.py",
       "Discovery/mutation_test_runner.py",
@@ -148,15 +148,15 @@
       "path_blob_oids": {
         "Discovery/dependency_analysis.py": "bea35d1b839086b76a8121375a19716d776de7b1",
         "Discovery/dimensional_search.py": "b3f7e6b446e4488645cda1b1d8f11fa2a585bf48",
-        "Discovery/mutation_harness.py": "666d253ee9a828785cd9ed64d66b256843e0b242",
+        "Discovery/mutation_harness.py": "914f4c0d7e336cbbefbe5c2a5d3a6eb393801017",
         "Discovery/mutation_test_runner.py": "5d883b53a0af99f94b6d4a818d3224aa0c06408c",
-        "Discovery/physical_bridge_validation.py": "1ad5995ef1fb9f153c0fb1d07063ae263fce05f9",
+        "Discovery/physical_bridge_validation.py": "91159e90707e92791193b0fe8389144963012856",
         "Discovery/source_history.py": "8e53cf1e0f5b3425c11197c81b9000b10355e89e",
         "Experiments/Falsification/milestone_5b_core_v1.preregistration.json": "f2e19fdf1ca42ee332d6afa0d243ccf38a3edd65",
         "tests/test_dependency_analysis.py": "c1c69b4b65482323576273f56f7e1f6f2e179caf",
         "tests/test_dimensional_search.py": "cc0cefb866e52a115fae8490e85510b7790853c4",
-        "tests/test_mutation_harness.py": "307b48bc2f5d317e7de45096c4bf0ad57d2c4693",
-        "tests/test_physical_bridge.py": "54bfa40b6d89560e32fd74730bfd82dcaf71ae70"
+        "tests/test_mutation_harness.py": "3825eb5e88d8e88fef63735c701ac8563deed682",
+        "tests/test_physical_bridge.py": "83b57abe06d1d9ee5dc87e85ee2b969f6c35f223"
       }
     }
   },
@@ -172,9 +172,9 @@
   "production_interpretation": "meaningful",
   "production_results": [
     {
-      "canonical_anchor_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
-      "canonical_head_after": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
-      "canonical_head_before": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -236,9 +236,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
-      "canonical_head_after": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
-      "canonical_head_before": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -296,9 +296,9 @@
       ]
     },
     {
-      "canonical_anchor_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
-      "canonical_head_after": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
-      "canonical_head_before": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -359,9 +359,69 @@
       ]
     },
     {
-      "canonical_anchor_sha": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
-      "canonical_head_after": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
-      "canonical_head_before": "cbd5551ce0cdd444f10f4ae8ff52892f7eeb706e",
+      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Disable the fail-closed source-metadata requirement for populated empirical estimator ancestry.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_populated_empirical_calibration_requires_source_provenance"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_populated_empirical_calibration_requires_source_provenance"
+      ],
+      "mutant_identifier": "production_disable_empirical_source_provenance",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_populated_empirical_calibration_requires_source_provenance"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_after": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
+      "canonical_head_before": "e4d8ec910b9634e18f76d4428359b6dda43b4321",
       "canonical_head_unchanged": true,
       "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
