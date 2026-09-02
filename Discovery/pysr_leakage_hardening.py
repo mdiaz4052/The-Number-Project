@@ -2,8 +2,10 @@
 
 This module is intentionally additive. It does not rewrite the frozen Milestone 6B
 result or its source anchors. Instead it validates that the committed external run
-matches the preregistered search contract and checks the future-facing v3 semantics
-for predictor-free target-exposed candidates.
+matches the preregistered search contract and checks the forward-facing v3 semantics.
+
+Historical v2 remains the source-pinned verifier for the frozen Milestone 6B result.
+New candidate-auditing code should use ``Discovery.pysr_leakage_audit_v3``.
 """
 
 from __future__ import annotations
@@ -151,6 +153,85 @@ def validate_future_constant_semantics(external: Mapping[str, Any]) -> dict[str,
     }
 
 
+def validate_final_cleanup_semantics() -> dict[str, Any]:
+    """Pin normalized structural ancestry and controlled extreme-literal handling."""
+
+    cancellation_controls = (
+        "17.64",
+        "k_hidden / k_hidden",
+        "s_hidden / s_hidden",
+        "(k_hidden * s_hidden) / (k_hidden * s_hidden)",
+    )
+    for expression in cancellation_controls:
+        audit = audit_v3.audit_expression("C_hidden_leak", expression)
+        if audit.get("representation_status") != probe.NORMALIZED_MONOMIAL:
+            raise PySRHardeningError(
+                f"normalized cancellation control became non-monomial: {expression}"
+            )
+        if audit.get("normalized_exponents") != []:
+            raise PySRHardeningError(
+                f"normalized cancellation control retained factors: {expression}"
+            )
+        if (
+            audit.get("generation_ancestry_assessment")
+            != audit_v3.GENERATION_ANCESTRY_NOT_APPLICABLE
+            or audit.get("known_generation_target_leakage") is not None
+            or audit.get("hidden_target_leakage_blind_spot") is not None
+        ):
+            raise PySRHardeningError(
+                f"normalized cancellation control did not receive N/A ancestry: {expression}"
+            )
+        if audit.get("candidate_origin") != probe.TARGET_EXPOSED_CANDIDATE:
+            raise PySRHardeningError("normalized constant lost target-exposed origin")
+        if audit.get("promotion_eligible") is not False:
+            raise PySRHardeningError("normalized target-exposed constant became promotable")
+
+    # Raw syntax remains diagnostic even though structural ancestry follows the exact
+    # normalized expression.
+    cancelled_with_raw_predictor = audit_v3.audit_expression(
+        "C_hidden_leak", "k_hidden / k_hidden"
+    )
+    if cancelled_with_raw_predictor.get("referenced_predictors") != ["k_hidden"]:
+        raise PySRHardeningError("raw predictor diagnostics were lost after cancellation")
+
+    for expression in ("k_hidden", "k_hidden / s_hidden"):
+        audit = audit_v3.audit_expression("C_hidden_leak", expression)
+        if (
+            audit.get("generation_ancestry_assessment")
+            != audit_v3.GENERATION_ANCESTRY_DETECTED
+            or audit.get("known_generation_target_leakage") is not True
+            or audit.get("hidden_target_leakage_blind_spot") is not True
+        ):
+            raise PySRHardeningError(
+                f"surviving hidden-leak factor lost detected ancestry: {expression}"
+            )
+
+    overflow_controls = ("1e400", "-1e400")
+    for expression in overflow_controls:
+        audit = audit_v3.audit_expression("C_hidden_leak", expression)
+        if audit.get("representation_status") != probe.PARSE_FAILURE:
+            raise PySRHardeningError(
+                f"overflowing literal escaped controlled parse failure: {expression}"
+            )
+        if audit.get("dimensional_status") != probe.DIMENSION_UNRESOLVED:
+            raise PySRHardeningError("overflowing literal acquired a dimensional verdict")
+        if (
+            audit.get("registered_target_dependency")
+            != probe.NOT_APPLICABLE_REPRESENTATION_GAP
+        ):
+            raise PySRHardeningError("overflowing literal acquired dependency provenance")
+        if (
+            audit.get("generation_ancestry_assessment")
+            != audit_v3.GENERATION_ANCESTRY_UNRESOLVED
+        ):
+            raise PySRHardeningError("overflowing literal acquired generation ancestry")
+
+    return {
+        "normalized_cancellation_controls": len(cancellation_controls),
+        "overflow_controls": len(overflow_controls),
+    }
+
+
 def check_committed_hardening() -> dict[str, Any]:
     # First require the frozen historical evidence to remain valid under its own v2 gate.
     historical_v2.check_committed_artifacts()
@@ -165,7 +246,8 @@ def check_committed_hardening() -> dict[str, Any]:
 
     search = validate_search_contract(preregistration, external)
     constants = validate_future_constant_semantics(external)
-    return {**search, **constants}
+    cleanup = validate_final_cleanup_semantics()
+    return {**search, **constants, **cleanup}
 
 
 def main() -> None:
@@ -181,7 +263,9 @@ def main() -> None:
         raise SystemExit(1)
     print(
         "Post-6B hardening is current: preregistered search contract matched; "
-        f"{result['constant_only_candidates']} predictor-free candidates use explicit N/A ancestry semantics."
+        f"{result['constant_only_candidates']} frozen predictor-free candidates use explicit N/A ancestry; "
+        f"{result['normalized_cancellation_controls']} normalized cancellation controls and "
+        f"{result['overflow_controls']} overflow controls are current."
     )
 
 
