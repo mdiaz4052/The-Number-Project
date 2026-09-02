@@ -1,0 +1,37 @@
+name: Milestone 6B semantic mutations
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  mutations:
+    if: github.head_ref == 'codex/milestone-6b-pysr-leakage'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Run selected 6B mutations in disposable worktrees
+        run: |
+          SOURCE="$(git rev-parse HEAD)"
+          python -m Discovery.pysr_leakage_mutations --run --source-commit-sha "$SOURCE"
+          python - <<'PY'
+          import json
+          from Discovery.pysr_leakage_mutations import DEFAULT_OUTPUT, validate_result
+          record = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
+          validate_result(record)
+          print("Both selected 6B semantic mutants were killed.")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: milestone-6b-mutation-evidence
+          path: Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.mutation_results.json
+          if-no-files-found: error
