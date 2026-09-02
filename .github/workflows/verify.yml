@@ -60,7 +60,7 @@ jobs:
       - name: Verify imported evidence with permanent project logic
         run: |
           set -euo pipefail
-          python -m Discovery.pysr_leakage_check --check
+          python -m Discovery.pysr_leakage_check_v2 --check
           python -m Discovery.pysr_leakage_mutations --check
           git diff --check
       - name: Commit imported evidence only
