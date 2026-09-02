@@ -1,0 +1,190 @@
+name: Milestone 6A external comparison
+
+on:
+  push:
+    branches:
+      - codex/milestone-6a-pydimension-differential
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.14"
+      - name: Install frozen comparator environment
+        run: |
+          python -m pip install --disable-pip-version-check \
+            numpy==2.3.2 \
+            scipy==1.16.1 \
+            sympy==1.14.0 \
+            pandas==2.3.2 \
+            matplotlib==3.10.5
+      - name: Retrieve pinned PyDimension source
+        run: |
+          git clone --no-checkout https://github.com/xiaoyuxie-vico/PyDimension.git /tmp/PyDimension
+          git -C /tmp/PyDimension checkout --detach a899cd41e327a8ad185b139537272eecb6a9adb4
+          test "$(git -C /tmp/PyDimension rev-parse HEAD)" = "a899cd41e327a8ad185b139537272eecb6a9adb4"
+          test "$(git -C /tmp/PyDimension rev-parse HEAD:pydimension/data_generation/generator.py)" = "5ffcabd41dd011f5b42b65b16c0fa74d61b0a2ae"
+          test "$(git -C /tmp/PyDimension rev-parse HEAD:LICENSE)" = "5953bba9f50e93b0a692c40f2b6f4fc10a8222bd"
+      - name: Verify frozen project source paths
+        run: |
+          SOURCE_ANCHOR=9abf4de2ffc045d2ca7d6613e02a2eb5b731d281
+          git merge-base --is-ancestor "$SOURCE_ANCHOR" HEAD
+          git diff --quiet "$SOURCE_ANCHOR" HEAD -- \
+            Discovery/pydimension_comparison.py \
+            Discovery/constants.py \
+            Discovery/dimensions.py \
+            Discovery/monomial_constraints.py \
+            Discovery/source_history.py \
+            tests/test_pydimension_comparison.py \
+            Experiments/EcosystemComparison/PyDimension/milestone_6a_pydimension_v1.preregistration.json
+      - name: Run exact PyDimension comparison
+        env:
+          PYDIMENSION_ROOT: /tmp/PyDimension
+          PROJECT_SOURCE_ANCHOR: 9abf4de2ffc045d2ca7d6613e02a2eb5b731d281
+        run: |
+          mkdir -p /tmp/milestone-6a
+          python - <<'PY'
+          from __future__ import annotations
+          import hashlib
+          import importlib.util
+          import json
+          import os
+          from pathlib import Path
+          import platform
+          import sys
+          import types
+
+          import matplotlib
+          import numpy as np
+          import pandas as pd
+          import scipy
+          from scipy.linalg import null_space
+          import sympy
+          from sympy import Matrix
+
+          prereg_path = Path("Experiments/EcosystemComparison/PyDimension/milestone_6a_pydimension_v1.preregistration.json")
+          prereg_bytes = prereg_path.read_bytes()
+          prereg = json.loads(prereg_bytes)
+          root = Path(os.environ["PYDIMENSION_ROOT"])
+
+          expected_versions = prereg["environment"]["packages"]
+          actual_versions = {
+              "numpy": np.__version__,
+              "scipy": scipy.__version__,
+              "sympy": sympy.__version__,
+              "pandas": pd.__version__,
+              "matplotlib": matplotlib.__version__,
+          }
+          if actual_versions != expected_versions:
+              raise RuntimeError(f"package-version mismatch: {actual_versions!r}")
+          if platform.python_version() != prereg["environment"]["python"]:
+              raise RuntimeError(f"python-version mismatch: {platform.python_version()}")
+
+          pkg = types.ModuleType("pydimension")
+          pkg.__path__ = [str(root / "pydimension")]
+          sys.modules["pydimension"] = pkg
+          data_pkg = types.ModuleType("pydimension.data_generation")
+          data_pkg.__path__ = [str(root / "pydimension" / "data_generation")]
+          sys.modules["pydimension.data_generation"] = data_pkg
+
+          def load(name: str, path: Path):
+              spec = importlib.util.spec_from_file_location(name, path)
+              if spec is None or spec.loader is None:
+                  raise RuntimeError(f"cannot load {path}")
+              module = importlib.util.module_from_spec(spec)
+              sys.modules[name] = module
+              spec.loader.exec_module(module)
+              return module
+
+          load("pydimension.data_generation.config", root / "pydimension/data_generation/config.py")
+          generator_module = load(
+              "pydimension.data_generation.generator",
+              root / "pydimension/data_generation/generator.py",
+          )
+          DataGenerator = generator_module.DataGenerator
+
+          def run_matrix(matrix_rows):
+              matrix = np.array(matrix_rows, dtype=int)
+              float_basis = null_space(matrix)
+              float_residual = matrix @ float_basis
+              generator = DataGenerator.__new__(DataGenerator)
+              generator.dimension_matrix = matrix
+              exact_return = generator._simplify_basis_vectors(float_basis)
+              vectors = []
+              for column in range(exact_return.shape[1]):
+                  vector = []
+                  for row in range(exact_return.shape[0]):
+                      value = float(exact_return[row, column])
+                      nearest = round(value)
+                      if abs(value - nearest) > 1e-12:
+                          raise RuntimeError(
+                              "PyDimension primitive exact path returned a non-integral value"
+                          )
+                      vector.append(int(nearest))
+                  vectors.append(vector)
+              exact_matrix = Matrix(matrix_rows)
+              for vector in vectors:
+                  if exact_matrix * Matrix(vector) != Matrix.zeros(exact_matrix.rows, 1):
+                      raise RuntimeError("external primitive vector has nonzero exact residual")
+              return {
+                  "dimension_matrix_rows": [list(map(int, row)) for row in matrix_rows],
+                  "exact_rank": int(exact_matrix.rank()),
+                  "exact_nullity": int(exact_matrix.cols - exact_matrix.rank()),
+                  "exact_primitive_basis_vectors": vectors,
+                  "float_scipy_diagnostic": {
+                      "basis_shape": [int(value) for value in float_basis.shape],
+                      "max_abs_residual": format(
+                          float(np.max(np.abs(float_residual))) if float_residual.size else 0.0,
+                          ".17g",
+                      ),
+                  },
+              }
+
+          baseline = prereg["input"]["dimension_matrix_rows"]
+          control = [row[:] for row in baseline]
+          mutation = prereg["planted_control"]
+          if control[mutation["row_index"]][mutation["column_index"]] != mutation["original"]:
+              raise RuntimeError("planted-control original mismatch")
+          control[mutation["row_index"]][mutation["column_index"]] = mutation["replacement"]
+
+          output = {
+              "schema_version": 1,
+              "experiment_identifier": prereg["experiment_identifier"],
+              "integrity": {
+                  "preregistration_sha256": hashlib.sha256(prereg_bytes).hexdigest(),
+                  "project_source_commit_sha": os.environ["PROJECT_SOURCE_ANCHOR"],
+              },
+              "external_comparator": prereg["external_comparator"],
+              "environment": prereg["environment"],
+              "generator_order": prereg["input"]["generator_order"],
+              "base_dimension_order": prereg["input"]["base_dimension_order"],
+              "baseline": run_matrix(baseline),
+              "control": run_matrix(control),
+              "runner": {
+                  "execution": "GitHub Actions disposable runner",
+                  "repository_write_permission": false,
+                  "evidence_transfer": "upload-only Actions artifact",
+              },
+          }
+          external_path = Path("/tmp/milestone-6a/milestone_6a_pydimension_v1.external.json")
+          external_path.write_text(json.dumps(output, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+          PY
+      - name: Generate deterministic project result from raw external bytes
+        run: |
+          python -m Discovery.pydimension_comparison \
+            --external /tmp/milestone-6a/milestone_6a_pydimension_v1.external.json \
+            --output /tmp/milestone-6a/milestone_6a_pydimension_v1.result.json
+      - name: Upload external and normalized result artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: milestone-6a-pydimension-output
+          path: /tmp/milestone-6a/
+          if-no-files-found: error
