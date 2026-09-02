@@ -1,0 +1,40 @@
+name: Post-6B parser mutation evidence
+
+on:
+  pull_request:
+    paths:
+      - 'Discovery/pysr_leakage_hardening_mutations.py'
+      - 'Discovery/pysr_leakage_probe.py'
+      - 'tests/test_pysr_leakage_hardening.py'
+      - '.github/workflows/post_6b_mutation_evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mutation-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Run selected parser mutant
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE_SHA="$(git rev-parse HEAD)"
+          python -m Discovery.pysr_leakage_hardening_mutations \
+            --run \
+            --source-commit-sha "$SOURCE_SHA" \
+            --output /tmp/post_6b_hardening_v1.mutation_results.json
+          cat /tmp/post_6b_hardening_v1.mutation_results.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: post-6b-parser-mutation-evidence
+          path: /tmp/post_6b_hardening_v1.mutation_results.json
+          if-no-files-found: error
