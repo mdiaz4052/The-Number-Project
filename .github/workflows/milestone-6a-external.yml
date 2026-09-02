@@ -170,7 +170,7 @@ jobs:
               "control": run_matrix(control),
               "runner": {
                   "execution": "GitHub Actions disposable runner",
-                  "repository_write_permission": false,
+                  "repository_write_permission": False,
                   "evidence_transfer": "upload-only Actions artifact",
               },
           }
