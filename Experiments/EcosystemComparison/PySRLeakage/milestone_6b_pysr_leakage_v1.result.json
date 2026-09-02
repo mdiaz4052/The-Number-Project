@@ -1,0 +1,999 @@
+{
+  "candidate_counts": {
+    "dimensionally_invalid": 17,
+    "dimensionally_valid": 9,
+    "hidden_target_leakage_blind_spots": 6,
+    "known_generation_target_leakage": 16,
+    "normalized_monomials": 20,
+    "parse_failures": 0,
+    "registered_target_paths": 4,
+    "representational_gaps": 6,
+    "total_candidates": 26
+  },
+  "candidates": [
+    {
+      "candidate_identifier": "pysr-e99add268559f41bf71a",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "A_clean",
+      "computed_dimension": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": false,
+      "normalized_coefficient": "441001320040077/25000000000000",
+      "normalized_exponents": [],
+      "promotion_eligible": false,
+      "raw_complexity": "1",
+      "raw_equation": "17.64005280160308",
+      "raw_loss": "1174.9029225497134",
+      "raw_row_index": 0,
+      "raw_score": "0",
+      "referenced_predictors": [],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 0
+    },
+    {
+      "candidate_identifier": "pysr-51ca93b790a801cae91b",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "A_clean",
+      "computed_dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_valid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": false,
+      "normalized_coefficient": "1",
+      "normalized_exponents": [
+        {
+          "exponent": "-1",
+          "factor": "r_clean"
+        },
+        {
+          "exponent": "1",
+          "factor": "u_clean"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "3",
+      "raw_equation": "u_clean / r_clean",
+      "raw_loss": "2.8750282209812657e-30",
+      "raw_row_index": 1,
+      "raw_score": "37.545215551842617",
+      "referenced_predictors": [
+        "r_clean",
+        "u_clean"
+      ],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 0
+    },
+    {
+      "candidate_identifier": "pysr-da576b63611e2096d6e4",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "A_clean",
+      "computed_dimension": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": false,
+      "normalized_coefficient": "1764005280178209/100000000000000",
+      "normalized_exponents": [],
+      "promotion_eligible": false,
+      "raw_complexity": "1",
+      "raw_equation": "17.64005280178209",
+      "raw_loss": "1174.9029225497134",
+      "raw_row_index": 0,
+      "raw_score": "0",
+      "referenced_predictors": [],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 1
+    },
+    {
+      "candidate_identifier": "pysr-7770466988b3699fe610",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "A_clean",
+      "computed_dimension": [
+        "-1",
+        "4",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": false,
+      "normalized_coefficient": "16221520109551413/50000000000000000",
+      "normalized_exponents": [
+        {
+          "exponent": "1",
+          "factor": "u_clean"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "3",
+      "raw_equation": "u_clean * 0.32443040219102826",
+      "raw_loss": "1002.3371239272104",
+      "raw_row_index": 1,
+      "raw_score": "0.079425563987734926",
+      "referenced_predictors": [
+        "u_clean"
+      ],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 1
+    },
+    {
+      "candidate_identifier": "pysr-db5d56eb8d5b8e7a68c7",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "A_clean",
+      "computed_dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_valid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": false,
+      "normalized_coefficient": "5203747357287017/10000000000000000",
+      "normalized_exponents": [
+        {
+          "exponent": "-1",
+          "factor": "r_clean"
+        },
+        {
+          "exponent": "1",
+          "factor": "u_clean"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "5",
+      "raw_equation": "(0.5203747357287017 / r_clean) * u_clean",
+      "raw_loss": "111.81674319201592",
+      "raw_row_index": 2,
+      "raw_score": "1.0966141831800738",
+      "referenced_predictors": [
+        "r_clean",
+        "u_clean"
+      ],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 1
+    },
+    {
+      "candidate_identifier": "pysr-a88e08e5f08ac9afcc22",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "A_clean",
+      "computed_dimension": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": false,
+      "normalized_coefficient": "8820026418282321/500000000000000",
+      "normalized_exponents": [],
+      "promotion_eligible": false,
+      "raw_complexity": "1",
+      "raw_equation": "17.640052836564642",
+      "raw_loss": "1174.9029225497134",
+      "raw_row_index": 0,
+      "raw_score": "0",
+      "referenced_predictors": [],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 2
+    },
+    {
+      "candidate_identifier": "pysr-64ea3261a9008a2175e5",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "A_clean",
+      "computed_dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_valid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": false,
+      "normalized_coefficient": "1",
+      "normalized_exponents": [
+        {
+          "exponent": "-1",
+          "factor": "r_clean"
+        },
+        {
+          "exponent": "1",
+          "factor": "u_clean"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "3",
+      "raw_equation": "u_clean / r_clean",
+      "raw_loss": "2.8750282209812657e-30",
+      "raw_row_index": 1,
+      "raw_score": "37.545215551842617",
+      "referenced_predictors": [
+        "r_clean",
+        "u_clean"
+      ],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 2
+    },
+    {
+      "candidate_identifier": "pysr-ce038bd728b8c6d641c6",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "B_registered_leak",
+      "computed_dimension": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": false,
+      "normalized_coefficient": "1632109005167871/1250000000000000",
+      "normalized_exponents": [],
+      "promotion_eligible": false,
+      "raw_complexity": "1",
+      "raw_equation": "1.3056872041342968",
+      "raw_loss": "1000.0306653040138",
+      "raw_row_index": 0,
+      "raw_score": "0",
+      "referenced_predictors": [],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 0
+    },
+    {
+      "candidate_identifier": "pysr-9c63eda61399fa7bdef1",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "B_registered_leak",
+      "computed_dimension": [
+        "-1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": true,
+      "normalized_coefficient": "32318004638613917/10000000000000000",
+      "normalized_exponents": [
+        {
+          "exponent": "-1",
+          "factor": "m_P"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "3",
+      "raw_equation": "3.2318004638613917 / m_P",
+      "raw_loss": "1000.0139283864638",
+      "raw_row_index": 1,
+      "raw_score": "8.3682721891348585e-06",
+      "referenced_predictors": [
+        "m_P"
+      ],
+      "registered_target_dependency": "target_path_detected",
+      "representation_status": "normalized_monomial",
+      "seed": 0
+    },
+    {
+      "candidate_identifier": "pysr-2549efaa39d127fd9909",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "B_registered_leak",
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": true,
+      "promotion_eligible": false,
+      "raw_complexity": "5",
+      "raw_equation": "2.829716513529567 / (m_P + -0.3025056488589695)",
+      "raw_loss": "1000.0136675811953",
+      "raw_row_index": 2,
+      "raw_score": "1.3040083503688189e-07",
+      "referenced_predictors": [
+        "m_P"
+      ],
+      "registered_target_dependency": "not_applicable_representation_gap",
+      "representation_status": "representational_gap",
+      "seed": 0
+    },
+    {
+      "candidate_identifier": "pysr-1ec1941fce3613b96a95",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "B_registered_leak",
+      "computed_dimension": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": false,
+      "normalized_coefficient": "13056872037916547/10000000000000000",
+      "normalized_exponents": [],
+      "promotion_eligible": false,
+      "raw_complexity": "1",
+      "raw_equation": "1.3056872037916547",
+      "raw_loss": "1000.0306653040138",
+      "raw_row_index": 0,
+      "raw_score": "0",
+      "referenced_predictors": [],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 1
+    },
+    {
+      "candidate_identifier": "pysr-74c8b9b798ca0a499eb8",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "B_registered_leak",
+      "computed_dimension": [
+        "-1",
+        "1",
+        "-1",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": true,
+      "normalized_coefficient": "1",
+      "normalized_exponents": [
+        {
+          "exponent": "1",
+          "factor": "c"
+        },
+        {
+          "exponent": "-1",
+          "factor": "m_P"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "3",
+      "raw_equation": "c / m_P",
+      "raw_loss": "1000.016247958378",
+      "raw_row_index": 1,
+      "raw_score": "7.2085037308241091e-06",
+      "referenced_predictors": [
+        "c",
+        "m_P"
+      ],
+      "registered_target_dependency": "target_path_detected",
+      "representation_status": "normalized_monomial",
+      "seed": 1
+    },
+    {
+      "candidate_identifier": "pysr-894a5cf7d8eddb59270c",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "B_registered_leak",
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": true,
+      "promotion_eligible": false,
+      "raw_complexity": "5",
+      "raw_equation": "(c / m_P) + -0.05365971922976015",
+      "raw_loss": "1000.01336859291",
+      "raw_row_index": 2,
+      "raw_score": "1.4396614151399979e-06",
+      "referenced_predictors": [
+        "c",
+        "m_P"
+      ],
+      "registered_target_dependency": "not_applicable_representation_gap",
+      "representation_status": "representational_gap",
+      "seed": 1
+    },
+    {
+      "candidate_identifier": "pysr-eb8ca17d3c3777f9ea36",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "B_registered_leak",
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": true,
+      "promotion_eligible": false,
+      "raw_complexity": "7",
+      "raw_equation": "((c - -1.4036677755604936) * 0.674035700516783) / m_P",
+      "raw_loss": "1000.01229568106",
+      "raw_row_index": 3,
+      "raw_score": "5.3644904119620987e-07",
+      "referenced_predictors": [
+        "c",
+        "m_P"
+      ],
+      "registered_target_dependency": "not_applicable_representation_gap",
+      "representation_status": "representational_gap",
+      "seed": 1
+    },
+    {
+      "candidate_identifier": "pysr-d4ff412f4dbc219873f5",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "B_registered_leak",
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": true,
+      "promotion_eligible": false,
+      "raw_complexity": "9",
+      "raw_equation": "((0.933771074203717 / (m_P + -0.8953946349486698)) * hbar) * 0.933771074203717",
+      "raw_loss": "1000.00620359679",
+      "raw_row_index": 4,
+      "raw_score": "3.0460139604988452e-06",
+      "referenced_predictors": [
+        "hbar",
+        "m_P"
+      ],
+      "registered_target_dependency": "not_applicable_representation_gap",
+      "representation_status": "representational_gap",
+      "seed": 1
+    },
+    {
+      "candidate_identifier": "pysr-ae29df9e0b5f9e06a554",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "B_registered_leak",
+      "computed_dimension": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": false,
+      "normalized_coefficient": "13056872038130583/10000000000000000",
+      "normalized_exponents": [],
+      "promotion_eligible": false,
+      "raw_complexity": "1",
+      "raw_equation": "1.3056872038130583",
+      "raw_loss": "1000.0306653040138",
+      "raw_row_index": 0,
+      "raw_score": "0",
+      "referenced_predictors": [],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 2
+    },
+    {
+      "candidate_identifier": "pysr-95d719a094133cbf6917",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "B_registered_leak",
+      "computed_dimension": [
+        "-1",
+        "1",
+        "-1",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": true,
+      "normalized_coefficient": "1",
+      "normalized_exponents": [
+        {
+          "exponent": "1",
+          "factor": "c"
+        },
+        {
+          "exponent": "-1",
+          "factor": "m_P"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "3",
+      "raw_equation": "c / m_P",
+      "raw_loss": "1000.016247958378",
+      "raw_row_index": 1,
+      "raw_score": "7.2085037308241091e-06",
+      "referenced_predictors": [
+        "c",
+        "m_P"
+      ],
+      "registered_target_dependency": "target_path_detected",
+      "representation_status": "normalized_monomial",
+      "seed": 2
+    },
+    {
+      "candidate_identifier": "pysr-e919e4be876a714b15cf",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "B_registered_leak",
+      "computed_dimension": [
+        "-1",
+        "1",
+        "-1",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": true,
+      "normalized_coefficient": "9619054913482599/10000000000000000",
+      "normalized_exponents": [
+        {
+          "exponent": "1",
+          "factor": "c"
+        },
+        {
+          "exponent": "-1",
+          "factor": "m_P"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "5",
+      "raw_equation": "(c / m_P) * 0.9619054913482599",
+      "raw_loss": "1000.013547252856",
+      "raw_row_index": 2,
+      "raw_score": "1.3503326442783709e-06",
+      "referenced_predictors": [
+        "c",
+        "m_P"
+      ],
+      "registered_target_dependency": "target_path_detected",
+      "representation_status": "normalized_monomial",
+      "seed": 2
+    },
+    {
+      "candidate_identifier": "pysr-fc330d6cd35a3fce48d8",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "B_registered_leak",
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": true,
+      "promotion_eligible": false,
+      "raw_complexity": "7",
+      "raw_equation": "(c - (m_P - hbar)) / m_P",
+      "raw_loss": "1000.0010880174329",
+      "raw_row_index": 3,
+      "raw_score": "6.229572125876907e-06",
+      "referenced_predictors": [
+        "c",
+        "hbar",
+        "m_P"
+      ],
+      "registered_target_dependency": "not_applicable_representation_gap",
+      "representation_status": "representational_gap",
+      "seed": 2
+    },
+    {
+      "candidate_identifier": "pysr-378b5b9520e43922d1c2",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "B_registered_leak",
+      "dimensional_status": "dimensionally_invalid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": true,
+      "promotion_eligible": false,
+      "raw_complexity": "9",
+      "raw_equation": "(c - ((m_P + 0.029185790846109894) - hbar)) / m_P",
+      "raw_loss": "1000.0009476148824",
+      "raw_row_index": 4,
+      "raw_score": "7.0201203837756245e-08",
+      "referenced_predictors": [
+        "c",
+        "hbar",
+        "m_P"
+      ],
+      "registered_target_dependency": "not_applicable_representation_gap",
+      "representation_status": "representational_gap",
+      "seed": 2
+    },
+    {
+      "candidate_identifier": "pysr-2881572540475031fefa",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "C_hidden_leak",
+      "computed_dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_valid",
+      "hidden_target_leakage_blind_spot": true,
+      "known_generation_target_leakage": true,
+      "normalized_coefficient": "1",
+      "normalized_exponents": [
+        {
+          "exponent": "1",
+          "factor": "k_hidden"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "1",
+      "raw_equation": "k_hidden",
+      "raw_loss": "0.28268167022392809",
+      "raw_row_index": 0,
+      "raw_score": "0",
+      "referenced_predictors": [
+        "k_hidden"
+      ],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 0
+    },
+    {
+      "candidate_identifier": "pysr-9d2150a67c5f3eedb944",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "C_hidden_leak",
+      "computed_dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_valid",
+      "hidden_target_leakage_blind_spot": true,
+      "known_generation_target_leakage": true,
+      "normalized_coefficient": "1",
+      "normalized_exponents": [
+        {
+          "exponent": "1",
+          "factor": "k_hidden"
+        },
+        {
+          "exponent": "-1",
+          "factor": "s_hidden"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "3",
+      "raw_equation": "k_hidden / s_hidden",
+      "raw_loss": "1.8103741477240014e-32",
+      "raw_row_index": 1,
+      "raw_score": "35.91287779289965",
+      "referenced_predictors": [
+        "k_hidden",
+        "s_hidden"
+      ],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 0
+    },
+    {
+      "candidate_identifier": "pysr-31577a6f7f3022ac44bc",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "C_hidden_leak",
+      "computed_dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_valid",
+      "hidden_target_leakage_blind_spot": true,
+      "known_generation_target_leakage": true,
+      "normalized_coefficient": "1",
+      "normalized_exponents": [
+        {
+          "exponent": "1",
+          "factor": "k_hidden"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "1",
+      "raw_equation": "k_hidden",
+      "raw_loss": "0.28268167022392809",
+      "raw_row_index": 0,
+      "raw_score": "0",
+      "referenced_predictors": [
+        "k_hidden"
+      ],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 1
+    },
+    {
+      "candidate_identifier": "pysr-70700fc4955e6a0c0e9d",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "C_hidden_leak",
+      "computed_dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_valid",
+      "hidden_target_leakage_blind_spot": true,
+      "known_generation_target_leakage": true,
+      "normalized_coefficient": "1",
+      "normalized_exponents": [
+        {
+          "exponent": "1",
+          "factor": "k_hidden"
+        },
+        {
+          "exponent": "-1",
+          "factor": "s_hidden"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "3",
+      "raw_equation": "k_hidden / s_hidden",
+      "raw_loss": "1.8103741477240014e-32",
+      "raw_row_index": 1,
+      "raw_score": "35.91287779289965",
+      "referenced_predictors": [
+        "k_hidden",
+        "s_hidden"
+      ],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 1
+    },
+    {
+      "candidate_identifier": "pysr-7a8fa93551207dcf08ba",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "C_hidden_leak",
+      "computed_dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_valid",
+      "hidden_target_leakage_blind_spot": true,
+      "known_generation_target_leakage": true,
+      "normalized_coefficient": "1",
+      "normalized_exponents": [
+        {
+          "exponent": "1",
+          "factor": "k_hidden"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "1",
+      "raw_equation": "k_hidden",
+      "raw_loss": "0.28268167022392809",
+      "raw_row_index": 0,
+      "raw_score": "0",
+      "referenced_predictors": [
+        "k_hidden"
+      ],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 2
+    },
+    {
+      "candidate_identifier": "pysr-e34b48bc9902f12dd4df",
+      "candidate_origin": "target_exposed_candidate",
+      "channel": "C_hidden_leak",
+      "computed_dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_valid",
+      "hidden_target_leakage_blind_spot": true,
+      "known_generation_target_leakage": true,
+      "normalized_coefficient": "1",
+      "normalized_exponents": [
+        {
+          "exponent": "1",
+          "factor": "k_hidden"
+        },
+        {
+          "exponent": "-1",
+          "factor": "s_hidden"
+        }
+      ],
+      "promotion_eligible": false,
+      "raw_complexity": "3",
+      "raw_equation": "k_hidden / s_hidden",
+      "raw_loss": "1.8103741477240014e-32",
+      "raw_row_index": 1,
+      "raw_score": "35.91287779289965",
+      "referenced_predictors": [
+        "k_hidden",
+        "s_hidden"
+      ],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial",
+      "seed": 2
+    }
+  ],
+  "canonical_controls": {
+    "A_clean": {
+      "candidate_origin": "target_exposed_candidate",
+      "computed_dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_valid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": false,
+      "normalized_coefficient": "1",
+      "normalized_exponents": [
+        {
+          "exponent": "-1",
+          "factor": "r_clean"
+        },
+        {
+          "exponent": "1",
+          "factor": "u_clean"
+        }
+      ],
+      "promotion_eligible": false,
+      "referenced_predictors": [
+        "r_clean",
+        "u_clean"
+      ],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial"
+    },
+    "B_registered_leak": {
+      "candidate_origin": "target_exposed_candidate",
+      "computed_dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_valid",
+      "hidden_target_leakage_blind_spot": false,
+      "known_generation_target_leakage": true,
+      "normalized_coefficient": "1",
+      "normalized_exponents": [
+        {
+          "exponent": "1",
+          "factor": "c"
+        },
+        {
+          "exponent": "1",
+          "factor": "hbar"
+        },
+        {
+          "exponent": "-2",
+          "factor": "m_P"
+        }
+      ],
+      "promotion_eligible": false,
+      "referenced_predictors": [
+        "c",
+        "hbar",
+        "m_P"
+      ],
+      "registered_target_dependency": "target_path_detected",
+      "representation_status": "normalized_monomial"
+    },
+    "C_hidden_leak": {
+      "candidate_origin": "target_exposed_candidate",
+      "computed_dimension": [
+        "-1",
+        "3",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "dimensional_status": "dimensionally_valid",
+      "hidden_target_leakage_blind_spot": true,
+      "known_generation_target_leakage": true,
+      "normalized_coefficient": "1",
+      "normalized_exponents": [
+        {
+          "exponent": "1",
+          "factor": "k_hidden"
+        },
+        {
+          "exponent": "-1",
+          "factor": "s_hidden"
+        }
+      ],
+      "promotion_eligible": false,
+      "referenced_predictors": [
+        "k_hidden",
+        "s_hidden"
+      ],
+      "registered_target_dependency": "no_registered_target_path",
+      "representation_status": "normalized_monomial"
+    }
+  },
+  "canonical_signature_recovered_by_pysr": {
+    "A_clean": true,
+    "B_registered_leak": false,
+    "C_hidden_leak": true
+  },
+  "dataset_channel_sha256": {
+    "A_clean": "11b0dbbfd23f7bf43455cc126acfb7bfa3f05cc34fa1908fa5bbacf382c77e0d",
+    "B_registered_leak": "93f78287c436e10347ef1e19e7a7e8e82d7ef25645f4fcad6e20f3d4112ca5cc",
+    "C_hidden_leak": "a126260986e51cae11639a4b9803c87ab0231fecf6d159477754761558dc254b"
+  },
+  "dataset_sha256": "e629c735d6836f0dae1f8655b6bc04bd30e60eec9bc538438f2b5b3d979fa4a8",
+  "experiment_identifier": "milestone_6b_pysr_leakage_v1",
+  "methodological_result_status": "methodological_result",
+  "nonclaims": [
+    "The synthetic target is not a measurement of G.",
+    "PySR candidate fitness is not empirical evidence or independent corroboration.",
+    "No registered target path does not establish calibration, statistical, experimental, causal, or physical independence.",
+    "Repeated recovery across seeds does not remove target exposure.",
+    "The synthetic generation graph is known by construction and is not a general causal-inference method."
+  ],
+  "primary_endpoint": {
+    "confirmed": true,
+    "outcome": "BOUNDARY_CONFIRMED",
+    "question": "Does the Channel C canonical control remain dimensionally valid with known generation target leakage but no registered algebraic target path?"
+  },
+  "raw_external_sha256": "5dc9ceae6d49a8bfab8f00fc4e0d4ddba8c3a4b31bfe4b0944a65aa4c5cf5176",
+  "schema_version": 1,
+  "source_commit_sha": "201a65f44ac316ae9e0f48235a73f99498848ded"
+}
