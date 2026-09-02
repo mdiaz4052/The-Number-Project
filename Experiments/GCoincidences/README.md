@@ -39,8 +39,16 @@ The artifact also records the complete ten-generator dimensional system: rank 4,
 nullity 6, and an affine solution family. Its nullspace directions are dimensionless
 transformations, so the dimensions alone cannot select a unique candidate.
 
+Dimensional validity and registered target dependency are orthogonal. Dimensions are
+used when the dependency catalog is built to reject dimensionally inconsistent
+registered definitions. After that validation boundary, target-containment
+classification is determined by exact registered definition expansion, not by the
+catalog's dimension metadata. Re-expressing dimensions in an equivalent basis must not
+move a registered circularity verdict.
+
 `no_registered_target_dependency` means only that exact expansion under the current
-catalog leaves power zero for `G`. It must not be shortened to “independent,” and it is
-not an independent measurement or physical explanation of `G`. See
+catalog leaves power zero for `G`. It is catalog-relative but not dimension-basis-relative
+under the same registered definitions. It must not be shortened to “independent,” and it
+is not an independent measurement or physical explanation of `G`. See
 [`Notes/DependencyAnalysis.md`](../../Notes/DependencyAnalysis.md) for the full learner
 walkthrough and the remaining empirical problem.
