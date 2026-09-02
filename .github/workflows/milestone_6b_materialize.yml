@@ -1,0 +1,27 @@
+name: Milestone 6B materialize datasets
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  materialize:
+    if: github.head_ref == 'codex/milestone-6b-pysr-leakage'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python -m Discovery.pysr_leakage_probe --write-datasets
+      - run: echo "e629c735d6836f0dae1f8655b6bc04bd30e60eec9bc538438f2b5b3d979fa4a8  Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.datasets.json" | sha256sum --check --strict
+      - uses: actions/upload-artifact@v4
+        with:
+          name: milestone-6b-datasets
+          path: Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.datasets.json
+          if-no-files-found: error
