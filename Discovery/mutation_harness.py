@@ -69,6 +69,7 @@ SOURCE_PATHS = (
     "Discovery/source_history.py",
     "tests/test_dimensional_search.py",
     "tests/test_dependency_analysis.py",
+    "tests/test_dependency_dimension_invariant.py",
     "tests/test_physical_bridge.py",
     "tests/test_mutation_harness.py",
     str(DEFAULT_PREREGISTRATION_OUTPUT),
@@ -267,6 +268,41 @@ PRODUCTION_MUTANTS = (
             "test_declared_correction_outside_estimator_ancestry_requires_source",
         ),
         required_modules=("Discovery.physical_bridge_validation",),
+    ),
+    Mutant(
+        identifier="production_make_dependency_classification_dimension_sensitive",
+        category="production",
+        intended_semantic_defect=(
+            "Make post-validation registered target-dependency classification depend "
+            "on catalog dimension metadata instead of exact definition expansion alone."
+        ),
+        relative_path="Discovery/dependency_analysis.py",
+        old_text=(
+            "        certification_status, theorem_name = _certification(\n"
+            "            surface,\n"
+            "            dependency_status,\n"
+            "        )\n"
+            "        provisional.append(\n"
+        ),
+        new_text=(
+            "        certification_status, theorem_name = _certification(\n"
+            "            surface,\n"
+            "            dependency_status,\n"
+            "        )\n"
+            "        if (\n"
+            "            catalog.dimensions.get(TARGET_KEY)\n"
+            "            != DEFAULT_DEPENDENCY_CATALOG.dimensions[TARGET_KEY]\n"
+            "        ):\n"
+            "            dependency_status = NO_REGISTERED_TARGET_DEPENDENCY\n"
+            "            power_of_g = Fraction(0)\n"
+            "        provisional.append(\n"
+        ),
+        test_names=(
+            "tests.test_dependency_dimension_invariant."
+            "DependencyDimensionInvariantTests."
+            "test_dependency_classification_ignores_dimension_metadata_after_validation",
+        ),
+        required_modules=("Discovery.dependency_analysis",),
     ),
     Mutant(
         identifier="production_invert_dependency_artifact_freshness",
