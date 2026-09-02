@@ -1,8 +1,8 @@
 name: Milestone 6B finalize evidence
 
 on:
-  pull_request:
-    branches: [main]
+  push:
+    branches: [codex/milestone-6b-pysr-leakage]
 
 permissions:
   contents: write
@@ -17,12 +17,10 @@ env:
 
 jobs:
   finalize:
-    if: github.head_ref == 'codex/milestone-6b-pysr-leakage'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
