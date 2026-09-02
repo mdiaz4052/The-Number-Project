@@ -2,9 +2,13 @@ name: Regenerate mutation evidence
 
 on:
   pull_request:
+    paths:
+      - Discovery/mutation_harness.py
+      - tests/test_dependency_dimension_invariant.py
+      - .github/workflows/regenerate-mutation-evidence.yml
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   regenerate:
@@ -23,6 +27,18 @@ jobs:
           python -m Discovery.mutation_harness \
             --source-commit-sha "$(git rev-parse HEAD)" \
             --output /tmp/tnp-mutation-evidence/milestone_5b_core_v1.mutation_results.json
+      - name: Commit regenerated evidence
+        env:
+          HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          cp /tmp/tnp-mutation-evidence/milestone_5b_core_v1.mutation_results.json \
+            Experiments/Falsification/milestone_5b_core_v1.mutation_results.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Experiments/Falsification/milestone_5b_core_v1.mutation_results.json
+          git diff --cached --check
+          git commit -m "Regenerate mutation evidence for Milestone 6C"
+          git push origin "HEAD:${HEAD_BRANCH}"
       - uses: actions/upload-artifact@v4
         with:
           name: regenerated-mutation-evidence
