@@ -1,76 +1,50 @@
 name: Verify
 
 on:
+  push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
 permissions:
-  actions: read
-  contents: write
+  contents: read
 
 jobs:
-  finalize_6b:
-    name: Import reviewed Milestone 6B evidence
-    if: github.event_name == 'pull_request' && github.head_ref == 'codex/milestone-6b-pysr-leakage'
+  lean:
+    name: Lean build and proof audit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: leanprover/lean-action@v1.6.0
+        with:
+          build: true
+          build-args: --wfail
+          use-mathlib-cache: true
+          axiom-audit: true
+        env:
+          LEAN_NUM_THREADS: 1
+
+  python:
+    name: Python tests and bounded search
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
           fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - name: Download exact reviewed artifacts
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          mkdir -p /tmp/6b/raw /tmp/6b/result /tmp/6b/mutation
-          curl --fail --silent --show-error --location \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/9861736005/zip" \
-            -o /tmp/6b/raw.zip
-          curl --fail --silent --show-error --location \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/9861737008/zip" \
-            -o /tmp/6b/result.zip
-          curl --fail --silent --show-error --location \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/9861673360/zip" \
-            -o /tmp/6b/mutation.zip
-          unzip -q /tmp/6b/raw.zip -d /tmp/6b/raw
-          unzip -q /tmp/6b/result.zip -d /tmp/6b/result
-          unzip -q /tmp/6b/mutation.zip -d /tmp/6b/mutation
-          cp /tmp/6b/raw/milestone_6b_pysr_leakage_v1.external.json \
-            Experiments/EcosystemComparison/PySRLeakage/
-          cp /tmp/6b/result/milestone_6b_pysr_leakage_v1.result.json \
-            Experiments/EcosystemComparison/PySRLeakage/
-          cp /tmp/6b/mutation/milestone_6b_pysr_leakage_v1.mutation_results.json \
-            Experiments/EcosystemComparison/PySRLeakage/
-          echo "5dc9ceae6d49a8bfab8f00fc4e0d4ddba8c3a4b31bfe4b0944a65aa4c5cf5176  Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.external.json" | sha256sum --check --strict
-          echo "ed01adff58bc6b95b1d6281af92b3d97a1f71757da760a36762a2bde8fb654a4  Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.result.json" | sha256sum --check --strict
-          echo "44ab9598fe07c56091f7ebd27266e7d89a553aa370c144c2744b858df7e94015  Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.mutation_results.json" | sha256sum --check --strict
-      - name: Verify imported evidence with permanent project logic
-        run: |
-          set -euo pipefail
-          python -m Discovery.pysr_leakage_check_v2 --check
-          python -m Discovery.pysr_leakage_mutations --check
-          git diff --check
-      - name: Commit imported evidence only
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.external.json \
-            Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.result.json \
-            Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.mutation_results.json
-          git commit -m "Commit reviewed Milestone 6B evidence"
-          git push origin HEAD:codex/milestone-6b-pysr-leakage
+      - run: python -m unittest discover -s tests -v
+      - run: python -m Discovery.dimensional_search --check
+      - run: python -m Discovery.inverse_square_search --check
+      - run: python -m Discovery.dependency_analysis --check
+      - run: python -m Discovery.physical_bridge --check
+      - run: python -m Discovery.published_data_pilot --check
+      - run: python -m Discovery.falsification_preregistration --check
+      - run: python -m Discovery.null_experiments --check
+      - run: python -m Discovery.mutation_harness --check
+      - run: python -m Discovery.pydimension_comparison --check
+      - run: python -m Discovery.pysr_leakage_check_v2 --check
+      - run: python -m Discovery.pysr_leakage_mutations --check
