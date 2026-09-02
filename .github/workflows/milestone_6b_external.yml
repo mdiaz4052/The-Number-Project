@@ -19,24 +19,35 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - name: Verify frozen project source and dataset manifest
+      - name: Verify frozen search source, corrected audit source, and dataset manifest
         run: |
           python - <<'PY'
           import json
-          from Discovery.pysr_leakage_check import SOURCE_PATHS, build_dataset_manifest
+          from Discovery.pysr_leakage_check import SOURCE_PATHS as SEARCH_SOURCE_PATHS
+          from Discovery.pysr_leakage_check_v2 import (
+              SOURCE_PATHS as AUDIT_SOURCE_PATHS,
+              build_dataset_manifest,
+          )
           from Discovery.pysr_leakage_probe import DATASETS_PATH, canonical_json_bytes
           from Discovery.source_history import repository_root, verify_committed_source_state
-          source = "f2c26da24cfa5a463dc2bbadeb83c6bf41cc4689"
+
+          search_source = "f2c26da24cfa5a463dc2bbadeb83c6bf41cc4689"
+          audit_source = "201a65f44ac316ae9e0f48235a73f99498848ded"
           verify_committed_source_state(
-              repository_root(), source,
-              source_paths=SOURCE_PATHS,
-              artifact_label="Milestone 6B external source",
+              repository_root(), search_source,
+              source_paths=SEARCH_SOURCE_PATHS,
+              artifact_label="Milestone 6B frozen search source",
+          )
+          verify_committed_source_state(
+              repository_root(), audit_source,
+              source_paths=AUDIT_SOURCE_PATHS,
+              artifact_label="Milestone 6B corrected audit source",
           )
           committed = json.loads(DATASETS_PATH.read_text(encoding="utf-8"))
           expected = build_dataset_manifest()
           if canonical_json_bytes(committed) != canonical_json_bytes(expected):
               raise SystemExit("dataset manifest mismatch")
-          print("Frozen source and deterministic dataset manifest verified.")
+          print("Frozen search source, corrected audit source, and dataset manifest verified.")
           PY
       - name: Retrieve and pin PySR source
         run: |
@@ -195,14 +206,20 @@ jobs:
           EXTERNAL_PATH.write_bytes(canonical_json_bytes(record))
           print(f"Wrote {EXTERNAL_PATH} with {sum(r['candidate_count'] for r in runs)} candidates.")
           PY
+      - name: Upload raw external evidence even if normalization fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: milestone-6b-pysr-raw
+          path: Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.external.json
+          if-no-files-found: error
       - name: Normalize and verify evidence without trusting PySR classifications
         run: |
-          python -m Discovery.pysr_leakage_check --write-result --source-commit-sha f2c26da24cfa5a463dc2bbadeb83c6bf41cc4689
-          python -m Discovery.pysr_leakage_check --check
-      - uses: actions/upload-artifact@v4
+          python -m Discovery.pysr_leakage_check_v2 --write-result --source-commit-sha 201a65f44ac316ae9e0f48235a73f99498848ded
+          python -m Discovery.pysr_leakage_check_v2 --check
+      - name: Upload normalized result
+        uses: actions/upload-artifact@v4
         with:
-          name: milestone-6b-pysr-evidence
-          path: |
-            Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.external.json
-            Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.result.json
+          name: milestone-6b-pysr-result
+          path: Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.result.json
           if-no-files-found: error
