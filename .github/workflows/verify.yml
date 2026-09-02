@@ -1,9 +1,6 @@
 name: Verify
 
 on:
-  push:
-    branches:
-      - codex/milestone-6b-pysr-leakage
   pull_request:
   workflow_dispatch:
 
@@ -14,12 +11,12 @@ permissions:
 jobs:
   finalize_6b:
     name: Import reviewed Milestone 6B evidence
-    if: github.event_name == 'push' && github.ref == 'refs/heads/codex/milestone-6b-pysr-leakage'
+    if: github.event_name == 'pull_request' && github.head_ref == 'codex/milestone-6b-pysr-leakage'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
-          ref: codex/milestone-6b-pysr-leakage
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
