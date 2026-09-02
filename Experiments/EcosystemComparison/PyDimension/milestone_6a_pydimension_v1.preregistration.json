@@ -1,0 +1,194 @@
+{
+  "artifact_policy": {
+    "checker": "python -m Discovery.pydimension_comparison --check",
+    "ci_rerun_policy": "Normal CI validates committed bytes and internal recomputation without cloning or installing PyDimension.",
+    "external_execution": "Disposable GitHub Actions environment; read-only repository permissions; upload raw output as an Actions artifact; never auto-commit evidence.",
+    "raw_external_output": "Experiments/EcosystemComparison/PyDimension/milestone_6a_pydimension_v1.external.json",
+    "result_output": "Experiments/EcosystemComparison/PyDimension/milestone_6a_pydimension_v1.result.json"
+  },
+  "comparison": {
+    "affine_consistency_rule": "Separately verify The Number Project's exact particular solution satisfies A p = dim(G), and verify p + v also satisfies A x = dim(G) for every external exact kernel vector v. PyDimension is not credited with independently solving the affine target system.",
+    "agreement_rule": "AGREEMENT iff the external exact basis has the same vector-space span as The Number Project's exact nullspace basis, the ranks/nullities agree, and all external basis vectors have exact zero residual under the preregistered matrix.",
+    "definitional_equivalence_groups": "out_of_scope",
+    "disagreement_rule": "Any exact span, rank/nullity, or residual mismatch is DISAGREEMENT and must be recorded without changing the rules.",
+    "external_result_used_for_verdict": "primitive integer basis returned by PyDimension _simplify_basis_vectors after its SymPy exact nullspace recomputation",
+    "normalization": "Treat each basis vector as an exact rational row vector and compare subspaces by exact Fraction RREF of the row-span matrix after removing zero rows. Raw basis-vector equality is forbidden."
+  },
+  "environment": {
+    "import_policy": "Load PyDimension's pinned data_generation config.py and generator.py directly from the cloned checkout without importing pydimension.__init__, so unrelated ML dependencies are not required.",
+    "os": "ubuntu-24.04",
+    "packages": {
+      "matplotlib": "3.10.5",
+      "numpy": "2.3.2",
+      "pandas": "2.3.2",
+      "scipy": "1.16.1",
+      "sympy": "1.14.0"
+    },
+    "python": "3.12.14"
+  },
+  "epistemic_status": "preregistered methodological comparison",
+  "experiment_identifier": "milestone_6a_pydimension_exact_nullspace_v1",
+  "external_comparator": {
+    "commit_sha": "a899cd41e327a8ad185b139537272eecb6a9adb4",
+    "exact_code_blob_sha": "5ffcabd41dd011f5b42b65b16c0fa74d61b0a2ae",
+    "exact_code_path": "pydimension/data_generation/generator.py::DataGenerator._simplify_basis_vectors",
+    "exact_path_semantics": "The method recomputes Matrix(self.dimension_matrix).nullspace() with SymPy exact arithmetic, clears denominators, reduces primitive integer vectors, and only then converts those primitive entries to float for its return array.",
+    "float_path": "pydimension/data_generation/generator.py::DataGenerator._compute_basis_vectors",
+    "float_path_semantics": "The surrounding method first calls scipy.linalg.null_space. The Milestone 6A verdict must not use that floating SVD basis for exact span equality; it is recorded only as a diagnostic.",
+    "license": "MIT",
+    "license_blob_sha": "5953bba9f50e93b0a692c40f2b6f4fc10a8222bd",
+    "name": "PyDimension",
+    "repository_url": "https://github.com/xiaoyuxie-vico/PyDimension"
+  },
+  "input": {
+    "base_dimension_order": [
+      "M",
+      "L",
+      "T",
+      "I",
+      "Theta",
+      "N",
+      "J"
+    ],
+    "baseline_hypotheses_under_test": {
+      "nullity": 6,
+      "rank": 4,
+      "system_status": "affine"
+    },
+    "dimension_matrix_rows": [
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        -1,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "generator_order": [
+      "c",
+      "hbar",
+      "k_B",
+      "m_e",
+      "m_p",
+      "m_u",
+      "l_P",
+      "m_P",
+      "t_P",
+      "T_P"
+    ],
+    "target_dimension": [
+      -1,
+      3,
+      -2,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "nonclaims": [
+    "Agreement is methodological corroboration of the tested dimensional computation, not empirical evidence about gravity.",
+    "Agreement does not establish correctness of PyDimension or The Number Project generally.",
+    "The PyDimension float/SciPy nullspace is not accepted as exact evidence.",
+    "No definitional-dependency or definitional-equivalence result is independently verified by this experiment.",
+    "No value of G, physical mechanism, or novel physical law is inferred."
+  ],
+  "outcomes": [
+    "AGREEMENT",
+    "DISAGREEMENT",
+    "INCOMPATIBLE_REPRESENTATION",
+    "EXTERNAL_EXACT_PATH_UNAVAILABLE"
+  ],
+  "planted_control": {
+    "column_index": 0,
+    "comparison": "Compare the control matrix's PyDimension exact nullspace against the unperturbed internal baseline nullspace. The required control outcome is DISAGREEMENT.",
+    "construction": "Copy the preregistered matrix and change the M exponent of c at row M / column c from 0 to 1.",
+    "original": 0,
+    "purpose": "Prove the differential comparison can report a mismatch.",
+    "replacement": 1,
+    "row_index": 0
+  },
+  "project": {
+    "baseline_commit_sha": "6376ee9c74a1f5bff0045b121a7202ec79a9b667",
+    "baseline_semantics": "Merge of PR #17 / Milestone 6C; dimensional/definitional separation invariant is already pinned.",
+    "repository": "mdiaz4052/The-Number-Project"
+  },
+  "schema_version": 1
+}
