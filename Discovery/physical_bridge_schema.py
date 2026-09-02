@@ -8,11 +8,14 @@ construction, or command-line behavior. Validation lives in
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import date
 from decimal import Decimal
 from fractions import Fraction
 from pathlib import Path
+import re
 from types import MappingProxyType
 from typing import Any, Iterable, Mapping
+from urllib.parse import urlsplit
 
 from Discovery.dimensions import Dimension
 from Discovery.planck_identities import (
@@ -107,6 +110,65 @@ def _require_text(value: object, label: str) -> str:
     if not isinstance(value, str) or not value.strip():
         raise BridgeValidationError(f"{label} must be a nonempty string")
     return value
+
+
+_ACCESS_DATE_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$", re.ASCII)
+_DOI_RE = re.compile(r"^10\.[0-9]{4,9}/\S+$", re.ASCII)
+_CERTIFICATE_ID_RE = re.compile(
+    r"^[A-Za-z0-9][A-Za-z0-9._:/+\-]*$",
+    re.ASCII,
+)
+_SOURCE_IDENTIFIER_PREFIXES = ("doi", "url", "certificate")
+
+
+def _validate_access_date(value: object, label: str) -> str:
+    text = _require_text(value, label)
+    if text != text.strip() or _ACCESS_DATE_RE.fullmatch(text) is None:
+        raise BridgeValidationError(
+            f"{label} must be a strict ISO calendar date in YYYY-MM-DD form"
+        )
+    try:
+        date.fromisoformat(text)
+    except ValueError as error:
+        raise BridgeValidationError(
+            f"{label} must be a valid calendar date in YYYY-MM-DD form"
+        ) from error
+    return text
+
+
+def _validate_source_identifier(value: object, label: str) -> str:
+    text = _require_text(value, label)
+    if text != text.strip() or any(character.isspace() for character in text):
+        raise BridgeValidationError(
+            f"{label} cannot contain whitespace or outer padding"
+        )
+    prefix, separator, payload = text.partition(":")
+    if not separator or prefix not in _SOURCE_IDENTIFIER_PREFIXES:
+        raise BridgeValidationError(
+            f"{label} must use one of the explicit prefixes: "
+            "doi:, url:, certificate:"
+        )
+    if prefix == "doi":
+        if _DOI_RE.fullmatch(payload) is None:
+            raise BridgeValidationError(
+                f"{label} has a malformed DOI; expected doi:10.<registrant>/<suffix>"
+            )
+    elif prefix == "url":
+        parsed = urlsplit(payload)
+        if (
+            parsed.scheme != "https"
+            or not parsed.netloc
+            or parsed.username is not None
+            or parsed.password is not None
+        ):
+            raise BridgeValidationError(
+                f"{label} URL must be an absolute credential-free https URL"
+            )
+    elif _CERTIFICATE_ID_RE.fullmatch(payload) is None:
+        raise BridgeValidationError(
+            f"{label} certificate token is malformed"
+        )
+    return text
 
 
 def _unique_text(values: Iterable[str], label: str) -> tuple[str, ...]:
@@ -311,13 +373,18 @@ class QuantityRecord:
             raise BridgeValidationError(
                 f"exact quantity {self.identifier} cannot have nonzero uncertainty"
             )
-        for value, label in (
-            (self.source_identifier, f"source identifier for {self.identifier}"),
-            (self.edition, f"edition for {self.identifier}"),
-            (self.access_date, f"access date for {self.identifier}"),
-        ):
-            if value is not None:
-                _require_text(value, label)
+        if self.source_identifier is not None:
+            _validate_source_identifier(
+                self.source_identifier,
+                f"source identifier for {self.identifier}",
+            )
+        if self.edition is not None:
+            _require_text(self.edition, f"edition for {self.identifier}")
+        if self.access_date is not None:
+            _validate_access_date(
+                self.access_date,
+                f"access date for {self.identifier}",
+            )
 
 
 @dataclass(frozen=True, slots=True)
