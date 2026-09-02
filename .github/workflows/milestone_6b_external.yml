@@ -5,221 +5,185 @@ on:
     branches: [main]
 
 permissions:
-  contents: read
+  contents: write
+
+env:
+  RAW_ARTIFACT_ID: "9861736005"
+  RESULT_ARTIFACT_ID: "9861737008"
+  MUTATION_ARTIFACT_ID: "9861673360"
+  RAW_SHA256: "5dc9ceae6d49a8bfab8f00fc4e0d4ddba8c3a4b31bfe4b0944a65aa4c5cf5176"
+  RESULT_SHA256: "ed01adff58bc6b95b1d6281af92b3d97a1f71757da760a36762a2bde8fb654a4"
+  MUTATION_SHA256: "44ab9598fe07c56091f7ebd27266e7d89a553aa370c144c2744b858df7e94015"
 
 jobs:
-  pysr:
+  finalize:
     if: github.head_ref == 'codex/milestone-6b-pysr-leakage'
     runs-on: ubuntu-latest
-    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v6
         with:
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - name: Verify frozen search source, corrected audit source, and dataset manifest
-        run: |
-          python - <<'PY'
-          import json
-          from Discovery.pysr_leakage_check import SOURCE_PATHS as SEARCH_SOURCE_PATHS
-          from Discovery.pysr_leakage_check_v2 import (
-              SOURCE_PATHS as AUDIT_SOURCE_PATHS,
-              build_dataset_manifest,
-          )
-          from Discovery.pysr_leakage_probe import DATASETS_PATH, canonical_json_bytes
-          from Discovery.source_history import repository_root, verify_committed_source_state
 
-          search_source = "f2c26da24cfa5a463dc2bbadeb83c6bf41cc4689"
-          audit_source = "201a65f44ac316ae9e0f48235a73f99498848ded"
-          verify_committed_source_state(
-              repository_root(), search_source,
-              source_paths=SEARCH_SOURCE_PATHS,
-              artifact_label="Milestone 6B frozen search source",
-          )
-          verify_committed_source_state(
-              repository_root(), audit_source,
-              source_paths=AUDIT_SOURCE_PATHS,
-              artifact_label="Milestone 6B corrected audit source",
-          )
-          committed = json.loads(DATASETS_PATH.read_text(encoding="utf-8"))
-          expected = build_dataset_manifest()
-          if canonical_json_bytes(committed) != canonical_json_bytes(expected):
-              raise SystemExit("dataset manifest mismatch")
-          print("Frozen search source, corrected audit source, and dataset manifest verified.")
-          PY
-      - name: Retrieve and pin PySR source
+      - name: Download exact reviewed evidence artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          git clone https://github.com/astroautomata/PySR.git /tmp/PySR
-          git -C /tmp/PySR checkout --detach 65b887aeaf97f1c5ae84b0ceffb370551e57ce90
-          test "$(git -C /tmp/PySR rev-parse HEAD)" = "65b887aeaf97f1c5ae84b0ceffb370551e57ce90"
-          test "$(git -C /tmp/PySR rev-parse HEAD:pyproject.toml)" = "8ec704fe5ed95541f70390163c9a6a4d682dc5ea"
-          test "$(git -C /tmp/PySR rev-parse HEAD:pysr/juliapkg.json)" = "f4b37052e52c4d1aef7dbfcc950f1cc699e196c1"
-          test "$(git -C /tmp/PySR rev-parse HEAD:LICENSE)" = "0223b98bcc92c9bf0ffc6efc2f6054777be1944a"
-      - name: Install pinned PySR environment
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install /tmp/PySR
-      - name: Run preregistered target-exposed searches
+          set -euo pipefail
+          mkdir -p /tmp/6b/raw /tmp/6b/result /tmp/6b/mutation
+          for spec in \
+            "$RAW_ARTIFACT_ID:/tmp/6b/raw.zip" \
+            "$RESULT_ARTIFACT_ID:/tmp/6b/result.zip" \
+            "$MUTATION_ARTIFACT_ID:/tmp/6b/mutation.zip"
+          do
+            id="${spec%%:*}"
+            dest="${spec#*:}"
+            curl --fail --silent --show-error --location \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${id}/zip" \
+              -o "$dest"
+          done
+          unzip -q /tmp/6b/raw.zip -d /tmp/6b/raw
+          unzip -q /tmp/6b/result.zip -d /tmp/6b/result
+          unzip -q /tmp/6b/mutation.zip -d /tmp/6b/mutation
+          cp /tmp/6b/raw/milestone_6b_pysr_leakage_v1.external.json Experiments/EcosystemComparison/PySRLeakage/
+          cp /tmp/6b/result/milestone_6b_pysr_leakage_v1.result.json Experiments/EcosystemComparison/PySRLeakage/
+          cp /tmp/6b/mutation/milestone_6b_pysr_leakage_v1.mutation_results.json Experiments/EcosystemComparison/PySRLeakage/
+          echo "$RAW_SHA256  Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.external.json" | sha256sum --check --strict
+          echo "$RESULT_SHA256  Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.result.json" | sha256sum --check --strict
+          echo "$MUTATION_SHA256  Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.mutation_results.json" | sha256sum --check --strict
+
+      - name: Finalize permanent CI and documentation
         run: |
           python - <<'PY'
-          import base64
-          import gzip
-          import hashlib
-          import json
-          import math
-          import platform
-          import sys
           from pathlib import Path
 
-          import numpy as np
-          import pysr
-          from pysr import PySRRegressor, jl
+          verify = Path('.github/workflows/verify.yml')
+          text = verify.read_text(encoding='utf-8')
+          anchor = '      - run: python -m Discovery.pydimension_comparison --check\n'
+          replacement = anchor + '      - run: python -m Discovery.pysr_leakage_check --check\n' + '      - run: python -m Discovery.pysr_leakage_mutations --check\n'
+          if 'Discovery.pysr_leakage_check --check' not in text:
+              if anchor not in text:
+                  raise SystemExit('verify.yml insertion anchor missing')
+              text = text.replace(anchor, replacement, 1)
+          verify.write_text(text, encoding='utf-8')
 
-          from Discovery.pysr_leakage_probe import (
-              CHANNELS,
-              CHANNEL_PREDICTORS,
-              EXPERIMENT_IDENTIFIER,
-              EXTERNAL_PATH,
-              PREREGISTRATION_PATH,
-              SEEDS,
-              build_datasets_record,
-              canonical_json_bytes,
-              dataset_hashes,
-              sha256_bytes,
-          )
+          readme = Path('README.md')
+          text = readme.read_text(encoding='utf-8')
+          milestone_anchor = 'input set. The repository records the missing evidence rather than back-solving it from\nthe published value. No empirical result or replication claim is created.\n'
+          milestone_text = '\nMilestone 6B uses a pinned PySR 2.2.0 run on preregistered synthetic controls to test a\nspecific provenance boundary. Its primary methodological result is `BOUNDARY_CONFIRMED`:\na candidate can be dimensionally valid and have no registered algebraic path to `G` while\nstill carrying known target information through the data-generation path. All 26 PySR\noutputs are permanently `target_exposed_candidate` and promotion-ineligible; 17 also fail\nthe project\'s independent dimensional check. This is a software/methodology result, not\nevidence about gravity or a measurement of `G`.\n'
+          if 'Milestone 6B uses a pinned PySR 2.2.0 run' not in text:
+              if milestone_anchor not in text:
+                  raise SystemExit('README milestone insertion anchor missing')
+              text = text.replace(milestone_anchor, milestone_anchor + milestone_text, 1)
 
-          prereg = json.loads(PREREGISTRATION_PATH.read_text(encoding="utf-8"))
-          datasets = build_datasets_record()
-          dataset_sha = sha256_bytes(canonical_json_bytes(datasets))
-          if dataset_sha != prereg["dataset_sha256"]:
-              raise SystemExit("generated dataset hash differs from preregistration")
+          output_anchor = '- `Experiments/Falsification/` records the immutable 5B-core preregistration, complete\n  provenance-stratified null and planted-control result, and disposable-worktree mutation\n  result with source and integrity metadata.\n'
+          output_text = '- `Experiments/EcosystemComparison/PySRLeakage/` records the frozen 6B preregistration,\n  deterministic dataset manifest, raw pinned PySR output, independently normalized audit,\n  and two killed semantic mutations for target-exposure and hidden-generation leakage.\n'
+          if '`Experiments/EcosystemComparison/PySRLeakage/` records' not in text:
+              if output_anchor not in text:
+                  raise SystemExit('README output insertion anchor missing')
+              text = text.replace(output_anchor, output_anchor + output_text, 1)
 
-          search = prereg["search_configuration"]
-          units = prereg["unit_contract"]
-          runs = []
-          Path("/tmp/pysr-runs").mkdir(parents=True, exist_ok=True)
+          label_anchor = '| **Conjecture** | A precise proposed relationship for which no proof is currently supplied. |\n'
+          label_text = '| **Target-exposed candidate** | A candidate proposed or generated after the target or target-bearing data were available to the generating process. It may motivate a new target-clean preregistered path, but the original candidate is not promotion-eligible. |\n'
+          if '**Target-exposed candidate**' not in text:
+              if label_anchor not in text:
+                  raise SystemExit('README epistemic-label insertion anchor missing')
+              text = text.replace(label_anchor, label_anchor + label_text, 1)
+          readme.write_text(text, encoding='utf-8')
 
-          for channel in CHANNELS:
-              predictors = CHANNEL_PREDICTORS[channel]
-              rows = datasets["channels"][channel]
-              X = np.asarray(
-                  [[float(row[name]) for name in predictors] for row in rows],
-                  dtype=np.float64,
-              )
-              y = np.asarray([float(row["G"]) for row in rows], dtype=np.float64)
-              for seed in SEEDS:
-                  model = PySRRegressor(
-                      niterations=search["niterations"],
-                      populations=search["populations"],
-                      population_size=search["population_size"],
-                      ncycles_per_iteration=search["ncycles_per_iteration"],
-                      maxsize=search["maxsize"],
-                      binary_operators=search["binary_operators"],
-                      unary_operators=search["unary_operators"],
-                      precision=search["precision"],
-                      deterministic=search["deterministic"],
-                      parallelism=search["parallelism"],
-                      random_state=seed,
-                      dimensional_constraint_penalty=search["dimensional_constraint_penalty"],
-                      dimensionless_constants_only=search["dimensionless_constants_only"],
-                      model_selection=search["model_selection"],
-                      progress=search["progress"],
-                      verbosity=search["verbosity"],
-                      output_directory=f"/tmp/pysr-runs/{channel}-{seed}",
-                  )
-                  model.fit(
-                      X,
-                      y,
-                      variable_names=list(predictors),
-                      X_units=units[channel]["X_units"],
-                      y_units=units[channel]["y_units"],
-                  )
+          experiment = Path('Experiments/EcosystemComparison/PySRLeakage/README.md')
+          experiment.write_text('''# Milestone 6B — PySR target-leakage probe
 
-                  candidates = []
-                  equations = model.equations_
-                  for _, row in equations.iterrows():
-                      loss = float(row["loss"])
-                      if not math.isfinite(loss):
-                          continue
-                      score_value = row.get("score")
-                      score = None
-                      if score_value is not None:
-                          score_float = float(score_value)
-                          if math.isfinite(score_float):
-                              score = format(score_float, ".17g")
-                      candidates.append(
-                          {
-                              "equation": str(row["equation"]),
-                              "complexity": int(row["complexity"]),
-                              "loss": format(loss, ".17g"),
-                              "score": score,
-                          }
-                      )
-                  runs.append(
-                      {
-                          "channel": channel,
-                          "seed": seed,
-                          "candidate_count": len(candidates),
-                          "candidates": candidates,
-                      }
-                  )
+This experiment tests a boundary of the project's provenance machinery using synthetic data only.
 
-          manifest_text = str(
-              jl.seval('read(joinpath(dirname(Base.active_project()), "Manifest.toml"), String)')
-          )
-          compressed_manifest = gzip.compress(manifest_text.encode("utf-8"), mtime=0)
-          symbolic_regression_version = str(
-              jl.seval("string(Base.pkgversion(SymbolicRegression))")
-          )
-          julia_version = str(jl.seval("string(VERSION)"))
-          active_project = str(jl.seval("Base.active_project()"))
+The central distinction is between:
 
-          record = {
-              "schema_version": 1,
-              "experiment_identifier": EXPERIMENT_IDENTIFIER,
-              "dataset_sha256": dataset_sha,
-              "dataset_channel_sha256": dataset_hashes(datasets),
-              "external_source": {
-                  "repository": "https://github.com/astroautomata/PySR",
-                  "pysr_version": str(pysr.__version__),
-                  "pysr_commit": "65b887aeaf97f1c5ae84b0ceffb370551e57ce90",
-                  "pyproject_blob": "8ec704fe5ed95541f70390163c9a6a4d682dc5ea",
-                  "juliapkg_blob": "f4b37052e52c4d1aef7dbfcc950f1cc699e196c1",
-                  "license_blob": "0223b98bcc92c9bf0ffc6efc2f6054777be1944a",
-              },
-              "resolved_environment": {
-                  "python_version": sys.version,
-                  "platform": platform.platform(),
-                  "numpy_version": np.__version__,
-                  "julia_version": julia_version,
-                  "symbolicregression_version": symbolic_regression_version,
-                  "active_project": active_project,
-                  "manifest_sha256": hashlib.sha256(manifest_text.encode("utf-8")).hexdigest(),
-                  "manifest_gzip_base64": base64.b64encode(compressed_manifest).decode("ascii"),
-              },
-              "search_configuration": search,
-              "runs": runs,
-          }
-          EXTERNAL_PATH.parent.mkdir(parents=True, exist_ok=True)
-          EXTERNAL_PATH.write_bytes(canonical_json_bytes(record))
-          print(f"Wrote {EXTERNAL_PATH} with {sum(r['candidate_count'] for r in runs)} candidates.")
+1. **candidate origin** — PySR saw the target, so every emitted expression is a `target_exposed_candidate`;
+2. **registered algebraic ancestry** — whether exact registered definitions expand an expression to a nonzero power of `G`; and
+3. **known synthetic generation ancestry** — whether a predictor was actually generated from the synthetic target in the preregistered data-generation graph.
+
+## Preregistered channels
+
+- `A_clean`: clean negative control. `u_clean` and `r_clean` are generated upstream of `G = u_clean / r_clean`.
+- `B_registered_leak`: visible positive control. `m_P = sqrt(hbar * c / G)` uses the existing registered Planck-mass dependency.
+- `C_hidden_leak`: hidden calibration-path control. `k_hidden = G * s_hidden`, but `k_hidden` is deliberately registered as atomic.
+
+The primary endpoint is deterministic and does not depend on PySR recovering any planted equation. Channel C asks whether the canonical estimator `k_hidden / s_hidden` is simultaneously dimensionally valid, free of a registered algebraic target path, and known by construction to contain target information through the generation graph.
+
+## Result
+
+The primary methodological endpoint is **`BOUNDARY_CONFIRMED`**. The Channel C canonical control is dimensionally valid, has `no_registered_target_path`, and has known target ancestry in the synthetic generation graph. This demonstrates the intended limitation: registered algebraic dependency tracing cannot by itself establish calibration, statistical, experimental, causal, or physical independence.
+
+The frozen PySR experiment used three channels and seeds `0`, `1`, and `2`, producing 26 finite candidate rows. The independent project audit classified:
+
+- 9 dimensionally valid and 17 dimensionally invalid candidates;
+- 20 normalized monomials and 6 representational gaps;
+- 4 candidates with registered target paths;
+- 16 candidates using predictors with known target-generation leakage; and
+- 6 candidates in the hidden-target-leakage blind spot.
+
+PySR recovered the canonical signature in `A_clean` and `C_hidden_leak`, but not in `B_registered_leak`. Failure to recover the planted B relation was permitted by the preregistration and was not followed by search-budget or operator tuning.
+
+In Channel C, each seed emitted both `k_hidden` and `k_hidden / s_hidden`. All six are dimensionally valid and have no registered algebraic target path, while their referenced `k_hidden` predictor is known by construction to have been generated downstream of the target. Those six records therefore instantiate the primary blind spot directly.
+
+## Candidate-origin rule
+
+Every expression emitted by PySR is permanently labeled `target_exposed_candidate` because the fitting engine had access to the target. Such a candidate is never promotion-eligible. It may motivate a new target-clean preregistered investigation, but the original record cannot be relabeled into stronger evidence.
+
+Two selected semantic mutations were run in the project's existing disposable-worktree harness. A mutant that bypassed the target-exposed promotion valve was killed. A mutant that collapsed generation-DAG leakage into the registered algebraic result, erasing the Channel C distinction, was also killed.
+
+## External source and reproducibility pins
+
+The external search is pinned to PySR 2.2.0 commit `65b887aeaf97f1c5ae84b0ceffb370551e57ce90`. The run resolved SymbolicRegression.jl 2.2.0 on Julia 1.11.9 and records the complete resolved Julia manifest inside the raw external artifact. The permanent project checker does not import PySR and ordinary CI does not rerun symbolic regression.
+
+Evidence hashes:
+
+- raw external artifact: `5dc9ceae6d49a8bfab8f00fc4e0d4ddba8c3a4b31bfe4b0944a65aa4c5cf5176`;
+- normalized project result: `ed01adff58bc6b95b1d6281af92b3d97a1f71757da760a36762a2bde8fb654a4`;
+- selected mutation evidence: `44ab9598fe07c56091f7ebd27266e7d89a553aa370c144c2744b858df7e94015`.
+
+The preregistration was committed at `a3cc025bf41670e37b1f85583205156eea1db2b0` before result-sensitive fitting. Search-driving project source was frozen at `f2c26da24cfa5a463dc2bbadeb83c6bf41cc4689`. The normalized result records corrected audit-source commit `201a65f44ac316ae9e0f48235a73f99498848ded`; the selected mutation artifact records source anchor `182e2f3e6129f3a1ffff4890437b8e56119c6575`.
+
+## Execution note
+
+The first frozen PySR search completed and emitted 26 candidates, but the initial normalization step failed on a constant-only expression. Numeric constants were already permitted by the preregistered grammar; the adapter incorrectly passed an empty exponent signature into an older helper that rejects empty signatures. The correction explicitly handles constant-only monomials as dimensionless expressions with no registered target path and adds a regression test. No dataset, seed, operator, unit setting, search budget, or acceptance criterion was changed after observing the output.
+
+The corrected run also uploads raw external evidence before normalization, so a future project-side audit failure cannot discard the external search record. The temporary external-search and mutation workflows are not part of the final review branch; only deterministic permanent checkers remain in ordinary CI.
+
+## Nonclaims
+
+This is not a measurement of `G`, not evidence for gravity, and not independent confirmation of any PySR expression. PySR's dimensional penalty is not a project acceptance rule. Repeated recovery across seeds does not remove target exposure. The synthetic generation graph is known by construction and is not a general causal-inference method. The two killed mutants do not establish that the 6B machinery is defect-free.
+''', encoding='utf-8')
+
+          for path in (
+              Path('.github/workflows/milestone_6b_external.yml'),
+              Path('.github/workflows/milestone_6b_mutations.yml'),
+              Path('.github/workflows/milestone_6b_finalize.yml'),
+          ):
+              if path.exists():
+                  path.unlink()
           PY
-      - name: Upload raw external evidence even if normalization fails
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: milestone-6b-pysr-raw
-          path: Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.external.json
-          if-no-files-found: error
-      - name: Normalize and verify evidence without trusting PySR classifications
+
+      - name: Validate final evidence package before commit
         run: |
-          python -m Discovery.pysr_leakage_check_v2 --write-result --source-commit-sha 201a65f44ac316ae9e0f48235a73f99498848ded
-          python -m Discovery.pysr_leakage_check_v2 --check
-      - name: Upload normalized result
-        uses: actions/upload-artifact@v4
-        with:
-          name: milestone-6b-pysr-result
-          path: Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.result.json
-          if-no-files-found: error
+          set -euo pipefail
+          python -m unittest discover -s tests -v
+          python -m Discovery.pysr_leakage_check --check
+          python -m Discovery.pysr_leakage_mutations --check
+          git diff --check
+
+      - name: Commit finalized evidence package
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git status --short
+          git commit -m "Finalize Milestone 6B evidence and guards"
+          git push origin HEAD:codex/milestone-6b-pysr-leakage
