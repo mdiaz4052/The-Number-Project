@@ -1,0 +1,628 @@
+{
+  "comparison": {
+    "exact_nullspace_span_equal": true,
+    "external_exact": {
+      "canonical_nullspace_row_span": [
+        [
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "-1",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "-2",
+          "-1",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "-2",
+          "-1",
+          "2",
+          "1"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "-1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "-1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "-1",
+          "0",
+          "0"
+        ]
+      ],
+      "nullity": 6,
+      "primitive_basis_vectors": [
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "-1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "-1",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "1",
+          "-1",
+          "0",
+          "1",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "-1",
+          "0",
+          "0"
+        ],
+        [
+          "2",
+          "-1",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "2",
+          "0",
+          "-1",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "-1"
+        ]
+      ],
+      "rank": 4,
+      "residuals": [
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      ]
+    },
+    "external_exact_residuals_zero": true,
+    "external_kernel_preserves_affine_solution": true,
+    "float_scipy_diagnostic": {
+      "basis_shape": [
+        10,
+        6
+      ],
+      "max_abs_residual": "7.2164496600635175e-16"
+    },
+    "generator_order": [
+      "c",
+      "hbar",
+      "k_B",
+      "m_e",
+      "m_p",
+      "m_u",
+      "l_P",
+      "m_P",
+      "t_P",
+      "T_P"
+    ],
+    "internal": {
+      "canonical_nullspace_row_span": [
+        [
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "-1",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "-2",
+          "-1",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "-2",
+          "-1",
+          "2",
+          "1"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "-1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "-1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "-1",
+          "0",
+          "0"
+        ]
+      ],
+      "nullity": 6,
+      "nullspace_basis_vectors": [
+        [
+          "0",
+          "0",
+          "0",
+          "-1",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "-1",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "1",
+          "-1",
+          "0",
+          "1",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "-1",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "2",
+          "-1",
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "-2",
+          "0",
+          "1",
+          "-1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "particular_solution": [
+        "1",
+        "1",
+        "0",
+        "-2",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "rank": 4,
+      "status": "affine"
+    },
+    "internal_particular_solution_exact": true,
+    "matrix": [
+      [
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        -1,
+        -1,
+        -2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "outcome": "AGREEMENT",
+    "ranks_and_nullities_agree": true
+  },
+  "experiment_identifier": "milestone_6a_pydimension_exact_nullspace_v1",
+  "external_execution": {
+    "environment": {
+      "import_policy": "Load PyDimension's pinned data_generation config.py and generator.py directly from the cloned checkout without importing pydimension.__init__, so unrelated ML dependencies are not required.",
+      "os": "ubuntu-24.04",
+      "packages": {
+        "matplotlib": "3.10.5",
+        "numpy": "2.3.2",
+        "pandas": "2.3.2",
+        "scipy": "1.16.1",
+        "sympy": "1.14.0"
+      },
+      "python": "3.12.14"
+    },
+    "external_comparator": {
+      "commit_sha": "a899cd41e327a8ad185b139537272eecb6a9adb4",
+      "exact_code_blob_sha": "5ffcabd41dd011f5b42b65b16c0fa74d61b0a2ae",
+      "exact_code_path": "pydimension/data_generation/generator.py::DataGenerator._simplify_basis_vectors",
+      "exact_path_semantics": "The method recomputes Matrix(self.dimension_matrix).nullspace() with SymPy exact arithmetic, clears denominators, reduces primitive integer vectors, and only then converts those primitive entries to float for its return array.",
+      "float_path": "pydimension/data_generation/generator.py::DataGenerator._compute_basis_vectors",
+      "float_path_semantics": "The surrounding method first calls scipy.linalg.null_space. The Milestone 6A verdict must not use that floating SVD basis for exact span equality; it is recorded only as a diagnostic.",
+      "license": "MIT",
+      "license_blob_sha": "5953bba9f50e93b0a692c40f2b6f4fc10a8222bd",
+      "name": "PyDimension",
+      "repository_url": "https://github.com/xiaoyuxie-vico/PyDimension"
+    },
+    "runner": {
+      "evidence_transfer": "upload-only Actions artifact",
+      "execution": "GitHub Actions disposable runner",
+      "repository_write_permission": false
+    }
+  },
+  "integrity": {
+    "external_output_path": "Experiments/EcosystemComparison/PyDimension/milestone_6a_pydimension_v1.external.json",
+    "external_output_sha256": "e6d7760add5a1ad974377a685c503365333487751b3d71a618fd23e63eb6175e",
+    "preregistration_commit_sha": "f12639b79631d122b6dc83795b51aa2ee9a7a589",
+    "preregistration_path": "Experiments/EcosystemComparison/PyDimension/milestone_6a_pydimension_v1.preregistration.json",
+    "preregistration_sha256": "cbd1f570d7c2483a909ca18c3431499f959ac2f259ebe34f7e6aef29b823dcf4",
+    "project_source_commit_sha": "9abf4de2ffc045d2ca7d6613e02a2eb5b731d281",
+    "source_paths": [
+      "Discovery/pydimension_comparison.py",
+      "Discovery/constants.py",
+      "Discovery/dimensions.py",
+      "Discovery/monomial_constraints.py",
+      "Discovery/source_history.py",
+      "tests/test_pydimension_comparison.py",
+      "Experiments/EcosystemComparison/PyDimension/milestone_6a_pydimension_v1.preregistration.json"
+    ]
+  },
+  "methodological_result_status": "AGREEMENT",
+  "nonclaims": [
+    "Agreement is methodological corroboration of the tested dimensional computation, not empirical evidence about gravity.",
+    "Agreement does not establish correctness of PyDimension or The Number Project generally.",
+    "The PyDimension float/SciPy nullspace is not accepted as exact evidence.",
+    "No definitional-dependency or definitional-equivalence result is independently verified by this experiment.",
+    "No value of G, physical mechanism, or novel physical law is inferred."
+  ],
+  "planted_control": {
+    "canonical_control_row_span": [
+      [
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "-1",
+        "-1",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "-2",
+        "-1",
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1",
+        "0",
+        "0",
+        "0",
+        "-2",
+        "-1",
+        "2",
+        "1"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "1",
+        "0",
+        "0",
+        "0",
+        "-1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "1",
+        "0",
+        "0",
+        "-1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1",
+        "0",
+        "-1",
+        "0",
+        "0"
+      ]
+    ],
+    "construction": "Copy the preregistered matrix and change the M exponent of c at row M / column c from 0 to 1.",
+    "equal_to_unperturbed_internal_span": false,
+    "external_exact_nullity": 6,
+    "external_exact_rank": 4,
+    "outcome": "DISAGREEMENT",
+    "required_outcome": "DISAGREEMENT"
+  },
+  "schema_version": 1
+}
