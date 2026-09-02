@@ -78,10 +78,11 @@ provenance plus a source identifier, edition, and access date. Source metadata i
 form-validated at `QuantityRecord` construction: access dates must be valid calendar dates
 in strict `YYYY-MM-DD` form, and source identifiers must use an explicit `doi:`,
 `url:https://...`, or `certificate:` form. Edition remains descriptive nonempty text.
-This makes absent or syntactically malformed source metadata fail closed. It does not prove
-that a cited value was experimentally independent, that a syntactically valid identifier
-resolves to the claimed evidence, or that an editor did not fabricate a plausible citation;
-source auditing remains an evidence task.
+Malformed forms are rejected before model-level empirical evaluation. This makes absent
+or syntactically malformed source metadata fail closed. It does not prove that a cited
+value was experimentally independent, that a syntactically valid identifier resolves to
+the claimed evidence, or that an editor did not fabricate a plausible citation; source
+auditing remains an evidence task.
 
 [`uw_2000_published_data_pilot_v1.manifest.json`](uw_2000_published_data_pilot_v1.manifest.json)
 pins the exact bytes of the original preregistration, the clarification, and the source
