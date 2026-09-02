@@ -23,7 +23,9 @@ The preregistration was committed before the target matrix was run through the e
 
 The inspected helper recomputes `Matrix(self.dimension_matrix).nullspace()` with SymPy, clears denominators and reduces each vector to a primitive integer representative. The surrounding PyDimension method first computes a floating SciPy/SVD nullspace; 6A records that only as a diagnostic and does not use it for the exact verdict.
 
-PyDimension supplies the primitive kernel vectors through that pinned helper. The external runner also uses the same frozen SymPy environment to record exact matrix rank/nullity and to reject any returned primitive vector with nonzero exact residual. Those auxiliary checks should not be mistaken for a separate independent rank algorithm.
+The two kernel algorithms are genuinely distinct: The Number Project uses its own standard-library `Fraction` Gauss-Jordan/RREF implementation, while the external path uses SymPy's `Matrix.nullspace()`. PyDimension is reached through the pinned private helper by constructing a `DataGenerator` instance without its normal constructor and setting `dimension_matrix` directly. This exercises the pinned PyDimension algorithm, not a supported public API; the blob pin makes this result reproducible at the pinned commit but does not promise that the same invocation will remain available in future PyDimension versions.
+
+The external runner also uses the same frozen SymPy environment to record exact matrix rank/nullity and to reject any returned primitive vector with nonzero exact residual. Those auxiliary checks should not be mistaken for a separate independent rank algorithm.
 
 ## Comparison rule
 
@@ -68,7 +70,11 @@ Thus the differential harness is capable of reporting a real mismatch instead of
 
 The external run used a disposable GitHub Actions runner with `contents: read`. It cloned the pinned PyDimension commit, verified the code and license Git blobs, executed the frozen environment, and uploaded evidence without repository write permission. The temporary workflow was removed after the raw and normalized artifacts were reviewed and committed.
 
-Successful canonical external run: `33661571456`.
+Successful canonical external comparison run: `33661571456`.
+
+Subsequent ordinary project Verify run for PR #18: `33662023313`.
+
+These are different jobs with different purposes: the first generated the pinned external evidence; the second ran the permanent project test suite and nine `--check` guards against the committed evidence.
 
 A preceding infrastructure attempt failed only because the temporary inline runner used a lowercase JSON-style `false` inside Python metadata. It failed before serializing an external result. The typo was corrected without changing the preregistration or result-driving project source anchor.
 
@@ -82,6 +88,10 @@ Committed normalized result SHA-256 at initial commit time:
 
 Normal CI does not install or rerun PyDimension. `python -m Discovery.pydimension_comparison --check` hashes the committed external bytes, recomputes all project-side exact classifications and span comparisons, verifies the planted-control result, and checks that result-driving project source has not changed since its recorded anchor.
 
+For future out-of-band external reproductions, the intended provenance pattern is the one used here: read-only execution, upload-only evidence transfer, pinned source/environment, then a separate reviewed repository commit of the reproduced evidence. The reproduction record should identify both the external execution and the later ordinary project verification when both are relevant.
+
 ## Nonclaims
 
 This experiment does not establish a value of `G`, evidence for a physical mechanism, correctness of either software system generally, or independent confirmation of the project's definitional-dependency analysis. It is a bounded differential check of one exact dimensional nullspace computation.
+
+Both implementations are given the same dimension matrix, constructed from this project's own constant definitions. Agreement corroborates the nullspace computation over that matrix and cannot detect an error in the matrix itself.
