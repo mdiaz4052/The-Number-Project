@@ -35,6 +35,7 @@ SOURCE_PATHS = (
     "Discovery/mutation_harness.py",
     "Discovery/mutation_test_runner.py",
     "tests/test_pysr_leakage_probe.py",
+    "tests/test_pysr_leakage_mutation_guards.py",
 )
 
 MUTANTS = (
@@ -67,8 +68,8 @@ MUTANTS = (
         ),
         new_text="    generation_leakage = registered == TARGET_PATH_DETECTED\n",
         test_names=(
-            "tests.test_pysr_leakage_probe.PySRLeakageProbeTests."
-            "test_canonical_controls_pin_three_distinct_leakage_states",
+            "tests.test_pysr_leakage_mutation_guards.PySRLeakageMutationGuardTests."
+            "test_hidden_generation_path_remains_independent_of_registered_graph",
         ),
         required_modules=("Discovery.pysr_leakage_probe",),
     ),
