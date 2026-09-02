@@ -8,15 +8,23 @@ from Discovery import physical_bridge_schema as bridge_schema
 from Discovery import physical_bridge_validation as bridge_validation
 from Discovery.dependency_analysis import build_artifact as build_dependency_artifact
 from Discovery.dependency_definitions import DEFAULT_DEPENDENCY_CATALOG
-from Discovery.dimensions import GRAVITATIONAL_CONSTANT
+from Discovery.dimensions import DIMENSIONLESS, GRAVITATIONAL_CONSTANT
 from Discovery.physical_bridge import (
+    CORRECTION,
     COVARIANCE_MATRIX,
+    DECLARED_LOCAL_ATOM,
     DEFAULT_CONTRACT_OUTPUT,
     DEFAULT_EXAMPLE_OUTPUT,
+    DEFINITION,
+    DERIVED_QUANTITY,
+    DOCUMENTED,
+    EMPIRICAL_RECORD,
     EXPLICIT_ZERO_ASSUMPTION,
     INCOMPLETE,
     LEAN_THEOREMS_BY_ID,
+    MODEL_PARAMETER,
     NO_REGISTERED_TARGET_PATH,
+    NOT_APPLICABLE,
     REGISTERED_EXPRESSION,
     SATISFIED,
     STRUCTURAL_PLACEHOLDER,
@@ -146,6 +154,18 @@ class PhysicalBridgeTests(unittest.TestCase):
                 ):
                     validate_measurement_model(model)
 
+    def test_external_g_reference_cannot_be_an_estimator_input(self) -> None:
+        model = build_inverse_square_model()
+        terms = (
+            EstimatorTerm("codata_2022_G", Fraction(1)),
+            *model.estimator_terms[1:],
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "forbidden estimator input role for codata_2022_G",
+        ):
+            validate_measurement_model(replace(model, estimator_terms=terms))
+
     def test_reference_g_used_in_calibration_is_rejected(self) -> None:
         model = build_inverse_square_model()
         edge = ProvenanceEdge(
@@ -181,6 +201,250 @@ class PhysicalBridgeTests(unittest.TestCase):
             "reference G is used in calibration or correction alignment_correction",
         ):
             validate_measurement_model(model)
+
+    def test_reference_g_used_in_tuning_or_acceptance_is_rejected(self) -> None:
+        for identifier, role in (
+            ("tuning_parameter", MODEL_PARAMETER),
+            ("acceptance_decision", DERIVED_QUANTITY),
+        ):
+            with self.subTest(path=identifier):
+                model = build_inverse_square_model()
+                node = QuantityRecord(
+                    identifier,
+                    f"{identifier}_symbol",
+                    role,
+                    GRAVITATIONAL_CONSTANT,
+                    "m^3 kg^-1 s^-2",
+                    DECLARED_LOCAL_ATOM,
+                    None,
+                    STRUCTURAL_PLACEHOLDER,
+                    "Adversarial node that must not consume a comparison reference.",
+                )
+                edge = ProvenanceEdge(
+                    identifier,
+                    "codata_2022_G",
+                    "model_input",
+                    "Forbidden attempt to use reference G before terminal comparison.",
+                )
+                with self.assertRaisesRegex(
+                    BridgeValidationError,
+                    "may feed comparison nodes only",
+                ):
+                    validate_measurement_model(
+                        replace(
+                            model,
+                            quantities=(*model.quantities, node),
+                            metrological_edges=(*model.metrological_edges, edge),
+                        )
+                    )
+
+    def test_populated_empirical_calibration_requires_source_provenance(self) -> None:
+        model = replace(
+            build_inverse_square_model(),
+            evidence_level=EMPIRICAL_RECORD,
+        )
+        model = replace_quantity(
+            model,
+            "force_reference",
+            provenance_evidence=DOCUMENTED,
+            value=Decimal("1"),
+            standard_uncertainty=Decimal("0.1"),
+            uncertainty_unit="N",
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "source provenance metadata for force_reference",
+        ):
+            validate_measurement_model(model)
+
+    def test_populated_empirical_calibration_requires_documented_provenance(self) -> None:
+        model = replace(
+            build_inverse_square_model(),
+            evidence_level=EMPIRICAL_RECORD,
+        )
+        model = replace_quantity(
+            model,
+            "force_reference",
+            provenance_evidence=STRUCTURAL_PLACEHOLDER,
+            value=Decimal("1"),
+            standard_uncertainty=Decimal("0.1"),
+            uncertainty_unit="N",
+            source_identifier="certificate:force-reference",
+            edition="certificate edition 1",
+            access_date="2026-09-01",
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "missing documented provenance",
+        ):
+            validate_measurement_model(model)
+
+    def test_each_empirical_source_metadata_field_is_required(self) -> None:
+        complete_metadata = {
+            "source_identifier": "certificate:force-reference",
+            "edition": "certificate edition 1",
+            "access_date": "2026-09-01",
+        }
+        for field, diagnostic in (
+            ("source_identifier", "source identifier"),
+            ("edition", "source edition"),
+            ("access_date", "source access date"),
+        ):
+            with self.subTest(field=field):
+                model = replace(
+                    build_inverse_square_model(),
+                    evidence_level=EMPIRICAL_RECORD,
+                )
+                metadata = dict(complete_metadata)
+                metadata[field] = None
+                model = replace_quantity(
+                    model,
+                    "force_reference",
+                    provenance_evidence=DOCUMENTED,
+                    value=Decimal("1"),
+                    standard_uncertainty=Decimal("0.1"),
+                    uncertainty_unit="N",
+                    **metadata,
+                )
+                with self.assertRaisesRegex(
+                    BridgeValidationError,
+                    f"missing {diagnostic}",
+                ):
+                    validate_measurement_model(model)
+
+    def test_exact_flag_does_not_bypass_empirical_source_metadata(self) -> None:
+        model = replace(
+            build_inverse_square_model(),
+            evidence_level=EMPIRICAL_RECORD,
+        )
+        exact_record = QuantityRecord(
+            "materialized_pi_factor",
+            "pi_factor_numeric",
+            DEFINITION,
+            DIMENSIONLESS,
+            "1",
+            DECLARED_LOCAL_ATOM,
+            None,
+            DOCUMENTED,
+            (
+                "Adversarial materialized decimal record: exact=True must not turn "
+                "an unsourced coefficient into a symbolic mathematical constant."
+            ),
+            value=Decimal("3.141592653589793"),
+            standard_uncertainty=Decimal("0"),
+            uncertainty_unit="1",
+            exact=True,
+        )
+        uncertainty = replace(
+            model.uncertainty_model,
+            input_ids=(
+                *model.uncertainty_model.input_ids,
+                exact_record.identifier,
+            ),
+        )
+        model = replace(
+            model,
+            quantities=(*model.quantities, exact_record),
+            estimator_terms=(
+                *model.estimator_terms,
+                EstimatorTerm(exact_record.identifier, Fraction(1)),
+            ),
+            definition_edges=(
+                *model.definition_edges,
+                ProvenanceEdge(
+                    "G_hat",
+                    exact_record.identifier,
+                    "definition",
+                    "Adversarial exact numeric estimator coefficient.",
+                ),
+            ),
+            uncertainty_model=uncertainty,
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "source provenance metadata for materialized_pi_factor",
+        ):
+            validate_measurement_model(model)
+
+    def test_declared_calibration_outside_estimator_ancestry_requires_source(self) -> None:
+        model = replace(
+            build_inverse_square_model(),
+            evidence_level=EMPIRICAL_RECORD,
+        )
+        calibration = QuantityRecord(
+            "auxiliary_calibration",
+            "aux_cal",
+            DEFINITION,
+            DIMENSIONLESS,
+            "1",
+            DECLARED_LOCAL_ATOM,
+            None,
+            DOCUMENTED,
+            "Declared calibration intentionally disconnected from estimator ancestry.",
+            value=Decimal("1"),
+            standard_uncertainty=Decimal("0.1"),
+            uncertainty_unit="1",
+        )
+        model = replace(
+            model,
+            quantities=(*model.quantities, calibration),
+            calibration_source_ids=(
+                *model.calibration_source_ids,
+                calibration.identifier,
+            ),
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "source provenance metadata for auxiliary_calibration",
+        ):
+            validate_measurement_model(model)
+
+    def test_declared_correction_outside_estimator_ancestry_requires_source(self) -> None:
+        model = replace(
+            build_inverse_square_model(),
+            evidence_level=EMPIRICAL_RECORD,
+        )
+        correction = QuantityRecord(
+            "auxiliary_correction",
+            "aux_corr",
+            CORRECTION,
+            DIMENSIONLESS,
+            "1",
+            UNRESOLVED_ALGEBRAIC_PROVENANCE,
+            None,
+            UNRESOLVED_PROVENANCE_EVIDENCE,
+            "Declared correction intentionally disconnected from estimator ancestry.",
+            value=Decimal("1"),
+            standard_uncertainty=Decimal("0.1"),
+            uncertainty_unit="1",
+        )
+        uncertainty = replace(
+            model.uncertainty_model,
+            correction_ids=(
+                *model.uncertainty_model.correction_ids,
+                correction.identifier,
+            ),
+        )
+        model = replace(
+            model,
+            quantities=(*model.quantities, correction),
+            correction_ids=(*model.correction_ids, correction.identifier),
+            uncertainty_model=uncertainty,
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "source provenance metadata for auxiliary_correction",
+        ):
+            validate_measurement_model(model)
+
+    def test_unpopulated_empirical_record_stays_incomplete(self) -> None:
+        model = replace(
+            build_inverse_square_model(),
+            evidence_level=EMPIRICAL_RECORD,
+        )
+        evaluation = evaluate_measurement_model(model)
+        self.assertEqual(evaluation.empirical_population_status, INCOMPLETE)
+        self.assertEqual(evaluation.replication_status, NOT_APPLICABLE)
 
     def test_codata_reference_is_allowed_only_in_terminal_comparison(self) -> None:
         record = measurement_model_record(build_inverse_square_model())

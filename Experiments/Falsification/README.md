@@ -92,14 +92,27 @@ behavior-preserving source transformation survived. The production results were:
 - disabling the dedicated calibration/correction reference diagnostic was **killed**
   by fixtures that pin its precedence before the broader terminal-comparison rule. This
   is a diagnostic-precedence, defense-in-depth kill, not an independent safety kill:
-  the broader rule still rejects the same paths; and
+  the broader rule still rejects the same paths;
+- disabling the complete source-provenance gate for populated empirical estimator,
+  calibration, and correction records was **killed** by a behavioral test that populates
+  an unsourced calibration coefficient;
+- disabling the separate `documented` provenance classification was **killed** while all
+  three source fields were present;
+- disabling the source identifier, edition, and access-date requirements was **killed**
+  by a behavioral test that checks each field separately;
+- narrowing the gate back to estimator ancestry was **killed** by declared calibration and
+  correction records deliberately placed outside that ancestry;
 - inverting the dependency artifact's `--check` comparison was **killed** by a subprocess
   test that exercises the module CLI against both current and stale artifacts.
 
-All four selected production mutants are detected by behavioral assertions. Three
-exercise independent acceptance or checker decisions; the calibration-reference mutant
-pins an explicit defense-in-depth diagnostic without changing acceptance. No source-text,
-literal-string, or exact-patch detector was added to improve the mutation score.
+All eight selected production mutants are detected by behavioral assertions. Seven change
+acceptance or checker behavior; the calibration-reference mutant pins an explicit
+defense-in-depth diagnostic without changing acceptance. No source-text, literal-string,
+or exact-patch detector was added to improve the mutation score.
+
+An additional behavioral test confirms that `exact=True` cannot bypass empirical source
+metadata. These source gates verify declared provenance records, not real-world
+experimental independence.
 
 The mutation harness automatically creates detached worktrees at the recorded source
 SHA, proves relevant module `__file__` paths are under the disposable root inside the
@@ -119,6 +132,15 @@ source commit; requires clean, unchanged canonical status fingerprints, unchange
 and confirmed worktree cleanup; and rederives the classifications, calibration validity,
 family status, and production interpretation from the frozen mutant catalog. A one-field
 source-SHA bump or a rehashed false safety flag therefore cannot make stale or
-methodologically invalid records current. This remains a tamper-evidence pin, not a
-reproduction proof: a knowing editor can update the source snapshot, records, and digest
-together. The null artifact remains the byte-for-byte deterministic reproduction guard.
+methodologically invalid records current. The verifier also compares `calibration_rule`,
+`anti_goodhart_rule`, and `nonclaims` with canonical module constants; editing one and
+recomputing the record digest does not restore acceptance.
+
+The 34-case leakage corpus validates each advisory `expected_gate` name against an
+explicit registry and rejects unknown names. The registry checks test metadata; it does
+not turn diagnostic labels into additional acceptance gates.
+
+These controls remain tamper-evidence pins, not reproduction proof or protection against
+a knowing forger. A knowing editor can change source, catalog, tests, records, constants,
+and digest together. The null artifact remains the byte-for-byte deterministic
+reproduction guard.

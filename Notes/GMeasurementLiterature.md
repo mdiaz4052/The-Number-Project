@@ -61,6 +61,42 @@ This paper is the clearest warning against treating `F` as a primitive number: t
 signal is inferred from angular acceleration, a feedback system, geometry, and a response
 model.
 
+The UW pilot used the exact open edition
+[`gr-qc/0006043v2`](https://arxiv.org/abs/gr-qc/0006043v2), revised 2000-08-08, for
+line-by-line source mapping. The authors' public
+[`Big G` apparatus page](https://asd.gsfc.nasa.gov/Stephen.Merkowitz/G/Big_G.html) was
+also checked for additional numerical inputs; it is official supporting context, not a
+replacement for the paper.
+
+#### Gundlach (1999): prototype and design evidence, not 2000 inputs
+
+J. H. Gundlach, “A rotating torsion balance experiment to measure Newton's constant,”
+*Measurement Science and Technology* 10, 454--459 (1999),
+[doi:10.1088/0957-0233/10/6/307](https://doi.org/10.1088/0957-0233/10/6/307)
+([author-hosted PDF](https://www.npl.washington.edu/eotwash/sites/sand.npl.washington.edu.eotwash/files/documents/mst10-454.pdf)).
+
+This is a valid apparatus-lineage source, but it is explicitly excluded as a source of
+numerical inputs for the 2000 result. Its `Q_22 = 0.52 g cm^-3` belongs to a lab-fixed
+proof-of-principle Pb attractor that the paper says is about five times weaker than the
+planned `G` source. Its Table 1 is a proposed approximate budget, not the 2000 result's
+uncertainty budget. Its `125 mm`, approximately `8 kg`, `16.5 cm` design geometry also
+differs from the PRL's as-built `124.89 mm`, approximately `8.140 kg`, `16.76 cm` values.
+These plausible values must not be substituted for the missing 2000 coupling, measured
+budget, or apparatus geometry.
+
+The 2002 CODATA adjustment review, P. J. Mohr and B. N. Taylor, “CODATA recommended
+values of the fundamental physical constants: 2002,” *Reviews of Modern Physics* 77,
+1--107 (2005), [doi:10.1103/RevModPhys.77.1](https://doi.org/10.1103/RevModPhys.77.1)
+([official NIST PDF](https://physics.nist.gov/cuu/pdf/CODATA_RMP2005.pdf)), records the
+later UW correction as originating in a 2002 private communication. It is therefore
+historical comparison evidence, not a public companion input set.
+
+The suggested citation *Physical Review D* 66, 082001 (2002),
+[doi:10.1103/PhysRevD.66.082001](https://doi.org/10.1103/PhysRevD.66.082001), is Milani
+et al., “Testing general relativity with the BepiColombo radio science experiment.” It is
+recorded here as a bibliographic exclusion so it cannot be reused as UW apparatus
+evidence.
+
 ### Schlamminger et al. (2006): beam balance
 
 S. Schlamminger et al., “Measurement of Newton's gravitational constant,”
@@ -103,7 +139,8 @@ classical geometry, source-mass characterization, corrections, and uncertainty.
 
 Q. Li et al., “Measurements of the gravitational constant using two independent
 methods,” *Nature* 560, 582--588 (2018),
-[doi:10.1038/s41586-018-0431-5](https://doi.org/10.1038/s41586-018-0431-5).
+[doi:10.1038/s41586-018-0431-5](https://doi.org/10.1038/s41586-018-0431-5)
+([official supplementary information](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-018-0431-5/MediaObjects/41586_2018_431_MOESM1_ESM.pdf)).
 
 | Bridge question | Architectural summary |
 |---|---|
@@ -118,6 +155,12 @@ The word “independent” in the paper title describes the two determinations. 
 software deliberately avoids turning that word into a generic machine status: a defensible
 independence claim must say exactly which algebraic, calibration, apparatus, personnel, and
 analysis dependencies are or are not shared.
+
+The official supplement is the source-completeness reason to audit the AAF determination
+next: it publishes an estimator relation, aggregate coupling and angular-acceleration
+values, magnetic-damper parameters, standard-uncertainty convention, and a stated
+cross-run correlation treatment. Those are candidate locators only until a separate
+preregistration and full source map reach `GO`.
 
 ## Adjusted external reference
 

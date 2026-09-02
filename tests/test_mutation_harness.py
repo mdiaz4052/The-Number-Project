@@ -5,10 +5,13 @@ import types
 import unittest
 
 from Discovery.mutation_harness import (
+    ANTI_GOODHART_RULE,
     CALIBRATION_MUTANTS,
+    CALIBRATION_RULE,
     DEFAULT_OUTPUT,
     INVALID,
     KILLED,
+    NONCLAIMS,
     SURVIVED,
     Mutant,
     apply_mutation,
@@ -139,6 +142,36 @@ class MutationHarnessUnitTests(unittest.TestCase):
             with self.subTest(field=tampered):
                 with self.assertRaisesRegex(ValueError, "mutation-record hash mismatch"):
                     validate_result_integrity(tampered)
+
+    def test_pinned_methodological_claims_reject_rehashed_edits(self) -> None:
+        original = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
+        changes = {
+            "calibration_rule": f"{CALIBRATION_RULE} Changed.",
+            "anti_goodhart_rule": f"{ANTI_GOODHART_RULE} Changed.",
+            "nonclaims": [*NONCLAIMS[:-1], "Changed methodological nonclaim."],
+        }
+        for field, replacement in changes.items():
+            with self.subTest(field=field):
+                result = json.loads(json.dumps(original))
+                result[field] = replacement
+                result["integrity"]["records_sha256"] = mutation_records_sha256(
+                    result["calibration_results"],
+                    result["production_results"],
+                    source_commit_sha=result["integrity"]["source_commit_sha"],
+                    source_snapshot=result["integrity"]["source_snapshot"],
+                )
+                with self.assertRaisesRegex(
+                    ValueError,
+                    f"pinned field mismatch: {field}",
+                ):
+                    validate_result_integrity(result)
+
+    def test_clean_committed_methodological_claims_are_canonical(self) -> None:
+        result = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))
+        self.assertEqual(result["calibration_rule"], CALIBRATION_RULE)
+        self.assertEqual(result["anti_goodhart_rule"], ANTI_GOODHART_RULE)
+        self.assertEqual(result["nonclaims"], list(NONCLAIMS))
+        validate_result_integrity(result)
 
     def test_calibration_status_is_rederived_from_records(self) -> None:
         result = json.loads(DEFAULT_OUTPUT.read_text(encoding="utf-8"))

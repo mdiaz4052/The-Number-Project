@@ -1,7 +1,8 @@
 # Physical bridge records for G
 
-This directory contains Milestone 4's deterministic contract artifacts. It contains no
-experimental dataset and reports no measured value of `G`.
+This directory contains Milestone 4's deterministic contract artifacts and the first
+published-data source-availability pilot. It contains no project-operated experimental
+dataset and reports no project measurement of `G`.
 
 `physical_bridge_contract.json` records the general evidence layers, measurement-model
 fields, input roles, exact target-path rules, uncertainty requirements, external-reference
@@ -42,6 +43,48 @@ The example reports seven separate statuses:
 
 No single aggregate score is computed.
 
+## First published-data pilot: UW 2000
+
+[`uw_2000_published_data_preregistration_v1.md`](uw_2000_published_data_preregistration_v1.md)
+freezes the source, estimator, uncertainty, precision, leakage, acceptance, and terminal-
+comparison rules for a proposed reproduction of the University of Washington 2000
+angular-acceleration-feedback result.
+
+The original file remains unchanged. A separately recorded
+[`clarification`](uw_2000_published_data_preregistration_v1_clarification_1.md) resolves
+one pre-transcription ambiguity: exact mathematical constants may remain in exact symbolic
+relations, but `exact=True` cannot turn an arbitrary populated decimal record into a
+provenance-exempt constant.
+
+[`uw_2000_source_audit_v1.md`](uw_2000_source_audit_v1.md) records the source map and an
+explicit **`NO-GO (INCOMPLETE_REPRODUCTION)`**. The paper reports the symbolic multipole
+estimator, apparatus summaries, correction factors, one-sigma uncertainty budget, and
+headline result. It does not report the fitted gravitational angular-acceleration
+amplitude or the complete numerical attractor multipole coupling needed to calculate
+`G_hat`. The proposed 2002 PRD companion citation is unrelated; the later UW correction
+identified by CODATA is sourced to a private communication. A 1999 predecessor's
+prototype `Q_22`, proposed error budget, and design geometry are explicitly excluded as
+substitutes for the 2000 inputs.
+
+No missing value is guessed, copied from a secondary proposal, or back-solved from the
+published `G`. Consequently no UW empirical model or result artifact is created and no
+empirical or replication status is promoted. This documented outcome records that the
+source audit found the publication set insufficient for a complete transcription; it is
+not a criticism of the published experiment.
+
+For any future `empirical_record`, every populated numerical quantity in estimator
+ancestry, and every declared calibration or correction, must declare documented
+provenance plus a source identifier, edition, and access date. This makes absent source
+metadata fail closed. It does not prove that a cited value was experimentally independent
+or protect against a knowing editor who fabricates a plausible citation; source auditing
+remains an evidence task.
+
+[`uw_2000_published_data_pilot_v1.manifest.json`](uw_2000_published_data_pilot_v1.manifest.json)
+pins the exact bytes of the original preregistration, the clarification, and the source
+audit, together with the canonical `NO-GO`, missing-input, and next-candidate fields. The
+guard is tamper evidence for review; it cannot stop a knowing editor from changing code,
+constants, documents, and artifacts together.
+
 ## Regeneration
 
 From the repository root, regenerate both JSON files with:
@@ -54,6 +97,7 @@ Check the committed bytes without rewriting them with:
 
 ```bash
 python3 -m Discovery.physical_bridge --check
+python3 -m Discovery.published_data_pilot --check
 ```
 
 The implementation uses only the Python standard library. Exponents and dimensions use
