@@ -1,0 +1,178 @@
+{
+  "channels": {
+    "A_clean": {
+      "canonical_control": "u_clean / r_clean",
+      "expected": {
+        "dimensionally_valid": true,
+        "hidden_target_leakage_blind_spot": false,
+        "known_generation_target_leakage": false,
+        "registered_target_dependency": "no_registered_target_path"
+      },
+      "generation": [
+        "u_clean independent",
+        "r_clean independent",
+        "G = u_clean / r_clean"
+      ],
+      "predictors": [
+        "u_clean",
+        "r_clean"
+      ],
+      "target": "G"
+    },
+    "B_registered_leak": {
+      "canonical_control": "hbar * c / (m_P * m_P)",
+      "expected": {
+        "dimensionally_valid": true,
+        "hidden_target_leakage_blind_spot": false,
+        "known_generation_target_leakage": true,
+        "registered_target_dependency": "target_path_detected"
+      },
+      "generation": [
+        "G independent",
+        "hbar independent",
+        "c independent",
+        "m_P = sqrt(hbar * c / G)"
+      ],
+      "predictors": [
+        "hbar",
+        "c",
+        "m_P"
+      ],
+      "target": "G"
+    },
+    "C_hidden_leak": {
+      "canonical_control": "k_hidden / s_hidden",
+      "catalog_rule": "k_hidden is intentionally registered as an atomic quantity with the dimensions of G; its synthetic generation formula is not registered",
+      "expected": {
+        "dimensionally_valid": true,
+        "hidden_target_leakage_blind_spot": true,
+        "known_generation_target_leakage": true,
+        "registered_target_dependency": "no_registered_target_path"
+      },
+      "generation": [
+        "G independent",
+        "s_hidden independent",
+        "k_hidden = G * s_hidden"
+      ],
+      "predictors": [
+        "k_hidden",
+        "s_hidden"
+      ],
+      "target": "G"
+    }
+  },
+  "dataset": {
+    "artifact": "Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.datasets.json",
+    "construction": "deterministic Decimal arithmetic; converted to float64 only inside the isolated external PySR runner",
+    "dataset_sha256": "e629c735d6836f0dae1f8655b6bc04bd30e60eec9bc538438f2b5b3d979fa4a8",
+    "measured_G_used": false,
+    "noise": "zero",
+    "rows_per_channel": 128
+  },
+  "dataset_sha256": "e629c735d6836f0dae1f8655b6bc04bd30e60eec9bc538438f2b5b3d979fa4a8",
+  "epistemic_scope": {
+    "candidate_origin": "target_exposed_candidate",
+    "primary_result_class": "methodological_result",
+    "promotion_eligible": false,
+    "rule": "A target-exposed candidate may motivate a new target-clean investigation but may never itself be promoted."
+  },
+  "experiment_identifier": "milestone_6b_pysr_leakage_v1",
+  "external_engine": {
+    "backend_requirement": "SymbolicRegression.jl ~2.2.0",
+    "juliapkg_blob": "f4b37052e52c4d1aef7dbfcc950f1cc699e196c1",
+    "license": "Apache-2.0",
+    "license_blob": "0223b98bcc92c9bf0ffc6efc2f6054777be1944a",
+    "pyproject_blob": "8ec704fe5ed95541f70390163c9a6a4d682dc5ea",
+    "pysr_commit": "65b887aeaf97f1c5ae84b0ceffb370551e57ce90",
+    "pysr_version": "2.2.0",
+    "repository": "https://github.com/astroautomata/PySR",
+    "resolved_backend_rule": "Record Julia version, actual SymbolicRegression.jl version, active project, and SHA-256 of the resolved Manifest.toml. Do not infer the backend from the compatibility range alone."
+  },
+  "external_execution": {
+    "normal_ci": "must not install PySR or Julia",
+    "permissions": "contents: read",
+    "source_anchor_policy": "The committed result records the exact commit containing this preregistration, deterministic datasets, checker, and tests. Result-driving paths must remain unchanged after that anchor.",
+    "transfer": "upload-only GitHub Actions artifact; no commit/push from the external runner"
+  },
+  "nonclaims": [
+    "No physical value of G is estimated.",
+    "No candidate is empirical evidence or an independently discovered law.",
+    "A missing registered target path does not establish calibration, statistical, experimental, causal, or physical independence.",
+    "Repeated PySR recovery does not remove target exposure.",
+    "PySR's dimensional penalty is not treated as a hard project gate.",
+    "Deterministic serial settings do not imply byte-identical searches across platforms.",
+    "The synthetic generation graph is known by construction and is not a general causal-inference method."
+  ],
+  "primary_endpoint": {
+    "invalid_fixture_outcome": "INVALID_FIXTURE",
+    "pysr_recovery_required": false,
+    "question": "Does the Channel C canonical control remain dimensionally valid with known target ancestry in the synthetic generation DAG but no target path in the registered algebraic dependency graph?",
+    "valid_fixture_outcome": "BOUNDARY_CONFIRMED"
+  },
+  "project_audit": {
+    "blind_spot_rule": "known_generation_target_leakage AND registered_target_dependency == no_registered_target_path",
+    "dimensional_rule": "Project exact Dimension algebra controls classification; PySR units are diagnostic only.",
+    "generation_leakage_rule": "Known by traversal of the preregistered synthetic data-generation DAG; it never consults registered algebraic definitions.",
+    "parser": "Python AST allowlist; never eval external expressions",
+    "registered_dependency_rule": "Exact monomial signature expansion through a validated DependencyCatalog; it never consults the synthetic generation DAG.",
+    "representation": [
+      "normalized_monomial",
+      "representational_gap",
+      "parse_failure"
+    ]
+  },
+  "project_baseline_sha": "c446d39b7940219a7b2e58481375a8c70722f4cd",
+  "schema_version": 1,
+  "search_configuration": {
+    "binary_operators": [
+      "+",
+      "-",
+      "*",
+      "/"
+    ],
+    "candidate_extraction": "Preserve every finite row returned in model.equations_ for every channel and seed; do not select only the best expression.",
+    "deterministic": true,
+    "dimensional_constraint_penalty": 1000.0,
+    "dimensionless_constants_only": true,
+    "maxsize": 9,
+    "model_selection": "accuracy",
+    "ncycles_per_iteration": 30,
+    "niterations": 10,
+    "parallelism": "serial",
+    "population_size": 20,
+    "populations": 4,
+    "precision": 64,
+    "progress": false,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "unary_operators": [],
+    "verbosity": 0
+  },
+  "unit_contract": {
+    "A_clean": {
+      "X_units": [
+        "m^4 / (kg * s^2)",
+        "m"
+      ],
+      "y_units": "m^3 / (kg * s^2)"
+    },
+    "B_registered_leak": {
+      "X_units": [
+        "kg * m^2 / s",
+        "m / s",
+        "kg"
+      ],
+      "y_units": "m^3 / (kg * s^2)"
+    },
+    "C_hidden_leak": {
+      "X_units": [
+        "m^3 / (kg * s^2)",
+        "1"
+      ],
+      "y_units": "m^3 / (kg * s^2)"
+    }
+  }
+}

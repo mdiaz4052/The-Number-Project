@@ -63,6 +63,14 @@ coupling, proposed budget, and design geometry are explicitly excluded from the 
 input set. The repository records the missing evidence rather than back-solving it from
 the published value. No empirical result or replication claim is created.
 
+Milestone 6B uses a pinned PySR 2.2.0 run on preregistered synthetic controls to test a
+specific provenance boundary. Its primary methodological result is `BOUNDARY_CONFIRMED`:
+a candidate can be dimensionally valid and have no registered algebraic path to `G` while
+still carrying known target information through the data-generation path. All 26 PySR
+outputs are permanently `target_exposed_candidate` and promotion-ineligible; 17 also fail
+the project's independent dimensional check. This is a software/methodology result, not
+evidence about gravity or a measurement of `G`.
+
 The project is exploratory. A compiled implication is not experimental evidence for its
 premises, and a dimensionally valid numerical coincidence is not evidence of a physical
 law.
@@ -99,6 +107,9 @@ law.
 - `Experiments/Falsification/` records the immutable 5B-core preregistration, complete
   provenance-stratified null and planted-control result, and disposable-worktree mutation
   result with source and integrity metadata.
+- `Experiments/EcosystemComparison/PySRLeakage/` records the frozen 6B preregistration,
+  deterministic dataset manifest, raw pinned PySR output, independently normalized v2 audit,
+  and two killed semantic mutations for target exposure and hidden-generation leakage.
 - `Discovery/null_experiments.py` isolates numerical log-space sampling from exact
   symbolic provenance and implements an independent interval-union CDF oracle;
   `Discovery/mutation_harness.py` and `Discovery/mutation_test_runner.py` enforce
@@ -119,6 +130,7 @@ These labels are part of the project's design, not merely documentation style.
 | **Assumption / hypothesis** | An input accepted temporarily inside a stated model or theorem. |
 | **Theorem** | A proposition whose proof term is accepted by Lean's kernel from its hypotheses. |
 | **Conjecture** | A precise proposed relationship for which no proof is currently supplied. |
+| **Target-exposed candidate** | A candidate proposed or generated after the target or target-bearing data were available to the generating process. It may motivate a new target-clean preregistered path, but the original candidate is not promotion-eligible. |
 | **Symbolic result** | Exact output of a declared computational model, including any free parameters. |
 | **Numerical observation** | A computational pattern; dimensional validity and numerical proximity alone do not make it a law. |
 | **Empirical observation** | Information supplied by an instrument or physical procedure; it is an external premise, not a theorem. |

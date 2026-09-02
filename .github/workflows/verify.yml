@@ -46,3 +46,5 @@ jobs:
       - run: python -m Discovery.null_experiments --check
       - run: python -m Discovery.mutation_harness --check
       - run: python -m Discovery.pydimension_comparison --check
+      - run: python -m Discovery.pysr_leakage_check_v2 --check
+      - run: python -m Discovery.pysr_leakage_mutations --check

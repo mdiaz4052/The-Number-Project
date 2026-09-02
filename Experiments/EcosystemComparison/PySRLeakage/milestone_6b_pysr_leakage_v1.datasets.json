@@ -1,0 +1,13 @@
+{
+  "channel_sha256": {
+    "A_clean": "11b0dbbfd23f7bf43455cc126acfb7bfa3f05cc34fa1908fa5bbacf382c77e0d",
+    "B_registered_leak": "93f78287c436e10347ef1e19e7a7e8e82d7ef25645f4fcad6e20f3d4112ca5cc",
+    "C_hidden_leak": "a126260986e51cae11639a4b9803c87ab0231fecf6d159477754761558dc254b"
+  },
+  "dataset_sha256": "e629c735d6836f0dae1f8655b6bc04bd30e60eec9bc538438f2b5b3d979fa4a8",
+  "experiment_identifier": "milestone_6b_pysr_leakage_v1",
+  "generator": "Discovery.pysr_leakage_probe.build_datasets_record",
+  "rows_per_channel": 128,
+  "schema_version": 1,
+  "storage_note": "Rows are regenerated deterministically from result-driving source; this manifest pins their canonical bytes without duplicating them."
+}
