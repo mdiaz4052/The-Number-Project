@@ -177,10 +177,11 @@ jobs:
           external_path = Path("/tmp/milestone-6a/milestone_6a_pydimension_v1.external.json")
           external_path.write_text(json.dumps(output, indent=2, sort_keys=True) + "\n", encoding="utf-8")
           PY
-      - name: Generate deterministic project result from raw external bytes
+      - name: Generate deterministic project result at canonical paths
         run: |
+          cp /tmp/milestone-6a/milestone_6a_pydimension_v1.external.json \
+            Experiments/EcosystemComparison/PyDimension/milestone_6a_pydimension_v1.external.json
           python -m Discovery.pydimension_comparison \
-            --external /tmp/milestone-6a/milestone_6a_pydimension_v1.external.json \
             --output /tmp/milestone-6a/milestone_6a_pydimension_v1.result.json
       - name: Upload external and normalized result artifacts
         uses: actions/upload-artifact@v4
