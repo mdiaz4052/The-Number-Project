@@ -22,7 +22,7 @@ Two selected semantic mutations were killed in the existing disposable-worktree 
 
 ## Provenance and reproducibility
 
-The external source is pinned to PySR 2.2.0 commit `65b887aeaf97f1c5ae84b0ceffb370551e57ce90`. The run resolved SymbolicRegression.jl 2.2.0 on Julia 1.11.9 and records the complete resolved Julia manifest in the raw artifact. Ordinary CI does not import or rerun PySR.
+The external source is pinned to PySR 2.2.0 commit `65b887aeaf97f1c5ae84b0ceffb370551e57ce90`. The canonical successful external Actions run is `33668648038`. It resolved SymbolicRegression.jl 2.2.0 on Julia 1.11.9 and records the complete resolved Julia manifest in the raw artifact. Ordinary CI does not import or rerun PySR.
 
 Evidence SHA-256 values:
 
