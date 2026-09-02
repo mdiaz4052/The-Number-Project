@@ -52,6 +52,14 @@ A post-merge audit identified two reusable-boundary issues and several documenta
 
 Future external-engine experiments should inherit the preregistration-to-execution equality check before result-bearing evidence is accepted, including any retrofit of equivalent protection to older comparison harnesses.
 
+## Final post-6B cleanup
+
+Structural generation ancestry in v3 is evaluated on the **exact normalized candidate**, while the raw expression remains available diagnostically. Predictor factors that cancel exactly therefore do not create structural ancestry in the resulting expression: for example, `k_hidden / k_hidden` and a pure numeric constant both receive `not_applicable_no_predictor_reference`. This does **not** make either candidate target-clean. Every PySR-generated candidate remains permanently `target_exposed_candidate` because the search process saw the target.
+
+The frozen v2 adapter and result are intentionally not edited to add forward guidance because the v2 module itself is part of the source-pinned historical evidence chain. New candidate-auditing code should use `Discovery.pysr_leakage_audit_v3`; v3 must not be substituted into the historical v2 checker.
+
+Untrusted external numeric literals that are non-finite, overflow Python's finite float representation, or otherwise cannot be safely represented are converted by v3 into a controlled `parse_failure` with unresolved dimensional and generation-ancestry status. They are never clamped, approximated, or interpreted as finite values.
+
 ## Nonclaims
 
-This is not a measurement of `G`, evidence for gravity, or independent confirmation of a PySR expression. PySR's dimensional penalty is not a project acceptance rule. Repeated recovery does not remove target exposure. The synthetic generation graph is known by construction and is not a general causal-inference method. The historical v2 boolean on predictor-free constants is not evidence of independence. Three selected 6B/post-6B mutants do not establish that the machinery or parser is defect-free.
+This is not a measurement of `G`, evidence for gravity, or independent confirmation of a PySR expression. PySR's dimensional penalty is not a project acceptance rule. Repeated recovery does not remove target exposure. The synthetic generation graph is known by construction and is not a general causal-inference method. The historical v2 boolean on predictor-free constants is not evidence of independence. Normalized-expression ancestry is not a causal-independence test. Three selected 6B/post-6B mutants do not establish that the machinery or parser is defect-free.
