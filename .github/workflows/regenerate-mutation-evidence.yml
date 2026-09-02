@@ -1,0 +1,30 @@
+name: Regenerate mutation evidence
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Regenerate mutation result
+        run: |
+          mkdir -p /tmp/tnp-mutation-evidence
+          python -m Discovery.mutation_harness \
+            --source-commit-sha "$(git rev-parse HEAD)" \
+            --output /tmp/tnp-mutation-evidence/milestone_5b_core_v1.mutation_results.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: regenerated-mutation-evidence
+          path: /tmp/tnp-mutation-evidence/milestone_5b_core_v1.mutation_results.json
+          if-no-files-found: error
