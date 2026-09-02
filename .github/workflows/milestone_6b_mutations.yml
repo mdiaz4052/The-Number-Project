@@ -23,6 +23,15 @@ jobs:
         run: |
           SOURCE="$(git rev-parse HEAD)"
           python -m Discovery.pysr_leakage_mutations --run --source-commit-sha "$SOURCE"
+      - name: Upload mutation evidence before validation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: milestone-6b-mutation-evidence
+          path: Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.mutation_results.json
+          if-no-files-found: error
+      - name: Validate selected 6B mutation evidence
+        run: |
           python - <<'PY'
           import json
           from Discovery.pysr_leakage_mutations import DEFAULT_OUTPUT, validate_result
@@ -30,8 +39,3 @@ jobs:
           validate_result(record)
           print("Both selected 6B semantic mutants were killed.")
           PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: milestone-6b-mutation-evidence
-          path: Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.mutation_results.json
-          if-no-files-found: error
