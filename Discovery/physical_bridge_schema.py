@@ -112,7 +112,6 @@ def _require_text(value: object, label: str) -> str:
     return value
 
 
-\
 _ACCESS_DATE_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$", re.ASCII)
 _DOI_RE = re.compile(r"^10\.[0-9]{4,9}/\S+$", re.ASCII)
 _CERTIFICATE_ISSUER_RE = re.compile(
