@@ -20,7 +20,7 @@ PySR recovered the canonical signature in `A_clean` and `C_hidden_leak`, but not
 
 Every PySR expression remains permanently `target_exposed_candidate` and promotion-ineligible. It may motivate a new target-clean preregistered investigation, but the original record cannot be relabeled into stronger evidence.
 
-Two selected semantic mutations were killed in the existing disposable-worktree harness: one attempted to bypass the target-exposed promotion valve, and one collapsed generation-DAG leakage into the registered algebraic result, erasing the Channel C distinction.
+Two selected semantic mutations were killed in the existing disposable-worktree harness: one attempted to bypass the target-exposed promotion valve, and one collapsed generation-DAG leakage into the registered algebraic result, erasing the Channel C distinction. The original mutation artifact remains preserved as historical evidence. A second mutation attestation is current after the shared mutation harness legitimately expanded its source boundary to include the physical-bridge schema; the 6B mutant definitions and behavioral tests themselves are unchanged.
 
 ## Provenance and reproducibility
 
@@ -48,7 +48,7 @@ A post-merge audit identified two reusable-boundary issues and several documenta
 
 1. `Discovery.pysr_leakage_hardening --check` now compares the complete committed external `search_configuration` byte-canonically against the preregistration, verifies exact channel/seed coverage from the preregistered seed list, and checks the pinned PySR source metadata. A future rerun under tuned settings therefore cannot silently pass as preregistered evidence.
 2. `Discovery.pysr_leakage_audit_v3.py` is the future-facing adapter for new work. For a predictor-free fitted constant it preserves `target_exposed_candidate` origin but records generation ancestry and hidden-blind-spot classification as explicitly **not applicable**, rather than encoding a vacuous `False` that could be misread as independence. The frozen v2 artifact is left unchanged for reproducibility.
-3. A parser-focused production mutant disables the AST-node allowlist and is killed by a behavioral test that supplies call syntax using an otherwise allowed predictor identifier. This adds one bounded mutation pin around the untrusted-expression parser; it does not establish complete parser safety.
+3. A parser-focused production mutant disables the AST-node allowlist and is killed by a behavioral test that supplies call syntax using an otherwise allowed predictor identifier. This adds one bounded mutation pin around the untrusted-expression parser; it does not establish complete parser safety. Its original evidence artifact is also retained historically, with a second current attestation after the same shared-harness source-boundary change.
 
 Future external-engine experiments should inherit the preregistration-to-execution equality check before result-bearing evidence is accepted, including any retrofit of equivalent protection to older comparison harnesses.
 
