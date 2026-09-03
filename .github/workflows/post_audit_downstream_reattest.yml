@@ -1,0 +1,120 @@
+name: Post-audit downstream re-attestation
+
+on:
+  pull_request:
+    types: [synchronize]
+
+permissions:
+  contents: read
+
+jobs:
+  reattest-downstream:
+    if: >-
+      github.head_ref == 'codex/post-audit-closure-rmp-attestation' &&
+      github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Point downstream mutation guards to second attestations
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess
+
+          expected = {
+              "Discovery/pysr_leakage_mutations.py": "a3ad9cd3fc6e0bde8f18278af51e5e0664a6afab",
+              "Discovery/pysr_leakage_hardening_mutations.py": "e44de09780ecef233abb58a9e67debae3c11b738",
+              "Experiments/EcosystemComparison/PySRLeakage/README.md": "d73dd1c619200adb0e963bb14c19b4b4b17fc23c",
+          }
+          for filename, expected_blob in expected.items():
+              actual = subprocess.check_output(["git", "hash-object", filename], text=True).strip()
+              if actual != expected_blob:
+                  raise SystemExit(f"refusing to patch {filename}: {actual} != {expected_blob}")
+
+          def replace_once(filename: str, old: str, new: str) -> None:
+              path = Path(filename)
+              text = path.read_text(encoding="utf-8")
+              if text.count(old) != 1:
+                  raise SystemExit(f"unexpected replacement count in {filename}")
+              path.write_text(text.replace(old, new), encoding="utf-8")
+
+          replace_once(
+              "Discovery/pysr_leakage_mutations.py",
+              '    "milestone_6b_pysr_leakage_v1.mutation_results.json"\n',
+              '    "milestone_6b_pysr_leakage_v1.mutation_results_v2.json"\n',
+          )
+          replace_once(
+              "Discovery/pysr_leakage_hardening_mutations.py",
+              '    "post_6b_hardening_v1.mutation_results.json"\n',
+              '    "post_6b_hardening_v1.mutation_results_v2.json"\n',
+          )
+          readme = "Experiments/EcosystemComparison/PySRLeakage/README.md"
+          replace_once(
+              readme,
+              "Two selected semantic mutations were killed in the existing disposable-worktree harness: one attempted to bypass the target-exposed promotion valve, and one collapsed generation-DAG leakage into the registered algebraic result, erasing the Channel C distinction.\n",
+              "Two selected semantic mutations were killed in the existing disposable-worktree harness: one attempted to bypass the target-exposed promotion valve, and one collapsed generation-DAG leakage into the registered algebraic result, erasing the Channel C distinction. The original mutation artifact remains preserved as historical evidence. A second mutation attestation is current after the shared mutation harness legitimately expanded its source boundary to include the physical-bridge schema; the 6B mutant definitions and behavioral tests themselves are unchanged.\n",
+          )
+          replace_once(
+              readme,
+              "3. A parser-focused production mutant disables the AST-node allowlist and is killed by a behavioral test that supplies call syntax using an otherwise allowed predictor identifier. This adds one bounded mutation pin around the untrusted-expression parser; it does not establish complete parser safety.\n",
+              "3. A parser-focused production mutant disables the AST-node allowlist and is killed by a behavioral test that supplies call syntax using an otherwise allowed predictor identifier. This adds one bounded mutation pin around the untrusted-expression parser; it does not establish complete parser safety. Its original evidence artifact is also retained historically, with a second current attestation after the same shared-harness source-boundary change.\n",
+          )
+          PY
+
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            Discovery/pysr_leakage_mutations.py \
+            Discovery/pysr_leakage_hardening_mutations.py \
+            Experiments/EcosystemComparison/PySRLeakage/README.md
+          git commit -m "Version downstream mutation attestations after shared harness change"
+          git push origin HEAD:${{ github.head_ref }}
+
+      - name: Generate downstream attestations and remove staging workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE_SHA=$(git rev-parse HEAD)
+          OUT6B=Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.mutation_results_v2.json
+          OUTH=Experiments/EcosystemComparison/PySRLeakage/post_6b_hardening_v1.mutation_results_v2.json
+          test ! -e "$OUT6B"
+          test ! -e "$OUTH"
+          python -m Discovery.pysr_leakage_mutations --run --source-commit-sha "$SOURCE_SHA" --output "$OUT6B"
+          python -m Discovery.pysr_leakage_hardening_mutations --run --source-commit-sha "$SOURCE_SHA" --output "$OUTH"
+          python -m Discovery.pysr_leakage_mutations --check
+          python -m Discovery.pysr_leakage_hardening_mutations --check
+          git rm .github/workflows/post_audit_downstream_reattest.yml
+          git add "$OUT6B" "$OUTH"
+          git commit -m "Re-attest downstream mutation evidence after shared harness change"
+          git push origin HEAD:${{ github.head_ref }}
+
+      - name: Verify committed Python state
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+          PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.dimensional_search --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.inverse_square_search --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.dependency_analysis --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.physical_bridge --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.published_data_pilot --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.falsification_preregistration --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.null_experiments --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.mutation_harness --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.pydimension_comparison --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.pysr_leakage_check_v2 --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.pysr_leakage_mutations --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.pysr_leakage_hardening --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.pysr_leakage_hardening_mutations --check
+          test -z "$(git status --porcelain)"
