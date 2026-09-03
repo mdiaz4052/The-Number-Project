@@ -81,30 +81,49 @@ constants, documents, and artifacts together.
 ## HUST 2018 AAF source audit
 
 [`hust_2018_aaf_preregistration_v1.md`](hust_2018_aaf_preregistration_v1.md) freezes the
-decision rule before the HUST public inputs are classified. Its exact bytes are SHA-256
-pinned in `Discovery.hust_2018_aaf_source_audit`.
+decision rule before the HUST public inputs are classified. Its exact bytes remain SHA-256
+pinned in `Discovery.hust_2018_aaf_source_audit` and are not rewritten by the post-audit
+closure.
 
-The completed audit reaches **`GO` at replication depth `2a`**. This is deliberately
-narrower than an uncertainty-qualified empirical reproduction. The public HUST
-Supplementary Information supplies, separately for AAF-I, AAF-II, and AAF-III, the summed
-`P_g,l,2` coupling, the air-density-corrected average angular acceleration, and the
-magnetic-damper correction. The supplement's definition keeps `G` outside `P_g,l,m` as a
-separate factor. Those public summary inputs therefore permit a target-clean exact-Decimal
-reconstruction of all three individual central `G` estimates without back-solving from a
-published `G` value.
+The completed audit reaches **`GO` at assessed replication depth `2a`, with all 3 of 3
+AAF determinations authorized**. This is deliberately narrower than an uncertainty-qualified
+empirical reproduction. The public HUST Supplementary Information supplies, separately for
+AAF-I, AAF-II, and AAF-III, the summed `P_g,l,2` coupling, the air-density-corrected average
+angular acceleration, and the magnetic-damper correction. The supplement's definition keeps
+`G` outside `P_g,l,m` as a separate factor. Those public summary inputs therefore permit a
+target-clean exact-Decimal reconstruction of all three individual central `G` estimates
+without back-solving from a published `G` value.
+
+The original preregistration called the depth field `maximum_supported_replication_depth`.
+Independent audit found that wording too strong because four listed Source Data workbooks
+were not successfully retrieved, so deeper levels were not actually assessed. The frozen
+preregistration is preserved as historical evidence; the current classifier reports
+`maximum_assessed_replication_depth`, and explicitly records depths above the assessed level
+as `not_assessed` rather than unsupported. The rationale is pinned in
+[`hust_2018_aaf_post_audit_clarification_v1.md`](hust_2018_aaf_post_audit_clarification_v1.md).
 
 The reconstructed central values agree diagnostically with the printed AAF-I/II/III
 values at approximately `-0.179`, `+0.056`, and `+0.013` ppm, respectively. Agreement does
 **not** determine the `GO` classification: graph ancestry and evidence class do. A planted
-transitive `TARGET_DERIVED` ancestor or a `REQUEST_ONLY` result-driving input downgrades
-the executable classifier to `PARTIAL`.
+`TARGET_DERIVED`, `REQUEST_ONLY`, or otherwise unresolved result-driving path removes the
+affected AAF determination from authorization. The overall classifier downgrades to
+`PARTIAL` only when no experiment retains a target-clean depth-2a path. Every current
+headline therefore carries both the assessed depth and the authorized count/list.
+
+The post-audit graph also makes the source transcription more load-bearing. Each direct
+summary input stores its printed value, parsed one-standard-deviation uncertainty, unit,
+and exact source-scope token. The magnetic-damper node separately records the positive
+`multiply_by_1_plus_delta` operator and its source locator. These fields let tests reject
+accidental numeric column substitution, scope-token swaps, uncertainty transcription drift,
+and correction-direction drift. They remain tamper evidence rather than protection against
+a knowing editor who changes code and evidence together.
 
 Depth `2b` is not authorized. The retrieved public record describes uncertainties and AAF
-correlations, but this audit did not establish a complete itemized machine-reconstructible
+correlations, and the three public summary-input uncertainties are now machine-readable,
+but the audit still does not establish a complete itemized machine-reconstructible
 uncertainty/covariance model for any individual determination. The combined AAF value is
 also comparison-only because its weighting/correlation structure is not reconstructed by
-this milestone. Depths 3 and 4 remain unauthorized because run-level/raw time-series data
-were not recovered from the public set.
+this milestone.
 
 The audit artifacts are:
 
@@ -112,7 +131,10 @@ The audit artifacts are:
   recorded retrieval bytes/statuses, including fail-closed classification of source-data
   requests that returned HTML fallbacks instead of XLSX bytes;
 - [`hust_2018_aaf_required_inputs_v1.json`](hust_2018_aaf_required_inputs_v1.json): the
-  AAF-I/II/III evidence/dependency graph and terminal published comparisons;
+  AAF-I/II/III evidence/dependency graph, machine-readable uncertainty records, correction
+  direction, source-scope tokens, and terminal published comparisons;
+- [`hust_2018_aaf_semantic_source_review_v1.json`](hust_2018_aaf_semantic_source_review_v1.json):
+  the byte-pinned second-reader check of the three highest-risk primary-source claims;
 - [`hust_2018_aaf_source_audit_v1.md`](hust_2018_aaf_source_audit_v1.md): the human-readable
   source audit and nonclaims;
 - [`hust_2018_aaf_source_audit_v1.manifest.json`](hust_2018_aaf_source_audit_v1.manifest.json):
@@ -121,17 +143,22 @@ The audit artifacts are:
 The GitHub runner successfully captured the Supplementary Information PDF, Supplementary
 Data workbook, and one figure-source workbook. Four other exact Springer Nature XLSX media
 requests returned the same small HTML fallback response and are explicitly *not* promoted
-to retrieved source evidence. These failures do not block depth 2a because the central
-estimator inputs are in the retrieved Supplementary Information PDF; they do block any
-attempt to treat those failed captures as deeper evidence.
+to retrieved source evidence. These failures do not block the assessed depth-2a central
+estimator because its inputs are in the retrieved Supplementary Information PDF. They also
+do not establish that deeper public evidence is unavailable; depths above 2a are simply not
+assessed from those unretrieved files.
 
-CI verifies the frozen preregistration, reviewed external-source hashes/statuses, graph
-invariants, target ancestry, deterministic manifest, and exact reconstruction arithmetic.
-It does not re-download or parse the mutable publisher PDF on every run to prove that a
-human-written page/table locator semantically supports its transcription. The external PDF
-bytes are pinned, the locators are reviewable, and independent source verification remains
-part of the Claude audit. This distinction is intentional: tamper evidence is not the same
-as automatic literature comprehension.
+CI verifies the frozen preregistration, post-audit clarification, second-reader record,
+reviewed external-source hashes/statuses, graph invariants, target ancestry, deterministic
+manifest, exact reconstruction arithmetic, source-transcription fields, and correction
+direction. It does not re-download or parse the mutable publisher PDF on every run to prove
+that a human-written page/table locator semantically supports its transcription. The
+second-reader record makes that human semantic check explicit rather than presenting it as
+a machine-derived fact.
+
+Any future temporary workflow with `contents: write` must carry both a bot-loop guard and
+an exact branch/head-ref guard. A permanent repository test scans workflow files for that
+condition. No write-enabled temporary workflow is retained by the HUST audit.
 
 No HUST `MeasurementModel` is created here and the physical-bridge production schema is
 unchanged. A later implementation may use only the specifically authorized individual
