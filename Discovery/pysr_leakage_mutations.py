@@ -27,7 +27,7 @@ RESULT_SCHEMA_VERSION = 1
 EXPERIMENT_IDENTIFIER = "milestone_6b_pysr_leakage_mutations_v1"
 DEFAULT_OUTPUT = Path(
     "Experiments/EcosystemComparison/PySRLeakage/"
-    "milestone_6b_pysr_leakage_v1.mutation_results.json"
+    "milestone_6b_pysr_leakage_v1.mutation_results_v2.json"
 )
 SOURCE_PATHS = (
     "Discovery/pysr_leakage_mutations.py",

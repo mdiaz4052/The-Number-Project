@@ -81,24 +81,25 @@ in strict `YYYY-MM-DD` form. Source identifiers must use one of three explicit c
 `certificate:<issuer>/<record-id>`. Certificate issuer and record components use a
 bounded ASCII token grammar: the issuer begins with an ASCII letter and is at most 64
 characters, while the record identifier is at most 128 characters. A loose value such as
-`certificate:zzz` is not accepted. DOI and URL identifiers reject whitespace, control,
-and invisible characters; malformed URL parsing and invalid ports are converted into the
-schema's controlled `BridgeValidationError`. Edition remains descriptive nonempty text.
-Malformed forms are rejected before model-level empirical evaluation.
+`certificate:zzz` is not accepted. DOI and URL identifiers reject whitespace, control characters, nonspacing/enclosing
+combining marks, and a bounded set of blank-like Unicode code points that can render as
+empty text while remaining printable; malformed URL parsing and invalid ports are converted
+into the schema's controlled `BridgeValidationError`. Edition remains descriptive nonempty
+text. Malformed forms are rejected before model-level empirical evaluation.
 
-One historical source-attested test fixture predates the certificate namespace and uses
-the exact token `certificate:force-reference`. For the repository's known
-`force_reference` quantity only, construction canonicalizes that token to
-`certificate:project/force-reference`; the same loose token remains invalid for every
-other quantity. This is a migration shim for preserved historical tests, not an additional
-accepted certificate grammar.
+The historical `force_reference` test fixture now uses the namespaced
+`certificate:project/force-reference` form directly. No construction-time migration or
+silent source-identifier rewrite remains in the schema.
 
 These checks establish only syntax and project-local identifier shape. They do not prove
 that a DOI, URL, or certificate resolves, that a host is publicly reachable, that the
 claimed source contains the asserted value, or that the value was experimentally
 independent. A single-label HTTPS hostname can therefore be syntactically valid, while a
-hostname containing no alphanumeric character is rejected as degenerate. Future
-`access_date` values also remain syntactically valid: temporal plausibility is deliberately
+hostname containing no alphanumeric character is rejected as degenerate. General Unicode
+homoglyph/confusable detection is deliberately out of scope: the form gate removes bounded
+invisible classes, but it does not claim that visually similar identifiers are equivalent or
+that an identifier resolves to the intended source. Future `access_date` values also remain
+syntactically valid: temporal plausibility is deliberately
 outside this deterministic form gate and would require a separately pinned audit date if
 ever enforced. Python's frozen dataclass mechanism is likewise an authoring-time check,
 not a security boundary against a knowing in-memory mutator. Source auditing remains a

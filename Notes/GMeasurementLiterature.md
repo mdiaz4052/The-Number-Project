@@ -87,9 +87,12 @@ budget, or apparatus geometry.
 The 2002 CODATA adjustment review, P. J. Mohr and B. N. Taylor, “CODATA recommended
 values of the fundamental physical constants: 2002,” *Reviews of Modern Physics* 77,
 1--107 (2005), [doi:10.1103/RevModPhys.77.1](https://doi.org/10.1103/RevModPhys.77.1)
-([official NIST PDF](https://physics.nist.gov/cuu/pdf/CODATA_RMP2005.pdf)), records the
-later UW correction as originating in a 2002 private communication. It is therefore
-historical comparison evidence, not a public companion input set.
+([official NIST PDF](https://physics.nist.gov/cuu/pdf/CODATA_RMP2005.pdf)), records on
+journal p. 45 that Gundlach and Merkowitz later identified an additional fractional
+correction of `6.0e-6` caused by magnetic-damper torque. Its reference list on journal
+p. 102 identifies “Gundlach, J. H., and S. M. Merkowitz, 2002” as a private
+communication. It is therefore historical comparison evidence, not a public companion
+input set.
 
 The suggested citation *Physical Review D* 66, 082001 (2002),
 [doi:10.1103/PhysRevD.66.082001](https://doi.org/10.1103/PhysRevD.66.082001), is Milani
