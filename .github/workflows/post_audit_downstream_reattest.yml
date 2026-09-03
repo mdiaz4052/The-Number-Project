@@ -23,76 +23,45 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - name: Point downstream mutation guards to second attestations
+      - name: Verify the versioned downstream source state
         shell: bash
         run: |
           python - <<'PY'
-          from pathlib import Path
           import subprocess
 
           expected = {
-              "Discovery/pysr_leakage_mutations.py": "a3ad9cd3fc6e0bde8f18278af51e5e0664a6afab",
-              "Discovery/pysr_leakage_hardening_mutations.py": "e44de09780ecef233abb58a9e67debae3c11b738",
-              "Experiments/EcosystemComparison/PySRLeakage/README.md": "d73dd1c619200adb0e963bb14c19b4b4b17fc23c",
+              "Discovery/pysr_leakage_mutations.py": "e00251b400dfc7d764b1632053a5518b3d70e626",
+              "Discovery/pysr_leakage_hardening_mutations.py": "a33720d184456253f7c793097a7f3af4efa5c5f2",
+              "Experiments/EcosystemComparison/PySRLeakage/README.md": "1d949e2f1dcf24227a20f15c553db06834a1ffa8",
           }
           for filename, expected_blob in expected.items():
               actual = subprocess.check_output(["git", "hash-object", filename], text=True).strip()
               if actual != expected_blob:
-                  raise SystemExit(f"refusing to patch {filename}: {actual} != {expected_blob}")
-
-          def replace_once(filename: str, old: str, new: str) -> None:
-              path = Path(filename)
-              text = path.read_text(encoding="utf-8")
-              if text.count(old) != 1:
-                  raise SystemExit(f"unexpected replacement count in {filename}")
-              path.write_text(text.replace(old, new), encoding="utf-8")
-
-          replace_once(
-              "Discovery/pysr_leakage_mutations.py",
-              '    "milestone_6b_pysr_leakage_v1.mutation_results.json"\n',
-              '    "milestone_6b_pysr_leakage_v1.mutation_results_v2.json"\n',
-          )
-          replace_once(
-              "Discovery/pysr_leakage_hardening_mutations.py",
-              '    "post_6b_hardening_v1.mutation_results.json"\n',
-              '    "post_6b_hardening_v1.mutation_results_v2.json"\n',
-          )
-          readme = "Experiments/EcosystemComparison/PySRLeakage/README.md"
-          replace_once(
-              readme,
-              "Two selected semantic mutations were killed in the existing disposable-worktree harness: one attempted to bypass the target-exposed promotion valve, and one collapsed generation-DAG leakage into the registered algebraic result, erasing the Channel C distinction.\n",
-              "Two selected semantic mutations were killed in the existing disposable-worktree harness: one attempted to bypass the target-exposed promotion valve, and one collapsed generation-DAG leakage into the registered algebraic result, erasing the Channel C distinction. The original mutation artifact remains preserved as historical evidence. A second mutation attestation is current after the shared mutation harness legitimately expanded its source boundary to include the physical-bridge schema; the 6B mutant definitions and behavioral tests themselves are unchanged.\n",
-          )
-          replace_once(
-              readme,
-              "3. A parser-focused production mutant disables the AST-node allowlist and is killed by a behavioral test that supplies call syntax using an otherwise allowed predictor identifier. This adds one bounded mutation pin around the untrusted-expression parser; it does not establish complete parser safety.\n",
-              "3. A parser-focused production mutant disables the AST-node allowlist and is killed by a behavioral test that supplies call syntax using an otherwise allowed predictor identifier. This adds one bounded mutation pin around the untrusted-expression parser; it does not establish complete parser safety. Its original evidence artifact is also retained historically, with a second current attestation after the same shared-harness source-boundary change.\n",
-          )
+                  raise SystemExit(f"refusing to re-attest {filename}: {actual} != {expected_blob}")
           PY
+          test -z "$(git status --porcelain)"
 
-          git diff --check
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            Discovery/pysr_leakage_mutations.py \
-            Discovery/pysr_leakage_hardening_mutations.py \
-            Experiments/EcosystemComparison/PySRLeakage/README.md
-          git commit -m "Version downstream mutation attestations after shared harness change"
-          git push origin HEAD:${{ github.head_ref }}
-
-      - name: Generate downstream attestations and remove staging workflow
+      - name: Generate both downstream attestations from one clean source anchor
         shell: bash
         run: |
           set -euo pipefail
           SOURCE_SHA=$(git rev-parse HEAD)
           OUT6B=Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.mutation_results_v2.json
           OUTH=Experiments/EcosystemComparison/PySRLeakage/post_6b_hardening_v1.mutation_results_v2.json
+          TMP6B=$(mktemp)
+          TMPH=$(mktemp)
           test ! -e "$OUT6B"
           test ! -e "$OUTH"
-          python -m Discovery.pysr_leakage_mutations --run --source-commit-sha "$SOURCE_SHA" --output "$OUT6B"
-          python -m Discovery.pysr_leakage_hardening_mutations --run --source-commit-sha "$SOURCE_SHA" --output "$OUTH"
+          python -m Discovery.pysr_leakage_mutations --run --source-commit-sha "$SOURCE_SHA" --output "$TMP6B"
+          test -z "$(git status --porcelain)"
+          python -m Discovery.pysr_leakage_hardening_mutations --run --source-commit-sha "$SOURCE_SHA" --output "$TMPH"
+          test -z "$(git status --porcelain)"
+          cp "$TMP6B" "$OUT6B"
+          cp "$TMPH" "$OUTH"
           python -m Discovery.pysr_leakage_mutations --check
           python -m Discovery.pysr_leakage_hardening_mutations --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git rm .github/workflows/post_audit_downstream_reattest.yml
           git add "$OUT6B" "$OUTH"
           git commit -m "Re-attest downstream mutation evidence after shared harness change"
