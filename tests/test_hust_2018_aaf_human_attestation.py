@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ATTESTATION_PATH = ROOT / "Experiments" / "GMeasurements" / "hust_2018_aaf_independent_human_attestation_v1.json"
 EXTERNAL_SOURCES_PATH = ROOT / "Experiments" / "GMeasurements" / "hust_2018_aaf_external_sources_v1.json"
 REQUIRED_INPUTS_PATH = ROOT / "Experiments" / "GMeasurements" / "hust_2018_aaf_required_inputs_v1.json"
-EXPECTED_ATTESTATION_SHA256 = "47042e62c861a0df522d1130544d1e0d7275292e48cdb633410ddcb782b3dff8"
+EXPECTED_ATTESTATION_SHA256 = "28b00e34bd74acffd6c47a3edcfa46eba730a00c7927ff4252084185a7ed5b31"
 
 
 def _load(path: Path) -> dict:
@@ -46,7 +46,7 @@ class HUST2018AAFHumanAttestationTests(unittest.TestCase):
         digest = hashlib.sha256(ATTESTATION_PATH.read_bytes()).hexdigest()
         self.assertEqual(digest, EXPECTED_ATTESTATION_SHA256)
 
-    def test_attestation_is_explicitly_human_blind_and_nonpromotional(self) -> None:
+    def test_attestation_distinguishes_blind_findings_from_prompted_unit_check(self) -> None:
         self.assertEqual(
             self.attestation["attestation_scope"],
             "depth_2a_result_driving_primary_source_facts",
@@ -55,12 +55,34 @@ class HUST2018AAFHumanAttestationTests(unittest.TestCase):
         self.assertEqual(
             self.attestation["blind_review"],
             {
-                "project_values_withheld_before_transcription": True,
-                "reviewer_reported_findings_before_comparison": True,
+                "initial_result_values_and_semantic_expectations_withheld": True,
+                "initial_findings_reported_before_comparison": True,
+                "unit_confirmation_blinded": False,
+                "unit_confirmation_phase": (
+                    "Expected units were disclosed after the initial blind transcription; "
+                    "the human reader then confirmed those units in the PDF."
+                ),
                 "screenshots_required": False,
                 "method": "visual inspection of the primary Supplementary Information PDF",
             },
         )
+        for claim_id in (
+            "p_g_definition_excludes_G",
+            "magnetic_damper_direction_and_magnitude",
+            "table3_air_density_statement",
+            "table3_result_driving_values",
+        ):
+            self.assertEqual(
+                _check_by_id(self.attestation, claim_id)["status"],
+                "confirmed_blind_by_independent_human_reader",
+            )
+        for claim_id in ("table1_damper_unit", "table3_result_driving_units"):
+            self.assertEqual(
+                _check_by_id(self.attestation, claim_id)["status"],
+                "confirmed_after_expected_unit_disclosed",
+            )
+
+    def test_attestation_is_explicitly_nonpromotional(self) -> None:
         boundary = self.attestation["boundary"]
         self.assertIn("not an independent experiment", boundary)
         self.assertIn("does not establish depth 2b", boundary)
@@ -95,6 +117,8 @@ class HUST2018AAFHumanAttestationTests(unittest.TestCase):
             self.attestation, "magnetic_damper_direction_and_magnitude"
         )
         self.assertIn("(1 + (K/K_m)(I_m/I))", damper_check["finding"])
+        self.assertIn("455.40(1.95)", damper_check["finding"])
+        self.assertIn("25.74(8)", damper_check["finding"])
         for scope in ("AAF-I", "AAF-II", "AAF-III"):
             node = _node_by_id(self.required_inputs, f"{scope}:magnetic_damper_ppm")
             self.assertEqual(node["correction_operator"], "multiply_by_1_plus_delta")
@@ -111,22 +135,32 @@ class HUST2018AAFHumanAttestationTests(unittest.TestCase):
             _node_by_id(self.required_inputs, "AAF-III:magnetic_damper_ppm")["printed_value"],
             "25.74(8)",
         )
-        self.assertTrue(all(
-            _node_by_id(self.required_inputs, f"{scope}:magnetic_damper_ppm")["unit"] == "ppm"
-            for scope in ("AAF-I", "AAF-II", "AAF-III")
-        ))
+        unit_check = _check_by_id(self.attestation, "table1_damper_unit")
+        self.assertIn("ppm", unit_check["finding"])
+        self.assertTrue(
+            all(
+                _node_by_id(
+                    self.required_inputs, f"{scope}:magnetic_damper_ppm"
+                )["unit"]
+                == "ppm"
+                for scope in ("AAF-I", "AAF-II", "AAF-III")
+            )
+        )
 
-    def test_table3_transcription_and_units_match_frozen_source_graph(self) -> None:
+    def test_table3_blind_values_and_prompted_units_match_frozen_source_graph(self) -> None:
         values = _check_by_id(
-            self.attestation, "table3_result_driving_values_and_units"
+            self.attestation, "table3_result_driving_values"
+        )["finding"]
+        units = _check_by_id(
+            self.attestation, "table3_result_driving_units"
         )["finding"]
         for scope in ("AAF-I", "AAF-II", "AAF-III"):
             p_sum = _node_by_id(self.required_inputs, f"{scope}:p_sum")
             alpha = _node_by_id(self.required_inputs, f"{scope}:alpha_corrected")
             self.assertEqual(values[scope]["p_g_sum"], p_sum["printed_value"])
-            self.assertEqual(values[scope]["p_g_sum_unit"], p_sum["unit"])
             self.assertEqual(values[scope]["alpha_t_2omega_d"], alpha["printed_value"])
-            self.assertEqual(values[scope]["alpha_t_unit"], alpha["unit"])
+            self.assertEqual(units["p_g_sum_unit"], p_sum["unit"])
+            self.assertEqual(units["alpha_t_unit"], alpha["unit"])
 
         air_density = _check_by_id(
             self.attestation, "table3_air_density_statement"
