@@ -1,0 +1,240 @@
+{
+  "audit_target": "hust_2018_aaf",
+  "central_value_formula": "G = alpha_t(2omega_d) / abs(sum_l(P_g,l,2)) * (1 + magnetic_damper_delta_G_over_G)",
+  "evidence_type_definitions": {
+    "PUBLIC_DERIVABLE": "Every parent and the exact derivation rule are public and pinned.",
+    "PUBLIC_DIRECT": "The value appears directly in a retrieved public source.",
+    "REQUEST_ONLY": "The information is stated to be available by request but is not in the retrieved public set.",
+    "TARGET_DERIVED": "The quantity depends on a published G value or another downstream target quantity.",
+    "UNPUBLISHED_OR_AMBIGUOUS": "The audit cannot establish a unique checkable public value or procedure."
+  },
+  "experiments": [
+    {
+      "experiment_id": "AAF-I",
+      "nodes": [
+        {
+          "evidence_type": "PUBLIC_DIRECT",
+          "locator": "Supplementary Table 3, p. 20, |sum_{l=2}^{10} P_g,l,2| row, AAF-I column",
+          "node_id": "AAF-I:p_sum",
+          "parents": [],
+          "result_driving": true,
+          "source_id": "supplementary_information",
+          "unit": "kg m^-3",
+          "value": "6926.352"
+        },
+        {
+          "evidence_type": "PUBLIC_DIRECT",
+          "locator": "Supplementary Table 3, p. 20, <alpha_t(2omega_d)> row, AAF-I column; table states this value is air-density corrected",
+          "node_id": "AAF-I:alpha_corrected",
+          "parents": [],
+          "result_driving": true,
+          "source_id": "supplementary_information",
+          "unit": "nrad s^-2",
+          "value": "462.0912"
+        },
+        {
+          "evidence_type": "PUBLIC_DIRECT",
+          "locator": "Supplementary Table 1, p. 18, AAF-I and II magnetic-damper DeltaG/G row",
+          "node_id": "AAF-I:magnetic_damper_ppm",
+          "parents": [],
+          "result_driving": true,
+          "source_id": "supplementary_information",
+          "unit": "ppm",
+          "value": "455.40"
+        },
+        {
+          "evidence_type": "PUBLIC_DERIVABLE",
+          "formula": "alpha_corrected * 1e-9 / p_sum * (1 + magnetic_damper_ppm * 1e-6)",
+          "locator": "Supplementary Information pp. 4-5 defines P_g,l,m with G separate and gives the simplified AAF G equation including magnetic-damper correction",
+          "node_id": "AAF-I:G_reconstructed",
+          "parents": [
+            "AAF-I:p_sum",
+            "AAF-I:alpha_corrected",
+            "AAF-I:magnetic_damper_ppm"
+          ],
+          "replication_role": "depth_2a_candidate",
+          "result_driving": true,
+          "source_id": "supplementary_information",
+          "unit": "m^3 kg^-1 s^-2"
+        },
+        {
+          "evidence_type": "UNPUBLISHED_OR_AMBIGUOUS",
+          "locator": "Nature/Supplementary Information provide individual standard uncertainties and describe AAF correlations, but this audit did not recover a complete machine-reconstructible itemized uncertainty/covariance budget for AAF-I",
+          "node_id": "AAF-I:complete_uncertainty_model",
+          "parents": [],
+          "replication_role": "depth_2b_requirement",
+          "result_driving": true,
+          "source_id": "supplementary_information"
+        }
+      ],
+      "published_comparison": {
+        "locator": "Supplementary Table 3, p. 20, G row, AAF-I column",
+        "standard_uncertainty_last_digits": "83",
+        "unit": "1e-11 m^3 kg^-1 s^-2",
+        "value": "6.674534"
+      }
+    },
+    {
+      "experiment_id": "AAF-II",
+      "nodes": [
+        {
+          "evidence_type": "PUBLIC_DIRECT",
+          "locator": "Supplementary Table 3, p. 20, |sum_{l=2}^{10} P_g,l,2| row, AAF-II column",
+          "node_id": "AAF-II:p_sum",
+          "parents": [],
+          "result_driving": true,
+          "source_id": "supplementary_information",
+          "unit": "kg m^-3",
+          "value": "6926.334"
+        },
+        {
+          "evidence_type": "PUBLIC_DIRECT",
+          "locator": "Supplementary Table 3, p. 20, <alpha_t(2omega_d)> row, AAF-II column; table states this value is air-density corrected",
+          "node_id": "AAF-II:alpha_corrected",
+          "parents": [],
+          "result_driving": true,
+          "source_id": "supplementary_information",
+          "unit": "nrad s^-2",
+          "value": "462.0791"
+        },
+        {
+          "evidence_type": "PUBLIC_DIRECT",
+          "locator": "Supplementary Table 1, p. 18, AAF-I and II magnetic-damper DeltaG/G row",
+          "node_id": "AAF-II:magnetic_damper_ppm",
+          "parents": [],
+          "result_driving": true,
+          "source_id": "supplementary_information",
+          "unit": "ppm",
+          "value": "455.40"
+        },
+        {
+          "evidence_type": "PUBLIC_DERIVABLE",
+          "formula": "alpha_corrected * 1e-9 / p_sum * (1 + magnetic_damper_ppm * 1e-6)",
+          "locator": "Supplementary Information pp. 4-5 defines P_g,l,m with G separate and gives the simplified AAF G equation including magnetic-damper correction",
+          "node_id": "AAF-II:G_reconstructed",
+          "parents": [
+            "AAF-II:p_sum",
+            "AAF-II:alpha_corrected",
+            "AAF-II:magnetic_damper_ppm"
+          ],
+          "replication_role": "depth_2a_candidate",
+          "result_driving": true,
+          "source_id": "supplementary_information",
+          "unit": "m^3 kg^-1 s^-2"
+        },
+        {
+          "evidence_type": "UNPUBLISHED_OR_AMBIGUOUS",
+          "locator": "Nature/Supplementary Information provide individual standard uncertainties and describe AAF correlations, but this audit did not recover a complete machine-reconstructible itemized uncertainty/covariance budget for AAF-II",
+          "node_id": "AAF-II:complete_uncertainty_model",
+          "parents": [],
+          "replication_role": "depth_2b_requirement",
+          "result_driving": true,
+          "source_id": "supplementary_information"
+        }
+      ],
+      "published_comparison": {
+        "locator": "Supplementary Table 3, p. 20, G row, AAF-II column",
+        "standard_uncertainty_last_digits": "82",
+        "unit": "1e-11 m^3 kg^-1 s^-2",
+        "value": "6.674375"
+      }
+    },
+    {
+      "experiment_id": "AAF-III",
+      "nodes": [
+        {
+          "evidence_type": "PUBLIC_DIRECT",
+          "locator": "Supplementary Table 3, p. 20, |sum_{l=2}^{10} P_g,l,2| row, AAF-III column",
+          "node_id": "AAF-III:p_sum",
+          "parents": [],
+          "result_driving": true,
+          "source_id": "supplementary_information",
+          "unit": "kg m^-3",
+          "value": "6926.415"
+        },
+        {
+          "evidence_type": "PUBLIC_DIRECT",
+          "locator": "Supplementary Table 3, p. 20, <alpha_t(2omega_d)> row, AAF-III column; table states this value is air-density corrected",
+          "node_id": "AAF-III:alpha_corrected",
+          "parents": [],
+          "result_driving": true,
+          "source_id": "supplementary_information",
+          "unit": "nrad s^-2",
+          "value": "462.2941"
+        },
+        {
+          "evidence_type": "PUBLIC_DIRECT",
+          "locator": "Supplementary Table 1, pp. 18-19, AAF-III magnetic-damper DeltaG/G row",
+          "node_id": "AAF-III:magnetic_damper_ppm",
+          "parents": [],
+          "result_driving": true,
+          "source_id": "supplementary_information",
+          "unit": "ppm",
+          "value": "25.74"
+        },
+        {
+          "evidence_type": "PUBLIC_DERIVABLE",
+          "formula": "alpha_corrected * 1e-9 / p_sum * (1 + magnetic_damper_ppm * 1e-6)",
+          "locator": "Supplementary Information pp. 4-5 defines P_g,l,m with G separate and gives the simplified AAF G equation including magnetic-damper correction",
+          "node_id": "AAF-III:G_reconstructed",
+          "parents": [
+            "AAF-III:p_sum",
+            "AAF-III:alpha_corrected",
+            "AAF-III:magnetic_damper_ppm"
+          ],
+          "replication_role": "depth_2a_candidate",
+          "result_driving": true,
+          "source_id": "supplementary_information",
+          "unit": "m^3 kg^-1 s^-2"
+        },
+        {
+          "evidence_type": "UNPUBLISHED_OR_AMBIGUOUS",
+          "locator": "Nature/Supplementary Information provide individual standard uncertainties and describe AAF correlations, but this audit did not recover a complete machine-reconstructible itemized uncertainty/covariance budget for AAF-III",
+          "node_id": "AAF-III:complete_uncertainty_model",
+          "parents": [],
+          "replication_role": "depth_2b_requirement",
+          "result_driving": true,
+          "source_id": "supplementary_information"
+        }
+      ],
+      "published_comparison": {
+        "locator": "Supplementary Table 3, p. 20, G row, AAF-III column",
+        "standard_uncertainty_last_digits": "75",
+        "unit": "1e-11 m^3 kg^-1 s^-2",
+        "value": "6.674535"
+      }
+    }
+  ],
+  "public_deeper_reduction_evidence": [
+    {
+      "evidence_type": "PUBLIC_DIRECT",
+      "locator": "Supplementary Information pp. 9-10, Section 4",
+      "scope": "AAF-I",
+      "statement": "0.5-s data averaging introduces a 2.57(1) ppm correction; double numerical differentiation introduces a 2058.71(1) ppm correction."
+    },
+    {
+      "evidence_type": "PUBLIC_DIRECT",
+      "locator": "Supplementary Information pp. 9-10, Section 4",
+      "scope": "AAF-II,AAF-III",
+      "statement": "0.5-s data averaging introduces a 1.14(1) ppm correction; double numerical differentiation introduces a 914.35(1) ppm correction."
+    },
+    {
+      "evidence_type": "PUBLIC_DIRECT",
+      "locator": "Supplementary Information p. 11, Section 5",
+      "scope": "AAF-I,AAF-II,AAF-III",
+      "statement": "Residual co-moving background-gradient effects are reported as 1.86, 1.35 and 1.72 ppm for the three experiments; the lab-fixed background is frequency-separated."
+    },
+    {
+      "evidence_type": "REQUEST_ONLY",
+      "locator": "Nature Data Availability statement",
+      "scope": "AAF-I,AAF-II,AAF-III",
+      "statement": "The public materials inspected here do not provide the raw time-series/run records needed for depth 3 or 4; supporting data are stated to be available from corresponding authors on reasonable request."
+    }
+  ],
+  "schema_version": 1,
+  "source_definition_check": {
+    "locator": "Supplementary Information pp. 4-5",
+    "statement": "P_g,l,m is defined from the pendulum/source multipole moments and moment of inertia; G appears as a separate multiplicative factor in the gravitational angular-acceleration expansion.",
+    "target_dependency_status": "no_G_in_registered_source_definition"
+  }
+}
