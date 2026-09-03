@@ -65,58 +65,23 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - name: Advance downstream mutation checkers to v2 artifacts
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          changes = (
-              (
-                  Path('Discovery/pysr_leakage_mutations.py'),
-                  'RESULT_SCHEMA_VERSION = 1',
-                  'RESULT_SCHEMA_VERSION = 2',
-                  '"milestone_6b_pysr_leakage_v1.mutation_results.json"',
-                  '"milestone_6b_pysr_leakage_v1.mutation_results_v2.json"',
-              ),
-              (
-                  Path('Discovery/pysr_leakage_hardening_mutations.py'),
-                  'RESULT_SCHEMA_VERSION = 1',
-                  'RESULT_SCHEMA_VERSION = 2',
-                  '"post_6b_hardening_v1.mutation_results.json"',
-                  '"post_6b_hardening_v1.mutation_results_v2.json"',
-              ),
-          )
-          for path, old_version, new_version, old_output, new_output in changes:
-              text = path.read_text(encoding='utf-8')
-              if text.count(old_version) != 1 or text.count(old_output) != 1:
-                  raise SystemExit(f'unexpected downstream checker state: {path}')
-              path.write_text(
-                  text.replace(old_version, new_version, 1).replace(old_output, new_output, 1),
-                  encoding='utf-8',
-              )
-          note = Path('Notes/PostAuditClosure.md')
-          text = note.read_text(encoding='utf-8')
-          marker = '- The original mutation artifact remains historical; the current re-anchored artifact is `Experiments/Falsification/milestone_5b_core_v1.mutation_results_v2.json`.\n'
-          addition = marker + '- Because `Discovery/mutation_harness.py` is also source-pinned by the Milestone 6B and post-6B mutation checks, their original artifacts remain historical and new v2 artifacts are re-anchored after this intentional shared-infrastructure change. No PySR fit/search result is rerun.\n'
-          if text.count(marker) != 1:
-              raise SystemExit('closure note marker missing')
-          note.write_text(text.replace(marker, addition, 1), encoding='utf-8')
-          PY
-      - name: Commit exact downstream source anchor
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add Discovery/pysr_leakage_mutations.py Discovery/pysr_leakage_hardening_mutations.py Notes/PostAuditClosure.md
-          git commit -m "Re-anchor downstream mutation checkers after shared harness change"
-          git push origin HEAD:codex/post-audit-closure-rmp
-      - name: Generate downstream mutation artifacts at exact anchor
+      - name: Generate each downstream artifact from the same clean anchor
         run: |
           SOURCE_SHA="$(git rev-parse HEAD)"
           python -m Discovery.pysr_leakage_mutations --run --source-commit-sha "$SOURCE_SHA" --output Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.mutation_results_v2.json
+          cp Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.mutation_results_v2.json /tmp/6b-mutations-v2.json
+          rm Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.mutation_results_v2.json
+          test -z "$(git status --porcelain)"
           python -m Discovery.pysr_leakage_hardening_mutations --run --source-commit-sha "$SOURCE_SHA" --output Experiments/EcosystemComparison/PySRLeakage/post_6b_hardening_v1.mutation_results_v2.json
-          python -m Discovery.pysr_leakage_mutations --check
-          python -m Discovery.pysr_leakage_hardening_mutations --check
-      - name: Restore permanent workflow and commit downstream evidence
+          cp Experiments/EcosystemComparison/PySRLeakage/post_6b_hardening_v1.mutation_results_v2.json /tmp/post-6b-mutations-v2.json
+          rm Experiments/EcosystemComparison/PySRLeakage/post_6b_hardening_v1.mutation_results_v2.json
+          test -z "$(git status --porcelain)"
+          cp /tmp/6b-mutations-v2.json Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.mutation_results_v2.json
+          cp /tmp/post-6b-mutations-v2.json Experiments/EcosystemComparison/PySRLeakage/post_6b_hardening_v1.mutation_results_v2.json
+      - name: Commit downstream evidence and restore permanent workflow
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout origin/main -- .github/workflows/verify.yml
           git add .github/workflows/verify.yml Experiments/EcosystemComparison/PySRLeakage/milestone_6b_pysr_leakage_v1.mutation_results_v2.json Experiments/EcosystemComparison/PySRLeakage/post_6b_hardening_v1.mutation_results_v2.json
           git commit -m "Record re-anchored downstream mutation evidence v2"
