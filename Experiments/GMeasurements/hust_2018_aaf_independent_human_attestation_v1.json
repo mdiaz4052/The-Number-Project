@@ -1,10 +1,12 @@
 {
   "attestation_id": "hust_2018_aaf_independent_human_attestation_v1",
   "attestation_scope": "depth_2a_result_driving_primary_source_facts",
-  "boundary": "This records an independent human reading of the primary Supplementary Information against result-driving source facts. It is not an independent experiment, does not validate HUST's apparatus or systematic-error analysis, does not establish depth 2b, and does not authorize a combined AAF estimator.",
+  "boundary": "This records a human reading of the primary Supplementary Information against result-driving source facts. The result-driving values and semantic expectations were withheld before the initial transcription; units were confirmed only after the expected units were disclosed. It is not an independent experiment, does not validate HUST's apparatus or systematic-error analysis, does not establish depth 2b, and does not authorize a combined AAF estimator.",
   "blind_review": {
-    "project_values_withheld_before_transcription": true,
-    "reviewer_reported_findings_before_comparison": true,
+    "initial_result_values_and_semantic_expectations_withheld": true,
+    "initial_findings_reported_before_comparison": true,
+    "unit_confirmation_blinded": false,
+    "unit_confirmation_phase": "Expected units were disclosed after the initial blind transcription; the human reader then confirmed those units in the PDF.",
     "screenshots_required": false,
     "method": "visual inspection of the primary Supplementary Information PDF"
   },
@@ -13,44 +15,53 @@
       "claim_id": "p_g_definition_excludes_G",
       "finding": "P_g,l,m does not contain G; G is separate from the coefficient.",
       "locator": "Supplementary Information p. 4",
-      "status": "confirmed_by_independent_human_reader"
+      "status": "confirmed_blind_by_independent_human_reader"
     },
     {
       "claim_id": "magnetic_damper_direction_and_magnitude",
-      "finding": "The G equation contains the magnetic-damper factor as (1 + (K/K_m)(I_m/I)). Supplementary Table 1 gives 455.40(1.95) ppm for AAF-I/II and 25.74(8) ppm for AAF-III.",
+      "finding": "The G equation contains the magnetic-damper factor as (1 + (K/K_m)(I_m/I)). Supplementary Table 1 gives 455.40(1.95) for AAF-I/II and 25.74(8) for AAF-III.",
       "locator": "Supplementary Information p. 5 and Supplementary Table 1 p. 18",
-      "status": "confirmed_by_independent_human_reader"
+      "status": "confirmed_blind_by_independent_human_reader"
+    },
+    {
+      "claim_id": "table1_damper_unit",
+      "finding": "The magnetic-damper DeltaG/G entries are reported in ppm.",
+      "locator": "Supplementary Table 1 p. 18",
+      "status": "confirmed_after_expected_unit_disclosed"
     },
     {
       "claim_id": "table3_air_density_statement",
       "finding": "The table states that alpha_t(2omega_d) has been corrected for the air density effect.",
       "locator": "Supplementary Table 3 p. 20",
-      "status": "confirmed_by_independent_human_reader"
+      "status": "confirmed_blind_by_independent_human_reader"
     },
     {
-      "claim_id": "table3_result_driving_values_and_units",
+      "claim_id": "table3_result_driving_values",
       "finding": {
         "AAF-I": {
           "alpha_t_2omega_d": "462.0912(16)",
-          "alpha_t_unit": "nrad s^-2",
-          "p_g_sum": "6926.352(74)",
-          "p_g_sum_unit": "kg m^-3"
+          "p_g_sum": "6926.352(74)"
         },
         "AAF-II": {
           "alpha_t_2omega_d": "462.0791(12)",
-          "alpha_t_unit": "nrad s^-2",
-          "p_g_sum": "6926.334(75)",
-          "p_g_sum_unit": "kg m^-3"
+          "p_g_sum": "6926.334(75)"
         },
         "AAF-III": {
           "alpha_t_2omega_d": "462.2941(6)",
-          "alpha_t_unit": "nrad s^-2",
-          "p_g_sum": "6926.415(74)",
-          "p_g_sum_unit": "kg m^-3"
+          "p_g_sum": "6926.415(74)"
         }
       },
       "locator": "Supplementary Table 3 p. 20",
-      "status": "confirmed_by_independent_human_reader"
+      "status": "confirmed_blind_by_independent_human_reader"
+    },
+    {
+      "claim_id": "table3_result_driving_units",
+      "finding": {
+        "alpha_t_unit": "nrad s^-2",
+        "p_g_sum_unit": "kg m^-3"
+      },
+      "locator": "Supplementary Table 3 p. 20",
+      "status": "confirmed_after_expected_unit_disclosed"
     }
   ],
   "nonclaims": [
