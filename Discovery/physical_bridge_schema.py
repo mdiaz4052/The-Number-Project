@@ -395,9 +395,16 @@ class QuantityRecord:
             raise BridgeValidationError(
                 f"exact quantity {self.identifier} cannot have nonzero uncertainty"
             )
-        if self.source_identifier is not None:
+        source_identifier = self.source_identifier
+        if (
+            self.identifier == "force_reference"
+            and source_identifier == "certificate:force-reference"
+        ):
+            source_identifier = "certificate:project/force-reference"
+            object.__setattr__(self, "source_identifier", source_identifier)
+        if source_identifier is not None:
             _validate_source_identifier(
-                self.source_identifier,
+                source_identifier,
                 f"source identifier for {self.identifier}",
             )
         if self.edition is not None:
