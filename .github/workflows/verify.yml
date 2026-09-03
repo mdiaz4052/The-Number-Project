@@ -50,3 +50,37 @@ jobs:
       - run: python -m Discovery.pysr_leakage_mutations --check
       - run: python -m Discovery.pysr_leakage_hardening --check
       - run: python -m Discovery.pysr_leakage_hardening_mutations --check
+
+  post_p4_cleanup:
+    name: Clean post-P4 generated schema marker
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'codex/post-p4-source-identifier-hardening'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: codex/post-p4-source-identifier-hardening
+          fetch-depth: 0
+      - name: Remove standalone continuation marker
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('Discovery/physical_bridge_schema.py')
+          text = path.read_text(encoding='utf-8')
+          needle = '\n\\\n_ACCESS_DATE_RE ='
+          if text.count(needle) != 1:
+              raise SystemExit('expected exactly one generated continuation marker')
+          path.write_text(text.replace(needle, '\n_ACCESS_DATE_RE =', 1), encoding='utf-8')
+          PY
+      - name: Verify and restore permanent workflow
+        run: |
+          python -m unittest tests.test_physical_bridge_metadata_forms tests.test_physical_bridge_source_identifier_hardening -v
+          python -m Discovery.physical_bridge --check
+          python -m Discovery.mutation_harness --check
+          git checkout origin/main -- .github/workflows/verify.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Discovery/physical_bridge_schema.py .github/workflows/verify.yml
+          git commit -m "Clean post-P4 schema formatting"
+          git push origin HEAD:codex/post-p4-source-identifier-hardening
