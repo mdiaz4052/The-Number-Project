@@ -112,10 +112,15 @@ def _require_text(value: object, label: str) -> str:
     return value
 
 
+\
 _ACCESS_DATE_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$", re.ASCII)
 _DOI_RE = re.compile(r"^10\.[0-9]{4,9}/\S+$", re.ASCII)
-_CERTIFICATE_ID_RE = re.compile(
-    r"^[A-Za-z0-9][A-Za-z0-9._:/+\-]*$",
+_CERTIFICATE_ISSUER_RE = re.compile(
+    r"^[A-Za-z][A-Za-z0-9._+\-]{0,63}$",
+    re.ASCII,
+)
+_CERTIFICATE_RECORD_RE = re.compile(
+    r"^[A-Za-z0-9][A-Za-z0-9._+\-]{0,127}$",
     re.ASCII,
 )
 _SOURCE_IDENTIFIER_PREFIXES = ("doi", "url", "certificate")
@@ -138,9 +143,12 @@ def _validate_access_date(value: object, label: str) -> str:
 
 def _validate_source_identifier(value: object, label: str) -> str:
     text = _require_text(value, label)
-    if text != text.strip() or any(character.isspace() for character in text):
+    if text != text.strip() or any(
+        character.isspace() or not character.isprintable()
+        for character in text
+    ):
         raise BridgeValidationError(
-            f"{label} cannot contain whitespace or outer padding"
+            f"{label} cannot contain whitespace, control, or invisible characters"
         )
     prefix, separator, payload = text.partition(":")
     if not separator or prefix not in _SOURCE_IDENTIFIER_PREFIXES:
@@ -154,22 +162,37 @@ def _validate_source_identifier(value: object, label: str) -> str:
                 f"{label} has a malformed DOI; expected doi:10.<registrant>/<suffix>"
             )
     elif prefix == "url":
-        parsed = urlsplit(payload)
+        try:
+            parsed = urlsplit(payload)
+            hostname = parsed.hostname
+            _ = parsed.port
+        except ValueError as error:
+            raise BridgeValidationError(f"{label} URL is unparseable") from error
         if (
             parsed.scheme != "https"
             or not parsed.netloc
+            or hostname is None
+            or not any(character.isalnum() for character in hostname)
             or parsed.username is not None
             or parsed.password is not None
         ):
             raise BridgeValidationError(
                 f"{label} URL must be an absolute credential-free https URL"
             )
-    elif _CERTIFICATE_ID_RE.fullmatch(payload) is None:
-        raise BridgeValidationError(
-            f"{label} certificate token is malformed"
-        )
+    else:
+        if payload.count("/") != 1:
+            raise BridgeValidationError(
+                f"{label} certificate must use issuer/record form"
+            )
+        issuer, record_id = payload.split("/", 1)
+        if (
+            _CERTIFICATE_ISSUER_RE.fullmatch(issuer) is None
+            or _CERTIFICATE_RECORD_RE.fullmatch(record_id) is None
+        ):
+            raise BridgeValidationError(
+                f"{label} certificate must use issuer/record form"
+            )
     return text
-
 
 def _unique_text(values: Iterable[str], label: str) -> tuple[str, ...]:
     if isinstance(values, (str, bytes)):
