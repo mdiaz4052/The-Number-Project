@@ -37,6 +37,7 @@ class PhysicalBridgeSourceIdentifierHardeningTests(unittest.TestCase):
             "certificate:/record",
             "certificate:lab-A/",
             "certificate:lab-A/run/extra",
+            "certificate:lab-A/rec:x",
         )
         for value in invalid:
             with self.subTest(value=value):
@@ -58,23 +59,42 @@ class PhysicalBridgeSourceIdentifierHardeningTests(unittest.TestCase):
                     value,
                 )
 
-    def test_legacy_force_reference_token_is_scoped_and_canonicalized(self) -> None:
-        migrated = replace(
-            force_reference(),
-            source_identifier="certificate:force-reference",
+    def test_legacy_shim_is_retired_and_force_reference_gets_no_value_bypass(self) -> None:
+        reference = force_reference()
+        for value in ("certificate:force-reference", "certificate:zzz"):
+            with self.subTest(value=value):
+                with self.assertRaisesRegex(
+                    BridgeValidationError,
+                    "certificate.*issuer/record",
+                ):
+                    replace(reference, source_identifier=value)
+        valid = "certificate:evil/token"
+        self.assertEqual(
+            replace(reference, source_identifier=valid).source_identifier,
+            valid,
+        )
+
+    def test_certificate_component_length_boundaries_are_pinned(self) -> None:
+        reference = codata_reference()
+        issuer_64 = "A" + "a" * 63
+        record_128 = "r" * 128
+        self.assertEqual(
+            replace(reference, source_identifier=f"certificate:{issuer_64}/x").source_identifier,
+            f"certificate:{issuer_64}/x",
         )
         self.assertEqual(
-            migrated.source_identifier,
-            "certificate:project/force-reference",
+            replace(reference, source_identifier=f"certificate:A/{record_128}").source_identifier,
+            f"certificate:A/{record_128}",
         )
-        with self.assertRaisesRegex(
-            BridgeValidationError,
-            "certificate.*issuer/record",
+        for value in (
+            f"certificate:{'A' + 'a' * 64}/x",
+            f"certificate:A/{'r' * 129}",
         ):
-            replace(
-                codata_reference(),
-                source_identifier="certificate:force-reference",
-            )
+            with self.subTest(value=value[:40]):
+                with self.assertRaisesRegex(
+                    BridgeValidationError, "certificate.*issuer/record"
+                ):
+                    replace(reference, source_identifier=value)
 
     def test_https_credentials_are_rejected(self) -> None:
         reference = codata_reference()
@@ -90,13 +110,30 @@ class PhysicalBridgeSourceIdentifierHardeningTests(unittest.TestCase):
                 ):
                     replace(reference, source_identifier=value)
 
+    def test_whitespace_precheck_is_independently_pinned_for_urls(self) -> None:
+        reference = codata_reference()
+        for value in (
+            "url:https://example.org/a b",
+            "url:https://exam ple.org/d",
+        ):
+            with self.subTest(value=value):
+                with self.assertRaisesRegex(
+                    BridgeValidationError,
+                    "whitespace, control, or invisible",
+                ):
+                    replace(reference, source_identifier=value)
+
     def test_invisible_or_control_identifier_characters_are_rejected(self) -> None:
         reference = codata_reference()
         invalid = (
             "doi:10.1103/x\u00a0y",
             "doi:10.1103/x\u200by",
             "doi:10.1103/x\x01y",
-            "url:https://example.org/x\u200by",
+            "doi:10.1103/x\u3164y",
+            "doi:10.1103/x\u2800y",
+            "doi:10.1103/x\u115fy",
+            "doi:10.1103/cafe\u0301",
+            "url:https://ex\u3164ample.org/d",
         )
         for value in invalid:
             with self.subTest(value=repr(value)):
@@ -145,6 +182,7 @@ class PhysicalBridgeSourceIdentifierHardeningTests(unittest.TestCase):
         for value in (
             "url:https://../d",
             "url:https://.../",
+            "url:https://...:1/d",
         ):
             with self.subTest(value=value):
                 with self.assertRaisesRegex(

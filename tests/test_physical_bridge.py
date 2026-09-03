@@ -269,7 +269,7 @@ class PhysicalBridgeTests(unittest.TestCase):
             value=Decimal("1"),
             standard_uncertainty=Decimal("0.1"),
             uncertainty_unit="N",
-            source_identifier="certificate:force-reference",
+            source_identifier="certificate:project/force-reference",
             edition="certificate edition 1",
             access_date="2026-09-01",
         )
@@ -281,7 +281,7 @@ class PhysicalBridgeTests(unittest.TestCase):
 
     def test_each_empirical_source_metadata_field_is_required(self) -> None:
         complete_metadata = {
-            "source_identifier": "certificate:force-reference",
+            "source_identifier": "certificate:project/force-reference",
             "edition": "certificate edition 1",
             "access_date": "2026-09-01",
         }

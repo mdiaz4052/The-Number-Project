@@ -62,7 +62,10 @@ estimator, apparatus summaries, correction factors, one-sigma uncertainty budget
 headline result. It does not report the fitted gravitational angular-acceleration
 amplitude or the complete numerical attractor multipole coupling needed to calculate
 `G_hat`. The proposed 2002 PRD companion citation is unrelated; the later UW correction
-identified by CODATA is sourced to a private communication. A 1999 predecessor's
+identified by CODATA is sourced to a private communication. Primary NIST RMP verification places the
+correction discussion on journal p. 45 and the private-communication bibliography entry on
+journal p. 102. The manifest-pinned v1 source-audit text retains its earlier p. 44/p. 101
+locator typo and is not rewritten retroactively. A 1999 predecessor's
 prototype `Q_22`, proposed error budget, and design geometry are explicitly excluded as
 substitutes for the 2000 inputs.
 
@@ -81,17 +84,19 @@ in strict `YYYY-MM-DD` form. Source identifiers must use one of three explicit c
 `certificate:<issuer>/<record-id>`. Certificate issuer and record components use a
 bounded ASCII token grammar: the issuer begins with an ASCII letter and is at most 64
 characters, while the record identifier is at most 128 characters. A loose value such as
-`certificate:zzz` is not accepted. DOI and URL identifiers reject whitespace, control,
-and invisible characters; malformed URL parsing and invalid ports are converted into the
-schema's controlled `BridgeValidationError`. Edition remains descriptive nonempty text.
-Malformed forms are rejected before model-level empirical evaluation.
+`certificate:zzz` is not accepted. DOI and URL identifiers reject whitespace, control, non-printable characters, Unicode
+format/combining-mark categories, and a bounded set of known visually blank filler
+characters; malformed URL parsing and invalid ports are converted into the schema's
+controlled `BridgeValidationError`. Printable Unicode letters remain allowed in DOI
+suffixes, but general Unicode homoglyph/confusable detection is explicitly out of scope.
+Edition remains descriptive nonempty text. Malformed forms are rejected before model-level
+empirical evaluation.
 
-One historical source-attested test fixture predates the certificate namespace and uses
-the exact token `certificate:force-reference`. For the repository's known
-`force_reference` quantity only, construction canonicalizes that token to
-`certificate:project/force-reference`; the same loose token remains invalid for every
-other quantity. This is a migration shim for preserved historical tests, not an additional
-accepted certificate grammar.
+The temporary `force_reference` legacy-certificate canonicalization has been retired. The
+post-audit closure legitimately re-anchors the mutation-harness source boundary to include
+`Discovery/physical_bridge_schema.py`, updates the two historical fixture literals to the
+normal `certificate:project/force-reference` form, and writes a new mutation-results v2
+artifact. The original mutation-results artifact remains preserved as historical evidence.
 
 These checks establish only syntax and project-local identifier shape. They do not prove
 that a DOI, URL, or certificate resolves, that a host is publicly reachable, that the

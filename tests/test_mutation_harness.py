@@ -85,7 +85,7 @@ class MutationHarnessUnitTests(unittest.TestCase):
 
         preregistration, content = load_preregistration()
         record = {
-            "result_schema_version": 3,
+            "result_schema_version": 4,
             "experiment_identifier": preregistration["experiment_identifier"],
             "integrity": {
                 "preregistration_sha256": preregistration_sha256_bytes(content),

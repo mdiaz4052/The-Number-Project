@@ -13,6 +13,7 @@ from decimal import Decimal
 from fractions import Fraction
 from pathlib import Path
 import re
+import unicodedata
 from types import MappingProxyType
 from typing import Any, Iterable, Mapping
 from urllib.parse import urlsplit
@@ -123,6 +124,18 @@ _CERTIFICATE_RECORD_RE = re.compile(
     re.ASCII,
 )
 _SOURCE_IDENTIFIER_PREFIXES = ("doi", "url", "certificate")
+_INVISIBLE_SOURCE_IDENTIFIER_CHARACTERS = frozenset(
+    {"\u115f", "\u1160", "\u2800", "\u3164", "\uffa0"}
+)
+
+
+def _source_identifier_character_is_disallowed(character: str) -> bool:
+    return (
+        character.isspace()
+        or not character.isprintable()
+        or unicodedata.category(character) in {"Cf", "Mn"}
+        or character in _INVISIBLE_SOURCE_IDENTIFIER_CHARACTERS
+    )
 
 
 def _validate_access_date(value: object, label: str) -> str:
@@ -143,7 +156,7 @@ def _validate_access_date(value: object, label: str) -> str:
 def _validate_source_identifier(value: object, label: str) -> str:
     text = _require_text(value, label)
     if text != text.strip() or any(
-        character.isspace() or not character.isprintable()
+        _source_identifier_character_is_disallowed(character)
         for character in text
     ):
         raise BridgeValidationError(
@@ -192,6 +205,7 @@ def _validate_source_identifier(value: object, label: str) -> str:
                 f"{label} certificate must use issuer/record form"
             )
     return text
+
 
 def _unique_text(values: Iterable[str], label: str) -> tuple[str, ...]:
     if isinstance(values, (str, bytes)):
@@ -396,12 +410,6 @@ class QuantityRecord:
                 f"exact quantity {self.identifier} cannot have nonzero uncertainty"
             )
         source_identifier = self.source_identifier
-        if (
-            self.identifier == "force_reference"
-            and source_identifier == "certificate:force-reference"
-        ):
-            source_identifier = "certificate:project/force-reference"
-            object.__setattr__(self, "source_identifier", source_identifier)
         if source_identifier is not None:
             _validate_source_identifier(
                 source_identifier,
