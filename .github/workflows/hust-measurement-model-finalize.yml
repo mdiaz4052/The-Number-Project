@@ -1,0 +1,77 @@
+name: Finalize HUST MeasurementModel artifact
+
+on:
+  push:
+    branches:
+      - codex/hust-2018-aaf-measurement-models
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    if: github.actor != 'github-actions[bot]' && github.ref == 'refs/heads/codex/hust-2018-aaf-measurement-models'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: codex/hust-2018-aaf-measurement-models
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Canonicalize Decimal evaluation order and add permanent guard
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          module = Path("Discovery/hust_2018_aaf_measurement_models.py")
+          text = module.read_text(encoding="utf-8")
+          replacements = (
+              (
+                  '        g_hat = alpha_si * correction_factor / p_sum\n',
+                  '        g_hat = alpha_si / p_sum * correction_factor\n',
+              ),
+              (
+                  '        expected_g = expected_alpha_si * expected_correction / p_sum\n',
+                  '        expected_g = expected_alpha_si / p_sum * expected_correction\n',
+              ),
+          )
+          for old, new in replacements:
+              if text.count(old) != 1:
+                  raise SystemExit(f"expected exactly one canonicalization target: {old!r}")
+              text = text.replace(old, new, 1)
+          module.write_text(text, encoding="utf-8")
+
+          verify = Path(".github/workflows/verify.yml")
+          workflow = verify.read_text(encoding="utf-8")
+          guard = "      - run: python -m Discovery.hust_2018_aaf_measurement_models --check\n"
+          if guard not in workflow:
+              needle = "      - run: python -m Discovery.hust_2018_aaf_source_audit --check\n"
+              if workflow.count(needle) != 1:
+                  raise SystemExit("unexpected verify.yml HUST source-audit guard shape")
+              workflow = workflow.replace(needle, needle + guard, 1)
+              verify.write_text(workflow, encoding="utf-8")
+          PY
+      - name: Prove focused model and workflow-safety behavior while this write workflow exists
+        run: python -m unittest tests.test_hust_2018_aaf_measurement_models tests.test_workflow_write_safety -v
+      - name: Generate deterministic empirical artifact
+        run: python -m Discovery.hust_2018_aaf_measurement_models
+      - name: Remove one-shot writable workflow
+        run: rm .github/workflows/hust-measurement-model-finalize.yml
+      - name: Verify generated artifact after workflow removal
+        run: python -m Discovery.hust_2018_aaf_measurement_models --check
+      - name: Run full Python suite
+        run: python -m unittest discover -s tests -v
+      - name: Check diff hygiene
+        run: git diff --check
+      - name: Commit finalized review state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Discovery/hust_2018_aaf_measurement_models.py \
+                  Experiments/GMeasurements/hust_2018_aaf_measurement_models_v1.json \
+                  .github/workflows/verify.yml \
+                  .github/workflows/hust-measurement-model-finalize.yml
+          git commit -m "Finalize HUST AAF empirical MeasurementModel artifact"
+          git push origin HEAD:codex/hust-2018-aaf-measurement-models
