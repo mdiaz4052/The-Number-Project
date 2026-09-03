@@ -73,14 +73,9 @@ jobs:
           path = Path('Discovery/physical_bridge_schema.py')
           text = path.read_text(encoding='utf-8')
 
-          old_constants = '''_ACCESS_DATE_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$", re.ASCII)
-          _DOI_RE = re.compile(r"^10\\.[0-9]{4,9}/\\S+$", re.ASCII)
-          _CERTIFICATE_ID_RE = re.compile(
-              r"^[A-Za-z0-9][A-Za-z0-9._:/+\\-]*$",
-              re.ASCII,
-          )
-          _SOURCE_IDENTIFIER_PREFIXES = ("doi", "url", "certificate")
-          '''
+          constants_start = text.index('_ACCESS_DATE_RE =')
+          constants_end_marker = '_SOURCE_IDENTIFIER_PREFIXES = ("doi", "url", "certificate")\n'
+          constants_end = text.index(constants_end_marker, constants_start) + len(constants_end_marker)
           new_constants = '''_ACCESS_DATE_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$", re.ASCII)
           _DOI_RE = re.compile(r"^10\\.[0-9]{4,9}/\\S+$", re.ASCII)
           _CERTIFICATE_ISSUER_RE = re.compile(
@@ -93,45 +88,11 @@ jobs:
           )
           _SOURCE_IDENTIFIER_PREFIXES = ("doi", "url", "certificate")
           '''
-          old_constants = '\n'.join(line[10:] if line.startswith('          ') else line for line in old_constants.splitlines()) + '\n'
           new_constants = '\n'.join(line[10:] if line.startswith('          ') else line for line in new_constants.splitlines()) + '\n'
-          assert text.count(old_constants) == 1
-          text = text.replace(old_constants, new_constants)
+          text = text[:constants_start] + new_constants + text[constants_end:]
 
-          old_function = '''def _validate_source_identifier(value: object, label: str) -> str:
-              text = _require_text(value, label)
-              if text != text.strip() or any(character.isspace() for character in text):
-                  raise BridgeValidationError(
-                      f"{label} cannot contain whitespace or outer padding"
-                  )
-              prefix, separator, payload = text.partition(":")
-              if not separator or prefix not in _SOURCE_IDENTIFIER_PREFIXES:
-                  raise BridgeValidationError(
-                      f"{label} must use one of the explicit prefixes: "
-                      "doi:, url:, certificate:"
-                  )
-              if prefix == "doi":
-                  if _DOI_RE.fullmatch(payload) is None:
-                      raise BridgeValidationError(
-                          f"{label} has a malformed DOI; expected doi:10.<registrant>/<suffix>"
-                      )
-              elif prefix == "url":
-                  parsed = urlsplit(payload)
-                  if (
-                      parsed.scheme != "https"
-                      or not parsed.netloc
-                      or parsed.username is not None
-                      or parsed.password is not None
-                  ):
-                      raise BridgeValidationError(
-                          f"{label} URL must be an absolute credential-free https URL"
-                      )
-              elif _CERTIFICATE_ID_RE.fullmatch(payload) is None:
-                  raise BridgeValidationError(
-                      f"{label} certificate token is malformed"
-                  )
-              return text
-          '''
+          function_start = text.index('def _validate_source_identifier(')
+          function_end = text.index('\ndef _unique_text(', function_start)
           new_function = '''def _validate_source_identifier(value: object, label: str) -> str:
               text = _require_text(value, label)
               if text != text.strip() or any(
@@ -185,10 +146,9 @@ jobs:
                       )
               return text
           '''
-          old_function = '\n'.join(line[10:] if line.startswith('          ') else line for line in old_function.splitlines()) + '\n'
           new_function = '\n'.join(line[10:] if line.startswith('          ') else line for line in new_function.splitlines()) + '\n'
-          assert text.count(old_function) == 1
-          path.write_text(text.replace(old_function, new_function), encoding='utf-8')
+          text = text[:function_start] + new_function + text[function_end:]
+          path.write_text(text, encoding='utf-8')
           PY
       - name: Run post-P4 focused checks
         run: |
