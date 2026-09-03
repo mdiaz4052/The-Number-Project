@@ -28,7 +28,7 @@
         "G_hat_decimal": "6.6745328035953125108282108677121809575949937283002E-11",
         "G_hat_standard_uncertainty_decimal": null,
         "agreement_is_acceptance_criterion": false,
-        "difference_G_decimal": "-1.196404687489171789132287819E-17",
+        "difference_G_decimal": "-1.1964046874891717891322878190424050062716998E-17",
         "difference_ppm": "-0.17924917117647041563235543021316619351578699",
         "published_G_decimal": "6.674534E-11",
         "published_G_standard_uncertainty_decimal": "8.3E-16",
@@ -302,7 +302,7 @@
             "exact": false,
             "standard_uncertainty_decimal": null,
             "uncertainty_unit": null,
-            "value_decimal": "-1.196404687489171789132287819E-17"
+            "value_decimal": "-1.1964046874891717891322878190424050062716998E-17"
           },
           "role": "derived_quantity",
           "source": {
@@ -640,7 +640,7 @@
         "G_hat_decimal": "6.6743753740743660354813960747489220127126413482226E-11",
         "G_hat_standard_uncertainty_decimal": null,
         "agreement_is_acceptance_criterion": false,
-        "difference_G_decimal": "3.740743660354813960747489220E-18",
+        "difference_G_decimal": "3.740743660354813960747489220127126413482226E-18",
         "difference_ppm": "0.0560463513116181509242062248544189742632415",
         "published_G_decimal": "6.674375E-11",
         "published_G_standard_uncertainty_decimal": "8.2E-16",
@@ -914,7 +914,7 @@
             "exact": false,
             "standard_uncertainty_decimal": null,
             "uncertainty_unit": null,
-            "value_decimal": "3.740743660354813960747489220E-18"
+            "value_decimal": "3.740743660354813960747489220127126413482226E-18"
           },
           "role": "derived_quantity",
           "source": {
@@ -1252,7 +1252,7 @@
         "G_hat_decimal": "6.6745350870563487749434592065303623880463414334833E-11",
         "G_hat_standard_uncertainty_decimal": null,
         "agreement_is_acceptance_criterion": false,
-        "difference_G_decimal": "8.705634877494345920653036239E-19",
+        "difference_G_decimal": "8.70563487749434592065303623880463414334833E-19",
         "difference_ppm": "0.0130430582467457971538886772468863136433449",
         "published_G_decimal": "6.674535E-11",
         "published_G_standard_uncertainty_decimal": "7.5E-16",
@@ -1526,7 +1526,7 @@
             "exact": false,
             "standard_uncertainty_decimal": null,
             "uncertainty_unit": null,
-            "value_decimal": "8.705634877494345920653036239E-19"
+            "value_decimal": "8.70563487749434592065303623880463414334833E-19"
           },
           "role": "derived_quantity",
           "source": {
