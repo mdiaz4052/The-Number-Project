@@ -247,7 +247,7 @@ def _build_model_from_records(
         context.prec = 50
         correction_factor = Decimal(1) + magnetic_ppm * Decimal("1e-6")
         alpha_si = alpha_table * Decimal("1e-9")
-        g_hat = alpha_si * correction_factor / p_sum
+        g_hat = alpha_si / p_sum * correction_factor
 
     comparison = experiment.get("published_comparison")
     if not isinstance(comparison, dict):
@@ -595,7 +595,7 @@ def validate_hust_aaf_model(model: MeasurementModel, scope: str) -> None:
         context.prec = 50
         expected_correction = Decimal(1) + magnetic_ppm * Decimal("1e-6")
         expected_alpha_si = alpha_table * Decimal("1e-9")
-        expected_g = expected_alpha_si * expected_correction / p_sum
+        expected_g = expected_alpha_si / p_sum * expected_correction
     if correction_factor != expected_correction:
         raise HUSTMeasurementModelError("magnetic-damper correction factor does not match the preregistered rule")
     if alpha_si != expected_alpha_si:
