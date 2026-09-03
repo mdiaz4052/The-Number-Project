@@ -74,10 +74,15 @@ not a criticism of the published experiment.
 
 For any future `empirical_record`, every populated numerical quantity in estimator
 ancestry, and every declared calibration or correction, must declare documented
-provenance plus a source identifier, edition, and access date. This makes absent source
-metadata fail closed. It does not prove that a cited value was experimentally independent
-or protect against a knowing editor who fabricates a plausible citation; source auditing
-remains an evidence task.
+provenance plus a source identifier, edition, and access date. Source metadata is also
+form-validated at `QuantityRecord` construction: access dates must be valid calendar dates
+in strict `YYYY-MM-DD` form, and source identifiers must use an explicit `doi:`,
+`url:https://...`, or `certificate:` form. Edition remains descriptive nonempty text.
+Malformed forms are rejected before model-level empirical evaluation. This makes absent
+or syntactically malformed source metadata fail closed. It does not prove that a cited
+value was experimentally independent, that a syntactically valid identifier resolves to
+the claimed evidence, or that an editor did not fabricate a plausible citation; source
+auditing remains an evidence task.
 
 [`uw_2000_published_data_pilot_v1.manifest.json`](uw_2000_published_data_pilot_v1.manifest.json)
 pins the exact bytes of the original preregistration, the clarification, and the source
