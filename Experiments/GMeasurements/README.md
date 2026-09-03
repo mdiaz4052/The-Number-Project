@@ -76,13 +76,33 @@ For any future `empirical_record`, every populated numerical quantity in estimat
 ancestry, and every declared calibration or correction, must declare documented
 provenance plus a source identifier, edition, and access date. Source metadata is also
 form-validated at `QuantityRecord` construction: access dates must be valid calendar dates
-in strict `YYYY-MM-DD` form, and source identifiers must use an explicit `doi:`,
-`url:https://...`, or `certificate:` form. Edition remains descriptive nonempty text.
-Malformed forms are rejected before model-level empirical evaluation. This makes absent
-or syntactically malformed source metadata fail closed. It does not prove that a cited
-value was experimentally independent, that a syntactically valid identifier resolves to
-the claimed evidence, or that an editor did not fabricate a plausible citation; source
-auditing remains an evidence task.
+in strict `YYYY-MM-DD` form. Source identifiers must use one of three explicit channels:
+`doi:<DOI>`, an absolute credential-free `url:https://...`, or a namespaced local
+`certificate:<issuer>/<record-id>`. Certificate issuer and record components use a
+bounded ASCII token grammar: the issuer begins with an ASCII letter and is at most 64
+characters, while the record identifier is at most 128 characters. A loose value such as
+`certificate:zzz` is not accepted. DOI and URL identifiers reject whitespace, control,
+and invisible characters; malformed URL parsing and invalid ports are converted into the
+schema's controlled `BridgeValidationError`. Edition remains descriptive nonempty text.
+Malformed forms are rejected before model-level empirical evaluation.
+
+One historical source-attested test fixture predates the certificate namespace and uses
+the exact token `certificate:force-reference`. For the repository's known
+`force_reference` quantity only, construction canonicalizes that token to
+`certificate:project/force-reference`; the same loose token remains invalid for every
+other quantity. This is a migration shim for preserved historical tests, not an additional
+accepted certificate grammar.
+
+These checks establish only syntax and project-local identifier shape. They do not prove
+that a DOI, URL, or certificate resolves, that a host is publicly reachable, that the
+claimed source contains the asserted value, or that the value was experimentally
+independent. A single-label HTTPS hostname can therefore be syntactically valid, while a
+hostname containing no alphanumeric character is rejected as degenerate. Future
+`access_date` values also remain syntactically valid: temporal plausibility is deliberately
+outside this deterministic form gate and would require a separately pinned audit date if
+ever enforced. Python's frozen dataclass mechanism is likewise an authoring-time check,
+not a security boundary against a knowing in-memory mutator. Source auditing remains a
+separate evidence task.
 
 [`uw_2000_published_data_pilot_v1.manifest.json`](uw_2000_published_data_pilot_v1.manifest.json)
 pins the exact bytes of the original preregistration, the clarification, and the source

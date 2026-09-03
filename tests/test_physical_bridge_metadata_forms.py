@@ -75,7 +75,7 @@ class PhysicalBridgeMetadataFormTests(unittest.TestCase):
             "doi:10.1063/5.0279860",
             "doi:10.59161/JCGM200-2012",
             "url:https://example.org/data/v1?edition=2#table-3",
-            "certificate:force-reference",
+            "certificate:project/force-reference",
             "certificate:lab-A/run_2026-09-02",
         )
         for value in valid:
