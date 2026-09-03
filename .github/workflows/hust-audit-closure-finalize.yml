@@ -1,0 +1,46 @@
+name: HUST audit closure finalizer
+
+on:
+  push:
+    branches:
+      - codex/hust-2018-aaf-audit-closure
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    if: github.actor != 'github-actions[bot]' && github.ref == 'refs/heads/codex/hust-2018-aaf-audit-closure'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: codex/hust-2018-aaf-audit-closure
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Focused HUST closure tests
+        run: |
+          python -m unittest discover -s tests -p 'test_hust_2018_aaf_source_audit.py' -v
+          python -m unittest discover -s tests -p 'test_workflow_write_safety.py' -v
+      - name: Regenerate current HUST manifest
+        run: |
+          rm Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.manifest.json
+          python -m Discovery.hust_2018_aaf_source_audit
+          python -m Discovery.hust_2018_aaf_source_audit --check
+      - name: Commit deterministic closure state without temporary workflow
+        run: |
+          rm .github/workflows/hust-audit-closure-finalize.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.manifest.json .github/workflows/hust-audit-closure-finalize.yml
+          git commit -m 'Finalize HUST post-audit closure manifest'
+          test -z "$(git status --porcelain)"
+      - name: Full Python verification from clean committed tree
+        run: |
+          python -m unittest discover -s tests -v
+          python -m Discovery.hust_2018_aaf_source_audit --check
+          test -z "$(git status --porcelain)"
+      - name: Push finalized closure
+        run: git push origin HEAD:codex/hust-2018-aaf-audit-closure
