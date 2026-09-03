@@ -1,8 +1,8 @@
 # Physical bridge records for G
 
-This directory contains Milestone 4's deterministic contract artifacts and the first
-published-data source-availability pilot. It contains no project-operated experimental
-dataset and reports no project measurement of `G`.
+This directory contains Milestone 4's deterministic contract artifacts and published-data
+source audits. It contains no project-operated experimental dataset and reports no project
+measurement of `G`.
 
 `physical_bridge_contract.json` records the general evidence layers, measurement-model
 fields, input roles, exact target-path rules, uncertainty requirements, external-reference
@@ -72,6 +72,74 @@ empirical or replication status is promoted. This documented outcome records tha
 source audit found the publication set insufficient for a complete transcription; it is
 not a criticism of the published experiment.
 
+[`uw_2000_published_data_pilot_v1.manifest.json`](uw_2000_published_data_pilot_v1.manifest.json)
+pins the exact bytes of the original preregistration, the clarification, and the source
+audit, together with the canonical `NO-GO`, missing-input, and next-candidate fields. The
+guard is tamper evidence for review; it cannot stop a knowing editor from changing code,
+constants, documents, and artifacts together.
+
+## HUST 2018 AAF source audit
+
+[`hust_2018_aaf_preregistration_v1.md`](hust_2018_aaf_preregistration_v1.md) freezes the
+decision rule before the HUST public inputs are classified. Its exact bytes are SHA-256
+pinned in `Discovery.hust_2018_aaf_source_audit`.
+
+The completed audit reaches **`GO` at replication depth `2a`**. This is deliberately
+narrower than an uncertainty-qualified empirical reproduction. The public HUST
+Supplementary Information supplies, separately for AAF-I, AAF-II, and AAF-III, the summed
+`P_g,l,2` coupling, the air-density-corrected average angular acceleration, and the
+magnetic-damper correction. The supplement's definition keeps `G` outside `P_g,l,m` as a
+separate factor. Those public summary inputs therefore permit a target-clean exact-Decimal
+reconstruction of all three individual central `G` estimates without back-solving from a
+published `G` value.
+
+The reconstructed central values agree diagnostically with the printed AAF-I/II/III
+values at approximately `-0.179`, `+0.056`, and `+0.013` ppm, respectively. Agreement does
+**not** determine the `GO` classification: graph ancestry and evidence class do. A planted
+transitive `TARGET_DERIVED` ancestor or a `REQUEST_ONLY` result-driving input downgrades
+the executable classifier to `PARTIAL`.
+
+Depth `2b` is not authorized. The retrieved public record describes uncertainties and AAF
+correlations, but this audit did not establish a complete itemized machine-reconstructible
+uncertainty/covariance model for any individual determination. The combined AAF value is
+also comparison-only because its weighting/correlation structure is not reconstructed by
+this milestone. Depths 3 and 4 remain unauthorized because run-level/raw time-series data
+were not recovered from the public set.
+
+The audit artifacts are:
+
+- [`hust_2018_aaf_external_sources_v1.json`](hust_2018_aaf_external_sources_v1.json):
+  recorded retrieval bytes/statuses, including fail-closed classification of source-data
+  requests that returned HTML fallbacks instead of XLSX bytes;
+- [`hust_2018_aaf_required_inputs_v1.json`](hust_2018_aaf_required_inputs_v1.json): the
+  AAF-I/II/III evidence/dependency graph and terminal published comparisons;
+- [`hust_2018_aaf_source_audit_v1.md`](hust_2018_aaf_source_audit_v1.md): the human-readable
+  source audit and nonclaims;
+- [`hust_2018_aaf_source_audit_v1.manifest.json`](hust_2018_aaf_source_audit_v1.manifest.json):
+  the deterministic classifier output plus hashes of the reviewed audit documents.
+
+The GitHub runner successfully captured the Supplementary Information PDF, Supplementary
+Data workbook, and one figure-source workbook. Four other exact Springer Nature XLSX media
+requests returned the same small HTML fallback response and are explicitly *not* promoted
+to retrieved source evidence. These failures do not block depth 2a because the central
+estimator inputs are in the retrieved Supplementary Information PDF; they do block any
+attempt to treat those failed captures as deeper evidence.
+
+CI verifies the frozen preregistration, reviewed external-source hashes/statuses, graph
+invariants, target ancestry, deterministic manifest, and exact reconstruction arithmetic.
+It does not re-download or parse the mutable publisher PDF on every run to prove that a
+human-written page/table locator semantically supports its transcription. The external PDF
+bytes are pinned, the locators are reviewable, and independent source verification remains
+part of the Claude audit. This distinction is intentional: tamper evidence is not the same
+as automatic literature comprehension.
+
+No HUST `MeasurementModel` is created here and the physical-bridge production schema is
+unchanged. A later implementation may use only the specifically authorized individual
+central estimators unless a separate audit establishes the missing uncertainty/correlation
+record.
+
+## Empirical source-metadata boundary
+
 For any future `empirical_record`, every populated numerical quantity in estimator
 ancestry, and every declared calibration or correction, must declare documented
 provenance plus a source identifier, edition, and access date. Source metadata is also
@@ -81,11 +149,12 @@ in strict `YYYY-MM-DD` form. Source identifiers must use one of three explicit c
 `certificate:<issuer>/<record-id>`. Certificate issuer and record components use a
 bounded ASCII token grammar: the issuer begins with an ASCII letter and is at most 64
 characters, while the record identifier is at most 128 characters. A loose value such as
-`certificate:zzz` is not accepted. DOI and URL identifiers reject whitespace, control characters, nonspacing/enclosing
-combining marks, and a bounded set of blank-like Unicode code points that can render as
-empty text while remaining printable; malformed URL parsing and invalid ports are converted
-into the schema's controlled `BridgeValidationError`. Edition remains descriptive nonempty
-text. Malformed forms are rejected before model-level empirical evaluation.
+`certificate:zzz` is not accepted. DOI and URL identifiers reject whitespace, control
+characters, nonspacing/enclosing combining marks, and a bounded set of blank-like Unicode
+code points that can render as empty text while remaining printable; malformed URL parsing
+and invalid ports are converted into the schema's controlled `BridgeValidationError`.
+Edition remains descriptive nonempty text. Malformed forms are rejected before model-level
+empirical evaluation.
 
 The historical `force_reference` test fixture now uses the namespaced
 `certificate:project/force-reference` form directly. No construction-time migration or
@@ -99,31 +168,25 @@ hostname containing no alphanumeric character is rejected as degenerate. General
 homoglyph/confusable detection is deliberately out of scope: the form gate removes bounded
 invisible classes, but it does not claim that visually similar identifiers are equivalent or
 that an identifier resolves to the intended source. Future `access_date` values also remain
-syntactically valid: temporal plausibility is deliberately
-outside this deterministic form gate and would require a separately pinned audit date if
-ever enforced. Python's frozen dataclass mechanism is likewise an authoring-time check,
-not a security boundary against a knowing in-memory mutator. Source auditing remains a
-separate evidence task.
-
-[`uw_2000_published_data_pilot_v1.manifest.json`](uw_2000_published_data_pilot_v1.manifest.json)
-pins the exact bytes of the original preregistration, the clarification, and the source
-audit, together with the canonical `NO-GO`, missing-input, and next-candidate fields. The
-guard is tamper evidence for review; it cannot stop a knowing editor from changing code,
-constants, documents, and artifacts together.
+syntactically valid: temporal plausibility is deliberately outside this deterministic form
+gate and would require a separately pinned audit date if ever enforced. Python's frozen
+dataclass mechanism is likewise an authoring-time check, not a security boundary against a
+knowing in-memory mutator. Source auditing remains a separate evidence task.
 
 ## Regeneration
 
-From the repository root, regenerate both JSON files with:
+From the repository root, regenerate the structural bridge JSON with:
 
 ```bash
 python3 -m Discovery.physical_bridge
 ```
 
-Check the committed bytes without rewriting them with:
+Check committed bytes without rewriting them with:
 
 ```bash
 python3 -m Discovery.physical_bridge --check
 python3 -m Discovery.published_data_pilot --check
+python3 -m Discovery.hust_2018_aaf_source_audit --check
 ```
 
 The implementation uses only the Python standard library. Exponents and dimensions use
