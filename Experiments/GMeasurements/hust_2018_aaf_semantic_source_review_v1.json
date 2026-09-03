@@ -1,0 +1,30 @@
+{
+  "boundary": "This is human semantic source verification tied to a byte-pinned PDF. It is not automatic PDF comprehension and does not independently validate the experiment.",
+  "checks": [
+    {
+      "claim_id": "p_g_definition_excludes_G",
+      "finding": "P_g,l,m is defined from apparatus multipole quantities and pendulum inertia while G remains a separate multiplicative factor.",
+      "locator": "Supplementary Information pp. 4-5",
+      "status": "confirmed_by_second_reader"
+    },
+    {
+      "claim_id": "magnetic_damper_direction",
+      "finding": "The simplified AAF expression applies the magnetic-damper contribution as a multiplicative 1-plus correction; Table 1 supplies 455.40(1.95) ppm for AAF-I/II and 25.74(8) ppm for AAF-III.",
+      "locator": "Supplementary Information p. 5 and Supplementary Table 1 pp. 18-19",
+      "status": "confirmed_by_second_reader"
+    },
+    {
+      "claim_id": "table3_scope_and_air_density",
+      "finding": "Table 3 reports separate AAF-I/II/III coupling sums and angular accelerations and states that the angular-acceleration values are corrected for air density.",
+      "locator": "Supplementary Table 3, p. 20",
+      "status": "confirmed_by_second_reader"
+    }
+  ],
+  "review_date": "2026-09-03",
+  "review_id": "hust_2018_aaf_second_reader_primary_source_review_v1",
+  "review_method": "visual inspection of the primary Supplementary Information PDF",
+  "review_role": "second_reader_primary_source_check",
+  "schema_version": 1,
+  "source_id": "supplementary_information",
+  "source_sha256": "5b61d5c831be98c46e47fcc32f1ade0a680b4af6354d2bc34859d94b22279ffb"
+}

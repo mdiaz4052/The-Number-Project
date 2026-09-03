@@ -1,6 +1,6 @@
 {
   "audit_identifier": "hust_2018_aaf_source_availability_v1",
-  "audit_schema_version": 1,
+  "audit_schema_version": 2,
   "central_value_reconstructions": {
     "AAF-I": {
       "difference_ppm": "-0.17924917117647041563235543021316619351578699",
@@ -20,12 +20,15 @@
   },
   "combined_aaf_reconstruction_authorized": false,
   "decision": "GO",
+  "decision_summary": "GO / 2a (3 of 3 AAF determinations authorized)",
+  "depth_2a_authorized_count": 3,
   "depth_2a_authorized_experiments": [
     "AAF-I",
     "AAF-II",
     "AAF-III"
   ],
   "depth_2a_blocked_candidates": {},
+  "depth_2a_candidate_count": 3,
   "depth_2b_authorized_experiments": [],
   "depth_2b_blockers": {
     "AAF-I": [
@@ -38,7 +41,16 @@
       "AAF-III:complete_uncertainty_model"
     ]
   },
-  "depth_3_4_status": "not_authorized_from_retrieved_public_set",
+  "depths_above_assessed": {
+    "reason": "four listed Source Data files returned HTML fallbacks to the GitHub runner and were not read as source-data workbooks",
+    "status": "not_assessed",
+    "unretrieved_source_ids": [
+      "source_data_extended_fig_4",
+      "source_data_extended_fig_5",
+      "source_data_fig_2",
+      "source_data_fig_3"
+    ]
+  },
   "documents": [
     {
       "byte_length": 6315,
@@ -46,27 +58,52 @@
       "sha256": "3b37b6548a23ef3138909bed638dd13cf571c084fdfaad84a70d41aac02eb559"
     },
     {
-      "byte_length": 10571,
+      "byte_length": 13213,
       "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_v1.json",
-      "sha256": "1b2669fe0cd0637b0d9771223b101fd5795be5151dc69e7b5b79932e768f5852"
+      "sha256": "8328bec85e5356d833d7f36b9e16833edc0d3c415bdd1eba59c7a01790c7f37a"
     },
     {
-      "byte_length": 6444,
+      "byte_length": 8325,
       "path": "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.md",
-      "sha256": "b2cc5b5e7c8a7e96bafbce1e0cb7b3edf999a50e2897adeb062f9ab2e41c969c"
+      "sha256": "883dea16d9713a14224a399a4894c443b9a019a42e1f19e6e500999261db4117"
+    },
+    {
+      "byte_length": 1885,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_post_audit_clarification_v1.md",
+      "sha256": "5e36d76f243603aabf05e37e52061831988fa5e680afd568e487ce87b1499b95"
+    },
+    {
+      "byte_length": 1632,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_semantic_source_review_v1.json",
+      "sha256": "1628e7a3eac2fadddf75f892e8128807fd07bed7b51b920672826e4915c68b1f"
     }
   ],
-  "maximum_supported_replication_depth": "2a",
+  "maximum_assessed_replication_depth": "2a",
   "nonclaims": [
     "This audit does not establish that the HUST value of G is correct.",
     "GO/2a is a public-summary central-value reconstruction, not an independent laboratory measurement.",
     "Depth 2a does not authorize the combined AAF value or an uncertainty-qualified reproduction.",
     "No MeasurementModel is created and no physical-bridge schema is extended by this audit.",
-    "The source-data HTTP fallback findings do not prove that the files cannot be obtained by another public retrieval path."
+    "The source-data HTTP fallback findings do not prove that the files cannot be obtained by another public retrieval path.",
+    "Depths above 2a were not assessed from the four source-data files that were not successfully retrieved."
   ],
+  "post_audit_clarification": {
+    "path": "Experiments/GMeasurements/hust_2018_aaf_post_audit_clarification_v1.md",
+    "sha256": "5e36d76f243603aabf05e37e52061831988fa5e680afd568e487ce87b1499b95"
+  },
   "preregistration": {
     "path": "Experiments/GMeasurements/hust_2018_aaf_preregistration_v1.md",
     "sha256": "fa297ecfa4cc4ae2ee7737e413dc8bf0f6ad63c70ca2d1ff070ae81dd2ec8885"
+  },
+  "preregistration_label_clarification": "The frozen preregistration used maximum_supported_replication_depth; post-audit review narrows the current output to maximum_assessed_replication_depth.",
+  "semantic_source_review": {
+    "claim_ids": [
+      "p_g_definition_excludes_G",
+      "magnetic_damper_direction",
+      "table3_scope_and_air_density"
+    ],
+    "path": "Experiments/GMeasurements/hust_2018_aaf_semantic_source_review_v1.json",
+    "sha256": "1628e7a3eac2fadddf75f892e8128807fd07bed7b51b920672826e4915c68b1f"
   },
   "source_capture_summary": {
     "failed_source_data_attempts": [
