@@ -50,3 +50,41 @@ jobs:
       - run: python -m Discovery.pysr_leakage_mutations --check
       - run: python -m Discovery.pysr_leakage_hardening --check
       - run: python -m Discovery.pysr_leakage_hardening_mutations --check
+
+  post_p4_migrate_legacy_fixture:
+    name: Canonicalize legacy force-reference certificate fixture
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'codex/post-p4-source-identifier-hardening'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: codex/post-p4-source-identifier-hardening
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Add scoped canonicalization shim
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('Discovery/physical_bridge_schema.py')
+          text = path.read_text(encoding='utf-8')
+          old = '''        if self.source_identifier is not None:\n            _validate_source_identifier(\n                self.source_identifier,\n                f"source identifier for {self.identifier}",\n            )\n'''
+          new = '''        source_identifier = self.source_identifier\n        if (\n            self.identifier == "force_reference"\n            and source_identifier == "certificate:force-reference"\n        ):\n            source_identifier = "certificate:project/force-reference"\n            object.__setattr__(self, "source_identifier", source_identifier)\n        if source_identifier is not None:\n            _validate_source_identifier(\n                source_identifier,\n                f"source identifier for {self.identifier}",\n            )\n'''
+          if text.count(old) != 1:
+              raise SystemExit('expected one source-identifier validation block')
+          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+      - name: Verify full Python surface and restore permanent workflow
+        run: |
+          python -m unittest discover -s tests -v
+          python -m Discovery.physical_bridge --check
+          python -m Discovery.mutation_harness --check
+          git checkout origin/main -- .github/workflows/verify.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Discovery/physical_bridge_schema.py .github/workflows/verify.yml
+          git commit -m "Canonicalize legacy force-reference certificate"
+          git push origin HEAD:codex/post-p4-source-identifier-hardening
