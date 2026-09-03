@@ -17,8 +17,13 @@
           "locator": "Supplementary Table 3, p. 20, |sum_{l=2}^{10} P_g,l,2| row, AAF-I column",
           "node_id": "AAF-I:p_sum",
           "parents": [],
+          "printed_value": "6926.352(74)",
           "result_driving": true,
           "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-I"
+          ],
+          "standard_uncertainty": "0.074",
           "unit": "kg m^-3",
           "value": "6926.352"
         },
@@ -27,18 +32,33 @@
           "locator": "Supplementary Table 3, p. 20, <alpha_t(2omega_d)> row, AAF-I column; table states this value is air-density corrected",
           "node_id": "AAF-I:alpha_corrected",
           "parents": [],
+          "printed_value": "462.0912(16)",
           "result_driving": true,
           "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-I"
+          ],
+          "standard_uncertainty": "0.0016",
           "unit": "nrad s^-2",
           "value": "462.0912"
         },
         {
+          "correction_direction": "increase_G",
+          "correction_operator": "multiply_by_1_plus_delta",
+          "direction_evidence_locator": "Supplementary Information p. 5, simplified AAF G equation",
+          "direction_evidence_text": "(1 + ΔG_MD/G)",
           "evidence_type": "PUBLIC_DIRECT",
           "locator": "Supplementary Table 1, p. 18, AAF-I and II magnetic-damper DeltaG/G row",
           "node_id": "AAF-I:magnetic_damper_ppm",
           "parents": [],
+          "printed_value": "455.40(1.95)",
           "result_driving": true,
           "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-I",
+            "AAF-II"
+          ],
+          "standard_uncertainty": "1.95",
           "unit": "ppm",
           "value": "455.40"
         },
@@ -55,6 +75,9 @@
           "replication_role": "depth_2a_candidate",
           "result_driving": true,
           "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-I"
+          ],
           "unit": "m^3 kg^-1 s^-2"
         },
         {
@@ -64,7 +87,10 @@
           "parents": [],
           "replication_role": "depth_2b_requirement",
           "result_driving": true,
-          "source_id": "supplementary_information"
+          "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-I"
+          ]
         }
       ],
       "published_comparison": {
@@ -82,8 +108,13 @@
           "locator": "Supplementary Table 3, p. 20, |sum_{l=2}^{10} P_g,l,2| row, AAF-II column",
           "node_id": "AAF-II:p_sum",
           "parents": [],
+          "printed_value": "6926.334(75)",
           "result_driving": true,
           "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-II"
+          ],
+          "standard_uncertainty": "0.075",
           "unit": "kg m^-3",
           "value": "6926.334"
         },
@@ -92,18 +123,33 @@
           "locator": "Supplementary Table 3, p. 20, <alpha_t(2omega_d)> row, AAF-II column; table states this value is air-density corrected",
           "node_id": "AAF-II:alpha_corrected",
           "parents": [],
+          "printed_value": "462.0791(12)",
           "result_driving": true,
           "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-II"
+          ],
+          "standard_uncertainty": "0.0012",
           "unit": "nrad s^-2",
           "value": "462.0791"
         },
         {
+          "correction_direction": "increase_G",
+          "correction_operator": "multiply_by_1_plus_delta",
+          "direction_evidence_locator": "Supplementary Information p. 5, simplified AAF G equation",
+          "direction_evidence_text": "(1 + ΔG_MD/G)",
           "evidence_type": "PUBLIC_DIRECT",
           "locator": "Supplementary Table 1, p. 18, AAF-I and II magnetic-damper DeltaG/G row",
           "node_id": "AAF-II:magnetic_damper_ppm",
           "parents": [],
+          "printed_value": "455.40(1.95)",
           "result_driving": true,
           "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-I",
+            "AAF-II"
+          ],
+          "standard_uncertainty": "1.95",
           "unit": "ppm",
           "value": "455.40"
         },
@@ -120,6 +166,9 @@
           "replication_role": "depth_2a_candidate",
           "result_driving": true,
           "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-II"
+          ],
           "unit": "m^3 kg^-1 s^-2"
         },
         {
@@ -129,7 +178,10 @@
           "parents": [],
           "replication_role": "depth_2b_requirement",
           "result_driving": true,
-          "source_id": "supplementary_information"
+          "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-II"
+          ]
         }
       ],
       "published_comparison": {
@@ -147,8 +199,13 @@
           "locator": "Supplementary Table 3, p. 20, |sum_{l=2}^{10} P_g,l,2| row, AAF-III column",
           "node_id": "AAF-III:p_sum",
           "parents": [],
+          "printed_value": "6926.415(74)",
           "result_driving": true,
           "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-III"
+          ],
+          "standard_uncertainty": "0.074",
           "unit": "kg m^-3",
           "value": "6926.415"
         },
@@ -157,18 +214,32 @@
           "locator": "Supplementary Table 3, p. 20, <alpha_t(2omega_d)> row, AAF-III column; table states this value is air-density corrected",
           "node_id": "AAF-III:alpha_corrected",
           "parents": [],
+          "printed_value": "462.2941(6)",
           "result_driving": true,
           "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-III"
+          ],
+          "standard_uncertainty": "0.0006",
           "unit": "nrad s^-2",
           "value": "462.2941"
         },
         {
+          "correction_direction": "increase_G",
+          "correction_operator": "multiply_by_1_plus_delta",
+          "direction_evidence_locator": "Supplementary Information p. 5, simplified AAF G equation",
+          "direction_evidence_text": "(1 + ΔG_MD/G)",
           "evidence_type": "PUBLIC_DIRECT",
           "locator": "Supplementary Table 1, pp. 18-19, AAF-III magnetic-damper DeltaG/G row",
           "node_id": "AAF-III:magnetic_damper_ppm",
           "parents": [],
+          "printed_value": "25.74(8)",
           "result_driving": true,
           "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-III"
+          ],
+          "standard_uncertainty": "0.08",
           "unit": "ppm",
           "value": "25.74"
         },
@@ -185,6 +256,9 @@
           "replication_role": "depth_2a_candidate",
           "result_driving": true,
           "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-III"
+          ],
           "unit": "m^3 kg^-1 s^-2"
         },
         {
@@ -194,7 +268,10 @@
           "parents": [],
           "replication_role": "depth_2b_requirement",
           "result_driving": true,
-          "source_id": "supplementary_information"
+          "source_id": "supplementary_information",
+          "source_scope_tokens": [
+            "AAF-III"
+          ]
         }
       ],
       "published_comparison": {
@@ -231,7 +308,7 @@
       "statement": "The public materials inspected here do not provide the raw time-series/run records needed for depth 3 or 4; supporting data are stated to be available from corresponding authors on reasonable request."
     }
   ],
-  "schema_version": 1,
+  "schema_version": 2,
   "source_definition_check": {
     "locator": "Supplementary Information pp. 4-5",
     "statement": "P_g,l,m is defined from the pendulum/source multipole moments and moment of inertia; G appears as a separate multiplicative factor in the gravitational angular-acceleration expansion.",
