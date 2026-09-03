@@ -16,6 +16,15 @@ def codata_reference():
     )
 
 
+def force_reference():
+    model = build_inverse_square_model()
+    return next(
+        quantity
+        for quantity in model.quantities
+        if quantity.identifier == "force_reference"
+    )
+
+
 class PhysicalBridgeSourceIdentifierHardeningTests(unittest.TestCase):
     def test_certificate_identifier_requires_namespaced_issuer_and_record(self) -> None:
         reference = codata_reference()
@@ -48,6 +57,24 @@ class PhysicalBridgeSourceIdentifierHardeningTests(unittest.TestCase):
                     replace(reference, source_identifier=value).source_identifier,
                     value,
                 )
+
+    def test_legacy_force_reference_token_is_scoped_and_canonicalized(self) -> None:
+        migrated = replace(
+            force_reference(),
+            source_identifier="certificate:force-reference",
+        )
+        self.assertEqual(
+            migrated.source_identifier,
+            "certificate:project/force-reference",
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "certificate.*issuer/record",
+        ):
+            replace(
+                codata_reference(),
+                source_identifier="certificate:force-reference",
+            )
 
     def test_https_credentials_are_rejected(self) -> None:
         reference = codata_reference()
