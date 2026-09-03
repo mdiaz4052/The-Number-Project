@@ -1,0 +1,123 @@
+name: Temporary HUST source capture
+
+on:
+  push:
+    branches: [codex/hust-2018-aaf-source-audit]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Capture publisher listing and supplementary bytes
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+          from html.parser import HTMLParser
+          from urllib.parse import urljoin
+          from urllib.request import Request, urlopen
+          import hashlib
+          import json
+          from pathlib import Path
+
+          ARTICLE_URL = 'https://www.nature.com/articles/s41586-018-0431-5'
+          RETRIEVAL_DATE = '2026-09-03'
+          OUTPUT = Path('Experiments/GMeasurements/hust_2018_aaf_external_sources_v1.json')
+          WANTED = [
+              ('supplementary_information', 'Supplementary Information'),
+              ('supplementary_data', 'Supplementary Data'),
+              ('source_data_fig_2', 'Source Data Fig. 2'),
+              ('source_data_fig_3', 'Source Data Fig. 3'),
+              ('source_data_extended_fig_2', 'Source Data Extended Data Fig. 2'),
+              ('source_data_extended_fig_4', 'Source Data Extended Data Fig. 4'),
+              ('source_data_extended_fig_5', 'Source Data Extended Data Fig. 5'),
+          ]
+
+          class AnchorParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.current_href = None
+                  self.current_text = []
+                  self.anchors = []
+              def handle_starttag(self, tag, attrs):
+                  if tag == 'a':
+                      self.current_href = dict(attrs).get('href')
+                      self.current_text = []
+              def handle_data(self, data):
+                  if self.current_href is not None:
+                      self.current_text.append(data)
+              def handle_endtag(self, tag):
+                  if tag == 'a' and self.current_href is not None:
+                      text = ' '.join(''.join(self.current_text).split())
+                      self.anchors.append((text, self.current_href))
+                      self.current_href = None
+                      self.current_text = []
+
+          def fetch(url: str) -> tuple[bytes, str]:
+              request = Request(url, headers={'User-Agent': 'The-Number-Project/1.0 source-audit'})
+              with urlopen(request, timeout=60) as response:
+                  return response.read(), response.geturl()
+
+          article_bytes, article_resolved = fetch(ARTICLE_URL)
+          parser = AnchorParser()
+          parser.feed(article_bytes.decode('utf-8', errors='strict'))
+
+          resources = []
+          for source_id, label in WANTED:
+              matches = [
+                  href for text, href in parser.anchors
+                  if label in text and ('download' in text.lower() or 'source data' in text.lower())
+              ]
+              if len(matches) != 1:
+                  raise SystemExit(f'expected exactly one Nature link for {label!r}, got {matches!r}')
+              url = urljoin(article_resolved, matches[0])
+              content, resolved = fetch(url)
+              resources.append({
+                  'source_id': source_id,
+                  'label': label,
+                  'offered_url': url,
+                  'resolved_url': resolved,
+                  'retrieval_date': RETRIEVAL_DATE,
+                  'byte_length': len(content),
+                  'sha256': hashlib.sha256(content).hexdigest(),
+                  'retrieval_status': 'retrieved',
+              })
+
+          record = {
+              'schema_version': 1,
+              'article': {
+                  'source_id': 'nature_article_listing',
+                  'label': 'Nature version-of-record landing page and supplementary resource listing',
+                  'offered_url': ARTICLE_URL,
+                  'resolved_url': article_resolved,
+                  'retrieval_date': RETRIEVAL_DATE,
+                  'byte_length': len(article_bytes),
+                  'sha256': hashlib.sha256(article_bytes).hexdigest(),
+                  'retrieval_status': 'retrieved',
+              },
+              'resources': sorted(resources, key=lambda row: row['source_id']),
+              'capture_nonclaim': 'Hashes record bytes retrieved on the stated date; CI does not re-fetch mutable external resources.',
+          }
+          OUTPUT.write_text(json.dumps(record, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          print(OUTPUT)
+          for row in record['resources']:
+              print(row['source_id'], row['byte_length'], row['sha256'], row['resolved_url'])
+          PY
+      - name: Commit source-capture artifact
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Experiments/GMeasurements/hust_2018_aaf_external_sources_v1.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'Capture HUST 2018 public source bytes'
+          git push
