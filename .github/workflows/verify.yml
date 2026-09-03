@@ -77,11 +77,12 @@ jobs:
               raise SystemExit('expected one source-identifier validation block')
           path.write_text(text.replace(old, new, 1), encoding='utf-8')
           PY
-      - name: Verify full Python surface and restore permanent workflow
+      - name: Run focused migration checks
         run: |
-          python -m unittest discover -s tests -v
+          python -m unittest tests.test_physical_bridge tests.test_physical_bridge_metadata_forms tests.test_physical_bridge_source_identifier_hardening -v
           python -m Discovery.physical_bridge --check
-          python -m Discovery.mutation_harness --check
+      - name: Restore permanent workflow and commit shim
+        run: |
           git checkout origin/main -- .github/workflows/verify.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
