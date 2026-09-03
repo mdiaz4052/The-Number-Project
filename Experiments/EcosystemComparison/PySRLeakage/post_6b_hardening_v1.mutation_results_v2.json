@@ -1,0 +1,82 @@
+{
+  "all_mutants_killed": true,
+  "experiment_identifier": "post_6b_hardening_mutations_v1",
+  "methodological_result_status": "all_killed",
+  "mutant_count": 1,
+  "nonclaims": [
+    "Killed means only that the selected behavioral test detected the selected parser defect.",
+    "One parser mutant does not establish parser safety or complete mutation coverage.",
+    "This is a software-methodology result and contains no empirical evidence about gravity."
+  ],
+  "result_schema_version": 2,
+  "results": [
+    {
+      "canonical_anchor_sha": "5d2905008148c12ad0dec42cfb950b458bf22fdc",
+      "canonical_head_after": "5d2905008148c12ad0dec42cfb950b458bf22fdc",
+      "canonical_head_before": "5d2905008148c12ad0dec42cfb950b458bf22fdc",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "Discovery.pysr_leakage_audit": "Discovery/pysr_leakage_audit.py",
+          "Discovery.pysr_leakage_audit_v3": "Discovery/pysr_leakage_audit_v3.py",
+          "Discovery.pysr_leakage_check_v2": "Discovery/pysr_leakage_check_v2.py",
+          "Discovery.pysr_leakage_hardening": "Discovery/pysr_leakage_hardening.py",
+          "Discovery.pysr_leakage_probe": "Discovery/pysr_leakage_probe.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_pysr_leakage_hardening": "tests/test_pysr_leakage_hardening.py"
+        }
+      },
+      "intended_semantic_defect": "Disable the AST node allowlist so unsupported call syntax can pass the parser when the called identifier is otherwise an allowed predictor name.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.pysr_leakage_probe",
+        "tests.test_pysr_leakage_hardening.PySRLeakageHardeningTests.test_parser_rejects_call_syntax_even_when_function_name_is_allowed"
+      ],
+      "killing_tests": [
+        "tests.test_pysr_leakage_hardening.PySRLeakageHardeningTests.test_parser_rejects_call_syntax_even_when_function_name_is_allowed"
+      ],
+      "mutant_identifier": "production_bypass_expression_node_allowlist",
+      "mutated_path": "Discovery/pysr_leakage_probe.py",
+      "required_import_modules": [
+        "Discovery.pysr_leakage_probe"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_pysr_leakage_hardening.PySRLeakageHardeningTests.test_parser_rejects_call_syntax_even_when_function_name_is_allowed"
+      ]
+    }
+  ],
+  "source_commit_sha": "5d2905008148c12ad0dec42cfb950b458bf22fdc",
+  "source_paths": [
+    "Discovery/pysr_leakage_hardening_mutations.py",
+    "Discovery/pysr_leakage_probe.py",
+    "Discovery/mutation_harness.py",
+    "Discovery/mutation_test_runner.py",
+    "tests/test_pysr_leakage_hardening.py"
+  ]
+}
