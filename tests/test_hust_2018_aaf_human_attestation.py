@@ -10,7 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 ATTESTATION_PATH = ROOT / "Experiments" / "GMeasurements" / "hust_2018_aaf_independent_human_attestation_v1.json"
 EXTERNAL_SOURCES_PATH = ROOT / "Experiments" / "GMeasurements" / "hust_2018_aaf_external_sources_v1.json"
 REQUIRED_INPUTS_PATH = ROOT / "Experiments" / "GMeasurements" / "hust_2018_aaf_required_inputs_v1.json"
-EXPECTED_ATTESTATION_SHA256 = "28b00e34bd74acffd6c47a3edcfa46eba730a00c7927ff4252084185a7ed5b31"
+SEMANTIC_REVIEW_PATH = ROOT / "Experiments" / "GMeasurements" / "hust_2018_aaf_semantic_source_review_v1.json"
+EXPECTED_ATTESTATION_SHA256 = "560fbef2b08b46a29086e26becbe47701b84ba9e3aa6ecc3ffdda502fbc891b1"
 
 
 def _load(path: Path) -> dict:
@@ -21,6 +22,13 @@ def _check_by_id(attestation: dict, claim_id: str) -> dict:
     matches = [item for item in attestation["checks"] if item["claim_id"] == claim_id]
     if len(matches) != 1:
         raise AssertionError(f"expected exactly one attestation check for {claim_id!r}")
+    return matches[0]
+
+
+def _semantic_check_by_id(semantic_review: dict, claim_id: str) -> dict:
+    matches = [item for item in semantic_review["checks"] if item["claim_id"] == claim_id]
+    if len(matches) != 1:
+        raise AssertionError(f"expected exactly one semantic-review check for {claim_id!r}")
     return matches[0]
 
 
@@ -41,31 +49,26 @@ class HUST2018AAFHumanAttestationTests(unittest.TestCase):
         self.attestation = _load(ATTESTATION_PATH)
         self.external_sources = _load(EXTERNAL_SOURCES_PATH)
         self.required_inputs = _load(REQUIRED_INPUTS_PATH)
+        self.semantic_review = _load(SEMANTIC_REVIEW_PATH)
 
     def test_attestation_bytes_are_pinned(self) -> None:
         digest = hashlib.sha256(ATTESTATION_PATH.read_bytes()).hexdigest()
         self.assertEqual(digest, EXPECTED_ATTESTATION_SHA256)
 
-    def test_attestation_distinguishes_blind_findings_from_prompted_unit_check(self) -> None:
+    def test_attestation_records_prior_disclosure_and_no_blind_claim(self) -> None:
         self.assertEqual(
             self.attestation["attestation_scope"],
             "depth_2a_result_driving_primary_source_facts",
         )
         self.assertEqual(self.attestation["reviewer_role"], "project_owner_human_reader")
-        self.assertEqual(
-            self.attestation["blind_review"],
-            {
-                "initial_result_values_and_semantic_expectations_withheld": True,
-                "initial_findings_reported_before_comparison": True,
-                "unit_confirmation_blinded": False,
-                "unit_confirmation_phase": (
-                    "Expected units were disclosed after the initial blind transcription; "
-                    "the human reader then confirmed those units in the PDF."
-                ),
-                "screenshots_required": False,
-                "method": "visual inspection of the primary Supplementary Information PDF",
-            },
-        )
+        independence = self.attestation["review_independence"]
+        self.assertFalse(independence["blind_confirmation"])
+        self.assertIn("project conversation", independence["prior_disclosure"])
+        self.assertIn("Claude audit materials", independence["prior_disclosure"])
+        self.assertTrue(independence["same_turn_repository_comparison_withheld_until_after_report"])
+        self.assertIn("expected units", independence["unit_confirmation_phase"])
+        self.assertIn("not a blind confirmation", self.attestation["boundary"])
+
         for claim_id in (
             "p_g_definition_excludes_G",
             "magnetic_damper_direction_and_magnitude",
@@ -74,7 +77,7 @@ class HUST2018AAFHumanAttestationTests(unittest.TestCase):
         ):
             self.assertEqual(
                 _check_by_id(self.attestation, claim_id)["status"],
-                "confirmed_blind_by_independent_human_reader",
+                "confirmed_by_independent_human_reader_after_prior_disclosure",
             )
         for claim_id in ("table1_damper_unit", "table3_result_driving_units"):
             self.assertEqual(
@@ -88,11 +91,15 @@ class HUST2018AAFHumanAttestationTests(unittest.TestCase):
         self.assertIn("does not establish depth 2b", boundary)
         self.assertIn("does not authorize a combined AAF estimator", boundary)
         self.assertIn(
+            "This attestation is not blind; prior project materials had already disclosed the checked values and semantic expectations.",
+            self.attestation["nonclaims"],
+        )
+        self.assertIn(
             "No claim is made that the HUST experiment itself has been independently replicated.",
             self.attestation["nonclaims"],
         )
 
-    def test_attestation_is_bound_to_the_captured_supplementary_information(self) -> None:
+    def test_attestation_is_bound_to_captured_pdf_without_claiming_portable_hash_identity(self) -> None:
         resources = {
             resource["source_id"]: resource for resource in self.external_sources["resources"]
         }
@@ -104,6 +111,9 @@ class HUST2018AAFHumanAttestationTests(unittest.TestCase):
             self.attestation["source_sha256"],
             "5b61d5c831be98c46e47fcc32f1ade0a680b4af6354d2bc34859d94b22279ffb",
         )
+        hash_scope = self.attestation["source_hash_scope"]
+        self.assertIn("GitHub-runner-captured PDF bytes", hash_scope)
+        self.assertIn("different hash alone is not evidence of semantic disagreement", hash_scope)
 
     def test_semantic_boundary_and_damper_operator_match_frozen_source_graph(self) -> None:
         pg_check = _check_by_id(self.attestation, "p_g_definition_excludes_G")
@@ -147,7 +157,7 @@ class HUST2018AAFHumanAttestationTests(unittest.TestCase):
             )
         )
 
-    def test_table3_blind_values_and_prompted_units_match_frozen_source_graph(self) -> None:
+    def test_table3_values_and_prompted_units_match_frozen_source_graph(self) -> None:
         values = _check_by_id(
             self.attestation, "table3_result_driving_values"
         )["finding"]
@@ -171,6 +181,39 @@ class HUST2018AAFHumanAttestationTests(unittest.TestCase):
                 "air-density corrected",
                 _node_by_id(self.required_inputs, f"{scope}:alpha_corrected")["locator"],
             )
+
+    def test_overlapping_semantic_review_claims_remain_consistent(self) -> None:
+        self.assertEqual(
+            self.attestation["source_sha256"],
+            self.semantic_review["source_sha256"],
+        )
+        pg = _check_by_id(self.attestation, "p_g_definition_excludes_G")["finding"]
+        pg_prior = _semantic_check_by_id(
+            self.semantic_review, "p_g_definition_excludes_G"
+        )["finding"]
+        self.assertIn("does not contain G", pg)
+        self.assertIn("G remains a separate", pg_prior)
+
+        damper = _check_by_id(
+            self.attestation, "magnetic_damper_direction_and_magnitude"
+        )["finding"]
+        damper_prior = _semantic_check_by_id(
+            self.semantic_review, "magnetic_damper_direction"
+        )["finding"]
+        self.assertIn("(1 +", damper)
+        self.assertIn("multiplicative 1-plus correction", damper_prior)
+        for printed in ("455.40(1.95)", "25.74(8)"):
+            self.assertIn(printed, damper)
+            self.assertIn(printed, damper_prior)
+
+        air = _check_by_id(
+            self.attestation, "table3_air_density_statement"
+        )["finding"]
+        air_prior = _semantic_check_by_id(
+            self.semantic_review, "table3_scope_and_air_density"
+        )["finding"]
+        self.assertIn("air density", air)
+        self.assertIn("air density", air_prior)
 
     def test_attestation_does_not_promote_uncertainty_or_combined_estimator(self) -> None:
         self.assertIn(
