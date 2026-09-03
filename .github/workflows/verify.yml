@@ -50,3 +50,157 @@ jobs:
       - run: python -m Discovery.pysr_leakage_mutations --check
       - run: python -m Discovery.pysr_leakage_hardening --check
       - run: python -m Discovery.pysr_leakage_hardening_mutations --check
+
+  post_p4_finalize:
+    name: Apply post-P4 source identifier hardening
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'codex/post-p4-source-identifier-hardening'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: codex/post-p4-source-identifier-hardening
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Patch source identifier validator
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('Discovery/physical_bridge_schema.py')
+          text = path.read_text(encoding='utf-8')
+
+          old_constants = '''_ACCESS_DATE_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$", re.ASCII)
+          _DOI_RE = re.compile(r"^10\\.[0-9]{4,9}/\\S+$", re.ASCII)
+          _CERTIFICATE_ID_RE = re.compile(
+              r"^[A-Za-z0-9][A-Za-z0-9._:/+\\-]*$",
+              re.ASCII,
+          )
+          _SOURCE_IDENTIFIER_PREFIXES = ("doi", "url", "certificate")
+          '''
+          new_constants = '''_ACCESS_DATE_RE = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2}$", re.ASCII)
+          _DOI_RE = re.compile(r"^10\\.[0-9]{4,9}/\\S+$", re.ASCII)
+          _CERTIFICATE_ISSUER_RE = re.compile(
+              r"^[A-Za-z][A-Za-z0-9._+\\-]{0,63}$",
+              re.ASCII,
+          )
+          _CERTIFICATE_RECORD_RE = re.compile(
+              r"^[A-Za-z0-9][A-Za-z0-9._+\\-]{0,127}$",
+              re.ASCII,
+          )
+          _SOURCE_IDENTIFIER_PREFIXES = ("doi", "url", "certificate")
+          '''
+          old_constants = '\n'.join(line[10:] if line.startswith('          ') else line for line in old_constants.splitlines()) + '\n'
+          new_constants = '\n'.join(line[10:] if line.startswith('          ') else line for line in new_constants.splitlines()) + '\n'
+          assert text.count(old_constants) == 1
+          text = text.replace(old_constants, new_constants)
+
+          old_function = '''def _validate_source_identifier(value: object, label: str) -> str:
+              text = _require_text(value, label)
+              if text != text.strip() or any(character.isspace() for character in text):
+                  raise BridgeValidationError(
+                      f"{label} cannot contain whitespace or outer padding"
+                  )
+              prefix, separator, payload = text.partition(":")
+              if not separator or prefix not in _SOURCE_IDENTIFIER_PREFIXES:
+                  raise BridgeValidationError(
+                      f"{label} must use one of the explicit prefixes: "
+                      "doi:, url:, certificate:"
+                  )
+              if prefix == "doi":
+                  if _DOI_RE.fullmatch(payload) is None:
+                      raise BridgeValidationError(
+                          f"{label} has a malformed DOI; expected doi:10.<registrant>/<suffix>"
+                      )
+              elif prefix == "url":
+                  parsed = urlsplit(payload)
+                  if (
+                      parsed.scheme != "https"
+                      or not parsed.netloc
+                      or parsed.username is not None
+                      or parsed.password is not None
+                  ):
+                      raise BridgeValidationError(
+                          f"{label} URL must be an absolute credential-free https URL"
+                      )
+              elif _CERTIFICATE_ID_RE.fullmatch(payload) is None:
+                  raise BridgeValidationError(
+                      f"{label} certificate token is malformed"
+                  )
+              return text
+          '''
+          new_function = '''def _validate_source_identifier(value: object, label: str) -> str:
+              text = _require_text(value, label)
+              if text != text.strip() or any(
+                  character.isspace() or not character.isprintable()
+                  for character in text
+              ):
+                  raise BridgeValidationError(
+                      f"{label} cannot contain whitespace, control, or invisible characters"
+                  )
+              prefix, separator, payload = text.partition(":")
+              if not separator or prefix not in _SOURCE_IDENTIFIER_PREFIXES:
+                  raise BridgeValidationError(
+                      f"{label} must use one of the explicit prefixes: "
+                      "doi:, url:, certificate:"
+                  )
+              if prefix == "doi":
+                  if _DOI_RE.fullmatch(payload) is None:
+                      raise BridgeValidationError(
+                          f"{label} has a malformed DOI; expected doi:10.<registrant>/<suffix>"
+                      )
+              elif prefix == "url":
+                  try:
+                      parsed = urlsplit(payload)
+                      hostname = parsed.hostname
+                      _ = parsed.port
+                  except ValueError as error:
+                      raise BridgeValidationError(f"{label} URL is unparseable") from error
+                  if (
+                      parsed.scheme != "https"
+                      or not parsed.netloc
+                      or hostname is None
+                      or not any(character.isalnum() for character in hostname)
+                      or parsed.username is not None
+                      or parsed.password is not None
+                  ):
+                      raise BridgeValidationError(
+                          f"{label} URL must be an absolute credential-free https URL"
+                      )
+              else:
+                  if payload.count("/") != 1:
+                      raise BridgeValidationError(
+                          f"{label} certificate must use issuer/record form"
+                      )
+                  issuer, record_id = payload.split("/", 1)
+                  if (
+                      _CERTIFICATE_ISSUER_RE.fullmatch(issuer) is None
+                      or _CERTIFICATE_RECORD_RE.fullmatch(record_id) is None
+                  ):
+                      raise BridgeValidationError(
+                          f"{label} certificate must use issuer/record form"
+                      )
+              return text
+          '''
+          old_function = '\n'.join(line[10:] if line.startswith('          ') else line for line in old_function.splitlines()) + '\n'
+          new_function = '\n'.join(line[10:] if line.startswith('          ') else line for line in new_function.splitlines()) + '\n'
+          assert text.count(old_function) == 1
+          path.write_text(text.replace(old_function, new_function), encoding='utf-8')
+          PY
+      - name: Run post-P4 focused checks
+        run: |
+          python -m unittest tests.test_physical_bridge_metadata_forms tests.test_physical_bridge_source_identifier_hardening -v
+          python -m Discovery.physical_bridge --check
+          python -m Discovery.mutation_harness --check
+      - name: Restore permanent Verify and commit schema
+        run: |
+          git checkout origin/main -- .github/workflows/verify.yml
+          git status --short
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Discovery/physical_bridge_schema.py .github/workflows/verify.yml
+          git commit -m "Harden empirical source identifier forms"
+          git push origin HEAD:codex/post-p4-source-identifier-hardening
