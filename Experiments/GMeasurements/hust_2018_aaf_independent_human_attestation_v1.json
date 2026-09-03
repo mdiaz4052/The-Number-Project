@@ -1,0 +1,72 @@
+{
+  "attestation_id": "hust_2018_aaf_independent_human_attestation_v1",
+  "attestation_scope": "depth_2a_result_driving_primary_source_facts",
+  "boundary": "This records an independent human reading of the primary Supplementary Information against result-driving source facts. It is not an independent experiment, does not validate HUST's apparatus or systematic-error analysis, does not establish depth 2b, and does not authorize a combined AAF estimator.",
+  "blind_review": {
+    "project_values_withheld_before_transcription": true,
+    "reviewer_reported_findings_before_comparison": true,
+    "screenshots_required": false,
+    "method": "visual inspection of the primary Supplementary Information PDF"
+  },
+  "checks": [
+    {
+      "claim_id": "p_g_definition_excludes_G",
+      "finding": "P_g,l,m does not contain G; G is separate from the coefficient.",
+      "locator": "Supplementary Information p. 4",
+      "status": "confirmed_by_independent_human_reader"
+    },
+    {
+      "claim_id": "magnetic_damper_direction_and_magnitude",
+      "finding": "The G equation contains the magnetic-damper factor as (1 + (K/K_m)(I_m/I)). Supplementary Table 1 gives 455.40(1.95) ppm for AAF-I/II and 25.74(8) ppm for AAF-III.",
+      "locator": "Supplementary Information p. 5 and Supplementary Table 1 p. 18",
+      "status": "confirmed_by_independent_human_reader"
+    },
+    {
+      "claim_id": "table3_air_density_statement",
+      "finding": "The table states that alpha_t(2omega_d) has been corrected for the air density effect.",
+      "locator": "Supplementary Table 3 p. 20",
+      "status": "confirmed_by_independent_human_reader"
+    },
+    {
+      "claim_id": "table3_result_driving_values_and_units",
+      "finding": {
+        "AAF-I": {
+          "alpha_t_2omega_d": "462.0912(16)",
+          "alpha_t_unit": "nrad s^-2",
+          "p_g_sum": "6926.352(74)",
+          "p_g_sum_unit": "kg m^-3"
+        },
+        "AAF-II": {
+          "alpha_t_2omega_d": "462.0791(12)",
+          "alpha_t_unit": "nrad s^-2",
+          "p_g_sum": "6926.334(75)",
+          "p_g_sum_unit": "kg m^-3"
+        },
+        "AAF-III": {
+          "alpha_t_2omega_d": "462.2941(6)",
+          "alpha_t_unit": "nrad s^-2",
+          "p_g_sum": "6926.415(74)",
+          "p_g_sum_unit": "kg m^-3"
+        }
+      },
+      "locator": "Supplementary Table 3 p. 20",
+      "status": "confirmed_by_independent_human_reader"
+    }
+  ],
+  "nonclaims": [
+    "No complete uncertainty or covariance budget was independently reconstructed.",
+    "No combined AAF estimator is authorized by this attestation.",
+    "No raw or run-level data were independently reproduced.",
+    "No claim is made that the HUST experiment itself has been independently replicated.",
+    "No published G value or published G uncertainty was needed for this source attestation."
+  ],
+  "paper": {
+    "citation": "Q. Li et al., Measurements of the gravitational constant using two independent methods, Nature 560, 582-588 (2018)",
+    "doi": "10.1038/s41586-018-0431-5"
+  },
+  "review_date": "2026-09-03",
+  "reviewer_role": "project_owner_human_reader",
+  "source_id": "supplementary_information",
+  "source_sha256": "5b61d5c831be98c46e47fcc32f1ade0a680b4af6354d2bc34859d94b22279ffb",
+  "schema_version": 1
+}
