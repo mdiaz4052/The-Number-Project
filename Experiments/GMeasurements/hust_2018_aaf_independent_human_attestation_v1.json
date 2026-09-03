@@ -1,12 +1,12 @@
 {
   "attestation_id": "hust_2018_aaf_independent_human_attestation_v1",
   "attestation_scope": "depth_2a_result_driving_primary_source_facts",
-  "boundary": "This records a human reading of the primary Supplementary Information against result-driving source facts. The result-driving values and semantic expectations were withheld before the initial transcription; units were confirmed only after the expected units were disclosed. It is not an independent experiment, does not validate HUST's apparatus or systematic-error analysis, does not establish depth 2b, and does not authorize a combined AAF estimator.",
-  "blind_review": {
-    "initial_result_values_and_semantic_expectations_withheld": true,
-    "initial_findings_reported_before_comparison": true,
-    "unit_confirmation_blinded": false,
-    "unit_confirmation_phase": "Expected units were disclosed after the initial blind transcription; the human reader then confirmed those units in the PDF.",
+  "boundary": "This records a project-owner human confirmation of result-driving facts in the primary Supplementary Information after prior exposure to project discussions and audit materials that had already disclosed the relevant values and semantic expectations. It is therefore not a blind confirmation. It is not an independent experiment, does not validate HUST's apparatus or systematic-error analysis, does not establish depth 2b, and does not authorize a combined AAF estimator.",
+  "review_independence": {
+    "blind_confirmation": false,
+    "prior_disclosure": "Before this PDF reading, project conversation and Claude audit materials had already disclosed the HUST result-driving values, units, and semantic expectations, including the P_g target boundary, magnetic-damper direction, Table 1 values, Table 3 values, and the air-density statement.",
+    "same_turn_repository_comparison_withheld_until_after_report": true,
+    "unit_confirmation_phase": "After the initial PDF report was compared with the frozen record, the expected units were stated explicitly and the human reader confirmed them in the PDF.",
     "screenshots_required": false,
     "method": "visual inspection of the primary Supplementary Information PDF"
   },
@@ -15,13 +15,13 @@
       "claim_id": "p_g_definition_excludes_G",
       "finding": "P_g,l,m does not contain G; G is separate from the coefficient.",
       "locator": "Supplementary Information p. 4",
-      "status": "confirmed_blind_by_independent_human_reader"
+      "status": "confirmed_by_independent_human_reader_after_prior_disclosure"
     },
     {
       "claim_id": "magnetic_damper_direction_and_magnitude",
       "finding": "The G equation contains the magnetic-damper factor as (1 + (K/K_m)(I_m/I)). Supplementary Table 1 gives 455.40(1.95) for AAF-I/II and 25.74(8) for AAF-III.",
       "locator": "Supplementary Information p. 5 and Supplementary Table 1 p. 18",
-      "status": "confirmed_blind_by_independent_human_reader"
+      "status": "confirmed_by_independent_human_reader_after_prior_disclosure"
     },
     {
       "claim_id": "table1_damper_unit",
@@ -33,7 +33,7 @@
       "claim_id": "table3_air_density_statement",
       "finding": "The table states that alpha_t(2omega_d) has been corrected for the air density effect.",
       "locator": "Supplementary Table 3 p. 20",
-      "status": "confirmed_blind_by_independent_human_reader"
+      "status": "confirmed_by_independent_human_reader_after_prior_disclosure"
     },
     {
       "claim_id": "table3_result_driving_values",
@@ -52,7 +52,7 @@
         }
       },
       "locator": "Supplementary Table 3 p. 20",
-      "status": "confirmed_blind_by_independent_human_reader"
+      "status": "confirmed_by_independent_human_reader_after_prior_disclosure"
     },
     {
       "claim_id": "table3_result_driving_units",
@@ -65,6 +65,7 @@
     }
   ],
   "nonclaims": [
+    "This attestation is not blind; prior project materials had already disclosed the checked values and semantic expectations.",
     "No complete uncertainty or covariance budget was independently reconstructed.",
     "No combined AAF estimator is authorized by this attestation.",
     "No raw or run-level data were independently reproduced.",
@@ -79,5 +80,6 @@
   "reviewer_role": "project_owner_human_reader",
   "source_id": "supplementary_information",
   "source_sha256": "5b61d5c831be98c46e47fcc32f1ade0a680b4af6354d2bc34859d94b22279ffb",
+  "source_hash_scope": "The SHA-256 identifies the GitHub-runner-captured PDF bytes used by the project. Equivalent publisher downloads may differ byte-for-byte because of delivery-path re-encoding; a different hash alone is not evidence of semantic disagreement.",
   "schema_version": 1
 }
