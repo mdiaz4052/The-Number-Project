@@ -42,6 +42,7 @@ jobs:
       - run: python -m Discovery.dependency_analysis --check
       - run: python -m Discovery.physical_bridge --check
       - run: python -m Discovery.published_data_pilot --check
+      - run: python -m Discovery.hust_2018_aaf_source_audit --check
       - run: python -m Discovery.falsification_preregistration --check
       - run: python -m Discovery.null_experiments --check
       - run: python -m Discovery.mutation_harness --check
