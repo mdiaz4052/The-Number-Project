@@ -1,0 +1,88 @@
+{
+  "audit_identifier": "hust_2018_aaf_source_availability_v1",
+  "audit_schema_version": 1,
+  "central_value_reconstructions": {
+    "AAF-I": {
+      "difference_ppm": "-0.17924917117647041563235543021316619351578699",
+      "published_comparison_G": "6.674534E-11",
+      "reconstructed_G": "6.6745328035953125108282108677121809575949937283002E-11"
+    },
+    "AAF-II": {
+      "difference_ppm": "0.0560463513116181509242062248544189742632415",
+      "published_comparison_G": "6.674375E-11",
+      "reconstructed_G": "6.6743753740743660354813960747489220127126413482226E-11"
+    },
+    "AAF-III": {
+      "difference_ppm": "0.0130430582467457971538886772468863136433449",
+      "published_comparison_G": "6.674535E-11",
+      "reconstructed_G": "6.6745350870563487749434592065303623880463414334833E-11"
+    }
+  },
+  "combined_aaf_reconstruction_authorized": false,
+  "decision": "GO",
+  "depth_2a_authorized_experiments": [
+    "AAF-I",
+    "AAF-II",
+    "AAF-III"
+  ],
+  "depth_2a_blocked_candidates": {},
+  "depth_2b_authorized_experiments": [],
+  "depth_2b_blockers": {
+    "AAF-I": [
+      "AAF-I:complete_uncertainty_model"
+    ],
+    "AAF-II": [
+      "AAF-II:complete_uncertainty_model"
+    ],
+    "AAF-III": [
+      "AAF-III:complete_uncertainty_model"
+    ]
+  },
+  "depth_3_4_status": "not_authorized_from_retrieved_public_set",
+  "documents": [
+    {
+      "byte_length": 6315,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_external_sources_v1.json",
+      "sha256": "3b37b6548a23ef3138909bed638dd13cf571c084fdfaad84a70d41aac02eb559"
+    },
+    {
+      "byte_length": 10571,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_v1.json",
+      "sha256": "1b2669fe0cd0637b0d9771223b101fd5795be5151dc69e7b5b79932e768f5852"
+    },
+    {
+      "byte_length": 6444,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.md",
+      "sha256": "b2cc5b5e7c8a7e96bafbce1e0cb7b3edf999a50e2897adeb062f9ab2e41c969c"
+    }
+  ],
+  "maximum_supported_replication_depth": "2a",
+  "nonclaims": [
+    "This audit does not establish that the HUST value of G is correct.",
+    "GO/2a is a public-summary central-value reconstruction, not an independent laboratory measurement.",
+    "Depth 2a does not authorize the combined AAF value or an uncertainty-qualified reproduction.",
+    "No MeasurementModel is created and no physical-bridge schema is extended by this audit.",
+    "The source-data HTTP fallback findings do not prove that the files cannot be obtained by another public retrieval path."
+  ],
+  "preregistration": {
+    "path": "Experiments/GMeasurements/hust_2018_aaf_preregistration_v1.md",
+    "sha256": "fa297ecfa4cc4ae2ee7737e413dc8bf0f6ad63c70ca2d1ff070ae81dd2ec8885"
+  },
+  "source_capture_summary": {
+    "failed_source_data_attempts": [
+      "source_data_extended_fig_4",
+      "source_data_extended_fig_5",
+      "source_data_fig_2",
+      "source_data_fig_3"
+    ],
+    "required_summary_source": "supplementary_information",
+    "resource_listing_capture_status": "labels_and_exact_media_urls_verified_from_primary_nature_page; github_runner_landing_response_did_not_reproduce_full_listing_html",
+    "retrieved_binary_sources": [
+      "source_data_extended_fig_2",
+      "supplementary_data",
+      "supplementary_information"
+    ]
+  },
+  "target_method": "AAF",
+  "target_publication_doi": "10.1038/s41586-018-0431-5"
+}
