@@ -1,0 +1,12 @@
+# Final post-audit closure
+
+This note records the final bounded infrastructure closure before the next published-data source-availability audit.
+
+- The post-P4 source-identifier behaviors identified by external audit are pinned by direct tests.
+- The temporary `force_reference` certificate canonicalization shim has been retired.
+- `Discovery/physical_bridge_schema.py` is now part of the Milestone 5B mutation-harness source-attestation boundary.
+- The original mutation artifact remains historical; the current re-anchored artifact is `Experiments/Falsification/milestone_5b_core_v1.mutation_results_v2.json`.
+- The source-identifier Unicode gate intentionally rejects format/combining-mark categories plus a bounded set of known visually blank filler characters. General Unicode homoglyph/confusable detection remains out of scope.
+- Primary NIST verification corrects the UW/CODATA RMP locators to journal p. 45 for the magnetic-damper correction discussion and journal p. 102 for the `Gundlach and Merkowitz, 2002` private-communication bibliography entry. The manifest-pinned historical UW source audit is not rewritten.
+
+These are methodological and provenance controls. They do not establish empirical validity, source resolvability, or experimental independence.
