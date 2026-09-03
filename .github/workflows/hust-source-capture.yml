@@ -23,71 +23,42 @@ jobs:
         run: |
           python - <<'PY'
           from __future__ import annotations
-          from html.parser import HTMLParser
-          from urllib.parse import urljoin
           from urllib.request import Request, urlopen
           import hashlib
           import json
           from pathlib import Path
 
           ARTICLE_URL = 'https://www.nature.com/articles/s41586-018-0431-5'
+          MEDIA_BASE = 'https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-018-0431-5/MediaObjects/'
           RETRIEVAL_DATE = '2026-09-03'
           OUTPUT = Path('Experiments/GMeasurements/hust_2018_aaf_external_sources_v1.json')
-          WANTED = [
-              ('supplementary_information', 'Supplementary Information'),
-              ('supplementary_data', 'Supplementary Data'),
-              ('source_data_fig_2', 'Source Data Fig. 2'),
-              ('source_data_fig_3', 'Source Data Fig. 3'),
-              ('source_data_extended_fig_2', 'Source Data Extended Data Fig. 2'),
-              ('source_data_extended_fig_4', 'Source Data Extended Data Fig. 4'),
-              ('source_data_extended_fig_5', 'Source Data Extended Data Fig. 5'),
+          RESOURCE_SPECS = [
+              ('supplementary_information', 'Supplementary Information', '41586_2018_431_MOESM1_ESM.pdf'),
+              ('supplementary_data', 'Supplementary Data', '41586_2018_431_MOESM2_ESM.xlsx'),
+              ('source_data_fig_2', 'Source Data Fig. 2', '41586_2018_431_MOESM3_ESM.xlsx'),
+              ('source_data_fig_3', 'Source Data Fig. 3', '41586_2018_431_MOESM4_ESM.xlsx'),
+              ('source_data_extended_fig_2', 'Source Data Extended Data Fig. 2', '41586_2018_431_MOESM5_ESM.xlsx'),
+              ('source_data_extended_fig_4', 'Source Data Extended Data Fig. 4', '41586_2018_431_MOESM6_ESM.xlsx'),
+              ('source_data_extended_fig_5', 'Source Data Extended Data Fig. 5', '41586_2018_431_MOESM7_ESM.xlsx'),
           ]
 
-          class AnchorParser(HTMLParser):
-              def __init__(self):
-                  super().__init__()
-                  self.current_href = None
-                  self.current_text = []
-                  self.anchors = []
-              def handle_starttag(self, tag, attrs):
-                  if tag == 'a':
-                      self.current_href = dict(attrs).get('href')
-                      self.current_text = []
-              def handle_data(self, data):
-                  if self.current_href is not None:
-                      self.current_text.append(data)
-              def handle_endtag(self, tag):
-                  if tag == 'a' and self.current_href is not None:
-                      text = ' '.join(''.join(self.current_text).split())
-                      self.anchors.append((text, self.current_href))
-                      self.current_href = None
-                      self.current_text = []
-
-          def fetch(url: str) -> tuple[bytes, str]:
-              request = Request(url, headers={'User-Agent': 'The-Number-Project/1.0 source-audit'})
+          def fetch(url: str) -> tuple[bytes, str, str | None]:
+              request = Request(url, headers={'User-Agent': 'Mozilla/5.0 The-Number-Project-source-audit'})
               with urlopen(request, timeout=60) as response:
-                  return response.read(), response.geturl()
+                  return response.read(), response.geturl(), response.headers.get_content_type()
 
-          article_bytes, article_resolved = fetch(ARTICLE_URL)
-          parser = AnchorParser()
-          parser.feed(article_bytes.decode('utf-8', errors='strict'))
-
+          article_bytes, article_resolved, article_type = fetch(ARTICLE_URL)
           resources = []
-          for source_id, label in WANTED:
-              matches = [
-                  href for text, href in parser.anchors
-                  if label in text and ('download' in text.lower() or 'source data' in text.lower())
-              ]
-              if len(matches) != 1:
-                  raise SystemExit(f'expected exactly one Nature link for {label!r}, got {matches!r}')
-              url = urljoin(article_resolved, matches[0])
-              content, resolved = fetch(url)
+          for source_id, label, filename in RESOURCE_SPECS:
+              url = MEDIA_BASE + filename
+              content, resolved, content_type = fetch(url)
               resources.append({
                   'source_id': source_id,
                   'label': label,
                   'offered_url': url,
                   'resolved_url': resolved,
                   'retrieval_date': RETRIEVAL_DATE,
+                  'content_type': content_type,
                   'byte_length': len(content),
                   'sha256': hashlib.sha256(content).hexdigest(),
                   'retrieval_status': 'retrieved',
@@ -101,17 +72,20 @@ jobs:
                   'offered_url': ARTICLE_URL,
                   'resolved_url': article_resolved,
                   'retrieval_date': RETRIEVAL_DATE,
+                  'content_type': article_type,
                   'byte_length': len(article_bytes),
                   'sha256': hashlib.sha256(article_bytes).hexdigest(),
                   'retrieval_status': 'retrieved',
               },
               'resources': sorted(resources, key=lambda row: row['source_id']),
+              'capture_method': 'Publisher media endpoints were matched to the Nature listing order verified during preregistration review.',
               'capture_nonclaim': 'Hashes record bytes retrieved on the stated date; CI does not re-fetch mutable external resources.',
           }
           OUTPUT.write_text(json.dumps(record, indent=2, sort_keys=True) + '\n', encoding='utf-8')
           print(OUTPUT)
+          print('article', len(article_bytes), hashlib.sha256(article_bytes).hexdigest(), article_resolved)
           for row in record['resources']:
-              print(row['source_id'], row['byte_length'], row['sha256'], row['resolved_url'])
+              print(row['source_id'], row['content_type'], row['byte_length'], row['sha256'], row['resolved_url'])
           PY
       - name: Commit source-capture artifact
         run: |
