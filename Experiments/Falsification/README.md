@@ -74,11 +74,22 @@ The null check verifies the preregistration hash, version, experiment identifier
 recorded source state, trial-payload hashes, and byte-for-byte deterministic regeneration.
 It does not silently replace an existing result.
 
-## Ephemeral mutation result
+## Mutation attestations
 
-`milestone_5b_core_v1.mutation_results.json` records the selected semantic mutants,
-their predefined behavioral tests, import-path evidence, canonical-state fingerprints,
-cleanup confirmation, and the exact `killed`, `survived`, or `invalid` classification.
+`milestone_5b_core_v1.mutation_results.json` is the preserved historical first mutation
+attestation. It is not overwritten.
+
+`milestone_5b_core_v1.mutation_results_v2.json` is the current mutation attestation. The
+same preregistered Milestone 5B experiment is re-anchored because the result-driving source
+boundary now explicitly includes `Discovery/physical_bridge_schema.py`, whose constructor
+validation can determine whether evidence-bearing records reach the model validator. The
+re-anchor also migrates the old `force_reference` test fixture to the namespaced certificate
+form and removes the temporary production migration shim instead of silently rewriting a
+declared source identifier.
+
+The current artifact records the selected semantic mutants, their predefined behavioral
+tests, import-path evidence, canonical-state fingerprints, cleanup confirmation, and the
+exact `killed`, `survived`, or `invalid` classification.
 
 The two calibration mutants behaved as required through the same disposable-worktree
 path used by production mutants: the known behavioral defect was killed, while the
@@ -113,6 +124,10 @@ or exact-patch detector was added to improve the mutation score.
 An additional behavioral test confirms that `exact=True` cannot bypass empirical source
 metadata. These source gates verify declared provenance records, not real-world
 experimental independence.
+
+The current `SOURCE_PATHS` attestation includes both the physical-bridge schema and validator
+alongside the behavioral tests that drive the selected mutation family. This is an explicit
+evidence-boundary decision, not a claim that every repository file is source-attested.
 
 The mutation harness automatically creates detached worktrees at the recorded source
 SHA, proves relevant module `__file__` paths are under the disposable root inside the

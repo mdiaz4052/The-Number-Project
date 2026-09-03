@@ -12,6 +12,7 @@ from Discovery.mutation_harness import (
     INVALID,
     KILLED,
     NONCLAIMS,
+    SOURCE_PATHS,
     SURVIVED,
     Mutant,
     apply_mutation,
@@ -54,6 +55,9 @@ class MutationHarnessUnitTests(unittest.TestCase):
         self.assertEqual(killed[1], ("test.behavior",))
         self.assertEqual(survived[0], SURVIVED)
         self.assertEqual(invalid[0], INVALID)
+
+    def test_physical_bridge_schema_is_source_attested(self) -> None:
+        self.assertIn("Discovery/physical_bridge_schema.py", SOURCE_PATHS)
 
     def test_import_path_validation_rejects_external_project_copy(self) -> None:
         fake = types.ModuleType("Discovery.fake")

@@ -35,7 +35,7 @@ from Discovery.source_history import (
 
 RESULT_SCHEMA_VERSION = 3
 DEFAULT_OUTPUT = Path(
-    "Experiments/Falsification/milestone_5b_core_v1.mutation_results.json"
+    "Experiments/Falsification/milestone_5b_core_v1.mutation_results_v2.json"
 )
 KILLED = "killed"
 SURVIVED = "survived"
@@ -65,6 +65,7 @@ SOURCE_PATHS = (
     "Discovery/mutation_test_runner.py",
     "Discovery/dimensional_search.py",
     "Discovery/dependency_analysis.py",
+    "Discovery/physical_bridge_schema.py",
     "Discovery/physical_bridge_validation.py",
     "Discovery/source_history.py",
     "tests/test_dimensional_search.py",

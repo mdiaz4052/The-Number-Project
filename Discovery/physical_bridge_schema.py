@@ -15,6 +15,7 @@ from pathlib import Path
 import re
 from types import MappingProxyType
 from typing import Any, Iterable, Mapping
+import unicodedata
 from urllib.parse import urlsplit
 
 from Discovery.dimensions import Dimension
@@ -123,6 +124,9 @@ _CERTIFICATE_RECORD_RE = re.compile(
     re.ASCII,
 )
 _SOURCE_IDENTIFIER_PREFIXES = ("doi", "url", "certificate")
+_BLANK_LIKE_SOURCE_CODEPOINTS = frozenset(
+    {0x115F, 0x1160, 0x2800, 0x3164, 0xFFA0}
+)
 
 
 def _validate_access_date(value: object, label: str) -> str:
@@ -143,7 +147,10 @@ def _validate_access_date(value: object, label: str) -> str:
 def _validate_source_identifier(value: object, label: str) -> str:
     text = _require_text(value, label)
     if text != text.strip() or any(
-        character.isspace() or not character.isprintable()
+        character.isspace()
+        or not character.isprintable()
+        or unicodedata.category(character) in {"Mn", "Me"}
+        or ord(character) in _BLANK_LIKE_SOURCE_CODEPOINTS
         for character in text
     ):
         raise BridgeValidationError(
@@ -192,6 +199,7 @@ def _validate_source_identifier(value: object, label: str) -> str:
                 f"{label} certificate must use issuer/record form"
             )
     return text
+
 
 def _unique_text(values: Iterable[str], label: str) -> tuple[str, ...]:
     if isinstance(values, (str, bytes)):
@@ -396,12 +404,6 @@ class QuantityRecord:
                 f"exact quantity {self.identifier} cannot have nonzero uncertainty"
             )
         source_identifier = self.source_identifier
-        if (
-            self.identifier == "force_reference"
-            and source_identifier == "certificate:force-reference"
-        ):
-            source_identifier = "certificate:project/force-reference"
-            object.__setattr__(self, "source_identifier", source_identifier)
         if source_identifier is not None:
             _validate_source_identifier(
                 source_identifier,
