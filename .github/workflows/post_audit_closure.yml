@@ -1,0 +1,399 @@
+name: Post-audit closure staging
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: read
+
+jobs:
+  apply-and-reattest:
+    if: >-
+      github.head_ref == 'codex/post-audit-closure-rmp-attestation' &&
+      github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Apply bounded closure patch
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess
+
+          expected_blobs = {
+              "Discovery/physical_bridge_schema.py": "3ee76d0d72169900e84487e85c9001142295b0c3",
+              "Discovery/mutation_harness.py": "8a100b7f25307a1aaa3d68394936cd4605417de3",
+              "tests/test_physical_bridge.py": "cdaeb0573e9d0a08e20546b101ad286decef6323",
+              "tests/test_physical_bridge_source_identifier_hardening.py": "cde280cacf6a8a855d7f099f3ff3fc2de3cd6d7a",
+              "tests/test_mutation_harness.py": "3825eb5e88d8e88fef63735c701ac8563deed682",
+              "Experiments/GMeasurements/README.md": "8a8b1609e15c56619eb1e79fa645141983280b2a",
+              "Experiments/Falsification/README.md": "43e69ecb35783720eb3722a129afe4a59e04201d",
+              "Notes/GMeasurementLiterature.md": "1c1bbe043c10e39151d1f5d3ce7f4eaf3386fb07",
+          }
+          for filename, expected in expected_blobs.items():
+              actual = subprocess.check_output(
+                  ["git", "hash-object", filename], text=True
+              ).strip()
+              if actual != expected:
+                  raise SystemExit(
+                      f"refusing to patch {filename}: expected blob {expected}, got {actual}"
+                  )
+
+          def replace_once(filename: str, old: str, new: str) -> None:
+              path = Path(filename)
+              text = path.read_text(encoding="utf-8")
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(
+                      f"replacement count for {filename} is {count}, expected 1"
+                  )
+              path.write_text(text.replace(old, new), encoding="utf-8")
+
+          schema = "Discovery/physical_bridge_schema.py"
+          replace_once(
+              schema,
+              "from typing import Any, Iterable, Mapping\nfrom urllib.parse import urlsplit\n",
+              "from typing import Any, Iterable, Mapping\nimport unicodedata\nfrom urllib.parse import urlsplit\n",
+          )
+          replace_once(
+              schema,
+              '_SOURCE_IDENTIFIER_PREFIXES = ("doi", "url", "certificate")\n',
+              '_SOURCE_IDENTIFIER_PREFIXES = ("doi", "url", "certificate")\n'
+              '_BLANK_LIKE_SOURCE_CODEPOINTS = frozenset(\n'
+              '    {0x115F, 0x1160, 0x2800, 0x3164, 0xFFA0}\n'
+              ')\n',
+          )
+          replace_once(
+              schema,
+              "        character.isspace() or not character.isprintable()\n        for character in text\n",
+              "        character.isspace()\n"
+              "        or not character.isprintable()\n"
+              "        or unicodedata.category(character) in {\"Mn\", \"Me\"}\n"
+              "        or ord(character) in _BLANK_LIKE_SOURCE_CODEPOINTS\n"
+              "        for character in text\n",
+          )
+          replace_once(
+              schema,
+              "        source_identifier = self.source_identifier\n"
+              "        if (\n"
+              "            self.identifier == \"force_reference\"\n"
+              "            and source_identifier == \"certificate:force-reference\"\n"
+              "        ):\n"
+              "            source_identifier = \"certificate:project/force-reference\"\n"
+              "            object.__setattr__(self, \"source_identifier\", source_identifier)\n"
+              "        if source_identifier is not None:\n",
+              "        source_identifier = self.source_identifier\n"
+              "        if source_identifier is not None:\n",
+          )
+          replace_once(
+              schema,
+              "    return text\n\ndef _unique_text",
+              "    return text\n\n\ndef _unique_text",
+          )
+
+          harness = "Discovery/mutation_harness.py"
+          replace_once(
+              harness,
+              'DEFAULT_OUTPUT = Path(\n    "Experiments/Falsification/milestone_5b_core_v1.mutation_results.json"\n)\n',
+              'DEFAULT_OUTPUT = Path(\n    "Experiments/Falsification/milestone_5b_core_v1.mutation_results_v2.json"\n)\n',
+          )
+          replace_once(
+              harness,
+              '    "Discovery/dependency_analysis.py",\n    "Discovery/physical_bridge_validation.py",\n',
+              '    "Discovery/dependency_analysis.py",\n'
+              '    "Discovery/physical_bridge_schema.py",\n'
+              '    "Discovery/physical_bridge_validation.py",\n',
+          )
+
+          bridge_tests = "tests/test_physical_bridge.py"
+          replace_once(
+              bridge_tests,
+              '            source_identifier="certificate:force-reference",\n',
+              '            source_identifier="certificate:project/force-reference",\n',
+          )
+          replace_once(
+              bridge_tests,
+              '            "source_identifier": "certificate:force-reference",\n',
+              '            "source_identifier": "certificate:project/force-reference",\n',
+          )
+
+          hardening_tests = "tests/test_physical_bridge_source_identifier_hardening.py"
+          replace_once(
+              hardening_tests,
+              '            "certificate:lab-A/run/extra",\n',
+              '            "certificate:lab-A/run/extra",\n'
+              '            "certificate:lab-A/rec:x",\n',
+          )
+          replace_once(
+              hardening_tests,
+              "        for value in valid:\n"
+              "            with self.subTest(value=value):\n"
+              "                self.assertEqual(\n"
+              "                    replace(reference, source_identifier=value).source_identifier,\n"
+              "                    value,\n"
+              "                )\n\n"
+              "    def test_legacy_force_reference_token_is_scoped_and_canonicalized(self) -> None:\n"
+              "        migrated = replace(\n"
+              "            force_reference(),\n"
+              "            source_identifier=\"certificate:force-reference\",\n"
+              "        )\n"
+              "        self.assertEqual(\n"
+              "            migrated.source_identifier,\n"
+              "            \"certificate:project/force-reference\",\n"
+              "        )\n"
+              "        with self.assertRaisesRegex(\n"
+              "            BridgeValidationError,\n"
+              "            \"certificate.*issuer/record\",\n"
+              "        ):\n"
+              "            replace(\n"
+              "                codata_reference(),\n"
+              "                source_identifier=\"certificate:force-reference\",\n"
+              "            )\n",
+              "        for value in valid:\n"
+              "            with self.subTest(value=value):\n"
+              "                self.assertEqual(\n"
+              "                    replace(reference, source_identifier=value).source_identifier,\n"
+              "                    value,\n"
+              "                )\n\n"
+              "        issuer_64 = \"A\" + \"a\" * 63\n"
+              "        record_128 = \"r\" * 128\n"
+              "        for value in (\n"
+              "            f\"certificate:{issuer_64}/record\",\n"
+              "            f\"certificate:lab/{record_128}\",\n"
+              "        ):\n"
+              "            with self.subTest(boundary=value):\n"
+              "                self.assertEqual(\n"
+              "                    replace(reference, source_identifier=value).source_identifier,\n"
+              "                    value,\n"
+              "                )\n"
+              "        for value in (\n"
+              "            f\"certificate:{issuer_64}a/record\",\n"
+              "            f\"certificate:lab/{record_128}r\",\n"
+              "        ):\n"
+              "            with self.subTest(over_bound=value):\n"
+              "                with self.assertRaisesRegex(\n"
+              "                    BridgeValidationError,\n"
+              "                    \"certificate.*issuer/record\",\n"
+              "                ):\n"
+              "                    replace(reference, source_identifier=value)\n\n"
+              "    def test_legacy_force_reference_token_is_rejected_without_migration_shim(self) -> None:\n"
+              "        for reference in (force_reference(), codata_reference()):\n"
+              "            with self.subTest(identifier=reference.identifier):\n"
+              "                with self.assertRaisesRegex(\n"
+              "                    BridgeValidationError,\n"
+              "                    \"certificate.*issuer/record\",\n"
+              "                ):\n"
+              "                    replace(\n"
+              "                        reference,\n"
+              "                        source_identifier=\"certificate:force-reference\",\n"
+              "                    )\n\n"
+              "        with self.assertRaisesRegex(\n"
+              "            BridgeValidationError,\n"
+              "            \"certificate.*issuer/record\",\n"
+              "        ):\n"
+              "            replace(\n"
+              "                force_reference(),\n"
+              "                source_identifier=\"certificate:zzz\",\n"
+              "            )\n",
+          )
+          replace_once(
+              hardening_tests,
+              '            "doi:10.1103/x\\x01y",\n            "url:https://example.org/x\\u200by",\n',
+              '            "doi:10.1103/x\\x01y",\n'
+              '            "doi:10.1103/x\\u115fy",\n'
+              '            "doi:10.1103/x\\u2800y",\n'
+              '            "doi:10.1103/x\\u3164y",\n'
+              '            "doi:10.1103/x\\uffa0y",\n'
+              '            "doi:10.1103/cafe\\u0301",\n'
+              '            "url:https://ex\\u3164ample.org/d",\n'
+              '            "url:https://example.org/x\\u200by",\n',
+          )
+          replace_once(
+              hardening_tests,
+              "    def test_unparseable_urls_use_bridge_validation_error(self) -> None:\n",
+              "    def test_ascii_space_rejection_is_independently_pinned_for_urls(self) -> None:\n"
+              "        reference = codata_reference()\n"
+              "        for value in (\n"
+              "            \"url:https://example.org/a b\",\n"
+              "            \"url:https://exam ple.org/d\",\n"
+              "        ):\n"
+              "            with self.subTest(value=value):\n"
+              "                with self.assertRaisesRegex(\n"
+              "                    BridgeValidationError,\n"
+              "                    \"whitespace, control, or invisible\",\n"
+              "                ):\n"
+              "                    replace(reference, source_identifier=value)\n\n"
+              "    def test_unparseable_urls_use_bridge_validation_error(self) -> None:\n",
+          )
+          replace_once(
+              hardening_tests,
+              '            "url:https://.../",\n',
+              '            "url:https://.../",\n'
+              '            "url:https://...:1/d",\n',
+          )
+
+          mutation_tests = "tests/test_mutation_harness.py"
+          replace_once(
+              mutation_tests,
+              "    NONCLAIMS,\n    SURVIVED,\n",
+              "    NONCLAIMS,\n    SOURCE_PATHS,\n    SURVIVED,\n",
+          )
+          replace_once(
+              mutation_tests,
+              "    def test_import_path_validation_rejects_external_project_copy(self) -> None:\n",
+              "    def test_physical_bridge_schema_is_source_attested(self) -> None:\n"
+              "        self.assertIn(\"Discovery/physical_bridge_schema.py\", SOURCE_PATHS)\n\n"
+              "    def test_import_path_validation_rejects_external_project_copy(self) -> None:\n",
+          )
+
+          g_readme = "Experiments/GMeasurements/README.md"
+          replace_once(
+              g_readme,
+              "DOI and URL identifiers reject whitespace, control,\n"
+              "and invisible characters; malformed URL parsing and invalid ports are converted into the\n"
+              "schema's controlled `BridgeValidationError`. Edition remains descriptive nonempty text.\n"
+              "Malformed forms are rejected before model-level empirical evaluation.\n\n"
+              "One historical source-attested test fixture predates the certificate namespace and uses\n"
+              "the exact token `certificate:force-reference`. For the repository's known\n"
+              "`force_reference` quantity only, construction canonicalizes that token to\n"
+              "`certificate:project/force-reference`; the same loose token remains invalid for every\n"
+              "other quantity. This is a migration shim for preserved historical tests, not an additional\n"
+              "accepted certificate grammar.\n",
+              "DOI and URL identifiers reject whitespace, control characters, nonspacing/enclosing\n"
+              "combining marks, and a bounded set of blank-like Unicode code points that can render as\n"
+              "empty text while remaining printable; malformed URL parsing and invalid ports are converted\n"
+              "into the schema's controlled `BridgeValidationError`. Edition remains descriptive nonempty\n"
+              "text. Malformed forms are rejected before model-level empirical evaluation.\n\n"
+              "The historical `force_reference` test fixture now uses the namespaced\n"
+              "`certificate:project/force-reference` form directly. No construction-time migration or\n"
+              "silent source-identifier rewrite remains in the schema.\n",
+          )
+          replace_once(
+              g_readme,
+              "hostname containing no alphanumeric character is rejected as degenerate. Future\n"
+              "`access_date` values also remain syntactically valid: temporal plausibility is deliberately\n",
+              "hostname containing no alphanumeric character is rejected as degenerate. General Unicode\n"
+              "homoglyph/confusable detection is deliberately out of scope: the form gate removes bounded\n"
+              "invisible classes, but it does not claim that visually similar identifiers are equivalent or\n"
+              "that an identifier resolves to the intended source. Future `access_date` values also remain\n"
+              "syntactically valid: temporal plausibility is deliberately\n",
+          )
+
+          falsification_readme = "Experiments/Falsification/README.md"
+          replace_once(
+              falsification_readme,
+              "## Ephemeral mutation result\n\n"
+              "`milestone_5b_core_v1.mutation_results.json` records the selected semantic mutants,\n"
+              "their predefined behavioral tests, import-path evidence, canonical-state fingerprints,\n"
+              "cleanup confirmation, and the exact `killed`, `survived`, or `invalid` classification.\n",
+              "## Mutation attestations\n\n"
+              "`milestone_5b_core_v1.mutation_results.json` is the preserved historical first mutation\n"
+              "attestation. It is not overwritten.\n\n"
+              "`milestone_5b_core_v1.mutation_results_v2.json` is the current mutation attestation. The\n"
+              "same preregistered Milestone 5B experiment is re-anchored because the result-driving source\n"
+              "boundary now explicitly includes `Discovery/physical_bridge_schema.py`, whose constructor\n"
+              "validation can determine whether evidence-bearing records reach the model validator. The\n"
+              "re-anchor also migrates the old `force_reference` test fixture to the namespaced certificate\n"
+              "form and removes the temporary production migration shim instead of silently rewriting a\n"
+              "declared source identifier.\n\n"
+              "The current artifact records the selected semantic mutants, their predefined behavioral\n"
+              "tests, import-path evidence, canonical-state fingerprints, cleanup confirmation, and the\n"
+              "exact `killed`, `survived`, or `invalid` classification.\n",
+          )
+          replace_once(
+              falsification_readme,
+              "The mutation harness automatically creates detached worktrees at the recorded source\n",
+              "The current `SOURCE_PATHS` attestation includes both the physical-bridge schema and validator\n"
+              "alongside the behavioral tests that drive the selected mutation family. This is an explicit\n"
+              "evidence-boundary decision, not a claim that every repository file is source-attested.\n\n"
+              "The mutation harness automatically creates detached worktrees at the recorded source\n",
+          )
+
+          literature = "Notes/GMeasurementLiterature.md"
+          replace_once(
+              literature,
+              "The 2002 CODATA adjustment review, P. J. Mohr and B. N. Taylor, “CODATA recommended\n"
+              "values of the fundamental physical constants: 2002,” *Reviews of Modern Physics* 77,\n"
+              "1--107 (2005), [doi:10.1103/RevModPhys.77.1](https://doi.org/10.1103/RevModPhys.77.1)\n"
+              "([official NIST PDF](https://physics.nist.gov/cuu/pdf/CODATA_RMP2005.pdf)), records the\n"
+              "later UW correction as originating in a 2002 private communication. It is therefore\n"
+              "historical comparison evidence, not a public companion input set.\n",
+              "The 2002 CODATA adjustment review, P. J. Mohr and B. N. Taylor, “CODATA recommended\n"
+              "values of the fundamental physical constants: 2002,” *Reviews of Modern Physics* 77,\n"
+              "1--107 (2005), [doi:10.1103/RevModPhys.77.1](https://doi.org/10.1103/RevModPhys.77.1)\n"
+              "([official NIST PDF](https://physics.nist.gov/cuu/pdf/CODATA_RMP2005.pdf)), records on\n"
+              "journal p. 45 that Gundlach and Merkowitz later identified an additional fractional\n"
+              "correction of `6.0e-6` caused by magnetic-damper torque. Its reference list on journal\n"
+              "p. 102 identifies “Gundlach, J. H., and S. M. Merkowitz, 2002” as a private\n"
+              "communication. It is therefore historical comparison evidence, not a public companion\n"
+              "input set.\n",
+          )
+          PY
+
+          git diff --check
+          python -m unittest \
+            tests.test_physical_bridge_source_identifier_hardening \
+            tests.test_physical_bridge
+          python -m Discovery.physical_bridge --check
+          git status --short
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            Discovery/physical_bridge_schema.py \
+            Discovery/mutation_harness.py \
+            tests/test_physical_bridge.py \
+            tests/test_physical_bridge_source_identifier_hardening.py \
+            tests/test_mutation_harness.py \
+            Experiments/GMeasurements/README.md \
+            Experiments/Falsification/README.md \
+            Notes/GMeasurementLiterature.md
+          git commit -m "Close post-audit metadata gaps and expand mutation source boundary"
+          git push origin HEAD:${{ github.head_ref }}
+
+      - name: Generate current mutation attestation and remove staging workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          SOURCE_SHA=$(git rev-parse HEAD)
+          OUTPUT=Experiments/Falsification/milestone_5b_core_v1.mutation_results_v2.json
+          test ! -e "$OUTPUT"
+          python -m Discovery.mutation_harness \
+            --source-commit-sha "$SOURCE_SHA" \
+            --output "$OUTPUT"
+          python -m Discovery.mutation_harness --check
+          git rm .github/workflows/post_audit_closure.yml
+          git add "$OUTPUT"
+          git commit -m "Re-anchor Milestone 5B mutation evidence after schema attestation"
+          git push origin HEAD:${{ github.head_ref }}
+
+      - name: Verify clean committed closure state
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -z "$(git status --porcelain)"
+          PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.dimensional_search --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.inverse_square_search --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.dependency_analysis --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.physical_bridge --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.published_data_pilot --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.falsification_preregistration --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.null_experiments --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.mutation_harness --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.pydimension_comparison --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.pysr_leakage_check_v2 --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.pysr_leakage_mutations --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.pysr_leakage_hardening --check
+          PYTHONDONTWRITEBYTECODE=1 python -m Discovery.pysr_leakage_hardening_mutations --check
+          test -z "$(git status --porcelain)"
