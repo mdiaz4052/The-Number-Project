@@ -52,19 +52,24 @@ jobs:
           Path(DEFAULT_OUTPUT).write_text(serialize_artifact(build_artifact()), encoding='utf-8')
           PY
 
-      - name: Verify the clean scientific state while the write workflow is still present
+      - name: Commit the hygiene result locally to restore a clean canonical checkout
         run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add Discovery/hust_2018_aaf_measurement_models.py Experiments/GMeasurements/hust_2018_aaf_measurement_models_v1.json
+          git commit -m 'Keep HUST comparison diagnostic at Decimal precision 50'
+
+      - name: Verify the clean scientific state while the guarded write workflow is still present
+        run: |
+          test -z "$(git status --porcelain)"
           python -m unittest discover -s tests -v
           python -m Discovery.hust_2018_aaf_source_audit --check
           python -m Discovery.hust_2018_aaf_measurement_models --check
           python -m Discovery.physical_bridge --check
           python -m Discovery.mutation_harness --check
 
-      - name: Remove staging workflow and commit only the hygiene result
+      - name: Remove staging workflow, commit its removal, and push both reviewed commits
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git rm .github/workflows/hust-decimal-hygiene-finalize.yml
-          git add Discovery/hust_2018_aaf_measurement_models.py Experiments/GMeasurements/hust_2018_aaf_measurement_models_v1.json
-          git commit -m 'Keep HUST comparison diagnostic at Decimal precision 50'
+          git commit -m 'Remove HUST Decimal hygiene finalizer'
           git push origin HEAD:codex/post-pr29-decimal-hygiene
