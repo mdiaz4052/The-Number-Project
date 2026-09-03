@@ -17,11 +17,11 @@ from Discovery.source_history import (
     verify_committed_source_state,
 )
 
-RESULT_SCHEMA_VERSION = 1
+RESULT_SCHEMA_VERSION = 2
 EXPERIMENT_IDENTIFIER = "post_6b_hardening_mutations_v1"
 DEFAULT_OUTPUT = Path(
     "Experiments/EcosystemComparison/PySRLeakage/"
-    "post_6b_hardening_v1.mutation_results.json"
+    "post_6b_hardening_v1.mutation_results_v2.json"
 )
 SOURCE_PATHS = (
     "Discovery/pysr_leakage_hardening_mutations.py",
