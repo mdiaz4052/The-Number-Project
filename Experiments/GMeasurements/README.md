@@ -86,6 +86,13 @@ and invisible characters; malformed URL parsing and invalid ports are converted 
 schema's controlled `BridgeValidationError`. Edition remains descriptive nonempty text.
 Malformed forms are rejected before model-level empirical evaluation.
 
+One historical source-attested test fixture predates the certificate namespace and uses
+the exact token `certificate:force-reference`. For the repository's known
+`force_reference` quantity only, construction canonicalizes that token to
+`certificate:project/force-reference`; the same loose token remains invalid for every
+other quantity. This is a migration shim for preserved historical tests, not an additional
+accepted certificate grammar.
+
 These checks establish only syntax and project-local identifier shape. They do not prove
 that a DOI, URL, or certificate resolves, that a host is publicly reachable, that the
 claimed source contains the asserted value, or that the value was experimentally
