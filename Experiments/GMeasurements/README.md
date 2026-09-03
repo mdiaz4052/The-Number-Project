@@ -79,11 +79,12 @@ form-validated at `QuantityRecord` construction: access dates must be valid cale
 in strict `YYYY-MM-DD` form. Source identifiers must use one of three explicit channels:
 `doi:<DOI>`, an absolute credential-free `url:https://...`, or a namespaced local
 `certificate:<issuer>/<record-id>`. Certificate issuer and record components use a
-bounded ASCII token grammar; a loose value such as `certificate:zzz` is not accepted.
-DOI and URL identifiers reject whitespace, control, and invisible characters; malformed
-URL parsing and invalid ports are converted into the schema's controlled
-`BridgeValidationError`. Edition remains descriptive nonempty text. Malformed forms are
-rejected before model-level empirical evaluation.
+bounded ASCII token grammar: the issuer begins with an ASCII letter and is at most 64
+characters, while the record identifier is at most 128 characters. A loose value such as
+`certificate:zzz` is not accepted. DOI and URL identifiers reject whitespace, control,
+and invisible characters; malformed URL parsing and invalid ports are converted into the
+schema's controlled `BridgeValidationError`. Edition remains descriptive nonempty text.
+Malformed forms are rejected before model-level empirical evaluation.
 
 These checks establish only syntax and project-local identifier shape. They do not prove
 that a DOI, URL, or certificate resolves, that a host is publicly reachable, that the
