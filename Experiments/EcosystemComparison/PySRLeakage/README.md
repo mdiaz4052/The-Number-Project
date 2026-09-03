@@ -20,7 +20,7 @@ PySR recovered the canonical signature in `A_clean` and `C_hidden_leak`, but not
 
 Every PySR expression remains permanently `target_exposed_candidate` and promotion-ineligible. It may motivate a new target-clean preregistered investigation, but the original record cannot be relabeled into stronger evidence.
 
-Two selected semantic mutations were killed in the existing disposable-worktree harness: one attempted to bypass the target-exposed promotion valve, and one collapsed generation-DAG leakage into the registered algebraic result, erasing the Channel C distinction. The original mutation artifact remains preserved as historical evidence. A second mutation attestation is current after the shared mutation harness legitimately expanded its source boundary to include the physical-bridge schema; the 6B mutant definitions and behavioral tests themselves are unchanged.
+Two selected semantic mutations were killed in the existing disposable-worktree harness: one attempted to bypass the target-exposed promotion valve, and one collapsed generation-DAG leakage into the registered algebraic result, erasing the Channel C distinction. The original mutation artifact remains preserved as historical evidence. A second mutation attestation is current after the shared mutation harness legitimately expanded its source boundary to include the physical-bridge schema; the 6B mutant definitions and behavioral tests themselves are unchanged. The current 6B mutation and post-6B parser-mutation re-attestations share source anchor `8b788a7fcfd4617e17356e8886d9c417e678b29a`.
 
 ## Provenance and reproducibility
 
