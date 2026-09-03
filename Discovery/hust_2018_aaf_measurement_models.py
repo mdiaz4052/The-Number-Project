@@ -257,7 +257,9 @@ def _build_model_from_records(
     except (KeyError, ArithmeticError) as error:
         raise HUSTMeasurementModelError(f"invalid published G comparison for {scope}") from error
     published_u = _published_uncertainty(comparison, scope)
-    comparison_delta = g_hat - published_g
+    with localcontext() as context:
+        context.prec = 50
+        comparison_delta = g_hat - published_g
 
     p_id = f"{scope}:p_sum"
     alpha_table_id = f"{scope}:alpha_corrected"
@@ -602,7 +604,10 @@ def validate_hust_aaf_model(model: MeasurementModel, scope: str) -> None:
         raise HUSTMeasurementModelError("SI angular acceleration does not match the preregistered exact unit conversion")
     if target.value != expected_g:
         raise HUSTMeasurementModelError("G_hat does not match the preregistered central-value estimator")
-    if comparison_delta != target.value - published_g:
+    with localcontext() as context:
+        context.prec = 50
+        expected_comparison_delta = target.value - published_g
+    if comparison_delta != expected_comparison_delta:
         raise HUSTMeasurementModelError("terminal published-G comparison value is inconsistent")
 
     assessments = {
