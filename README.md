@@ -392,10 +392,12 @@ that the estimator has the dimensions of `G`. No observation or estimated output
 populated.
 
 The target-clean gate reuses Milestone 3's registered definitions. It rejects direct `G`,
-Planck-unit inputs that inherit a nonzero power of `G`, target-dependent ancestors, and a
-reference value of `G` used anywhere upstream. Unresolved ancestry remains `unresolved`.
-The status `no_registered_target_path` is catalog-relative algebraic information, not a
-claim of experimental independence.
+Planck-unit inputs that inherit a nonzero power of `G`, target-dependent estimator or direct
+uncertainty-component ancestors, and a reference value of `G` used anywhere upstream.
+Unresolved ancestry remains `unresolved`. Direct-mode records expose their component
+closure as a separate machine-readable assessment block. The status
+`no_registered_target_path` is catalog-relative algebraic information, not a claim of
+experimental independence.
 
 The display-symbol namespace is a separate ambiguity guard. It removes invisible Unicode
 format controls (category `Cf`), applies Unicode NFC normalization, and trims outer
@@ -421,6 +423,20 @@ Regenerate or check both deterministic bridge artifacts with:
 python3 -m Discovery.physical_bridge
 python3 -m Discovery.physical_bridge --check
 ```
+
+Milestone 7A extends this contract with a second, explicit uncertainty basis for published
+budget entries that are already contributions to the final measurand. The original
+`estimator_input_propagation` mode is unchanged. The new
+`direct_measurand_contributions` mode keeps those entries out of the central estimator,
+requires a source-documented and dimensionally homogeneous component inventory with its
+full ancestry audited for registered target paths, and requires a resolved propagation and
+correlation policy. A missing target standard uncertainty remains an explicit incomplete
+gap; a populated one must use the target unit. This basis is eligible only when the pinned
+publication reports final-measurand contributions. The generic bridge validates
+representation only; mode selection does not establish eligibility, and scientific
+completeness and arithmetic remain the responsibility of a source-specific validator. This
+additive change does not populate a HUST depth-2b uncertainty or authorize a combined AAF
+estimator.
 
 The first practical pilot is an explicit UW 2000 source-audit
 `NO-GO (INCOMPLETE_REPRODUCTION)`, not a project measurement. Its original

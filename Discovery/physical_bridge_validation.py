@@ -30,9 +30,12 @@ from Discovery.physical_bridge_schema import (
     DEFINITION,
     DEFINITION_EDGE_KINDS,
     DERIVED_QUANTITY,
+    DIRECT_MEASURAND_CONTRIBUTIONS,
     DIRECT_OBSERVATION,
     DOCUMENTED,
     EMPIRICAL_RECORD,
+    ESTIMATOR_INPUT_PROPAGATION,
+    EXPLICIT_ZERO_ASSUMPTION,
     EXTERNAL_COMPARISON_REFERENCE,
     INCOMPLETE,
     LEAN_THEOREMS_BY_ID,
@@ -45,6 +48,7 @@ from Discovery.physical_bridge_schema import (
     TARGET_KEY,
     TARGET_OUTPUT,
     TARGET_PATH_DETECTED,
+    UNCERTAINTY_COMPONENT,
     UNRESOLVED,
     UNRESOLVED_ALGEBRAIC_PROVENANCE,
     UNRESOLVED_PROVENANCE_EVIDENCE,
@@ -290,6 +294,159 @@ def _registered_signature_dimension(
     return result
 
 
+def _validate_uncertainty_model(
+    model: MeasurementModel,
+    quantities: Mapping[str, QuantityRecord],
+    target: QuantityRecord,
+    term_ids: Sequence[str],
+    estimator_upstream: set[str],
+    all_edges: Sequence[ProvenanceEdge],
+) -> set[str]:
+    """Validate one uncertainty basis and return direct component identifiers."""
+
+    uncertainty = model.uncertainty_model
+    if uncertainty is None:
+        return set()
+    if uncertainty.measurand_id != model.target_measurand_id:
+        raise BridgeValidationError("uncertainty measurand does not match target")
+
+    if uncertainty.uncertainty_basis == ESTIMATOR_INPUT_PROPAGATION:
+        if uncertainty.component_ids:
+            raise BridgeValidationError(
+                "uncertainty component IDs require direct_measurand_contributions"
+            )
+        if set(uncertainty.input_ids) != set(term_ids):
+            raise BridgeValidationError(
+                "uncertainty inputs must declare every estimator input exactly"
+            )
+        if set(uncertainty.correction_ids) != set(model.correction_ids):
+            raise BridgeValidationError(
+                "uncertainty corrections must match model corrections"
+            )
+        allowed_uncertainty_ids = set(uncertainty.input_ids) | set(
+            uncertainty.correction_ids
+        )
+        direct_component_ids: set[str] = set()
+    elif uncertainty.uncertainty_basis == DIRECT_MEASURAND_CONTRIBUTIONS:
+        if uncertainty.input_ids or uncertainty.correction_ids:
+            raise BridgeValidationError(
+                "direct-measurand uncertainty cannot declare estimator inputs or corrections"
+            )
+        direct_component_ids = set(uncertainty.component_ids)
+        if not direct_component_ids:
+            raise BridgeValidationError(
+                "direct-measurand uncertainty requires at least one component"
+            )
+        unknown_components = direct_component_ids - set(quantities)
+        if unknown_components:
+            raise BridgeValidationError(
+                "uncertainty component refers to unknown quantity or quantities: "
+                f"{sorted(unknown_components)}"
+            )
+        external_components = direct_component_ids & (
+            set(model.comparison_reference_ids) | set(model.comparison_node_ids)
+        )
+        if external_components:
+            raise BridgeValidationError(
+                "external comparison reference or comparison node cannot be an "
+                f"uncertainty component: {sorted(external_components)}"
+            )
+
+        component_role_ids = {
+            identifier
+            for identifier, quantity in quantities.items()
+            if quantity.role == UNCERTAINTY_COMPONENT
+        }
+        component_ancestry = estimator_upstream & component_role_ids
+        component_ancestry |= estimator_upstream & set(
+            _upstream_ids(direct_component_ids, all_edges)
+        )
+        if component_ancestry:
+            raise BridgeValidationError(
+                "uncertainty component or component ancestor enters central "
+                f"estimator ancestry: {sorted(component_ancestry)}"
+            )
+
+        component_dimensions: set[Dimension] = set()
+        for identifier in sorted(direct_component_ids):
+            component = quantities[identifier]
+            if component.role != UNCERTAINTY_COMPONENT:
+                raise BridgeValidationError(
+                    f"direct uncertainty component {identifier} must have "
+                    "uncertainty_component role"
+                )
+            if component.value is None:
+                raise BridgeValidationError(
+                    f"direct uncertainty component is unpopulated: {identifier}"
+                )
+            if component.value < 0:
+                raise BridgeValidationError(
+                    f"direct uncertainty component cannot be negative: {identifier}"
+                )
+            if (
+                component.standard_uncertainty is not None
+                or component.uncertainty_unit is not None
+            ):
+                raise BridgeValidationError(
+                    "a direct uncertainty component value is the contribution itself "
+                    f"and cannot carry uncertainty-on-uncertainty: {identifier}"
+                )
+            component_dimensions.add(component.dimension)
+        if component_dimensions not in ({DIMENSIONLESS}, {target.dimension}):
+            raise BridgeValidationError(
+                "direct uncertainty components must be homogeneous dimensionless "
+                "contributions or homogeneous target-dimension contributions"
+            )
+
+        if (
+            target.standard_uncertainty is not None
+            and target.uncertainty_unit != target.unit
+        ):
+            raise BridgeValidationError(
+                "direct-measurand target uncertainty unit must match the target unit"
+            )
+        if uncertainty.propagation_method == REQUIRED_BUT_UNPOPULATED:
+            raise BridgeValidationError(
+                "direct-measurand uncertainty propagation method is unpopulated"
+            )
+        if (
+            not uncertainty.correlations
+            and uncertainty.correlation_policy != EXPLICIT_ZERO_ASSUMPTION
+        ):
+            raise BridgeValidationError(
+                "an empty direct-measurand covariance table requires an explicit "
+                "zero-correlation assumption"
+            )
+        allowed_uncertainty_ids = direct_component_ids
+    else:  # Constructor validation makes this defense unreachable in normal use.
+        raise BridgeValidationError(
+            f"unknown uncertainty basis: {uncertainty.uncertainty_basis}"
+        )
+
+    for correlation in uncertainty.correlations:
+        unknown = {correlation.left, correlation.right} - allowed_uncertainty_ids
+        if unknown:
+            raise BridgeValidationError(
+                f"covariance refers to unknown uncertainty input(s): {sorted(unknown)}"
+            )
+    return direct_component_ids
+
+
+def _uncertainty_component_upstream_ids(
+    model: MeasurementModel,
+    all_edges: Sequence[ProvenanceEdge],
+) -> tuple[str, ...]:
+    """Return the direct-budget component closure, empty for every other mode."""
+
+    uncertainty = model.uncertainty_model
+    if (
+        uncertainty is None
+        or uncertainty.uncertainty_basis != DIRECT_MEASURAND_CONTRIBUTIONS
+    ):
+        return ()
+    return _upstream_ids(uncertainty.component_ids, all_edges)
+
+
 def validate_measurement_model(model: MeasurementModel) -> None:
     """Reject structural ambiguity, target leakage, and invalid provenance graphs."""
 
@@ -317,7 +474,11 @@ def validate_measurement_model(model: MeasurementModel) -> None:
         raise BridgeValidationError(
             f"estimator refers to unknown input(s): {sorted(unknown_terms)}"
         )
-    forbidden_term_roles = {EXTERNAL_COMPARISON_REFERENCE, TARGET_OUTPUT}
+    forbidden_term_roles = {
+        EXTERNAL_COMPARISON_REFERENCE,
+        TARGET_OUTPUT,
+        UNCERTAINTY_COMPONENT,
+    }
     for identifier in term_ids:
         if quantities[identifier].role in forbidden_term_roles:
             raise BridgeValidationError(
@@ -463,11 +624,23 @@ def validate_measurement_model(model: MeasurementModel) -> None:
             "comparison reference or comparison result flows upstream of the estimator: "
             f"{sorted(leaked_reference)}"
         )
+    _validate_uncertainty_model(
+        model,
+        quantities,
+        target,
+        term_ids,
+        estimator_upstream,
+        all_edges,
+    )
+    uncertainty_component_upstream = set(
+        _uncertainty_component_upstream_ids(model, all_edges)
+    )
     if model.evidence_level == EMPIRICAL_RECORD:
         source_required_ids = (
             estimator_upstream
             | set(model.calibration_source_ids)
             | set(model.correction_ids)
+            | uncertainty_component_upstream
         )
         for identifier in sorted(source_required_ids):
             quantity = quantities[identifier]
@@ -487,7 +660,8 @@ def validate_measurement_model(model: MeasurementModel) -> None:
             )
             if missing_metadata:
                 raise BridgeValidationError(
-                    "populated empirical estimator, calibration, or correction "
+                    "populated empirical estimator, calibration, correction, or "
+                    "uncertainty-component "
                     "record requires documented source provenance metadata for "
                     f"{identifier}; missing "
                     f"{', '.join(missing_metadata)}"
@@ -499,6 +673,13 @@ def validate_measurement_model(model: MeasurementModel) -> None:
             raise BridgeValidationError(
                 f"estimator ancestry reaches G through {identifier} "
                 f"(power {fraction_text(audit.power_of_target)})"
+            )
+    for identifier in sorted(uncertainty_component_upstream):
+        audit = _audit_quantity(quantities[identifier], catalog)
+        if audit.status == TARGET_PATH_DETECTED:
+            raise BridgeValidationError(
+                "uncertainty-component ancestry reaches G through "
+                f"{identifier} (power {fraction_text(audit.power_of_target)})"
             )
     for identifier, quantity in sorted(quantities.items()):
         signature_dimension = _registered_signature_dimension(quantity, catalog)
@@ -521,29 +702,6 @@ def validate_measurement_model(model: MeasurementModel) -> None:
                 f"unknown Lean theorem link: {model.lean_link_identifier}"
             )
 
-    uncertainty = model.uncertainty_model
-    if uncertainty is not None:
-        if uncertainty.measurand_id != model.target_measurand_id:
-            raise BridgeValidationError("uncertainty measurand does not match target")
-        if set(uncertainty.input_ids) != set(term_ids):
-            raise BridgeValidationError(
-                "uncertainty inputs must declare every estimator input exactly"
-            )
-        if set(uncertainty.correction_ids) != set(model.correction_ids):
-            raise BridgeValidationError(
-                "uncertainty corrections must match model corrections"
-            )
-        allowed_uncertainty_ids = set(uncertainty.input_ids) | set(
-            uncertainty.correction_ids
-        )
-        for correlation in uncertainty.correlations:
-            unknown = {correlation.left, correlation.right} - allowed_uncertainty_ids
-            if unknown:
-                raise BridgeValidationError(
-                    f"covariance refers to unknown uncertainty input(s): {sorted(unknown)}"
-                )
-
-
 def evaluate_measurement_model(model: MeasurementModel) -> BridgeEvaluation:
     """Validate a model and return separate evidence-axis assessments."""
 
@@ -552,17 +710,34 @@ def evaluate_measurement_model(model: MeasurementModel) -> BridgeEvaluation:
     term_ids = tuple(term.quantity_id for term in model.estimator_terms)
     all_edges = (*model.definition_edges, *model.metrological_edges)
     upstream_ids = _upstream_ids(term_ids, all_edges)
+    uncertainty_component_upstream_ids = _uncertainty_component_upstream_ids(
+        model,
+        all_edges,
+    )
     catalog = build_model_dependency_catalog(model)
     audits = tuple(
         _audit_quantity(quantities[identifier], catalog) for identifier in upstream_ids
     )
+    uncertainty_component_audits = tuple(
+        _audit_quantity(quantities[identifier], catalog)
+        for identifier in uncertainty_component_upstream_ids
+    )
     registered_status = (
         UNRESOLVED
-        if any(audit.status == UNRESOLVED for audit in audits)
+        if any(
+            audit.status == UNRESOLVED
+            for audit in (*audits, *uncertainty_component_audits)
+        )
         else NO_REGISTERED_TARGET_PATH
     )
 
-    evidence = {quantities[identifier].provenance_evidence for identifier in upstream_ids}
+    evidence_scope_ids = tuple(
+        sorted(set(upstream_ids) | set(uncertainty_component_upstream_ids))
+    )
+    evidence = {
+        quantities[identifier].provenance_evidence
+        for identifier in evidence_scope_ids
+    }
     if UNRESOLVED_PROVENANCE_EVIDENCE in evidence:
         metrological_status = UNRESOLVED
     elif evidence - {DOCUMENTED}:
@@ -574,7 +749,7 @@ def evaluate_measurement_model(model: MeasurementModel) -> BridgeEvaluation:
     uncertainty = model.uncertainty_model
     if uncertainty is None:
         uncertainty_gaps.append("uncertainty model is missing")
-    else:
+    elif uncertainty.uncertainty_basis == ESTIMATOR_INPUT_PROPAGATION:
         required_ids = (*uncertainty.input_ids, *uncertainty.correction_ids)
         for identifier in required_ids:
             quantity = quantities[identifier]
@@ -598,6 +773,14 @@ def evaluate_measurement_model(model: MeasurementModel) -> BridgeEvaluation:
                 uncertainty_gaps.append(
                     f"standard uncertainty is missing: {identifier}"
                 )
+    else:
+        target = quantities[model.target_measurand_id]
+        if target.standard_uncertainty is None:
+            uncertainty_gaps.append("target standard uncertainty is missing")
+        if uncertainty.correlation_policy == REQUIRED_BUT_UNPOPULATED:
+            uncertainty_gaps.append("correlation or covariance evaluation is unpopulated")
+        if uncertainty.propagation_method == REQUIRED_BUT_UNPOPULATED:
+            uncertainty_gaps.append("uncertainty propagation method is unpopulated")
     uncertainty_status = INCOMPLETE if uncertainty_gaps else SATISFIED
 
     if model.evidence_level == STRUCTURAL_EXAMPLE:
@@ -608,7 +791,7 @@ def evaluate_measurement_model(model: MeasurementModel) -> BridgeEvaluation:
             quantities[identifier].role == DIRECT_OBSERVATION
             and quantities[identifier].provenance_evidence != DOCUMENTED
         )
-        for identifier in upstream_ids
+        for identifier in evidence_scope_ids
     ) or quantities[model.target_measurand_id].value is None:
         empirical_status = INCOMPLETE
     else:
@@ -632,5 +815,7 @@ def evaluate_measurement_model(model: MeasurementModel) -> BridgeEvaluation:
         estimator_dimension=_estimator_dimension(model, quantities),
         estimator_upstream_ids=upstream_ids,
         target_path_audits=audits,
+        uncertainty_component_upstream_ids=uncertainty_component_upstream_ids,
+        uncertainty_component_target_path_audits=uncertainty_component_audits,
         uncertainty_gaps=tuple(sorted(set(uncertainty_gaps))),
     )

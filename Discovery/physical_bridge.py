@@ -35,9 +35,11 @@ from Discovery.physical_bridge_schema import (
     DEFINITION,
     DEFINITION_EDGE_KINDS,
     DERIVED_QUANTITY,
+    DIRECT_MEASURAND_CONTRIBUTIONS,
     DIRECT_OBSERVATION,
     DOCUMENTED,
     EMPIRICAL_RECORD,
+    ESTIMATOR_INPUT_PROPAGATION,
     EVIDENCE_LEVELS,
     EXPLICIT_ZERO_ASSUMPTION,
     EXTERNAL_COMPARISON_REFERENCE,
@@ -59,6 +61,8 @@ from Discovery.physical_bridge_schema import (
     TARGET_KEY,
     TARGET_OUTPUT,
     TARGET_PATH_DETECTED,
+    UNCERTAINTY_BASES,
+    UNCERTAINTY_COMPONENT,
     UNRESOLVED,
     UNRESOLVED_ALGEBRAIC_PROVENANCE,
     UNRESOLVED_PROVENANCE_EVIDENCE,
@@ -148,7 +152,7 @@ def _audit_record(audit: TargetPathAudit) -> dict[str, Any]:
 def _uncertainty_record(uncertainty: UncertaintyModel | None) -> dict[str, Any] | None:
     if uncertainty is None:
         return None
-    return {
+    record = {
         "measurand_id": uncertainty.measurand_id,
         "input_ids": sorted(uncertainty.input_ids),
         "correction_ids": sorted(uncertainty.correction_ids),
@@ -176,6 +180,10 @@ def _uncertainty_record(uncertainty: UncertaintyModel | None) -> dict[str, Any] 
         },
         "limitations": list(uncertainty.limitations),
     }
+    if uncertainty.uncertainty_basis == DIRECT_MEASURAND_CONTRIBUTIONS:
+        record["uncertainty_basis"] = uncertainty.uncertainty_basis
+        record["component_ids"] = sorted(uncertainty.component_ids)
+    return record
 
 
 def _lean_record(identifier: str | None) -> dict[str, Any] | None:
@@ -205,7 +213,34 @@ def measurement_model_record(model: MeasurementModel) -> dict[str, Any]:
     comparison_audits = []
     catalog = build_model_dependency_catalog(model)
     for identifier in sorted(model.comparison_reference_ids):
-        comparison_audits.append(_audit_record(_audit_quantity(quantities[identifier], catalog)))
+        comparison_audits.append(
+            _audit_record(_audit_quantity(quantities[identifier], catalog))
+        )
+
+    target_path_audit = {
+        "gate_result": evaluation.registered_target_path_status,
+        "estimator_upstream_node_ids": list(evaluation.estimator_upstream_ids),
+        "estimator_upstream_assessments": [
+            _audit_record(audit) for audit in evaluation.target_path_audits
+        ],
+        "isolated_comparison_reference_assessments": comparison_audits,
+        "required_caution": (
+            "No registered algebraic path to G is necessary for a target-clean "
+            "input, but it is not sufficient to establish experimental independence."
+        ),
+    }
+    uncertainty = model.uncertainty_model
+    if (
+        uncertainty is not None
+        and uncertainty.uncertainty_basis == DIRECT_MEASURAND_CONTRIBUTIONS
+    ):
+        target_path_audit["uncertainty_component_upstream_node_ids"] = list(
+            evaluation.uncertainty_component_upstream_ids
+        )
+        target_path_audit["uncertainty_component_assessments"] = [
+            _audit_record(audit)
+            for audit in evaluation.uncertainty_component_target_path_audits
+        ]
 
     assessments = {
         "dimensional_status": evaluation.dimensional_status,
@@ -290,20 +325,7 @@ def measurement_model_record(model: MeasurementModel) -> dict[str, Any]:
                 "correction_ids": sorted(model.correction_ids),
             },
         },
-        "target_path_audit": {
-            "gate_result": evaluation.registered_target_path_status,
-            "estimator_upstream_node_ids": list(
-                evaluation.estimator_upstream_ids
-            ),
-            "estimator_upstream_assessments": [
-                _audit_record(audit) for audit in evaluation.target_path_audits
-            ],
-            "isolated_comparison_reference_assessments": comparison_audits,
-            "required_caution": (
-                "No registered algebraic path to G is necessary for a target-clean "
-                "input, but it is not sufficient to establish experimental independence."
-            ),
-        },
+        "target_path_audit": target_path_audit,
         "external_comparison": {
             "reference_ids": sorted(model.comparison_reference_ids),
             "comparison_node_ids": sorted(model.comparison_node_ids),
@@ -887,6 +909,10 @@ def build_contract_artifact() -> dict[str, Any]:
                 "reject a direct G estimator input",
                 "reject any registered input expansion with nonzero power of G",
                 "reject any estimator ancestor whose registered expansion reaches G",
+                (
+                    "reject any direct uncertainty component or component ancestor whose "
+                    "registered expansion reaches G"
+                ),
                 "reject a calibration or correction chain that consumes reference G",
                 "treat unresolved provenance as unresolved",
                 "permit reference G only in isolated terminal comparison nodes",
@@ -918,6 +944,44 @@ def build_contract_artifact() -> dict[str, Any]:
             "missing_uncertainty_is_zero": False,
             "binary_floating_point_measurement_values": "rejected",
             "exact_exponent_domain": "int or Fraction; bool and float rejected",
+            "schema_extension_policy": (
+                "The direct-contribution fields are additive. Legacy estimator-input "
+                "records omit them and retain their existing serialization."
+            ),
+            "uncertainty_bases": {
+                ESTIMATOR_INPUT_PROPAGATION: {
+                    "meaning": (
+                        "Propagate standard uncertainties from the central estimator "
+                        "inputs and declared corrections."
+                    ),
+                    "component_ids": "forbidden",
+                },
+                DIRECT_MEASURAND_CONTRIBUTIONS: {
+                    "meaning": (
+                        "Combine published contributions already expressed for the "
+                        "final measurand without relabeling them as estimator inputs."
+                    ),
+                    "input_ids": "must be empty",
+                    "correction_ids": "must be empty",
+                    "component_role": UNCERTAINTY_COMPONENT,
+                    "component_dimensions": (
+                        "homogeneous dimensionless relative contributions or "
+                        "homogeneous target-dimension contributions"
+                    ),
+                    "eligibility": (
+                        "chosen only when a pinned publication reports contributions "
+                        "already expressed for the final measurand; validator acceptance "
+                        "does not establish eligibility"
+                    ),
+                    "target_path_scope": (
+                        "every declared component and its full provenance closure is "
+                        "audited for registered paths to G"
+                    ),
+                    "scientific_completeness": (
+                        "must be established by an apparatus-specific validator"
+                    ),
+                },
+            },
         },
         "external_reference_boundary": {
             "allowed_role": EXTERNAL_COMPARISON_REFERENCE,

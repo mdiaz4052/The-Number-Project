@@ -15,6 +15,7 @@ from Discovery.mutation_harness import (
     canonical_head,
     canonical_status_bytes,
     run_mutant,
+    verify_retired_artifact_hashes,
 )
 from Discovery.source_history import (
     SourceVerificationError,
@@ -27,8 +28,22 @@ RESULT_SCHEMA_VERSION = 1
 EXPERIMENT_IDENTIFIER = "milestone_6b_pysr_leakage_mutations_v1"
 DEFAULT_OUTPUT = Path(
     "Experiments/EcosystemComparison/PySRLeakage/"
-    "milestone_6b_pysr_leakage_v1.mutation_results_v2.json"
+    "milestone_6b_pysr_leakage_v1.mutation_results_v4.json"
 )
+RETIRED_ARTIFACT_SHA256 = {
+    (
+        "Experiments/EcosystemComparison/PySRLeakage/"
+        "milestone_6b_pysr_leakage_v1.mutation_results.json"
+    ): "44ab9598fe07c56091f7ebd27266e7d89a553aa370c144c2744b858df7e94015",
+    (
+        "Experiments/EcosystemComparison/PySRLeakage/"
+        "milestone_6b_pysr_leakage_v1.mutation_results_v2.json"
+    ): "3c64f3d0bc31485accd03f7fd89a91de87fa191814dffc1ac54d25f9a58a0771",
+    (
+        "Experiments/EcosystemComparison/PySRLeakage/"
+        "milestone_6b_pysr_leakage_v1.mutation_results_v3.json"
+    ): "d36872936bc41400b2ef62e0c9f69958acc0b90e1b3dddb88941b3d59505b5e3",
+}
 SOURCE_PATHS = (
     "Discovery/pysr_leakage_mutations.py",
     "Discovery/pysr_leakage_probe.py",
@@ -178,6 +193,11 @@ def check_committed_result() -> None:
         repository_root(),
         source_sha,
         source_paths=SOURCE_PATHS,
+        artifact_label="Milestone 6B mutation result",
+    )
+    verify_retired_artifact_hashes(
+        repository_root(),
+        RETIRED_ARTIFACT_SHA256,
         artifact_label="Milestone 6B mutation result",
     )
 

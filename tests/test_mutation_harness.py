@@ -1,9 +1,13 @@
 from pathlib import Path
+import hashlib
 import json
 import sys
+import tempfile
 import types
 import unittest
 
+from Discovery import pysr_leakage_hardening_mutations
+from Discovery import pysr_leakage_mutations
 from Discovery.mutation_harness import (
     ANTI_GOODHART_RULE,
     CALIBRATION_MUTANTS,
@@ -12,6 +16,8 @@ from Discovery.mutation_harness import (
     INVALID,
     KILLED,
     NONCLAIMS,
+    PRODUCTION_MUTANTS,
+    RETIRED_ARTIFACT_SHA256,
     SOURCE_PATHS,
     SURVIVED,
     Mutant,
@@ -25,6 +31,7 @@ from Discovery.mutation_harness import (
     run_mutant,
     source_path_snapshot,
     validate_result_integrity,
+    verify_retired_artifact_hashes,
     verify_result_source_snapshot,
 )
 from Discovery.mutation_test_runner import validate_import_paths
@@ -57,7 +64,68 @@ class MutationHarnessUnitTests(unittest.TestCase):
         self.assertEqual(invalid[0], INVALID)
 
     def test_physical_bridge_schema_is_source_attested(self) -> None:
+        self.assertIn("Discovery/physical_bridge.py", SOURCE_PATHS)
         self.assertIn("Discovery/physical_bridge_schema.py", SOURCE_PATHS)
+        self.assertIn(
+            "tests/test_physical_bridge_source_identifier_hardening.py",
+            SOURCE_PATHS,
+        )
+
+    def test_direct_budget_behavioral_mutants_are_registered(self) -> None:
+        identifiers = {mutant.identifier for mutant in PRODUCTION_MUTANTS}
+        self.assertTrue(
+            {
+                "production_allow_uncertainty_component_in_estimator_ancestry",
+                "production_omit_empirical_uncertainty_component_source_metadata",
+                "production_treat_missing_target_uncertainty_as_satisfied",
+                "production_silently_normalize_source_identifier",
+                "production_limit_component_source_gate_to_declared_components",
+                "production_allow_component_target_path",
+                "production_allow_uncertainty_component_role_as_estimator_term",
+                "production_allow_stray_component_role_in_estimator_ancestry",
+                "production_allow_nfc_stable_combining_mark_in_source_identifier",
+            }
+            <= identifiers
+        )
+
+    def test_retired_mutation_artifacts_are_hash_pinned(self) -> None:
+        root = repository_root()
+        families = (
+            ("Milestone 5B", RETIRED_ARTIFACT_SHA256),
+            ("Milestone 6B", pysr_leakage_mutations.RETIRED_ARTIFACT_SHA256),
+            (
+                "Post-6B",
+                pysr_leakage_hardening_mutations.RETIRED_ARTIFACT_SHA256,
+            ),
+        )
+        self.assertEqual(sum(len(hashes) for _, hashes in families), 9)
+        for label, hashes in families:
+            with self.subTest(family=label):
+                verify_retired_artifact_hashes(
+                    root,
+                    hashes,
+                    artifact_label=label,
+                )
+
+    def test_retired_artifact_hash_check_rejects_changed_bytes(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / "retired.json"
+            original = b'{"classification":"killed"}\n'
+            path.write_bytes(original)
+            hashes = {"retired.json": hashlib.sha256(original).hexdigest()}
+            verify_retired_artifact_hashes(
+                root,
+                hashes,
+                artifact_label="test mutation result",
+            )
+            path.write_bytes(b'{"classification":"survived"}\n')
+            with self.assertRaisesRegex(ValueError, "retired artifact hash mismatch"):
+                verify_retired_artifact_hashes(
+                    root,
+                    hashes,
+                    artifact_label="test mutation result",
+                )
 
     def test_import_path_validation_rejects_external_project_copy(self) -> None:
         fake = types.ModuleType("Discovery.fake")

@@ -5,9 +5,9 @@ source audits. It contains no project-operated experimental dataset and reports 
 measurement of `G`.
 
 `physical_bridge_contract.json` records the general evidence layers, measurement-model
-fields, input roles, exact target-path rules, uncertainty requirements, external-reference
-boundary, cycle rejection within and across provenance layers, Lean boundary, literature
-identifiers, limitations, and nonclaims.
+fields, input roles, exact target-path rules, both supported uncertainty bases,
+external-reference boundary, cycle rejection within and across provenance layers, Lean
+boundary, literature identifiers, limitations, and nonclaims.
 
 `inverse_square_bridge_example.json` instantiates the contract as an educational skeleton:
 
@@ -160,28 +160,65 @@ Any future temporary workflow with `contents: write` must carry both a bot-loop 
 an exact branch/head-ref guard. A permanent repository test scans workflow files for that
 condition. No write-enabled temporary workflow is retained by the HUST audit.
 
-No HUST `MeasurementModel` is created here and the physical-bridge production schema is
-unchanged. A later implementation may use only the specifically authorized individual
-central estimators unless a separate audit establishes the missing uncertainty/correlation
-record.
+That source-audit stage did not create a HUST `MeasurementModel`. The later, separately
+preregistered depth-2a artifact
+[`hust_2018_aaf_measurement_models_v1.json`](hust_2018_aaf_measurement_models_v1.json)
+contains three individual published central-value reconstructions. Their target standard
+uncertainties remain absent and their `uncertainty_status` remains `incomplete`. Milestone
+7A changes only the generic representation described below; it does not promote those
+historical depth-2a records or authorize a combined AAF estimator.
+
+## Milestone 7A direct uncertainty-budget representation
+
+The additive Milestone 7A contract distinguishes two uncertainty bases:
+
+- `estimator_input_propagation` retains the original behavior: uncertainty is propagated
+  from the central estimator's `input_ids` and `correction_ids`.
+- `direct_measurand_contributions` represents published budget entries that are already
+  contributions to the final measurand. It uses nonempty `component_ids` whose quantities
+  have role `uncertainty_component`, while `input_ids` and `correction_ids` are empty.
+
+Direct components must be populated nonnegative `Decimal` values, all dimensionless or
+all target-dimensional, and cannot carry uncertainty-on-uncertainty. They and their
+ancestors are isolated from central-estimator ancestry and separately audited for any
+registered path to `G`. Every populated record in an empirical component's complete
+provenance closure requires documented source metadata. A populated target uncertainty
+must use the target unit; if the target uncertainty is absent, the model validates but its
+uncertainty axis remains explicitly `incomplete`. An empty covariance table requires a
+documented explicit zero-correlation assumption. The direct basis is eligible only when a
+pinned publication reports contributions already expressed for the final measurand. The
+generic validator establishes these representation rules only; choosing the mode does not
+establish eligibility, and a future apparatus-specific validator must prove source
+completeness and combination arithmetic.
+
+Legacy uncertainty records omit `uncertainty_basis` and `component_ids` from serialized
+JSON when the additive defaults are unused. The inverse-square example and HUST depth-2a
+artifact therefore remain byte-identical. No HUST depth-2b target uncertainty is populated
+by Milestone 7A.
 
 ## Empirical source-metadata boundary
 
 For any future `empirical_record`, every populated numerical quantity in estimator
-ancestry, and every declared calibration or correction, must declare documented
-provenance plus a source identifier, edition, and access date. Source metadata is also
-form-validated at `QuantityRecord` construction: access dates must be valid calendar dates
-in strict `YYYY-MM-DD` form. Source identifiers must use one of three explicit channels:
+ancestry, every declared calibration or correction, and every quantity in a direct
+measurand uncertainty component's full ancestry must declare documented provenance plus a
+source identifier, edition, and access date. Source metadata is also form-validated at
+`QuantityRecord` construction: access
+dates must be valid calendar dates in strict `YYYY-MM-DD` form. Source identifiers must
+use one of three explicit channels:
 `doi:<DOI>`, an absolute credential-free `url:https://...`, or a namespaced local
 `certificate:<issuer>/<record-id>`. Certificate issuer and record components use a
 bounded ASCII token grammar: the issuer begins with an ASCII letter and is at most 64
 characters, while the record identifier is at most 128 characters. A loose value such as
-`certificate:zzz` is not accepted. DOI and URL identifiers reject whitespace, control
-characters, nonspacing/enclosing combining marks, and a bounded set of blank-like Unicode
-code points that can render as empty text while remaining printable; malformed URL parsing
-and invalid ports are converted into the schema's controlled `BridgeValidationError`.
-Edition remains descriptive nonempty text. Malformed forms are rejected before model-level
-empirical evaluation.
+`certificate:zzz` is not accepted. Source identifiers must already be NFC-normalized and
+are rejected rather than rewritten when they are not. This NFC rule is deliberately scoped
+to source identifiers; quantity identifiers, unit strings, and descriptive editions are not
+silently canonicalized by it. DOI and URL identifiers also reject
+whitespace, control characters, nonspacing/enclosing combining-mark categories, and a
+bounded set of blank-like Unicode code points; this bounded syntax rule does not claim that
+every combining mark is visually empty. Malformed URL parsing and invalid ports are
+converted into the schema's controlled `BridgeValidationError`. Edition remains
+descriptive nonempty text. Malformed forms are rejected before model-level empirical
+evaluation.
 
 The historical `force_reference` test fixture now uses the namespaced
 `certificate:project/force-reference` form directly. No construction-time migration or
@@ -214,6 +251,7 @@ Check committed bytes without rewriting them with:
 python3 -m Discovery.physical_bridge --check
 python3 -m Discovery.published_data_pilot --check
 python3 -m Discovery.hust_2018_aaf_source_audit --check
+python3 -m Discovery.hust_2018_aaf_measurement_models --check
 ```
 
 The implementation uses only the Python standard library. Exponents and dimensions use

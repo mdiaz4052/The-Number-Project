@@ -126,7 +126,7 @@ class PhysicalBridgeSourceIdentifierHardeningTests(unittest.TestCase):
             "doi:10.1103/x\u2800y",
             "doi:10.1103/x\u3164y",
             "doi:10.1103/x\uffa0y",
-            "doi:10.1103/cafe\u0301",
+            "doi:10.1234/q\u0301uick",
             "url:https://ex\u3164ample.org/d",
             "url:https://example.org/x\u200by",
         )
@@ -142,6 +142,21 @@ class PhysicalBridgeSourceIdentifierHardeningTests(unittest.TestCase):
         self.assertEqual(
             replace(reference, source_identifier=unicode_doi).source_identifier,
             unicode_doi,
+        )
+
+    def test_non_nfc_identifier_is_rejected_instead_of_rewritten(self) -> None:
+        reference = codata_reference()
+        decomposed = "doi:10.1234/cafe\u0301"
+        composed = "doi:10.1234/café"
+        self.assertNotEqual(decomposed, composed)
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "source identifier.*must be NFC-normalized",
+        ):
+            replace(reference, source_identifier=decomposed)
+        self.assertEqual(
+            replace(reference, source_identifier=composed).source_identifier,
+            composed,
         )
 
     def test_ascii_space_rejection_is_independently_pinned_for_urls(self) -> None:
