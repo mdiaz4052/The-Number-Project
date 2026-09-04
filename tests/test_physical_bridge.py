@@ -17,8 +17,10 @@ from Discovery.physical_bridge import (
     DEFAULT_EXAMPLE_OUTPUT,
     DEFINITION,
     DERIVED_QUANTITY,
+    DIRECT_MEASURAND_CONTRIBUTIONS,
     DOCUMENTED,
     EMPIRICAL_RECORD,
+    ESTIMATOR_INPUT_PROPAGATION,
     EXPLICIT_ZERO_ASSUMPTION,
     INCOMPLETE,
     LEAN_THEOREMS_BY_ID,
@@ -29,6 +31,7 @@ from Discovery.physical_bridge import (
     SATISFIED,
     STRUCTURAL_PLACEHOLDER,
     TARGET_PATH_DETECTED,
+    UNCERTAINTY_COMPONENT,
     UNRESOLVED,
     UNRESOLVED_ALGEBRAIC_PROVENANCE,
     UNRESOLVED_PROVENANCE_EVIDENCE,
@@ -57,6 +60,70 @@ def replace_quantity(model, identifier: str, **changes):
         for quantity in model.quantities
     )
     return replace(model, quantities=quantities)
+
+
+def direct_uncertainty_component(
+    identifier: str,
+    value: Decimal,
+    *,
+    dimension=DIMENSIONLESS,
+    unit: str = "ppm",
+    role: str = UNCERTAINTY_COMPONENT,
+    provenance_evidence: str = DOCUMENTED,
+    source_identifier: str | None = "doi:10.1234/direct-budget",
+    edition: str | None = "example direct budget, edition 1",
+    access_date: str | None = "2026-09-04",
+) -> QuantityRecord:
+    return QuantityRecord(
+        identifier,
+        f"u_{identifier}",
+        role,
+        dimension,
+        unit,
+        DECLARED_LOCAL_ATOM,
+        None,
+        provenance_evidence,
+        "Published uncertainty contribution already expressed for the measurand.",
+        value=value,
+        source_identifier=source_identifier,
+        edition=edition,
+        access_date=access_date,
+    )
+
+
+def build_direct_budget_model():
+    model = build_inverse_square_model()
+    components = (
+        direct_uncertainty_component("relative_component_b", Decimal("4")),
+        direct_uncertainty_component("relative_component_a", Decimal("3")),
+    )
+    model = replace_quantity(
+        model,
+        "G_hat",
+        value=Decimal("6.67e-11"),
+        standard_uncertainty=Decimal("8e-16"),
+        uncertainty_unit="m^3 kg^-1 s^-2",
+    )
+    assert model.uncertainty_model is not None
+    uncertainty = replace(
+        model.uncertainty_model,
+        input_ids=(),
+        correction_ids=(),
+        correlation_policy=EXPLICIT_ZERO_ASSUMPTION,
+        zero_correlation_justification=(
+            "The example assumes zero pairwise covariance solely to exercise the "
+            "direct-budget representation."
+        ),
+        propagation_method="root sum of squares of direct relative contributions",
+        coverage_basis="standard uncertainty; no expanded coverage claim",
+        uncertainty_basis=DIRECT_MEASURAND_CONTRIBUTIONS,
+        component_ids=tuple(component.identifier for component in components),
+    )
+    return replace(
+        model,
+        quantities=(*model.quantities, *components),
+        uncertainty_model=uncertainty,
+    )
 
 
 class PhysicalBridgeTests(unittest.TestCase):
@@ -589,6 +656,403 @@ class PhysicalBridgeTests(unittest.TestCase):
         evaluation = evaluate_measurement_model(model)
         self.assertEqual(evaluation.uncertainty_status, INCOMPLETE)
         self.assertIn("uncertainty model is missing", evaluation.uncertainty_gaps)
+
+    def test_legacy_estimator_input_uncertainty_mode_is_unchanged(self) -> None:
+        model = build_inverse_square_model()
+        uncertainty = model.uncertainty_model
+        assert uncertainty is not None
+        self.assertEqual(
+            uncertainty.uncertainty_basis,
+            ESTIMATOR_INPUT_PROPAGATION,
+        )
+        self.assertEqual(uncertainty.component_ids, ())
+        serialized = measurement_model_record(model)["uncertainty_model"]
+        self.assertNotIn("uncertainty_basis", serialized)
+        self.assertNotIn("component_ids", serialized)
+
+    def test_contract_catalogs_both_uncertainty_bases(self) -> None:
+        contract = build_contract_artifact()
+        self.assertIn(UNCERTAINTY_COMPONENT, contract["input_roles"])
+        bases = contract["uncertainty_requirements"]["uncertainty_bases"]
+        self.assertEqual(
+            set(bases),
+            {
+                ESTIMATOR_INPUT_PROPAGATION,
+                DIRECT_MEASURAND_CONTRIBUTIONS,
+            },
+        )
+        self.assertEqual(
+            bases[DIRECT_MEASURAND_CONTRIBUTIONS]["component_role"],
+            UNCERTAINTY_COMPONENT,
+        )
+
+    def test_valid_direct_measurand_budget_is_satisfied_and_serialized(self) -> None:
+        model = build_direct_budget_model()
+        evaluation = evaluate_measurement_model(model)
+        self.assertEqual(evaluation.uncertainty_status, SATISFIED)
+        self.assertEqual(evaluation.uncertainty_gaps, ())
+        serialized = measurement_model_record(model)["uncertainty_model"]
+        self.assertEqual(
+            serialized["uncertainty_basis"],
+            DIRECT_MEASURAND_CONTRIBUTIONS,
+        )
+        self.assertEqual(
+            serialized["component_ids"],
+            ["relative_component_a", "relative_component_b"],
+        )
+
+    def test_direct_budget_component_inventory_fails_closed(self) -> None:
+        model = build_direct_budget_model()
+        uncertainty = model.uncertainty_model
+        assert uncertainty is not None
+
+        with self.subTest(defect="empty"):
+            with self.assertRaisesRegex(
+                BridgeValidationError,
+                "requires at least one component",
+            ):
+                validate_measurement_model(
+                    replace(
+                        model,
+                        uncertainty_model=replace(uncertainty, component_ids=()),
+                    )
+                )
+
+        with self.subTest(defect="duplicate"):
+            with self.assertRaisesRegex(
+                BridgeValidationError,
+                "duplicate uncertainty component identifier",
+            ):
+                replace(
+                    uncertainty,
+                    component_ids=("relative_component_a", "relative_component_a"),
+                )
+
+        with self.subTest(defect="unknown"):
+            with self.assertRaisesRegex(
+                BridgeValidationError,
+                "unknown quantity or quantities",
+            ):
+                validate_measurement_model(
+                    replace(
+                        model,
+                        uncertainty_model=replace(
+                            uncertainty,
+                            component_ids=("missing_component",),
+                        ),
+                    )
+                )
+
+        with self.subTest(defect="negative"):
+            changed = replace_quantity(
+                model,
+                "relative_component_a",
+                value=Decimal("-1"),
+            )
+            with self.assertRaisesRegex(
+                BridgeValidationError,
+                "component cannot be negative",
+            ):
+                validate_measurement_model(changed)
+
+        with self.subTest(defect="unpopulated"):
+            changed = replace_quantity(
+                model,
+                "relative_component_a",
+                value=None,
+            )
+            with self.assertRaisesRegex(
+                BridgeValidationError,
+                "component is unpopulated",
+            ):
+                validate_measurement_model(changed)
+
+        with self.subTest(defect="wrong_role"):
+            changed = replace_quantity(
+                model,
+                "relative_component_a",
+                role=MODEL_PARAMETER,
+            )
+            with self.assertRaisesRegex(
+                BridgeValidationError,
+                "must have uncertainty_component role",
+            ):
+                validate_measurement_model(changed)
+
+        with self.subTest(defect="binary_float"):
+            with self.assertRaisesRegex(TypeError, "binary floats"):
+                replace_quantity(
+                    model,
+                    "relative_component_a",
+                    value=1.0,
+                )
+
+    def test_direct_budget_components_must_have_one_allowed_dimension(self) -> None:
+        model = build_direct_budget_model()
+        mixed = replace_quantity(
+            model,
+            "relative_component_a",
+            dimension=GRAVITATIONAL_CONSTANT,
+            unit="m^3 kg^-1 s^-2",
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "components must be homogeneous",
+        ):
+            validate_measurement_model(mixed)
+
+        target_dimension = replace_quantity(
+            model,
+            "relative_component_a",
+            dimension=GRAVITATIONAL_CONSTANT,
+            unit="m^3 kg^-1 s^-2",
+        )
+        target_dimension = replace_quantity(
+            target_dimension,
+            "relative_component_b",
+            dimension=GRAVITATIONAL_CONSTANT,
+            unit="m^3 kg^-1 s^-2",
+        )
+        self.assertEqual(
+            evaluate_measurement_model(target_dimension).uncertainty_status,
+            SATISFIED,
+        )
+
+    def test_direct_component_cannot_carry_uncertainty_on_uncertainty(self) -> None:
+        model = replace_quantity(
+            build_direct_budget_model(),
+            "relative_component_a",
+            standard_uncertainty=Decimal("0.1"),
+            uncertainty_unit="ppm",
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "cannot carry uncertainty-on-uncertainty",
+        ):
+            validate_measurement_model(model)
+
+    def test_direct_component_and_ancestor_cannot_enter_estimator_ancestry(self) -> None:
+        model = build_direct_budget_model()
+        cases = (
+            ProvenanceEdge(
+                "force_estimate",
+                "relative_component_a",
+                "model_input",
+                "Forbidden direct contribution to the central estimator.",
+            ),
+            ProvenanceEdge(
+                "relative_component_a",
+                "angle_observation",
+                "model_input",
+                "Forbidden shared ancestor with the central estimator.",
+            ),
+        )
+        for edge in cases:
+            with self.subTest(edge=edge):
+                changed = replace(
+                    model,
+                    metrological_edges=(*model.metrological_edges, edge),
+                )
+                with self.assertRaisesRegex(
+                    BridgeValidationError,
+                    "component or component ancestor enters central estimator ancestry",
+                ):
+                    validate_measurement_model(changed)
+
+    def test_external_comparison_record_cannot_be_a_direct_component(self) -> None:
+        model = build_direct_budget_model()
+        uncertainty = model.uncertainty_model
+        assert uncertainty is not None
+        for identifier in ("codata_2022_G", "post_estimation_comparison"):
+            with self.subTest(identifier=identifier):
+                changed = replace(
+                    model,
+                    uncertainty_model=replace(
+                        uncertainty,
+                        component_ids=(identifier,),
+                    ),
+                )
+                with self.assertRaisesRegex(
+                    BridgeValidationError,
+                    "external comparison reference or comparison node cannot be",
+                ):
+                    validate_measurement_model(changed)
+
+    def test_empirical_direct_component_requires_source_metadata(self) -> None:
+        model = replace(
+            build_direct_budget_model(),
+            evidence_level=EMPIRICAL_RECORD,
+        )
+        cases = (
+            ({"provenance_evidence": STRUCTURAL_PLACEHOLDER}, "documented provenance"),
+            ({"source_identifier": None}, "source identifier"),
+            ({"edition": None}, "source edition"),
+            ({"access_date": None}, "source access date"),
+        )
+        for changes, missing_label in cases:
+            with self.subTest(missing=missing_label):
+                changed = replace_quantity(
+                    model,
+                    "relative_component_a",
+                    **changes,
+                )
+                with self.assertRaisesRegex(
+                    BridgeValidationError,
+                    "source provenance metadata for relative_component_a.*missing "
+                    f"{missing_label}",
+                ):
+                    validate_measurement_model(changed)
+
+    def test_direct_budget_requires_target_standard_uncertainty_and_unit(self) -> None:
+        model = build_direct_budget_model()
+        missing = replace_quantity(
+            model,
+            "G_hat",
+            standard_uncertainty=None,
+            uncertainty_unit=None,
+        )
+        evaluation = evaluate_measurement_model(missing)
+        self.assertEqual(evaluation.uncertainty_status, INCOMPLETE)
+        self.assertIn(
+            "target standard uncertainty is missing",
+            evaluation.uncertainty_gaps,
+        )
+
+        wrong_unit = replace_quantity(
+            model,
+            "G_hat",
+            uncertainty_unit="wrong-unit",
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "uncertainty unit must match the target unit",
+        ):
+            evaluate_measurement_model(wrong_unit)
+
+    def test_direct_budget_rejects_unresolved_method_and_covariance_policy(self) -> None:
+        model = build_direct_budget_model()
+        uncertainty = model.uncertainty_model
+        assert uncertainty is not None
+        cases = (
+            (
+                "propagation_method",
+                replace(uncertainty, propagation_method="required_but_unpopulated"),
+                "propagation method is unpopulated",
+            ),
+            (
+                "correlation_policy",
+                replace(
+                    uncertainty,
+                    correlation_policy="required_but_unpopulated",
+                    zero_correlation_justification=None,
+                ),
+                "empty direct-measurand covariance table requires",
+            ),
+        )
+        for label, changed_uncertainty, diagnostic in cases:
+            with self.subTest(field=label):
+                with self.assertRaisesRegex(BridgeValidationError, diagnostic):
+                    evaluate_measurement_model(
+                        replace(model, uncertainty_model=changed_uncertainty)
+                    )
+
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "covariance_matrix policy requires covariance declarations",
+        ):
+            replace(
+                uncertainty,
+                correlation_policy=COVARIANCE_MATRIX,
+                correlations=(),
+                zero_correlation_justification=None,
+            )
+
+    def test_direct_budget_covariances_may_reference_components_only(self) -> None:
+        model = build_direct_budget_model()
+        uncertainty = model.uncertainty_model
+        assert uncertainty is not None
+        covariance = CorrelationDeclaration(
+            "relative_component_a",
+            "relative_component_b",
+            Decimal("0.25"),
+            "ppm^2",
+        )
+        populated = replace(
+            uncertainty,
+            correlation_policy=COVARIANCE_MATRIX,
+            correlations=(covariance,),
+            zero_correlation_justification=None,
+        )
+        self.assertEqual(
+            evaluate_measurement_model(
+                replace(model, uncertainty_model=populated)
+            ).uncertainty_status,
+            SATISFIED,
+        )
+
+        forbidden = replace(
+            populated,
+            correlations=(
+                CorrelationDeclaration(
+                    "relative_component_a",
+                    "force_estimate",
+                    Decimal("0.25"),
+                    "ppm N",
+                ),
+            ),
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "covariance refers to unknown uncertainty input",
+        ):
+            validate_measurement_model(
+                replace(model, uncertainty_model=forbidden)
+            )
+
+    def test_uncertainty_basis_fields_cannot_be_mixed(self) -> None:
+        direct = build_direct_budget_model()
+        uncertainty = direct.uncertainty_model
+        assert uncertainty is not None
+        for field, identifiers in (
+            ("input_ids", ("force_estimate",)),
+            ("correction_ids", ("alignment_correction",)),
+        ):
+            with self.subTest(field=field):
+                with self.assertRaisesRegex(
+                    BridgeValidationError,
+                    "cannot declare estimator inputs or corrections",
+                ):
+                    validate_measurement_model(
+                        replace(
+                            direct,
+                            uncertainty_model=replace(
+                                uncertainty,
+                                **{field: identifiers},
+                            ),
+                        )
+                    )
+
+        legacy = build_inverse_square_model()
+        legacy_uncertainty = legacy.uncertainty_model
+        assert legacy_uncertainty is not None
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "unknown uncertainty basis",
+        ):
+            replace(legacy_uncertainty, uncertainty_basis="unknown")
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "component IDs require direct_measurand_contributions",
+        ):
+            validate_measurement_model(
+                replace(
+                    legacy,
+                    uncertainty_model=replace(
+                        legacy_uncertainty,
+                        component_ids=("force_estimate",),
+                    ),
+                )
+            )
 
     def test_numerical_ancestor_without_uncertainty_is_incomplete(self) -> None:
         model = replace_quantity(

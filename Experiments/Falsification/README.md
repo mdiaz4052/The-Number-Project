@@ -79,13 +79,14 @@ It does not silently replace an existing result.
 `milestone_5b_core_v1.mutation_results.json` is the preserved historical first mutation
 attestation. It is not overwritten.
 
-`milestone_5b_core_v1.mutation_results_v2.json` is the current mutation attestation. The
-same preregistered Milestone 5B experiment is re-anchored because the result-driving source
-boundary now explicitly includes `Discovery/physical_bridge_schema.py`, whose constructor
-validation can determine whether evidence-bearing records reach the model validator. The
-re-anchor also migrates the old `force_reference` test fixture to the namespaced certificate
-form and removes the temporary production migration shim instead of silently rewriting a
-declared source identifier.
+`milestone_5b_core_v1.mutation_results_v2.json` is preserved as the pre-Milestone-7A
+attestation. It records the earlier source-boundary expansion for
+`Discovery/physical_bridge_schema.py` and the namespaced-certificate migration.
+
+`milestone_5b_core_v1.mutation_results_v3.json` is the current attestation. It re-anchors
+the same preregistered Milestone 5B experiment after the physical bridge gained the
+additive direct-measurand uncertainty basis. The source snapshot now also binds the facade
+that constructs the behavioral fixtures and the source-identifier hardening test module.
 
 The current artifact records the selected semantic mutants, their predefined behavioral
 tests, import-path evidence, canonical-state fingerprints, cleanup confirmation, and the
@@ -113,21 +114,32 @@ behavior-preserving source transformation survived. The production results were:
   by a behavioral test that checks each field separately;
 - narrowing the gate back to estimator ancestry was **killed** by declared calibration and
   correction records deliberately placed outside that ancestry;
+- allowing a direct uncertainty component or one of its ancestors into central-estimator
+  ancestry was **killed** by isolated direct-component and shared-ancestor fixtures;
+- omitting direct uncertainty components from the empirical source-metadata gate was
+  **killed** by an unsourced populated component fixture;
+- suppressing the incomplete status for a missing target standard uncertainty was
+  **killed** by a direct-budget assessment assertion;
+- silently NFC-normalizing a declared source identifier for validation was **killed** by a
+  behavioral test requiring rejection without rewriting;
+- making dependency classification sensitive to dimensional metadata after catalog
+  validation was **killed** by the existing dimension-invariance test; and
 - inverting the dependency artifact's `--check` comparison was **killed** by a subprocess
   test that exercises the module CLI against both current and stale artifacts.
 
-All eight selected production mutants are detected by behavioral assertions. Seven change
-acceptance or checker behavior; the calibration-reference mutant pins an explicit
-defense-in-depth diagnostic without changing acceptance. No source-text, literal-string,
-or exact-patch detector was added to improve the mutation score.
+All thirteen selected production mutants are detected by behavioral assertions. The
+calibration-reference mutant pins an explicit defense-in-depth diagnostic without changing
+acceptance. No source-text, literal-string, or exact-patch detector was added to improve
+the mutation score.
 
 An additional behavioral test confirms that `exact=True` cannot bypass empirical source
 metadata. These source gates verify declared provenance records, not real-world
 experimental independence.
 
-The current `SOURCE_PATHS` attestation includes both the physical-bridge schema and validator
-alongside the behavioral tests that drive the selected mutation family. This is an explicit
-evidence-boundary decision, not a claim that every repository file is source-attested.
+The current `SOURCE_PATHS` attestation includes the physical-bridge facade, schema, and
+validator alongside both physical-bridge behavioral test modules that drive the selected
+mutation family. This is an explicit evidence-boundary decision, not a claim that every
+repository file is source-attested.
 
 The mutation harness automatically creates detached worktrees at the recorded source
 SHA, proves relevant module `__file__` paths are under the disposable root inside the

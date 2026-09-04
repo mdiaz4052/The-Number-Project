@@ -56,7 +56,8 @@
     "derived_quantity",
     "definition",
     "external_comparison_reference",
-    "target_output"
+    "target_output",
+    "uncertainty_component"
   ],
   "lean_boundary": {
     "can_establish": "conditional algebraic implications from explicit hypotheses and nonzero side conditions",
@@ -381,6 +382,21 @@
       "uncertainties associated with corrections",
       "propagation method",
       "coverage information when applicable"
-    ]
+    ],
+    "schema_extension_policy": "The direct-contribution fields are additive. Legacy estimator-input records omit them and retain their existing serialization.",
+    "uncertainty_bases": {
+      "direct_measurand_contributions": {
+        "component_dimensions": "homogeneous dimensionless relative contributions or homogeneous target-dimension contributions",
+        "component_role": "uncertainty_component",
+        "correction_ids": "must be empty",
+        "input_ids": "must be empty",
+        "meaning": "Combine published contributions already expressed for the final measurand without relabeling them as estimator inputs.",
+        "scientific_completeness": "must be established by an apparatus-specific validator"
+      },
+      "estimator_input_propagation": {
+        "component_ids": "forbidden",
+        "meaning": "Propagate standard uncertainties from the central estimator inputs and declared corrections."
+      }
+    }
   }
 }

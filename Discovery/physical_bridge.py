@@ -35,9 +35,11 @@ from Discovery.physical_bridge_schema import (
     DEFINITION,
     DEFINITION_EDGE_KINDS,
     DERIVED_QUANTITY,
+    DIRECT_MEASURAND_CONTRIBUTIONS,
     DIRECT_OBSERVATION,
     DOCUMENTED,
     EMPIRICAL_RECORD,
+    ESTIMATOR_INPUT_PROPAGATION,
     EVIDENCE_LEVELS,
     EXPLICIT_ZERO_ASSUMPTION,
     EXTERNAL_COMPARISON_REFERENCE,
@@ -59,6 +61,8 @@ from Discovery.physical_bridge_schema import (
     TARGET_KEY,
     TARGET_OUTPUT,
     TARGET_PATH_DETECTED,
+    UNCERTAINTY_BASES,
+    UNCERTAINTY_COMPONENT,
     UNRESOLVED,
     UNRESOLVED_ALGEBRAIC_PROVENANCE,
     UNRESOLVED_PROVENANCE_EVIDENCE,
@@ -148,7 +152,7 @@ def _audit_record(audit: TargetPathAudit) -> dict[str, Any]:
 def _uncertainty_record(uncertainty: UncertaintyModel | None) -> dict[str, Any] | None:
     if uncertainty is None:
         return None
-    return {
+    record = {
         "measurand_id": uncertainty.measurand_id,
         "input_ids": sorted(uncertainty.input_ids),
         "correction_ids": sorted(uncertainty.correction_ids),
@@ -176,6 +180,10 @@ def _uncertainty_record(uncertainty: UncertaintyModel | None) -> dict[str, Any] 
         },
         "limitations": list(uncertainty.limitations),
     }
+    if uncertainty.uncertainty_basis == DIRECT_MEASURAND_CONTRIBUTIONS:
+        record["uncertainty_basis"] = uncertainty.uncertainty_basis
+        record["component_ids"] = sorted(uncertainty.component_ids)
+    return record
 
 
 def _lean_record(identifier: str | None) -> dict[str, Any] | None:
@@ -918,6 +926,35 @@ def build_contract_artifact() -> dict[str, Any]:
             "missing_uncertainty_is_zero": False,
             "binary_floating_point_measurement_values": "rejected",
             "exact_exponent_domain": "int or Fraction; bool and float rejected",
+            "schema_extension_policy": (
+                "The direct-contribution fields are additive. Legacy estimator-input "
+                "records omit them and retain their existing serialization."
+            ),
+            "uncertainty_bases": {
+                ESTIMATOR_INPUT_PROPAGATION: {
+                    "meaning": (
+                        "Propagate standard uncertainties from the central estimator "
+                        "inputs and declared corrections."
+                    ),
+                    "component_ids": "forbidden",
+                },
+                DIRECT_MEASURAND_CONTRIBUTIONS: {
+                    "meaning": (
+                        "Combine published contributions already expressed for the "
+                        "final measurand without relabeling them as estimator inputs."
+                    ),
+                    "input_ids": "must be empty",
+                    "correction_ids": "must be empty",
+                    "component_role": UNCERTAINTY_COMPONENT,
+                    "component_dimensions": (
+                        "homogeneous dimensionless relative contributions or "
+                        "homogeneous target-dimension contributions"
+                    ),
+                    "scientific_completeness": (
+                        "must be established by an apparatus-specific validator"
+                    ),
+                },
+            },
         },
         "external_reference_boundary": {
             "allowed_role": EXTERNAL_COMPARISON_REFERENCE,

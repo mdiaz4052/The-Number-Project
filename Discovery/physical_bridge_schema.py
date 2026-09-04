@@ -50,6 +50,7 @@ DERIVED_QUANTITY = "derived_quantity"
 DEFINITION = "definition"
 EXTERNAL_COMPARISON_REFERENCE = "external_comparison_reference"
 TARGET_OUTPUT = "target_output"
+UNCERTAINTY_COMPONENT = "uncertainty_component"
 
 INPUT_ROLES = (
     DIRECT_OBSERVATION,
@@ -60,6 +61,7 @@ INPUT_ROLES = (
     DEFINITION,
     EXTERNAL_COMPARISON_REFERENCE,
     TARGET_OUTPUT,
+    UNCERTAINTY_COMPONENT,
 )
 
 DECLARED_LOCAL_ATOM = "declared_local_atom"
@@ -100,6 +102,13 @@ CORRELATION_POLICIES = (
     REQUIRED_BUT_UNPOPULATED,
     EXPLICIT_ZERO_ASSUMPTION,
     COVARIANCE_MATRIX,
+)
+
+ESTIMATOR_INPUT_PROPAGATION = "estimator_input_propagation"
+DIRECT_MEASURAND_CONTRIBUTIONS = "direct_measurand_contributions"
+UNCERTAINTY_BASES = (
+    ESTIMATOR_INPUT_PROPAGATION,
+    DIRECT_MEASURAND_CONTRIBUTIONS,
 )
 
 
@@ -146,6 +155,10 @@ def _validate_access_date(value: object, label: str) -> str:
 
 def _validate_source_identifier(value: object, label: str) -> str:
     text = _require_text(value, label)
+    if unicodedata.normalize("NFC", text) != text:
+        raise BridgeValidationError(
+            f"{label} must be NFC-normalized; automatic rewriting is forbidden"
+        )
     if text != text.strip() or any(
         character.isspace()
         or not character.isprintable()
@@ -469,6 +482,8 @@ class UncertaintyModel:
     coverage_probability: Decimal | None
     coverage_basis: str
     limitations: tuple[str, ...]
+    uncertainty_basis: str = ESTIMATOR_INPUT_PROPAGATION
+    component_ids: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         _require_text(self.measurand_id, "uncertainty measurand")
@@ -481,6 +496,15 @@ class UncertaintyModel:
             self,
             "correction_ids",
             _unique_text(self.correction_ids, "uncertainty correction identifier"),
+        )
+        if self.uncertainty_basis not in UNCERTAINTY_BASES:
+            raise BridgeValidationError(
+                f"unknown uncertainty basis: {self.uncertainty_basis}"
+            )
+        object.__setattr__(
+            self,
+            "component_ids",
+            _unique_text(self.component_ids, "uncertainty component identifier"),
         )
         correlations = _record_tuple(
             self.correlations,

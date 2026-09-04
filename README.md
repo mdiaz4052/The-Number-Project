@@ -422,6 +422,16 @@ python3 -m Discovery.physical_bridge
 python3 -m Discovery.physical_bridge --check
 ```
 
+Milestone 7A extends this contract with a second, explicit uncertainty basis for published
+budget entries that are already contributions to the final measurand. The original
+`estimator_input_propagation` mode is unchanged. The new
+`direct_measurand_contributions` mode keeps those entries out of the central estimator,
+requires a source-documented and dimensionally homogeneous component inventory, and
+requires the target standard uncertainty plus a resolved propagation and correlation
+policy. The generic bridge validates representation only; scientific completeness and
+arithmetic remain the responsibility of a source-specific validator. This additive change
+does not populate a HUST depth-2b uncertainty or authorize a combined AAF estimator.
+
 The first practical pilot is an explicit UW 2000 source-audit
 `NO-GO (INCOMPLETE_REPRODUCTION)`, not a project measurement. Its original
 preregistration, review-time clarification about exact symbolic constants, and source

@@ -12,6 +12,7 @@ from Discovery.mutation_harness import (
     INVALID,
     KILLED,
     NONCLAIMS,
+    PRODUCTION_MUTANTS,
     SOURCE_PATHS,
     SURVIVED,
     Mutant,
@@ -57,7 +58,24 @@ class MutationHarnessUnitTests(unittest.TestCase):
         self.assertEqual(invalid[0], INVALID)
 
     def test_physical_bridge_schema_is_source_attested(self) -> None:
+        self.assertIn("Discovery/physical_bridge.py", SOURCE_PATHS)
         self.assertIn("Discovery/physical_bridge_schema.py", SOURCE_PATHS)
+        self.assertIn(
+            "tests/test_physical_bridge_source_identifier_hardening.py",
+            SOURCE_PATHS,
+        )
+
+    def test_direct_budget_behavioral_mutants_are_registered(self) -> None:
+        identifiers = {mutant.identifier for mutant in PRODUCTION_MUTANTS}
+        self.assertTrue(
+            {
+                "production_allow_uncertainty_component_in_estimator_ancestry",
+                "production_omit_empirical_uncertainty_component_source_metadata",
+                "production_treat_missing_target_uncertainty_as_satisfied",
+                "production_silently_normalize_source_identifier",
+            }
+            <= identifiers
+        )
 
     def test_import_path_validation_rejects_external_project_copy(self) -> None:
         fake = types.ModuleType("Discovery.fake")

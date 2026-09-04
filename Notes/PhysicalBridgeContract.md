@@ -19,8 +19,10 @@ explicit physical measurement model, followed by reproducibility and preferably 
 comparison across methods with materially different systematic effects. This is an
 operational standard of evidence, not a claim of logical certainty.
 
-Milestone 4 defines and validates the contract for that chain. It does not populate it
-with experimental observations.
+Milestone 4 defines and validates the contract for that chain. Milestone 7A adds an
+explicit representation for published uncertainty contributions that have already been
+propagated to the measurand. Neither contract change populates experimental observations
+or a new uncertainty result.
 
 ## 1. Dimensions constrain the shape, not the value
 
@@ -122,11 +124,12 @@ calibration and traceability vocabulary in
 context in the [BIPM SI Brochure](https://doi.org/10.59161/AUEZ1291).
 
 For an `empirical_record`, a populated numerical quantity anywhere in estimator ancestry,
-or declared as a calibration or correction, must additionally declare `documented`
-provenance, a source identifier, a source edition, and an access date. This narrow
-numeric-source gate prevents an unsourced calibration coefficient from masquerading as a
-completed empirical input. Leaving the coefficient unpopulated remains honest and
-incomplete.
+declared as a calibration or correction, or used as a direct measurand uncertainty
+component must additionally declare `documented` provenance, a source identifier, a
+source edition, and an access date. This narrow numeric-source gate prevents an unsourced
+calibration coefficient or budget entry from masquerading as a completed empirical input.
+Leaving an estimator quantity unpopulated remains honest and incomplete; selecting the
+direct-contribution uncertainty basis requires every declared component to be populated.
 
 The gate verifies declarations, not laboratory history. A dishonest editor could cite an
 irrelevant source or back-solve a coefficient from the target and then attach plausible
@@ -191,6 +194,25 @@ reported as `incomplete`; the software never invents a zero. The contract requir
 - a propagation method; and
 - coverage information when applicable.
 
+The schema distinguishes two uncertainty bases rather than forcing unlike published
+records into one shape:
+
+| Basis | Meaning | Required identifiers |
+|---|---|---|
+| `estimator_input_propagation` | Standard uncertainties are propagated from the central estimator inputs and declared corrections. This is the original Milestone 4 behavior. | `input_ids` and `correction_ids`; `component_ids` is empty. |
+| `direct_measurand_contributions` | Each component value is already an uncertainty contribution to the final measurand, either relative and dimensionless or in the target dimension. | `component_ids`; `input_ids` and `correction_ids` are empty. |
+
+A direct component has role `uncertainty_component`. Its `value` is the contribution
+itself, so it cannot carry a second `standard_uncertainty` or `uncertainty_unit` of its
+own. Components must be nonnegative, dimensionally homogeneous, source-documented for an
+empirical record, and isolated from the central estimator and its ancestry. The target
+must carry the resulting standard uncertainty in the target unit. An apparatus-specific
+validator must still prove that the selected component inventory and arithmetic match the
+pinned publication; the generic bridge validates only the representation.
+
+This is an additive schema extension. Existing estimator-input models keep their default
+basis and omit the two new fields from serialized JSON, preserving their historical bytes.
+
 The structure follows the principles of
 [JCGM 100:2008 (GUM)](https://www.bipm.org/documents/20126/2071204/JCGM_100_2008_E.pdf/cb0ef43f-baa5-11cf-3f85-4dcd86f77bd6).
 Milestone 4 validates that these fields are declared; it does not implement a general
@@ -202,9 +224,12 @@ Two inputs may share an instrument, calibration reference, environmental disturb
 data-reduction step. Their errors can then vary together. Propagating their uncertainties
 as if they were unrelated can understate or overstate the uncertainty of `G_hat`.
 
-The contract therefore requires either an explicit covariance declaration, a documented
-reason for treating correlations as zero, or an `incomplete` marker saying the evaluation
-has not been populated. An empty covariance table is not automatically a zero matrix.
+The estimator-input basis therefore requires either an explicit covariance declaration,
+a documented reason for treating correlations as zero, or an `incomplete` marker saying
+the evaluation has not been populated. In the direct-contribution basis, a completed
+record cannot retain that unresolved marker: an empty covariance table is permitted only
+with a documented explicit zero-correlation assumption. An empty table is never
+automatically a zero matrix.
 
 ## 10. Lean checks implications, not experimental premises
 
@@ -292,7 +317,7 @@ Milestone 4 supplies:
 - a fail-closed target-leakage audit using the Milestone 3 catalog;
 - separate machine-readable assessment axes rather than one score;
 - an isolated CODATA comparison boundary;
-- uncertainty and correlation requirements; and
+- two explicit uncertainty bases with correlation requirements; and
 - a deterministic, unpopulated inverse-square structural example.
 
 The seven separate axes are:
