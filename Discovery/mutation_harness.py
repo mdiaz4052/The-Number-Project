@@ -35,8 +35,19 @@ from Discovery.source_history import (
 
 RESULT_SCHEMA_VERSION = 3
 DEFAULT_OUTPUT = Path(
-    "Experiments/Falsification/milestone_5b_core_v1.mutation_results_v3.json"
+    "Experiments/Falsification/milestone_5b_core_v1.mutation_results_v4.json"
 )
+RETIRED_ARTIFACT_SHA256 = {
+    "Experiments/Falsification/milestone_5b_core_v1.mutation_results.json": (
+        "c4c873cbba324f6cefe096acaafafe547811b920542b585d19f5ed9539c44be5"
+    ),
+    "Experiments/Falsification/milestone_5b_core_v1.mutation_results_v2.json": (
+        "ea2ff3e83c64e0e81eb7f28a58d70cadf5f0fdd9ebaaafbe2749911b067da574"
+    ),
+    "Experiments/Falsification/milestone_5b_core_v1.mutation_results_v3.json": (
+        "a1d71163159e6e2eb0d53d588f2b332e2b576db5b995ade611944b6706b70423"
+    ),
+}
 KILLED = "killed"
 SURVIVED = "survived"
 INVALID = "invalid"
@@ -149,8 +160,16 @@ PRODUCTION_MUTANTS = (
             "Disable the validator decision that rejects estimator ancestry reaching G."
         ),
         relative_path="Discovery/physical_bridge_validation.py",
-        old_text="        if audit.status == TARGET_PATH_DETECTED:\n",
-        new_text="        if False and audit.status == TARGET_PATH_DETECTED:\n",
+        old_text=(
+            "        if audit.status == TARGET_PATH_DETECTED:\n"
+            "            raise BridgeValidationError(\n"
+            "                f\"estimator ancestry reaches G through {identifier} \"\n"
+        ),
+        new_text=(
+            "        if False and audit.status == TARGET_PATH_DETECTED:\n"
+            "            raise BridgeValidationError(\n"
+            "                f\"estimator ancestry reaches G through {identifier} \"\n"
+        ),
         test_names=(
             "tests.test_physical_bridge.PhysicalBridgeTests."
             "test_direct_g_or_planck_estimator_input_is_rejected",
@@ -261,12 +280,12 @@ PRODUCTION_MUTANTS = (
             "            estimator_upstream\n"
             "            | set(model.calibration_source_ids)\n"
             "            | set(model.correction_ids)\n"
-            "            | uncertainty_component_ids\n"
+            "            | uncertainty_component_upstream\n"
             "        )\n"
         ),
         new_text=(
             "        source_required_ids = (\n"
-            "            estimator_upstream | uncertainty_component_ids\n"
+            "            estimator_upstream | uncertainty_component_upstream\n"
             "        )\n"
         ),
         test_names=(
@@ -303,7 +322,7 @@ PRODUCTION_MUTANTS = (
         relative_path="Discovery/physical_bridge_validation.py",
         old_text=(
             "            | set(model.correction_ids)\n"
-            "            | uncertainty_component_ids\n"
+            "            | uncertainty_component_upstream\n"
         ),
         new_text="            | set(model.correction_ids)\n",
         test_names=(
@@ -311,6 +330,101 @@ PRODUCTION_MUTANTS = (
             "test_empirical_direct_component_requires_source_metadata",
         ),
         required_modules=("Discovery.physical_bridge_validation",),
+    ),
+    Mutant(
+        identifier="production_limit_component_source_gate_to_declared_components",
+        category="production",
+        intended_semantic_defect=(
+            "Check source metadata only on declared direct uncertainty components, "
+            "not on their recursively reached provenance ancestors."
+        ),
+        relative_path="Discovery/physical_bridge_validation.py",
+        old_text="            | uncertainty_component_upstream\n",
+        new_text=(
+            "            | set(model.uncertainty_model.component_ids)\n"
+        ),
+        test_names=(
+            "tests.test_physical_bridge.PhysicalBridgeTests."
+            "test_empirical_direct_component_ancestor_requires_source_metadata",
+        ),
+        required_modules=("Discovery.physical_bridge_validation",),
+    ),
+    Mutant(
+        identifier="production_allow_component_target_path",
+        category="production",
+        intended_semantic_defect=(
+            "Disable registered target-path rejection for direct uncertainty "
+            "components and their provenance ancestors."
+        ),
+        relative_path="Discovery/physical_bridge_validation.py",
+        old_text=(
+            "        if audit.status == TARGET_PATH_DETECTED:\n"
+            "            raise BridgeValidationError(\n"
+            "                \"uncertainty-component ancestry reaches G through \"\n"
+        ),
+        new_text=(
+            "        if False and audit.status == TARGET_PATH_DETECTED:\n"
+            "            raise BridgeValidationError(\n"
+            "                \"uncertainty-component ancestry reaches G through \"\n"
+        ),
+        test_names=(
+            "tests.test_physical_bridge.PhysicalBridgeTests."
+            "test_direct_component_and_ancestor_target_paths_are_rejected",
+        ),
+        required_modules=("Discovery.physical_bridge_validation",),
+    ),
+    Mutant(
+        identifier="production_allow_uncertainty_component_role_as_estimator_term",
+        category="production",
+        intended_semantic_defect=(
+            "Remove uncertainty_component from the roles forbidden as direct central-"
+            "estimator terms."
+        ),
+        relative_path="Discovery/physical_bridge_validation.py",
+        old_text="        UNCERTAINTY_COMPONENT,\n",
+        new_text="",
+        test_names=(
+            "tests.test_physical_bridge.PhysicalBridgeTests."
+            "test_uncertainty_component_role_is_forbidden_in_legacy_estimator",
+        ),
+        required_modules=("Discovery.physical_bridge_validation",),
+    ),
+    Mutant(
+        identifier="production_allow_stray_component_role_in_estimator_ancestry",
+        category="production",
+        intended_semantic_defect=(
+            "Stop rejecting an undeclared uncertainty_component role that appears "
+            "inside central-estimator ancestry."
+        ),
+        relative_path="Discovery/physical_bridge_validation.py",
+        old_text=(
+            "        component_ancestry = estimator_upstream & component_role_ids\n"
+        ),
+        new_text="        component_ancestry = set()\n",
+        test_names=(
+            "tests.test_physical_bridge.PhysicalBridgeTests."
+            "test_stray_uncertainty_component_role_is_rejected_in_estimator_ancestry",
+        ),
+        required_modules=("Discovery.physical_bridge_validation",),
+    ),
+    Mutant(
+        identifier="production_allow_nfc_stable_combining_mark_in_source_identifier",
+        category="production",
+        intended_semantic_defect=(
+            "Remove the source-identifier rejection of nonspacing and enclosing "
+            "combining marks that remain stable under NFC."
+        ),
+        relative_path="Discovery/physical_bridge_schema.py",
+        old_text=(
+            "        or unicodedata.category(character) in {\"Mn\", \"Me\"}\n"
+        ),
+        new_text="",
+        test_names=(
+            "tests.test_physical_bridge_source_identifier_hardening."
+            "PhysicalBridgeSourceIdentifierHardeningTests."
+            "test_invisible_or_control_identifier_characters_are_rejected",
+        ),
+        required_modules=("Discovery.physical_bridge_schema",),
     ),
     Mutant(
         identifier="production_treat_missing_target_uncertainty_as_satisfied",
@@ -448,6 +562,31 @@ def canonical_status_bytes(root: Path) -> bytes:
 
 def status_sha256(status: bytes) -> str:
     return hashlib.sha256(status).hexdigest()
+
+
+def verify_retired_artifact_hashes(
+    root: Path,
+    expected_hashes: Mapping[str, str],
+    *,
+    artifact_label: str,
+) -> None:
+    """Verify explicitly retired evidence bytes against their frozen SHA-256 pins."""
+
+    for relative_path, expected_sha256 in sorted(expected_hashes.items()):
+        if re.fullmatch(r"[0-9a-f]{64}", expected_sha256) is None:
+            raise ValueError(
+                f"{artifact_label} retired artifact hash is malformed: {relative_path}"
+            )
+        try:
+            content = (root / relative_path).read_bytes()
+        except OSError as error:
+            raise ValueError(
+                f"{artifact_label} retired artifact cannot be read: {relative_path}"
+            ) from error
+        if hashlib.sha256(content).hexdigest() != expected_sha256:
+            raise ValueError(
+                f"{artifact_label} retired artifact hash mismatch: {relative_path}"
+            )
 
 
 def verify_source_state(
@@ -1060,6 +1199,11 @@ def main() -> None:
             root = repository_root()
             verify_source_state(root, source_sha)
             verify_result_source_snapshot(root, result)
+            verify_retired_artifact_hashes(
+                root,
+                RETIRED_ARTIFACT_SHA256,
+                artifact_label="Milestone 5B mutation result",
+            )
             if not result.get("calibration_valid"):
                 raise ValueError("committed mutation family failed calibration")
         except SourceVerificationError as error:

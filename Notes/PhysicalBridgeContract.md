@@ -124,12 +124,13 @@ calibration and traceability vocabulary in
 context in the [BIPM SI Brochure](https://doi.org/10.59161/AUEZ1291).
 
 For an `empirical_record`, a populated numerical quantity anywhere in estimator ancestry,
-declared as a calibration or correction, or used as a direct measurand uncertainty
-component must additionally declare `documented` provenance, a source identifier, a
-source edition, and an access date. This narrow numeric-source gate prevents an unsourced
-calibration coefficient or budget entry from masquerading as a completed empirical input.
-Leaving an estimator quantity unpopulated remains honest and incomplete; selecting the
-direct-contribution uncertainty basis requires every declared component to be populated.
+declared as a calibration or correction, or anywhere in the full provenance closure of a
+direct measurand uncertainty component must additionally declare `documented` provenance,
+a source identifier, a source edition, and an access date. This narrow numeric-source gate
+prevents an unsourced calibration coefficient, upstream observation, or budget entry from
+masquerading as a completed empirical input. Leaving an estimator quantity unpopulated
+remains honest and incomplete; selecting the direct-contribution uncertainty basis requires
+every declared component to be populated.
 
 The gate verifies declarations, not laboratory history. A dishonest editor could cite an
 irrelevant source or back-solve a coefficient from the target and then attach plausible
@@ -156,7 +157,8 @@ independent. For this reason, the bridge never uses a bare status called `indepe
 
 ## 7. The target-path gate reports three honest outcomes
 
-For every estimator input and every recursively reached ancestor, exact `Fraction`
+For every estimator input and every recursively reached ancestor, and separately for every
+direct uncertainty component and its recursively reached ancestors, exact `Fraction`
 substitution reuses the Milestone 3 dependency catalog. The gate reports:
 
 | Status | Meaning |
@@ -165,10 +167,11 @@ substitution reuses the Milestone 3 dependency catalog. The gate reports:
 | `no_registered_target_path` | No path reaches `G` under the current complete algebraic records. This is not a claim of independence. |
 | `unresolved` | Required ancestry cannot be fully established. |
 
-The gate rejects direct `G`, registered Planck dependence, target-dependent ancestors,
-and any calibration or correction chain that consumes a reference `G`. It detects cycles
-in both provenance graphs and treats missing records as a reason to stop, not a reason to
-pass.
+The gate rejects direct `G`, registered Planck dependence, target-dependent estimator or
+uncertainty-component ancestors, and any calibration or correction chain that consumes a
+reference `G`. Direct-mode serialization exposes the component-closure assessments in a
+separate `uncertainty_component_assessments` block. It detects cycles in both provenance
+graphs and treats missing records as a reason to stop, not a reason to pass.
 
 A recommended value such as CODATA 2022 is allowed only in a terminal
 `external_comparison_reference` node after `G_hat` has been produced. It cannot enter the
@@ -205,10 +208,15 @@ records into one shape:
 A direct component has role `uncertainty_component`. Its `value` is the contribution
 itself, so it cannot carry a second `standard_uncertainty` or `uncertainty_unit` of its
 own. Components must be nonnegative, dimensionally homogeneous, source-documented for an
-empirical record, and isolated from the central estimator and its ancestry. The target
-must carry the resulting standard uncertainty in the target unit. An apparatus-specific
-validator must still prove that the selected component inventory and arithmetic match the
-pinned publication; the generic bridge validates only the representation.
+empirical record, target-path-audited through their complete ancestry, and isolated from
+the central estimator and its ancestry. The direct basis is eligible only when a pinned
+publication reports contributions already expressed for the final measurand; choosing a
+schema mode cannot establish that fact. A populated target standard uncertainty must use
+the target unit. If it is still absent, validation succeeds but `uncertainty_status`
+remains `incomplete`, allowing staged authoring without treating the missing value as zero.
+An apparatus-specific validator must still prove that the selected component inventory and
+arithmetic match the pinned publication; the generic bridge validates only the
+representation.
 
 This is an additive schema extension. Existing estimator-input models keep their default
 basis and omit the two new fields from serialized JSON, preserving their historical bytes.

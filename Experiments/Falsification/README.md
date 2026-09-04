@@ -83,10 +83,20 @@ attestation. It is not overwritten.
 attestation. It records the earlier source-boundary expansion for
 `Discovery/physical_bridge_schema.py` and the namespaced-certificate migration.
 
-`milestone_5b_core_v1.mutation_results_v3.json` is the current attestation. It re-anchors
-the same preregistered Milestone 5B experiment after the physical bridge gained the
-additive direct-measurand uncertainty basis. The source snapshot now also binds the facade
-that constructs the behavioral fixtures and the source-identifier hardening test module.
+`milestone_5b_core_v1.mutation_results_v3.json` is preserved as the initial Milestone 7A
+attestation. It re-anchored the same preregistered experiment after the physical bridge
+gained the additive direct-measurand uncertainty basis.
+
+`milestone_5b_core_v1.mutation_results_v4.json` is the current attestation. It re-anchors
+after the PR #33 audit closure added component-ancestry target-path and source-metadata
+coverage, restored the independently shadowed Unicode pin, and closed two narrower role
+isolation gaps. The source snapshot binds the facade that constructs the behavioral
+fixtures and the source-identifier hardening test module.
+
+The current guard SHA-256-pins every retired v1, v2, and v3 mutation artifact across the
+5B, 6B, and post-6B families. They remain verified historical evidence rather than
+unread archived bytes. The pins are tamper evidence, not protection against a knowing
+editor who changes both bytes and expected hashes.
 
 The current artifact records the selected semantic mutants, their predefined behavioral
 tests, import-path evidence, canonical-state fingerprints, cleanup confirmation, and the
@@ -118,6 +128,17 @@ behavior-preserving source transformation survived. The production results were:
   ancestry was **killed** by isolated direct-component and shared-ancestor fixtures;
 - omitting direct uncertainty components from the empirical source-metadata gate was
   **killed** by an unsourced populated component fixture;
+- limiting that gate to declared components while omitting their recursively reached
+  provenance ancestors was **killed** by an undocumented populated observation ancestor;
+- allowing a registered path to `G` through a direct uncertainty component or one of its
+  ancestors was **killed** by component and ancestor probes with exact registered
+  `G`-equivalent signatures;
+- allowing the `uncertainty_component` role as a direct legacy-estimator term was
+  **killed** by a mode-independent forbidden-role assertion;
+- allowing a stray, undeclared `uncertainty_component` role inside estimator ancestry was
+  **killed** by the narrower role-isolation assertion;
+- removing the rejection of NFC-stable nonspacing or enclosing combining marks from source
+  identifiers was **killed** by a behavioral Unicode fixture;
 - suppressing the incomplete status for a missing target standard uncertainty was
   **killed** by a direct-budget assessment assertion;
 - silently NFC-normalizing a declared source identifier for validation was **killed** by a
@@ -127,7 +148,7 @@ behavior-preserving source transformation survived. The production results were:
 - inverting the dependency artifact's `--check` comparison was **killed** by a subprocess
   test that exercises the module CLI against both current and stale artifacts.
 
-All thirteen selected production mutants are detected by behavioral assertions. The
+All eighteen selected production mutants are detected by behavioral assertions. The
 calibration-reference mutant pins an explicit defense-in-depth diagnostic without changing
 acceptance. No source-text, literal-string, or exact-patch detector was added to improve
 the mutation score.

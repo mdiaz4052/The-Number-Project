@@ -432,6 +432,21 @@ def _validate_uncertainty_model(
     return direct_component_ids
 
 
+def _uncertainty_component_upstream_ids(
+    model: MeasurementModel,
+    all_edges: Sequence[ProvenanceEdge],
+) -> tuple[str, ...]:
+    """Return the direct-budget component closure, empty for every other mode."""
+
+    uncertainty = model.uncertainty_model
+    if (
+        uncertainty is None
+        or uncertainty.uncertainty_basis != DIRECT_MEASURAND_CONTRIBUTIONS
+    ):
+        return ()
+    return _upstream_ids(uncertainty.component_ids, all_edges)
+
+
 def validate_measurement_model(model: MeasurementModel) -> None:
     """Reject structural ambiguity, target leakage, and invalid provenance graphs."""
 
@@ -609,7 +624,7 @@ def validate_measurement_model(model: MeasurementModel) -> None:
             "comparison reference or comparison result flows upstream of the estimator: "
             f"{sorted(leaked_reference)}"
         )
-    uncertainty_component_ids = _validate_uncertainty_model(
+    _validate_uncertainty_model(
         model,
         quantities,
         target,
@@ -617,12 +632,15 @@ def validate_measurement_model(model: MeasurementModel) -> None:
         estimator_upstream,
         all_edges,
     )
+    uncertainty_component_upstream = set(
+        _uncertainty_component_upstream_ids(model, all_edges)
+    )
     if model.evidence_level == EMPIRICAL_RECORD:
         source_required_ids = (
             estimator_upstream
             | set(model.calibration_source_ids)
             | set(model.correction_ids)
-            | uncertainty_component_ids
+            | uncertainty_component_upstream
         )
         for identifier in sorted(source_required_ids):
             quantity = quantities[identifier]
@@ -656,6 +674,13 @@ def validate_measurement_model(model: MeasurementModel) -> None:
                 f"estimator ancestry reaches G through {identifier} "
                 f"(power {fraction_text(audit.power_of_target)})"
             )
+    for identifier in sorted(uncertainty_component_upstream):
+        audit = _audit_quantity(quantities[identifier], catalog)
+        if audit.status == TARGET_PATH_DETECTED:
+            raise BridgeValidationError(
+                "uncertainty-component ancestry reaches G through "
+                f"{identifier} (power {fraction_text(audit.power_of_target)})"
+            )
     for identifier, quantity in sorted(quantities.items()):
         signature_dimension = _registered_signature_dimension(quantity, catalog)
         if signature_dimension is not None and signature_dimension != quantity.dimension:
@@ -685,17 +710,34 @@ def evaluate_measurement_model(model: MeasurementModel) -> BridgeEvaluation:
     term_ids = tuple(term.quantity_id for term in model.estimator_terms)
     all_edges = (*model.definition_edges, *model.metrological_edges)
     upstream_ids = _upstream_ids(term_ids, all_edges)
+    uncertainty_component_upstream_ids = _uncertainty_component_upstream_ids(
+        model,
+        all_edges,
+    )
     catalog = build_model_dependency_catalog(model)
     audits = tuple(
         _audit_quantity(quantities[identifier], catalog) for identifier in upstream_ids
     )
+    uncertainty_component_audits = tuple(
+        _audit_quantity(quantities[identifier], catalog)
+        for identifier in uncertainty_component_upstream_ids
+    )
     registered_status = (
         UNRESOLVED
-        if any(audit.status == UNRESOLVED for audit in audits)
+        if any(
+            audit.status == UNRESOLVED
+            for audit in (*audits, *uncertainty_component_audits)
+        )
         else NO_REGISTERED_TARGET_PATH
     )
 
-    evidence = {quantities[identifier].provenance_evidence for identifier in upstream_ids}
+    evidence_scope_ids = tuple(
+        sorted(set(upstream_ids) | set(uncertainty_component_upstream_ids))
+    )
+    evidence = {
+        quantities[identifier].provenance_evidence
+        for identifier in evidence_scope_ids
+    }
     if UNRESOLVED_PROVENANCE_EVIDENCE in evidence:
         metrological_status = UNRESOLVED
     elif evidence - {DOCUMENTED}:
@@ -733,16 +775,8 @@ def evaluate_measurement_model(model: MeasurementModel) -> BridgeEvaluation:
                 )
     else:
         target = quantities[model.target_measurand_id]
-        for identifier in uncertainty.component_ids:
-            component = quantities[identifier]
-            if component.value is None:
-                uncertainty_gaps.append(
-                    f"uncertainty component is unpopulated: {identifier}"
-                )
         if target.standard_uncertainty is None:
             uncertainty_gaps.append("target standard uncertainty is missing")
-        elif target.uncertainty_unit != target.unit:
-            uncertainty_gaps.append("target uncertainty unit does not match target unit")
         if uncertainty.correlation_policy == REQUIRED_BUT_UNPOPULATED:
             uncertainty_gaps.append("correlation or covariance evaluation is unpopulated")
         if uncertainty.propagation_method == REQUIRED_BUT_UNPOPULATED:
@@ -757,7 +791,7 @@ def evaluate_measurement_model(model: MeasurementModel) -> BridgeEvaluation:
             quantities[identifier].role == DIRECT_OBSERVATION
             and quantities[identifier].provenance_evidence != DOCUMENTED
         )
-        for identifier in upstream_ids
+        for identifier in evidence_scope_ids
     ) or quantities[model.target_measurand_id].value is None:
         empirical_status = INCOMPLETE
     else:
@@ -781,5 +815,7 @@ def evaluate_measurement_model(model: MeasurementModel) -> BridgeEvaluation:
         estimator_dimension=_estimator_dimension(model, quantities),
         estimator_upstream_ids=upstream_ids,
         target_path_audits=audits,
+        uncertainty_component_upstream_ids=uncertainty_component_upstream_ids,
+        uncertainty_component_target_path_audits=uncertainty_component_audits,
         uncertainty_gaps=tuple(sorted(set(uncertainty_gaps))),
     )

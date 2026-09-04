@@ -361,6 +361,7 @@
       "reject a direct G estimator input",
       "reject any registered input expansion with nonzero power of G",
       "reject any estimator ancestor whose registered expansion reaches G",
+      "reject any direct uncertainty component or component ancestor whose registered expansion reaches G",
       "reject a calibration or correction chain that consumes reference G",
       "treat unresolved provenance as unresolved",
       "permit reference G only in isolated terminal comparison nodes",
@@ -389,9 +390,11 @@
         "component_dimensions": "homogeneous dimensionless relative contributions or homogeneous target-dimension contributions",
         "component_role": "uncertainty_component",
         "correction_ids": "must be empty",
+        "eligibility": "chosen only when a pinned publication reports contributions already expressed for the final measurand; validator acceptance does not establish eligibility",
         "input_ids": "must be empty",
         "meaning": "Combine published contributions already expressed for the final measurand without relabeling them as estimator inputs.",
-        "scientific_completeness": "must be established by an apparatus-specific validator"
+        "scientific_completeness": "must be established by an apparatus-specific validator",
+        "target_path_scope": "every declared component and its full provenance closure is audited for registered paths to G"
       },
       "estimator_input_propagation": {
         "component_ids": "forbidden",

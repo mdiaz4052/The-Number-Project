@@ -213,7 +213,34 @@ def measurement_model_record(model: MeasurementModel) -> dict[str, Any]:
     comparison_audits = []
     catalog = build_model_dependency_catalog(model)
     for identifier in sorted(model.comparison_reference_ids):
-        comparison_audits.append(_audit_record(_audit_quantity(quantities[identifier], catalog)))
+        comparison_audits.append(
+            _audit_record(_audit_quantity(quantities[identifier], catalog))
+        )
+
+    target_path_audit = {
+        "gate_result": evaluation.registered_target_path_status,
+        "estimator_upstream_node_ids": list(evaluation.estimator_upstream_ids),
+        "estimator_upstream_assessments": [
+            _audit_record(audit) for audit in evaluation.target_path_audits
+        ],
+        "isolated_comparison_reference_assessments": comparison_audits,
+        "required_caution": (
+            "No registered algebraic path to G is necessary for a target-clean "
+            "input, but it is not sufficient to establish experimental independence."
+        ),
+    }
+    uncertainty = model.uncertainty_model
+    if (
+        uncertainty is not None
+        and uncertainty.uncertainty_basis == DIRECT_MEASURAND_CONTRIBUTIONS
+    ):
+        target_path_audit["uncertainty_component_upstream_node_ids"] = list(
+            evaluation.uncertainty_component_upstream_ids
+        )
+        target_path_audit["uncertainty_component_assessments"] = [
+            _audit_record(audit)
+            for audit in evaluation.uncertainty_component_target_path_audits
+        ]
 
     assessments = {
         "dimensional_status": evaluation.dimensional_status,
@@ -298,20 +325,7 @@ def measurement_model_record(model: MeasurementModel) -> dict[str, Any]:
                 "correction_ids": sorted(model.correction_ids),
             },
         },
-        "target_path_audit": {
-            "gate_result": evaluation.registered_target_path_status,
-            "estimator_upstream_node_ids": list(
-                evaluation.estimator_upstream_ids
-            ),
-            "estimator_upstream_assessments": [
-                _audit_record(audit) for audit in evaluation.target_path_audits
-            ],
-            "isolated_comparison_reference_assessments": comparison_audits,
-            "required_caution": (
-                "No registered algebraic path to G is necessary for a target-clean "
-                "input, but it is not sufficient to establish experimental independence."
-            ),
-        },
+        "target_path_audit": target_path_audit,
         "external_comparison": {
             "reference_ids": sorted(model.comparison_reference_ids),
             "comparison_node_ids": sorted(model.comparison_node_ids),
@@ -895,6 +909,10 @@ def build_contract_artifact() -> dict[str, Any]:
                 "reject a direct G estimator input",
                 "reject any registered input expansion with nonzero power of G",
                 "reject any estimator ancestor whose registered expansion reaches G",
+                (
+                    "reject any direct uncertainty component or component ancestor whose "
+                    "registered expansion reaches G"
+                ),
                 "reject a calibration or correction chain that consumes reference G",
                 "treat unresolved provenance as unresolved",
                 "permit reference G only in isolated terminal comparison nodes",
@@ -949,6 +967,15 @@ def build_contract_artifact() -> dict[str, Any]:
                     "component_dimensions": (
                         "homogeneous dimensionless relative contributions or "
                         "homogeneous target-dimension contributions"
+                    ),
+                    "eligibility": (
+                        "chosen only when a pinned publication reports contributions "
+                        "already expressed for the final measurand; validator acceptance "
+                        "does not establish eligibility"
+                    ),
+                    "target_path_scope": (
+                        "every declared component and its full provenance closure is "
+                        "audited for registered paths to G"
                     ),
                     "scientific_completeness": (
                         "must be established by an apparatus-specific validator"

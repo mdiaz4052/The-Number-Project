@@ -780,4 +780,6 @@ class BridgeEvaluation:
     estimator_dimension: Dimension
     estimator_upstream_ids: tuple[str, ...]
     target_path_audits: tuple[TargetPathAudit, ...]
+    uncertainty_component_upstream_ids: tuple[str, ...]
+    uncertainty_component_target_path_audits: tuple[TargetPathAudit, ...]
     uncertainty_gaps: tuple[str, ...]

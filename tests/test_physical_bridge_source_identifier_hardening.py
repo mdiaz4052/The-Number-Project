@@ -126,6 +126,7 @@ class PhysicalBridgeSourceIdentifierHardeningTests(unittest.TestCase):
             "doi:10.1103/x\u2800y",
             "doi:10.1103/x\u3164y",
             "doi:10.1103/x\uffa0y",
+            "doi:10.1234/q\u0301uick",
             "url:https://ex\u3164ample.org/d",
             "url:https://example.org/x\u200by",
         )

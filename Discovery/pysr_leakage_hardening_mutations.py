@@ -9,7 +9,14 @@ import re
 import sys
 from typing import Any, Mapping
 
-from Discovery.mutation_harness import KILLED, Mutant, canonical_head, canonical_status_bytes, run_mutant
+from Discovery.mutation_harness import (
+    KILLED,
+    Mutant,
+    canonical_head,
+    canonical_status_bytes,
+    run_mutant,
+    verify_retired_artifact_hashes,
+)
 from Discovery.source_history import (
     SourceVerificationError,
     exit_for_source_verification_error,
@@ -21,8 +28,22 @@ RESULT_SCHEMA_VERSION = 1
 EXPERIMENT_IDENTIFIER = "post_6b_hardening_mutations_v1"
 DEFAULT_OUTPUT = Path(
     "Experiments/EcosystemComparison/PySRLeakage/"
-    "post_6b_hardening_v1.mutation_results_v3.json"
+    "post_6b_hardening_v1.mutation_results_v4.json"
 )
+RETIRED_ARTIFACT_SHA256 = {
+    (
+        "Experiments/EcosystemComparison/PySRLeakage/"
+        "post_6b_hardening_v1.mutation_results.json"
+    ): "635a7f0272bf2e7f4620a788f61e29f1562b3ff9dc6091965d083247d1c495fa",
+    (
+        "Experiments/EcosystemComparison/PySRLeakage/"
+        "post_6b_hardening_v1.mutation_results_v2.json"
+    ): "6f94d61efd89d1f180f2ec52b864157e0889c304e810f446ca2e01356534f5c2",
+    (
+        "Experiments/EcosystemComparison/PySRLeakage/"
+        "post_6b_hardening_v1.mutation_results_v3.json"
+    ): "3d0e2102d0e11e7679b6233c223d4de897d41a0ef6d3fdc683cc4ac9fb512f4e",
+}
 SOURCE_PATHS = (
     "Discovery/pysr_leakage_hardening_mutations.py",
     "Discovery/pysr_leakage_probe.py",
@@ -148,6 +169,11 @@ def check_committed_result() -> None:
         repository_root(),
         source_sha,
         source_paths=SOURCE_PATHS,
+        artifact_label="Post-6B parser mutation result",
+    )
+    verify_retired_artifact_hashes(
+        repository_root(),
+        RETIRED_ARTIFACT_SHA256,
         artifact_label="Post-6B parser mutation result",
     )
 

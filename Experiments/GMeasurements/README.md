@@ -180,11 +180,16 @@ The additive Milestone 7A contract distinguishes two uncertainty bases:
 
 Direct components must be populated nonnegative `Decimal` values, all dimensionless or
 all target-dimensional, and cannot carry uncertainty-on-uncertainty. They and their
-ancestors are isolated from central-estimator ancestry. An empirical component requires
-documented source metadata, the target must carry a standard uncertainty in its own unit,
-and an empty covariance table requires a documented explicit zero-correlation assumption.
-The generic validator establishes these representation rules only; a future
-apparatus-specific validator must prove source completeness and combination arithmetic.
+ancestors are isolated from central-estimator ancestry and separately audited for any
+registered path to `G`. Every populated record in an empirical component's complete
+provenance closure requires documented source metadata. A populated target uncertainty
+must use the target unit; if the target uncertainty is absent, the model validates but its
+uncertainty axis remains explicitly `incomplete`. An empty covariance table requires a
+documented explicit zero-correlation assumption. The direct basis is eligible only when a
+pinned publication reports contributions already expressed for the final measurand. The
+generic validator establishes these representation rules only; choosing the mode does not
+establish eligibility, and a future apparatus-specific validator must prove source
+completeness and combination arithmetic.
 
 Legacy uncertainty records omit `uncertainty_basis` and `component_ids` from serialized
 JSON when the additive defaults are unused. The inverse-square example and HUST depth-2a
@@ -194,9 +199,10 @@ by Milestone 7A.
 ## Empirical source-metadata boundary
 
 For any future `empirical_record`, every populated numerical quantity in estimator
-ancestry, every declared calibration or correction, and every direct measurand uncertainty
-component must declare documented provenance plus a source identifier, edition, and access
-date. Source metadata is also form-validated at `QuantityRecord` construction: access
+ancestry, every declared calibration or correction, and every quantity in a direct
+measurand uncertainty component's full ancestry must declare documented provenance plus a
+source identifier, edition, and access date. Source metadata is also form-validated at
+`QuantityRecord` construction: access
 dates must be valid calendar dates in strict `YYYY-MM-DD` form. Source identifiers must
 use one of three explicit channels:
 `doi:<DOI>`, an absolute credential-free `url:https://...`, or a namespaced local
@@ -204,7 +210,9 @@ use one of three explicit channels:
 bounded ASCII token grammar: the issuer begins with an ASCII letter and is at most 64
 characters, while the record identifier is at most 128 characters. A loose value such as
 `certificate:zzz` is not accepted. Source identifiers must already be NFC-normalized and
-are rejected rather than rewritten when they are not. DOI and URL identifiers also reject
+are rejected rather than rewritten when they are not. This NFC rule is deliberately scoped
+to source identifiers; quantity identifiers, unit strings, and descriptive editions are not
+silently canonicalized by it. DOI and URL identifiers also reject
 whitespace, control characters, nonspacing/enclosing combining-mark categories, and a
 bounded set of blank-like Unicode code points; this bounded syntax rule does not claim that
 every combining mark is visually empty. Malformed URL parsing and invalid ports are

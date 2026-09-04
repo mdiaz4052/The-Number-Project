@@ -18,6 +18,7 @@ from Discovery.physical_bridge import (
     DEFINITION,
     DERIVED_QUANTITY,
     DIRECT_MEASURAND_CONTRIBUTIONS,
+    DIRECT_OBSERVATION,
     DOCUMENTED,
     EMPIRICAL_RECORD,
     ESTIMATOR_INPUT_PROPAGATION,
@@ -93,6 +94,8 @@ def direct_uncertainty_component(
 
 def build_direct_budget_model():
     model = build_inverse_square_model()
+    # The 3 ppm and 4 ppm illustrative contributions have a 5 ppm RSS, matching
+    # the target's exact relative standard uncertainty below.
     components = (
         direct_uncertainty_component("relative_component_b", Decimal("4")),
         direct_uncertainty_component("relative_component_a", Decimal("3")),
@@ -101,7 +104,7 @@ def build_direct_budget_model():
         model,
         "G_hat",
         value=Decimal("6.67e-11"),
-        standard_uncertainty=Decimal("8e-16"),
+        standard_uncertainty=Decimal("3.335e-16"),
         uncertainty_unit="m^3 kg^-1 s^-2",
     )
     assert model.uncertainty_model is not None
@@ -669,6 +672,12 @@ class PhysicalBridgeTests(unittest.TestCase):
         serialized = measurement_model_record(model)["uncertainty_model"]
         self.assertNotIn("uncertainty_basis", serialized)
         self.assertNotIn("component_ids", serialized)
+        target_path_audit = measurement_model_record(model)["target_path_audit"]
+        self.assertNotIn(
+            "uncertainty_component_upstream_node_ids",
+            target_path_audit,
+        )
+        self.assertNotIn("uncertainty_component_assessments", target_path_audit)
 
     def test_contract_catalogs_both_uncertainty_bases(self) -> None:
         contract = build_contract_artifact()
@@ -685,19 +694,53 @@ class PhysicalBridgeTests(unittest.TestCase):
             bases[DIRECT_MEASURAND_CONTRIBUTIONS]["component_role"],
             UNCERTAINTY_COMPONENT,
         )
+        self.assertIn(
+            "pinned publication",
+            bases[DIRECT_MEASURAND_CONTRIBUTIONS]["eligibility"],
+        )
+        self.assertTrue(
+            any(
+                "uncertainty component or component ancestor" in rule
+                for rule in contract["target_clean_gate"]["rules"]
+            )
+        )
 
     def test_valid_direct_measurand_budget_is_satisfied_and_serialized(self) -> None:
         model = build_direct_budget_model()
         evaluation = evaluate_measurement_model(model)
         self.assertEqual(evaluation.uncertainty_status, SATISFIED)
         self.assertEqual(evaluation.uncertainty_gaps, ())
-        serialized = measurement_model_record(model)["uncertainty_model"]
+        target = next(
+            quantity for quantity in model.quantities if quantity.identifier == "G_hat"
+        )
+        assert target.value is not None
+        assert target.standard_uncertainty is not None
+        self.assertEqual(
+            target.standard_uncertainty / target.value * Decimal("1e6"),
+            Decimal("5"),
+        )
+        record = measurement_model_record(model)
+        serialized = record["uncertainty_model"]
         self.assertEqual(
             serialized["uncertainty_basis"],
             DIRECT_MEASURAND_CONTRIBUTIONS,
         )
         self.assertEqual(
             serialized["component_ids"],
+            ["relative_component_a", "relative_component_b"],
+        )
+        target_path_audit = record["target_path_audit"]
+        self.assertEqual(
+            target_path_audit["uncertainty_component_upstream_node_ids"],
+            ["relative_component_a", "relative_component_b"],
+        )
+        self.assertEqual(
+            [
+                assessment["identifier"]
+                for assessment in target_path_audit[
+                    "uncertainty_component_assessments"
+                ]
+            ],
             ["relative_component_a", "relative_component_b"],
         )
 
@@ -859,6 +902,112 @@ class PhysicalBridgeTests(unittest.TestCase):
                 ):
                     validate_measurement_model(changed)
 
+    def test_uncertainty_component_role_is_forbidden_in_legacy_estimator(self) -> None:
+        model = replace_quantity(
+            build_inverse_square_model(),
+            "force_estimate",
+            role=UNCERTAINTY_COMPONENT,
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "forbidden estimator input role.*uncertainty_component",
+        ):
+            validate_measurement_model(model)
+
+    def test_stray_uncertainty_component_role_is_rejected_in_estimator_ancestry(
+        self,
+    ) -> None:
+        model = replace_quantity(
+            build_direct_budget_model(),
+            "angle_observation",
+            role=UNCERTAINTY_COMPONENT,
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "component or component ancestor enters central estimator ancestry",
+        ):
+            validate_measurement_model(model)
+
+    def test_direct_component_and_ancestor_target_paths_are_rejected(self) -> None:
+        signature = (
+            ("l_P", Fraction(3)),
+            ("m_P", Fraction(-1)),
+            ("t_P", Fraction(-2)),
+        )
+        model = build_direct_budget_model()
+        direct_path = replace_quantity(
+            model,
+            "relative_component_a",
+            dimension=GRAVITATIONAL_CONSTANT,
+            unit="m^3 kg^-1 s^-2",
+            algebraic_provenance_kind=REGISTERED_EXPRESSION,
+            registered_dependency_signature=signature,
+        )
+        direct_path = replace_quantity(
+            direct_path,
+            "relative_component_b",
+            dimension=GRAVITATIONAL_CONSTANT,
+            unit="m^3 kg^-1 s^-2",
+        )
+
+        ancestor = QuantityRecord(
+            "component_target_ancestor",
+            "u_G",
+            DIRECT_OBSERVATION,
+            GRAVITATIONAL_CONSTANT,
+            "m^3 kg^-1 s^-2",
+            REGISTERED_EXPRESSION,
+            signature,
+            DOCUMENTED,
+            "Adversarial target-derived uncertainty ancestor.",
+            value=Decimal("1e-16"),
+            source_identifier="doi:10.1234/direct-budget-ancestor",
+            edition="adversarial direct-budget ancestor, edition 1",
+            access_date="2026-09-04",
+        )
+        ancestor_path = replace(
+            model,
+            quantities=(*model.quantities, ancestor),
+            metrological_edges=(
+                *model.metrological_edges,
+                ProvenanceEdge(
+                    "relative_component_a",
+                    ancestor.identifier,
+                    "observation_derivation",
+                    "Adversarial target-derived component ancestor.",
+                ),
+            ),
+        )
+
+        for label, changed in (
+            ("component", direct_path),
+            ("ancestor", ancestor_path),
+        ):
+            with self.subTest(path=label):
+                with self.assertRaisesRegex(
+                    BridgeValidationError,
+                    "uncertainty-component ancestry reaches G",
+                ):
+                    validate_measurement_model(changed)
+
+    def test_unresolved_component_ancestry_makes_target_path_status_unresolved(
+        self,
+    ) -> None:
+        model = replace_quantity(
+            build_direct_budget_model(),
+            "relative_component_a",
+            algebraic_provenance_kind=UNRESOLVED_ALGEBRAIC_PROVENANCE,
+            registered_dependency_signature=None,
+        )
+        evaluation = evaluate_measurement_model(model)
+        self.assertEqual(evaluation.registered_target_path_status, UNRESOLVED)
+        component_audit = next(
+            audit
+            for audit in evaluation.uncertainty_component_target_path_audits
+            if audit.identifier == "relative_component_a"
+        )
+        self.assertEqual(component_audit.status, UNRESOLVED)
+
     def test_external_comparison_record_cannot_be_a_direct_component(self) -> None:
         model = build_direct_budget_model()
         uncertainty = model.uncertainty_model
@@ -902,6 +1051,43 @@ class PhysicalBridgeTests(unittest.TestCase):
                     f"{missing_label}",
                 ):
                     validate_measurement_model(changed)
+
+    def test_empirical_direct_component_ancestor_requires_source_metadata(self) -> None:
+        model = replace(
+            build_direct_budget_model(),
+            evidence_level=EMPIRICAL_RECORD,
+        )
+        ancestor = QuantityRecord(
+            "component_observation",
+            "u_obs",
+            DIRECT_OBSERVATION,
+            DIMENSIONLESS,
+            "ppm",
+            DECLARED_LOCAL_ATOM,
+            None,
+            STRUCTURAL_PLACEHOLDER,
+            "Adversarial undocumented ancestor of a direct contribution.",
+            value=Decimal("3"),
+        )
+        changed = replace(
+            model,
+            quantities=(*model.quantities, ancestor),
+            metrological_edges=(
+                *model.metrological_edges,
+                ProvenanceEdge(
+                    "relative_component_a",
+                    ancestor.identifier,
+                    "observation_derivation",
+                    "Direct contribution derived from the observation.",
+                ),
+            ),
+        )
+        with self.assertRaisesRegex(
+            BridgeValidationError,
+            "source provenance metadata for component_observation.*missing "
+            "documented provenance, source identifier, source edition, source access date",
+        ):
+            validate_measurement_model(changed)
 
     def test_direct_budget_requires_target_standard_uncertainty_and_unit(self) -> None:
         model = build_direct_budget_model()
