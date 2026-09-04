@@ -1,0 +1,135 @@
+{
+  "all_mutants_killed": true,
+  "experiment_identifier": "milestone_6b_pysr_leakage_mutations_v1",
+  "methodological_result_status": "all_killed",
+  "mutant_count": 2,
+  "nonclaims": [
+    "Killed means only that the selected behavioral test detected the selected defect.",
+    "This two-mutant family does not establish that the 6B machinery is defect-free.",
+    "Mutation results are methodological and contain no empirical evidence about gravity."
+  ],
+  "result_schema_version": 1,
+  "results": [
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "Discovery.pysr_leakage_probe": "Discovery/pysr_leakage_probe.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_pysr_leakage_probe": "tests/test_pysr_leakage_probe.py"
+        }
+      },
+      "intended_semantic_defect": "Disable the one-way valve that rejects promotion eligibility for a target-exposed candidate.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.pysr_leakage_probe",
+        "tests.test_pysr_leakage_probe.PySRLeakageProbeTests.test_all_pysr_candidates_are_target_exposed_and_never_promotable"
+      ],
+      "killing_tests": [
+        "tests.test_pysr_leakage_probe.PySRLeakageProbeTests.test_all_pysr_candidates_are_target_exposed_and_never_promotable"
+      ],
+      "mutant_identifier": "production_allow_target_exposed_promotion",
+      "mutated_path": "Discovery/pysr_leakage_probe.py",
+      "required_import_modules": [
+        "Discovery.pysr_leakage_probe"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_pysr_leakage_probe.PySRLeakageProbeTests.test_all_pysr_candidates_are_target_exposed_and_never_promotable"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "Discovery.pysr_leakage_probe": "Discovery/pysr_leakage_probe.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_pysr_leakage_mutation_guards": "tests/test_pysr_leakage_mutation_guards.py"
+        }
+      },
+      "intended_semantic_defect": "Replace independent synthetic generation-DAG target ancestry with the registered algebraic target-path result, erasing the Channel C blind spot.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.pysr_leakage_probe",
+        "tests.test_pysr_leakage_mutation_guards.PySRLeakageMutationGuardTests.test_hidden_generation_path_remains_independent_of_registered_graph"
+      ],
+      "killing_tests": [
+        "tests.test_pysr_leakage_mutation_guards.PySRLeakageMutationGuardTests.test_hidden_generation_path_remains_independent_of_registered_graph"
+      ],
+      "mutant_identifier": "production_collapse_generation_leakage_into_registered_graph",
+      "mutated_path": "Discovery/pysr_leakage_probe.py",
+      "required_import_modules": [
+        "Discovery.pysr_leakage_probe"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_pysr_leakage_mutation_guards.PySRLeakageMutationGuardTests.test_hidden_generation_path_remains_independent_of_registered_graph"
+      ]
+    }
+  ],
+  "source_commit_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+  "source_paths": [
+    "Discovery/pysr_leakage_mutations.py",
+    "Discovery/pysr_leakage_probe.py",
+    "Discovery/mutation_harness.py",
+    "Discovery/mutation_test_runner.py",
+    "tests/test_pysr_leakage_probe.py",
+    "tests/test_pysr_leakage_mutation_guards.py"
+  ]
+}

@@ -1,0 +1,1269 @@
+{
+  "anti_goodhart_rule": "A surviving mutant may be closed only by a behavioral assertion of the intended contract, never by source-text or patch detection.",
+  "calibration_results": [
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "calibration",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": "killed",
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_dimensional_search": "tests/test_dimensional_search.py"
+        }
+      },
+      "intended_semantic_defect": "Replace the nonzero rational exponent domain with zero-only powers.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.dimensional_search",
+        "tests.test_dimensional_search.DimensionalSearchTests.test_power_bound_can_include_half_integers"
+      ],
+      "killing_tests": [
+        "tests.test_dimensional_search.DimensionalSearchTests.test_power_bound_can_include_half_integers"
+      ],
+      "mutant_identifier": "calibration_known_kill_allowed_power_zero_only",
+      "mutated_path": "Discovery/dimensional_search.py",
+      "required_import_modules": [
+        "Discovery.dimensional_search"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_dimensional_search.DimensionalSearchTests.test_power_bound_can_include_half_integers"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "calibration",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "survived",
+      "cleanup_confirmed": true,
+      "expected_classification": "survived",
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_dimensional_search": "tests/test_dimensional_search.py"
+        }
+      },
+      "intended_semantic_defect": "Make the existing ascending sort direction explicit without changing behavior.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.dimensional_search",
+        "tests.test_dimensional_search.DimensionalSearchTests.test_power_bound_can_include_half_integers"
+      ],
+      "killing_tests": [],
+      "mutant_identifier": "calibration_equivalent_explicit_sort_direction",
+      "mutated_path": "Discovery/dimensional_search.py",
+      "required_import_modules": [
+        "Discovery.dimensional_search"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_dimensional_search.DimensionalSearchTests.test_power_bound_can_include_half_integers"
+      ]
+    }
+  ],
+  "calibration_rule": "Production results are meaningful only if the known-killable mutant is killed and the behaviorally equivalent mutant survives.",
+  "calibration_valid": true,
+  "classifications": [
+    "killed",
+    "survived",
+    "invalid"
+  ],
+  "experiment_identifier": "milestone_5b_core_v1",
+  "family_status": "valid",
+  "integrity": {
+    "mutation_randomness": "none",
+    "preregistration_commit_sha": "2a26ac6b8a3456a1548b09d56c9696058bc43b1a",
+    "preregistration_path": "Experiments/Falsification/milestone_5b_core_v1.preregistration.json",
+    "preregistration_sha256": "852e17885fb29fb46344d5176341a42b6c6f6690f9f1957698b859f068cab7bf",
+    "records_sha256": "af0624ba9134c5bddc3c6c8011d3307225c787b8316180f0e7431e1575372da2",
+    "records_sha256_semantics": "SHA-256 of the canonical source commit, SOURCE_PATHS Git-blob snapshot, calibration_results, and production_results; a tamper-evidence pin, not a reproduction proof.",
+    "seeds": {
+      "global_null": 528492,
+      "local_null": 528491
+    },
+    "source_commit_semantics": "Committed harness, mutant catalog, tests, and project source anchored into every disposable worktree.",
+    "source_commit_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+    "source_paths": [
+      "Discovery/mutation_harness.py",
+      "Discovery/mutation_test_runner.py",
+      "Discovery/dimensional_search.py",
+      "Discovery/dependency_analysis.py",
+      "Discovery/physical_bridge.py",
+      "Discovery/physical_bridge_schema.py",
+      "Discovery/physical_bridge_validation.py",
+      "Discovery/source_history.py",
+      "tests/test_dimensional_search.py",
+      "tests/test_dependency_analysis.py",
+      "tests/test_dependency_dimension_invariant.py",
+      "tests/test_physical_bridge.py",
+      "tests/test_physical_bridge_source_identifier_hardening.py",
+      "tests/test_mutation_harness.py",
+      "Experiments/Falsification/milestone_5b_core_v1.preregistration.json"
+    ],
+    "source_snapshot": {
+      "git_object_format": "sha1",
+      "path_blob_oids": {
+        "Discovery/dependency_analysis.py": "bea35d1b839086b76a8121375a19716d776de7b1",
+        "Discovery/dimensional_search.py": "b3f7e6b446e4488645cda1b1d8f11fa2a585bf48",
+        "Discovery/mutation_harness.py": "06a5a977afc436d8b6abf503dc764e08b17dcbe9",
+        "Discovery/mutation_test_runner.py": "5d883b53a0af99f94b6d4a818d3224aa0c06408c",
+        "Discovery/physical_bridge.py": "3b5b9f21e4bd8e7c5a1407ff6da66fc1ca9842fa",
+        "Discovery/physical_bridge_schema.py": "930eb4ff008d4766224c44469b1a1d3a907a919b",
+        "Discovery/physical_bridge_validation.py": "e03d50ab1392f8613f2347deea34444865272ef0",
+        "Discovery/source_history.py": "8e53cf1e0f5b3425c11197c81b9000b10355e89e",
+        "Experiments/Falsification/milestone_5b_core_v1.preregistration.json": "f2e19fdf1ca42ee332d6afa0d243ccf38a3edd65",
+        "tests/test_dependency_analysis.py": "c1c69b4b65482323576273f56f7e1f6f2e179caf",
+        "tests/test_dependency_dimension_invariant.py": "3394ebba8419ab7d43ccd8706b9c6a846e473e48",
+        "tests/test_dimensional_search.py": "cc0cefb866e52a115fae8490e85510b7790853c4",
+        "tests/test_mutation_harness.py": "0b091561b208a56e02d8cde3bf112529b55b3219",
+        "tests/test_physical_bridge.py": "094e399a289c8f527c8fdfddc21005a8574c7159",
+        "tests/test_physical_bridge_source_identifier_hardening.py": "19b69a7f176f2eaf13df444d4a037345a04d35c6"
+      }
+    }
+  },
+  "methodological_result_status": "valid",
+  "nonclaims": [
+    "Killed means only that the predefined tests detected this selected defect.",
+    "A killed mutant may pin a diagnostic or defense-in-depth behavior rather than an independent acceptance barrier.",
+    "Survived identifies a test blind spot, not correct mutated behavior.",
+    "Invalid is never counted as a kill.",
+    "This finite mutant set does not establish that the software is defect-free.",
+    "Mutation results are methodological, not empirical evidence about physics."
+  ],
+  "production_interpretation": "meaningful",
+  "production_results": [
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Disable the validator decision that rejects estimator ancestry reaching G.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_g_or_planck_estimator_input_is_rejected"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_g_or_planck_estimator_input_is_rejected (key='G')",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_g_or_planck_estimator_input_is_rejected (key='T_P')",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_g_or_planck_estimator_input_is_rejected (key='l_P')",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_g_or_planck_estimator_input_is_rejected (key='m_P')",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_g_or_planck_estimator_input_is_rejected (key='t_P')"
+      ],
+      "mutant_identifier": "production_disable_registered_target_rejection",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_g_or_planck_estimator_input_is_rejected"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Substitute target-independent m_e for m_P before registered dependency expansion, hiding inherited G while preserving the mass dimension.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_m_planck_has_an_explicit_registered_target_path"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_m_planck_has_an_explicit_registered_target_path"
+      ],
+      "mutant_identifier": "production_substitute_m_planck_with_atomic_mass",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_m_planck_has_an_explicit_registered_target_path"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Disable the dedicated calibration/correction reference diagnostic; the broader external-reference boundary still rejects the same models.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_reference_g_used_in_calibration_is_rejected",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_reference_g_used_in_correction_is_rejected"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_reference_g_used_in_calibration_is_rejected",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_reference_g_used_in_correction_is_rejected"
+      ],
+      "mutant_identifier": "production_disable_calibration_reference_diagnostic",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_reference_g_used_in_calibration_is_rejected",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_reference_g_used_in_correction_is_rejected"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Disable the fail-closed source-metadata requirement for populated empirical estimator ancestry.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_populated_empirical_calibration_requires_source_provenance"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_populated_empirical_calibration_requires_source_provenance"
+      ],
+      "mutant_identifier": "production_disable_empirical_source_provenance",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_populated_empirical_calibration_requires_source_provenance"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Allow a populated empirical input with source fields but without the required documented-provenance classification.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_populated_empirical_calibration_requires_documented_provenance"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_populated_empirical_calibration_requires_documented_provenance"
+      ],
+      "mutant_identifier": "production_disable_empirical_documented_provenance",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_populated_empirical_calibration_requires_documented_provenance"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Treat missing source identifier, edition, and access-date fields as present for populated empirical input metadata.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_each_empirical_source_metadata_field_is_required"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_each_empirical_source_metadata_field_is_required (field='access_date')",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_each_empirical_source_metadata_field_is_required (field='edition')",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_each_empirical_source_metadata_field_is_required (field='source_identifier')"
+      ],
+      "mutant_identifier": "production_disable_empirical_source_metadata_requirements",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_each_empirical_source_metadata_field_is_required"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Stop checking declared calibration and correction records that sit outside estimator graph ancestry.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_declared_calibration_outside_estimator_ancestry_requires_source",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_declared_correction_outside_estimator_ancestry_requires_source"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_declared_calibration_outside_estimator_ancestry_requires_source",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_declared_correction_outside_estimator_ancestry_requires_source"
+      ],
+      "mutant_identifier": "production_limit_empirical_source_gate_to_estimator_ancestry",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_declared_calibration_outside_estimator_ancestry_requires_source",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_declared_correction_outside_estimator_ancestry_requires_source"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Disable the isolation rule that keeps direct uncertainty components and their ancestors out of central-estimator ancestry.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_component_and_ancestor_cannot_enter_estimator_ancestry"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_component_and_ancestor_cannot_enter_estimator_ancestry (edge=ProvenanceEdge(child='force_estimate', parent='relative_component_a', kind='model_input', explanation='Forbidden direct contribution to the central estimator.'))",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_component_and_ancestor_cannot_enter_estimator_ancestry (edge=ProvenanceEdge(child='relative_component_a', parent='angle_observation', kind='model_input', explanation='Forbidden shared ancestor with the central estimator.'))"
+      ],
+      "mutant_identifier": "production_allow_uncertainty_component_in_estimator_ancestry",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_component_and_ancestor_cannot_enter_estimator_ancestry"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Remove direct uncertainty components from the empirical source-metadata gate while retaining the older estimator, calibration, and correction checks.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_empirical_direct_component_requires_source_metadata"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_empirical_direct_component_requires_source_metadata (missing='documented provenance')",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_empirical_direct_component_requires_source_metadata (missing='source access date')",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_empirical_direct_component_requires_source_metadata (missing='source edition')",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_empirical_direct_component_requires_source_metadata (missing='source identifier')"
+      ],
+      "mutant_identifier": "production_omit_empirical_uncertainty_component_source_metadata",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_empirical_direct_component_requires_source_metadata"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Check source metadata only on declared direct uncertainty components, not on their recursively reached provenance ancestors.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_empirical_direct_component_ancestor_requires_source_metadata"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_empirical_direct_component_ancestor_requires_source_metadata"
+      ],
+      "mutant_identifier": "production_limit_component_source_gate_to_declared_components",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_empirical_direct_component_ancestor_requires_source_metadata"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Disable registered target-path rejection for direct uncertainty components and their provenance ancestors.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_component_and_ancestor_target_paths_are_rejected"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_component_and_ancestor_target_paths_are_rejected (path='ancestor')",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_component_and_ancestor_target_paths_are_rejected (path='component')"
+      ],
+      "mutant_identifier": "production_allow_component_target_path",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_component_and_ancestor_target_paths_are_rejected"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Remove uncertainty_component from the roles forbidden as direct central-estimator terms.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_uncertainty_component_role_is_forbidden_in_legacy_estimator"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_uncertainty_component_role_is_forbidden_in_legacy_estimator"
+      ],
+      "mutant_identifier": "production_allow_uncertainty_component_role_as_estimator_term",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_uncertainty_component_role_is_forbidden_in_legacy_estimator"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Stop rejecting an undeclared uncertainty_component role that appears inside central-estimator ancestry.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_stray_uncertainty_component_role_is_rejected_in_estimator_ancestry"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_stray_uncertainty_component_role_is_rejected_in_estimator_ancestry"
+      ],
+      "mutant_identifier": "production_allow_stray_component_role_in_estimator_ancestry",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_stray_uncertainty_component_role_is_rejected_in_estimator_ancestry"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge_source_identifier_hardening": "tests/test_physical_bridge_source_identifier_hardening.py"
+        }
+      },
+      "intended_semantic_defect": "Remove the source-identifier rejection of nonspacing and enclosing combining marks that remain stable under NFC.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_schema",
+        "tests.test_physical_bridge_source_identifier_hardening.PhysicalBridgeSourceIdentifierHardeningTests.test_invisible_or_control_identifier_characters_are_rejected"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge_source_identifier_hardening.PhysicalBridgeSourceIdentifierHardeningTests.test_invisible_or_control_identifier_characters_are_rejected (value=\"'doi:10.1234/q\u0301uick'\")"
+      ],
+      "mutant_identifier": "production_allow_nfc_stable_combining_mark_in_source_identifier",
+      "mutated_path": "Discovery/physical_bridge_schema.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_schema"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge_source_identifier_hardening.PhysicalBridgeSourceIdentifierHardeningTests.test_invisible_or_control_identifier_characters_are_rejected"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge": "tests/test_physical_bridge.py"
+        }
+      },
+      "intended_semantic_defect": "Suppress the direct-budget evaluation gap for a missing target standard uncertainty, allowing an otherwise populated budget to report satisfied.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_validation",
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_budget_requires_target_standard_uncertainty_and_unit"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_budget_requires_target_standard_uncertainty_and_unit"
+      ],
+      "mutant_identifier": "production_treat_missing_target_uncertainty_as_satisfied",
+      "mutated_path": "Discovery/physical_bridge_validation.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_validation"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge.PhysicalBridgeTests.test_direct_budget_requires_target_standard_uncertainty_and_unit"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.physical_bridge": "Discovery/physical_bridge.py",
+          "Discovery.physical_bridge_schema": "Discovery/physical_bridge_schema.py",
+          "Discovery.physical_bridge_validation": "Discovery/physical_bridge_validation.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_physical_bridge_source_identifier_hardening": "tests/test_physical_bridge_source_identifier_hardening.py"
+        }
+      },
+      "intended_semantic_defect": "Normalize a non-NFC source identifier for validation instead of rejecting the declared spelling without rewriting it.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.physical_bridge_schema",
+        "tests.test_physical_bridge_source_identifier_hardening.PhysicalBridgeSourceIdentifierHardeningTests.test_non_nfc_identifier_is_rejected_instead_of_rewritten"
+      ],
+      "killing_tests": [
+        "tests.test_physical_bridge_source_identifier_hardening.PhysicalBridgeSourceIdentifierHardeningTests.test_non_nfc_identifier_is_rejected_instead_of_rewritten"
+      ],
+      "mutant_identifier": "production_silently_normalize_source_identifier",
+      "mutated_path": "Discovery/physical_bridge_schema.py",
+      "required_import_modules": [
+        "Discovery.physical_bridge_schema"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_physical_bridge_source_identifier_hardening.PhysicalBridgeSourceIdentifierHardeningTests.test_non_nfc_identifier_is_rejected_instead_of_rewritten"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_dependency_dimension_invariant": "tests/test_dependency_dimension_invariant.py"
+        }
+      },
+      "intended_semantic_defect": "Make post-validation registered target-dependency classification depend on catalog dimension metadata instead of exact definition expansion alone.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.dependency_analysis",
+        "tests.test_dependency_dimension_invariant.DependencyDimensionInvariantTests.test_dependency_classification_ignores_dimension_metadata_after_validation"
+      ],
+      "killing_tests": [
+        "tests.test_dependency_dimension_invariant.DependencyDimensionInvariantTests.test_dependency_classification_ignores_dimension_metadata_after_validation"
+      ],
+      "mutant_identifier": "production_make_dependency_classification_dimension_sensitive",
+      "mutated_path": "Discovery/dependency_analysis.py",
+      "required_import_modules": [
+        "Discovery.dependency_analysis"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_dependency_dimension_invariant.DependencyDimensionInvariantTests.test_dependency_classification_ignores_dimension_metadata_after_validation"
+      ]
+    },
+    {
+      "canonical_anchor_sha": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_after": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_before": "453488c16a572e19c686464b01f85c2426b3a1b3",
+      "canonical_head_unchanged": true,
+      "canonical_status_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_status_unchanged": true,
+      "category": "production",
+      "checkout_metadata": {
+        "mode": "git_worktree_detached",
+        "path_recording": "ephemeral path intentionally omitted"
+      },
+      "classification": "killed",
+      "cleanup_confirmed": true,
+      "expected_classification": null,
+      "import_path_integrity": {
+        "validated": true,
+        "validated_imports": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.constants": "Discovery/constants.py",
+          "Discovery.dependency_analysis": "Discovery/dependency_analysis.py",
+          "Discovery.dependency_definitions": "Discovery/dependency_definitions.py",
+          "Discovery.dimensional_search": "Discovery/dimensional_search.py",
+          "Discovery.dimensions": "Discovery/dimensions.py",
+          "Discovery.monomial_constraints": "Discovery/monomial_constraints.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.planck_identities": "Discovery/planck_identities.py",
+          "tests.test_dependency_analysis": "tests/test_dependency_analysis.py"
+        }
+      },
+      "intended_semantic_defect": "Invert the dependency-artifact byte comparison used by --check.",
+      "invalid_reason": null,
+      "isolated_test_process_command": [
+        "<PYTHON_EXECUTABLE>",
+        "-I",
+        "-c",
+        "import sys; sys.path.insert(0, '<DISPOSABLE_WORKTREE>'); from Discovery.mutation_test_runner import main; main()",
+        "--mutation-root",
+        "<DISPOSABLE_WORKTREE>",
+        "--required-module",
+        "Discovery.dependency_analysis",
+        "tests.test_dependency_analysis.DependencyAnalysisTests.test_check_cli_accepts_current_and_rejects_stale_artifact"
+      ],
+      "killing_tests": [
+        "tests.test_dependency_analysis.DependencyAnalysisTests.test_check_cli_accepts_current_and_rejects_stale_artifact"
+      ],
+      "mutant_identifier": "production_invert_dependency_artifact_freshness",
+      "mutated_path": "Discovery/dependency_analysis.py",
+      "required_import_modules": [
+        "Discovery.dependency_analysis"
+      ],
+      "runner_diagnostic": null,
+      "test_command": [
+        "tests.test_dependency_analysis.DependencyAnalysisTests.test_check_cli_accepts_current_and_rejects_stale_artifact"
+      ]
+    }
+  ],
+  "result_schema_version": 3
+}
