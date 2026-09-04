@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "audit_id": "hust_2018_aaf_depth_2b_feasibility_v1",
+  "decision": "GO",
+  "scope": "individual_AAF_depth_2b_feasibility_only",
+  "base_commit": "3c4c273871958127e6f3253e7e9495a673993ffe",
+  "preregistration_commit": "d2918e1aaec07b2f9f5728f461441e61d896effe",
+  "sources": {
+    "main_article": {
+      "citation": "Q. Li et al., Measurements of the gravitational constant using two independent methods, Nature 560, 582-588 (2018)",
+      "doi": "10.1038/s41586-018-0431-5",
+      "table_locator": "Table 1, Nature p. 584",
+      "public_mirror_url": "https://mctoon.net/wp-content/uploads/2019/07/measurements-of-the-gravitational-constant-using-two-independent-methods.pdf",
+      "mirror_provenance": "third-party-hosted publisher-formatted copy; bibliographic identity and Table 1 content checked against the official Nature record",
+      "nature_visual_confirmation": {
+        "status": "confirmed_by_project_owner_from_Nature_accessed_copy",
+        "artifact_kind": "user-supplied screenshot of Table 1",
+        "screenshot_sha256": "3f47836277c451a0cb0aa466c5bb12f0f813d7a8072856951cf336c04c8d0294",
+        "screenshot_byte_length": 127165,
+        "repository_storage": "not_stored_in_repository; hash identifies the conversation-supplied screenshot"
+      }
+    },
+    "supplementary_information": {
+      "source_id": "supplementary_information",
+      "sha256": "5b61d5c831be98c46e47fcc32f1ade0a680b4af6354d2bc34859d94b22279ffb",
+      "combination_rule_locator": "Supplementary Information Section 6, pp. 12-14",
+      "individual_rule": "individual standard uncertainty is the root-sum-square of the listed uncertainty items, with the statistical angular-acceleration term included as an independent term",
+      "cross_run_rule": "for AAF-I/II/III, the statistical angular-acceleration error is independent between experiments; the same non-statistical error item is treated as 100% correlated because the main apparatus is shared"
+    }
+  },
+  "unit": "ppm relative standard uncertainty in G",
+  "components": [
+    {"component_id": "pendulum_dimensions", "AAF-I": "0.16", "AAF-II": "0.16", "AAF-III": "0.16"},
+    {"component_id": "pendulum_attitude", "AAF-I": "0.06", "AAF-II": "0.06", "AAF-III": "0.03"},
+    {"component_id": "pendulum_density_inhomogeneity", "AAF-I": "0.46", "AAF-II": "0.46", "AAF-III": "0.46"},
+    {"component_id": "coating_layer", "AAF-I": "0.34", "AAF-II": "0.34", "AAF-III": "0.34"},
+    {"component_id": "clamp_and_ferrule", "AAF-I": "0.70", "AAF-II": "1.05", "AAF-III": "0.48"},
+    {"component_id": "other_pendulum_effects", "AAF-I": "0.29", "AAF-II": "0.29", "AAF-III": "0.29"},
+    {"component_id": "source_mass_masses", "AAF-I": "0.32", "AAF-II": "0.31", "AAF-III": "0.31"},
+    {"component_id": "horizontal_source_mass_distance", "AAF-I": "8.98", "AAF-II": "8.98", "AAF-III": "8.98"},
+    {"component_id": "vertical_source_mass_distance", "AAF-I": "5.79", "AAF-II": "5.79", "AAF-III": "5.79"},
+    {"component_id": "source_mass_positions_alignment", "AAF-I": "0.57", "AAF-II": "0.62", "AAF-III": "0.35"},
+    {"component_id": "fibre_anelasticity", "AAF-I": "0.01", "AAF-II": "0.01", "AAF-III": "0.01"},
+    {"component_id": "thermal_effect", "AAF-I": "0.91", "AAF-II": "0.91", "AAF-III": "0.91"},
+    {"component_id": "time_base", "AAF-I": "0.01", "AAF-II": "0.01", "AAF-III": "0.01"},
+    {"component_id": "rotating_gravity_gradient", "AAF-I": "1.86", "AAF-II": "1.35", "AAF-III": "1.72"},
+    {"component_id": "shelf_deformation", "AAF-I": "1.51", "AAF-II": "1.51", "AAF-III": "1.51"},
+    {"component_id": "magnetic_damper", "AAF-I": "1.95", "AAF-II": "1.95", "AAF-III": "0.08"},
+    {"component_id": "air_density", "AAF-I": "1.00", "AAF-II": "1.51", "AAF-III": "1.13"},
+    {"component_id": "magnetic_field", "AAF-I": "3.98", "AAF-II": "3.98", "AAF-III": "0.90"},
+    {"component_id": "angle_encoder", "AAF-I": "0.72", "AAF-II": "0.72", "AAF-III": "0.72"},
+    {"component_id": "residual_twist_angle", "AAF-I": "0.03", "AAF-II": "0.61", "AAF-III": "0.45"},
+    {"component_id": "statistical_angular_acceleration", "AAF-I": "3.44", "AAF-II": "2.60", "AAF-III": "1.34"}
+  ],
+  "not_applicable_AAF_rows": [
+    "fibre_nonlinearity",
+    "gravitational_nonlinearity",
+    "electrostatic_field"
+  ],
+  "reported_individual_totals_ppm": {
+    "AAF-I": "12.45",
+    "AAF-II": "12.27",
+    "AAF-III": "11.21"
+  },
+  "reconstructed_from_rounded_table_entries": {
+    "AAF-I": {
+      "sum_of_squares": "155.0861",
+      "rss_ppm": "12.453356977136727047866320298865297714729175627210"
+    },
+    "AAF-II": {
+      "sum_of_squares": "150.6924",
+      "rss_ppm": "12.275683280371809918505072305209443766741467830010"
+    },
+    "AAF-III": {
+      "sum_of_squares": "125.7279",
+      "rss_ppm": "11.212845312408443280940946155017027106000868654421"
+    }
+  },
+  "feasibility_requirements": {
+    "complete_component_inventory": "SATISFIED",
+    "component_magnitudes_and_units": "SATISFIED",
+    "component_to_G_mapping": "SATISFIED_AS_DIRECT_RELATIVE_CONTRIBUTIONS",
+    "combination_rule": "SATISFIED",
+    "within_result_covariance_needed": "NONE_BEYOND_LISTED_RSS_MODEL_FOR_INDIVIDUAL_RESULTS",
+    "statistical_vs_shared_provenance": "SATISFIED",
+    "published_individual_uncertainty_reconstructible_without_target_input": "SATISFIED"
+  },
+  "authorization_boundary": {
+    "depth_2b_implementation": "feasible_but_not_implemented_by_this_audit",
+    "combined_AAF_estimator": "NOT_AUTHORIZED",
+    "raw_or_run_level_replication": "NOT_ESTABLISHED",
+    "experiment_validity": "NOT_ESTABLISHED"
+  },
+  "nonclaims": [
+    "The reported final uncertainty is used only as a terminal comparison, not as an upstream input or tuning constraint.",
+    "The Table 1 contributions are already expressed as relative uncertainty contributions to G; this audit does not rederive every contribution from raw apparatus metrology.",
+    "A public third-party copy plus project-owner visual confirmation of the Nature-served Table 1 establishes content identity for this feasibility audit but does not claim byte identity with Nature's PDF.",
+    "No combined AAF value or combined uncertainty is authorized here.",
+    "No existing depth-2a MeasurementModel is changed by this feasibility audit."
+  ]
+}
