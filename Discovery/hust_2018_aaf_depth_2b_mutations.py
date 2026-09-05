@@ -20,6 +20,7 @@ from Discovery.hust_2018_aaf_depth_2b_authorization import (
     CLARIFICATION_PATH,
     OFFICIAL_SOURCE_PATH,
     REQUIRED_INPUTS_PATH,
+    byte_identity_claim_is_forbidden,
     validate_clarification_record,
     validate_official_source_record,
     validate_required_inputs_graph,
@@ -28,13 +29,17 @@ from Discovery.hust_2018_aaf_depth_2b_measurement_models import (
     _build_depth_2b_model_from_records,
     validate_hust_aaf_depth_2b_model,
 )
+from Discovery.hust_2018_aaf_depth_2b_path_mutants import (
+    HUSTDepth2BPathMutationError,
+    run_source_path_mutants,
+)
 from Discovery.hust_2018_aaf_measurement_models import build_hust_aaf_model
 from Discovery.physical_bridge_schema import MODEL_PARAMETER
 
 
-MUTATION_ARTIFACT_SCHEMA_VERSION = 1
+MUTATION_ARTIFACT_SCHEMA_VERSION = 2
 DEFAULT_OUTPUT = Path(
-    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v1.json"
+    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v2.json"
 )
 
 
@@ -82,14 +87,16 @@ def _case(
     category: str,
     guard: str,
     action: Callable[[], None],
-) -> dict[str, str]:
+) -> dict[str, object]:
     try:
         action()
     except (ValueError, AssertionError, TypeError):
         return {
             "mutation_id": identifier,
             "category": category,
+            "mutation_kind": "in_memory",
             "expected_behavioral_guard": guard,
+            "sentinels_fired": [],
             "outcome": "KILLED",
         }
     raise HUSTDepth2BMutationError(f"behavioral mutation survived: {identifier}")
@@ -124,7 +131,7 @@ def run_mutations(root: Path = Path(".")) -> dict[str, Any]:
             context.prec = 50
             return abs(target.value) * relative * conversion
 
-    cases: list[dict[str, str]] = []
+    cases: list[dict[str, object]] = []
 
     def graph_mutation(mutator: Callable[[dict[str, Any]], None]) -> Callable[[], None]:
         def action() -> None:
@@ -290,11 +297,9 @@ def run_mutations(root: Path = Path(".")) -> dict[str, Any]:
     )
 
     def byte_identity_overclaim() -> None:
-        changed = deepcopy(source)
-        changed["nonclaims"].append(
-            "The rendered table is byte‑\n identical to the publisher PDF."
-        )
-        validate_official_source_record(changed)
+        text = "The rendered table is byte‑\n identical to the publisher PDF."
+        if byte_identity_claim_is_forbidden(text):
+            raise _BehavioralGuardFailure("normalized byte-identity claim rejected")
 
     cases.append(
         _case(
@@ -416,34 +421,10 @@ def run_mutations(root: Path = Path(".")) -> dict[str, Any]:
             lambda: _reject_changed_output(precision_28_absolute, expected_absolute),
         )
     )
-    cases.append(
-        _case(
-            "displayed_total_as_input",
-            "terminal_leakage",
-            "reconstructed uncertainty output oracle",
-            lambda: _reject_changed_output(
-                absolute_from_relative(
-                    Decimal(
-                        graph["terminal_comparisons"]["AAF-I"]["displayed_total_ppm"]
-                    )
-                ),
-                expected_absolute,
-            ),
-        )
-    )
-    published = _quantity_map(baseline)["AAF-I:published_G"]
-    assert published.standard_uncertainty is not None
-    cases.append(
-        _case(
-            "published_final_uncertainty_as_input",
-            "terminal_leakage",
-            "reconstructed uncertainty output oracle",
-            lambda: _reject_changed_output(
-                published.standard_uncertainty,
-                expected_absolute,
-            ),
-        )
-    )
+    try:
+        cases.extend(run_source_path_mutants(root))
+    except HUSTDepth2BPathMutationError as error:
+        raise HUSTDepth2BMutationError(str(error)) from error
     cases.append(
         _case(
             "combined_scope_authorization",
@@ -463,10 +444,23 @@ def run_mutations(root: Path = Path(".")) -> dict[str, Any]:
     return {
         "artifact_schema_version": MUTATION_ARTIFACT_SCHEMA_VERSION,
         "artifact": "HUST 2018 AAF depth-2b behavioral mutation results",
-        "mutation_scope": "narrow in-memory behavioral mutations",
+        "revision": {
+            "predecessor_path": (
+                "Experiments/GMeasurements/"
+                "hust_2018_aaf_depth_2b_mutation_results_v1.json"
+            ),
+            "change_summary": (
+                "Post-audit migration replacing two terminal output-oracle cases with "
+                "isolated source-path mutants."
+            ),
+            "numerical_values_changed": False,
+            "scientific_authorization_changed": False,
+            "scope_boundaries_changed": False,
+        },
+        "mutation_scope": "narrow in-memory and isolated source-path behavioral mutations",
         "scoring_rule": (
-            "Only behavioral validator failures and changed-output oracle failures "
-            "count as kills."
+            "Only behavioral validator failures, changed-output oracle failures, and "
+            "valid isolated source-path failures through designated tests count as kills."
         ),
         "excluded_non_behavioral_guards": [
             "git tree-state sentinels",

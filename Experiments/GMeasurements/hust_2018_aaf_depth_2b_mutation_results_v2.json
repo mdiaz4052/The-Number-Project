@@ -1,0 +1,231 @@
+{
+  "artifact": "HUST 2018 AAF depth-2b behavioral mutation results",
+  "artifact_schema_version": 2,
+  "cases": [
+    {
+      "category": "component_inventory",
+      "expected_behavioral_guard": "exact ordered component second key",
+      "mutation_id": "missing_component",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "component_inventory",
+      "expected_behavioral_guard": "exact ordered component second key",
+      "mutation_id": "duplicate_component",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "component_inventory",
+      "expected_behavioral_guard": "exact ordered component second key",
+      "mutation_id": "extra_component",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "component_inventory",
+      "expected_behavioral_guard": "exact ordered component second key",
+      "mutation_id": "renamed_component",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "component_inventory",
+      "expected_behavioral_guard": "exact ordered component second key",
+      "mutation_id": "reordered_components",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "component_semantics",
+      "expected_behavioral_guard": "component unit validator",
+      "mutation_id": "wrong_component_unit",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "component_semantics",
+      "expected_behavioral_guard": "official source binding",
+      "mutation_id": "wrong_component_source",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "component_semantics",
+      "expected_behavioral_guard": "component cross-column second key",
+      "mutation_id": "cross_column_component",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "scope_isolation",
+      "expected_behavioral_guard": "combined authorization must remain false",
+      "mutation_id": "combined_authorization_flag",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "source_authorization",
+      "expected_behavioral_guard": "official Nature capture second key",
+      "mutation_id": "official_source_hash_bypass",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "source_authorization",
+      "expected_behavioral_guard": "official Table 1 locator second key",
+      "mutation_id": "falsified_table_locator",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "strict_schema",
+      "expected_behavioral_guard": "unknown clarification key rejection",
+      "mutation_id": "unknown_target_derived_note",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "source_authorization",
+      "expected_behavioral_guard": "normalized byte-identity overclaim rejection",
+      "mutation_id": "normalized_byte_identity_overclaim",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "component_semantics",
+      "expected_behavioral_guard": "apparatus-specific component role validator",
+      "mutation_id": "wrong_component_role",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "scope_isolation",
+      "expected_behavioral_guard": "individual-scope ancestry validator",
+      "mutation_id": "cross_scope_component_ancestry",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "correlation_semantics",
+      "expected_behavioral_guard": "qualified zero-correlation policy",
+      "mutation_id": "physical_independence_overclaim",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "uncertainty_arithmetic",
+      "expected_behavioral_guard": "precision-50 absolute uncertainty oracle",
+      "mutation_id": "sum_instead_of_rss",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "uncertainty_arithmetic",
+      "expected_behavioral_guard": "precision-50 absolute uncertainty oracle",
+      "mutation_id": "missing_component_square",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "uncertainty_arithmetic",
+      "expected_behavioral_guard": "precision-50 absolute uncertainty oracle",
+      "mutation_id": "missing_square_root",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "uncertainty_arithmetic",
+      "expected_behavioral_guard": "precision-50 absolute uncertainty oracle",
+      "mutation_id": "incorrect_ppm_conversion",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "uncertainty_arithmetic",
+      "expected_behavioral_guard": "serialized precision-50 output oracle",
+      "mutation_id": "default_decimal_precision_28",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "canonical_builder_unchanged": true,
+      "canonical_worktree_unchanged": true,
+      "category": "terminal_leakage",
+      "cleanup_confirmed": true,
+      "designated_test_id": "tests.test_hust_2018_aaf_depth_2b_measurement_models.HUST2018AAFDepth2BMeasurementModelTests.test_displayed_total_is_not_an_uncertainty_input",
+      "intended_behavioral_guard": "target uncertainty",
+      "mutant_applied": true,
+      "mutant_importable": true,
+      "mutation_id": "displayed_total_as_input",
+      "mutation_kind": "source_path",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "canonical_builder_unchanged": true,
+      "canonical_worktree_unchanged": true,
+      "category": "terminal_leakage",
+      "cleanup_confirmed": true,
+      "designated_test_id": "tests.test_hust_2018_aaf_depth_2b_measurement_models.HUST2018AAFDepth2BMeasurementModelTests.test_published_final_uncertainty_is_not_an_uncertainty_input",
+      "intended_behavioral_guard": "target uncertainty",
+      "mutant_applied": true,
+      "mutant_importable": true,
+      "mutation_id": "published_final_uncertainty_as_input",
+      "mutation_kind": "source_path",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    },
+    {
+      "category": "scope_isolation",
+      "expected_behavioral_guard": "individual-scope constructor boundary",
+      "mutation_id": "combined_scope_authorization",
+      "mutation_kind": "in_memory",
+      "outcome": "KILLED",
+      "sentinels_fired": []
+    }
+  ],
+  "decision": "PASS",
+  "excluded_non_behavioral_guards": [
+    "git tree-state sentinels",
+    "artifact source-state --check comparisons",
+    "historical byte-preservation sentinels"
+  ],
+  "mutation_scope": "narrow in-memory and isolated source-path behavioral mutations",
+  "revision": {
+    "change_summary": "Post-audit migration replacing two terminal output-oracle cases with isolated source-path mutants.",
+    "numerical_values_changed": false,
+    "predecessor_path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v1.json",
+    "scientific_authorization_changed": false,
+    "scope_boundaries_changed": false
+  },
+  "score": {
+    "killed": 24,
+    "ratio_decimal": "1",
+    "survived": 0,
+    "total": 24
+  },
+  "scoring_rule": "Only behavioral validator failures, changed-output oracle failures, and valid isolated source-path failures through designated tests count as kills."
+}

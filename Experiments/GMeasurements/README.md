@@ -204,13 +204,14 @@ creates three new uncertainty-qualified records, one each for `AAF-I`, `AAF-II`,
 
 The preregistered production source gate is satisfied by Nature's public dedicated Table 1
 page. The repository stores only metadata and SHA-256 for the browser-rendered first-table
-HTML serialization; it does not redistribute publisher bytes. The record expressly does
-not claim that this serialization is byte-identical to a PDF or raw HTTP response, and
-notes that another valid publisher delivery path can have different bytes. The historical
-third-party mirror and conversation screenshot are recorded as history, not production
-substitutes.
+HTML serialization; it does not redistribute publisher bytes. The digest is an
+official-source attestation and cannot be reproduced solely from repository contents. The
+record expressly does not claim that this serialization is byte-identical to a PDF or raw
+HTTP response, and notes that another valid publisher delivery path can have different
+bytes. The historical third-party mirror and conversation screenshot are recorded as
+history, not production substitutes.
 
-The new artifacts are:
+The current post-audit artifacts are:
 
 - [`hust_2018_aaf_depth_2b_official_source_v1.json`](hust_2018_aaf_depth_2b_official_source_v1.json):
   the strict official Nature Table 1 URL, locator, capture representation, byte length,
@@ -218,17 +219,24 @@ The new artifacts are:
 - [`hust_2018_aaf_depth_2b_clarification_v1.json`](hust_2018_aaf_depth_2b_clarification_v1.json):
   the direct-versus-derivable evidence split, candid transcription chronology, qualified
   individual RSS correlation representation, and unchanged authorization boundaries;
-- [`hust_2018_aaf_required_inputs_depth_2b_v1.json`](hust_2018_aaf_required_inputs_depth_2b_v1.json):
-  the exact ordered 21-by-3 production transcription and per-scope depth-2b graph;
-- [`hust_2018_aaf_depth_2b_authorization_v1.json`](hust_2018_aaf_depth_2b_authorization_v1.json):
-  the deterministic source/derivation authorization, recomputed rounding-envelope
-  diagnostics, and byte hashes of every preserved historical artifact;
-- [`hust_2018_aaf_depth_2b_measurement_models_v1.json`](hust_2018_aaf_depth_2b_measurement_models_v1.json):
+- [`hust_2018_aaf_required_inputs_depth_2b_v2.json`](hust_2018_aaf_required_inputs_depth_2b_v2.json):
+  the exact ordered 21-by-3 production transcription with exact `printed_row_label`
+  strings and unchanged per-scope inputs;
+- [`hust_2018_aaf_depth_2b_authorization_v2.json`](hust_2018_aaf_depth_2b_authorization_v2.json):
+  the deterministic source/derivation authorization, both verified history anchors,
+  recomputed diagnostics, frozen-v1 hashes, and the explicit attestation limitation;
+- [`hust_2018_aaf_depth_2b_measurement_models_v2.json`](hust_2018_aaf_depth_2b_measurement_models_v2.json):
   the three individual empirical records with 21 direct ppm components, precision-50 RSS,
   and absolute standard uncertainty derived from each unchanged `G_hat`; and
-- [`hust_2018_aaf_depth_2b_mutation_results_v1.json`](hust_2018_aaf_depth_2b_mutation_results_v1.json):
-  the killed narrow behavioral mutations. Tree-state, freshness, and historical-byte
-  sentinels remain guards but are excluded from mutation scoring.
+- [`hust_2018_aaf_depth_2b_mutation_results_v2.json`](hust_2018_aaf_depth_2b_mutation_results_v2.json):
+  the 24/24 killed behavioral mutations, including two isolated source-path tests of the
+  terminal-input boundary. Tree-state, freshness, and historical-byte sentinels remain
+  guards but are excluded from mutation scoring.
+
+The corresponding required-input, authorization, measurement-model, and mutation-result
+`v1` files remain the byte-frozen Milestone 7 snapshot. The official-source and
+clarification records remain pinned at `v1`; they were not copied or rewritten for this
+metadata-only migration.
 
 The component values are `PUBLIC_DIRECT`. The per-column RSS rule, within-result qualified
 zero-covariance representation, and complete individual uncertainty models are
@@ -236,10 +244,32 @@ zero-covariance representation, and complete individual uncertainty models are
 budget; it is not a claim that every physical systematic source is independent. Cross-run
 covariance remains reserved for a future separately preregistered combined estimator.
 
-Each valid record reports satisfied dimensional, algebraic, target-path, metrological,
-uncertainty, and empirical-population axes. Replication remains `incomplete`. These are
-published-data reconstructions, not new measurements, apparatus validation, raw/run-level
-replication, Lean certification, or novel physical predictions.
+Each valid record reports satisfied dimensional, algebraic, metrological, uncertainty, and
+empirical-population axes; the target-path axis reports `no_registered_target_path`, and
+replication remains `incomplete`. These are published-data reconstructions, not new
+measurements, apparatus validation, raw/run-level replication, Lean certification, or
+novel physical predictions. `no_registered_target_path` is not experimental independence
+and is not a satisfied target-path gate.
+
+### Source-pin policy
+
+For future paywalled or non-redistributable empirical sources:
+
+1. Prefer official bytes when they can be lawfully stored and reproduced stably.
+2. When official bytes cannot be stored or reproduced stably, an official-source
+   attestation must record a locator, access date, capture representation, digest,
+   structural validation, and explicit delivery and reproducibility caveats.
+3. Pin a lawful, stable author manuscript, institutional copy, publisher supplement, or
+   comparable reproducible source as secondary corroboration when one is available.
+4. A secondary source never impersonates or replaces the official source unless a
+   preregistration explicitly authorizes that role.
+5. Accessibility alone does not make a third-party mirror an official-source substitute.
+6. If a preregistered evidence precondition cannot be met, return `NO_GO`; do not guess,
+   back-solve, or silently relax the precondition.
+
+For this reconstruction, no new Table 1 secondary source is authorized. The existing
+supplement retains its existing hash and role. The official DOM hash remains an attestation
+that a third party cannot reproduce solely from repository contents.
 
 ## Empirical source-metadata boundary
 
