@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "record_id": "hust_2018_aaf_depth_2b_official_source_v1",
+  "decision": "SATISFIED",
+  "source": {
+    "citation": "Q. Li et al., Measurements of the gravitational constant using two independent methods, Nature 560, 582-588 (2018)",
+    "doi": "10.1038/s41586-018-0431-5",
+    "canonical_article_url": "https://www.nature.com/articles/s41586-018-0431-5",
+    "canonical_table_url": "https://www.nature.com/articles/s41586-018-0431-5/tables/1",
+    "historical_public_mirror_url": "https://mctoon.net/wp-content/uploads/2019/07/measurements-of-the-gravitational-constant-using-two-independent-methods.pdf",
+    "publisher_host": "www.nature.com",
+    "table_locator": "Table 1, Nature 560, p. 584; dedicated Nature Table 1 page"
+  },
+  "capture": {
+    "access_date": "2026-09-05",
+    "response_content_type": "text/html",
+    "character_encoding": "UTF-8",
+    "capture_representation": "browser-rendered first <table> outerHTML encoded as UTF-8",
+    "byte_length": 10305,
+    "sha256": "21dfa4fc6631c835d1d1b275fdf1d7c77b7447d7880b309bcb4cd1701401c0cf",
+    "pdf_magic_validation": "not_applicable_html",
+    "repository_storage": "hash_only; publisher-rendered HTML bytes are not stored",
+    "delivery_caveat": "The hash covers the browser-rendered table serialization, not the raw HTTP response body. Equivalent publisher delivery or rendering paths may produce different bytes."
+  },
+  "validation": {
+    "page_title": "Table 1 Contributions of various experimental parameters to the main error budget of the measurements, expressed in parts per million | Nature",
+    "first_table_row_count": 29,
+    "expected_headers": [
+      "Parameter",
+      "TOS",
+      "TOS",
+      "TOS",
+      "TOS",
+      "AAF-I",
+      "AAF-II",
+      "AAF-III"
+    ],
+    "official_nature_delivery": true,
+    "table_1_present": true
+  },
+  "nonclaims": [
+    "This record does not claim byte identity with a Nature PDF or raw HTTP response.",
+    "The captured publisher serialization is not redistributed by the repository.",
+    "A source hash and locator do not independently validate the apparatus or the completeness of the published uncertainty budget."
+  ]
+}

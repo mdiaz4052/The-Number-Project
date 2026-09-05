@@ -1,0 +1,20 @@
+{
+  "event": "pull_request",
+  "github_pr_number": 34,
+  "jobs": {
+    "Lean build and proof audit": "success",
+    "Python tests and bounded search": "success"
+  },
+  "observation_basis": "GitHub workflow query restricted to pull-request-triggered runs for the exact preregistration commit",
+  "observed_at_utc": "2026-09-05T02:09:03Z",
+  "preregistration_commit_sha": "c153b1a2079a5112f28e43263fb7986f393c19ca",
+  "preregistration_path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_model_preregistration_v1.md",
+  "preregistration_sha256": "05913514c25be9bf722454f6369261f529b7bd19c97d1ee81cf054a9bc9bb49f",
+  "schema_version": 1,
+  "workflow_conclusion": "success",
+  "workflow_id": 345072294,
+  "workflow_name": "Verify",
+  "workflow_run_id": 33898036414,
+  "workflow_run_number": 173,
+  "workflow_status": "completed"
+}

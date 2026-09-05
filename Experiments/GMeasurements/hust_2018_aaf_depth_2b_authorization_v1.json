@@ -1,0 +1,139 @@
+{
+  "artifact": "HUST 2018 AAF individual depth-2b authorization",
+  "artifact_schema_version": 1,
+  "authorization_boundaries": {
+    "apparatus_validity_established": false,
+    "combined_aaf_reconstruction_authorized": false,
+    "individual_scopes_only": [
+      "AAF-I",
+      "AAF-II",
+      "AAF-III"
+    ],
+    "lean_apparatus_theorem_registered": false,
+    "raw_or_run_level_replication_established": false
+  },
+  "baseline_commit": "715c189818dea258f3c6d447d7854226c1f2a575",
+  "decision": "GO",
+  "derivation_classification": {
+    "clarification_record_id": "hust_2018_aaf_depth_2b_clarification_v1",
+    "complete_uncertainty_models": "PUBLIC_DERIVABLE",
+    "component_table": "PUBLIC_DIRECT",
+    "individual_rss_rule": "PUBLIC_DERIVABLE",
+    "within_result_correlation_policy": "PUBLIC_DERIVABLE"
+  },
+  "historical_artifact_preservation": [
+    {
+      "byte_length": 6268,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_feasibility_v1.json",
+      "sha256": "e2969a0223641d8a13d2199e3ea34879a4ed437a8f23c09e510cec327b7a72d8"
+    },
+    {
+      "byte_length": 71092,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_measurement_models_v1.json",
+      "sha256": "6da4917504be9b3db944c8be8b4e86ad2643ab383f68e83d2cfb920680cd02bb"
+    },
+    {
+      "byte_length": 13213,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_v1.json",
+      "sha256": "8328bec85e5356d833d7f36b9e16833edc0d3c415bdd1eba59c7a01790c7f37a"
+    },
+    {
+      "byte_length": 5088,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.manifest.json",
+      "sha256": "867bff124fbd6b46a1ae1710aeaa13fb19698455c5fbaa8971bb3c08f10b162a"
+    }
+  ],
+  "input_records": [
+    {
+      "byte_length": 2183,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_official_source_v1.json",
+      "sha256": "de73536119564f28b61f330eea5ce8841fd5e2ba21f52dc3ce6a7f44b620476d"
+    },
+    {
+      "byte_length": 3288,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_clarification_v1.json",
+      "sha256": "7b193a70fa1ccbf3097dba0f9316fe446e5b8f8c4073f440ea7e25bba18276b4"
+    },
+    {
+      "byte_length": 7412,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v1.json",
+      "sha256": "624d84db3ef855edc9f126a8f5f974b2aa799600e94d2fb39f1d048ffa7afe5b"
+    }
+  ],
+  "nonclaims": [
+    "Authorization reconstructs published individual uncertainty budgets; it does not validate the apparatus.",
+    "The zero-covariance representation is qualified and does not establish physical independence of every systematic source.",
+    "The displayed totals, published final uncertainties, and combined AAF result are terminal only."
+  ],
+  "official_source_precondition": {
+    "canonical_table_url": "https://www.nature.com/articles/s41586-018-0431-5/tables/1",
+    "capture_representation": "browser-rendered first <table> outerHTML encoded as UTF-8",
+    "capture_sha256": "21dfa4fc6631c835d1d1b275fdf1d7c77b7447d7880b309bcb4cd1701401c0cf",
+    "official_nature_delivery": true,
+    "publisher_bytes_committed": false,
+    "status": "SATISFIED"
+  },
+  "preregistration": {
+    "byte_length": 10981,
+    "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_model_preregistration_v1.md",
+    "sha256": "05913514c25be9bf722454f6369261f529b7bd19c97d1ee81cf054a9bc9bb49f"
+  },
+  "remote_anchor": {
+    "byte_length": 843,
+    "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_model_preregistration_v1.anchor.json",
+    "sha256": "54556b9bfc9cf855c100c6049285612baaa8885eb4e0ba7bc455a6cc9f8d83b9"
+  },
+  "scopes": [
+    {
+      "complete_uncertainty_model_authorization": "PUBLIC_DERIVABLE",
+      "component_count": 21,
+      "diagnostics": {
+        "dominant_component_1": "horizontal_source_mass_distance",
+        "dominant_component_2": "vertical_source_mass_distance",
+        "dominant_pair_rho_disclosed_approximation": "0.0032",
+        "dominant_pair_rho_sensitivity_bound": "0.0031871343342142008147062556977509029853329794477076",
+        "relative_standard_uncertainty_ppm": "12.453356977136727047866320298865297714729175627210",
+        "rounding_lower_sum_of_squares": "154.755725",
+        "rounding_squared_budget_envelope": "0.331425",
+        "rounding_upper_sum_of_squares": "155.417525",
+        "sum_of_squares": "155.0861"
+      },
+      "maximum_assessed_replication_depth": "2b",
+      "scope": "AAF-I"
+    },
+    {
+      "complete_uncertainty_model_authorization": "PUBLIC_DERIVABLE",
+      "component_count": 21,
+      "diagnostics": {
+        "dominant_component_1": "horizontal_source_mass_distance",
+        "dominant_component_2": "vertical_source_mass_distance",
+        "dominant_pair_rho_disclosed_approximation": "0.0032",
+        "dominant_pair_rho_sensitivity_bound": "0.0031996357286004977478257190225063564782225709790707",
+        "relative_standard_uncertainty_ppm": "12.275683280371809918505072305209443766741467830010",
+        "rounding_lower_sum_of_squares": "150.360725",
+        "rounding_squared_budget_envelope": "0.332725",
+        "rounding_upper_sum_of_squares": "151.025125",
+        "sum_of_squares": "150.6924"
+      },
+      "maximum_assessed_replication_depth": "2b",
+      "scope": "AAF-II"
+    },
+    {
+      "complete_uncertainty_model_authorization": "PUBLIC_DERIVABLE",
+      "component_count": 21,
+      "diagnostics": {
+        "dominant_component_1": "horizontal_source_mass_distance",
+        "dominant_component_2": "vertical_source_mass_distance",
+        "dominant_pair_rho_disclosed_approximation": "0.0025",
+        "dominant_pair_rho_sensitivity_bound": "0.0025024425801339380161633412957599116824568894222817",
+        "relative_standard_uncertainty_ppm": "11.212845312408443280940946155017027106000868654421",
+        "rounding_lower_sum_of_squares": "125.468725",
+        "rounding_squared_budget_envelope": "0.260225",
+        "rounding_upper_sum_of_squares": "125.988125",
+        "sum_of_squares": "125.7279"
+      },
+      "maximum_assessed_replication_depth": "2b",
+      "scope": "AAF-III"
+    }
+  ]
+}
