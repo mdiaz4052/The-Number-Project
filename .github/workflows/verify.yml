@@ -45,6 +45,10 @@ jobs:
       - run: python -m Discovery.hust_2018_aaf_source_audit --check
       # Keep the three authorized HUST depth-2a empirical central-value records current.
       - run: python -m Discovery.hust_2018_aaf_measurement_models --check
+      # Keep the separately authorized HUST depth-2b uncertainty records current.
+      - run: python -m Discovery.hust_2018_aaf_depth_2b_authorization --check
+      - run: python -m Discovery.hust_2018_aaf_depth_2b_measurement_models --check
+      - run: python -m Discovery.hust_2018_aaf_depth_2b_mutations --check
       - run: python -m Discovery.falsification_preregistration --check
       - run: python -m Discovery.null_experiments --check
       - run: python -m Discovery.mutation_harness --check

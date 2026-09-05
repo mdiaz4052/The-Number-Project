@@ -71,6 +71,12 @@ outputs are permanently `target_exposed_candidate` and promotion-ineligible; 17 
 the project's independent dimensional check. This is a software/methodology result, not
 evidence about gravity or a measurement of `G`.
 
+Milestone 7B adds three separately preregistered HUST 2018 AAF published-data
+reconstructions at depth 2b. Nature's official Table 1 page is metadata-and-hash pinned;
+each unchanged depth-2a central value receives 21 direct relative ppm contributions and a
+precision-50 RSS-derived standard uncertainty. The combined AAF result, raw replication,
+apparatus validation, and physical-independence claims remain unauthorized.
+
 The project is exploratory. A compiled implication is not experimental evidence for its
 premises, and a dimensionally valid numerical coincidence is not evidence of a physical
 law.
@@ -103,7 +109,9 @@ law.
 - `Experiments/GMeasurements/` records the general physical-bridge contract, an
   explicitly unpopulated inverse-square structural example as deterministic JSON, and
   the preregistered UW 2000 source audit with its explicit
-  `NO-GO (INCOMPLETE_REPRODUCTION)` decision.
+  `NO-GO (INCOMPLETE_REPRODUCTION)` decision. It also records the official-source-pinned
+  HUST AAF individual depth-2b authorization, three uncertainty-qualified published-data
+  reconstructions, and their behavioral mutation results.
 - `Experiments/Falsification/` records the immutable 5B-core preregistration, complete
   provenance-stratified null and planted-control result, and disposable-worktree mutation
   result with source and integrity metadata.

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "graph_id": "hust_2018_aaf_required_inputs_depth_2b_v1",
+  "decision": "GO",
+  "source_pins": {
+    "official_table_1_record": "hust_2018_aaf_depth_2b_official_source_v1",
+    "official_table_1_source_id": "official_nature_table_1",
+    "supplement_source_id": "supplementary_information",
+    "clarification_record": "hust_2018_aaf_depth_2b_clarification_v1"
+  },
+  "scopes": [
+    {"scope_id": "AAF-I", "maximum_assessed_replication_depth": "2b"},
+    {"scope_id": "AAF-II", "maximum_assessed_replication_depth": "2b"},
+    {"scope_id": "AAF-III", "maximum_assessed_replication_depth": "2b"}
+  ],
+  "components": [
+    {"component_id": "pendulum_dimensions", "row_label": "Dimensions", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "0.16", "AAF-II": "0.16", "AAF-III": "0.16"},
+    {"component_id": "pendulum_attitude", "row_label": "Attitude", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "0.06", "AAF-II": "0.06", "AAF-III": "0.03"},
+    {"component_id": "pendulum_density_inhomogeneity", "row_label": "Density inhomogeneity", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "0.46", "AAF-II": "0.46", "AAF-III": "0.46"},
+    {"component_id": "coating_layer", "row_label": "Coating layer", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "0.34", "AAF-II": "0.34", "AAF-III": "0.34"},
+    {"component_id": "clamp_and_ferrule", "row_label": "Clamp and ferrule", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "0.70", "AAF-II": "1.05", "AAF-III": "0.48"},
+    {"component_id": "other_pendulum_effects", "row_label": "Others", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "0.29", "AAF-II": "0.29", "AAF-III": "0.29"},
+    {"component_id": "source_mass_masses", "row_label": "Masses", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "0.32", "AAF-II": "0.31", "AAF-III": "0.31"},
+    {"component_id": "horizontal_source_mass_distance", "row_label": "Horizontal distance", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "8.98", "AAF-II": "8.98", "AAF-III": "8.98"},
+    {"component_id": "vertical_source_mass_distance", "row_label": "Vertical distance", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "5.79", "AAF-II": "5.79", "AAF-III": "5.79"},
+    {"component_id": "source_mass_positions_alignment", "row_label": "Positions and alignment", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "0.57", "AAF-II": "0.62", "AAF-III": "0.35"},
+    {"component_id": "fibre_anelasticity", "row_label": "Fibre anelasticity", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "0.01", "AAF-II": "0.01", "AAF-III": "0.01"},
+    {"component_id": "thermal_effect", "row_label": "Thermal effect", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "0.91", "AAF-II": "0.91", "AAF-III": "0.91"},
+    {"component_id": "time_base", "row_label": "Time base", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "0.01", "AAF-II": "0.01", "AAF-III": "0.01"},
+    {"component_id": "rotating_gravity_gradient", "row_label": "Rotating gravity gradient", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "1.86", "AAF-II": "1.35", "AAF-III": "1.72"},
+    {"component_id": "shelf_deformation", "row_label": "Shelf deformation", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "1.51", "AAF-II": "1.51", "AAF-III": "1.51"},
+    {"component_id": "magnetic_damper", "row_label": "Magnetic damper", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "1.95", "AAF-II": "1.95", "AAF-III": "0.08"},
+    {"component_id": "air_density", "row_label": "Air density", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "1.00", "AAF-II": "1.51", "AAF-III": "1.13"},
+    {"component_id": "magnetic_field", "row_label": "Magnetic field", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "3.98", "AAF-II": "3.98", "AAF-III": "0.90"},
+    {"component_id": "angle_encoder", "row_label": "Angle encoder", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "0.72", "AAF-II": "0.72", "AAF-III": "0.72"},
+    {"component_id": "residual_twist_angle", "row_label": "Residual twist angle", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "0.03", "AAF-II": "0.61", "AAF-III": "0.45"},
+    {"component_id": "statistical_angular_acceleration", "row_label": "Statistical angular acceleration", "unit": "ppm", "evidence_type": "PUBLIC_DIRECT", "source_id": "official_nature_table_1", "AAF-I": "3.44", "AAF-II": "2.60", "AAF-III": "1.34"}
+  ],
+  "not_applicable_aaf_rows": [
+    "fibre_nonlinearity",
+    "gravitational_nonlinearity",
+    "electrostatic_field"
+  ],
+  "authorizations": {
+    "component_table": {
+      "evidence_type": "PUBLIC_DIRECT",
+      "depends_on": ["hust_2018_aaf_depth_2b_official_source_v1"]
+    },
+    "individual_rss_rule": {
+      "evidence_type": "PUBLIC_DERIVABLE",
+      "depends_on": ["component_table", "hust_2018_aaf_depth_2b_clarification_v1"]
+    },
+    "within_result_correlation_policy": {
+      "evidence_type": "PUBLIC_DERIVABLE",
+      "depends_on": ["component_table", "hust_2018_aaf_depth_2b_clarification_v1"]
+    },
+    "complete_uncertainty_model": {
+      "AAF-I": {
+        "evidence_type": "PUBLIC_DERIVABLE",
+        "depends_on": ["component_table", "individual_rss_rule", "within_result_correlation_policy", "hust_2018_aaf_depth_2b_clarification_v1"]
+      },
+      "AAF-II": {
+        "evidence_type": "PUBLIC_DERIVABLE",
+        "depends_on": ["component_table", "individual_rss_rule", "within_result_correlation_policy", "hust_2018_aaf_depth_2b_clarification_v1"]
+      },
+      "AAF-III": {
+        "evidence_type": "PUBLIC_DERIVABLE",
+        "depends_on": ["component_table", "individual_rss_rule", "within_result_correlation_policy", "hust_2018_aaf_depth_2b_clarification_v1"]
+      }
+    },
+    "combined_aaf_reconstruction_authorized": false
+  },
+  "terminal_comparisons": {
+    "AAF-I": {"published_g_m3_kg-1_s-2": "6.674534e-11", "published_standard_uncertainty_m3_kg-1_s-2": "0.000083e-11", "displayed_total_ppm": "12.45"},
+    "AAF-II": {"published_g_m3_kg-1_s-2": "6.674375e-11", "published_standard_uncertainty_m3_kg-1_s-2": "0.000082e-11", "displayed_total_ppm": "12.27"},
+    "AAF-III": {"published_g_m3_kg-1_s-2": "6.674535e-11", "published_standard_uncertainty_m3_kg-1_s-2": "0.000075e-11", "displayed_total_ppm": "11.21"}
+  },
+  "nonclaims": [
+    "No combined AAF estimator is authorized.",
+    "No displayed total or published final uncertainty is an uncertainty-model input.",
+    "No raw or run-level replication, apparatus validation, or Lean apparatus theorem is claimed."
+  ]
+}

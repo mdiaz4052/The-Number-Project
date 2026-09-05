@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "record_id": "hust_2018_aaf_depth_2b_clarification_v1",
+  "status": "AUTHORITATIVE_FOR_DEPTH_2B",
+  "chronology": {
+    "initial_transcription_origin": "The repository history does not establish which source supplied the initial PR #32 21-by-3 transcription.",
+    "production_transcription": "The depth-2b production transcription was independently re-established against the official Nature Table 1 page pinned by hust_2018_aaf_depth_2b_official_source_v1."
+  },
+  "direct_statements": {
+    "article": {
+      "evidence_type": "PUBLIC_DIRECT",
+      "source_record_id": "hust_2018_aaf_depth_2b_official_source_v1",
+      "locator": "Table 1, Nature 560, p. 584; dedicated Nature Table 1 page",
+      "claim": "Table 1 reports contributions to the main one-standard-deviation error budget in parts per million for the individual AAF determinations."
+    },
+    "supplement": {
+      "evidence_type": "PUBLIC_DIRECT",
+      "source_id": "supplementary_information",
+      "sha256": "5b61d5c831be98c46e47fcc32f1ade0a680b4af6354d2bc34859d94b22279ffb",
+      "locator": "Supplementary Information Section 6, pp. 12-14",
+      "claim": "Section 6 describes statistical angular-acceleration errors as independent between AAF runs and treats the same non-statistical item as fully correlated across runs."
+    }
+  },
+  "project_derivation": {
+    "evidence_type": "PUBLIC_DERIVABLE",
+    "dependencies": [
+      "hust_2018_aaf_depth_2b_official_source_v1",
+      "hust_2018_aaf_required_inputs_depth_2b_v1"
+    ],
+    "decimal_precision": 50,
+    "displayed_component_resolution_ppm": "0.01",
+    "rounding_half_interval_ppm": "0.005",
+    "rss_rule": "sum_of_squares = sum(u_i^2); u_relative_ppm = sqrt(sum_of_squares)",
+    "rounding_envelope_rule": "For each displayed component x, independently evaluate max(0, x - 0.005) and x + 0.005; compare the resulting squared-budget bounds with the squared budget from x.",
+    "dominant_pair_rule": "rho_bound = max(nominal_sum_of_squares - lower_sum_of_squares, upper_sum_of_squares - nominal_sum_of_squares) / (2 * u_largest * u_second_largest)",
+    "absolute_rule": "u_absolute_G = abs(G_hat) * u_relative_ppm * 1e-6"
+  },
+  "correlation_policy": {
+    "evidence_type": "PUBLIC_DERIVABLE",
+    "representation": "EXPLICIT_ZERO_ASSUMPTION",
+    "qualification": "Zero pairwise covariance represents the published individual-column RSS budget only; it is not a claim that all underlying physical systematic sources are independent.",
+    "cross_run_scope": "Cross-run covariance is irrelevant to the three separate individual reconstructions and remains reserved for a separately authorized combined estimator."
+  },
+  "boundaries": {
+    "combined_aaf_reconstruction_authorized": false,
+    "raw_or_run_level_replication_established": false,
+    "apparatus_validity_established": false,
+    "lean_apparatus_theorem_registered": false
+  },
+  "nonclaims": [
+    "The individual RSS rule is a project derivation from the published rounded columns, not a verbatim publication statement.",
+    "The displayed totals and published final uncertainties remain terminal diagnostics and are not computational inputs.",
+    "This clarification does not rewrite or relabel any historical depth-2a or feasibility artifact."
+  ]
+}
