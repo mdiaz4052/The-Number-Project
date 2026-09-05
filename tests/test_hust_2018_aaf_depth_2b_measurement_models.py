@@ -1,11 +1,14 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from contextlib import redirect_stderr
 from dataclasses import replace
 from decimal import Decimal, localcontext
+import io
 import json
 from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 from Discovery.hust_2018_aaf_depth_2b_authorization import (
     CLARIFICATION_PATH,
@@ -27,6 +30,7 @@ from Discovery.hust_2018_aaf_depth_2b_measurement_models import (
     _build_depth_2b_model_from_records,
     build_artifact,
     build_hust_aaf_depth_2b_model,
+    main,
     serialize_artifact,
     validate_hust_aaf_depth_2b_model,
 )
@@ -38,6 +42,12 @@ from Discovery.physical_bridge_schema import (
     UNCERTAINTY_COMPONENT,
 )
 from Discovery.physical_bridge_validation import evaluate_measurement_model
+from Discovery.source_history import SourceHistoryUnavailableError
+
+
+V1_MODEL_ARTIFACT_PATH = Path(
+    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v1.json"
+)
 
 
 def _load(path: Path) -> dict:
@@ -152,6 +162,10 @@ class HUST2018AAFDepth2BMeasurementModelTests(unittest.TestCase):
                     self.assertEqual(component.edition, SOURCE_EDITION)
                     self.assertEqual(component.access_date, SOURCE_ACCESS_DATE)
                     self.assertIn(COMPONENT_DESCRIPTION_PREFIX, component.description)
+                    self.assertIn(
+                        expected[1],
+                        component.description,
+                    )
 
     def test_precision_50_rss_and_absolute_uncertainty_are_exact(self) -> None:
         for scope in SCOPES:
@@ -308,7 +322,7 @@ class HUST2018AAFDepth2BMeasurementModelTests(unittest.TestCase):
         ):
             self._validate(wrong_ppm, scope, baseline)
 
-    def test_terminal_values_cannot_change_reconstructed_outputs(self) -> None:
+    def test_published_final_uncertainty_is_not_an_uncertainty_input(self) -> None:
         scope = "AAF-III"
         baseline, model = self._baseline_and_model(scope)
         baseline_target = _quantity_map(model)[f"{scope}:G_hat"]
@@ -317,7 +331,6 @@ class HUST2018AAFDepth2BMeasurementModelTests(unittest.TestCase):
         mutated_baseline = _replace_quantity(
             baseline,
             published_id,
-            value=Decimal("9e-11"),
             standard_uncertainty=Decimal("9e-15"),
         )
         changed_from_published = _build_depth_2b_model_from_records(
@@ -334,11 +347,12 @@ class HUST2018AAFDepth2BMeasurementModelTests(unittest.TestCase):
             baseline_target.standard_uncertainty,
         )
 
+    def test_displayed_total_is_not_an_uncertainty_input(self) -> None:
+        scope = "AAF-III"
+        baseline, model = self._baseline_and_model(scope)
+        baseline_target = _quantity_map(model)[f"{scope}:G_hat"]
         changed_graph = deepcopy(self.graph)
-        terminal = changed_graph["terminal_comparisons"][scope]
-        terminal["published_g_m3_kg-1_s-2"] = "8e-11"
-        terminal["published_standard_uncertainty_m3_kg-1_s-2"] = "8e-15"
-        terminal["displayed_total_ppm"] = "88"
+        changed_graph["terminal_comparisons"][scope]["displayed_total_ppm"] = "88"
         changed_from_terminal = _build_depth_2b_model_from_records(
             scope,
             baseline,
@@ -420,6 +434,8 @@ class HUST2018AAFDepth2BMeasurementModelTests(unittest.TestCase):
             serialize_artifact(artifact),
         )
         self.assertEqual(len(artifact["models"]), 3)
+        self.assertEqual(artifact["artifact_schema_version"], 2)
+        self.assertFalse(artifact["revision"]["numerical_values_changed"])
         self.assertFalse(artifact["global_boundaries"]["combined_estimator_present"])
         self.assertFalse(
             artifact["global_boundaries"][
@@ -431,7 +447,51 @@ class HUST2018AAFDepth2BMeasurementModelTests(unittest.TestCase):
         )
         for record in artifact["models"]:
             self.assertEqual(record["assessments"], EXPECTED_ASSESSMENTS)
+            self.assertTrue(record["model_identifier"].endswith("_v2"))
+
+    def test_v1_and_v2_numerical_model_projections_are_identical(self) -> None:
+        v1 = _load(V1_MODEL_ARTIFACT_PATH)
+        v2 = build_artifact(Path("."))
+
+        def projection(record):
+            reconstruction = record["uncertainty_reconstruction"]
+            return {
+                "scope": reconstruction["scope"],
+                "components": reconstruction["components_in_source_order"],
+                "sum_of_squares": reconstruction["sum_of_squares"],
+                "relative_standard_uncertainty_ppm": reconstruction[
+                    "relative_standard_uncertainty_ppm"
+                ],
+                "G_hat_decimal": reconstruction["G_hat_decimal"],
+                "absolute_standard_uncertainty_decimal": reconstruction[
+                    "absolute_standard_uncertainty_decimal"
+                ],
+                "absolute_standard_uncertainty_unit": reconstruction[
+                    "absolute_standard_uncertainty_unit"
+                ],
+                "terminal_comparisons": reconstruction[
+                    "terminal_comparisons_not_used_as_inputs"
+                ],
+            }
+
+        self.assertEqual(
+            [projection(record) for record in v1["models"]],
+            [projection(record) for record in v2["models"]],
+        )
+
+    def test_model_cli_preserves_history_exit_taxonomy(self) -> None:
+        stderr = io.StringIO()
+        with patch(
+            "Discovery.hust_2018_aaf_depth_2b_measurement_models.build_artifact",
+            side_effect=SourceHistoryUnavailableError("fixture unavailable"),
+        ), patch("sys.argv", ["models", "--check"]), redirect_stderr(stderr):
+            with self.assertRaises(SystemExit) as caught:
+                main()
+        self.assertEqual(caught.exception.code, 2)
+        self.assertIn("history_unavailable:", stderr.getvalue())
+        self.assertNotIn("Traceback", stderr.getvalue())
 
 
 if __name__ == "__main__":
     unittest.main()
+import io

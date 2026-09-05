@@ -17,11 +17,23 @@ import sys
 from typing import Any, Iterable, Mapping
 import unicodedata
 
+from Discovery.source_history import (
+    VERIFIED,
+    SourceMetadataError,
+    SourceVerificationError,
+    exit_for_source_verification_error,
+    repository_root,
+    verify_committed_source_state,
+)
 
-AUTHORIZATION_ARTIFACT_SCHEMA_VERSION = 1
+
+AUTHORIZATION_ARTIFACT_SCHEMA_VERSION = 2
 SCOPES = ("AAF-I", "AAF-II", "AAF-III")
 PUBLIC_DIRECT = "PUBLIC_DIRECT"
 PUBLIC_DERIVABLE = "PUBLIC_DERIVABLE"
+
+PREREGISTRATION_COMMIT = "c153b1a2079a5112f28e43263fb7986f393c19ca"
+REMOTE_ANCHOR_COMMIT = "d0eaaa7b36817e9381fb45c7655df01ece149f70"
 
 PREREGISTRATION_PATH = Path(
     "Experiments/GMeasurements/"
@@ -50,13 +62,13 @@ CLARIFICATION_SHA256 = (
     "7b193a70fa1ccbf3097dba0f9316fe446e5b8f8c4073f440ea7e25bba18276b4"
 )
 REQUIRED_INPUTS_PATH = Path(
-    "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v1.json"
+    "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v2.json"
 )
 REQUIRED_INPUTS_SHA256 = (
-    "624d84db3ef855edc9f126a8f5f974b2aa799600e94d2fb39f1d048ffa7afe5b"
+    "ef8a23cee8d1d7c7e417ca69d8b0e75a66d5cf272e6fcd59ba92fb84d1468326"
 )
 DEFAULT_OUTPUT = Path(
-    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v1.json"
+    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v2.json"
 )
 
 OFFICIAL_TABLE_SHA256 = (
@@ -89,6 +101,72 @@ HISTORICAL_ARTIFACT_SHA256 = {
     ),
 }
 
+FROZEN_MILESTONE_7_V1_SHA256 = {
+    PREREGISTRATION_PATH.as_posix(): PREREGISTRATION_SHA256,
+    ANCHOR_PATH.as_posix(): ANCHOR_SHA256,
+    OFFICIAL_SOURCE_PATH.as_posix(): OFFICIAL_SOURCE_RECORD_SHA256,
+    CLARIFICATION_PATH.as_posix(): CLARIFICATION_SHA256,
+    "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v1.json": (
+        "624d84db3ef855edc9f126a8f5f974b2aa799600e94d2fb39f1d048ffa7afe5b"
+    ),
+    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v1.json": (
+        "06338de9b24ead21f5b24da12d1cd0c94ba584ad740368b128d6f552023ec6f3"
+    ),
+    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v1.json": (
+        "a13944b8a6f8691c46398b4374cfb29df94f8cdfc698a70ad47addcf05cad0a3"
+    ),
+    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v1.json": (
+        "82f6715fa40a9d951d8f4b4e7f9d5f5e64ae9d80c645027acda08f39becc79ba"
+    ),
+}
+
+EXPECTED_REVISION = {
+    "predecessor_graph_id": "hust_2018_aaf_required_inputs_depth_2b_v1",
+    "predecessor_path": (
+        "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v1.json"
+    ),
+    "change_summary": (
+        "Post-audit migration to exact printed row labels and stronger verification "
+        "metadata."
+    ),
+    "numerical_values_changed": False,
+    "scientific_authorization_changed": False,
+    "scope_boundaries_changed": False,
+}
+
+EXPECTED_OFFICIAL_SOURCE_NONCLAIMS = [
+    "This record does not claim byte identity with a Nature PDF or raw HTTP response.",
+    "The captured publisher serialization is not redistributed by the repository.",
+    (
+        "A source hash and locator do not independently validate the apparatus or the "
+        "completeness of the published uncertainty budget."
+    ),
+]
+
+EXPECTED_ANCHOR_RECORD = {
+    "event": "pull_request",
+    "github_pr_number": 34,
+    "jobs": {
+        "Lean build and proof audit": "success",
+        "Python tests and bounded search": "success",
+    },
+    "observation_basis": (
+        "GitHub workflow query restricted to pull-request-triggered runs for the exact "
+        "preregistration commit"
+    ),
+    "observed_at_utc": "2026-09-05T02:09:03Z",
+    "preregistration_commit_sha": PREREGISTRATION_COMMIT,
+    "preregistration_path": PREREGISTRATION_PATH.as_posix(),
+    "preregistration_sha256": PREREGISTRATION_SHA256,
+    "schema_version": 1,
+    "workflow_conclusion": "success",
+    "workflow_id": 345072294,
+    "workflow_name": "Verify",
+    "workflow_run_id": 33898036414,
+    "workflow_run_number": 173,
+    "workflow_status": "completed",
+}
+
 EXPECTED_COMPONENTS = (
     ("pendulum_dimensions", "Dimensions", "0.16", "0.16", "0.16"),
     ("pendulum_attitude", "Attitude", "0.06", "0.06", "0.03"),
@@ -119,7 +197,7 @@ EXPECTED_COMPONENTS = (
     ),
     (
         "source_mass_positions_alignment",
-        "Positions and alignment",
+        "Positions, alignment",
         "0.57",
         "0.62",
         "0.35",
@@ -148,7 +226,7 @@ EXPECTED_COMPONENTS = (
     ),
     (
         "statistical_angular_acceleration",
-        "Statistical angular acceleration",
+        "Statistical error of Δω² or αₜ",
         "3.44",
         "2.60",
         "1.34",
@@ -251,6 +329,26 @@ def _normalized_claim(text: str) -> str:
     return " ".join(normalized.split())
 
 
+def byte_identity_claim_is_forbidden(text: str) -> bool:
+    """Return whether one text leaf makes a bounded positive byte-equivalence claim."""
+
+    normalized = _normalized_claim(text)
+    canonical_negative = _normalized_claim(EXPECTED_OFFICIAL_SOURCE_NONCLAIMS[0])
+    if normalized == canonical_negative:
+        return False
+    return any(
+        pattern in normalized
+        for pattern in (
+            "byte identity",
+            "byte identical",
+            "identical to the raw",
+            "exactly the same bytes",
+            "bytes are exactly the same",
+            "bit for bit",
+        )
+    )
+
+
 def _text_leaves(value: object) -> Iterable[str]:
     if isinstance(value, str):
         yield value
@@ -264,25 +362,26 @@ def _text_leaves(value: object) -> Iterable[str]:
 
 def _reject_byte_identity_overclaim(record: Mapping[str, Any], label: str) -> None:
     for text in _text_leaves(record):
-        normalized = _normalized_claim(text)
-        mentions_identity = (
-            "byte identity" in normalized or "byte identical" in normalized
-        )
-        if not mentions_identity:
-            continue
-        qualified = any(
-            phrase in normalized
-            for phrase in (
-                "does not claim byte identity",
-                "does not claim byte identical",
-                "not byte identical",
-                "not claim byte identity",
-            )
-        )
-        if not qualified:
+        if byte_identity_claim_is_forbidden(text):
             raise HUSTDepth2BAuthorizationError(
                 f"{label} contains an unqualified byte-identity overclaim"
             )
+
+
+def validate_anchor_record(record: Mapping[str, Any]) -> None:
+    """Validate the frozen remote anchor as strict source-history metadata."""
+
+    if record != EXPECTED_ANCHOR_RECORD:
+        expected_keys = set(EXPECTED_ANCHOR_RECORD)
+        actual_keys = set(record)
+        missing = sorted(expected_keys - actual_keys)
+        unknown = sorted(actual_keys - expected_keys)
+        detail = f"missing={missing}, unknown={unknown}"
+        if not missing and not unknown:
+            detail = "one or more values or value types differ"
+        raise SourceMetadataError(
+            f"depth-2b preregistration remote anchor metadata is invalid; {detail}"
+        )
 
 
 def validate_official_source_record(record: Mapping[str, Any]) -> None:
@@ -396,8 +495,10 @@ def validate_official_source_record(record: Mapping[str, Any]) -> None:
     }
     if validation != expected_validation:
         raise HUSTDepth2BAuthorizationError("official Table 1 validation changed")
-    if not isinstance(record["nonclaims"], list) or not record["nonclaims"]:
-        raise HUSTDepth2BAuthorizationError("official source nonclaims are missing")
+    if record["nonclaims"] != EXPECTED_OFFICIAL_SOURCE_NONCLAIMS:
+        raise HUSTDepth2BAuthorizationError(
+            "official source nonclaims failed their exact ordered second key"
+        )
     _reject_byte_identity_overclaim(record, "official source record")
 
 
@@ -549,6 +650,7 @@ def validate_required_inputs_graph(graph: Mapping[str, Any]) -> None:
             "schema_version",
             "graph_id",
             "decision",
+            "revision",
             "source_pins",
             "scopes",
             "components",
@@ -560,11 +662,15 @@ def validate_required_inputs_graph(graph: Mapping[str, Any]) -> None:
         "depth-2b required-input graph",
     )
     if (
-        graph["schema_version"] != 1
-        or graph["graph_id"] != "hust_2018_aaf_required_inputs_depth_2b_v1"
+        graph["schema_version"] != 2
+        or graph["graph_id"] != "hust_2018_aaf_required_inputs_depth_2b_v2"
         or graph["decision"] != "GO"
     ):
         raise HUSTDepth2BAuthorizationError("required-input graph header changed")
+    if graph["revision"] != EXPECTED_REVISION:
+        raise HUSTDepth2BAuthorizationError(
+            "required-input graph revision metadata changed"
+        )
 
     pins = graph["source_pins"]
     if not isinstance(pins, dict):
@@ -608,7 +714,7 @@ def validate_required_inputs_graph(graph: Mapping[str, Any]) -> None:
             row,
             (
                 "component_id",
-                "row_label",
+                "printed_row_label",
                 "unit",
                 "evidence_type",
                 "source_id",
@@ -628,7 +734,7 @@ def validate_required_inputs_graph(graph: Mapping[str, Any]) -> None:
         actual.append(
             (
                 row["component_id"],
-                row["row_label"],
+                row["printed_row_label"],
                 row["AAF-I"],
                 row["AAF-II"],
                 row["AAF-III"],
@@ -816,6 +922,36 @@ def load_authorized_records(
     return source, clarification, graph
 
 
+def verify_depth_2b_source_history(root: Path = Path(".")) -> dict[str, Any]:
+    """Verify both freeze-before-implementation anchors against the current HEAD."""
+
+    git_root = repository_root(root)
+    preregistration_status = verify_committed_source_state(
+        git_root,
+        PREREGISTRATION_COMMIT,
+        source_paths=(PREREGISTRATION_PATH.as_posix(),),
+        artifact_label="depth-2b preregistration",
+    )
+    anchor_status = verify_committed_source_state(
+        git_root,
+        REMOTE_ANCHOR_COMMIT,
+        source_paths=(ANCHOR_PATH.as_posix(),),
+        artifact_label="depth-2b preregistration remote anchor",
+    )
+    return {
+        "preregistration": {
+            "status": preregistration_status,
+            "commit": PREREGISTRATION_COMMIT,
+            "path": PREREGISTRATION_PATH.as_posix(),
+        },
+        "remote_anchor": {
+            "status": anchor_status,
+            "commit": REMOTE_ANCHOR_COMMIT,
+            "path": ANCHOR_PATH.as_posix(),
+        },
+    }
+
+
 def build_authorization_artifact(root: Path = Path(".")) -> dict[str, Any]:
     preregistration = _verify_pinned_file(
         root,
@@ -829,6 +965,13 @@ def build_authorization_artifact(root: Path = Path(".")) -> dict[str, Any]:
         ANCHOR_SHA256,
         "depth-2b preregistration remote anchor",
     )
+    anchor_record = _read_json(root / ANCHOR_PATH)
+    validate_anchor_record(anchor_record)
+    source_history = verify_depth_2b_source_history(root)
+    if any(
+        record["status"] != VERIFIED for record in source_history.values()
+    ):
+        raise SourceMetadataError("depth-2b source history did not verify")
     source, clarification, graph = load_authorized_records(root)
     input_records = [
         _verify_pinned_file(
@@ -854,6 +997,10 @@ def build_authorization_artifact(root: Path = Path(".")) -> dict[str, Any]:
         _verify_pinned_file(root, Path(path), digest, f"historical artifact {path}")
         for path, digest in sorted(HISTORICAL_ARTIFACT_SHA256.items())
     ]
+    frozen_milestone_7_v1_records = [
+        _verify_pinned_file(root, Path(path), digest, f"frozen Milestone 7 v1 {path}")
+        for path, digest in sorted(FROZEN_MILESTONE_7_V1_SHA256.items())
+    ]
     scope_records = [
         {
             "scope": scope,
@@ -867,10 +1014,24 @@ def build_authorization_artifact(root: Path = Path(".")) -> dict[str, Any]:
     return {
         "artifact_schema_version": AUTHORIZATION_ARTIFACT_SCHEMA_VERSION,
         "artifact": "HUST 2018 AAF individual depth-2b authorization",
+        "revision": {
+            "predecessor_path": (
+                "Experiments/GMeasurements/"
+                "hust_2018_aaf_depth_2b_authorization_v1.json"
+            ),
+            "change_summary": (
+                "Post-audit migration for exact printed labels, source-history "
+                "verification, and explicit attestation limits."
+            ),
+            "numerical_values_changed": False,
+            "scientific_authorization_changed": False,
+            "scope_boundaries_changed": False,
+        },
         "decision": "GO",
         "baseline_commit": "715c189818dea258f3c6d447d7854226c1f2a575",
         "preregistration": preregistration,
         "remote_anchor": anchor,
+        "source_history_verification": source_history,
         "input_records": input_records,
         "official_source_precondition": {
             "status": "SATISFIED",
@@ -879,6 +1040,10 @@ def build_authorization_artifact(root: Path = Path(".")) -> dict[str, Any]:
             "capture_sha256": source["capture"]["sha256"],
             "capture_representation": source["capture"]["capture_representation"],
             "publisher_bytes_committed": False,
+            "independently_reproducible_from_repository_contents": False,
+            "attestation_role": "official_source_attestation",
+            "delivery_caveat": source["capture"]["delivery_caveat"],
+            "secondary_source_authorized_as_official": False,
         },
         "derivation_classification": {
             "component_table": PUBLIC_DIRECT,
@@ -889,6 +1054,7 @@ def build_authorization_artifact(root: Path = Path(".")) -> dict[str, Any]:
         },
         "scopes": scope_records,
         "historical_artifact_preservation": historical_records,
+        "frozen_milestone_7_v1_preservation": frozen_milestone_7_v1_records,
         "authorization_boundaries": {
             "individual_scopes_only": list(SCOPES),
             "combined_aaf_reconstruction_authorized": False,
@@ -937,6 +1103,8 @@ def main() -> None:
         else:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(rendered, encoding="utf-8")
+    except SourceVerificationError as error:
+        exit_for_source_verification_error(error)
     except HUSTDepth2BAuthorizationError as error:
         print(f"error: {error}", file=sys.stderr)
         raise SystemExit(1) from error

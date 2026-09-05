@@ -55,11 +55,15 @@ from Discovery.physical_bridge_schema import (
     UncertaintyModel,
 )
 from Discovery.physical_bridge_validation import evaluate_measurement_model
+from Discovery.source_history import (
+    SourceVerificationError,
+    exit_for_source_verification_error,
+)
 
 
-MODEL_ARTIFACT_SCHEMA_VERSION = 1
+MODEL_ARTIFACT_SCHEMA_VERSION = 2
 DEFAULT_OUTPUT = Path(
-    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v1.json"
+    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v2.json"
 )
 SOURCE_IDENTIFIER = "doi:10.1038/s41586-018-0431-5"
 SOURCE_ACCESS_DATE = "2026-09-05"
@@ -159,7 +163,7 @@ def _build_depth_2b_model_from_records(
             provenance_evidence=DOCUMENTED,
             description=(
                 COMPONENT_DESCRIPTION_PREFIX
-                + f"; row: {source_rows[component_id]['row_label']}."
+                + f"; row: {source_rows[component_id]['printed_row_label']}."
             ),
             value=value,
             standard_uncertainty=None,
@@ -219,7 +223,7 @@ def _build_depth_2b_model_from_records(
     )
     model = replace(
         baseline_model,
-        identifier=f"hust_2018_{scope.lower().replace('-', '_')}_depth_2b_v1",
+        identifier=f"hust_2018_{scope.lower().replace('-', '_')}_depth_2b_v2",
         domain_and_approximation_regime=(
             *baseline_model.domain_and_approximation_regime,
             "individual Nature Table 1 one-standard-deviation budget represented as direct relative contributions to G",
@@ -316,7 +320,7 @@ def validate_hust_aaf_depth_2b_model(
         component = quantities[identifier]
         expected_description = (
             COMPONENT_DESCRIPTION_PREFIX
-            + f"; row: {source_rows[component_id]['row_label']}."
+            + f"; row: {source_rows[component_id]['printed_row_label']}."
         )
         if (
             component.value != expected_value
@@ -529,6 +533,19 @@ def build_artifact(root: Path = Path(".")) -> dict[str, Any]:
     return {
         "artifact_schema_version": MODEL_ARTIFACT_SCHEMA_VERSION,
         "artifact": "HUST 2018 AAF individual depth-2b MeasurementModels",
+        "revision": {
+            "predecessor_path": (
+                "Experiments/GMeasurements/"
+                "hust_2018_aaf_depth_2b_measurement_models_v1.json"
+            ),
+            "change_summary": (
+                "Post-audit migration to exact printed labels and strengthened "
+                "authorization verification."
+            ),
+            "numerical_values_changed": False,
+            "scientific_authorization_changed": False,
+            "scope_boundaries_changed": False,
+        },
         "authorization": {
             "path": AUTHORIZATION_OUTPUT.as_posix(),
             "decision": authorization["decision"],
@@ -583,6 +600,8 @@ def main() -> None:
         else:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(rendered, encoding="utf-8")
+    except SourceVerificationError as error:
+        exit_for_source_verification_error(error)
     except (HUSTDepth2BMeasurementModelError, ValueError) as error:
         print(f"error: {error}", file=sys.stderr)
         raise SystemExit(1) from error
