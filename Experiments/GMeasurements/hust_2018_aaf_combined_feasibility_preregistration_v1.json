@@ -1,0 +1,333 @@
+{
+  "allowed_input_artifacts": [
+    {
+      "byte_length": 9137,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v2.json",
+      "role": "Verify existing individual-model authorization identity only; does not authorize combination.",
+      "sha256": "2bf6bb803d18600147c17bd94f5b05a3118f9bfd76136e0b7c22c5dfa1e77170"
+    },
+    {
+      "byte_length": 3288,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_clarification_v1.json",
+      "role": "Source-backed uncertainty meaning, component classification and correlation review evidence only.",
+      "sha256": "7b193a70fa1ccbf3097dba0f9316fe446e5b8f8c4073f440ea7e25bba18276b4"
+    },
+    {
+      "byte_length": 241071,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v2.json",
+      "role": "Read only per-run reconstructed central values and individual RSS diagnostics; external comparisons and displayed totals are excluded from computational projection.",
+      "sha256": "9ab68481e2f11a08dd184aec25781822fd4c3b9beaa13fc5edb34cfa4e5a7b00"
+    },
+    {
+      "byte_length": 2183,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_official_source_v1.json",
+      "role": "Official Table 1 capture identity and locator.",
+      "sha256": "de73536119564f28b61f330eea5ce8841fd5e2ba21f52dc3ce6a7f44b620476d"
+    },
+    {
+      "byte_length": 6315,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_external_sources_v1.json",
+      "role": "Existing external capture identities and fixed source URLs; no numerical target input.",
+      "sha256": "3b37b6548a23ef3138909bed638dd13cf571c084fdfaad84a70d41aac02eb559"
+    },
+    {
+      "byte_length": 8009,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v2.json",
+      "role": "Read the 21 component identities, exact ppm source strings, per-run scope and locators; ignore terminal_comparisons.",
+      "sha256": "ef8a23cee8d1d7c7e417ca69d8b0e75a66d5cf272e6fcd59ba92fb84d1468326"
+    },
+    {
+      "byte_length": 13213,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_v1.json",
+      "role": "Individual input provenance and source locators; no combined target input.",
+      "sha256": "8328bec85e5356d833d7f36b9e16833edc0d3c415bdd1eba59c7a01790c7f37a"
+    },
+    {
+      "byte_length": 5088,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.manifest.json",
+      "role": "Existing source-review identities and individual reconstruction provenance only.",
+      "sha256": "867bff124fbd6b46a1ae1710aeaa13fb19698455c5fbaa8971bb3c08f10b162a"
+    }
+  ],
+  "allowed_inputs": [
+    "Previously reconstructed individual central values, extracted without external comparisons.",
+    "The 21 exact source decimal ppm contributions for each of the three scopes.",
+    "Individual variances and RSS uncertainties reconstructed from those components.",
+    "Precisely located source statements establishing uncertainty meaning, statistical/non-statistical classification, cross-run correlations and combination/normalization rules.",
+    "Only ordinary arithmetic authorized by an unambiguous source rule."
+  ],
+  "arithmetic_policy": {
+    "binary_floating_point": "forbidden in authoritative arithmetic",
+    "matrix_diagonal_rounding_bound_relative": "1e-47",
+    "precision": 50,
+    "presentation_rounding": "none until presentation or terminal comparison",
+    "rounding": "ROUND_HALF_EVEN",
+    "serialization": "numbers as decimal strings; stable sorted keys and scope/component order",
+    "source_strings": "retain exact published strings",
+    "type": "Decimal"
+  },
+  "audit_id": "hust_2018_aaf_combined_feasibility_v1",
+  "baseline_main_sha": "86479a55dfdc0c631845910ce92679c152c9f0af",
+  "chronology": "This file is the sole substantive change in the first branch commit, before source combination analysis or covariance/combination arithmetic. The audit module shall hard-pin this commit and its bytes; amendments require a new preregistration/version, never an in-place revision.",
+  "combination_boundary": "No estimator is preregistered by convention. Do not implement generalized least squares, ordinary weighted means, or tuning unless the inspected source uniquely authorizes that exact rule. If a weighting/normalization rule is ambiguous, emit NO-GO and no combined numerical result.",
+  "covariance_policy": {
+    "authorization": "Construct only after the source establishes the component mapping and correlations. Do not infer coefficients from a terminal target.",
+    "component_scale": "Table 1 direct relative standard contributions in ppm are converted per run using u_k_i = abs(reconstructed_G_i) * ppm_k_i * 1e-6, consistently with the existing individual models.",
+    "formula": "C_ij = sum_k rho_k(i,j) * u_k_i * u_k_j",
+    "inventory": "Exactly 21 distinct declared components in each of exactly three scopes; no missing, duplicated, renamed, mis-scoped or extra terms.",
+    "psd_method": "Compute principal minors exactly using rational representations of finite Decimal entries; this is a deterministic sign diagnostic, not authoritative floating-point arithmetic.",
+    "singularity": "Record exact determinant and invertibility. No inverse, pseudoinverse or regularization is authorized unless required by a source-established estimator; singular cases require an explicit source-backed rule.",
+    "validation": [
+      "3 by 3 dimensions",
+      "symmetry",
+      "all rho in [-1,1]",
+      "diagonal equals per-run component sum of squares in the same Decimal evaluation order",
+      "diagonal square root agrees with independently recomputed individual RSS within the explicitly reported Decimal rounding bound",
+      "statistical independence and non-statistical shared-item full correlation only if source-authorized",
+      "positive semidefiniteness via all seven principal minors of the serialized Decimal matrix"
+    ]
+  },
+  "decision_rule": {
+    "GO": "All indispensable source rules and numerical inputs specify a unique target-independent computational path; no scientifically material discretionary choice remains.",
+    "NO-GO": "At least one indispensable input or rule is missing, ambiguous, target-dependent, or unverified.",
+    "reason_codes": [
+      "MISSING_COMBINATION_RULE",
+      "AMBIGUOUS_COMBINATION_RULE",
+      "INCOMPLETE_COVARIANCE_MAPPING",
+      "AMBIGUOUS_COVARIANCE_MAPPING",
+      "MISSING_NUMERICAL_INPUT",
+      "UNAUTHORIZED_MATRIX_PROCEDURE",
+      "TARGET_DEPENDENT",
+      "SOURCE_UNVERIFIED"
+    ]
+  },
+  "evidence_policy": "Each source-dependent rule needs a verified precise locator and short quotation. Project mathematical deductions must be labelled as deductions, not quotations or source prescriptions. An ambiguous prescription remains ambiguous even if a conventional formula agrees with the final target.",
+  "forbidden_inputs": [
+    "published_final_combined_G",
+    "published_final_combined_standard_uncertainty",
+    "CODATA_G",
+    "coefficients_back_solved_from_a_terminal_target",
+    "weights_tuned_to_the_published_combined_result",
+    "displayed_individual_uncertainty_totals_as_inputs",
+    "undocumented_covariance_coefficients",
+    "assumed_correlations_chosen_for_agreement"
+  ],
+  "input_isolation": "Read only declared artifacts after verifying bytes and hashes. Extract an explicit allowlisted computational projection. Its schema accepts no terminal targets, totals, weights, coefficients or unknown fields. A terminal comparison is a separate downstream object; changing or deleting it cannot alter any computational result.",
+  "nonclaims": [
+    "No new measurement of G.",
+    "No independent experimental or apparatus validation.",
+    "No claim that every unknown systematic is covered.",
+    "No raw-data or run-level replication, or replication-status promotion.",
+    "No TOS authorization.",
+    "No physical-independence claim for AAF runs.",
+    "A source correlation model is not a theorem about nature.",
+    "Terminal agreement does not establish uniqueness of a procedure.",
+    "No new physical prediction.",
+    "No combined MeasurementModel, physical-bridge schema change, or Lean certification."
+  ],
+  "output_paths": [
+    "Discovery/hust_2018_aaf_combined_feasibility.py",
+    "Experiments/GMeasurements/hust_2018_aaf_combined_feasibility_v1.json",
+    "tests/test_hust_2018_aaf_combined_feasibility.py",
+    "Notes/HUST2018AAFCombinedFeasibilityAudit.md"
+  ],
+  "preserved_baseline_files": [
+    {
+      "byte_length": 6102,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v1.json",
+      "sha256": "06338de9b24ead21f5b24da12d1cd0c94ba584ad740368b128d6f552023ec6f3"
+    },
+    {
+      "byte_length": 9137,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v2.json",
+      "sha256": "2bf6bb803d18600147c17bd94f5b05a3118f9bfd76136e0b7c22c5dfa1e77170"
+    },
+    {
+      "byte_length": 3288,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_clarification_v1.json",
+      "sha256": "7b193a70fa1ccbf3097dba0f9316fe446e5b8f8c4073f440ea7e25bba18276b4"
+    },
+    {
+      "byte_length": 6268,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_feasibility_v1.json",
+      "sha256": "e2969a0223641d8a13d2199e3ea34879a4ed437a8f23c09e510cec327b7a72d8"
+    },
+    {
+      "byte_length": 843,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_model_preregistration_v1.anchor.json",
+      "sha256": "54556b9bfc9cf855c100c6049285612baaa8885eb4e0ba7bc455a6cc9f8d83b9"
+    },
+    {
+      "byte_length": 10981,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_model_preregistration_v1.md",
+      "sha256": "05913514c25be9bf722454f6369261f529b7bd19c97d1ee81cf054a9bc9bb49f"
+    },
+    {
+      "byte_length": 240705,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v1.json",
+      "sha256": "a13944b8a6f8691c46398b4374cfb29df94f8cdfc698a70ad47addcf05cad0a3"
+    },
+    {
+      "byte_length": 241071,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v2.json",
+      "sha256": "9ab68481e2f11a08dd184aec25781822fd4c3b9beaa13fc5edb34cfa4e5a7b00"
+    },
+    {
+      "byte_length": 5461,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v1.json",
+      "sha256": "82f6715fa40a9d951d8f4b4e7f9d5f5e64ae9d80c645027acda08f39becc79ba"
+    },
+    {
+      "byte_length": 8165,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v2.json",
+      "sha256": "5d7f197b9eae5a18f302eb9eca3073346106d6363c59cbd35573e6a53fcb9809"
+    },
+    {
+      "byte_length": 10386,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v3.json",
+      "sha256": "c114045c78e97b81e70c9a216c279c58076732a6445906effa83bd94f61b7561"
+    },
+    {
+      "byte_length": 2183,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_official_source_v1.json",
+      "sha256": "de73536119564f28b61f330eea5ce8841fd5e2ba21f52dc3ce6a7f44b620476d"
+    },
+    {
+      "byte_length": 6315,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_external_sources_v1.json",
+      "sha256": "3b37b6548a23ef3138909bed638dd13cf571c084fdfaad84a70d41aac02eb559"
+    },
+    {
+      "byte_length": 4693,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_independent_human_attestation_v1.json",
+      "sha256": "560fbef2b08b46a29086e26becbe47701b84ba9e3aa6ecc3ffdda502fbc891b1"
+    },
+    {
+      "byte_length": 6080,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_measurement_model_preregistration_v1.md",
+      "sha256": "5becdb7cfc6daed8a1a6c47cfeede18d5349ee2820197d8c3d17a5b61b705a62"
+    },
+    {
+      "byte_length": 71092,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_measurement_models_v1.json",
+      "sha256": "6da4917504be9b3db944c8be8b4e86ad2643ab383f68e83d2cfb920680cd02bb"
+    },
+    {
+      "byte_length": 1885,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_post_audit_clarification_v1.md",
+      "sha256": "5e36d76f243603aabf05e37e52061831988fa5e680afd568e487ce87b1499b95"
+    },
+    {
+      "byte_length": 7257,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_preregistration_v1.md",
+      "sha256": "fa297ecfa4cc4ae2ee7737e413dc8bf0f6ad63c70ca2d1ff070ae81dd2ec8885"
+    },
+    {
+      "byte_length": 7412,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v1.json",
+      "sha256": "624d84db3ef855edc9f126a8f5f974b2aa799600e94d2fb39f1d048ffa7afe5b"
+    },
+    {
+      "byte_length": 8009,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v2.json",
+      "sha256": "ef8a23cee8d1d7c7e417ca69d8b0e75a66d5cf272e6fcd59ba92fb84d1468326"
+    },
+    {
+      "byte_length": 13213,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_v1.json",
+      "sha256": "8328bec85e5356d833d7f36b9e16833edc0d3c415bdd1eba59c7a01790c7f37a"
+    },
+    {
+      "byte_length": 1632,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_semantic_source_review_v1.json",
+      "sha256": "1628e7a3eac2fadddf75f892e8128807fd07bed7b51b920672826e4915c68b1f"
+    },
+    {
+      "byte_length": 5088,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.manifest.json",
+      "sha256": "867bff124fbd6b46a1ae1710aeaa13fb19698455c5fbaa8971bb3c08f10b162a"
+    },
+    {
+      "byte_length": 8325,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.md",
+      "sha256": "883dea16d9713a14224a399a4894c443b9a019a42e1f19e6e500999261db4117"
+    },
+    {
+      "byte_length": 192,
+      "path": "FormalPhysics.lean",
+      "sha256": "0062f682a7867f09d56f40b904228a5cdcd6be2480c33bc6e9cca3f9de59a3c0"
+    },
+    {
+      "byte_length": 1460,
+      "path": "FormalPhysics/Constants.lean",
+      "sha256": "2fbb2540c5c0b4d618afb985a5dcdbade697af7b223a4069148edc0b64ec08ca"
+    },
+    {
+      "byte_length": 6209,
+      "path": "FormalPhysics/Dimensions.lean",
+      "sha256": "90fccf4656e060de16fd498fa53667a642ea64adcb7ba84854d2e8519be4facf"
+    },
+    {
+      "byte_length": 3103,
+      "path": "FormalPhysics/Estimator.lean",
+      "sha256": "60fe5db6a88059e0af67a6473893062d4965200dbd06b278afbc89a15ea31fcd"
+    },
+    {
+      "byte_length": 6674,
+      "path": "FormalPhysics/InverseSquare.lean",
+      "sha256": "356b272a6203f3ea274755f2ca38fb4c7475d16e40c3736fd66224016c79982f"
+    },
+    {
+      "byte_length": 9890,
+      "path": "FormalPhysics/PlanckUnits.lean",
+      "sha256": "941678ee67a1156957e239813a39748afb38bf14c78672a79dfa618d4dd84aa5"
+    },
+    {
+      "byte_length": 2631,
+      "path": "FormalPhysics/Verlinde.lean",
+      "sha256": "a3f781b500325b774d8dd50e4f2461b0c85779984f4a2f255d14d5be00d19377"
+    },
+    {
+      "byte_length": 3153,
+      "path": "lake-manifest.json",
+      "sha256": "fc42ef5cb91e5146e2e449b7bff089892e008c7d62e896bebfbe1314a06af628"
+    },
+    {
+      "byte_length": 282,
+      "path": "lakefile.toml",
+      "sha256": "73f0571b8db33e25f442c5c192e6d996a8d451e84a8cb4a47cc1b7fa7a474c26"
+    },
+    {
+      "byte_length": 25,
+      "path": "lean-toolchain",
+      "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
+    }
+  ],
+  "question": "Does the presently available source-pinned HUST 2018 record specify a complete target-independent combined AAF central estimator and standard uncertainty, including cross-run covariance?",
+  "repository": "mdiaz4052/The-Number-Project",
+  "required_evidence": [
+    "individual_determinations",
+    "component_inventory",
+    "statistical_classification",
+    "cross_run_correlations",
+    "combination_rule",
+    "normalization_or_weighting",
+    "singularity_treatment_if_relevant",
+    "sufficient_target_independent_numerical_inputs"
+  ],
+  "schema_version": 1,
+  "scopes": [
+    "AAF-I",
+    "AAF-II",
+    "AAF-III"
+  ],
+  "source_intake": {
+    "bounded_corpus": "The fixed article including Methods, Table 1, and linked Supplementary Information/Data already identified in the pinned source records. No open-ended literature search or new experimental data.",
+    "canonical_article_url": "https://www.nature.com/articles/s41586-018-0431-5",
+    "canonical_table_url": "https://www.nature.com/articles/s41586-018-0431-5/tables/1",
+    "capture_policy": "Verify any recovered binary against its existing hash; record precise locators and short quotes for source rules. Newly accessible official article text may be recorded as a source-review excerpt with its own hash and explicit capture representation; never claim identity to an unavailable PDF. Unverified indispensable source evidence yields SOURCE_UNVERIFIED.",
+    "publication_doi": "10.1038/s41586-018-0431-5",
+    "review_boundary": "Source documents may contain terminal results; those numbers may only enter a separate terminal comparison after a full authorized reconstruction. No comparison is required on NO-GO."
+  },
+  "workflow": "Focused adversarial tests, relevant HUST suites, full Python suite once at final implementation head, affected freshness guards, frozen-history hash comparison, diff check, clean tree, and exact-head Python plus Lean CI. No milestone tag. Merge commit only after independent audit. Defer unrelated maintenance without assigning IDs."
+}
