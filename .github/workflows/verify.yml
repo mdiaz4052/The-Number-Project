@@ -50,6 +50,7 @@ jobs:
       - run: python -m Discovery.hust_2018_aaf_depth_2b_measurement_models --check
       - run: python -m Discovery.hust_2018_aaf_depth_2b_mutations --check
       - run: python -m Discovery.hust_2018_aaf_combined_feasibility --check
+      - run: python -m Discovery.hust_2018_aaf_combined_measurement_model --check
       - run: python -m Discovery.falsification_preregistration --check
       - run: python -m Discovery.null_experiments --check
       - run: python -m Discovery.mutation_harness --check

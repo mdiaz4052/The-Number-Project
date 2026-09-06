@@ -111,6 +111,10 @@ UNCERTAINTY_BASES = (
     DIRECT_MEASURAND_CONTRIBUTIONS,
 )
 
+NORMALIZED_INVERSE_VARIANCE = "normalized_inverse_marginal_variance"
+WEIGHTED_PRECISION = 50
+WEIGHTED_NORMALIZATION_BOUND = Decimal("1e-47")
+
 
 class BridgeValidationError(ValueError):
     """Raised when a record could be mistaken for a valid physical bridge."""
@@ -315,6 +319,20 @@ class EstimatorTerm:
         if exponent == 0:
             raise BridgeValidationError("estimator terms must have nonzero exponents")
         object.__setattr__(self, "exponent", exponent)
+
+
+@dataclass(frozen=True, slots=True)
+class WeightedEstimatorTerm:
+    """One dimensionless Decimal coefficient multiplying an empirical input."""
+
+    quantity_id: str
+    coefficient: Decimal
+
+    def __post_init__(self) -> None:
+        _require_text(self.quantity_id, "weighted estimator quantity identifier")
+        coefficient = _validate_decimal(self.coefficient, "weighted coefficient")
+        if coefficient is None or coefficient <= 0:
+            raise BridgeValidationError("weighted coefficient must be positive")
 
 
 @dataclass(frozen=True, slots=True)
@@ -652,6 +670,8 @@ class MeasurementModel:
     replication_identifiers: tuple[str, ...]
     limitations: tuple[str, ...]
     nonclaims: tuple[str, ...]
+    weighted_estimator_terms: tuple[WeightedEstimatorTerm, ...] = ()
+    weighting_rule: str | None = None
 
     def __post_init__(self) -> None:
         object.__setattr__(
@@ -663,6 +683,13 @@ class MeasurementModel:
             self,
             "estimator_terms",
             _record_tuple(self.estimator_terms, EstimatorTerm, "estimator term"),
+        )
+        object.__setattr__(
+            self,
+            "weighted_estimator_terms",
+            _record_tuple(
+                self.weighted_estimator_terms, WeightedEstimatorTerm, "weighted estimator term"
+            ),
         )
         object.__setattr__(
             self,

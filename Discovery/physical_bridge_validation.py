@@ -8,6 +8,7 @@ CLI behavior.
 from __future__ import annotations
 
 import unicodedata
+from decimal import Context, Decimal, DecimalException, ROUND_HALF_EVEN, localcontext
 from fractions import Fraction
 from typing import Iterable, Mapping, Sequence
 
@@ -41,6 +42,7 @@ from Discovery.physical_bridge_schema import (
     LEAN_THEOREMS_BY_ID,
     METROLOGICAL_EDGE_KINDS,
     NO_REGISTERED_TARGET_PATH,
+    NORMALIZED_INVERSE_VARIANCE,
     NOT_APPLICABLE,
     REQUIRED_BUT_UNPOPULATED,
     SATISFIED,
@@ -52,6 +54,8 @@ from Discovery.physical_bridge_schema import (
     UNRESOLVED,
     UNRESOLVED_ALGEBRAIC_PROVENANCE,
     UNRESOLVED_PROVENANCE_EVIDENCE,
+    WEIGHTED_NORMALIZATION_BOUND,
+    WEIGHTED_PRECISION,
     BridgeEvaluation,
     BridgeValidationError,
     MeasurementModel,
@@ -59,6 +63,7 @@ from Discovery.physical_bridge_schema import (
     QuantityRecord,
     TargetPathAudit,
     _strict_signature,
+    _validate_decimal,
     _target_power,
     fraction_text,
 )
@@ -273,10 +278,75 @@ def _estimator_dimension(
     model: MeasurementModel,
     quantities: Mapping[str, QuantityRecord],
 ) -> Dimension:
+    if model.weighted_estimator_terms:
+        dimensions = {
+            quantities[term.quantity_id].dimension
+            for term in model.weighted_estimator_terms
+        }
+        if len(dimensions) != 1:
+            raise BridgeValidationError("weighted estimator inputs must share a common dimension")
+        return dimensions.pop()
     result = DIMENSIONLESS
     for term in model.estimator_terms:
         result = result * quantities[term.quantity_id].dimension ** term.exponent
     return result
+
+
+def normalized_inverse_variance_weights(
+    uncertainties: Mapping[str, Decimal],
+) -> dict[str, Decimal]:
+    """Recompute normalized marginal weights in canonical ID order, without floats."""
+
+    if not uncertainties:
+        raise BridgeValidationError("weighted estimator requires individual uncertainties")
+    try:
+        with localcontext(Context(prec=WEIGHTED_PRECISION, rounding=ROUND_HALF_EVEN)):
+            inverses = {}
+            for identifier, uncertainty in sorted(uncertainties.items()):
+                value = _validate_decimal(uncertainty, "individual standard uncertainty")
+                if value is None or value <= 0:
+                    raise BridgeValidationError("individual standard uncertainty must be positive")
+                variance = value ** 2
+                if not variance.is_finite() or variance <= 0:
+                    raise BridgeValidationError("individual variance must be finite and positive")
+                inverses[identifier] = Decimal("1") / variance
+            denominator = sum(inverses.values(), Decimal("0"))
+            if not denominator.is_finite() or denominator <= 0:
+                raise BridgeValidationError("weight normalizer must be finite and positive")
+            weights = {identifier: value / denominator for identifier, value in inverses.items()}
+            if any(not value.is_finite() or value <= 0 for value in weights.values()):
+                raise BridgeValidationError("normalized weights must be finite and positive")
+            if abs(sum(map(Fraction, weights.values()), Fraction(0)) - 1) > Fraction(WEIGHTED_NORMALIZATION_BOUND):
+                raise BridgeValidationError("weighted coefficients are not normalized")
+            return weights
+    except DecimalException as error:
+        raise BridgeValidationError("weighted arithmetic is not representable under the declared policy") from error
+
+
+def _validate_weighted_estimator(
+    model: MeasurementModel, quantities: Mapping[str, QuantityRecord],
+) -> None:
+    if not model.weighted_estimator_terms:
+        if model.weighting_rule is not None:
+            raise BridgeValidationError("a weighting rule requires a weighted estimator")
+        return
+    if model.weighting_rule != NORMALIZED_INVERSE_VARIANCE:
+        raise BridgeValidationError("unrecognized weighted estimator rule")
+    terms = model.weighted_estimator_terms
+    if abs(sum((Fraction(term.coefficient) for term in terms), Fraction(0)) - 1) > Fraction(WEIGHTED_NORMALIZATION_BOUND):
+        raise BridgeValidationError("weighted coefficients are not normalized")
+    target = quantities[model.target_measurand_id]
+    for term in terms:
+        quantity = quantities[term.quantity_id]
+        if quantity.value is None:
+            raise BridgeValidationError("weighted empirical input must be populated")
+        if quantity.unit != target.unit or quantity.uncertainty_unit != quantity.unit:
+            raise BridgeValidationError("weighted input and uncertainty units must match the target unit")
+    expected = normalized_inverse_variance_weights({
+        term.quantity_id: quantities[term.quantity_id].standard_uncertainty for term in terms
+    })
+    if any(term.coefficient != expected[term.quantity_id] for term in terms):
+        raise BridgeValidationError("weighted coefficients differ from recomputed inverse total variances")
 
 
 def _registered_signature_dimension(
@@ -305,6 +375,15 @@ def _validate_uncertainty_model(
     """Validate one uncertainty basis and return direct component identifiers."""
 
     uncertainty = model.uncertainty_model
+    component_role_ids = {
+        identifier for identifier, quantity in quantities.items()
+        if quantity.role == UNCERTAINTY_COMPONENT
+    }
+    if estimator_upstream & component_role_ids:
+        raise BridgeValidationError(
+            "uncertainty component or component ancestor enters central "
+            f"estimator ancestry: {sorted(estimator_upstream & component_role_ids)}"
+        )
     if uncertainty is None:
         return set()
     if uncertainty.measurand_id != model.target_measurand_id:
@@ -352,13 +431,7 @@ def _validate_uncertainty_model(
                 f"uncertainty component: {sorted(external_components)}"
             )
 
-        component_role_ids = {
-            identifier
-            for identifier, quantity in quantities.items()
-            if quantity.role == UNCERTAINTY_COMPONENT
-        }
-        component_ancestry = estimator_upstream & component_role_ids
-        component_ancestry |= estimator_upstream & set(
+        component_ancestry = estimator_upstream & set(
             _upstream_ids(direct_component_ids, all_edges)
         )
         if component_ancestry:
@@ -463,10 +536,12 @@ def validate_measurement_model(model: MeasurementModel) -> None:
         raise BridgeValidationError("target measurand must have the dimensions of G")
     if model.target_symbolic_key != TARGET_KEY:
         raise BridgeValidationError("this bridge contract targets G")
-    if not model.estimator_terms:
+    if not model.estimator_terms and not model.weighted_estimator_terms:
         raise BridgeValidationError("measurement model is missing an estimator")
+    if model.estimator_terms and model.weighted_estimator_terms:
+        raise BridgeValidationError("monomial and weighted estimator representations are mutually exclusive")
 
-    term_ids = [term.quantity_id for term in model.estimator_terms]
+    term_ids = [term.quantity_id for term in (model.estimator_terms or model.weighted_estimator_terms)]
     if len(set(term_ids)) != len(term_ids):
         raise BridgeValidationError("duplicate estimator input identifier")
     unknown_terms = set(term_ids) - identifiers
@@ -485,6 +560,7 @@ def validate_measurement_model(model: MeasurementModel) -> None:
                 f"forbidden estimator input role for {identifier}: "
                 f"{quantities[identifier].role}"
             )
+    _validate_weighted_estimator(model, quantities)
 
     definition_parents = _validate_edges(
         model.definition_edges,
@@ -707,7 +783,7 @@ def evaluate_measurement_model(model: MeasurementModel) -> BridgeEvaluation:
 
     validate_measurement_model(model)
     quantities = _quantity_map(model)
-    term_ids = tuple(term.quantity_id for term in model.estimator_terms)
+    term_ids = tuple(term.quantity_id for term in (model.estimator_terms or model.weighted_estimator_terms))
     all_edges = (*model.definition_edges, *model.metrological_edges)
     upstream_ids = _upstream_ids(term_ids, all_edges)
     uncertainty_component_upstream_ids = _uncertainty_component_upstream_ids(

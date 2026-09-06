@@ -28,7 +28,7 @@ RESULT_SCHEMA_VERSION = 1
 EXPERIMENT_IDENTIFIER = "post_6b_hardening_mutations_v1"
 DEFAULT_OUTPUT = Path(
     "Experiments/EcosystemComparison/PySRLeakage/"
-    "post_6b_hardening_v1.mutation_results_v4.json"
+    "post_6b_hardening_v1.mutation_results_v5.json"
 )
 RETIRED_ARTIFACT_SHA256 = {
     (
@@ -43,6 +43,10 @@ RETIRED_ARTIFACT_SHA256 = {
         "Experiments/EcosystemComparison/PySRLeakage/"
         "post_6b_hardening_v1.mutation_results_v3.json"
     ): "3d0e2102d0e11e7679b6233c223d4de897d41a0ef6d3fdc683cc4ac9fb512f4e",
+    (
+        "Experiments/EcosystemComparison/PySRLeakage/"
+        "post_6b_hardening_v1.mutation_results_v4.json"
+    ): "1d5ccaea613000a63a5a51b7fb6bce559dc2ead425f90b85c211fdc804c1342d",
 }
 SOURCE_PATHS = (
     "Discovery/pysr_leakage_hardening_mutations.py",
