@@ -1,0 +1,1047 @@
+{
+  "arithmetic_policy": {
+    "binary_floating_point": "forbidden in authoritative arithmetic",
+    "matrix_diagonal_rounding_bound_relative": "1e-47",
+    "precision": 50,
+    "presentation_rounding": "none until presentation or terminal comparison",
+    "rounding": "ROUND_HALF_EVEN",
+    "serialization": "numbers as decimal strings; stable sorted keys and scope/component order",
+    "source_strings": "retain exact published strings",
+    "type": "Decimal"
+  },
+  "audit_id": "hust_2018_aaf_combined_feasibility_v1",
+  "authorization_boundary": {
+    "combined_measurement_model_authorized": false,
+    "combined_measurement_model_emitted": false,
+    "next_step": "A separate preregistration may design the combined-result contract after independent audit of this feasibility GO."
+  },
+  "baseline_main_sha": "86479a55dfdc0c631845910ce92679c152c9f0af",
+  "combination_rule": {
+    "id": "section_6_marginal_inverse_variance_then_correlated_propagation",
+    "uncertainty": "u_AAF^2 = sum_nonstat_k(sum_i(p_i*u_k_i)^2) + sum_i((p_i*u_stat_i)^2) = p^T C p",
+    "weights_and_estimate": "p_i = (1 / C_ii) / sum_j(1 / C_jj); G_AAF = sum_i(p_i * G_i)"
+  },
+  "component_inventory": {
+    "runs": [
+      {
+        "G_hat_decimal": "6.6745328035953125108282108677121809575949937283002E-11",
+        "components": [
+          {
+            "component_id": "pendulum_dimensions",
+            "quantity_id": "AAF-I:u_ppm:pendulum_dimensions",
+            "value_ppm": "0.16"
+          },
+          {
+            "component_id": "pendulum_attitude",
+            "quantity_id": "AAF-I:u_ppm:pendulum_attitude",
+            "value_ppm": "0.06"
+          },
+          {
+            "component_id": "pendulum_density_inhomogeneity",
+            "quantity_id": "AAF-I:u_ppm:pendulum_density_inhomogeneity",
+            "value_ppm": "0.46"
+          },
+          {
+            "component_id": "coating_layer",
+            "quantity_id": "AAF-I:u_ppm:coating_layer",
+            "value_ppm": "0.34"
+          },
+          {
+            "component_id": "clamp_and_ferrule",
+            "quantity_id": "AAF-I:u_ppm:clamp_and_ferrule",
+            "value_ppm": "0.70"
+          },
+          {
+            "component_id": "other_pendulum_effects",
+            "quantity_id": "AAF-I:u_ppm:other_pendulum_effects",
+            "value_ppm": "0.29"
+          },
+          {
+            "component_id": "source_mass_masses",
+            "quantity_id": "AAF-I:u_ppm:source_mass_masses",
+            "value_ppm": "0.32"
+          },
+          {
+            "component_id": "horizontal_source_mass_distance",
+            "quantity_id": "AAF-I:u_ppm:horizontal_source_mass_distance",
+            "value_ppm": "8.98"
+          },
+          {
+            "component_id": "vertical_source_mass_distance",
+            "quantity_id": "AAF-I:u_ppm:vertical_source_mass_distance",
+            "value_ppm": "5.79"
+          },
+          {
+            "component_id": "source_mass_positions_alignment",
+            "quantity_id": "AAF-I:u_ppm:source_mass_positions_alignment",
+            "value_ppm": "0.57"
+          },
+          {
+            "component_id": "fibre_anelasticity",
+            "quantity_id": "AAF-I:u_ppm:fibre_anelasticity",
+            "value_ppm": "0.01"
+          },
+          {
+            "component_id": "thermal_effect",
+            "quantity_id": "AAF-I:u_ppm:thermal_effect",
+            "value_ppm": "0.91"
+          },
+          {
+            "component_id": "time_base",
+            "quantity_id": "AAF-I:u_ppm:time_base",
+            "value_ppm": "0.01"
+          },
+          {
+            "component_id": "rotating_gravity_gradient",
+            "quantity_id": "AAF-I:u_ppm:rotating_gravity_gradient",
+            "value_ppm": "1.86"
+          },
+          {
+            "component_id": "shelf_deformation",
+            "quantity_id": "AAF-I:u_ppm:shelf_deformation",
+            "value_ppm": "1.51"
+          },
+          {
+            "component_id": "magnetic_damper",
+            "quantity_id": "AAF-I:u_ppm:magnetic_damper",
+            "value_ppm": "1.95"
+          },
+          {
+            "component_id": "air_density",
+            "quantity_id": "AAF-I:u_ppm:air_density",
+            "value_ppm": "1.00"
+          },
+          {
+            "component_id": "magnetic_field",
+            "quantity_id": "AAF-I:u_ppm:magnetic_field",
+            "value_ppm": "3.98"
+          },
+          {
+            "component_id": "angle_encoder",
+            "quantity_id": "AAF-I:u_ppm:angle_encoder",
+            "value_ppm": "0.72"
+          },
+          {
+            "component_id": "residual_twist_angle",
+            "quantity_id": "AAF-I:u_ppm:residual_twist_angle",
+            "value_ppm": "0.03"
+          },
+          {
+            "component_id": "statistical_angular_acceleration",
+            "quantity_id": "AAF-I:u_ppm:statistical_angular_acceleration",
+            "value_ppm": "3.44"
+          }
+        ],
+        "scope": "AAF-I"
+      },
+      {
+        "G_hat_decimal": "6.6743753740743660354813960747489220127126413482226E-11",
+        "components": [
+          {
+            "component_id": "pendulum_dimensions",
+            "quantity_id": "AAF-II:u_ppm:pendulum_dimensions",
+            "value_ppm": "0.16"
+          },
+          {
+            "component_id": "pendulum_attitude",
+            "quantity_id": "AAF-II:u_ppm:pendulum_attitude",
+            "value_ppm": "0.06"
+          },
+          {
+            "component_id": "pendulum_density_inhomogeneity",
+            "quantity_id": "AAF-II:u_ppm:pendulum_density_inhomogeneity",
+            "value_ppm": "0.46"
+          },
+          {
+            "component_id": "coating_layer",
+            "quantity_id": "AAF-II:u_ppm:coating_layer",
+            "value_ppm": "0.34"
+          },
+          {
+            "component_id": "clamp_and_ferrule",
+            "quantity_id": "AAF-II:u_ppm:clamp_and_ferrule",
+            "value_ppm": "1.05"
+          },
+          {
+            "component_id": "other_pendulum_effects",
+            "quantity_id": "AAF-II:u_ppm:other_pendulum_effects",
+            "value_ppm": "0.29"
+          },
+          {
+            "component_id": "source_mass_masses",
+            "quantity_id": "AAF-II:u_ppm:source_mass_masses",
+            "value_ppm": "0.31"
+          },
+          {
+            "component_id": "horizontal_source_mass_distance",
+            "quantity_id": "AAF-II:u_ppm:horizontal_source_mass_distance",
+            "value_ppm": "8.98"
+          },
+          {
+            "component_id": "vertical_source_mass_distance",
+            "quantity_id": "AAF-II:u_ppm:vertical_source_mass_distance",
+            "value_ppm": "5.79"
+          },
+          {
+            "component_id": "source_mass_positions_alignment",
+            "quantity_id": "AAF-II:u_ppm:source_mass_positions_alignment",
+            "value_ppm": "0.62"
+          },
+          {
+            "component_id": "fibre_anelasticity",
+            "quantity_id": "AAF-II:u_ppm:fibre_anelasticity",
+            "value_ppm": "0.01"
+          },
+          {
+            "component_id": "thermal_effect",
+            "quantity_id": "AAF-II:u_ppm:thermal_effect",
+            "value_ppm": "0.91"
+          },
+          {
+            "component_id": "time_base",
+            "quantity_id": "AAF-II:u_ppm:time_base",
+            "value_ppm": "0.01"
+          },
+          {
+            "component_id": "rotating_gravity_gradient",
+            "quantity_id": "AAF-II:u_ppm:rotating_gravity_gradient",
+            "value_ppm": "1.35"
+          },
+          {
+            "component_id": "shelf_deformation",
+            "quantity_id": "AAF-II:u_ppm:shelf_deformation",
+            "value_ppm": "1.51"
+          },
+          {
+            "component_id": "magnetic_damper",
+            "quantity_id": "AAF-II:u_ppm:magnetic_damper",
+            "value_ppm": "1.95"
+          },
+          {
+            "component_id": "air_density",
+            "quantity_id": "AAF-II:u_ppm:air_density",
+            "value_ppm": "1.51"
+          },
+          {
+            "component_id": "magnetic_field",
+            "quantity_id": "AAF-II:u_ppm:magnetic_field",
+            "value_ppm": "3.98"
+          },
+          {
+            "component_id": "angle_encoder",
+            "quantity_id": "AAF-II:u_ppm:angle_encoder",
+            "value_ppm": "0.72"
+          },
+          {
+            "component_id": "residual_twist_angle",
+            "quantity_id": "AAF-II:u_ppm:residual_twist_angle",
+            "value_ppm": "0.61"
+          },
+          {
+            "component_id": "statistical_angular_acceleration",
+            "quantity_id": "AAF-II:u_ppm:statistical_angular_acceleration",
+            "value_ppm": "2.60"
+          }
+        ],
+        "scope": "AAF-II"
+      },
+      {
+        "G_hat_decimal": "6.6745350870563487749434592065303623880463414334833E-11",
+        "components": [
+          {
+            "component_id": "pendulum_dimensions",
+            "quantity_id": "AAF-III:u_ppm:pendulum_dimensions",
+            "value_ppm": "0.16"
+          },
+          {
+            "component_id": "pendulum_attitude",
+            "quantity_id": "AAF-III:u_ppm:pendulum_attitude",
+            "value_ppm": "0.03"
+          },
+          {
+            "component_id": "pendulum_density_inhomogeneity",
+            "quantity_id": "AAF-III:u_ppm:pendulum_density_inhomogeneity",
+            "value_ppm": "0.46"
+          },
+          {
+            "component_id": "coating_layer",
+            "quantity_id": "AAF-III:u_ppm:coating_layer",
+            "value_ppm": "0.34"
+          },
+          {
+            "component_id": "clamp_and_ferrule",
+            "quantity_id": "AAF-III:u_ppm:clamp_and_ferrule",
+            "value_ppm": "0.48"
+          },
+          {
+            "component_id": "other_pendulum_effects",
+            "quantity_id": "AAF-III:u_ppm:other_pendulum_effects",
+            "value_ppm": "0.29"
+          },
+          {
+            "component_id": "source_mass_masses",
+            "quantity_id": "AAF-III:u_ppm:source_mass_masses",
+            "value_ppm": "0.31"
+          },
+          {
+            "component_id": "horizontal_source_mass_distance",
+            "quantity_id": "AAF-III:u_ppm:horizontal_source_mass_distance",
+            "value_ppm": "8.98"
+          },
+          {
+            "component_id": "vertical_source_mass_distance",
+            "quantity_id": "AAF-III:u_ppm:vertical_source_mass_distance",
+            "value_ppm": "5.79"
+          },
+          {
+            "component_id": "source_mass_positions_alignment",
+            "quantity_id": "AAF-III:u_ppm:source_mass_positions_alignment",
+            "value_ppm": "0.35"
+          },
+          {
+            "component_id": "fibre_anelasticity",
+            "quantity_id": "AAF-III:u_ppm:fibre_anelasticity",
+            "value_ppm": "0.01"
+          },
+          {
+            "component_id": "thermal_effect",
+            "quantity_id": "AAF-III:u_ppm:thermal_effect",
+            "value_ppm": "0.91"
+          },
+          {
+            "component_id": "time_base",
+            "quantity_id": "AAF-III:u_ppm:time_base",
+            "value_ppm": "0.01"
+          },
+          {
+            "component_id": "rotating_gravity_gradient",
+            "quantity_id": "AAF-III:u_ppm:rotating_gravity_gradient",
+            "value_ppm": "1.72"
+          },
+          {
+            "component_id": "shelf_deformation",
+            "quantity_id": "AAF-III:u_ppm:shelf_deformation",
+            "value_ppm": "1.51"
+          },
+          {
+            "component_id": "magnetic_damper",
+            "quantity_id": "AAF-III:u_ppm:magnetic_damper",
+            "value_ppm": "0.08"
+          },
+          {
+            "component_id": "air_density",
+            "quantity_id": "AAF-III:u_ppm:air_density",
+            "value_ppm": "1.13"
+          },
+          {
+            "component_id": "magnetic_field",
+            "quantity_id": "AAF-III:u_ppm:magnetic_field",
+            "value_ppm": "0.90"
+          },
+          {
+            "component_id": "angle_encoder",
+            "quantity_id": "AAF-III:u_ppm:angle_encoder",
+            "value_ppm": "0.72"
+          },
+          {
+            "component_id": "residual_twist_angle",
+            "quantity_id": "AAF-III:u_ppm:residual_twist_angle",
+            "value_ppm": "0.45"
+          },
+          {
+            "component_id": "statistical_angular_acceleration",
+            "quantity_id": "AAF-III:u_ppm:statistical_angular_acceleration",
+            "value_ppm": "1.34"
+          }
+        ],
+        "scope": "AAF-III"
+      }
+    ]
+  },
+  "covariance": {
+    "component_terms": [
+      {
+        "absolute_standard_contributions": [
+          "1.0679252485752500017325137388339489532151989965280E-17",
+          "1.0679000598518985656770233719598275220340226157156E-17",
+          "1.0679256139290158039909534730448579820874146293573E-17"
+        ],
+        "component_id": "pendulum_dimensions",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "4.0047196821571875064969265206273085745569962369801E-18",
+          "4.0046252244446196212888376448493532076275848089336E-18",
+          "2.0023605261169046324830377619591087164139024300450E-18"
+        ],
+        "component_id": "pendulum_attitude",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "3.0702850896538437549809769991476032404936971150181E-17",
+          "3.0702126720742083763214421943845041258478150201824E-17",
+          "3.0702861400459204364739912350039666985013170594023E-17"
+        ],
+        "component_id": "pendulum_density_inhomogeneity",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "2.2693411532224062536815916950221415255822978676221E-17",
+          "2.2692876271852844520636746654146334843222980583957E-17",
+          "2.2693419295991585834807761302203232119357560873843E-17"
+        ],
+        "component_id": "coating_layer",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "4.6721729625167187575797476073985266703164956098101E-17",
+          "7.0080941427780843372554658784863681133482734156337E-17",
+          "3.2037768417870474119728604191345739462622438880720E-17"
+        ],
+        "component_id": "clamp_and_ferrule",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "1.9356145130426406281401811516365324777025481812071E-17",
+          "1.9355688584815661502896048616771873836866659909846E-17",
+          "1.9356151752463411447336031698938050925334390157102E-17"
+        ],
+        "component_id": "other_pendulum_effects",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "2.1358504971505000034650274776678979064303979930561E-17",
+          "2.0690563659630534709992327831721658239409188179490E-17",
+          "2.0691058769874681202324723540244123402943658443798E-17"
+        ],
+        "component_id": "source_mass_masses",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "5.9937304576285906347237333592055384999203043680136E-16",
+          "5.9935890859187806998622936751245319674159519307039E-16",
+          "5.9937325081766011998992263674642654244656146072680E-16"
+        ],
+        "component_id": "horizontal_source_mass_distance",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "3.8645544932816859437695340924053527744475013686858E-16",
+          "3.8644633415890579345437283272796258453606193406209E-16",
+          "3.8645558154056259406922628805810798226788316899868E-16"
+        ],
+        "component_id": "vertical_source_mass_distance",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "3.8044836980493281311720801945959431458291464251311E-17",
+          "4.1381127319261069419984655663443316478818376358980E-17",
+          "2.3360872804697220712302107222856268358162195017192E-17"
+        ],
+        "component_id": "source_mass_positions_alignment",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "6.6745328035953125108282108677121809575949937283002E-19",
+          "6.6743753740743660354813960747489220127126413482226E-19",
+          "6.6745350870563487749434592065303623880463414334833E-19"
+        ],
+        "component_id": "fibre_anelasticity",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "6.0738248512717343848536718896180846714114442927532E-17",
+          "6.0736815904076730922880704280215190315685036268826E-17",
+          "6.0738269292212773851985478779426297731221707044698E-17"
+        ],
+        "component_id": "thermal_effect",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "6.6745328035953125108282108677121809575949937283002E-19",
+          "6.6743753740743660354813960747489220127126413482226E-19",
+          "6.6745350870563487749434592065303623880463414334833E-19"
+        ],
+        "component_id": "time_base",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "1.2414631014687281270140472213944656581126688334638E-16",
+          "9.0104067550003941478998847009110447171620658201005E-17",
+          "1.1480200349736919892902749835232223307439707265591E-16"
+        ],
+        "component_id": "rotating_gravity_gradient",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "1.0078544533428921891350598410245393245968440529733E-16",
+          "1.0078306814852292713576908072870872239196088435816E-16",
+          "1.0078547981455086650164623401860847205949975564560E-16"
+        ],
+        "component_id": "shelf_deformation",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "1.3015338967010859396115011192038752867310237770185E-16",
+          "1.3015031979445013769188722345760397924789650629034E-16",
+          "5.3396280696450790199547673652242899104370731467866E-18"
+        ],
+        "component_id": "magnetic_damper",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "6.6745328035953125108282108677121809575949937283002E-17",
+          "1.0078306814852292713576908072870872239196088435816E-16",
+          "7.5422246483736741156861089033793094984923658198361E-17"
+        ],
+        "component_id": "air_density",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "2.6564640558309343793096279253494480211228075038635E-16",
+          "2.6564013988815976821215956377500709610596312565926E-16",
+          "6.0070815783507138974491132858773261492417072901350E-17"
+        ],
+        "component_id": "magnetic_field",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "4.8056636185886250077963118247527702894683954843761E-17",
+          "4.8055502693335435455466051738192238491531017707203E-17",
+          "4.8056652626805711179592906287018609193933658321080E-17"
+        ],
+        "component_id": "angle_encoder",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "2.0023598410785937532484632603136542872784981184901E-18",
+          "4.0713689781853632816436516055968424277547112224158E-17",
+          "3.0035407891753569487245566429386630746208536450675E-17"
+        ],
+        "component_id": "residual_twist_angle",
+        "off_diagonal_rho": "1"
+      },
+      {
+        "absolute_standard_contributions": [
+          "2.2960392844367875037249045384929902494126778425353E-16",
+          "1.7353375972593351692251629794347197233052867505379E-16",
+          "8.9438770166555073584242353367506855999820975208676E-17"
+        ],
+        "component_id": "statistical_angular_acceleration",
+        "off_diagonal_rho": "0"
+      }
+    ],
+    "diagnostics": {
+      "inverse_or_regularization_used": false,
+      "inverse_required": false,
+      "invertible": true,
+      "positive_definite": true,
+      "positive_semidefinite": true,
+      "principal_minors": [
+        {
+          "exact_fraction": "215905964530975898042024035620002982219737679503/312500000000000000000000000000000000000000000000000000000000000000000000000000",
+          "scopes": [
+            "AAF-I"
+          ],
+          "sign": "positive"
+        },
+        {
+          "exact_fraction": "67129375363729664831130131290670881148267427505117/100000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "scopes": [
+            "AAF-II"
+          ],
+          "sign": "positive"
+        },
+        {
+          "exact_fraction": "28005524251814304688617895798879687412980648840131/50000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "scopes": [
+            "AAF-III"
+          ],
+          "sign": "positive"
+        },
+        {
+          "exact_fraction": "114795701440054927468315944292718945808877842969640701374513363835354198008294587832745216977426019/2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "scopes": [
+            "AAF-I",
+            "AAF-II"
+          ],
+          "sign": "positive"
+        },
+        {
+          "exact_fraction": "167877274990439680263630382438673422191558195992134831649163321662603029684565959106623247483551719/2500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "scopes": [
+            "AAF-I",
+            "AAF-III"
+          ],
+          "sign": "positive"
+        },
+        {
+          "exact_fraction": "55466440556223741443205598245919398013366513876628052624692890384788686670284027607748307751868203/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "scopes": [
+            "AAF-II",
+            "AAF-III"
+          ],
+          "sign": "positive"
+        },
+        {
+          "exact_fraction": "2110298317063748896838532037861407323646267529467536444850035889319505612916779673936645658595182010197028214465936584909017745320618758309171484611/500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "scopes": [
+            "AAF-I",
+            "AAF-II",
+            "AAF-III"
+          ],
+          "sign": "positive"
+        }
+      ],
+      "symmetric": true
+    },
+    "matrix": [
+      [
+        "6.9089908649912287373447691398400954310316057440960E-31",
+        "6.3749383560984182549665595110661957469652883023415E-31",
+        "5.6553418327628509658112886658048051108526260205738E-31"
+      ],
+      [
+        "6.3749383560984182549665595110661957469652883023415E-31",
+        "6.7129375363729664831130131290670881148267427505117E-31",
+        "5.6615565827375745342250889138010501321548348411568E-31"
+      ],
+      [
+        "5.6553418327628509658112886658048051108526260205738E-31",
+        "5.6615565827375745342250889138010501321548348411568E-31",
+        "5.6011048503628609377235791597759374825961297680262E-31"
+      ]
+    ],
+    "scopes": [
+      "AAF-I",
+      "AAF-II",
+      "AAF-III"
+    ],
+    "unit": "(m^3 kg^-1 s^-2)^2"
+  },
+  "decision": "GO",
+  "historical_preservation": {
+    "all_hashes_unchanged": true,
+    "baseline": "86479a55dfdc0c631845910ce92679c152c9f0af",
+    "files": [
+      {
+        "byte_length": 6102,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v1.json",
+        "sha256": "06338de9b24ead21f5b24da12d1cd0c94ba584ad740368b128d6f552023ec6f3"
+      },
+      {
+        "byte_length": 9137,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v2.json",
+        "sha256": "2bf6bb803d18600147c17bd94f5b05a3118f9bfd76136e0b7c22c5dfa1e77170"
+      },
+      {
+        "byte_length": 3288,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_clarification_v1.json",
+        "sha256": "7b193a70fa1ccbf3097dba0f9316fe446e5b8f8c4073f440ea7e25bba18276b4"
+      },
+      {
+        "byte_length": 6268,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_feasibility_v1.json",
+        "sha256": "e2969a0223641d8a13d2199e3ea34879a4ed437a8f23c09e510cec327b7a72d8"
+      },
+      {
+        "byte_length": 843,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_model_preregistration_v1.anchor.json",
+        "sha256": "54556b9bfc9cf855c100c6049285612baaa8885eb4e0ba7bc455a6cc9f8d83b9"
+      },
+      {
+        "byte_length": 10981,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_model_preregistration_v1.md",
+        "sha256": "05913514c25be9bf722454f6369261f529b7bd19c97d1ee81cf054a9bc9bb49f"
+      },
+      {
+        "byte_length": 240705,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v1.json",
+        "sha256": "a13944b8a6f8691c46398b4374cfb29df94f8cdfc698a70ad47addcf05cad0a3"
+      },
+      {
+        "byte_length": 241071,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v2.json",
+        "sha256": "9ab68481e2f11a08dd184aec25781822fd4c3b9beaa13fc5edb34cfa4e5a7b00"
+      },
+      {
+        "byte_length": 5461,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v1.json",
+        "sha256": "82f6715fa40a9d951d8f4b4e7f9d5f5e64ae9d80c645027acda08f39becc79ba"
+      },
+      {
+        "byte_length": 8165,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v2.json",
+        "sha256": "5d7f197b9eae5a18f302eb9eca3073346106d6363c59cbd35573e6a53fcb9809"
+      },
+      {
+        "byte_length": 10386,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v3.json",
+        "sha256": "c114045c78e97b81e70c9a216c279c58076732a6445906effa83bd94f61b7561"
+      },
+      {
+        "byte_length": 2183,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_official_source_v1.json",
+        "sha256": "de73536119564f28b61f330eea5ce8841fd5e2ba21f52dc3ce6a7f44b620476d"
+      },
+      {
+        "byte_length": 6315,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_external_sources_v1.json",
+        "sha256": "3b37b6548a23ef3138909bed638dd13cf571c084fdfaad84a70d41aac02eb559"
+      },
+      {
+        "byte_length": 4693,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_independent_human_attestation_v1.json",
+        "sha256": "560fbef2b08b46a29086e26becbe47701b84ba9e3aa6ecc3ffdda502fbc891b1"
+      },
+      {
+        "byte_length": 6080,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_measurement_model_preregistration_v1.md",
+        "sha256": "5becdb7cfc6daed8a1a6c47cfeede18d5349ee2820197d8c3d17a5b61b705a62"
+      },
+      {
+        "byte_length": 71092,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_measurement_models_v1.json",
+        "sha256": "6da4917504be9b3db944c8be8b4e86ad2643ab383f68e83d2cfb920680cd02bb"
+      },
+      {
+        "byte_length": 1885,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_post_audit_clarification_v1.md",
+        "sha256": "5e36d76f243603aabf05e37e52061831988fa5e680afd568e487ce87b1499b95"
+      },
+      {
+        "byte_length": 7257,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_preregistration_v1.md",
+        "sha256": "fa297ecfa4cc4ae2ee7737e413dc8bf0f6ad63c70ca2d1ff070ae81dd2ec8885"
+      },
+      {
+        "byte_length": 7412,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v1.json",
+        "sha256": "624d84db3ef855edc9f126a8f5f974b2aa799600e94d2fb39f1d048ffa7afe5b"
+      },
+      {
+        "byte_length": 8009,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v2.json",
+        "sha256": "ef8a23cee8d1d7c7e417ca69d8b0e75a66d5cf272e6fcd59ba92fb84d1468326"
+      },
+      {
+        "byte_length": 13213,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_v1.json",
+        "sha256": "8328bec85e5356d833d7f36b9e16833edc0d3c415bdd1eba59c7a01790c7f37a"
+      },
+      {
+        "byte_length": 1632,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_semantic_source_review_v1.json",
+        "sha256": "1628e7a3eac2fadddf75f892e8128807fd07bed7b51b920672826e4915c68b1f"
+      },
+      {
+        "byte_length": 5088,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.manifest.json",
+        "sha256": "867bff124fbd6b46a1ae1710aeaa13fb19698455c5fbaa8971bb3c08f10b162a"
+      },
+      {
+        "byte_length": 8325,
+        "path": "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.md",
+        "sha256": "883dea16d9713a14224a399a4894c443b9a019a42e1f19e6e500999261db4117"
+      },
+      {
+        "byte_length": 192,
+        "path": "FormalPhysics.lean",
+        "sha256": "0062f682a7867f09d56f40b904228a5cdcd6be2480c33bc6e9cca3f9de59a3c0"
+      },
+      {
+        "byte_length": 1460,
+        "path": "FormalPhysics/Constants.lean",
+        "sha256": "2fbb2540c5c0b4d618afb985a5dcdbade697af7b223a4069148edc0b64ec08ca"
+      },
+      {
+        "byte_length": 6209,
+        "path": "FormalPhysics/Dimensions.lean",
+        "sha256": "90fccf4656e060de16fd498fa53667a642ea64adcb7ba84854d2e8519be4facf"
+      },
+      {
+        "byte_length": 3103,
+        "path": "FormalPhysics/Estimator.lean",
+        "sha256": "60fe5db6a88059e0af67a6473893062d4965200dbd06b278afbc89a15ea31fcd"
+      },
+      {
+        "byte_length": 6674,
+        "path": "FormalPhysics/InverseSquare.lean",
+        "sha256": "356b272a6203f3ea274755f2ca38fb4c7475d16e40c3736fd66224016c79982f"
+      },
+      {
+        "byte_length": 9890,
+        "path": "FormalPhysics/PlanckUnits.lean",
+        "sha256": "941678ee67a1156957e239813a39748afb38bf14c78672a79dfa618d4dd84aa5"
+      },
+      {
+        "byte_length": 2631,
+        "path": "FormalPhysics/Verlinde.lean",
+        "sha256": "a3f781b500325b774d8dd50e4f2461b0c85779984f4a2f255d14d5be00d19377"
+      },
+      {
+        "byte_length": 3153,
+        "path": "lake-manifest.json",
+        "sha256": "fc42ef5cb91e5146e2e449b7bff089892e008c7d62e896bebfbe1314a06af628"
+      },
+      {
+        "byte_length": 282,
+        "path": "lakefile.toml",
+        "sha256": "73f0571b8db33e25f442c5c192e6d996a8d451e84a8cb4a47cc1b7fa7a474c26"
+      },
+      {
+        "byte_length": 25,
+        "path": "lean-toolchain",
+        "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
+      }
+    ]
+  },
+  "individual_reconstructions": [
+    {
+      "G_hat_decimal": "6.6745328035953125108282108677121809575949937283002E-11",
+      "absolute_standard_uncertainty_decimal": "8.3120339658781644907340389173695334140007515840714E-16",
+      "component_count": 21,
+      "diagonal_rss_relative_rounding_difference": "1.2030749682991102025830980677724110355211344640413E-50",
+      "diagonal_variance": "6.9089908649912287373447691398400954310316057440960E-31",
+      "historical_reconstruction_preserved": true,
+      "relative_standard_uncertainty_ppm": "12.453356977136727047866320298865297714729175627210",
+      "scope": "AAF-I",
+      "sum_of_squares_ppm": "155.0861"
+    },
+    {
+      "G_hat_decimal": "6.6743753740743660354813960747489220127126413482226E-11",
+      "absolute_standard_uncertainty_decimal": "8.1932518186450039582265712063424178728505366519060E-16",
+      "component_count": 21,
+      "diagonal_rss_relative_rounding_difference": "6.1025830899298510675396778713528533853018830358879E-50",
+      "diagonal_variance": "6.7129375363729664831130131290670881148267427505117E-31",
+      "historical_reconstruction_preserved": true,
+      "relative_standard_uncertainty_ppm": "12.275683280371809918505072305209443766741467830010",
+      "scope": "AAF-II",
+      "sum_of_squares_ppm": "150.6924"
+    },
+    {
+      "G_hat_decimal": "6.6745350870563487749434592065303623880463414334833E-11",
+      "absolute_standard_uncertainty_decimal": "7.4840529463405461250674468394161011645883836840306E-16",
+      "component_count": 21,
+      "diagonal_rss_relative_rounding_difference": "2.6723488119868709928350734106804414602387827743322E-50",
+      "diagonal_variance": "5.6011048503628609377235791597759374825961297680262E-31",
+      "historical_reconstruction_preserved": true,
+      "relative_standard_uncertainty_ppm": "11.212845312408443280940946155017027106000868654421",
+      "scope": "AAF-III",
+      "sum_of_squares_ppm": "125.7279"
+    }
+  ],
+  "input_projection_sha256": "2213beecdd9a83e0cf5117a16dd4dc5a32e4bb043e2104be95f25052a4ffe595",
+  "nonclaims": [
+    "No new measurement of G or physical prediction.",
+    "No independent validation of the experiment, apparatus, or completeness of its systematic-error model.",
+    "No raw-data or run-level replication; no replication status is promoted.",
+    "No TOS authorization or physical independence claim for the AAF runs.",
+    "Source-reported correlations are modelling assumptions, not theorems about nature.",
+    "Agreement with a terminal published value is not evidence of uniqueness of the procedure.",
+    "No combined MeasurementModel or physical-bridge schema change is emitted or authorized by this audit.",
+    "No Lean certification of the apparatus or combination procedure."
+  ],
+  "preregistration": {
+    "commit_sha": "9c5a30361af60bfc9831da6c5c6bb867727b1b70",
+    "local_freeze_commit_object": "tree 62f670ffbe610c014f6b30c2f8c27aafc3b11a2c\nparent 86479a55dfdc0c631845910ce92679c152c9f0af\nauthor Codex <codex@openai.com> 1788661298 -0400\ncommitter Codex <codex@openai.com> 1788661298 -0400\n\nPreregister HUST AAF combined-estimator feasibility audit\n",
+    "local_pre_review_freeze_commit": "607143cb15528f19b670d66910833ce79d7982b9",
+    "path": "Experiments/GMeasurements/hust_2018_aaf_combined_feasibility_preregistration_v1.json",
+    "sha256": "14cda7a63b8f5ad2c40455300465a3c5b169e14f4ac7390742a172db30ba750a",
+    "transport_note": "Identical preregistration-only tree published through the connector after direct push failed; local freeze precedes source review, remote publication precedes all arithmetic."
+  },
+  "reason_codes": [],
+  "reconstructed_combined_result": {
+    "G_hat_decimal": "6.6744840065457963444635367203161448914060385525132E-11",
+    "quadratic_form_variance_decimal": "6.0112181851219302670814571420648678410267031108491E-31",
+    "relative_arithmetic_disagreement": "1.6635563195411051501623887884402013861919089490177E-50",
+    "relative_standard_uncertainty_ppm": "11.616185776408652134378651035830792861396904360051",
+    "rule_id": "section_6_marginal_inverse_variance_then_correlated_propagation",
+    "standard_uncertainty_decimal": "7.7532046181704312524301241528799142103526834813476E-16",
+    "unit": "m^3 kg^-1 s^-2",
+    "variance_decimal": "6.0112181851219302670814571420648678410267031108490E-31",
+    "weight_sum": "0.99999999999999999999999999999999999999999999999999",
+    "weights": [
+      "0.30649365337006924562360645467714515536591612792626",
+      "0.31544489127716891277497738085174191306187264330053",
+      "0.37806145535276184160141616447111293157221122877320"
+    ]
+  },
+  "required_source_claims": {
+    "combination_rule": {
+      "interpretation": "The AAF sentence incorporates the preceding explicit method. Both weighting equations normalize inverse marginal total variances; the uncertainty equation propagates same-item correlations. Deduction: apply those same equations to three AAF determinations, without TOS-specific intermediate fibre/background terms.",
+      "locator": "Section 6, printed p. 12: two-run weights and final p_k/G_ToS equations; printed p. 13: uncertainty equation and final AAF sentence",
+      "quote_ids": [
+        "method"
+      ],
+      "source_id": "supplementary_information",
+      "status": "supported"
+    },
+    "component_inventory": {
+      "interpretation": "Use the complete per-run direct relative standard-uncertainty inventory already authorized at depth 2b, excluding displayed totals.",
+      "locator": "Table 1, Nature 560, p. 584; AAF-I/II/III columns and 21 applicable rows",
+      "quote_ids": [
+        "ppm"
+      ],
+      "source_id": "official_nature_table_1",
+      "status": "supported"
+    },
+    "cross_run_correlations": {
+      "interpretation": "Same non-statistical item has rho=1 across runs; statistical row has rho=0 off diagonal. Different items do not mix in the source's sum over itemwise squares. This is the published model, not physical independence.",
+      "locator": "Section 6, printed p. 13: AAF paragraph and preceding simplified combined-uncertainty equation",
+      "quote_ids": [
+        "correlated",
+        "method"
+      ],
+      "source_id": "supplementary_information",
+      "status": "supported"
+    },
+    "individual_determinations": {
+      "interpretation": "Ga, Gb, Gc refer in order to the three AAF runs; reuse their pinned reconstructed central values.",
+      "locator": "Supplementary Table 3, printed p. 20; Section 6, printed p. 13, AAF paragraph",
+      "quote_ids": [
+        "runs"
+      ],
+      "source_id": "supplementary_information",
+      "status": "supported"
+    },
+    "normalization_or_weighting": {
+      "interpretation": "p_i = (1 / C_ii) / sum_j(1 / C_jj); G_AAF = sum_i(p_i * G_i). u_i is the total standard uncertainty of G_i, so C_ii=u_i^2; use reconstructed absolute contributions, not displayed ppm totals or statistical-only weights.",
+      "locator": "Section 6, printed p. 12, p_k equation immediately before G_ToS",
+      "quote_ids": [
+        "weight",
+        "method"
+      ],
+      "source_id": "supplementary_information",
+      "status": "supported"
+    },
+    "singularity_treatment_if_relevant": {
+      "interpretation": "Mathematical deduction: no covariance-matrix inverse occurs. Positive individual variances make all weight denominators nonzero; singularity requires no additional matrix procedure for this prescription.",
+      "locator": "Section 6, printed pp. 12-13, weight and uncertainty equations",
+      "quote_ids": [
+        "method"
+      ],
+      "source_id": "supplementary_information",
+      "status": "supported"
+    },
+    "statistical_classification": {
+      "interpretation": "Only the statistical angular-acceleration row is independent across runs; the remaining 20 rows are non-statistical.",
+      "locator": "Section 6, printed p. 13, AAF paragraph, sentences 2-3",
+      "quote_ids": [
+        "independent"
+      ],
+      "source_id": "supplementary_information",
+      "status": "supported"
+    },
+    "sufficient_target_independent_numerical_inputs": {
+      "interpretation": "The existing central reconstructions and 63 source decimal contributions supply every numerical operand. No final target or fitted coefficient is required.",
+      "locator": "Table 1 AAF columns; Supplementary Table 3 and existing pinned depth-2b models",
+      "quote_ids": [
+        "ppm"
+      ],
+      "source_id": "official_nature_table_1",
+      "status": "supported"
+    }
+  },
+  "schema_version": 1,
+  "scopes": [
+    "AAF-I",
+    "AAF-II",
+    "AAF-III"
+  ],
+  "source_and_individual_artifact_dependencies": [
+    {
+      "byte_length": 9137,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v2.json",
+      "role": "Verify existing individual-model authorization identity only; does not authorize combination.",
+      "sha256": "2bf6bb803d18600147c17bd94f5b05a3118f9bfd76136e0b7c22c5dfa1e77170"
+    },
+    {
+      "byte_length": 3288,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_clarification_v1.json",
+      "role": "Source-backed uncertainty meaning, component classification and correlation review evidence only.",
+      "sha256": "7b193a70fa1ccbf3097dba0f9316fe446e5b8f8c4073f440ea7e25bba18276b4"
+    },
+    {
+      "byte_length": 241071,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v2.json",
+      "role": "Read only per-run reconstructed central values and individual RSS diagnostics; external comparisons and displayed totals are excluded from computational projection.",
+      "sha256": "9ab68481e2f11a08dd184aec25781822fd4c3b9beaa13fc5edb34cfa4e5a7b00"
+    },
+    {
+      "byte_length": 2183,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_official_source_v1.json",
+      "role": "Official Table 1 capture identity and locator.",
+      "sha256": "de73536119564f28b61f330eea5ce8841fd5e2ba21f52dc3ce6a7f44b620476d"
+    },
+    {
+      "byte_length": 6315,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_external_sources_v1.json",
+      "role": "Existing external capture identities and fixed source URLs; no numerical target input.",
+      "sha256": "3b37b6548a23ef3138909bed638dd13cf571c084fdfaad84a70d41aac02eb559"
+    },
+    {
+      "byte_length": 8009,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v2.json",
+      "role": "Read the 21 component identities, exact ppm source strings, per-run scope and locators; ignore terminal_comparisons.",
+      "sha256": "ef8a23cee8d1d7c7e417ca69d8b0e75a66d5cf272e6fcd59ba92fb84d1468326"
+    },
+    {
+      "byte_length": 13213,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_v1.json",
+      "role": "Individual input provenance and source locators; no combined target input.",
+      "sha256": "8328bec85e5356d833d7f36b9e16833edc0d3c415bdd1eba59c7a01790c7f37a"
+    },
+    {
+      "byte_length": 5088,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.manifest.json",
+      "role": "Existing source-review identities and individual reconstruction provenance only.",
+      "sha256": "867bff124fbd6b46a1ae1710aeaa13fb19698455c5fbaa8971bb3c08f10b162a"
+    }
+  ],
+  "source_review": {
+    "review_scope": "Supplement Section 6 (printed pp. 12-13; PDF pages 13-14), Table 3 and the existing pinned Table 1/individual reconstruction records. Sufficient evidence found without raw-data intake.",
+    "short_quotes": {
+      "correlated": "100% correlation",
+      "independent": "independent between the three experiments",
+      "method": "With the same method as discussed above",
+      "ppm": "parts per million",
+      "runs": "three values of G",
+      "weight": "relative weight"
+    },
+    "supplement_byte_length": 2711453,
+    "supplement_sha256": "5b61d5c831be98c46e47fcc32f1ade0a680b4af6354d2bc34859d94b22279ffb",
+    "verification": "Official publisher PDF recovered during this audit and matched the existing binary pin; equations on printed pp. 12-13 visually inspected. Table 1 and individual inputs reused under their existing official-source authorization pins."
+  },
+  "terminal_published_comparison": {
+    "G_delta_decimal": "6.5457963444635367203161448914060385525132E-20",
+    "locator": "Abstract (central value and relative uncertainty). Absolute uncertainty retained in frozen hust_2018_aaf_source_audit_v1.md, Fail-closed disposition, combined AAF paragraph.",
+    "published_G_decimal": "6.674484e-11",
+    "published_relative_standard_uncertainty_ppm": "11.61",
+    "published_standard_uncertainty_decimal": "0.000078e-11",
+    "qualification": "Nominal reconstruction from rounded published inputs. All differences are retained; no coefficient or weight is adjusted to match a terminal number. The extra Decimal digits are computational precision, not additional measurement precision.",
+    "relative_uncertainty_delta_ppm": "0.006185776408652134378651035830792861396904360051",
+    "source_url": "https://www.nature.com/articles/s41586-018-0431-5",
+    "standard_uncertainty_delta_decimal": "-4.67953818295687475698758471200857896473165186524E-18",
+    "used_as_input_or_decision_criterion": false
+  }
+}
