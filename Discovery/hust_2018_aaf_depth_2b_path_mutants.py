@@ -1,4 +1,4 @@
-"""Run isolated source-path mutants for the HUST AAF terminal-input boundary."""
+"""Run isolated source-path mutants for bounded HUST AAF depth-2b guards."""
 
 from __future__ import annotations
 
@@ -12,10 +12,19 @@ import sys
 import tempfile
 
 
-BUILDER_PATH = Path("Discovery/hust_2018_aaf_depth_2b_measurement_models.py")
-TEST_CLASS = (
+MEASUREMENT_MODEL_PATH = Path(
+    "Discovery/hust_2018_aaf_depth_2b_measurement_models.py"
+)
+AUTHORIZATION_PATH = Path("Discovery/hust_2018_aaf_depth_2b_authorization.py")
+MEASUREMENT_MODEL_MODULE = "Discovery.hust_2018_aaf_depth_2b_measurement_models"
+AUTHORIZATION_MODULE = "Discovery.hust_2018_aaf_depth_2b_authorization"
+MEASUREMENT_MODEL_TEST_CLASS = (
     "tests.test_hust_2018_aaf_depth_2b_measurement_models."
     "HUST2018AAFDepth2BMeasurementModelTests"
+)
+AUTHORIZATION_TEST_CLASS = (
+    "tests.test_hust_2018_aaf_depth_2b_authorization."
+    "HUST2018AAFDepth2BAuthorizationTests"
 )
 
 
@@ -26,6 +35,9 @@ class HUSTDepth2BPathMutationError(ValueError):
 @dataclass(frozen=True)
 class PathMutationSpec:
     mutation_id: str
+    category: str
+    source_path: Path
+    module_name: str
     old_source: str
     new_source: str
     designated_test_id: str
@@ -34,6 +46,9 @@ class PathMutationSpec:
 
 DISPLAYED_TOTAL_SPEC = PathMutationSpec(
     mutation_id="displayed_total_as_input",
+    category="terminal_leakage",
+    source_path=MEASUREMENT_MODEL_PATH,
+    module_name=MEASUREMENT_MODEL_MODULE,
     old_source=(
         "        relative_ppm = sum_of_squares.sqrt()\n"
         "        absolute_uncertainty = abs(target.value) * relative_ppm * "
@@ -47,13 +62,17 @@ DISPLAYED_TOTAL_SPEC = PathMutationSpec(
         "Decimal(\"1e-6\")\n"
     ),
     designated_test_id=(
-        TEST_CLASS + ".test_displayed_total_is_not_an_uncertainty_input"
+        MEASUREMENT_MODEL_TEST_CLASS
+        + ".test_displayed_total_is_not_an_uncertainty_input"
     ),
     intended_behavioral_guard="target uncertainty",
 )
 
 PUBLISHED_UNCERTAINTY_SPEC = PathMutationSpec(
     mutation_id="published_final_uncertainty_as_input",
+    category="terminal_leakage",
+    source_path=MEASUREMENT_MODEL_PATH,
+    module_name=MEASUREMENT_MODEL_MODULE,
     old_source=(
         "        absolute_uncertainty = abs(target.value) * relative_ppm * "
         "Decimal(\"1e-6\")\n"
@@ -67,12 +86,35 @@ PUBLISHED_UNCERTAINTY_SPEC = PathMutationSpec(
         "            )\n"
     ),
     designated_test_id=(
-        TEST_CLASS + ".test_published_final_uncertainty_is_not_an_uncertainty_input"
+        MEASUREMENT_MODEL_TEST_CLASS
+        + ".test_published_final_uncertainty_is_not_an_uncertainty_input"
     ),
     intended_behavioral_guard="target uncertainty",
 )
 
-PATH_MUTATION_SPECS = (DISPLAYED_TOTAL_SPEC, PUBLISHED_UNCERTAINTY_SPEC)
+CLARIFICATION_TRAVERSAL_SPEC = PathMutationSpec(
+    mutation_id="clarification_byte_identity_traversal_removed",
+    category="source_authorization",
+    source_path=AUTHORIZATION_PATH,
+    module_name=AUTHORIZATION_MODULE,
+    old_source=(
+        "    _reject_byte_identity_overclaim(record, \"clarification record\")\n"
+    ),
+    new_source="",
+    designated_test_id=(
+        AUTHORIZATION_TEST_CLASS
+        + ".test_clarification_nested_byte_identity_traversal_rejects_overclaim"
+    ),
+    intended_behavioral_guard=(
+        "CLARIFICATION_BYTE_IDENTITY_TRAVERSAL_GUARD_MISSING"
+    ),
+)
+
+PATH_MUTATION_SPECS = (
+    DISPLAYED_TOTAL_SPEC,
+    PUBLISHED_UNCERTAINTY_SPEC,
+    CLARIFICATION_TRAVERSAL_SPEC,
+)
 
 
 def _sha256(path: Path) -> str:
@@ -111,14 +153,13 @@ def _sanitized_environment() -> dict[str, str]:
     return environment
 
 
-def _import_probe(root: Path) -> None:
-    expected = (root / BUILDER_PATH).resolve()
+def _import_probe(root: Path, spec: PathMutationSpec) -> None:
+    expected = (root / spec.source_path).resolve()
     script = (
         "import importlib, pathlib, sys\n"
         f"root = pathlib.Path({str(root)!r}).resolve()\n"
         "sys.path.insert(0, str(root))\n"
-        "module = importlib.import_module("
-        "'Discovery.hust_2018_aaf_depth_2b_measurement_models')\n"
+        f"module = importlib.import_module({spec.module_name!r})\n"
         "print(pathlib.Path(module.__file__).resolve())\n"
     )
     completed = subprocess.run(
@@ -131,32 +172,34 @@ def _import_probe(root: Path) -> None:
         timeout=60,
     )
     if completed.returncode != 0:
-        raise HUSTDepth2BPathMutationError("mutated builder did not import cleanly")
+        raise HUSTDepth2BPathMutationError(
+            f"mutated module did not import cleanly: {spec.module_name}"
+        )
     try:
         actual = Path(completed.stdout.strip()).resolve()
     except (OSError, RuntimeError) as error:
         raise HUSTDepth2BPathMutationError(
-            "mutated builder import path could not be resolved"
+            "mutated module import path could not be resolved"
         ) from error
     if actual != expected:
         raise HUSTDepth2BPathMutationError(
-            "mutated test resolved the canonical builder instead of the isolated copy"
+            "mutated test resolved the canonical module instead of the isolated copy"
         )
 
 
-def _run_named_test(root: Path, test_id: str) -> subprocess.CompletedProcess[str]:
+def _run_named_test(
+    root: Path, spec: PathMutationSpec
+) -> subprocess.CompletedProcess[str]:
     script = (
         "import importlib, pathlib, sys, unittest\n"
         f"root = pathlib.Path({str(root)!r}).resolve()\n"
         "sys.path.insert(0, str(root))\n"
-        "module = importlib.import_module("
-        "'Discovery.hust_2018_aaf_depth_2b_measurement_models')\n"
-        "expected = (root / "
-        "'Discovery/hust_2018_aaf_depth_2b_measurement_models.py').resolve()\n"
+        f"module = importlib.import_module({spec.module_name!r})\n"
+        f"expected = (root / {spec.source_path.as_posix()!r}).resolve()\n"
         "if pathlib.Path(module.__file__).resolve() != expected:\n"
         "    print('wrong isolated import', file=sys.stderr)\n"
         "    raise SystemExit(4)\n"
-        f"test_id = {test_id!r}\n"
+        f"test_id = {spec.designated_test_id!r}\n"
         "suite = unittest.defaultTestLoader.loadTestsFromName(test_id)\n"
         "if suite.countTestCases() != 1:\n"
         "    print('wrong test discovery count', file=sys.stderr)\n"
@@ -176,15 +219,15 @@ def _run_named_test(root: Path, test_id: str) -> subprocess.CompletedProcess[str
 
 
 def run_source_path_mutant(root: Path, spec: PathMutationSpec) -> dict[str, object]:
-    """Run one valid isolated builder mutant and require its named test to kill it."""
+    """Run one valid isolated source mutant and require its named test to kill it."""
 
     root = root.resolve()
-    canonical_builder = root / BUILDER_PATH
-    canonical_hash_before = _sha256(canonical_builder)
+    canonical_source = root / spec.source_path
+    canonical_hash_before = _sha256(canonical_source)
     canonical_status_before = _git_status(root)
     temporary: Path | None = None
     try:
-        canonical = _run_named_test(root, spec.designated_test_id)
+        canonical = _run_named_test(root, spec)
         if canonical.returncode != 0:
             raise HUSTDepth2BPathMutationError(
                 f"canonical designated test failed for {spec.mutation_id}"
@@ -206,14 +249,14 @@ def run_source_path_mutant(root: Path, spec: PathMutationSpec) -> dict[str, obje
                 ".mypy_cache",
             ),
         )
-        mutated_builder = isolated / BUILDER_PATH
-        source = mutated_builder.read_text(encoding="utf-8")
+        mutated_source = isolated / spec.source_path
+        source = mutated_source.read_text(encoding="utf-8")
         mutated = apply_exact_source_replacement(source, spec)
-        compile(mutated, mutated_builder.as_posix(), "exec")
-        mutated_builder.write_text(mutated, encoding="utf-8")
-        _import_probe(isolated)
+        compile(mutated, mutated_source.as_posix(), "exec")
+        mutated_source.write_text(mutated, encoding="utf-8")
+        _import_probe(isolated, spec)
 
-        completed = _run_named_test(isolated, spec.designated_test_id)
+        completed = _run_named_test(isolated, spec)
         combined_output = completed.stdout + completed.stderr
         if completed.returncode == 0:
             raise HUSTDepth2BPathMutationError(
@@ -245,9 +288,9 @@ def run_source_path_mutant(root: Path, spec: PathMutationSpec) -> dict[str, obje
                 raise HUSTDepth2BPathMutationError(
                     f"temporary copy was not removed for {spec.mutation_id}"
                 )
-        if _sha256(canonical_builder) != canonical_hash_before:
+        if _sha256(canonical_source) != canonical_hash_before:
             raise HUSTDepth2BPathMutationError(
-                "canonical builder bytes changed during mutation"
+                "canonical source bytes changed during mutation"
             )
         if _git_status(root) != canonical_status_before:
             raise HUSTDepth2BPathMutationError(
@@ -256,15 +299,17 @@ def run_source_path_mutant(root: Path, spec: PathMutationSpec) -> dict[str, obje
 
     return {
         "mutation_id": spec.mutation_id,
-        "category": "terminal_leakage",
+        "category": spec.category,
         "mutation_kind": "source_path",
+        "source_path": spec.source_path.as_posix(),
+        "module_name": spec.module_name,
         "designated_test_id": spec.designated_test_id,
         "mutant_applied": True,
         "mutant_importable": True,
         "intended_behavioral_guard": spec.intended_behavioral_guard,
         "sentinels_fired": [],
         "cleanup_confirmed": True,
-        "canonical_builder_unchanged": True,
+        "canonical_source_unchanged": True,
         "canonical_worktree_unchanged": True,
         "outcome": "KILLED",
     }

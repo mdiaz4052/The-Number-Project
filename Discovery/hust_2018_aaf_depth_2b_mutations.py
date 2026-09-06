@@ -11,9 +11,11 @@ import argparse
 from copy import deepcopy
 from dataclasses import replace
 from decimal import Decimal, localcontext
+import hashlib
 import json
 from pathlib import Path
 import sys
+from types import MappingProxyType
 from typing import Any, Callable, Mapping
 
 from Discovery.hust_2018_aaf_depth_2b_authorization import (
@@ -37,9 +39,29 @@ from Discovery.hust_2018_aaf_measurement_models import build_hust_aaf_model
 from Discovery.physical_bridge_schema import MODEL_PARAMETER
 
 
-MUTATION_ARTIFACT_SCHEMA_VERSION = 2
+MUTATION_ARTIFACT_SCHEMA_VERSION = 3
 DEFAULT_OUTPUT = Path(
-    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v2.json"
+    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v3.json"
+)
+FROZEN_MILESTONE_7_POST_AUDIT_V2_SHA256: Mapping[str, str] = MappingProxyType(
+    {
+        (
+            "Experiments/GMeasurements/"
+            "hust_2018_aaf_required_inputs_depth_2b_v2.json"
+        ): "ef8a23cee8d1d7c7e417ca69d8b0e75a66d5cf272e6fcd59ba92fb84d1468326",
+        (
+            "Experiments/GMeasurements/"
+            "hust_2018_aaf_depth_2b_authorization_v2.json"
+        ): "2bf6bb803d18600147c17bd94f5b05a3118f9bfd76136e0b7c22c5dfa1e77170",
+        (
+            "Experiments/GMeasurements/"
+            "hust_2018_aaf_depth_2b_measurement_models_v2.json"
+        ): "9ab68481e2f11a08dd184aec25781822fd4c3b9beaa13fc5edb34cfa4e5a7b00",
+        (
+            "Experiments/GMeasurements/"
+            "hust_2018_aaf_depth_2b_mutation_results_v2.json"
+        ): "5d7f197b9eae5a18f302eb9eca3073346106d6363c59cbd35573e6a53fcb9809",
+    }
 )
 
 
@@ -59,6 +81,31 @@ def _read_json(path: Path) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise HUSTDepth2BMutationError(f"mutation input is not an object: {path}")
     return value
+
+
+def verify_frozen_post_audit_v2_artifacts(
+    root: Path,
+) -> list[dict[str, str]]:
+    """Fail closed unless all four audited Milestone 7 v2 artifacts are intact."""
+
+    verified: list[dict[str, str]] = []
+    for relative_path, expected_sha256 in sorted(
+        FROZEN_MILESTONE_7_POST_AUDIT_V2_SHA256.items()
+    ):
+        path = root / relative_path
+        try:
+            content = path.read_bytes()
+        except OSError as error:
+            raise HUSTDepth2BMutationError(
+                f"non-behavioral v2 integrity file is unavailable: {relative_path}"
+            ) from error
+        actual_sha256 = hashlib.sha256(content).hexdigest()
+        if actual_sha256 != expected_sha256:
+            raise HUSTDepth2BMutationError(
+                f"non-behavioral v2 integrity hash mismatch: {relative_path}"
+            )
+        verified.append({"path": relative_path, "sha256": actual_sha256})
+    return verified
 
 
 def _quantity_map(model):
@@ -103,6 +150,7 @@ def _case(
 
 
 def run_mutations(root: Path = Path(".")) -> dict[str, Any]:
+    frozen_v2_preservation = verify_frozen_post_audit_v2_artifacts(root)
     source = _read_json(root / OFFICIAL_SOURCE_PATH)
     clarification = _read_json(root / CLARIFICATION_PATH)
     graph = _read_json(root / REQUIRED_INPUTS_PATH)
@@ -440,18 +488,33 @@ def run_mutations(root: Path = Path(".")) -> dict[str, Any]:
         )
     )
 
+    case_counts_by_kind = {
+        "in_memory": sum(case["mutation_kind"] == "in_memory" for case in cases),
+        "source_path": sum(case["mutation_kind"] == "source_path" for case in cases),
+    }
+    if case_counts_by_kind != {"in_memory": 22, "source_path": 3}:
+        raise HUSTDepth2BMutationError(
+            f"unexpected mutation-kind composition: {case_counts_by_kind}"
+        )
     killed = sum(case["outcome"] == "KILLED" for case in cases)
+    if len(cases) != 25:
+        raise HUSTDepth2BMutationError(
+            f"unexpected scored mutation count: {len(cases)}"
+        )
     return {
         "artifact_schema_version": MUTATION_ARTIFACT_SCHEMA_VERSION,
         "artifact": "HUST 2018 AAF depth-2b behavioral mutation results",
         "revision": {
             "predecessor_path": (
                 "Experiments/GMeasurements/"
-                "hust_2018_aaf_depth_2b_mutation_results_v1.json"
+                "hust_2018_aaf_depth_2b_mutation_results_v2.json"
+            ),
+            "predecessor_sha256": (
+                "5d7f197b9eae5a18f302eb9eca3073346106d6363c59cbd35573e6a53fcb9809"
             ),
             "change_summary": (
-                "Post-audit migration replacing two terminal output-oracle cases with "
-                "isolated source-path mutants."
+                "Post-merge follow-up adding one isolated authorization-traversal "
+                "mutant and generalized source-path mutation metadata."
             ),
             "numerical_values_changed": False,
             "scientific_authorization_changed": False,
@@ -463,11 +526,15 @@ def run_mutations(root: Path = Path(".")) -> dict[str, Any]:
             "valid isolated source-path failures through designated tests count as kills."
         ),
         "excluded_non_behavioral_guards": [
-            "git tree-state sentinels",
+            "frozen v1 and v2 byte-preservation sentinels",
+            "canonical Git tree-state sentinels",
             "artifact source-state --check comparisons",
-            "historical byte-preservation sentinels",
+            "isolated import-integrity sentinels",
+            "temporary-copy cleanup sentinels",
         ],
+        "frozen_milestone_7_post_audit_v2_preservation": frozen_v2_preservation,
         "cases": cases,
+        "mutation_counts_by_kind": case_counts_by_kind,
         "score": {
             "killed": killed,
             "total": len(cases),

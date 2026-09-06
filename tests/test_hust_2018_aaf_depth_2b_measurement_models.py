@@ -347,6 +347,30 @@ class HUST2018AAFDepth2BMeasurementModelTests(unittest.TestCase):
             baseline_target.standard_uncertainty,
         )
 
+    def test_published_final_value_is_not_a_reconstruction_input(self) -> None:
+        scope = "AAF-III"
+        baseline, model = self._baseline_and_model(scope)
+        canonical_target = _quantity_map(model)[f"{scope}:G_hat"]
+
+        mutated_baseline = _replace_quantity(
+            baseline,
+            f"{scope}:published_G",
+            value=Decimal("9e-11"),
+        )
+        rebuilt = _build_depth_2b_model_from_records(
+            scope,
+            mutated_baseline,
+            self.source,
+            self.clarification,
+            self.graph,
+        )
+        rebuilt_target = _quantity_map(rebuilt)[f"{scope}:G_hat"]
+        self.assertEqual(rebuilt_target.value, canonical_target.value)
+        self.assertEqual(
+            rebuilt_target.standard_uncertainty,
+            canonical_target.standard_uncertainty,
+        )
+
     def test_displayed_total_is_not_an_uncertainty_input(self) -> None:
         scope = "AAF-III"
         baseline, model = self._baseline_and_model(scope)
@@ -494,4 +518,3 @@ class HUST2018AAFDepth2BMeasurementModelTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-import io
