@@ -76,6 +76,10 @@ from Discovery.physical_bridge_schema import (
     QuantityRecord,
     TargetPathAudit,
     UncertaintyModel,
+    WeightedEstimatorTerm,
+    NORMALIZED_INVERSE_VARIANCE,
+    WEIGHTED_PRECISION,
+    WEIGHTED_NORMALIZATION_BOUND,
     decimal_text,
     dimension_record,
     fraction_text,
@@ -87,6 +91,7 @@ from Discovery.physical_bridge_validation import (
     audit_registered_target_path,
     build_model_dependency_catalog,
     evaluate_measurement_model,
+    normalized_inverse_variance_weights,
     validate_measurement_model,
 )
 
@@ -254,7 +259,7 @@ def measurement_model_record(model: MeasurementModel) -> dict[str, Any]:
         "replication_status": evaluation.replication_status,
     }
     return {
-        "schema_version": SCHEMA_VERSION,
+        "schema_version": 2 if model.weighted_estimator_terms else SCHEMA_VERSION,
         "artifact": "inverse-square physical bridge structural example",
         "model_identifier": model.identifier,
         "scope_and_evidence_level": {
@@ -281,7 +286,20 @@ def measurement_model_record(model: MeasurementModel) -> dict[str, Any]:
                 model.domain_and_approximation_regime
             ),
             "required_hypotheses": list(model.required_hypotheses),
-            "estimator_terms": [
+            **({
+                "estimator_representation": "normalized_weighted_linear",
+                "weighting_rule": model.weighting_rule,
+                "weighted_estimator_terms": [
+                    {"quantity_id": term.quantity_id, "coefficient_decimal": str(term.coefficient)}
+                    for term in sorted(model.weighted_estimator_terms, key=lambda item: item.quantity_id)
+                ],
+                "arithmetic_policy": {
+                    "precision": WEIGHTED_PRECISION,
+                    "rounding": "ROUND_HALF_EVEN",
+                    "normalization_absolute_bound": str(WEIGHTED_NORMALIZATION_BOUND),
+                    "order": "quantity identifier",
+                },
+            } if model.weighted_estimator_terms else {"estimator_terms": [
                 {
                     "quantity_id": term.quantity_id,
                     "exponent": fraction_text(term.exponent),
@@ -290,7 +308,7 @@ def measurement_model_record(model: MeasurementModel) -> dict[str, Any]:
                     model.estimator_terms,
                     key=lambda item: item.quantity_id,
                 )
-            ],
+            ]}),
             "estimator_dimension": dimension_record(
                 evaluation.estimator_dimension
             ),

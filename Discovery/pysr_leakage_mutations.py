@@ -28,7 +28,7 @@ RESULT_SCHEMA_VERSION = 1
 EXPERIMENT_IDENTIFIER = "milestone_6b_pysr_leakage_mutations_v1"
 DEFAULT_OUTPUT = Path(
     "Experiments/EcosystemComparison/PySRLeakage/"
-    "milestone_6b_pysr_leakage_v1.mutation_results_v4.json"
+    "milestone_6b_pysr_leakage_v1.mutation_results_v5.json"
 )
 RETIRED_ARTIFACT_SHA256 = {
     (
@@ -43,6 +43,10 @@ RETIRED_ARTIFACT_SHA256 = {
         "Experiments/EcosystemComparison/PySRLeakage/"
         "milestone_6b_pysr_leakage_v1.mutation_results_v3.json"
     ): "d36872936bc41400b2ef62e0c9f69958acc0b90e1b3dddb88941b3d59505b5e3",
+    (
+        "Experiments/EcosystemComparison/PySRLeakage/"
+        "milestone_6b_pysr_leakage_v1.mutation_results_v4.json"
+    ): "5f6f2fa7103a3a26e3989d8e63ddf29cddd26b13a65e2c9df931a1c3ff2e886f",
 }
 SOURCE_PATHS = (
     "Discovery/pysr_leakage_mutations.py",

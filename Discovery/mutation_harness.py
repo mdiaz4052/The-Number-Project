@@ -35,7 +35,7 @@ from Discovery.source_history import (
 
 RESULT_SCHEMA_VERSION = 3
 DEFAULT_OUTPUT = Path(
-    "Experiments/Falsification/milestone_5b_core_v1.mutation_results_v4.json"
+    "Experiments/Falsification/milestone_5b_core_v1.mutation_results_v5.json"
 )
 RETIRED_ARTIFACT_SHA256 = {
     "Experiments/Falsification/milestone_5b_core_v1.mutation_results.json": (
@@ -46,6 +46,9 @@ RETIRED_ARTIFACT_SHA256 = {
     ),
     "Experiments/Falsification/milestone_5b_core_v1.mutation_results_v3.json": (
         "a1d71163159e6e2eb0d53d588f2b332e2b576db5b995ade611944b6706b70423"
+    ),
+    "Experiments/Falsification/milestone_5b_core_v1.mutation_results_v4.json": (
+        "4152f74e5be0e0671c76931b9a18453131999c50d234b397d659f58e949e5cae"
     ),
 }
 KILLED = "killed"
@@ -79,13 +82,19 @@ SOURCE_PATHS = (
     "Discovery/physical_bridge.py",
     "Discovery/physical_bridge_schema.py",
     "Discovery/physical_bridge_validation.py",
+    "Discovery/hust_2018_aaf_combined_measurement_model.py",
+    "Discovery/hust_2018_aaf_combined_feasibility.py",
     "Discovery/source_history.py",
     "tests/test_dimensional_search.py",
     "tests/test_dependency_analysis.py",
     "tests/test_dependency_dimension_invariant.py",
     "tests/test_physical_bridge.py",
+    "tests/test_physical_bridge_weighted.py",
     "tests/test_physical_bridge_source_identifier_hardening.py",
     "tests/test_mutation_harness.py",
+    "Experiments/GMeasurements/hust_2018_aaf_combined_measurement_model_preregistration_v1.json",
+    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v2.json",
+    "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v2.json",
     str(DEFAULT_PREREGISTRATION_OUTPUT),
 )
 
@@ -397,13 +406,13 @@ PRODUCTION_MUTANTS = (
             "inside central-estimator ancestry."
         ),
         relative_path="Discovery/physical_bridge_validation.py",
-        old_text=(
-            "        component_ancestry = estimator_upstream & component_role_ids\n"
-        ),
-        new_text="        component_ancestry = set()\n",
+        old_text="    if estimator_upstream & component_role_ids:\n",
+        new_text="    if False and estimator_upstream & component_role_ids:\n",
         test_names=(
             "tests.test_physical_bridge.PhysicalBridgeTests."
             "test_stray_uncertainty_component_role_is_rejected_in_estimator_ancestry",
+            "tests.test_physical_bridge_weighted.WeightedEstimatorTests."
+            "test_dm011_component_role_is_rejected_under_estimator_input_propagation",
         ),
         required_modules=("Discovery.physical_bridge_validation",),
     ),
