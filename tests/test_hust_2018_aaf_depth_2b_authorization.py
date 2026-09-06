@@ -174,8 +174,24 @@ class HUST2018AAFDepth2BAuthorizationTests(unittest.TestCase):
             "record does not claim byte identity.",
             "These bytes are exactly the same as the publisher's raw HTTP response body.",
             "The capture is byte‑identical to the publisher response.",
+            "The capture is byte-for-byte equivalent to the publisher response.",
+            "The capture is byte‑for‑byte equivalent to the publisher response.",
+            "The capture is byte－for－byte equivalent to the publisher response.",
+            "The capture is byte\nfor\nbyte equivalent to the publisher response.",
+            "The capture is byte for byte equivalent to the publisher response.",
+            "The capture is byte-equivalent to the publisher response.",
+            "The capture is binary-identical to the publisher response.",
+            "The capture is octet-identical to the publisher response.",
+            "This capture is a verbatim copy of the publisher bytes.",
+            "The publisher bytes exactly match this capture.",
+            "These bytes equal the publisher bytes.",
+            "This is an exact byte copy of the publisher response.",
+            "The capture equals the publisher bytes.",
             "The capture is bit-for-bit equivalent to the publisher response.",
             "The capture is bit‑for‑bit equivalent to the publisher response.",
+            "The capture is bit－for－bit equivalent to the publisher response.",
+            "The capture is bit\nfor\nbit equivalent to the publisher response.",
+            "The capture is bit for bit equivalent to the publisher response.",
         )
         for text in forbidden:
             with self.subTest(text=text):
@@ -183,6 +199,31 @@ class HUST2018AAFDepth2BAuthorizationTests(unittest.TestCase):
         self.assertFalse(
             byte_identity_claim_is_forbidden(EXPECTED_OFFICIAL_SOURCE_NONCLAIMS[0])
         )
+        self.assertTrue(
+            byte_identity_claim_is_forbidden(
+                EXPECTED_OFFICIAL_SOURCE_NONCLAIMS[0]
+                + " The capture equals the publisher bytes."
+            )
+        )
+
+    def test_clarification_nested_byte_identity_traversal_rejects_overclaim(
+        self,
+    ) -> None:
+        changed = deepcopy(self.clarification)
+        canonical_nonclaims = deepcopy(changed["nonclaims"])
+        changed["direct_statements"]["article"]["claim"] = (
+            "The capture equals the publisher bytes."
+        )
+        self.assertEqual(changed["nonclaims"], canonical_nonclaims)
+        try:
+            validate_clarification_record(changed)
+        except HUSTDepth2BAuthorizationError as error:
+            self.assertIn(
+                "clarification record contains an unqualified byte-identity overclaim",
+                str(error),
+            )
+        else:
+            self.fail("CLARIFICATION_BYTE_IDENTITY_TRAVERSAL_GUARD_MISSING")
 
     def test_clarification_separates_direct_source_claims_and_derivations(self) -> None:
         validate_clarification_record(self.clarification)
@@ -513,12 +554,15 @@ class HUST2018AAFDepth2BAuthorizationTests(unittest.TestCase):
         self.assertIn("history_unavailable:", stderr.getvalue())
         self.assertNotIn("Traceback", stderr.getvalue())
 
-    def test_readme_reports_current_v2_artifacts_and_exact_assessment_boundary(self) -> None:
+    def test_readme_reports_current_artifacts_and_exact_assessment_boundary(self) -> None:
         text = README_PATH.read_text(encoding="utf-8")
         self.assertIn("hust_2018_aaf_required_inputs_depth_2b_v2.json", text)
         self.assertIn("hust_2018_aaf_depth_2b_authorization_v2.json", text)
         self.assertIn("hust_2018_aaf_depth_2b_measurement_models_v2.json", text)
+        self.assertIn("hust_2018_aaf_depth_2b_mutation_results_v3.json", text)
         self.assertIn("hust_2018_aaf_depth_2b_mutation_results_v2.json", text)
+        self.assertIn("current 25/25 killed behavioral mutations", text)
+        self.assertIn("frozen PR #35 audit record", text)
         self.assertIn(
             "the target-path axis reports `no_registered_target_path`, and\n"
             "replication remains `incomplete`",
@@ -568,8 +612,3 @@ class HUST2018AAFDepth2BAuthorizationTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-    FROZEN_MILESTONE_7_V1_SHA256,
-    byte_identity_claim_is_forbidden,
-    main,
-    validate_anchor_record,
-    main,

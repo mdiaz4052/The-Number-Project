@@ -228,10 +228,13 @@ The current post-audit artifacts are:
 - [`hust_2018_aaf_depth_2b_measurement_models_v2.json`](hust_2018_aaf_depth_2b_measurement_models_v2.json):
   the three individual empirical records with 21 direct ppm components, precision-50 RSS,
   and absolute standard uncertainty derived from each unchanged `G_hat`; and
-- [`hust_2018_aaf_depth_2b_mutation_results_v2.json`](hust_2018_aaf_depth_2b_mutation_results_v2.json):
-  the 24/24 killed behavioral mutations, including two isolated source-path tests of the
-  terminal-input boundary. Tree-state, freshness, and historical-byte sentinels remain
-  guards but are excluded from mutation scoring.
+- [`hust_2018_aaf_depth_2b_mutation_results_v3.json`](hust_2018_aaf_depth_2b_mutation_results_v3.json):
+  the current 25/25 killed behavioral mutations, including two isolated source-path tests
+  of the terminal-input boundary and a third protecting nested clarification-record
+  traversal of byte-identity overclaims. Tree-state, freshness, frozen-byte,
+  import-integrity, and cleanup sentinels remain guards but are excluded from mutation
+  scoring. [`hust_2018_aaf_depth_2b_mutation_results_v2.json`](hust_2018_aaf_depth_2b_mutation_results_v2.json)
+  remains the frozen PR #35 audit record.
 
 The corresponding required-input, authorization, measurement-model, and mutation-result
 `v1` files remain the byte-frozen Milestone 7 snapshot. The official-source and

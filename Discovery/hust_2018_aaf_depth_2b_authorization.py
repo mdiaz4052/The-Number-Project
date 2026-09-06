@@ -336,16 +336,28 @@ def byte_identity_claim_is_forbidden(text: str) -> bool:
     canonical_negative = _normalized_claim(EXPECTED_OFFICIAL_SOURCE_NONCLAIMS[0])
     if normalized == canonical_negative:
         return False
-    return any(
-        pattern in normalized
-        for pattern in (
-            "byte identity",
-            "byte identical",
-            "identical to the raw",
-            "exactly the same bytes",
-            "bytes are exactly the same",
-            "bit for bit",
-        )
+    bounded_patterns = (
+        "byte identity",
+        "byte identical",
+        "byte for byte",
+        "byte equivalent",
+        "binary identical",
+        "octet identical",
+        "identical to the raw",
+        "exactly the same bytes",
+        "bytes are exactly the same",
+        "bit for bit",
+        "publisher bytes exactly",
+        "bytes equal the publisher bytes",
+        "exact byte copy",
+        "capture equals the publisher bytes",
+    )
+    publisher_verbatim_copy = (
+        "verbatim copy" in normalized and "publisher bytes" in normalized
+    )
+    return (
+        any(pattern in normalized for pattern in bounded_patterns)
+        or publisher_verbatim_copy
     )
 
 
