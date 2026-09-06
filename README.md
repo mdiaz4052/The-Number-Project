@@ -74,8 +74,12 @@ evidence about gravity or a measurement of `G`.
 Milestone 7B adds three separately preregistered HUST 2018 AAF published-data
 reconstructions at depth 2b. Nature's official Table 1 page is metadata-and-hash pinned;
 each unchanged depth-2a central value receives 21 direct relative ppm contributions and a
-precision-50 RSS-derived standard uncertainty. The combined AAF result, raw replication,
-apparatus validation, and physical-independence claims remain unauthorized.
+precision-50 RSS-derived standard uncertainty. A separate
+[combined-estimator feasibility audit](Notes/HUST2018AAFCombinedFeasibilityAudit.md)
+returns GO: the supplement specifies inverse marginal-variance weights and correlated
+uncertainty propagation, reconstructible from the pinned rounded inputs. The combined
+MeasurementModel still requires a separate preregistration. Raw replication, apparatus
+validation, and physical-independence claims remain unauthorized.
 
 The project is exploratory. A compiled implication is not experimental evidence for its
 premises, and a dimensionally valid numerical coincidence is not evidence of a physical
