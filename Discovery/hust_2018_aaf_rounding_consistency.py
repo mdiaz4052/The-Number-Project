@@ -16,14 +16,18 @@ from Discovery.rounding_consistency import (
 )
 from Discovery.source_history import (
     SourceStateViolationError, SourceVerificationError, exit_for_source_verification_error,
-    verify_preregistration_freeze,
 )
+from Discovery.preregistration_history import verify_preregistration_freeze
 from fractions import Fraction
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DIRECTORY = Path("Experiments/GMeasurements")
 PREREGISTRATION_PATH = DIRECTORY / "hust_2018_aaf_rounding_consistency_preregistration_v1.json"
+CLARIFICATION_PATH = DIRECTORY / "hust_2018_aaf_rounding_consistency_implementation_clarification_v1.json"
+CLARIFICATION_COMMIT = "892e4ecd32fba260086eca7575f8ff009d05ca81"
+CLARIFICATION_BASELINE = "bb58cf5ba7a52969ca5f261daa11c924c3c39df9"
+CLARIFICATION_SHA256 = "bfe04d6302499b44d11fec8144103456cfe93369a2a76b8e83d2b8660679d888"
 DEFAULT_OUTPUT = DIRECTORY / "hust_2018_aaf_rounding_consistency_v1.json"
 BASELINE = "3fb60ecf64a61db2347bb154cc7e20b02b0f6ca3"
 PREREGISTRATION_COMMIT = "8578f20e41476e9490dfbb934342a92bd3ca738e"
@@ -43,6 +47,8 @@ SOURCE_PATHS = (
     "Discovery/rounding_consistency.py",
     "Discovery/hust_2018_aaf_rounding_consistency.py",
     "Discovery/source_history.py",
+    "Discovery/preregistration_history.py",
+    CLARIFICATION_PATH.as_posix(),
     "Notes/HUST2018AAFRoundingConsistencySpecification.md",
     PREREGISTRATION_PATH.as_posix(),
 )
@@ -72,6 +78,8 @@ def load_protocol(root: Path = ROOT) -> dict:
     if _hash(data) != PREREGISTRATION_SHA256:
         raise RoundingError("rounding preregistration bytes changed")
     protocol = _json(data)
+    if _hash((root / CLARIFICATION_PATH).read_bytes()) != CLARIFICATION_SHA256:
+        raise RoundingError("implementation clarification bytes changed")
     spec = protocol["specification"]
     if _hash((root / spec["path"]).read_bytes()) != spec["sha256"]:
         raise RoundingError("bounded specification differs from its preregistered hash")
@@ -82,6 +90,10 @@ def verify_preregistration(root: Path = ROOT) -> dict:
     verify_preregistration_freeze(
         root, baseline=BASELINE, commit=PREREGISTRATION_COMMIT,
         path=PREREGISTRATION_PATH.as_posix(), sha256=PREREGISTRATION_SHA256,
+    )
+    verify_preregistration_freeze(
+        root, baseline=CLARIFICATION_BASELINE, commit=CLARIFICATION_COMMIT,
+        path=CLARIFICATION_PATH.as_posix(), sha256=CLARIFICATION_SHA256,
     )
     return load_protocol(root)
 
@@ -228,6 +240,9 @@ def build_artifact(root: Path = ROOT, *, comparison: Interval | None = None) -> 
         "integrity": {"preregistration_sha256": PREREGISTRATION_SHA256,
                       "preregistration_commit_sha": PREREGISTRATION_COMMIT,
                       "baseline_main_sha": BASELINE, "external_anchor": EXTERNAL_ANCHOR,
+                      "implementation_clarification": {"path": CLARIFICATION_PATH.as_posix(),
+                                                       "sha256": CLARIFICATION_SHA256,
+                                                       "commit_sha": CLARIFICATION_COMMIT},
                       "source_snapshot": source_snapshot(root)},
         "input_projection": projection, "input_projection_sha256": protocol["input_projection_sha256"],
         "source_pins": protocol["allowed_input_artifacts"] + protocol["source_authority_artifacts"],

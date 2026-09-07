@@ -8,8 +8,9 @@ import unittest
 
 from Discovery.source_history import (
     SourceAncestryViolationError, SourceHistoryUnavailableError, SourceMetadataError,
-    SourceStateViolationError, verify_preregistration_freeze,
+    SourceStateViolationError,
 )
+from Discovery.preregistration_history import verify_preregistration_freeze
 from tests.support.synthetic_history import SyntheticHistory
 
 

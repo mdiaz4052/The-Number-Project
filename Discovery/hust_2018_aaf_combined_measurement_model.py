@@ -18,7 +18,8 @@ import json
 from pathlib import Path
 import sys
 
-from Discovery.source_history import SourceVerificationError, verify_preregistration_freeze
+from Discovery.source_history import SourceVerificationError
+from Discovery.preregistration_history import verify_preregistration_freeze
 from Discovery.dimensions import Dimension, GRAVITATIONAL_CONSTANT
 from Discovery.hust_2018_aaf_combined_feasibility import (
     COMPONENT_IDS, SCOPES,

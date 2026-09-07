@@ -40,3 +40,5 @@ The [bounded specification](HUST2018AAFRoundingConsistencySpecification.md) is h
 The shared chronology verifier checks the sole baseline parent, a preregistration-only addition, frozen/current bytes, ancestry, and all reachable descendants of the freeze, including losing merge parents. The historical PR #37 and PR #38 wrappers retain their pins and output bytes. General source-state attestations retain their separate role.
 
 This capability supports subsequent discrepancy analysis across independent measurements. A second experiment and tests of predeclared physical predictions remain separate work.
+
+Implementation clarification: the strict shared verifier resides in `Discovery/preregistration_history.py`. The original `Discovery/source_history.py` remains byte-identical to the baseline because earlier external-comparison artifacts pin it in full. The clarification was committed at `892e4ecd32fba260086eca7575f8ff009d05ca81` before this placement change. It changes no numerical rule or history predicate and does not remove any source pin.

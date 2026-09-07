@@ -19,7 +19,8 @@ import subprocess
 import sys
 
 
-from Discovery.source_history import SourceVerificationError, verify_preregistration_freeze
+from Discovery.source_history import SourceVerificationError
+from Discovery.preregistration_history import verify_preregistration_freeze
 
 
 ROOT = Path(__file__).resolve().parents[1]
