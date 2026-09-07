@@ -35,7 +35,7 @@ from Discovery.source_history import (
 
 RESULT_SCHEMA_VERSION = 3
 DEFAULT_OUTPUT = Path(
-    "Experiments/Falsification/milestone_5b_core_v1.mutation_results_v5.json"
+    "Experiments/Falsification/milestone_5b_core_v1.mutation_results_v6.json"
 )
 RETIRED_ARTIFACT_SHA256 = {
     "Experiments/Falsification/milestone_5b_core_v1.mutation_results.json": (
@@ -50,6 +50,7 @@ RETIRED_ARTIFACT_SHA256 = {
     "Experiments/Falsification/milestone_5b_core_v1.mutation_results_v4.json": (
         "4152f74e5be0e0671c76931b9a18453131999c50d234b397d659f58e949e5cae"
     ),
+    'Experiments/Falsification/milestone_5b_core_v1.mutation_results_v5.json': '84b7063785dd2ae3554b1c88c7c051e04a480c91ff94147fc37a24139423d59d',
 }
 KILLED = "killed"
 SURVIVED = "survived"
@@ -85,6 +86,17 @@ SOURCE_PATHS = (
     "Discovery/hust_2018_aaf_combined_measurement_model.py",
     "Discovery/hust_2018_aaf_combined_feasibility.py",
     "Discovery/source_history.py",
+    "Discovery/preregistration_history.py",
+    "Experiments/GMeasurements/hust_2018_aaf_rounding_consistency_implementation_clarification_v1.json",
+    'Discovery/rounding_consistency.py',
+    'Discovery/hust_2018_aaf_rounding_consistency.py',
+    'tests/test_rounding_consistency.py',
+    'tests/test_hust_2018_aaf_rounding_consistency.py',
+    'tests/test_preregistration_chronology.py',
+    'tests/support/__init__.py',
+    'tests/support/synthetic_history.py',
+    'Notes/HUST2018AAFRoundingConsistencySpecification.md',
+    'Experiments/GMeasurements/hust_2018_aaf_rounding_consistency_preregistration_v1.json',
     "tests/test_dimensional_search.py",
     "tests/test_dependency_analysis.py",
     "tests/test_dependency_dimension_invariant.py",
@@ -534,6 +546,141 @@ PRODUCTION_MUTANTS = (
             "test_check_cli_accepts_current_and_rejects_stale_artifact",
         ),
         required_modules=("Discovery.dependency_analysis",),
+    ),
+)
+
+
+# The bounded rounding protocol adds behavioral attacks to the calibrated runner.
+PRODUCTION_MUTANTS += (
+    Mutant(
+        identifier='production_rounding_overlap_as_compatibility',
+        category='production',
+        intended_semantic_defect='Promote mere enclosure overlap without a witness.',
+        relative_path='Discovery/rounding_consistency.py',
+        old_text='    return "unresolved", None\n',
+        new_text='    return "compatible", None\n',
+        test_names=('tests.test_rounding_consistency.RoundingConsistencyTests.test_three_outcomes_have_distinct_certificates',),
+        required_modules=('Discovery.rounding_consistency',),
+    ),
+    Mutant(
+        identifier='production_rounding_boundary_as_exclusion',
+        category='production',
+        intended_semantic_defect='Treat a boundary touch as guaranteed exclusion.',
+        relative_path='Discovery/rounding_consistency.py',
+        old_text='    if calculation.enclosure.high < target.low or target.high < calculation.enclosure.low:\n',
+        new_text='    if calculation.enclosure.high <= target.low or target.high <= calculation.enclosure.low:\n',
+        test_names=('tests.test_rounding_consistency.RoundingConsistencyTests.test_touching_enclosures_do_not_establish_exclusion',),
+        required_modules=('Discovery.rounding_consistency',),
+    ),
+    Mutant(
+        identifier='production_rounding_tie_as_witness',
+        category='production',
+        intended_semantic_defect='Ignore the unknown rounding tie convention.',
+        relative_path='Discovery/rounding_consistency.py',
+        old_text='            return self.low < value < self.high\n',
+        new_text='            return self.low <= value <= self.high\n',
+        test_names=('tests.test_rounding_consistency.RoundingConsistencyTests.test_comparison_boundary_contact_is_not_a_witness',),
+        required_modules=('Discovery.rounding_consistency',),
+    ),
+    Mutant(
+        identifier='production_rounding_drop_enclosure_upper_extent',
+        category='production',
+        intended_semantic_defect='Collapse the guaranteed enclosure to its lower endpoint.',
+        relative_path='Discovery/rounding_consistency.py',
+        old_text='    return variance\n',
+        new_text='    return Interval(variance.low, variance.low)\n',
+        test_names=('tests.test_rounding_consistency.RoundingConsistencyTests.test_exact_single_component_enclosure_and_rational_interior_grid',),
+        required_modules=('Discovery.rounding_consistency',),
+    ),
+    Mutant(
+        identifier='production_rounding_ignore_absolute_variances',
+        category='production',
+        intended_semantic_defect='Use relative budgets instead of absolute variances for weights.',
+        relative_path='Discovery/rounding_consistency.py',
+        old_text='    inverse_variances = tuple(1 / (g*g*s) for g, s in zip(budget.central_values, sums))\n',
+        new_text='    inverse_variances = tuple(1 / s for g, s in zip(budget.central_values, sums))\n',
+        test_names=('tests.test_rounding_consistency.RoundingConsistencyTests.test_direct_point_weights_use_absolute_total_variance',),
+        required_modules=('Discovery.rounding_consistency',),
+    ),
+    Mutant(
+        identifier='production_rounding_correlate_statistical_terms',
+        category='production',
+        intended_semantic_defect='Treat independent component errors as fully correlated.',
+        relative_path='Discovery/rounding_consistency.py',
+        old_text='        variance += sum(terms)**2 if correlation == "shared" else sum(t*t for t in terms)\n',
+        new_text='        variance += sum(terms)**2\n',
+        test_names=('tests.test_rounding_consistency.RoundingConsistencyTests.test_shared_and_independent_terms_have_different_covariance',),
+        required_modules=('Discovery.rounding_consistency',),
+    ),
+    Mutant(
+        identifier='production_rounding_zero_component_radius',
+        category='production',
+        intended_semantic_defect='Discard the preregistered component rounding radius.',
+        relative_path='Discovery/hust_2018_aaf_rounding_consistency.py',
+        old_text='    half_width = decimal_fraction(protocol["rounding_policy"]["component_half_width_ppm"])\n',
+        new_text='    half_width = Fraction(0)\n',
+        test_names=('tests.test_hust_2018_aaf_rounding_consistency.HUSTRoundingTests.test_sixty_three_bins_use_the_preregistered_half_width',),
+        required_modules=('Discovery.hust_2018_aaf_rounding_consistency',),
+    ),
+    Mutant(
+        identifier='production_rounding_drop_candidate_schedule',
+        category='production',
+        intended_semantic_defect='Replace the full frozen schedule with the midpoint only.',
+        relative_path='Discovery/hust_2018_aaf_rounding_consistency.py',
+        old_text='    return tuple(Fraction(t) for t in protocol["candidate_schedule"]["parameters"])\n',
+        new_text='    return (Fraction(0),)\n',
+        test_names=('tests.test_hust_2018_aaf_rounding_consistency.HUSTRoundingTests.test_fifteen_candidate_parameters_are_taken_from_frozen_schedule',),
+        required_modules=('Discovery.hust_2018_aaf_rounding_consistency',),
+    ),
+    Mutant(
+        identifier='production_rounding_target_leaks_into_bins',
+        category='production',
+        intended_semantic_defect='Let the terminal comparison modify source rounding intervals.',
+        relative_path='Discovery/hust_2018_aaf_rounding_consistency.py',
+        old_text='    half_width = decimal_fraction(protocol["rounding_policy"]["component_half_width_ppm"])\n',
+        new_text='    half_width = decimal_fraction(protocol["rounding_policy"]["component_half_width_ppm"]) + decimal_fraction(protocol["comparison"]["value_ppm"]) - Fraction("11.61")\n',
+        test_names=('tests.test_hust_2018_aaf_rounding_consistency.HUSTRoundingTests.test_target_cannot_change_bins_or_candidate_calculations',),
+        required_modules=('Discovery.hust_2018_aaf_rounding_consistency',),
+    ),
+    Mutant(
+        identifier='production_rounding_disable_source_pin',
+        category='production',
+        intended_semantic_defect='Accept changed source bytes with stale evidence pins.',
+        relative_path='Discovery/hust_2018_aaf_rounding_consistency.py',
+        old_text='    if len(data) != pin["byte_length"] or _hash(data) != pin["sha256"]:\n',
+        new_text='    if False and (len(data) != pin["byte_length"] or _hash(data) != pin["sha256"]):\n',
+        test_names=('tests.test_hust_2018_aaf_rounding_consistency.HUSTRoundingTests.test_mutating_source_bytes_fails_closed',),
+        required_modules=('Discovery.hust_2018_aaf_rounding_consistency',),
+    ),
+    Mutant(
+        identifier='production_freeze_ignore_sole_parent',
+        category='production',
+        intended_semantic_defect='Allow a preregistration whose parent differs from the intended baseline.',
+        relative_path='Discovery/preregistration_history.py',
+        old_text='    if parents != [commit, baseline]:\n',
+        new_text='    if False and parents != [commit, baseline]:\n',
+        test_names=('tests.test_preregistration_chronology.PreregistrationChronologyTests.test_wrong_parent_is_rejected',),
+        required_modules=('Discovery.preregistration_history',),
+    ),
+    Mutant(
+        identifier='production_freeze_allow_mixed_first_commit',
+        category='production',
+        intended_semantic_defect='Allow implementation files in the preregistration-only first commit.',
+        relative_path='Discovery/preregistration_history.py',
+        old_text='    if changed != [path]:\n',
+        new_text='    if False and changed != [path]:\n',
+        test_names=('tests.test_preregistration_chronology.PreregistrationChronologyTests.test_mixed_first_commit_is_rejected',),
+        required_modules=('Discovery.preregistration_history',),
+    ),
+    Mutant(
+        identifier='production_freeze_ignore_intervening_history',
+        category='production',
+        intended_semantic_defect='Allow a changed-and-reverted protocol after its freeze.',
+        relative_path='Discovery/preregistration_history.py',
+        old_text='    for descendant in git("rev-list", f"{commit}..HEAD").stdout.decode().splitlines():\n',
+        new_text='    for descendant in ():\n',
+        test_names=('tests.test_preregistration_chronology.PreregistrationChronologyTests.test_change_and_revert_is_rejected',),
+        required_modules=('Discovery.preregistration_history',),
     ),
 )
 

@@ -19,6 +19,10 @@ import subprocess
 import sys
 
 
+from Discovery.source_history import SourceVerificationError
+from Discovery.preregistration_history import verify_preregistration_freeze
+
+
 ROOT = Path(__file__).resolve().parents[1]
 DIRECTORY = Path("Experiments/GMeasurements")
 PREREGISTRATION_PATH = DIRECTORY / "hust_2018_aaf_combined_feasibility_preregistration_v1.json"
@@ -127,12 +131,13 @@ def _git(root: Path, *args: str) -> bytes:
 
 def verify_preregistration(root: Path = ROOT) -> dict:
     """Bind current bytes, frozen commit, its parent, ancestry and intervening history."""
-    path = PREREGISTRATION_PATH.as_posix()
-    current = (root / path).read_bytes()
-    if _hash(current) != PREREGISTRATION_SHA256:
-        raise FeasibilityError("preregistration bytes changed")
-    if _git(root, "show", f"{PREREGISTRATION_COMMIT}:{path}") != current:
-        raise FeasibilityError("preregistration commit bytes changed")
+    try:
+        current = verify_preregistration_freeze(
+            root, baseline=BASELINE, commit=PREREGISTRATION_COMMIT,
+            path=PREREGISTRATION_PATH.as_posix(), sha256=PREREGISTRATION_SHA256,
+        )
+    except SourceVerificationError as error:
+        raise FeasibilityError(str(error)) from error
     # Preserve the original local freeze object despite Git push being unavailable.
     # This authenticates its object identity/tree, not an externally attested timestamp.
     body = LOCAL_FREEZE_OBJECT.encode()
@@ -140,19 +145,6 @@ def verify_preregistration(root: Path = ROOT) -> dict:
     remote_tree = _git(root, "rev-parse", f"{PREREGISTRATION_COMMIT}^{{tree}}").decode().strip()
     if object_id != LOCAL_FREEZE_COMMIT or not LOCAL_FREEZE_OBJECT.startswith(f"tree {remote_tree}\nparent {BASELINE}\n"):
         raise FeasibilityError("local freeze object identity/tree differs from published preregistration")
-    parent = _git(root, "rev-parse", f"{PREREGISTRATION_COMMIT}^").decode().strip()
-    if parent != BASELINE:
-        raise FeasibilityError("preregistration is not the first commit after the baseline")
-    changed = _git(root, "diff", "--name-only", BASELINE, PREREGISTRATION_COMMIT).decode().splitlines()
-    if changed != [path]:
-        raise FeasibilityError("first substantive commit is not preregistration-only")
-    _git(root, "merge-base", "--is-ancestor", PREREGISTRATION_COMMIT, "HEAD")
-    commits = _git(
-        root, "log", "--format=%H", f"{PREREGISTRATION_COMMIT}..HEAD", "--", path
-    ).decode().splitlines()
-    for commit in commits:
-        if _git(root, "show", f"{commit}:{path}") != current:
-            raise FeasibilityError("preregistration changed in intervening history")
     return _json(current)
 
 

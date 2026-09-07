@@ -1,0 +1,537 @@
+{
+  "acceptance": "Certificate correctness, source/chronology integrity, controls and required checks; no required HUST verdict, no tuning to published agreement.",
+  "allowed_input_artifacts": [
+    {
+      "byte_length": 241071,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v2.json",
+      "sha256": "9ab68481e2f11a08dd184aec25781822fd4c3b9beaa13fc5edb34cfa4e5a7b00"
+    },
+    {
+      "byte_length": 8009,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v2.json",
+      "sha256": "ef8a23cee8d1d7c7e417ca69d8b0e75a66d5cf272e6fcd59ba92fb84d1468326"
+    }
+  ],
+  "baseline_main_sha": "3fb60ecf64a61db2347bb154cc7e20b02b0f6ca3",
+  "calculation": {
+    "covariance_rule": "20 non-statistical rows fully correlated by same component; statistical_angular_acceleration independent across runs; no cross-item terms",
+    "enclosure": "positive rational interval arithmetic; q_i bounds l_i/(l_i+sum_others u_j), u_i/(u_i+sum_others l_j); one whole-domain box; dependency overestimation allowed",
+    "forbidden": [
+      "GLS or covariance inversion",
+      "statistical-only or target-fitted weights",
+      "fixed weights under changed budgets",
+      "target-dependent bounds or candidate generation",
+      "adaptive witness search",
+      "floating-point acceptance tolerance"
+    ],
+    "output_ppm_decimal_places": 6,
+    "q": "a_i = 1/(g_i*sum_k x_ik^2); q_i = a_i/sum_j a_j = p_i*g_i/sum_j(p_j*g_j)",
+    "relative_variance_ppm_squared": "sum_shared_k(sum_i(q_i*x_ik))^2 + sum_independent_k sum_i(q_i*x_ik)^2",
+    "scalar_encoding": "exact fractions from finite decimal strings; no binary floats",
+    "square_root_display": "integer square root with exact outward rounding; presentation only",
+    "variances": "v_i = g_i^2 * sum_k x_ik^2 * 1e-12",
+    "weights": "p_i = (1/v_i)/sum_j(1/v_j); recompute for every scenario"
+  },
+  "candidate_schedule": {
+    "completeness": "finite witness schedule, not exhaustive; no probability meaning",
+    "formula": "x_ik = midpoint_ik + t*half_width_ik; same t for all cells; evaluate all candidates before comparison",
+    "parameters": [
+      "0",
+      "-1/8",
+      "1/8",
+      "-2/8",
+      "2/8",
+      "-3/8",
+      "3/8",
+      "-4/8",
+      "4/8",
+      "-5/8",
+      "5/8",
+      "-6/8",
+      "6/8",
+      "-7/8",
+      "7/8"
+    ]
+  },
+  "chronology": {
+    "external_anchor": "GitHub draft PR creation URL and server-created timestamp recorded by implementation.",
+    "prior_knowledge": "PR #38 gives approximately 11.6161857764 ppm; Claude has already sampled rounding-consistent scenarios. This is a prospective implementation freeze for a known reference case, not epistemic blindness.",
+    "procedure": "This file alone is added in the first branch commit with the baseline as its sole parent. Push it and create a draft PR identifying its hash and commit before implementation. Preserve unchanged bytes in all reachable intervening history; merge commit only."
+  },
+  "claim_limits": [
+    "Conditional component-rounding consistency only; not the actual cause of the discrepancy.",
+    "No new measurement, empirical model, raw-data replication, source-authorization upgrade, physical prediction or Lean proof.",
+    "Bounds are conservative enclosures, not certified extrema or an attainable range.",
+    "Witness scenarios do not replace frozen measurement inputs or outputs.",
+    "No p-value, sample probability, significance level or joint consistency of the entire publication is asserted."
+  ],
+  "classification": {
+    "compatible": "first fixed candidate with valid interior input membership and exact relative variance in comparison interior; exact comparison permits equality",
+    "incompatible": "closed squared comparison interval disjoint from guaranteed relative-variance enclosure",
+    "invalid": "raise; never map evidence or calculation failures to a numerical verdict",
+    "unresolved": "enclosures overlap and no fixed candidate supplies a witness"
+  },
+  "comparison": {
+    "half_width_ppm": "0.005",
+    "locator": "Supplement Section 6, AAF paragraph, printed p. 13; previously reviewed in PR #38",
+    "role": "terminal_only",
+    "source_identifier": "doi:10.1038/s41586-018-0431-5",
+    "value_ppm": "11.61"
+  },
+  "controls": [
+    {
+      "component_half_width_ppm": "0.005",
+      "component_ppm": "2",
+      "expected": "compatible",
+      "g": [
+        "1"
+      ],
+      "id": "compatible",
+      "target_half_width_ppm": "0.005",
+      "target_ppm": "2"
+    },
+    {
+      "component_half_width_ppm": "0.005",
+      "component_ppm": "2",
+      "expected": "incompatible",
+      "g": [
+        "1"
+      ],
+      "id": "incompatible",
+      "target_half_width_ppm": "0.005",
+      "target_ppm": "3"
+    },
+    {
+      "component_half_width_ppm": "0.005",
+      "component_ppm": "2",
+      "expected": "unresolved",
+      "g": [
+        "1"
+      ],
+      "id": "unresolved",
+      "target_half_width_ppm": "0.0001",
+      "target_ppm": "2.0048"
+    }
+  ],
+  "input_projection": {
+    "central_values": [
+      "6.6745328035953125108282108677121809575949937283002E-11",
+      "6.6743753740743660354813960747489220127126413482226E-11",
+      "6.6745350870563487749434592065303623880463414334833E-11"
+    ],
+    "component_unit": "ppm",
+    "components": [
+      {
+        "component_id": "pendulum_dimensions",
+        "correlation": "shared",
+        "values": [
+          "0.16",
+          "0.16",
+          "0.16"
+        ]
+      },
+      {
+        "component_id": "pendulum_attitude",
+        "correlation": "shared",
+        "values": [
+          "0.06",
+          "0.06",
+          "0.03"
+        ]
+      },
+      {
+        "component_id": "pendulum_density_inhomogeneity",
+        "correlation": "shared",
+        "values": [
+          "0.46",
+          "0.46",
+          "0.46"
+        ]
+      },
+      {
+        "component_id": "coating_layer",
+        "correlation": "shared",
+        "values": [
+          "0.34",
+          "0.34",
+          "0.34"
+        ]
+      },
+      {
+        "component_id": "clamp_and_ferrule",
+        "correlation": "shared",
+        "values": [
+          "0.70",
+          "1.05",
+          "0.48"
+        ]
+      },
+      {
+        "component_id": "other_pendulum_effects",
+        "correlation": "shared",
+        "values": [
+          "0.29",
+          "0.29",
+          "0.29"
+        ]
+      },
+      {
+        "component_id": "source_mass_masses",
+        "correlation": "shared",
+        "values": [
+          "0.32",
+          "0.31",
+          "0.31"
+        ]
+      },
+      {
+        "component_id": "horizontal_source_mass_distance",
+        "correlation": "shared",
+        "values": [
+          "8.98",
+          "8.98",
+          "8.98"
+        ]
+      },
+      {
+        "component_id": "vertical_source_mass_distance",
+        "correlation": "shared",
+        "values": [
+          "5.79",
+          "5.79",
+          "5.79"
+        ]
+      },
+      {
+        "component_id": "source_mass_positions_alignment",
+        "correlation": "shared",
+        "values": [
+          "0.57",
+          "0.62",
+          "0.35"
+        ]
+      },
+      {
+        "component_id": "fibre_anelasticity",
+        "correlation": "shared",
+        "values": [
+          "0.01",
+          "0.01",
+          "0.01"
+        ]
+      },
+      {
+        "component_id": "thermal_effect",
+        "correlation": "shared",
+        "values": [
+          "0.91",
+          "0.91",
+          "0.91"
+        ]
+      },
+      {
+        "component_id": "time_base",
+        "correlation": "shared",
+        "values": [
+          "0.01",
+          "0.01",
+          "0.01"
+        ]
+      },
+      {
+        "component_id": "rotating_gravity_gradient",
+        "correlation": "shared",
+        "values": [
+          "1.86",
+          "1.35",
+          "1.72"
+        ]
+      },
+      {
+        "component_id": "shelf_deformation",
+        "correlation": "shared",
+        "values": [
+          "1.51",
+          "1.51",
+          "1.51"
+        ]
+      },
+      {
+        "component_id": "magnetic_damper",
+        "correlation": "shared",
+        "values": [
+          "1.95",
+          "1.95",
+          "0.08"
+        ]
+      },
+      {
+        "component_id": "air_density",
+        "correlation": "shared",
+        "values": [
+          "1.00",
+          "1.51",
+          "1.13"
+        ]
+      },
+      {
+        "component_id": "magnetic_field",
+        "correlation": "shared",
+        "values": [
+          "3.98",
+          "3.98",
+          "0.90"
+        ]
+      },
+      {
+        "component_id": "angle_encoder",
+        "correlation": "shared",
+        "values": [
+          "0.72",
+          "0.72",
+          "0.72"
+        ]
+      },
+      {
+        "component_id": "residual_twist_angle",
+        "correlation": "shared",
+        "values": [
+          "0.03",
+          "0.61",
+          "0.45"
+        ]
+      },
+      {
+        "component_id": "statistical_angular_acceleration",
+        "correlation": "independent",
+        "values": [
+          "3.44",
+          "2.60",
+          "1.34"
+        ]
+      }
+    ],
+    "scopes": [
+      "AAF-I",
+      "AAF-II",
+      "AAF-III"
+    ],
+    "unit": "m^3 kg^-1 s^-2"
+  },
+  "input_projection_sha256": "f48784441f1a4d994f63361e777859f9beb8d76db15490fdb3ebe1a21b25a354",
+  "mission": "Conditional consistency of the published combined 11.61 ppm with nearest-rounding bins for 63 component cells, fixed reconstructed G inputs and source-prescribed correlations.",
+  "preregistration_id": "hust_2018_aaf_rounding_consistency_v1",
+  "preserved_baseline_files": [
+    {
+      "byte_length": 22109,
+      "path": "Experiments/GMeasurements/README.md",
+      "sha256": "0a2e1aafd6ece4ac3fed23503b0972d7b8cf231901db914a66a1de74e47e4049"
+    },
+    {
+      "byte_length": 17319,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_combined_feasibility_preregistration_v1.json",
+      "sha256": "14cda7a63b8f5ad2c40455300465a3c5b169e14f4ac7390742a172db30ba750a"
+    },
+    {
+      "byte_length": 44279,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_combined_feasibility_v1.json",
+      "sha256": "08c6e555221662586ac5750faa1145aaecc54727fe88bdf1a662e26fa29b7a8c"
+    },
+    {
+      "byte_length": 21027,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_combined_measurement_model_preregistration_v1.json",
+      "sha256": "284957ec010d25bc7d5e0e64696df11b8d9c1af5358670c3a7bb7d7c2cf8961f"
+    },
+    {
+      "byte_length": 211216,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_combined_measurement_model_v1.json",
+      "sha256": "a0aae4845350bad41cc8dbcdb84c73cfbb189491e25d27bab708c55c5292d35f"
+    },
+    {
+      "byte_length": 6102,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v1.json",
+      "sha256": "06338de9b24ead21f5b24da12d1cd0c94ba584ad740368b128d6f552023ec6f3"
+    },
+    {
+      "byte_length": 9137,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v2.json",
+      "sha256": "2bf6bb803d18600147c17bd94f5b05a3118f9bfd76136e0b7c22c5dfa1e77170"
+    },
+    {
+      "byte_length": 3288,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_clarification_v1.json",
+      "sha256": "7b193a70fa1ccbf3097dba0f9316fe446e5b8f8c4073f440ea7e25bba18276b4"
+    },
+    {
+      "byte_length": 6268,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_feasibility_v1.json",
+      "sha256": "e2969a0223641d8a13d2199e3ea34879a4ed437a8f23c09e510cec327b7a72d8"
+    },
+    {
+      "byte_length": 843,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_model_preregistration_v1.anchor.json",
+      "sha256": "54556b9bfc9cf855c100c6049285612baaa8885eb4e0ba7bc455a6cc9f8d83b9"
+    },
+    {
+      "byte_length": 10981,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_model_preregistration_v1.md",
+      "sha256": "05913514c25be9bf722454f6369261f529b7bd19c97d1ee81cf054a9bc9bb49f"
+    },
+    {
+      "byte_length": 240705,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v1.json",
+      "sha256": "a13944b8a6f8691c46398b4374cfb29df94f8cdfc698a70ad47addcf05cad0a3"
+    },
+    {
+      "byte_length": 241071,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v2.json",
+      "sha256": "9ab68481e2f11a08dd184aec25781822fd4c3b9beaa13fc5edb34cfa4e5a7b00"
+    },
+    {
+      "byte_length": 5461,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v1.json",
+      "sha256": "82f6715fa40a9d951d8f4b4e7f9d5f5e64ae9d80c645027acda08f39becc79ba"
+    },
+    {
+      "byte_length": 8165,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v2.json",
+      "sha256": "5d7f197b9eae5a18f302eb9eca3073346106d6363c59cbd35573e6a53fcb9809"
+    },
+    {
+      "byte_length": 10386,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v3.json",
+      "sha256": "c114045c78e97b81e70c9a216c279c58076732a6445906effa83bd94f61b7561"
+    },
+    {
+      "byte_length": 2183,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_official_source_v1.json",
+      "sha256": "de73536119564f28b61f330eea5ce8841fd5e2ba21f52dc3ce6a7f44b620476d"
+    },
+    {
+      "byte_length": 6315,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_external_sources_v1.json",
+      "sha256": "3b37b6548a23ef3138909bed638dd13cf571c084fdfaad84a70d41aac02eb559"
+    },
+    {
+      "byte_length": 4693,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_independent_human_attestation_v1.json",
+      "sha256": "560fbef2b08b46a29086e26becbe47701b84ba9e3aa6ecc3ffdda502fbc891b1"
+    },
+    {
+      "byte_length": 6080,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_measurement_model_preregistration_v1.md",
+      "sha256": "5becdb7cfc6daed8a1a6c47cfeede18d5349ee2820197d8c3d17a5b61b705a62"
+    },
+    {
+      "byte_length": 71092,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_measurement_models_v1.json",
+      "sha256": "6da4917504be9b3db944c8be8b4e86ad2643ab383f68e83d2cfb920680cd02bb"
+    },
+    {
+      "byte_length": 1885,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_post_audit_clarification_v1.md",
+      "sha256": "5e36d76f243603aabf05e37e52061831988fa5e680afd568e487ce87b1499b95"
+    },
+    {
+      "byte_length": 7257,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_preregistration_v1.md",
+      "sha256": "fa297ecfa4cc4ae2ee7737e413dc8bf0f6ad63c70ca2d1ff070ae81dd2ec8885"
+    },
+    {
+      "byte_length": 7412,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v1.json",
+      "sha256": "624d84db3ef855edc9f126a8f5f974b2aa799600e94d2fb39f1d048ffa7afe5b"
+    },
+    {
+      "byte_length": 8009,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v2.json",
+      "sha256": "ef8a23cee8d1d7c7e417ca69d8b0e75a66d5cf272e6fcd59ba92fb84d1468326"
+    },
+    {
+      "byte_length": 13213,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_v1.json",
+      "sha256": "8328bec85e5356d833d7f36b9e16833edc0d3c415bdd1eba59c7a01790c7f37a"
+    },
+    {
+      "byte_length": 1632,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_semantic_source_review_v1.json",
+      "sha256": "1628e7a3eac2fadddf75f892e8128807fd07bed7b51b920672826e4915c68b1f"
+    },
+    {
+      "byte_length": 5088,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.manifest.json",
+      "sha256": "867bff124fbd6b46a1ae1710aeaa13fb19698455c5fbaa8971bb3c08f10b162a"
+    },
+    {
+      "byte_length": 8325,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.md",
+      "sha256": "883dea16d9713a14224a399a4894c443b9a019a42e1f19e6e500999261db4117"
+    },
+    {
+      "byte_length": 33680,
+      "path": "Experiments/GMeasurements/inverse_square_bridge_example.json",
+      "sha256": "6b20ceaa94c99b68de91fa1db97a6031b15526298b78de0afd7bd3738d045795"
+    },
+    {
+      "byte_length": 13676,
+      "path": "Experiments/GMeasurements/physical_bridge_contract.json",
+      "sha256": "7724d5b450cd22f66cf9cd4af533463cb635404ffb460e631ad0078beacad47b"
+    },
+    {
+      "byte_length": 1465,
+      "path": "Experiments/GMeasurements/uw_2000_published_data_pilot_v1.manifest.json",
+      "sha256": "d6cdd45deef761d73a7de5a8d02c93d927ced3ad9c26abe9b3eac0fd990959b7"
+    },
+    {
+      "byte_length": 7003,
+      "path": "Experiments/GMeasurements/uw_2000_published_data_preregistration_v1.md",
+      "sha256": "487d4d584e412b404815d8f22eb90d7b4690465d4984d91aa072fb1520326971"
+    },
+    {
+      "byte_length": 1895,
+      "path": "Experiments/GMeasurements/uw_2000_published_data_preregistration_v1_clarification_1.md",
+      "sha256": "f2bac432714e8d480c51daf090d69463df2239deb704f0283c4b3274db5c5735"
+    },
+    {
+      "byte_length": 18738,
+      "path": "Experiments/GMeasurements/uw_2000_source_audit_v1.md",
+      "sha256": "1ff8b755a1eb2c68af1a51c670fa81a5caa7a39a8e3b627cfa962707f00cc6b5"
+    }
+  ],
+  "repository": "mdiaz4052/The-Number-Project",
+  "required_validation": [
+    "Independent exact covariance-matrix oracle at midpoint and shifted budgets with unequal central values.",
+    "Exact interval/square-root boundary tests, selected rational containment grids and all three synthetic outcomes.",
+    "Fail closed on malformed/source/role/unit/inventory/correlation/policy mismatches; target mutation leaves all calculation certificates unchanged.",
+    "Synthetic complete Git histories pin sole parent, preregistration-only first commit, genuine file addition, ancestry and all reachable intervening edits.",
+    "Behavioral mutants for classifications, enclosure direction, rounding policy, target isolation, weighting and correlations; calibrated harness, no invalid/freshness-only kills.",
+    "Existing GMeasurements artifacts byte-identical. One final full suite, affected guards, required source-bound attestations and exact-head Python/Lean CI."
+  ],
+  "rounding_policy": {
+    "admissible_domain": "Cartesian product of 63 component bins; no probability distribution, latent equalities or independence claim",
+    "assumption": "nearest rounding; actual publisher rounding and tie convention not established",
+    "component_half_width_ppm": "0.005",
+    "component_quantum_ppm": "0.01",
+    "enclosure_endpoints": "closed",
+    "excluded": "rounding of central values, apparatus primitives, displayed individual totals and other publication outputs",
+    "fixed": "three reconstructed individual G central values and correlation classes",
+    "witness_endpoints": "strict interior for positive-width intervals; equality for exact intervals"
+  },
+  "schema_version": 1,
+  "source_authority_artifacts": [
+    {
+      "byte_length": 21027,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_combined_measurement_model_preregistration_v1.json",
+      "sha256": "284957ec010d25bc7d5e0e64696df11b8d9c1af5358670c3a7bb7d7c2cf8961f"
+    },
+    {
+      "byte_length": 2183,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_official_source_v1.json",
+      "sha256": "de73536119564f28b61f330eea5ce8841fd5e2ba21f52dc3ce6a7f44b620476d"
+    }
+  ],
+  "specification": {
+    "path": "Notes/HUST2018AAFRoundingConsistencySpecification.md",
+    "sha256": "61d5754c05539e4f90a4d010b2a0b230b26f6662dd6d0c46e8f9d8a9c0b54c11"
+  }
+}

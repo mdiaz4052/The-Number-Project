@@ -1,0 +1,21 @@
+{
+  "classification": "implementation placement clarification; no scientific protocol amendment",
+  "observation": "The complete suite found that adding a strict freeze verifier to Discovery/source_history.py invalidates older PyDimension and PySR source-state attestations, whose complete-file pins include that module. The older state-only verifier itself is unchanged.",
+  "observed_at_source_commit": "bb58cf5ba7a52969ca5f261daa11c924c3c39df9",
+  "preregistration_sha256": "0c86cfdbe5efa97c6c585db25c1194eb7d798e532ebe8aed03990bde38983233",
+  "reason": "Preserve historical evidence and avoid rerunning or rewriting unrelated scientific comparisons solely because a different verification contract gained a shared implementation. No existing guard or source pin is removed or relaxed.",
+  "record_id": "hust_2018_aaf_rounding_consistency_implementation_clarification_v1",
+  "resolution": "Keep Discovery/source_history.py byte-identical to the baseline. Place the single shared strict preregistration verifier in Discovery/preregistration_history.py, importing the existing error classes and Git-history helpers. Route PR #37, PR #38 and the new diagnostic through this one verifier. Pin the new module in affected source snapshots.",
+  "schema_version": 1,
+  "scope_override": "Only the module-placement direction in specification sections 5 and 6 is superseded. All strict freeze predicates and synthetic-history tests remain required.",
+  "specification_sha256": "61d5754c05539e4f90a4d010b2a0b230b26f6662dd6d0c46e8f9d8a9c0b54c11",
+  "unchanged": [
+    "63 component rounding bins, fixed central G values and correlation model",
+    "exact point and interval formulas",
+    "15 predetermined target-independent candidates",
+    "comparison target and all three outcome rules",
+    "controls, certificate checks, source isolation and claim limits",
+    "original preregistration/specification bytes and external anchor",
+    "all pre-existing empirical and external-comparison artifacts"
+  ]
+}

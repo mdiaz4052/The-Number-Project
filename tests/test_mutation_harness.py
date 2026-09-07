@@ -98,7 +98,7 @@ class MutationHarnessUnitTests(unittest.TestCase):
                 pysr_leakage_hardening_mutations.RETIRED_ARTIFACT_SHA256,
             ),
         )
-        self.assertEqual(sum(len(hashes) for _, hashes in families), 12)
+        self.assertEqual(sum(len(hashes) for _, hashes in families), 15)
         for label, hashes in families:
             with self.subTest(family=label):
                 verify_retired_artifact_hashes(

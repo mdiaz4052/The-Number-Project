@@ -16,9 +16,10 @@ from fractions import Fraction
 import hashlib
 import json
 from pathlib import Path
-import subprocess
 import sys
 
+from Discovery.source_history import SourceVerificationError
+from Discovery.preregistration_history import verify_preregistration_freeze
 from Discovery.dimensions import Dimension, GRAVITATIONAL_CONSTANT
 from Discovery.hust_2018_aaf_combined_feasibility import (
     COMPONENT_IDS, SCOPES,
@@ -112,25 +113,14 @@ def _preregistration(root: Path) -> dict:
 
 
 def verify_preregistration(root: Path = ROOT) -> dict:
-    prereg = _preregistration(root)
-    def git(*args):
-        result = subprocess.run(["git", "-C", str(root), *args], capture_output=True)
-        if result.returncode:
-            raise CombinedModelError(f"preregistration history unavailable or ancestry invalid: {args}")
-        return result.stdout
-    path = PREREGISTRATION_PATH.as_posix()
-    current = (root / path).read_bytes()
-    if git("show", f"{PREREGISTRATION_COMMIT}:{path}") != current:
-        raise CombinedModelError("preregistration differs from its published commit")
-    if git("rev-parse", f"{PREREGISTRATION_COMMIT}^").decode().strip() != BASELINE:
-        raise CombinedModelError("preregistration parent differs from intended base")
-    if git("diff", "--name-only", BASELINE, PREREGISTRATION_COMMIT).decode().splitlines() != [path]:
-        raise CombinedModelError("first branch commit must contain the preregistration alone")
-    git("merge-base", "--is-ancestor", PREREGISTRATION_COMMIT, "HEAD")
-    for commit in git("log", "--format=%H", f"{PREREGISTRATION_COMMIT}..HEAD", "--", path).decode().splitlines():
-        if git("show", f"{commit}:{path}") != current:
-            raise CombinedModelError("preregistration changed in intervening history")
-    return prereg
+    try:
+        data = verify_preregistration_freeze(
+            root, baseline=BASELINE, commit=PREREGISTRATION_COMMIT,
+            path=PREREGISTRATION_PATH.as_posix(), sha256=PREREGISTRATION_SHA256,
+        )
+    except SourceVerificationError as error:
+        raise CombinedModelError(str(error)) from error
+    return _json(data)
 
 
 def load_frozen_records(root: Path = ROOT) -> dict:
