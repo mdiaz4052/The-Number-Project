@@ -23,6 +23,12 @@ ATTESTED_PATHS = j.SOURCE_PATHS + (
     "tests/test_newman_2014_table11_rounding_consistency_mutations.py",
     "Discovery/mutation_test_runner.py",
 )
+COPY_PATHS = ATTESTED_PATHS + (
+    "Discovery/rounding_consistency.py",
+    "Discovery/__init__.py",
+    "Discovery/preregistration_history.py",
+    "Discovery/source_history.py",
+)
 
 
 def case(identifier, category, old, new, test, expected="KILLED"):
@@ -164,7 +170,7 @@ def assess_execution(record: dict, tests: list[str]) -> str:
 def run_case(root: Path, definition: dict, *, mutate=True) -> dict:
     with TemporaryDirectory(prefix="newman-table11-mutant-") as temp:
         target = Path(temp)
-        for path in ATTESTED_PATHS:
+        for path in COPY_PATHS:
             destination = target / path
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(root / path, destination)
