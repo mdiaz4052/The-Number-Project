@@ -1,0 +1,479 @@
+{
+  "artifact_id": "newman_2014_table11_rounding_consistency_v1",
+  "calculation_policy": {
+    "arithmetic": "exact rational; display never determines classification",
+    "central_value_invariance": "q_1 = 1; any positive central schema value cancels",
+    "correlation_tag": "independent",
+    "engine_primitives": "Discovery/rounding_consistency.py unchanged",
+    "identity": "R^2 = x_statistical^2 + x_systematic^2 + x_analysis_method^2",
+    "new_schedule_wrapper": "Discovery/newman_2014_table11_rounding_consistency.py",
+    "one_run_per_scope": true,
+    "output_ppm_decimal_places": 6
+  },
+  "calculations": {
+    "fibre_1": {
+      "candidate_coordinates_are_independent": true,
+      "candidate_count": 3375,
+      "relative_uncertainty_enclosure_ppm": {
+        "decimal_places": 6,
+        "high": "14.539172",
+        "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+        "low": "14.368281"
+      },
+      "relative_variance_enclosure_ppm_squared": {
+        "high": {
+          "denominator": "80",
+          "numerator": "16911"
+        },
+        "low": {
+          "denominator": "400",
+          "numerator": "82579"
+        }
+      },
+      "schedule_kind": "full_independent_tensor_grid"
+    },
+    "fibre_2": {
+      "candidate_coordinates_are_independent": true,
+      "candidate_count": 3375,
+      "relative_uncertainty_enclosure_ppm": {
+        "decimal_places": 6,
+        "high": "22.323251",
+        "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+        "low": "22.152821"
+      },
+      "relative_variance_enclosure_ppm_squared": {
+        "high": {
+          "denominator": "400",
+          "numerator": "199331"
+        },
+        "low": {
+          "denominator": "400",
+          "numerator": "196299"
+        }
+      },
+      "schedule_kind": "full_independent_tensor_grid"
+    },
+    "fibre_3": {
+      "candidate_coordinates_are_independent": true,
+      "candidate_count": 3375,
+      "relative_uncertainty_enclosure_ppm": {
+        "decimal_places": 6,
+        "high": "19.720231",
+        "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+        "low": "19.547570"
+      },
+      "relative_variance_enclosure_ppm_squared": {
+        "high": {
+          "denominator": "80",
+          "numerator": "31111"
+        },
+        "low": {
+          "denominator": "400",
+          "numerator": "152843"
+        }
+      },
+      "schedule_kind": "full_independent_tensor_grid"
+    }
+  },
+  "candidate_schedule": {
+    "adaptive_search": false,
+    "all_candidates_before_comparison": true,
+    "candidate_count_per_scope": 3375,
+    "cell_rule": "For each component independently: midpoint + t_k * half_width.",
+    "dimensions_per_scope": 3,
+    "kind": "full_independent_tensor_grid",
+    "ordering": "lexicographic itertools.product over component order [statistical, systematic, analysis_method] and the parameter list exactly as frozen",
+    "parameters": [
+      "0",
+      "-1/8",
+      "1/8",
+      "-2/8",
+      "2/8",
+      "-3/8",
+      "3/8",
+      "-4/8",
+      "4/8",
+      "-5/8",
+      "5/8",
+      "-6/8",
+      "6/8",
+      "-7/8",
+      "7/8"
+    ],
+    "terminal_blind_generation": true,
+    "total_candidate_count": 10125
+  },
+  "claim_limits": [
+    "Conditional Newman et al. 2014 Table 11 rounding representation only.",
+    "No raw-data or full cryogenic torsion-pendulum estimator reproduction.",
+    "No audit of the conclusion's integer 14 ppm, 22 ppm, or 20 ppm statements; only Table 11's one-decimal quadrature sums are terminal targets.",
+    "No inference of hidden unrounded author values, historical nearest rounding, or uniqueness.",
+    "Compatible means at least one scheduled interior representation exists under the declared one-decimal rounding model.",
+    "Incompatible means not representable anywhere in the declared component rounding box under the stated Table 11 quadrature model; it is model-relative, not a statement of physical impossibility.",
+    "Unresolved is schedule-relative even under the richer tensor grid.",
+    "No discrepancy cause, sampling model, p-value, likelihood, or probability is established.",
+    "No comparison of measured central G values with HUST, Schlamminger, CODATA, or any external reference.",
+    "No common-cause, common-constant, universality, or cross-measurement estimator claim.",
+    "No update to the PR #41 joint representation object in this PR.",
+    "No E-001 artifact is an input or dependency."
+  ],
+  "input_projection": {
+    "central_values": {
+      "fibre_1": {
+        "role": "positive_schema_context_only",
+        "unit": "m^3 kg^-1 s^-2",
+        "value": "6.67435e-11"
+      },
+      "fibre_2": {
+        "role": "positive_schema_context_only",
+        "unit": "m^3 kg^-1 s^-2",
+        "value": "6.67408e-11"
+      },
+      "fibre_3": {
+        "role": "positive_schema_context_only",
+        "unit": "m^3 kg^-1 s^-2",
+        "value": "6.67455e-11"
+      }
+    },
+    "component_unit": "ppm",
+    "components": {
+      "fibre_1": [
+        {
+          "id": "statistical",
+          "value_ppm": "7.7"
+        },
+        {
+          "id": "systematic",
+          "value_ppm": "10.1"
+        },
+        {
+          "id": "analysis_method",
+          "value_ppm": "6.9"
+        }
+      ],
+      "fibre_2": [
+        {
+          "id": "statistical",
+          "value_ppm": "15.7"
+        },
+        {
+          "id": "systematic",
+          "value_ppm": "10.2"
+        },
+        {
+          "id": "analysis_method",
+          "value_ppm": "12.0"
+        }
+      ],
+      "fibre_3": [
+        {
+          "id": "statistical",
+          "value_ppm": "11.3"
+        },
+        {
+          "id": "systematic",
+          "value_ppm": "12.4"
+        },
+        {
+          "id": "analysis_method",
+          "value_ppm": "10.2"
+        }
+      ]
+    },
+    "scope_order": [
+      "fibre_1",
+      "fibre_2",
+      "fibre_3"
+    ]
+  },
+  "integrity": {
+    "baseline_main_sha": "96ec62325d2f5b5e78dee36754ed934234c5d0e1",
+    "external_anchor": {
+      "created_at": "2026-09-08T02:48:52Z",
+      "event": "draft_pull_request_created",
+      "preregistration_commit_sha": "77c47c4246746199a625392927d22c921e8d8985",
+      "scope": "Prospective classification freeze with known source table structure; no rounding outcome computed before freeze.",
+      "url": "https://github.com/mdiaz4052/The-Number-Project/pull/42"
+    },
+    "preregistration_commit_sha": "77c47c4246746199a625392927d22c921e8d8985",
+    "preregistration_sha256": "a1943c7bcbd71706119e3c2a82dc85d05ea8abde33f9f2a7d124c208691e3dcd",
+    "source_attestation_sha256": "a787f63e4c4377a6daf778d5402c065743e2f1b61d3a0c3a469f915e461653a6",
+    "source_snapshot": {
+      "files": [
+        {
+          "path": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "sha256": "20e85ca83c0b5072cf6f6e3aeb590cd101ca48ade268c25dacd927a8706bf3a3"
+        },
+        {
+          "path": "Notes/Newman2014Table11RoundingConsistencySpecification.md",
+          "sha256": "fec7694f1f8d504f45b8963ee12a948ac5eff932ec913bf5751a79635b4302e2"
+        },
+        {
+          "path": "Notes/Newman2014Table11RoundingConsistency.md",
+          "sha256": "727e82788382398c77383bd58069db5b1db55f2072f620e9657beb3056552e6c"
+        },
+        {
+          "path": "Experiments/GMeasurements/newman_2014_table11_rounding_consistency_preregistration_v1.json",
+          "sha256": "a1943c7bcbd71706119e3c2a82dc85d05ea8abde33f9f2a7d124c208691e3dcd"
+        },
+        {
+          "path": "Experiments/GMeasurements/newman_2014_source_attestation_v1.json",
+          "sha256": "a787f63e4c4377a6daf778d5402c065743e2f1b61d3a0c3a469f915e461653a6"
+        }
+      ],
+      "source_commit_sha": "fde15d7d8d8fae8eca5d8c75862e1153ea3cd1b1"
+    }
+  },
+  "kind": "conditional_published_table_rounding_consistency",
+  "rounding_policy": {
+    "bin_interpretation": "Printed one-decimal cells denote closed rounding bins for conservative enclosure; witnesses must use strict interior component values and land strictly inside nondegenerate terminal bins.",
+    "component_half_width_ppm": "0.05",
+    "component_printed_decimal_places": 1,
+    "terminal_half_width_ppm": "0.05",
+    "terminal_printed_decimal_places": 1
+  },
+  "schema_version": 1,
+  "scope_order": [
+    "fibre_1",
+    "fibre_2",
+    "fibre_3"
+  ],
+  "selection": {
+    "candidates": [
+      {
+        "doi": "10.1098/rsta.2014.0025",
+        "id": "newman_2014_uci14",
+        "reason": "Table 11 gives three named uncertainty components and a printed quadrature sum for each of three fibre results; surrounding text states quadrature combination; one paper supplies all required numerical and semantic inputs.",
+        "status": "selected"
+      },
+      {
+        "doi": "10.1038/nature13433",
+        "id": "rosi_2014_lens14",
+        "reason": "Primary measurement and companion uncertainty discussion are available, but Newman offers a cleaner same-table three-scope reconstruction for the first real falsification attempt. No arithmetic outcome was used in this ordering.",
+        "status": "scientifically_viable_deferred"
+      }
+    ],
+    "criteria": [
+      "peer-reviewed source identity",
+      "numerical table directly accessible for independent transcription",
+      "explicit component inventory and printed aggregate in same publication",
+      "declared aggregation semantics sufficient for an exact bounded reconstruction",
+      "no dependence on raw-data recovery",
+      "candidate chosen without pre-checking rounding-consistency outcome"
+    ],
+    "decision": "select_newman_2014_uci14_table11",
+    "selection_time_semantics": "Source feasibility and table structure examined before freeze; no RSS, interval-overlap, witness, or terminal classification calculation performed before freeze."
+  },
+  "terminal_decisions": {
+    "fibre_1": {
+      "comparison": {
+        "interval_ppm": {
+          "high": {
+            "denominator": "20",
+            "numerator": "291"
+          },
+          "low": {
+            "denominator": "20",
+            "numerator": "289"
+          }
+        },
+        "role": "terminal_only",
+        "source_reference": {
+          "half_width_ppm": "0.05",
+          "role": "terminal_only",
+          "scope": "fibre_1",
+          "value_ppm": "14.5"
+        },
+        "squared_interval_ppm_squared": {
+          "high": {
+            "denominator": "400",
+            "numerator": "84681"
+          },
+          "low": {
+            "denominator": "400",
+            "numerator": "83521"
+          }
+        }
+      },
+      "exclusion": null,
+      "outcome": "compatible",
+      "status": "representable_under_the_declared_table11_rounding_model",
+      "witness": {
+        "candidate_index": 0,
+        "component_values_ppm": [
+          {
+            "denominator": "10",
+            "numerator": "77"
+          },
+          {
+            "denominator": "10",
+            "numerator": "101"
+          },
+          {
+            "denominator": "10",
+            "numerator": "69"
+          }
+        ],
+        "membership_verified": true,
+        "relative_variance_ppm_squared": {
+          "denominator": "100",
+          "numerator": "20891"
+        },
+        "tensor_parameters": [
+          {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        ]
+      }
+    },
+    "fibre_2": {
+      "comparison": {
+        "interval_ppm": {
+          "high": {
+            "denominator": "4",
+            "numerator": "89"
+          },
+          "low": {
+            "denominator": "20",
+            "numerator": "443"
+          }
+        },
+        "role": "terminal_only",
+        "source_reference": {
+          "half_width_ppm": "0.05",
+          "role": "terminal_only",
+          "scope": "fibre_2",
+          "value_ppm": "22.2"
+        },
+        "squared_interval_ppm_squared": {
+          "high": {
+            "denominator": "16",
+            "numerator": "7921"
+          },
+          "low": {
+            "denominator": "400",
+            "numerator": "196249"
+          }
+        }
+      },
+      "exclusion": null,
+      "outcome": "compatible",
+      "status": "representable_under_the_declared_table11_rounding_model",
+      "witness": {
+        "candidate_index": 0,
+        "component_values_ppm": [
+          {
+            "denominator": "10",
+            "numerator": "157"
+          },
+          {
+            "denominator": "5",
+            "numerator": "51"
+          },
+          {
+            "denominator": "1",
+            "numerator": "12"
+          }
+        ],
+        "membership_verified": true,
+        "relative_variance_ppm_squared": {
+          "denominator": "100",
+          "numerator": "49453"
+        },
+        "tensor_parameters": [
+          {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        ]
+      }
+    },
+    "fibre_3": {
+      "comparison": {
+        "interval_ppm": {
+          "high": {
+            "denominator": "20",
+            "numerator": "393"
+          },
+          "low": {
+            "denominator": "20",
+            "numerator": "391"
+          }
+        },
+        "role": "terminal_only",
+        "source_reference": {
+          "half_width_ppm": "0.05",
+          "role": "terminal_only",
+          "scope": "fibre_3",
+          "value_ppm": "19.6"
+        },
+        "squared_interval_ppm_squared": {
+          "high": {
+            "denominator": "400",
+            "numerator": "154449"
+          },
+          "low": {
+            "denominator": "400",
+            "numerator": "152881"
+          }
+        }
+      },
+      "exclusion": null,
+      "outcome": "compatible",
+      "status": "representable_under_the_declared_table11_rounding_model",
+      "witness": {
+        "candidate_index": 0,
+        "component_values_ppm": [
+          {
+            "denominator": "10",
+            "numerator": "113"
+          },
+          {
+            "denominator": "5",
+            "numerator": "62"
+          },
+          {
+            "denominator": "5",
+            "numerator": "51"
+          }
+        ],
+        "membership_verified": true,
+        "relative_variance_ppm_squared": {
+          "denominator": "100",
+          "numerator": "38549"
+        },
+        "tensor_parameters": [
+          {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        ]
+      }
+    }
+  }
+}
