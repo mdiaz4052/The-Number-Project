@@ -66,7 +66,7 @@ def minimum_variance_unbiased_weights(
     if denominator <= 0:
         raise CorrelatedMeanError("minimum-variance denominator must be positive")
     first = (variance_second - covariance) / denominator
-    second = (variance_first - covariance) / denominator
+    second = 1 - first
     if first + second != 1:
         raise CorrelatedMeanError("weights do not satisfy unbiased normalization")
     variance = (
