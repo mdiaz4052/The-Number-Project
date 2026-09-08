@@ -1,0 +1,132 @@
+{
+  "input_projection": {
+    "central_values": {
+      "fibre_1": {
+        "role": "positive_schema_context_only",
+        "unit": "m^3 kg^-1 s^-2",
+        "value": "6.67435e-11"
+      },
+      "fibre_2": {
+        "role": "positive_schema_context_only",
+        "unit": "m^3 kg^-1 s^-2",
+        "value": "6.67408e-11"
+      },
+      "fibre_3": {
+        "role": "positive_schema_context_only",
+        "unit": "m^3 kg^-1 s^-2",
+        "value": "6.67455e-11"
+      }
+    },
+    "component_unit": "ppm",
+    "components": {
+      "fibre_1": [
+        {
+          "id": "statistical",
+          "value_ppm": "7.7"
+        },
+        {
+          "id": "systematic",
+          "value_ppm": "10.1"
+        },
+        {
+          "id": "analysis_method",
+          "value_ppm": "6.9"
+        }
+      ],
+      "fibre_2": [
+        {
+          "id": "statistical",
+          "value_ppm": "15.7"
+        },
+        {
+          "id": "systematic",
+          "value_ppm": "10.2"
+        },
+        {
+          "id": "analysis_method",
+          "value_ppm": "12.0"
+        }
+      ],
+      "fibre_3": [
+        {
+          "id": "statistical",
+          "value_ppm": "11.3"
+        },
+        {
+          "id": "systematic",
+          "value_ppm": "12.4"
+        },
+        {
+          "id": "analysis_method",
+          "value_ppm": "10.2"
+        }
+      ]
+    },
+    "scope_order": [
+      "fibre_1",
+      "fibre_2",
+      "fibre_3"
+    ]
+  },
+  "input_projection_sha256": "72c5c569d42bbc545d933e369647a29ba8af95900572a8fe9adc76b4d772d35c",
+  "limitations": [
+    "Hashes bind the frozen source projection and attestation bytes, not automatic comprehension of an external publication.",
+    "CI performs no live source download.",
+    "No raw-data, estimator, fibre-correlation, or final integer-ppm uncertainty reconstruction is claimed."
+  ],
+  "record_id": "newman_2014_source_attestation_v1",
+  "schema_version": 1,
+  "semantics": {
+    "audit_total_rule": "For each fibre separately, Table 11 labels the terminal row 'quadrature sum'; surrounding text says statistical, systematic, and analysis-method contributions and their quadrature sum are assigned.",
+    "final_integer_ppm_statements": "Outside this audit; the paper's conclusion gives 14, 22, and 20 ppm, but this certificate targets Table 11's 14.5, 22.2, and 19.6 only.",
+    "rounding_resolution": "All audited Table 11 component and terminal cells are printed to one decimal place.",
+    "scope_relationship": "Three separate mandatory fibre audits; no averaging or cross-fibre covariance model.",
+    "uncertainty_unit": "ppm"
+  },
+  "sources": {
+    "publication": {
+      "article": "20140025",
+      "authors": [
+        "Riley Newman",
+        "Michael Bantel",
+        "Eric Berg",
+        "William Cross"
+      ],
+      "canonical_url": "https://doi.org/10.1098/rsta.2014.0025",
+      "doi": "10.1098/rsta.2014.0025",
+      "identity_verification": "DOI/PubMed metadata and publisher-layout full text cross-checked",
+      "issue_date": "2014-10-13",
+      "journal": "Philosophical Transactions of the Royal Society A",
+      "numerical_locator": "Table 11, printed/PDF page 22",
+      "published_online": "2014-09-08",
+      "publisher": "The Royal Society",
+      "raw_capture_limitation": "The runtime could inspect the publication through web retrieval but could not persist authenticated/raw publisher PDF bytes; the frozen exact projection below, DOI identity, table locator, and independent rendered/text checks are the reproducible in-repository authority for this bounded audit.",
+      "raw_capture_sha256": null,
+      "role": "peer_reviewed_numerical_transcription_authority",
+      "semantic_verification": "Table 11 was visually and textually checked: all three component rows, all three quadrature-sum cells, and the surrounding statement that the contributions and quadrature sum are assigned to the three fibre results.",
+      "title": "A measurement of G with a cryogenic torsion pendulum",
+      "volume": "372"
+    }
+  },
+  "terminal_comparisons": {
+    "fibre_1": {
+      "half_width_ppm": "0.05",
+      "role": "terminal_only",
+      "scope": "fibre_1",
+      "value_ppm": "14.5"
+    },
+    "fibre_2": {
+      "half_width_ppm": "0.05",
+      "role": "terminal_only",
+      "scope": "fibre_2",
+      "value_ppm": "22.2"
+    },
+    "fibre_3": {
+      "half_width_ppm": "0.05",
+      "role": "terminal_only",
+      "scope": "fibre_3",
+      "value_ppm": "19.6"
+    }
+  },
+  "terminal_projection_sha256": "9736a6f6f9b2a1c5d99d84d036e3d1b966d4d9bba8fdd14abfb767188723afca"
+}
