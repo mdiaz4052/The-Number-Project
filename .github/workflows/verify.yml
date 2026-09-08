@@ -36,6 +36,14 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+      - run: python -m Discovery.bipm_2014_correlated_estimator --output /tmp/bipm_2014_correlated_estimator_v1.json
+      - run: python -m Discovery.bipm_2014_correlated_estimator_mutations --output /tmp/bipm_2014_correlated_estimator_mutations_v1.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bipm-correlated-generated
+          path: |
+            /tmp/bipm_2014_correlated_estimator_v1.json
+            /tmp/bipm_2014_correlated_estimator_mutations_v1.json
       - run: python -m unittest discover -s tests -v
       - run: python -m Discovery.dimensional_search --check
       - run: python -m Discovery.inverse_square_search --check
