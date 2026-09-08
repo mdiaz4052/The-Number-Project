@@ -52,7 +52,7 @@ CASES = (
         PRIMITIVE_PATH,
         "return None if high < low else Interval(low, high)",
         "return None if high <= low else Interval(low, high)",
-        "test_degenerate_joint_interval_is_unresolved",
+        "test_intersection_preserves_closed_boundary_contact",
     ),
     case(
         "calibration_equivalent_fraction_width",
