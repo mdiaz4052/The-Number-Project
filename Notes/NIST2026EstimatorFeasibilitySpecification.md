@@ -15,9 +15,11 @@ This PR does **not** compare NIST-26 numerically with BIPM-14 and does not claim
 
 Base: `151b9c920cadb90a9fd02766cc8def7ba9348f61`, the true merge of PR #44.
 
-Freeze: `18815807c9dfffb5bb3251f1a0331c5c2c752a04`.
+Valid freeze: `a4451482ab211df4f5c9ede0e339db9ca25a97cd`.
 
-The freeze must remain the first branch commit, with the base as sole parent and only the preregistration added. Implementation must postdate the GitHub draft-PR anchor.
+Draft PR #46 is the external anchor. The freeze must remain the first branch commit, with the base as sole parent and only the preregistration added. Implementation must postdate that GitHub anchor.
+
+Draft PR #45 is explicitly abandoned historical evidence: its frozen preregistration contained malformed JSON and failed closed before scientific calculation. No scientific verdict or result artifact from PR #45 is accepted, and its frozen bytes were not amended. PR #46 restarts from merged main with a valid freeze.
 
 ## Source authority
 
