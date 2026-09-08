@@ -1,0 +1,2013 @@
+{
+  "artifact_id": "schlamminger_2006_rounding_consistency_v1",
+  "calculation_policy": {
+    "arithmetic": "exact rational; display never determines classification",
+    "central_value_invariance": "for every positive central G",
+    "engine": "Discovery/rounding_consistency.py",
+    "existing_correlation_tag": "independent",
+    "identity": "q_1 = 1; R^2 = sum_k x_k^2",
+    "one_run_per_scope": true,
+    "output_ppm_decimal_places": 6
+  },
+  "calculations": {
+    "statistical": {
+      "candidates": [
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "5",
+                "numerator": "58"
+              }
+            ],
+            [
+              {
+                "denominator": "5",
+                "numerator": "37"
+              }
+            ],
+            [
+              {
+                "denominator": "10",
+                "numerator": "61"
+              }
+            ],
+            [
+              {
+                "denominator": "1",
+                "numerator": "4"
+              }
+            ],
+            [
+              {
+                "denominator": "1",
+                "numerator": "5"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.356345",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.356344"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "100",
+            "numerator": "26753"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "32",
+                "numerator": "371"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "1183"
+              }
+            ],
+            [
+              {
+                "denominator": "32",
+                "numerator": "195"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "639"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "799"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "-1"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.343316",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.343315"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "25600",
+            "numerator": "6837861"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1857"
+              }
+            ],
+            [
+              {
+                "denominator": "32",
+                "numerator": "237"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "977"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "641"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "801"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "1"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.369376",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.369375"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "5120",
+            "numerator": "1371937"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "80",
+                "numerator": "927"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "591"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "487"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "319"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "399"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "4",
+            "numerator": "-1"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.330288",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.330287"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "6400",
+            "numerator": "1706741"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "80",
+                "numerator": "929"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "593"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "489"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "321"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "401"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "4",
+            "numerator": "1"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.382408",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.382407"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "6400",
+            "numerator": "1717653"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1853"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "1181"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "973"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "637"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "797"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "-3"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.317262",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.317261"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "25600",
+            "numerator": "6816077"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1859"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "1187"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "979"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "643"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "803"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "3"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.395442",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.395441"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "25600",
+            "numerator": "6881549"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "40",
+                "numerator": "463"
+              }
+            ],
+            [
+              {
+                "denominator": "8",
+                "numerator": "59"
+              }
+            ],
+            [
+              {
+                "denominator": "40",
+                "numerator": "243"
+              }
+            ],
+            [
+              {
+                "denominator": "40",
+                "numerator": "159"
+              }
+            ],
+            [
+              {
+                "denominator": "40",
+                "numerator": "199"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "2",
+            "numerator": "-1"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.304237",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.304236"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "64",
+            "numerator": "17013"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "8",
+                "numerator": "93"
+              }
+            ],
+            [
+              {
+                "denominator": "40",
+                "numerator": "297"
+              }
+            ],
+            [
+              {
+                "denominator": "8",
+                "numerator": "49"
+              }
+            ],
+            [
+              {
+                "denominator": "40",
+                "numerator": "161"
+              }
+            ],
+            [
+              {
+                "denominator": "40",
+                "numerator": "201"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "2",
+            "numerator": "1"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.408478",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.408477"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "1600",
+            "numerator": "430781"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1851"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "1179"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "971"
+              }
+            ],
+            [
+              {
+                "denominator": "32",
+                "numerator": "127"
+              }
+            ],
+            [
+              {
+                "denominator": "32",
+                "numerator": "159"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "-5"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.291214",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.291213"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "25600",
+            "numerator": "6794333"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1861"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "1189"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "981"
+              }
+            ],
+            [
+              {
+                "denominator": "32",
+                "numerator": "129"
+              }
+            ],
+            [
+              {
+                "denominator": "32",
+                "numerator": "161"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "5"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.421515",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.421514"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "25600",
+            "numerator": "6903453"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "16",
+                "numerator": "185"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "589"
+              }
+            ],
+            [
+              {
+                "denominator": "16",
+                "numerator": "97"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "317"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "397"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "4",
+            "numerator": "-3"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.278192",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.278191"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "6400",
+            "numerator": "1695869"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "80",
+                "numerator": "931"
+              }
+            ],
+            [
+              {
+                "denominator": "16",
+                "numerator": "119"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "491"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "323"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "403"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "4",
+            "numerator": "3"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.434553",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.434552"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "1280",
+            "numerator": "345721"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1849"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "1177"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "969"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "633"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "793"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "-7"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.265173",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.265172"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "25600",
+            "numerator": "6772629"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1863"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "1191"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "983"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "647"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "807"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "7"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "16.447594",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "16.447593"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "25600",
+            "numerator": "6925397"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        }
+      ],
+      "relative_uncertainty_enclosure_ppm": {
+        "decimal_places": 6,
+        "high": "16.460635",
+        "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+        "low": "16.252153"
+      },
+      "relative_variance_enclosure_ppm_squared": {
+        "high": {
+          "denominator": "400",
+          "numerator": "108381"
+        },
+        "low": {
+          "denominator": "400",
+          "numerator": "105653"
+        }
+      }
+    },
+    "systematic": {
+      "candidates": [
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "5",
+                "numerator": "37"
+              }
+            ],
+            [
+              {
+                "denominator": "2",
+                "numerator": "1"
+              }
+            ],
+            [
+              {
+                "denominator": "10",
+                "numerator": "33"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.117882",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.117881"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "10",
+            "numerator": "659"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1183"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "79"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "527"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "-1"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.109262",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.109261"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "25600",
+            "numerator": "1683459"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "32",
+                "numerator": "237"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "81"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "529"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "1"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.126508",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.126507"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "25600",
+            "numerator": "1690627"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "80",
+                "numerator": "591"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "39"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "263"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "4",
+            "numerator": "-1"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.100647",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.100646"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "6400",
+            "numerator": "419971"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "80",
+                "numerator": "593"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "41"
+              }
+            ],
+            [
+              {
+                "denominator": "16",
+                "numerator": "53"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "4",
+            "numerator": "1"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.135138",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.135137"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "1280",
+            "numerator": "84711"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1181"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "77"
+              }
+            ],
+            [
+              {
+                "denominator": "32",
+                "numerator": "105"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "-3"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.092037",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.092036"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "5120",
+            "numerator": "335263"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1187"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "83"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "531"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "3"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.143774",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.143773"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "25600",
+            "numerator": "1697819"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "8",
+                "numerator": "59"
+              }
+            ],
+            [
+              {
+                "denominator": "40",
+                "numerator": "19"
+              }
+            ],
+            [
+              {
+                "denominator": "40",
+                "numerator": "131"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "2",
+            "numerator": "-1"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.083433",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.083432"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "1600",
+            "numerator": "104547"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "40",
+                "numerator": "297"
+              }
+            ],
+            [
+              {
+                "denominator": "40",
+                "numerator": "21"
+              }
+            ],
+            [
+              {
+                "denominator": "40",
+                "numerator": "133"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "2",
+            "numerator": "1"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.152416",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.152415"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "1600",
+            "numerator": "106339"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1179"
+              }
+            ],
+            [
+              {
+                "denominator": "32",
+                "numerator": "15"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "523"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "-5"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.074834",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.074833"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "5120",
+            "numerator": "333839"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1189"
+              }
+            ],
+            [
+              {
+                "denominator": "32",
+                "numerator": "17"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "533"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "5"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.161062",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.161061"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "5120",
+            "numerator": "341007"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "80",
+                "numerator": "589"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "37"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "261"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "4",
+            "numerator": "-3"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.066240",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.066239"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "6400",
+            "numerator": "416411"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "16",
+                "numerator": "119"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "43"
+              }
+            ],
+            [
+              {
+                "denominator": "80",
+                "numerator": "267"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "4",
+            "numerator": "3"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.169714",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.169713"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "6400",
+            "numerator": "427163"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1177"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "73"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "521"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "-7"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.057652",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.057651"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "25600",
+            "numerator": "1662099"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        },
+        {
+          "combined_central_value": {
+            "denominator": "25000000000000000",
+            "numerator": "1668563"
+          },
+          "component_values_ppm": [
+            [
+              {
+                "denominator": "160",
+                "numerator": "1191"
+              }
+            ],
+            [
+              {
+                "denominator": "160",
+                "numerator": "87"
+              }
+            ],
+            [
+              {
+                "denominator": "32",
+                "numerator": "107"
+              }
+            ]
+          ],
+          "parameter": {
+            "denominator": "8",
+            "numerator": "7"
+          },
+          "propagation_coefficients": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ],
+          "relative_uncertainty_ppm": {
+            "decimal_places": 6,
+            "high": "8.178371",
+            "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+            "low": "8.178370"
+          },
+          "relative_variance_ppm_squared": {
+            "denominator": "1024",
+            "numerator": "68491"
+          },
+          "weights": [
+            {
+              "denominator": "1",
+              "numerator": "1"
+            }
+          ]
+        }
+      ],
+      "relative_uncertainty_enclosure_ppm": {
+        "decimal_places": 6,
+        "high": "8.187033",
+        "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+        "low": "8.049068"
+      },
+      "relative_variance_enclosure_ppm_squared": {
+        "high": {
+          "denominator": "400",
+          "numerator": "26811"
+        },
+        "low": {
+          "denominator": "80",
+          "numerator": "5183"
+        }
+      }
+    }
+  },
+  "candidate_schedule": {
+    "adaptive_search": false,
+    "all_candidates_before_comparison": true,
+    "both_scopes_mandatory": true,
+    "cell_rule": "midpoint + t * half_width",
+    "parameters": [
+      "0",
+      "-1/8",
+      "1/8",
+      "-2/8",
+      "2/8",
+      "-3/8",
+      "3/8",
+      "-4/8",
+      "4/8",
+      "-5/8",
+      "5/8",
+      "-6/8",
+      "6/8",
+      "-7/8",
+      "7/8"
+    ]
+  },
+  "claim_limits": [
+    "Conditional Table VII rounding representation only.",
+    "No raw-data or full beam-balance estimator reproduction.",
+    "No final absolute (109)(54) uncertainty reproduction.",
+    "No inference of hidden unrounded author values or historical nearest rounding.",
+    "No discrepancy cause or probability established.",
+    "No comparison of G with HUST or external reference; no universality test.",
+    "No physical prediction or replication-depth upgrade.",
+    "No change to HUST evidence status."
+  ],
+  "input_projection": {
+    "central_value": {
+      "role": "positive_schema_context_only",
+      "unit": "m^3 kg^-1 s^-2",
+      "value": "6.674252e-11"
+    },
+    "component_unit": "ppm",
+    "components": {
+      "statistical": [
+        {
+          "id": "weighings",
+          "value_ppm": "11.6"
+        },
+        {
+          "id": "tm_sorption",
+          "value_ppm": "7.4"
+        },
+        {
+          "id": "linearity",
+          "value_ppm": "6.1"
+        },
+        {
+          "id": "calibration",
+          "value_ppm": "4.0"
+        },
+        {
+          "id": "mass_integration",
+          "value_ppm": "5.0"
+        }
+      ],
+      "systematic": [
+        {
+          "id": "tm_sorption",
+          "value_ppm": "7.4"
+        },
+        {
+          "id": "calibration",
+          "value_ppm": "0.5"
+        },
+        {
+          "id": "mass_integration",
+          "value_ppm": "3.3"
+        }
+      ]
+    },
+    "scope_order": [
+      "statistical",
+      "systematic"
+    ]
+  },
+  "integrity": {
+    "baseline_main_sha": "7e01334a911ab5bd664b2e32c16149c6739b5f7c",
+    "external_anchor": {
+      "created_at": "2026-09-08T00:43:06Z",
+      "event": "draft_pull_request_created",
+      "preregistration_commit_sha": "91f8bbc1eb652294ed772f1ce7f477d85705f23e",
+      "scope": "Prospective classification freeze with known source data, not a blind physical prediction.",
+      "url": "https://github.com/mdiaz4052/The-Number-Project/pull/40"
+    },
+    "preregistration_commit_sha": "91f8bbc1eb652294ed772f1ce7f477d85705f23e",
+    "preregistration_sha256": "8783fa70333d2f3b41455189ecc2dcdfc1b358deb08e94914f56f8be09fcc6ad",
+    "source_attestation_sha256": "b299f909feb2e8a1d61123b464087ff96308d53bab71cabe91c6b4a3806e1e1e",
+    "source_snapshot": {
+      "files": [
+        {
+          "path": "Discovery/rounding_consistency.py",
+          "sha256": "5487ce47dcc2c4ecdd3abdfb83000e87f9a414c8381dbe11ba737f678225468a"
+        },
+        {
+          "path": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "sha256": "1eefa199d3a928a1de8f2de7f5990ffd813e28a3d9d0c1f52440588ac6b0f7e5"
+        },
+        {
+          "path": "Discovery/preregistration_history.py",
+          "sha256": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0"
+        },
+        {
+          "path": "Discovery/source_history.py",
+          "sha256": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb"
+        },
+        {
+          "path": "Notes/Schlamminger2006RoundingConsistencySpecification.md",
+          "sha256": "180b25f5bc9239f8d93fca2753a4e195bbc154c80c2a5e14282b21cabc95cf11"
+        },
+        {
+          "path": "Experiments/GMeasurements/schlamminger_2006_rounding_consistency_preregistration_v1.json",
+          "sha256": "8783fa70333d2f3b41455189ecc2dcdfc1b358deb08e94914f56f8be09fcc6ad"
+        },
+        {
+          "path": "Experiments/GMeasurements/schlamminger_2006_source_attestation_v1.json",
+          "sha256": "b299f909feb2e8a1d61123b464087ff96308d53bab71cabe91c6b4a3806e1e1e"
+        }
+      ],
+      "source_commit_sha": "05a7ef733303e728e18c2a4b0d72510db1213e6a"
+    }
+  },
+  "kind": "conditional_published_table_rounding_consistency",
+  "rounding_policy": {
+    "alternate_conventions": "not_tested",
+    "component_half_width_ppm": "0.05",
+    "component_quantum_ppm": "0.1",
+    "exclusion_bounds": "closed",
+    "kind": "declared_nearest_not_historical_fact",
+    "witness_membership": "strict_interior_for_nondegenerate_intervals"
+  },
+  "schema_version": 1,
+  "scope_order": [
+    "statistical",
+    "systematic"
+  ],
+  "terminal_decisions": {
+    "statistical": {
+      "comparison": {
+        "interval_ppm": {
+          "high": {
+            "denominator": "20",
+            "numerator": "327"
+          },
+          "low": {
+            "denominator": "4",
+            "numerator": "65"
+          }
+        },
+        "role": "terminal_only",
+        "source_reference": {
+          "half_width_ppm": "0.05",
+          "role": "terminal_only",
+          "scope": "statistical",
+          "value_ppm": "16.3"
+        },
+        "squared_interval_ppm_squared": {
+          "high": {
+            "denominator": "400",
+            "numerator": "106929"
+          },
+          "low": {
+            "denominator": "16",
+            "numerator": "4225"
+          }
+        }
+      },
+      "exclusion": null,
+      "outcome": "compatible",
+      "witness": {
+        "candidate_index": 1,
+        "membership_verified": true
+      }
+    },
+    "systematic": {
+      "comparison": {
+        "interval_ppm": {
+          "high": {
+            "denominator": "20",
+            "numerator": "163"
+          },
+          "low": {
+            "denominator": "20",
+            "numerator": "161"
+          }
+        },
+        "role": "terminal_only",
+        "source_reference": {
+          "half_width_ppm": "0.05",
+          "role": "terminal_only",
+          "scope": "systematic",
+          "value_ppm": "8.1"
+        },
+        "squared_interval_ppm_squared": {
+          "high": {
+            "denominator": "400",
+            "numerator": "26569"
+          },
+          "low": {
+            "denominator": "400",
+            "numerator": "25921"
+          }
+        }
+      },
+      "exclusion": null,
+      "outcome": "compatible",
+      "witness": {
+        "candidate_index": 0,
+        "membership_verified": true
+      }
+    }
+  }
+}
