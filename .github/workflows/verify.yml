@@ -36,6 +36,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
+      - run: sha256sum Experiments/GMeasurements/nist_2026_estimator_feasibility_preregistration_v1.json
       - run: python -m Discovery.nist_2026_estimator_feasibility --output /tmp/nist_2026_estimator_feasibility_v1.json
       - uses: actions/upload-artifact@v4
         with:
