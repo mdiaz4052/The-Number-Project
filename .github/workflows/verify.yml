@@ -52,6 +52,8 @@ jobs:
       - run: python -m Discovery.hust_2018_aaf_combined_feasibility --check
       - run: python -m Discovery.hust_2018_aaf_combined_measurement_model --check
       - run: python -m Discovery.hust_2018_aaf_rounding_consistency --check
+      - run: python -m Discovery.schlamminger_2006_rounding_consistency --check
+      - run: python -m Discovery.schlamminger_2006_mutations --check
       - run: python -m Discovery.falsification_preregistration --check
       - run: python -m Discovery.null_experiments --check
       - run: python -m Discovery.mutation_harness --check
