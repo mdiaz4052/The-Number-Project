@@ -13,7 +13,7 @@ from tempfile import TemporaryDirectory
 
 from Discovery import newman_2014_table11_rounding_consistency as j
 
-DEFAULT_OUTPUT = j.DIRECTORY / "newman_2014_table11_rounding_consistency_mutation_results_v1.json"
+DEFAULT_OUTPUT = j.DIRECTORY / "newman_2014_table11_rounding_consistency_mutations_v1.json"
 MODULE_PATH = "Discovery/newman_2014_table11_rounding_consistency.py"
 TEST_PATH = "tests/test_newman_2014_table11_rounding_consistency.py"
 TEST_PREFIX = "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests."
@@ -253,7 +253,7 @@ def envelope(snapshot: dict, records: list) -> dict:
     )
     return {
         "schema_version": 1,
-        "artifact_id": "newman_2014_table11_rounding_consistency_mutation_results_v1",
+        "artifact_id": "newman_2014_table11_rounding_consistency_mutations_v1",
         "source_snapshot": snapshot,
         "definitions_sha256": definitions_hash(),
         "preregistration_sha256": j.PREREGISTRATION_SHA256,
