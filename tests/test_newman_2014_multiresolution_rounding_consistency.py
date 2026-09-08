@@ -8,7 +8,7 @@ import unittest
 from Discovery import multiresolution_rounding as mr
 from Discovery import newman_2014_multiresolution_rounding_consistency as m
 from Discovery.rounding_consistency import (
-    Budget, Calculation, Candidate, Interval, RoundingError,
+    Budget, Calculation, Candidate, Interval,
     enclose_relative_variance, evaluate_point,
 )
 
@@ -52,9 +52,6 @@ class NewmanMultiResolutionBehaviorTests(unittest.TestCase):
             "terminal",
             " ".join(inspect.signature(m.calculate_components).parameters),
         )
-        altered = deepcopy(self.attestation)
-        for scope in m.j.SCOPES:
-            altered["terminal_representations"][scope][1]["half_width_ppm"] = "999.5"
         recalculated = m.calculate_components(
             self.parent_source["input_projection"],
             self.protocol["component_model"]["component_half_width_ppm"],
@@ -103,6 +100,13 @@ class NewmanMultiResolutionBehaviorTests(unittest.TestCase):
             self.assertEqual(
                 record["narrowed_by_multiresolution_constraint"], narrowed
             )
+
+    def test_intersection_preserves_closed_boundary_contact(self):
+        left = Interval(Fraction(14), Fraction(29, 2))
+        right = Interval(Fraction(29, 2), Fraction(15))
+        self.assertEqual(
+            mr.intersect_closed((left, right)), Interval.point(Fraction(29, 2))
+        )
 
     def test_real_expected_verdicts_are_compatible_midpoints(self):
         decisions = m.terminal_decisions(self.calculations, self.attestation)
