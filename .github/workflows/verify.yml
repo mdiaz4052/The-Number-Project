@@ -43,7 +43,7 @@ jobs:
       - run: git diff --check
       - name: Commit deterministic BIPM evidence
         run: |
-          if git diff --quiet -- Experiments/GMeasurements/bipm_2014_correlated_estimator_v1.json Experiments/GMeasurements/bipm_2014_correlated_estimator_mutations_v1.json; then
+          if [ -z "$(git status --porcelain -- Experiments/GMeasurements/bipm_2014_correlated_estimator_v1.json Experiments/GMeasurements/bipm_2014_correlated_estimator_mutations_v1.json)" ]; then
             echo "BIPM evidence already committed"
           else
             git config user.name "github-actions[bot]"
