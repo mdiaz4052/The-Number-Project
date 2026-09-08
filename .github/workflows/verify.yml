@@ -36,16 +36,6 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      # Development-only deterministic emission; removed after artifacts are committed.
-      - run: python -m Discovery.newman_2014_multiresolution_rounding_consistency --output /tmp/newman-mr.json
-      - run: python -m Discovery.newman_2014_multiresolution_mutations --output /tmp/newman-mr-mut.json
-      - uses: actions/upload-artifact@v4
-        with:
-          name: newman-mr-generated
-          path: |
-            /tmp/newman-mr.json
-            /tmp/newman-mr-mut.json
-          if-no-files-found: error
       - run: python -m unittest discover -s tests -v
       - run: python -m Discovery.dimensional_search --check
       - run: python -m Discovery.inverse_square_search --check
@@ -68,6 +58,8 @@ jobs:
       - run: python -m Discovery.g_measurement_joint_inference_mutations --check
       - run: python -m Discovery.newman_2014_table11_rounding_consistency --check
       - run: python -m Discovery.newman_2014_table11_rounding_consistency_mutations --check
+      - run: python -m Discovery.newman_2014_multiresolution_rounding_consistency --check
+      - run: python -m Discovery.newman_2014_multiresolution_mutations --check
       - run: python -m Discovery.falsification_preregistration --check
       - run: python -m Discovery.null_experiments --check
       - run: python -m Discovery.mutation_harness --check
