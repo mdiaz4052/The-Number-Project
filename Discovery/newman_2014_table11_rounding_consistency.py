@@ -53,10 +53,6 @@ E001_FORBIDDEN = (
 )
 SOURCE_PATHS = (
     "Discovery/newman_2014_table11_rounding_consistency.py",
-    "Discovery/rounding_consistency.py",
-    "Discovery/__init__.py",
-    "Discovery/preregistration_history.py",
-    "Discovery/source_history.py",
     "Notes/Newman2014Table11RoundingConsistencySpecification.md",
     "Notes/Newman2014Table11RoundingConsistency.md",
     PREREGISTRATION_PATH.as_posix(),
