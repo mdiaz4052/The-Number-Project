@@ -171,6 +171,10 @@ class BIPMCorrelatedEstimatorArtifactTests(unittest.TestCase):
         b.verify_e001_isolation()
         self.assertFalse(set(b.E001_FORBIDDEN) & set(b.SOURCE_PATHS))
 
+    def test_committed_result_artifact_rebuilds(self):
+        expected = (b.ROOT / b.DEFAULT_OUTPUT).read_text()
+        self.assertEqual(expected, b.serialize_artifact(b.build_artifact()))
+
 
 if __name__ == "__main__":
     unittest.main()
