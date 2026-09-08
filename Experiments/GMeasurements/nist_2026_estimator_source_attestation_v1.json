@@ -1,0 +1,186 @@
+{
+  "artifact_id": "nist_2026_estimator_source_attestation_v1",
+  "authority_resolution": {
+    "controlling_scientific_source": "peer-reviewed journal article PDF served by the NIST local-download endpoint",
+    "journal_pdf_result": {
+      "G_decimal_in_1e_minus_11_units": "6.67387",
+      "locator": "PDF page 27, equation (64); also abstract on PDF page 1",
+      "relative_standard_uncertainty": "5.7e-5",
+      "standard_uncertainty_decimal_in_1e_minus_11_units": "0.00038"
+    },
+    "landing_page_displayed_result": {
+      "G_decimal_in_1e_minus_11_units": "6.67366",
+      "relative_standard_uncertainty_text": "3.0e-6",
+      "standard_uncertainty_decimal_in_1e_minus_11_units": "0.00020"
+    },
+    "landing_page_role": "bibliographic and availability evidence only",
+    "reason": "The NIST landing-page abstract displays a numerical final result inconsistent with the peer-reviewed article PDF. This audit does not use landing-page numerical values."
+  },
+  "consensus_layer": {
+    "locator": "PDF pages 26-27, equation (63), Table 19, equation (64)",
+    "not_uniquely_specified_in_primary_paper": [
+      {
+        "id": "epsilon_likelihood_distribution",
+        "observation": "epsilon_j is described as measurement error whose typical size comes from the uncertainty budget, but the probability distribution/likelihood for epsilon is not explicitly stated in the consensus-model section.",
+        "promotion": "required for unique deterministic reproduction of the posterior"
+      },
+      {
+        "id": "posterior_sampler_algorithm",
+        "observation": "The paper says the model was calibrated using a Bayesian procedure and cites references, but does not specify the paper-specific sampler/integration algorithm.",
+        "promotion": "required unless an analytic posterior construction is supplied"
+      },
+      {
+        "id": "posterior_sampling_controls",
+        "observation": "The paper says 'large samples' from the posterior but does not state a sample count, random seed, burn-in/warmup, thinning, chains, or convergence criterion.",
+        "promotion": "required for byte-deterministic sample-based reproduction"
+      },
+      {
+        "id": "robust_estimator_computational_conventions",
+        "observation": "Huber's M and Qn are named and referenced, but the paper does not state all implementation/tuning conventions used on the posterior samples.",
+        "promotion": "required for unique reproduction of the exact published summaries unless a canonical convention is source-authorized"
+      },
+      {
+        "id": "dark_correlation_matrix_identity",
+        "observation": "The consensus paragraph refers to a correlation matrix R in Sigma_ij = tau_i tau_j R_ij. Its identification with the experimental Table 18 correlation matrix is strongly suggested by local context but is not explicitly labeled as 'Table 18' in the equation paragraph.",
+        "promotion": "must be explicit before claiming exact reproduction of the dark-uncertainty covariance"
+      }
+    ],
+    "published_table_19": {
+      "configuration_effect_si": {
+        "copper_free": "9.76e-16",
+        "copper_servo": "-2.03e-15",
+        "sapphire_free": "-1.57e-15",
+        "sapphire_servo": "-1.20e-14"
+      },
+      "dark_uncertainty_si": {
+        "copper_free": "5.08e-15",
+        "copper_servo": "7.24e-15",
+        "sapphire_free": "1.02e-14",
+        "sapphire_servo": "2.20e-14"
+      },
+      "locator": "PDF page 27, Table 19",
+      "role": "comparison/diagnostic output of the Bayesian model, not an input for deciding reconstructability"
+    },
+    "specified": {
+      "consensus_location_summary": "Huber's M applied to large samples from posterior(mu)",
+      "consensus_uncertainty_summary": "Qn applied to large samples from posterior(mu)",
+      "lambda_covariance_rule": "Sigma_ij = tau_i tau_j R_ij",
+      "lambda_distribution": "zero-mean multivariate normal",
+      "lambda_summary": "Huber's M estimates from posterior samples",
+      "measurement_model": "G_j = mu + lambda_j + epsilon_j",
+      "mu_prior_center_si": "6.6743e-11",
+      "mu_prior_family": "Gaussian",
+      "mu_prior_standard_deviation_si": "9e-15",
+      "tau_prior_family": "independent half-Cauchy",
+      "tau_prior_median_multipliers": {
+        "copper_free": "1",
+        "copper_servo": "2",
+        "sapphire_free": "3",
+        "sapphire_servo": "4"
+      },
+      "tau_reference_si": "9.6e-15",
+      "tau_summary": "posterior medians"
+    }
+  },
+  "epistemic_limits": [
+    "No raw NIST PDF bytes are committed or hash-attested in this artifact.",
+    "The transcription was reviewed against both machine-readable PDF text and visual page screenshots for Tables 16, 17, 18, 19 and equation (64).",
+    "This attestation does not authorize a BIPM-14 versus NIST-26 common-constant conclusion.",
+    "It does not authorize replacing the Bayesian hierarchy with generalized least squares and calling the result equation (64)."
+  ],
+  "experimental_layer": {
+    "input_order": [
+      "copper_servo",
+      "copper_free",
+      "sapphire_servo",
+      "sapphire_free"
+    ],
+    "paper_statements": [
+      {
+        "claim": "Several input variables enter more than one measurement, so the four resulting measured values of G are correlated; the corresponding correlation coefficients are listed in Table 18.",
+        "locator": "PDF page 25, text immediately after Table 16"
+      },
+      {
+        "claim": "All correlation coefficients are positive because dominant uncertainty contributions enter with the same sign for all four determinations.",
+        "locator": "PDF page 25, same paragraph"
+      }
+    ],
+    "table_16": {
+      "caption_role": "four individual G determinations with combined relative uncertainties (k=1)",
+      "locator": "PDF page 25, Table 16",
+      "measurements": [
+        {
+          "G_decimal_in_1e_minus_11_units": "6.673642",
+          "displayed_relative_standard_uncertainty_ppm": "23",
+          "id": "copper_servo"
+        },
+        {
+          "G_decimal_in_1e_minus_11_units": "6.674021",
+          "displayed_relative_standard_uncertainty_ppm": "30",
+          "id": "copper_free"
+        },
+        {
+          "G_decimal_in_1e_minus_11_units": "6.672637",
+          "displayed_relative_standard_uncertainty_ppm": "38",
+          "id": "sapphire_servo"
+        },
+        {
+          "G_decimal_in_1e_minus_11_units": "6.673636",
+          "displayed_relative_standard_uncertainty_ppm": "94",
+          "id": "sapphire_free"
+        }
+      ]
+    },
+    "table_18": {
+      "caption_role": "summary of relative uncertainties and correlations for the four G determinations",
+      "correlation_matrix": [
+        [
+          "1",
+          "0.42",
+          "0.38",
+          "0.12"
+        ],
+        [
+          "0.42",
+          "1",
+          "0.23",
+          "0.23"
+        ],
+        [
+          "0.38",
+          "0.23",
+          "1",
+          "0.25"
+        ],
+        [
+          "0.12",
+          "0.23",
+          "0.25",
+          "1"
+        ]
+      ],
+      "diagonal_relative_standard_uncertainty_ppm": [
+        "23.2",
+        "30.3",
+        "37.5",
+        "93.9"
+      ],
+      "locator": "PDF page 26, Table 18",
+      "precision_policy": "Table 18 diagonal values control covariance construction because they are the more precise source-reported standard uncertainties; Table 16 whole-ppm values are retained as rounded display records."
+    }
+  },
+  "schema_version": 1,
+  "source": {
+    "access_date": "2026-09-08",
+    "doi": "10.1088/1681-7575/ae570f",
+    "journal": "Metrologia 63 (2026) 025012",
+    "license": "CC BY 4.0",
+    "nist_landing_page": "https://www.nist.gov/publications/redetermination-gravitational-constant-bipm-torsion-balance-nist",
+    "nist_pdf": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075",
+    "pdf_page_count": 31,
+    "publication": "Stephan Schlamminger et al., Redetermination of the gravitational constant with the BIPM torsion balance at NIST",
+    "published": "2026-04-16",
+    "raw_pdf_hash_claim": false,
+    "raw_pdf_persisted": false
+  }
+}
