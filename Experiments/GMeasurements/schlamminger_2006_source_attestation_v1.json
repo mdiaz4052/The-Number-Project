@@ -1,0 +1,116 @@
+{
+  "input_projection": {
+    "central_value": {
+      "role": "positive_schema_context_only",
+      "unit": "m^3 kg^-1 s^-2",
+      "value": "6.674252e-11"
+    },
+    "component_unit": "ppm",
+    "components": {
+      "statistical": [
+        {
+          "id": "weighings",
+          "value_ppm": "11.6"
+        },
+        {
+          "id": "tm_sorption",
+          "value_ppm": "7.4"
+        },
+        {
+          "id": "linearity",
+          "value_ppm": "6.1"
+        },
+        {
+          "id": "calibration",
+          "value_ppm": "4.0"
+        },
+        {
+          "id": "mass_integration",
+          "value_ppm": "5.0"
+        }
+      ],
+      "systematic": [
+        {
+          "id": "tm_sorption",
+          "value_ppm": "7.4"
+        },
+        {
+          "id": "calibration",
+          "value_ppm": "0.5"
+        },
+        {
+          "id": "mass_integration",
+          "value_ppm": "3.3"
+        }
+      ]
+    },
+    "scope_order": [
+      "statistical",
+      "systematic"
+    ]
+  },
+  "input_projection_sha256": "0801da583b662ac4c5ddec671c37c0421af454272b8a22fb78efebe7cc4b29bd",
+  "limitations": [
+    "Hashes bind recorded bytes and projections, not automatic PDF comprehension.",
+    "No publisher PDF identity or arXiv-as-publisher claim.",
+    "CI performs no live source download."
+  ],
+  "record_id": "schlamminger_2006_source_attestation_v1",
+  "schema_version": 1,
+  "semantics": {
+    "audit_subtotal_rule": "declared root-sum-square over each Table VII column; no cross-component covariance inferred",
+    "authors_total_rule": "Section V combines statistical and systematic uncertainties by root-sum-square",
+    "blank_cells": "omitted, not zero",
+    "measured_signal": "group heading, not component",
+    "scope_relationship": "separate mandatory audits; no joint hidden-value or sampling claim",
+    "uncertainty_level": "one_standard_deviation"
+  },
+  "sources": {
+    "manuscript": {
+      "byte_length": 871396,
+      "capture_representation": "raw PDF response bytes",
+      "host": "arXiv",
+      "identifier": "gr-qc/0609027v1",
+      "locator": "Table VII and Section V, printed/PDF page 22",
+      "pdf_magic_validated": true,
+      "repository_storage": "hash_only; external PDF not redistributed",
+      "retrieval_date": "2026-09-08",
+      "role": "numerical_transcription_authority",
+      "semantic_verification": "PDF page 22 rendered and visually read; all eight component cells, both subtotals, and Section V context checked",
+      "sha256": "789db21fc81c12bff11e8a13e2db69529a88c1927e4c22657ad35d54e442a954",
+      "title": "A Measurement of Newton's Gravitational Constant",
+      "url": "https://arxiv.org/pdf/gr-qc/0609027v1",
+      "version": 1,
+      "version_date": "2006-09-07"
+    },
+    "publication": {
+      "article": "082001",
+      "capture_sha256": null,
+      "doi": "10.1103/PhysRevD.74.082001",
+      "identity_verification": "APS DOI record retrieved through search; direct journal HTML returned HTTP 403",
+      "journal": "Physical Review D",
+      "published_date": "2006-10-04",
+      "publisher": "American Physical Society",
+      "repository_storage": "metadata_only; no reproducible publisher response stored",
+      "role": "peer_reviewed_publication_identity",
+      "title": "Measurement of Newton's gravitational constant",
+      "url": "https://link.aps.org/doi/10.1103/PhysRevD.74.082001",
+      "volume": "74"
+    }
+  },
+  "terminal_comparisons": {
+    "statistical": {
+      "half_width_ppm": "0.05",
+      "role": "terminal_only",
+      "scope": "statistical",
+      "value_ppm": "16.3"
+    },
+    "systematic": {
+      "half_width_ppm": "0.05",
+      "role": "terminal_only",
+      "scope": "systematic",
+      "value_ppm": "8.1"
+    }
+  },
+  "terminal_projection_sha256": "0139795415aa9766012b58c893eae2b4d061f087093b6306686689c5b02ca036"
+}

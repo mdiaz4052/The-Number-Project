@@ -1,0 +1,462 @@
+{
+  "anti_false_kill_rule": "Named assertion failures only; errors, skipped tests, collection/import failures and dirty-source freshness failures are invalid.",
+  "artifact_id": "schlamminger_2006_mutation_results_v1",
+  "calibration_valid": true,
+  "definitions_sha256": "93f3742d08d3aaa982219a4fb0b7159d9547c2a60b97b0c907552b5d75651687",
+  "family_status": "valid",
+  "preregistration_sha256": "8783fa70333d2f3b41455189ecc2dcdfc1b358deb08e94914f56f8be09fcc6ad",
+  "production_count": 8,
+  "records": [
+    {
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_exact_bins_schedule_and_independent_oracle"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "calibration_killable",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_exact_bins_schedule_and_independent_oracle"
+      ]
+    },
+    {
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "calibration_equivalent",
+      "outcome": "SURVIVED",
+      "tests": [
+        "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_exact_bins_schedule_and_independent_oracle"
+      ]
+    },
+    {
+      "category": "behavioral",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_exact_bins_schedule_and_independent_oracle"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "source_value_substitution",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_exact_bins_schedule_and_independent_oracle"
+      ]
+    },
+    {
+      "category": "behavioral",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_exact_bins_schedule_and_independent_oracle"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "rounding_radius_corruption",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_exact_bins_schedule_and_independent_oracle"
+      ]
+    },
+    {
+      "category": "behavioral",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_exact_bins_schedule_and_independent_oracle"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "statistical_scope_omission",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_exact_bins_schedule_and_independent_oracle"
+      ]
+    },
+    {
+      "category": "behavioral",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_exact_bins_schedule_and_independent_oracle"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "systematic_scope_omission",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_exact_bins_schedule_and_independent_oracle"
+      ]
+    },
+    {
+      "category": "behavioral",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_targets_cannot_enter_calculator_or_change_candidates"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "target_leakage",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_targets_cannot_enter_calculator_or_change_candidates"
+      ]
+    },
+    {
+      "category": "behavioral",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_verdicts_match_independent_certificate_rules"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "verdict_inversion",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_verdicts_match_independent_certificate_rules"
+      ]
+    },
+    {
+      "category": "integrity",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_freeze_gate_cannot_be_skipped"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "preregistration_bypass",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_freeze_gate_cannot_be_skipped"
+      ]
+    },
+    {
+      "category": "integrity",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_source_component_substitution_deletion_and_role_mutations_fail"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.schlamminger_2006_rounding_consistency": "Discovery/schlamminger_2006_rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.support": "tests/support/__init__.py",
+          "tests.support.synthetic_history": "tests/support/synthetic_history.py",
+          "tests.test_schlamminger_2006_rounding_consistency": "tests/test_schlamminger_2006_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "source_pin_bypass",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_schlamminger_2006_rounding_consistency.SchlammingerBehaviorTests.test_source_component_substitution_deletion_and_role_mutations_fail"
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Only Schlamminger wrapper/source boundaries; unchanged generic engine and unrelated families are not mutated.",
+  "source_snapshot": {
+    "files": [
+      {
+        "path": "Discovery/rounding_consistency.py",
+        "sha256": "5487ce47dcc2c4ecdd3abdfb83000e87f9a414c8381dbe11ba737f678225468a"
+      },
+      {
+        "path": "Discovery/schlamminger_2006_rounding_consistency.py",
+        "sha256": "1eefa199d3a928a1de8f2de7f5990ffd813e28a3d9d0c1f52440588ac6b0f7e5"
+      },
+      {
+        "path": "Discovery/preregistration_history.py",
+        "sha256": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0"
+      },
+      {
+        "path": "Discovery/source_history.py",
+        "sha256": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb"
+      },
+      {
+        "path": "Notes/Schlamminger2006RoundingConsistencySpecification.md",
+        "sha256": "180b25f5bc9239f8d93fca2753a4e195bbc154c80c2a5e14282b21cabc95cf11"
+      },
+      {
+        "path": "Experiments/GMeasurements/schlamminger_2006_rounding_consistency_preregistration_v1.json",
+        "sha256": "8783fa70333d2f3b41455189ecc2dcdfc1b358deb08e94914f56f8be09fcc6ad"
+      },
+      {
+        "path": "Experiments/GMeasurements/schlamminger_2006_source_attestation_v1.json",
+        "sha256": "b299f909feb2e8a1d61123b464087ff96308d53bab71cabe91c6b4a3806e1e1e"
+      },
+      {
+        "path": "Discovery/schlamminger_2006_mutations.py",
+        "sha256": "58bc6a25b966b050489c1f538852937f3eef3edd74be400da578189ea74511d5"
+      },
+      {
+        "path": "tests/test_schlamminger_2006_rounding_consistency.py",
+        "sha256": "59761d41f826c2dc2d0f680b9b0152258e5192e9cbad482be616a9d19284b335"
+      },
+      {
+        "path": "tests/test_schlamminger_2006_mutations.py",
+        "sha256": "a5dc4f0599d847196e15845073900a1b693c93a6b00d490abefdc97e9a74da6a"
+      },
+      {
+        "path": "Discovery/mutation_test_runner.py",
+        "sha256": "2d128a4b368fe70b56cc98886da506e4bef1fed5bb641e7aee6272c613a6ce34"
+      },
+      {
+        "path": "tests/support/synthetic_history.py",
+        "sha256": "7eafa9e210f80541c90e486550c981c5e9361fdd9c924e4f1a82b2b862f11ce0"
+      },
+      {
+        "path": "Discovery/__init__.py",
+        "sha256": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078"
+      },
+      {
+        "path": "tests/support/__init__.py",
+        "sha256": "8d5015169ff9c15a42b73c1ff0dcdcb5b916714c24484b96a3817fc377426046"
+      }
+    ],
+    "source_commit_sha": "05a7ef733303e728e18c2a4b0d72510db1213e6a"
+  }
+}
