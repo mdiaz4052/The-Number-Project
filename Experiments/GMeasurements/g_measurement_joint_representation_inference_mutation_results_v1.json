@@ -1,0 +1,472 @@
+{
+  "anti_false_kill_rule": "Named assertion failures only; infrastructure, import, syntax, skip and source-freshness failures are invalid.",
+  "artifact_id": "g_measurement_joint_representation_inference_mutation_results_v1",
+  "calibration_valid": true,
+  "definitions_sha256": "dccdbe9c78483896c068666f9bffe621ef4dcadcd58e1f7f4290adccf5e7e840",
+  "family_status": "valid",
+  "preregistration_sha256": "1ab4b21bb8d580010d79f6246bef1c258ee71e0b22efbf58759d5965dfe60e15",
+  "production_count": 9,
+  "records": [
+    {
+      "applied_source_sha256": "543309728aef4c6f75b16ba55a88f134f6aad7c24bc3176789e8c024e5e4ce87",
+      "category": "baseline",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 7,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "unmutated_baseline",
+      "outcome": "SURVIVED",
+      "tests": [
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_all_27_verdict_combinations",
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_both_publications_are_required_and_used",
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_central_values_cannot_affect_truth_or_projection",
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_e001_path_allowlist",
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_exact_parameter_decoding",
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_midpoint_characterization_and_truth_invariance",
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_required_scope_projection_and_missing_scope"
+      ]
+    },
+    {
+      "applied_source_sha256": "549bf8bfd5a3597157e641bea06dad36e4df2dd02c20fbd6f26917f77ecff2ab",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_exact_parameter_decoding"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "calibration_killable_parameter_sign",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_exact_parameter_decoding"
+      ]
+    },
+    {
+      "applied_source_sha256": "ca07c4e97ea43d37681aa90d30971c7e346e2d6da6606559471140e684650f94",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "calibration_equivalent_mapping_copy",
+      "outcome": "SURVIVED",
+      "tests": [
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_all_27_verdict_combinations"
+      ]
+    },
+    {
+      "applied_source_sha256": "c506757235f38d6e1468ac3263fa4df2c10d2decfdbf47a2f69a52915cc77265",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_both_publications_are_required_and_used"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "ignore_publication",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_both_publications_are_required_and_used"
+      ]
+    },
+    {
+      "applied_source_sha256": "bb493d3146df686298b1ae0c55dd8dbdf7e0856cf6854ca5b9f6dce83ac586b9",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_required_scope_projection_and_missing_scope"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "ignore_required_scope",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_required_scope_projection_and_missing_scope"
+      ]
+    },
+    {
+      "applied_source_sha256": "f763bd93d6cf39ca217c6a4a8cede3ba167f36a40ce11f604b6eab8711fa8d13",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_all_27_verdict_combinations"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "unresolved_promoted_true",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_all_27_verdict_combinations"
+      ]
+    },
+    {
+      "applied_source_sha256": "31959c1538cac9be1ecd9b9ad4a0fe25017eb6b235e3d25f82acdeeccf5434f5",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_all_27_verdict_combinations"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "unresolved_promoted_false",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_all_27_verdict_combinations"
+      ]
+    },
+    {
+      "applied_source_sha256": "4264535a2fa92f48166b76c5a883171e472a08124381920ab14573a4782c0caa",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_all_27_verdict_combinations"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "incompatible_loses_dominance",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_all_27_verdict_combinations"
+      ]
+    },
+    {
+      "applied_source_sha256": "a7f7d90126f242cec00075a2b0d32021b54c01e1cd10b99c3de9e4bdc9abf216",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_midpoint_characterization_and_truth_invariance"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "erase_midpoint_distinction",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_midpoint_characterization_and_truth_invariance"
+      ]
+    },
+    {
+      "applied_source_sha256": "35977ba979c17c25bc5b3ad51a688d6fb1a5a9d362b0af6f8f70f4ff4e8a4df2",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_e001_path_allowlist"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "admit_e001_input",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_e001_path_allowlist"
+      ]
+    },
+    {
+      "applied_source_sha256": "3d3eaf593c88d6fc598eab700b2c26c6202441049b8e50ae4184a34efb154670",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_central_values_cannot_affect_truth_or_projection"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "central_G_affects_decision",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_central_values_cannot_affect_truth_or_projection"
+      ]
+    },
+    {
+      "applied_source_sha256": "57160f2e4f9abab7b0b5aeef8a5207d9c6580da1906b5feab653c1acf9113c15",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_all_27_verdict_combinations"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.g_measurement_joint_inference": "Discovery/g_measurement_joint_inference.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_g_measurement_joint_inference": "tests/test_g_measurement_joint_inference.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "invert_joint_status",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_g_measurement_joint_inference.JointBehaviorTests.test_all_27_verdict_combinations"
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Joint representation logic and its narrow input boundary only.",
+  "source_snapshot": {
+    "files": [
+      {
+        "path": "Discovery/g_measurement_joint_inference.py",
+        "sha256": "543309728aef4c6f75b16ba55a88f134f6aad7c24bc3176789e8c024e5e4ce87"
+      },
+      {
+        "path": "Discovery/preregistration_history.py",
+        "sha256": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0"
+      },
+      {
+        "path": "Discovery/source_history.py",
+        "sha256": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb"
+      },
+      {
+        "path": "Discovery/__init__.py",
+        "sha256": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078"
+      },
+      {
+        "path": "Notes/GMeasurementJointRepresentationInferenceSpecification.md",
+        "sha256": "0d6e217fb82f55b91a64bce4d1efc8c9a42e33631f4d33c9ab0f39a19b8d9abe"
+      },
+      {
+        "path": "Notes/GMeasurementJointRepresentationInference.md",
+        "sha256": "39f59f595fd2acf49f4bbf6b6a9ce8dd33c5c9a4241612e887184b3c4e6869c1"
+      },
+      {
+        "path": "Experiments/GMeasurements/g_measurement_joint_representation_inference_preregistration_v1.json",
+        "sha256": "1ab4b21bb8d580010d79f6246bef1c258ee71e0b22efbf58759d5965dfe60e15"
+      },
+      {
+        "path": "Discovery/g_measurement_joint_inference_mutations.py",
+        "sha256": "3a249080324553c643f1b332738eb0794f7af8c579e9b55c31f65bada54de2cf"
+      },
+      {
+        "path": "tests/test_g_measurement_joint_inference.py",
+        "sha256": "038d44c6630215cdfb1caa8715f82eb6bba132ed6232d2762a358ec9e6df0553"
+      },
+      {
+        "path": "tests/test_g_measurement_joint_inference_mutations.py",
+        "sha256": "3b0e09edc71552f420ff10a1c40f4ec1ae6c0a03171e3964e458723fdd4a1aec"
+      },
+      {
+        "path": "Discovery/mutation_test_runner.py",
+        "sha256": "2d128a4b368fe70b56cc98886da506e4bef1fed5bb641e7aee6272c613a6ce34"
+      }
+    ],
+    "source_commit_sha": "9cf83f31843f8213e7b54f298136043155ec1303"
+  }
+}

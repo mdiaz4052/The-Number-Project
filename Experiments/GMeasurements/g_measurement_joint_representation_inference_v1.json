@@ -1,0 +1,197 @@
+{
+  "artifact_id": "g_measurement_joint_representation_inference_v1",
+  "joint_decision": {
+    "domains": "source_specific_and_uncoupled",
+    "logical_operator": "conjunction",
+    "reasoning_trace": {
+      "operands": [
+        {
+          "publication_id": "doi:10.1038/s41586-018-0431-5",
+          "status": "representable"
+        },
+        {
+          "publication_id": "doi:10.1103/PhysRevD.74.082001",
+          "status": "representable"
+        }
+      ],
+      "rule": "all_representable"
+    },
+    "status": "all_representable_under_separate_declared_models"
+  },
+  "nonclaims": [
+    "Only all required source-specific published subtotals are representable under their separate declared models when every scope is representable.",
+    "No averaging or comparison of measured G values or absolute uncertainties.",
+    "No probability, frequency, likelihood, posterior, confidence level, p-value or sampling model.",
+    "No inference that rounding occurred or caused any discrepancy.",
+    "No common physical cause, common systematic or cross-publication covariance.",
+    "No statistical compatibility or universality/non-universality inference.",
+    "No evidence scores, weights, counts or rankings.",
+    "No new reconstruction, search, optimization, empirical source authorization or Lean proof.",
+    "Unresolved is schedule-relative, not a nonexistence certificate; it propagates to undetermined."
+  ],
+  "provenance": {
+    "external_anchor": {
+      "created_at": "2026-09-08T01:50:02Z",
+      "event": "draft_pull_request_created",
+      "preregistration_commit_sha": "08fe26861252bb426ba116e6b6231920681263eb",
+      "url": "https://github.com/mdiaz4052/The-Number-Project/pull/41"
+    },
+    "inputs": [
+      {
+        "artifact_id": "hust_2018_aaf_rounding_consistency_v1",
+        "byte_length": 242916,
+        "generating_verification_epoch": "2a205adbb9f2edd517d1b37d13633b30eb88ea4a",
+        "path": "Experiments/GMeasurements/hust_2018_aaf_rounding_consistency_v1.json",
+        "publication_id": "doi:10.1038/s41586-018-0431-5",
+        "required_scopes": [
+          "combined"
+        ],
+        "sha256": "d04a1837ba66514930668303eb059442bde237c83f0bb6a3a274f1eea3af99b5"
+      },
+      {
+        "artifact_id": "schlamminger_2006_rounding_consistency_v1",
+        "byte_length": 52354,
+        "generating_verification_epoch": "07fc431dd6cf0953a74cc2d57fea5c867ff8af66",
+        "path": "Experiments/GMeasurements/schlamminger_2006_rounding_consistency_v1.json",
+        "publication_id": "doi:10.1103/PhysRevD.74.082001",
+        "required_scopes": [
+          "statistical",
+          "systematic"
+        ],
+        "sha256": "9ab2dc127cd6dc7cbb56192fab28527f6a5ad9dde10c54c53ded5c656c7600e3"
+      }
+    ],
+    "intended_base": "050dde49e733d92a9897706cc7e95e1455edf559",
+    "preregistration_artifact_id": "g_measurement_joint_representation_inference_preregistration_v1",
+    "preregistration_commit_sha": "08fe26861252bb426ba116e6b6231920681263eb",
+    "preregistration_path": "Experiments/GMeasurements/g_measurement_joint_representation_inference_preregistration_v1.json",
+    "preregistration_sha256": "1ab4b21bb8d580010d79f6246bef1c258ee71e0b22efbf58759d5965dfe60e15",
+    "source_snapshot": {
+      "files": [
+        {
+          "path": "Discovery/g_measurement_joint_inference.py",
+          "sha256": "543309728aef4c6f75b16ba55a88f134f6aad7c24bc3176789e8c024e5e4ce87"
+        },
+        {
+          "path": "Discovery/preregistration_history.py",
+          "sha256": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0"
+        },
+        {
+          "path": "Discovery/source_history.py",
+          "sha256": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb"
+        },
+        {
+          "path": "Discovery/__init__.py",
+          "sha256": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078"
+        },
+        {
+          "path": "Notes/GMeasurementJointRepresentationInferenceSpecification.md",
+          "sha256": "0d6e217fb82f55b91a64bce4d1efc8c9a42e33631f4d33c9ab0f39a19b8d9abe"
+        },
+        {
+          "path": "Notes/GMeasurementJointRepresentationInference.md",
+          "sha256": "39f59f595fd2acf49f4bbf6b6a9ce8dd33c5c9a4241612e887184b3c4e6869c1"
+        },
+        {
+          "path": "Experiments/GMeasurements/g_measurement_joint_representation_inference_preregistration_v1.json",
+          "sha256": "1ab4b21bb8d580010d79f6246bef1c258ee71e0b22efbf58759d5965dfe60e15"
+        }
+      ],
+      "source_commit_sha": "4cfe1bd45d06333b378b5d4b9ef3bcb3e4ec0567"
+    }
+  },
+  "publications": [
+    {
+      "input_artifact_id": "hust_2018_aaf_rounding_consistency_v1",
+      "publication_id": "doi:10.1038/s41586-018-0431-5",
+      "reasoning_trace": {
+        "operands": [
+          {
+            "scope": "combined",
+            "status": "representable"
+          }
+        ],
+        "rule": "all_representable"
+      },
+      "required_scopes": [
+        "combined"
+      ],
+      "scopes": {
+        "combined": {
+          "original_verdict": "compatible",
+          "scope": "combined",
+          "scope_status": "representable",
+          "unshifted_midpoint_consistent": false,
+          "witness": {
+            "candidate_index": 1,
+            "candidate_pointer": "/calculation/candidates/1",
+            "membership_verified": true,
+            "parameter": {
+              "denominator": "8",
+              "numerator": "-1"
+            }
+          },
+          "witness_kind": "shifted_scheduled"
+        }
+      },
+      "status": "representable"
+    },
+    {
+      "input_artifact_id": "schlamminger_2006_rounding_consistency_v1",
+      "publication_id": "doi:10.1103/PhysRevD.74.082001",
+      "reasoning_trace": {
+        "operands": [
+          {
+            "scope": "statistical",
+            "status": "representable"
+          },
+          {
+            "scope": "systematic",
+            "status": "representable"
+          }
+        ],
+        "rule": "all_representable"
+      },
+      "required_scopes": [
+        "statistical",
+        "systematic"
+      ],
+      "scopes": {
+        "statistical": {
+          "original_verdict": "compatible",
+          "scope": "statistical",
+          "scope_status": "representable",
+          "unshifted_midpoint_consistent": false,
+          "witness": {
+            "candidate_index": 1,
+            "candidate_pointer": "/calculations/statistical/candidates/1",
+            "membership_verified": true,
+            "parameter": {
+              "denominator": "8",
+              "numerator": "-1"
+            }
+          },
+          "witness_kind": "shifted_scheduled"
+        },
+        "systematic": {
+          "original_verdict": "compatible",
+          "scope": "systematic",
+          "scope_status": "representable",
+          "unshifted_midpoint_consistent": true,
+          "witness": {
+            "candidate_index": 0,
+            "candidate_pointer": "/calculations/systematic/candidates/0",
+            "membership_verified": true,
+            "parameter": {
+              "denominator": "1",
+              "numerator": "0"
+            }
+          },
+          "witness_kind": "unshifted_midpoint"
+        }
+      },
+      "status": "representable"
+    }
+  ],
+  "schema_version": 1
+}
