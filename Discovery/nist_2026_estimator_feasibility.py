@@ -23,7 +23,7 @@ SOURCE_ATTESTATION_PATH = DIRECTORY / "nist_2026_estimator_source_attestation_v1
 DEFAULT_OUTPUT = DIRECTORY / "nist_2026_estimator_feasibility_v1.json"
 BASELINE = "151b9c920cadb90a9fd02766cc8def7ba9348f61"
 PREREGISTRATION_COMMIT = "18815807c9dfffb5bb3251f1a0331c5c2c752a04"
-PREREGISTRATION_SHA256 = "21e906474ac94aa753eebda78bb6cd746f8641fed7f76cd743dc7f6010a9e53f"
+PREREGISTRATION_SHA256 = "c60e6d838054f430a1a7f8c05da9807fb03dcf48d0eca243476acc8bf48a59fe"
 EXTERNAL_ANCHOR = {
     "event": "draft_pull_request_created",
     "url": "https://github.com/mdiaz4052/The-Number-Project/pull/45",
