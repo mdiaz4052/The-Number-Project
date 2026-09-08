@@ -1,0 +1,227 @@
+{
+  "artifact_id": "g_measurement_joint_representation_inference_preregistration_v1",
+  "claim_limits": [
+    "Only all required source-specific published subtotals are representable under their separate declared models when every scope is representable.",
+    "No averaging or comparison of measured G values or absolute uncertainties.",
+    "No probability, frequency, likelihood, posterior, confidence level, p-value or sampling model.",
+    "No inference that rounding occurred or caused any discrepancy.",
+    "No common physical cause, common systematic or cross-publication covariance.",
+    "No statistical compatibility or universality/non-universality inference.",
+    "No evidence scores, weights, counts or rankings.",
+    "No new reconstruction, search, optimization, empirical source authorization or Lean proof.",
+    "Unresolved is schedule-relative, not a nonexistence certificate; it propagates to undetermined."
+  ],
+  "forbidden_inputs": [
+    "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.manifest.json",
+    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v1.json",
+    "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v2.json",
+    "HUST combined MeasurementModel",
+    "complete_uncertainty_model"
+  ],
+  "forbidden_projection_fields": [
+    "central_G",
+    "central_value",
+    "combined_central_value",
+    "combined_G",
+    "absolute_standard_uncertainty",
+    "uncertainty",
+    "covariance",
+    "covariance_matrix",
+    "weights",
+    "weighted_mean",
+    "z_score",
+    "chi_square",
+    "p_value",
+    "probability",
+    "frequency",
+    "likelihood",
+    "posterior",
+    "confidence_level",
+    "statistical_compatibility",
+    "common_cause",
+    "evidence_score",
+    "evidence_count",
+    "CODATA_comparison"
+  ],
+  "inputs": [
+    {
+      "artifact_id": "hust_2018_aaf_rounding_consistency_v1",
+      "byte_length": 242916,
+      "generating_verification_epoch": "2a205adbb9f2edd517d1b37d13633b30eb88ea4a",
+      "path": "Experiments/GMeasurements/hust_2018_aaf_rounding_consistency_v1.json",
+      "publication_id": "doi:10.1038/s41586-018-0431-5",
+      "required_scopes": [
+        "combined"
+      ],
+      "sha256": "d04a1837ba66514930668303eb059442bde237c83f0bb6a3a274f1eea3af99b5"
+    },
+    {
+      "artifact_id": "schlamminger_2006_rounding_consistency_v1",
+      "byte_length": 52354,
+      "generating_verification_epoch": "07fc431dd6cf0953a74cc2d57fea5c867ff8af66",
+      "path": "Experiments/GMeasurements/schlamminger_2006_rounding_consistency_v1.json",
+      "publication_id": "doi:10.1103/PhysRevD.74.082001",
+      "required_scopes": [
+        "statistical",
+        "systematic"
+      ],
+      "sha256": "9ab2dc127cd6dc7cbb56192fab28527f6a5ad9dde10c54c53ded5c656c7600e3"
+    }
+  ],
+  "intended_base": "050dde49e733d92a9897706cc7e95e1455edf559",
+  "joint_logic": [
+    "any not_representable => not_all_representable",
+    "else all representable => all_representable_under_separate_declared_models",
+    "else undetermined"
+  ],
+  "output_schema": {
+    "artifact_id": "g_measurement_joint_representation_inference_v1",
+    "joint_fields": [
+      "status",
+      "logical_operator",
+      "domains",
+      "reasoning_trace"
+    ],
+    "publication_fields": [
+      "publication_id",
+      "input_artifact_id",
+      "required_scopes",
+      "scopes",
+      "status",
+      "reasoning_trace"
+    ],
+    "schema_version": 1,
+    "top_level_fields": [
+      "schema_version",
+      "artifact_id",
+      "provenance",
+      "publications",
+      "joint_decision",
+      "nonclaims"
+    ]
+  },
+  "preserved_baseline_files": [
+    {
+      "byte_length": 5461,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v1.json",
+      "sha256": "82f6715fa40a9d951d8f4b4e7f9d5f5e64ae9d80c645027acda08f39becc79ba"
+    },
+    {
+      "byte_length": 8165,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v2.json",
+      "sha256": "5d7f197b9eae5a18f302eb9eca3073346106d6363c59cbd35573e6a53fcb9809"
+    },
+    {
+      "byte_length": 10386,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v3.json",
+      "sha256": "c114045c78e97b81e70c9a216c279c58076732a6445906effa83bd94f61b7561"
+    },
+    {
+      "byte_length": 1999,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_rounding_consistency_implementation_clarification_v1.json",
+      "sha256": "bfe04d6302499b44d11fec8144103456cfe93369a2a76b8e83d2b8660679d888"
+    },
+    {
+      "byte_length": 19400,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_rounding_consistency_preregistration_v1.json",
+      "sha256": "0c86cfdbe5efa97c6c585db25c1194eb7d798e532ebe8aed03990bde38983233"
+    },
+    {
+      "byte_length": 242916,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_rounding_consistency_v1.json",
+      "sha256": "d04a1837ba66514930668303eb059442bde237c83f0bb6a3a274f1eea3af99b5"
+    },
+    {
+      "byte_length": 23589,
+      "path": "Experiments/GMeasurements/schlamminger_2006_mutation_results_v1.json",
+      "sha256": "768ba37bd5a485d019c97ac3f52813818597bbd9dbfaf84d19da6bd527a5ac2f"
+    },
+    {
+      "byte_length": 17348,
+      "path": "Experiments/GMeasurements/schlamminger_2006_rounding_consistency_preregistration_v1.json",
+      "sha256": "8783fa70333d2f3b41455189ecc2dcdfc1b358deb08e94914f56f8be09fcc6ad"
+    },
+    {
+      "byte_length": 52354,
+      "path": "Experiments/GMeasurements/schlamminger_2006_rounding_consistency_v1.json",
+      "sha256": "9ab2dc127cd6dc7cbb56192fab28527f6a5ad9dde10c54c53ded5c656c7600e3"
+    },
+    {
+      "byte_length": 10845,
+      "path": "Discovery/rounding_consistency.py",
+      "sha256": "5487ce47dcc2c4ecdd3abdfb83000e87f9a414c8381dbe11ba737f678225468a"
+    }
+  ],
+  "prior_knowledge": {
+    "blind_prediction": false,
+    "known_scope_outcomes": {
+      "HUST combined": "compatible, shifted scheduled",
+      "Schlamminger statistical": "compatible, shifted scheduled",
+      "Schlamminger systematic": "compatible, unshifted midpoint"
+    },
+    "purpose": "Freeze permissible inference semantics from known certificates before writing the new implementation."
+  },
+  "projection_rules": {
+    "fields": [
+      "scope",
+      "original_verdict",
+      "scope_status",
+      "witness",
+      "unshifted_midpoint_consistent",
+      "witness_kind"
+    ],
+    "forbidden_following": "Never follow references inside an input artifact; copy only verdict and witness identity, never numerical measurement fields.",
+    "hust_2018_aaf_rounding_consistency_v1": {
+      "calculation_pointer": "/calculation",
+      "decision_pointer": "/decision",
+      "membership_key": "input_and_comparison_membership_verified"
+    },
+    "schlamminger_2006_rounding_consistency_v1": {
+      "calculation_pointer": "/calculations/{scope}",
+      "decision_pointer": "/terminal_decisions/{scope}",
+      "membership_key": "membership_verified"
+    },
+    "witness_fields": [
+      "candidate_index",
+      "parameter",
+      "membership_verified",
+      "candidate_pointer"
+    ]
+  },
+  "publication_logic": [
+    "any not_representable => not_representable",
+    "else all representable => representable",
+    "else undetermined"
+  ],
+  "repository": "mdiaz4052/The-Number-Project",
+  "schema_version": 1,
+  "scope_mapping": {
+    "compatible": "representable",
+    "incompatible": "not_representable",
+    "unresolved": "undetermined"
+  },
+  "specification": {
+    "byte_length": 8012,
+    "path": "Notes/GMeasurementJointRepresentationInferenceSpecification.md",
+    "sha256": "0d6e217fb82f55b91a64bce4d1efc8c9a42e33631f4d33c9ab0f39a19b8d9abe"
+  },
+  "verification_requirements": [
+    "strict shared freeze verifier; preregistration-only sole-parent base commit",
+    "GitHub draft PR created timestamp before implementation",
+    "generating epochs ancestors of base, same input bytes at epochs",
+    "committed and hashed implementation, tests, mutation definitions and runner",
+    "allowlist, E-001 isolation, strict projection, all 27 synthetic verdict combinations",
+    "non-load-bearing midpoint characterization",
+    "historical byte preservation; no historical recalculation",
+    "distinct killable calibration; inert executable equivalent calibration; invalid infrastructure never kills",
+    "focused tests, full Python suite once, bounded mutations and two read-only freshness guards, diff --check",
+    "exact-head CI green; merge commit only"
+  ],
+  "witness_rules": {
+    "compatible": "Use established first successful candidate. Require integer nonnegative index in schedule, true membership attestation, selected candidate parameter equal to schedule entry, and candidate zero parameter zero.",
+    "load_bearing": false,
+    "noncompatible": "witness, unshifted_midpoint_consistent and witness_kind all null; status only from verdict",
+    "unshifted_midpoint_consistent": "first successful candidate index == 0 and selected parameter == 0",
+    "witness_kind": "unshifted_midpoint if unshifted_midpoint_consistent else shifted_scheduled"
+  }
+}
