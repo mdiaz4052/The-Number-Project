@@ -1,0 +1,263 @@
+{
+  "candidate_schedule": {
+    "adaptive_search": false,
+    "all_candidates_before_terminal_interpretation": true,
+    "candidate_count_per_scope": 3375,
+    "dimensions_per_scope": 3,
+    "kind": "full_independent_tensor_grid",
+    "parameters": [
+      "0",
+      "-1/8",
+      "1/8",
+      "-2/8",
+      "2/8",
+      "-3/8",
+      "3/8",
+      "-4/8",
+      "4/8",
+      "-5/8",
+      "5/8",
+      "-6/8",
+      "6/8",
+      "-7/8",
+      "7/8"
+    ],
+    "total_candidate_count": 10125
+  },
+  "chronology": {
+    "external_anchor": "Create draft PR after freeze and before implementation.",
+    "first_commit": "Only this preregistration file; sole parent intended_base_sha.",
+    "implementation_after_freeze": true,
+    "merge_method": "merge_commit_only",
+    "outcome_blindness_claim": false
+  },
+  "claim_limits": [
+    "Capability formalization with known prior real-data outcome; not a new outcome-blind falsification experiment.",
+    "Conditional Newman et al. 2014 reporting-consistency representation only.",
+    "No raw-data or full torsion-pendulum estimator reproduction.",
+    "No inference that the authors used a particular nearest-rounding tie convention.",
+    "Closed terminal bins are conservative consistency domains, not claims about exact historical rounding behavior.",
+    "Compatible means at least one frozen strict-interior scheduled representation exists in the joint reporting interval.",
+    "Incompatible is model-relative and means the declared reporting constraints cannot be jointly represented by the declared component model.",
+    "Unresolved remains schedule-relative and also covers boundary-only/degenerate joint terminal cases.",
+    "No hidden unrounded values, unique printed cell, discrepancy cause, probability model, p-value, likelihood, or sampling frequency is inferred.",
+    "No comparison of measured central G values, universality claim, cross-measurement estimator, or PR #41 joint-object update.",
+    "No E-001 artifact is an input or dependency.",
+    "Effective terminal width and narrowing ratio must be reported explicitly so the certificate's resolution ceiling is quotable."
+  ],
+  "classification": {
+    "compatible": "representable_under_the_declared_multiresolution_reporting_model",
+    "incompatible": "not_representable_under_the_declared_multiresolution_reporting_model",
+    "incompatible_reasons": [
+      "terminal_constraints_disjoint",
+      "component_box_disjoint_from_joint_terminal"
+    ],
+    "invalid": "Malformed, missing, or provenance-invalid evidence raises and never becomes a numerical verdict.",
+    "unresolved": "undetermined_under_the_frozen_tensor_schedule_and_reporting_model"
+  },
+  "component_model": {
+    "candidate_generation_api": [
+      "input_projection",
+      "component_half_width_ppm",
+      "candidate_schedule"
+    ],
+    "central_value_invariance": "q_1 = 1; any positive central schema value cancels",
+    "component_half_width_ppm": "0.05",
+    "component_source_path": "Experiments/GMeasurements/newman_2014_source_attestation_v1.json",
+    "component_source_sha256": "a787f63e4c4377a6daf778d5402c065743e2f1b61d3a0c3a469f915e461653a6",
+    "identity": "R^2 = x_statistical^2 + x_systematic^2 + x_analysis_method^2",
+    "terminal_inputs_forbidden": true
+  },
+  "epistemic_routing": {
+    "DM-053_DM-056": "Frozen historical artifacts are not rewritten. The new artifact must state its effective terminal width explicitly.",
+    "DM-055": "The PR #42 result certificate is preservation-only and is not an input; this PR recomputes from the frozen source projection and schedule rather than consuming the old verdict artifact.",
+    "DM-057_FH-3": "New candidate generation must receive component half-width alone, never a full terminal-bearing rounding-policy object.",
+    "E-001": "Structurally outside this PR: no HUST disputed artifact may be imported, read, preserved, or claimed through.",
+    "FH-2": "The PR #42 3375-point schedule is retained unchanged; no retrofit of older frozen certificates.",
+    "FH-6": "This PR is the prospective implementation of multi-resolution terminal constraints."
+  },
+  "intended_base_sha": "1fd38d8f009c2b23b6d419f7817acc730cc57812",
+  "known_prior_information": {
+    "allowed_claim": "This PR may establish a reproducible capability and exact certificate, but must not present the real-data verdict as newly discovered or prospectively blind.",
+    "outcome_blind": false,
+    "reason": "Claude's PR #42 audit predates this freeze and already reported that all three real fibres remain compatible under the integer-plus-one-decimal terminal constraints, with fibre 1 narrowed."
+  },
+  "objective": "Formalize exact multi-resolution terminal-constraint intersection for the established Newman 2014 fibre uncertainty model.",
+  "preserved_baseline_paths": [
+    "Discovery/rounding_consistency.py",
+    "Discovery/newman_2014_table11_rounding_consistency.py",
+    "Discovery/preregistration_history.py",
+    "Discovery/source_history.py",
+    "Discovery/mutation_test_runner.py",
+    "Experiments/GMeasurements/newman_2014_source_attestation_v1.json",
+    "Experiments/GMeasurements/newman_2014_table11_rounding_consistency_preregistration_v1.json",
+    "Experiments/GMeasurements/newman_2014_table11_rounding_consistency_v1.json"
+  ],
+  "record_id": "newman_2014_multiresolution_rounding_consistency_preregistration_v1",
+  "reporting_model": {
+    "constituent_bins_closed": true,
+    "degenerate_joint_interval": "unresolved unless the component enclosure is already disjoint",
+    "disjoint_terminal_constraints": "incompatible",
+    "joint_interval": "max of lows through min of highs",
+    "kind": "intersection_of_closed_rounding_consistency_bins",
+    "strict_compatible_witness": "component interiors and strict interior of a nondegenerate joint terminal squared interval",
+    "tie_breaking_assumption": "none"
+  },
+  "resolution_reporting": {
+    "claim_limit": "Compatible establishes existence under the declared reporting model; it does not establish a unique printed cell, hidden author values, or historical rounding procedure.",
+    "required_fields": [
+      "constituent_intervals_ppm",
+      "joint_interval_ppm",
+      "table11_width_ppm",
+      "joint_width_ppm",
+      "joint_to_table11_width_ratio",
+      "narrowed_by_multiresolution_constraint"
+    ]
+  },
+  "schema_version": 1,
+  "scope_order": [
+    "fibre_1",
+    "fibre_2",
+    "fibre_3"
+  ],
+  "specification": {
+    "byte_length": 9601,
+    "path": "Notes/Newman2014MultiResolutionRoundingConsistencySpecification.md",
+    "prepared_before_freeze": true,
+    "sha256": "3dd80638beaec0d8bcef35615f30b9e2b5821aa0f78833e800c8642a8d23d1e3"
+  },
+  "terminal_attestation": {
+    "byte_length": 3898,
+    "path": "Experiments/GMeasurements/newman_2014_multiresolution_terminal_attestation_v1.json",
+    "prepared_before_freeze": true,
+    "projection": {
+      "known_prior_auditor_information": {
+        "epistemic_effect": "This PR is capability formalization with a known expected real-data outcome, not an outcome-blind falsification experiment.",
+        "observation": "The auditor already checked that the integer statements would leave all three real verdicts compatible and would narrow fibre 1's terminal domain.",
+        "source": "Claude PR #42 audit dated 2026-09-08"
+      },
+      "parent_source_attestation": {
+        "path": "Experiments/GMeasurements/newman_2014_source_attestation_v1.json",
+        "role": "authoritative_component_projection_and_table11_transcription",
+        "sha256": "a787f63e4c4377a6daf778d5402c065743e2f1b61d3a0c3a469f915e461653a6"
+      },
+      "publication": {
+        "article": "20140025",
+        "authors": [
+          "Riley Newman",
+          "Michael Bantel",
+          "Eric Berg",
+          "William Cross"
+        ],
+        "doi": "10.1098/rsta.2014.0025",
+        "issue_date": "2014-10-13",
+        "journal": "Philosophical Transactions of the Royal Society A",
+        "published_online": "2014-09-08",
+        "title": "A measurement of G with a cryogenic torsion pendulum",
+        "volume": "372"
+      },
+      "record_id": "newman_2014_multiresolution_terminal_attestation_v1",
+      "reporting_model": {
+        "conclusion_half_width_ppm": "0.5",
+        "endpoint_policy": "closed conservative bins; compatible witnesses require strict interior of a nondegenerate joint interval",
+        "kind": "intersection_of_closed_rounding_consistency_bins",
+        "table11_half_width_ppm": "0.05",
+        "terminal_values_must_not_enter_candidate_generation": true,
+        "tie_breaking_assumption": "none"
+      },
+      "schema_version": 1,
+      "scope_order": [
+        "fibre_1",
+        "fibre_2",
+        "fibre_3"
+      ],
+      "source_verification": {
+        "ci_network_access": false,
+        "conclusion": "Primary-paper conclusion and PubMed abstract both state the corresponding uncertainties 14, 22 and 20 ppm.",
+        "limitation": "The new attestation freezes exact terminal statements and their locators; it does not add raw publisher PDF bytes.",
+        "raw_publisher_capture_sha256": null,
+        "table11": "Inherited byte-pinned transcription from the PR #42 Newman source attestation."
+      },
+      "terminal_representations": {
+        "fibre_1": [
+          {
+            "half_width_ppm": "0.05",
+            "id": "table11_one_decimal",
+            "printed_decimal_places": 1,
+            "role": "terminal_constraint",
+            "source_locator": "Table 11, printed/PDF page 22, quadrature sum",
+            "value_ppm": "14.5"
+          },
+          {
+            "half_width_ppm": "0.5",
+            "id": "conclusion_integer",
+            "printed_decimal_places": 0,
+            "role": "terminal_constraint",
+            "source_locator": "Section 7 Conclusion, printed/PDF page 24, fibre 1 uncertainty",
+            "value_ppm": "14"
+          }
+        ],
+        "fibre_2": [
+          {
+            "half_width_ppm": "0.05",
+            "id": "table11_one_decimal",
+            "printed_decimal_places": 1,
+            "role": "terminal_constraint",
+            "source_locator": "Table 11, printed/PDF page 22, quadrature sum",
+            "value_ppm": "22.2"
+          },
+          {
+            "half_width_ppm": "0.5",
+            "id": "conclusion_integer",
+            "printed_decimal_places": 0,
+            "role": "terminal_constraint",
+            "source_locator": "Section 7 Conclusion, printed/PDF page 24, fibre 2 uncertainty",
+            "value_ppm": "22"
+          }
+        ],
+        "fibre_3": [
+          {
+            "half_width_ppm": "0.05",
+            "id": "table11_one_decimal",
+            "printed_decimal_places": 1,
+            "role": "terminal_constraint",
+            "source_locator": "Table 11, printed/PDF page 22, quadrature sum",
+            "value_ppm": "19.6"
+          },
+          {
+            "half_width_ppm": "0.5",
+            "id": "conclusion_integer",
+            "printed_decimal_places": 0,
+            "role": "terminal_constraint",
+            "source_locator": "Section 7 Conclusion, printed/PDF page 24, fibre 3 uncertainty",
+            "value_ppm": "20"
+          }
+        ]
+      }
+    },
+    "sha256": "8d1e22c4d02c31def3bce29ac8162051ba97be1639abe6b0529ea8b218c09144"
+  },
+  "validation": {
+    "exact_head_ci_authoritative": true,
+    "focused_tests": [
+      "source and terminal schema identity",
+      "three scopes and two representations each",
+      "exact closed intersection",
+      "disjoint and degenerate terminal controls",
+      "3375 candidates per scope",
+      "terminal-resolution isolation from candidate generation",
+      "strict-interior witness semantics",
+      "known real-data verdict reproduction",
+      "central-value invariance",
+      "effective-width reporting",
+      "model-relative labels",
+      "E-001 isolation",
+      "artifact freshness"
+    ],
+    "full_python_suite_once_on_final_tree": true,
+    "git_diff_check": true,
+    "lean_local_required": false,
+    "mutation_required": true,
+    "new_check_guards": 2
+  }
+}
