@@ -58,6 +58,8 @@ jobs:
       - run: python -m Discovery.g_measurement_joint_inference_mutations --check
       - run: python -m Discovery.newman_2014_table11_rounding_consistency --check
       - run: python -m Discovery.newman_2014_table11_rounding_consistency_mutations --check
+      - run: python -m Discovery.newman_2014_multiresolution_rounding_consistency --check
+      - run: python -m Discovery.newman_2014_multiresolution_mutations --check
       - run: python -m Discovery.falsification_preregistration --check
       - run: python -m Discovery.null_experiments --check
       - run: python -m Discovery.mutation_harness --check

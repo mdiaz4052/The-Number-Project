@@ -1,0 +1,578 @@
+{
+  "artifact_id": "newman_2014_multiresolution_rounding_consistency_v1",
+  "calculations": {
+    "fibre_1": {
+      "candidate_coordinates_are_independent": true,
+      "candidate_count": 3375,
+      "relative_uncertainty_enclosure_ppm": {
+        "decimal_places": 6,
+        "high": "14.539172",
+        "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+        "low": "14.368281"
+      },
+      "relative_variance_enclosure_ppm_squared": {
+        "high": {
+          "denominator": "80",
+          "numerator": "16911"
+        },
+        "low": {
+          "denominator": "400",
+          "numerator": "82579"
+        }
+      },
+      "schedule_kind": "full_independent_tensor_grid"
+    },
+    "fibre_2": {
+      "candidate_coordinates_are_independent": true,
+      "candidate_count": 3375,
+      "relative_uncertainty_enclosure_ppm": {
+        "decimal_places": 6,
+        "high": "22.323251",
+        "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+        "low": "22.152821"
+      },
+      "relative_variance_enclosure_ppm_squared": {
+        "high": {
+          "denominator": "400",
+          "numerator": "199331"
+        },
+        "low": {
+          "denominator": "400",
+          "numerator": "196299"
+        }
+      },
+      "schedule_kind": "full_independent_tensor_grid"
+    },
+    "fibre_3": {
+      "candidate_coordinates_are_independent": true,
+      "candidate_count": 3375,
+      "relative_uncertainty_enclosure_ppm": {
+        "decimal_places": 6,
+        "high": "19.720231",
+        "interpretation": "outward-rounded conservative enclosure, not attainable extrema",
+        "low": "19.547570"
+      },
+      "relative_variance_enclosure_ppm_squared": {
+        "high": {
+          "denominator": "80",
+          "numerator": "31111"
+        },
+        "low": {
+          "denominator": "400",
+          "numerator": "152843"
+        }
+      },
+      "schedule_kind": "full_independent_tensor_grid"
+    }
+  },
+  "candidate_schedule": {
+    "adaptive_search": false,
+    "all_candidates_before_terminal_interpretation": true,
+    "candidate_count_per_scope": 3375,
+    "dimensions_per_scope": 3,
+    "kind": "full_independent_tensor_grid",
+    "parameters": [
+      "0",
+      "-1/8",
+      "1/8",
+      "-2/8",
+      "2/8",
+      "-3/8",
+      "3/8",
+      "-4/8",
+      "4/8",
+      "-5/8",
+      "5/8",
+      "-6/8",
+      "6/8",
+      "-7/8",
+      "7/8"
+    ],
+    "total_candidate_count": 10125
+  },
+  "claim_limits": [
+    "Capability formalization with known prior real-data outcome; not a new outcome-blind falsification experiment.",
+    "Conditional Newman et al. 2014 reporting-consistency representation only.",
+    "No raw-data or full torsion-pendulum estimator reproduction.",
+    "No inference that the authors used a particular nearest-rounding tie convention.",
+    "Closed terminal bins are conservative consistency domains, not claims about exact historical rounding behavior.",
+    "Compatible means at least one frozen strict-interior scheduled representation exists in the joint reporting interval.",
+    "Incompatible is model-relative and means the declared reporting constraints cannot be jointly represented by the declared component model.",
+    "Unresolved remains schedule-relative and also covers boundary-only/degenerate joint terminal cases.",
+    "No hidden unrounded values, unique printed cell, discrepancy cause, probability model, p-value, likelihood, or sampling frequency is inferred.",
+    "No comparison of measured central G values, universality claim, cross-measurement estimator, or PR #41 joint-object update.",
+    "No E-001 artifact is an input or dependency.",
+    "Effective terminal width and narrowing ratio must be reported explicitly so the certificate's resolution ceiling is quotable."
+  ],
+  "component_model": {
+    "candidate_generation_api": [
+      "input_projection",
+      "component_half_width_ppm",
+      "candidate_schedule"
+    ],
+    "central_value_invariance": "q_1 = 1; any positive central schema value cancels",
+    "component_half_width_ppm": "0.05",
+    "component_source_path": "Experiments/GMeasurements/newman_2014_source_attestation_v1.json",
+    "component_source_sha256": "a787f63e4c4377a6daf778d5402c065743e2f1b61d3a0c3a469f915e461653a6",
+    "identity": "R^2 = x_statistical^2 + x_systematic^2 + x_analysis_method^2",
+    "terminal_inputs_forbidden": true
+  },
+  "integrity": {
+    "baseline_main_sha": "1fd38d8f009c2b23b6d419f7817acc730cc57812",
+    "component_source_sha256": "a787f63e4c4377a6daf778d5402c065743e2f1b61d3a0c3a469f915e461653a6",
+    "external_anchor": {
+      "created_at": "2026-09-08T15:47:46Z",
+      "event": "draft_pull_request_created",
+      "outcome_blind": false,
+      "preregistration_commit_sha": "f0a3edc9a889382292040281e1b693ce99a28cbc",
+      "scope": "Implementation chronology anchor only. The real-data multi-resolution outcome was already known from the PR #42 audit before this freeze.",
+      "url": "https://github.com/mdiaz4052/The-Number-Project/pull/43"
+    },
+    "preregistration_commit_sha": "f0a3edc9a889382292040281e1b693ce99a28cbc",
+    "preregistration_sha256": "6e92eea837b6b84aae4b485bd33e5d0528962d68b15de343368291b12c731767",
+    "source_snapshot": {
+      "files": [
+        {
+          "path": "Discovery/multiresolution_rounding.py",
+          "sha256": "f2ef77e39dee526f98c9e28edb43ece5958d6b7ebde12fdc3967884cc3f7cb96"
+        },
+        {
+          "path": "Discovery/newman_2014_multiresolution_rounding_consistency.py",
+          "sha256": "56b209a8d9b49c487b51a8a5b701398c0ebb17d018e85d7a29bca5618dc4867e"
+        },
+        {
+          "path": "Notes/Newman2014MultiResolutionRoundingConsistencySpecification.md",
+          "sha256": "3dd80638beaec0d8bcef35615f30b9e2b5821aa0f78833e800c8642a8d23d1e3"
+        },
+        {
+          "path": "Notes/Newman2014MultiResolutionRoundingConsistency.md",
+          "sha256": "fced39f51e9aca325f4fdf5a7578b52fca395c64073d13e64449fdc9c47a7125"
+        },
+        {
+          "path": "Experiments/GMeasurements/newman_2014_multiresolution_rounding_consistency_preregistration_v1.json",
+          "sha256": "6e92eea837b6b84aae4b485bd33e5d0528962d68b15de343368291b12c731767"
+        },
+        {
+          "path": "Experiments/GMeasurements/newman_2014_multiresolution_terminal_attestation_v1.json",
+          "sha256": "8d1e22c4d02c31def3bce29ac8162051ba97be1639abe6b0529ea8b218c09144"
+        },
+        {
+          "path": "Experiments/GMeasurements/newman_2014_source_attestation_v1.json",
+          "sha256": "a787f63e4c4377a6daf778d5402c065743e2f1b61d3a0c3a469f915e461653a6"
+        },
+        {
+          "path": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "sha256": "20e85ca83c0b5072cf6f6e3aeb590cd101ca48ade268c25dacd927a8706bf3a3"
+        },
+        {
+          "path": "Discovery/rounding_consistency.py",
+          "sha256": "5487ce47dcc2c4ecdd3abdfb83000e87f9a414c8381dbe11ba737f678225468a"
+        },
+        {
+          "path": "Discovery/preregistration_history.py",
+          "sha256": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0"
+        },
+        {
+          "path": "Discovery/source_history.py",
+          "sha256": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb"
+        }
+      ],
+      "source_commit_sha": "f3aba6d7124fe1dca330f012df9cfc1a8e6623aa"
+    },
+    "terminal_attestation_sha256": "8d1e22c4d02c31def3bce29ac8162051ba97be1639abe6b0529ea8b218c09144"
+  },
+  "kind": "conditional_multiresolution_reporting_consistency",
+  "known_prior_information": {
+    "allowed_claim": "This PR may establish a reproducible capability and exact certificate, but must not present the real-data verdict as newly discovered or prospectively blind.",
+    "outcome_blind": false,
+    "reason": "Claude's PR #42 audit predates this freeze and already reported that all three real fibres remain compatible under the integer-plus-one-decimal terminal constraints, with fibre 1 narrowed."
+  },
+  "reporting_model": {
+    "constituent_bins_closed": true,
+    "degenerate_joint_interval": "unresolved unless the component enclosure is already disjoint",
+    "disjoint_terminal_constraints": "incompatible",
+    "joint_interval": "max of lows through min of highs",
+    "kind": "intersection_of_closed_rounding_consistency_bins",
+    "strict_compatible_witness": "component interiors and strict interior of a nondegenerate joint terminal squared interval",
+    "tie_breaking_assumption": "none"
+  },
+  "resolution_reporting": {
+    "claim_limit": "Compatible establishes existence under the declared reporting model; it does not establish a unique printed cell, hidden author values, or historical rounding procedure.",
+    "required_fields": [
+      "constituent_intervals_ppm",
+      "joint_interval_ppm",
+      "table11_width_ppm",
+      "joint_width_ppm",
+      "joint_to_table11_width_ratio",
+      "narrowed_by_multiresolution_constraint"
+    ]
+  },
+  "schema_version": 1,
+  "scope_order": [
+    "fibre_1",
+    "fibre_2",
+    "fibre_3"
+  ],
+  "terminal_decisions": {
+    "fibre_1": {
+      "exclusion": null,
+      "joint_terminal_squared_interval_ppm_squared": {
+        "high": {
+          "denominator": "4",
+          "numerator": "841"
+        },
+        "low": {
+          "denominator": "400",
+          "numerator": "83521"
+        }
+      },
+      "outcome": "compatible",
+      "reason": "scheduled_strict_interior_witness",
+      "resolution": {
+        "constituent_intervals_ppm": [
+          {
+            "interval_ppm": {
+              "high": {
+                "denominator": "20",
+                "numerator": "291"
+              },
+              "low": {
+                "denominator": "20",
+                "numerator": "289"
+              }
+            },
+            "source_reference": {
+              "half_width_ppm": "0.05",
+              "id": "table11_one_decimal",
+              "printed_decimal_places": 1,
+              "role": "terminal_constraint",
+              "source_locator": "Table 11, printed/PDF page 22, quadrature sum",
+              "value_ppm": "14.5"
+            }
+          },
+          {
+            "interval_ppm": {
+              "high": {
+                "denominator": "2",
+                "numerator": "29"
+              },
+              "low": {
+                "denominator": "2",
+                "numerator": "27"
+              }
+            },
+            "source_reference": {
+              "half_width_ppm": "0.5",
+              "id": "conclusion_integer",
+              "printed_decimal_places": 0,
+              "role": "terminal_constraint",
+              "source_locator": "Section 7 Conclusion, printed/PDF page 24, fibre 1 uncertainty",
+              "value_ppm": "14"
+            }
+          }
+        ],
+        "joint_interval_ppm": {
+          "high": {
+            "denominator": "2",
+            "numerator": "29"
+          },
+          "low": {
+            "denominator": "20",
+            "numerator": "289"
+          }
+        },
+        "joint_to_table11_width_ratio": {
+          "denominator": "2",
+          "numerator": "1"
+        },
+        "joint_width_ppm": {
+          "denominator": "20",
+          "numerator": "1"
+        },
+        "narrowed_by_multiresolution_constraint": true,
+        "table11_width_ppm": {
+          "denominator": "10",
+          "numerator": "1"
+        }
+      },
+      "status": "representable_under_the_declared_multiresolution_reporting_model",
+      "witness": {
+        "candidate_index": 0,
+        "component_values_ppm": [
+          {
+            "denominator": "10",
+            "numerator": "77"
+          },
+          {
+            "denominator": "10",
+            "numerator": "101"
+          },
+          {
+            "denominator": "10",
+            "numerator": "69"
+          }
+        ],
+        "membership_verified": true,
+        "relative_variance_ppm_squared": {
+          "denominator": "100",
+          "numerator": "20891"
+        },
+        "tensor_parameters": [
+          {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        ],
+        "witness_kind": "unshifted_midpoint"
+      }
+    },
+    "fibre_2": {
+      "exclusion": null,
+      "joint_terminal_squared_interval_ppm_squared": {
+        "high": {
+          "denominator": "16",
+          "numerator": "7921"
+        },
+        "low": {
+          "denominator": "400",
+          "numerator": "196249"
+        }
+      },
+      "outcome": "compatible",
+      "reason": "scheduled_strict_interior_witness",
+      "resolution": {
+        "constituent_intervals_ppm": [
+          {
+            "interval_ppm": {
+              "high": {
+                "denominator": "4",
+                "numerator": "89"
+              },
+              "low": {
+                "denominator": "20",
+                "numerator": "443"
+              }
+            },
+            "source_reference": {
+              "half_width_ppm": "0.05",
+              "id": "table11_one_decimal",
+              "printed_decimal_places": 1,
+              "role": "terminal_constraint",
+              "source_locator": "Table 11, printed/PDF page 22, quadrature sum",
+              "value_ppm": "22.2"
+            }
+          },
+          {
+            "interval_ppm": {
+              "high": {
+                "denominator": "2",
+                "numerator": "45"
+              },
+              "low": {
+                "denominator": "2",
+                "numerator": "43"
+              }
+            },
+            "source_reference": {
+              "half_width_ppm": "0.5",
+              "id": "conclusion_integer",
+              "printed_decimal_places": 0,
+              "role": "terminal_constraint",
+              "source_locator": "Section 7 Conclusion, printed/PDF page 24, fibre 2 uncertainty",
+              "value_ppm": "22"
+            }
+          }
+        ],
+        "joint_interval_ppm": {
+          "high": {
+            "denominator": "4",
+            "numerator": "89"
+          },
+          "low": {
+            "denominator": "20",
+            "numerator": "443"
+          }
+        },
+        "joint_to_table11_width_ratio": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "joint_width_ppm": {
+          "denominator": "10",
+          "numerator": "1"
+        },
+        "narrowed_by_multiresolution_constraint": false,
+        "table11_width_ppm": {
+          "denominator": "10",
+          "numerator": "1"
+        }
+      },
+      "status": "representable_under_the_declared_multiresolution_reporting_model",
+      "witness": {
+        "candidate_index": 0,
+        "component_values_ppm": [
+          {
+            "denominator": "10",
+            "numerator": "157"
+          },
+          {
+            "denominator": "5",
+            "numerator": "51"
+          },
+          {
+            "denominator": "1",
+            "numerator": "12"
+          }
+        ],
+        "membership_verified": true,
+        "relative_variance_ppm_squared": {
+          "denominator": "100",
+          "numerator": "49453"
+        },
+        "tensor_parameters": [
+          {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        ],
+        "witness_kind": "unshifted_midpoint"
+      }
+    },
+    "fibre_3": {
+      "exclusion": null,
+      "joint_terminal_squared_interval_ppm_squared": {
+        "high": {
+          "denominator": "400",
+          "numerator": "154449"
+        },
+        "low": {
+          "denominator": "400",
+          "numerator": "152881"
+        }
+      },
+      "outcome": "compatible",
+      "reason": "scheduled_strict_interior_witness",
+      "resolution": {
+        "constituent_intervals_ppm": [
+          {
+            "interval_ppm": {
+              "high": {
+                "denominator": "20",
+                "numerator": "393"
+              },
+              "low": {
+                "denominator": "20",
+                "numerator": "391"
+              }
+            },
+            "source_reference": {
+              "half_width_ppm": "0.05",
+              "id": "table11_one_decimal",
+              "printed_decimal_places": 1,
+              "role": "terminal_constraint",
+              "source_locator": "Table 11, printed/PDF page 22, quadrature sum",
+              "value_ppm": "19.6"
+            }
+          },
+          {
+            "interval_ppm": {
+              "high": {
+                "denominator": "2",
+                "numerator": "41"
+              },
+              "low": {
+                "denominator": "2",
+                "numerator": "39"
+              }
+            },
+            "source_reference": {
+              "half_width_ppm": "0.5",
+              "id": "conclusion_integer",
+              "printed_decimal_places": 0,
+              "role": "terminal_constraint",
+              "source_locator": "Section 7 Conclusion, printed/PDF page 24, fibre 3 uncertainty",
+              "value_ppm": "20"
+            }
+          }
+        ],
+        "joint_interval_ppm": {
+          "high": {
+            "denominator": "20",
+            "numerator": "393"
+          },
+          "low": {
+            "denominator": "20",
+            "numerator": "391"
+          }
+        },
+        "joint_to_table11_width_ratio": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "joint_width_ppm": {
+          "denominator": "10",
+          "numerator": "1"
+        },
+        "narrowed_by_multiresolution_constraint": false,
+        "table11_width_ppm": {
+          "denominator": "10",
+          "numerator": "1"
+        }
+      },
+      "status": "representable_under_the_declared_multiresolution_reporting_model",
+      "witness": {
+        "candidate_index": 0,
+        "component_values_ppm": [
+          {
+            "denominator": "10",
+            "numerator": "113"
+          },
+          {
+            "denominator": "5",
+            "numerator": "62"
+          },
+          {
+            "denominator": "5",
+            "numerator": "51"
+          }
+        ],
+        "membership_verified": true,
+        "relative_variance_ppm_squared": {
+          "denominator": "100",
+          "numerator": "38549"
+        },
+        "tensor_parameters": [
+          {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          {
+            "denominator": "1",
+            "numerator": "0"
+          },
+          {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        ],
+        "witness_kind": "unshifted_midpoint"
+      }
+    }
+  }
+}
