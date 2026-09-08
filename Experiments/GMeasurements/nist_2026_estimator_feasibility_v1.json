@@ -17,67 +17,185 @@
   "experimental_covariance_layer": {
     "correlation_matrix": [
       [
-        {"denominator": "1", "numerator": "1"},
-        {"denominator": "50", "numerator": "21"},
-        {"denominator": "50", "numerator": "19"},
-        {"denominator": "25", "numerator": "3"}
+        {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        {
+          "denominator": "50",
+          "numerator": "21"
+        },
+        {
+          "denominator": "50",
+          "numerator": "19"
+        },
+        {
+          "denominator": "25",
+          "numerator": "3"
+        }
       ],
       [
-        {"denominator": "50", "numerator": "21"},
-        {"denominator": "1", "numerator": "1"},
-        {"denominator": "100", "numerator": "23"},
-        {"denominator": "100", "numerator": "23"}
+        {
+          "denominator": "50",
+          "numerator": "21"
+        },
+        {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        {
+          "denominator": "100",
+          "numerator": "23"
+        },
+        {
+          "denominator": "100",
+          "numerator": "23"
+        }
       ],
       [
-        {"denominator": "50", "numerator": "19"},
-        {"denominator": "100", "numerator": "23"},
-        {"denominator": "1", "numerator": "1"},
-        {"denominator": "4", "numerator": "1"}
+        {
+          "denominator": "50",
+          "numerator": "19"
+        },
+        {
+          "denominator": "100",
+          "numerator": "23"
+        },
+        {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        {
+          "denominator": "4",
+          "numerator": "1"
+        }
       ],
       [
-        {"denominator": "25", "numerator": "3"},
-        {"denominator": "100", "numerator": "23"},
-        {"denominator": "4", "numerator": "1"},
-        {"denominator": "1", "numerator": "1"}
+        {
+          "denominator": "25",
+          "numerator": "3"
+        },
+        {
+          "denominator": "100",
+          "numerator": "23"
+        },
+        {
+          "denominator": "4",
+          "numerator": "1"
+        },
+        {
+          "denominator": "1",
+          "numerator": "1"
+        }
       ]
     ],
-    "input_order": ["copper_servo", "copper_free", "sapphire_servo", "sapphire_free"],
+    "input_order": [
+      "copper_servo",
+      "copper_free",
+      "sapphire_servo",
+      "sapphire_free"
+    ],
     "leading_principal_minors": [
-      {"denominator": "25", "numerator": "13456"},
-      {"denominator": "390625", "numerator": "158978208771"},
-      {"denominator": "250000", "numerator": "121558568110209"},
-      {"denominator": "1250000000", "numerator": "4846543822981430177733"}
+      {
+        "denominator": "25",
+        "numerator": "13456"
+      },
+      {
+        "denominator": "390625",
+        "numerator": "158978208771"
+      },
+      {
+        "denominator": "250000",
+        "numerator": "121558568110209"
+      },
+      {
+        "denominator": "1250000000",
+        "numerator": "4846543822981430177733"
+      }
     ],
     "positive_definite": true,
     "reason": "source_uniquely_defines_positive_definite_4x4_experimental_covariance",
     "relative_covariance_matrix_ppm_squared": [
       [
-        {"denominator": "25", "numerator": "13456"},
-        {"denominator": "625", "numerator": "184527"},
-        {"denominator": "5", "numerator": "1653"},
-        {"denominator": "625", "numerator": "163386"}
+        {
+          "denominator": "25",
+          "numerator": "13456"
+        },
+        {
+          "denominator": "625",
+          "numerator": "184527"
+        },
+        {
+          "denominator": "5",
+          "numerator": "1653"
+        },
+        {
+          "denominator": "625",
+          "numerator": "163386"
+        }
       ],
       [
-        {"denominator": "625", "numerator": "184527"},
-        {"denominator": "100", "numerator": "91809"},
-        {"denominator": "80", "numerator": "20907"},
-        {"denominator": "10000", "numerator": "6543891"}
+        {
+          "denominator": "625",
+          "numerator": "184527"
+        },
+        {
+          "denominator": "100",
+          "numerator": "91809"
+        },
+        {
+          "denominator": "80",
+          "numerator": "20907"
+        },
+        {
+          "denominator": "10000",
+          "numerator": "6543891"
+        }
       ],
       [
-        {"denominator": "5", "numerator": "1653"},
-        {"denominator": "80", "numerator": "20907"},
-        {"denominator": "4", "numerator": "5625"},
-        {"denominator": "16", "numerator": "14085"}
+        {
+          "denominator": "5",
+          "numerator": "1653"
+        },
+        {
+          "denominator": "80",
+          "numerator": "20907"
+        },
+        {
+          "denominator": "4",
+          "numerator": "5625"
+        },
+        {
+          "denominator": "16",
+          "numerator": "14085"
+        }
       ],
       [
-        {"denominator": "625", "numerator": "163386"},
-        {"denominator": "10000", "numerator": "6543891"},
-        {"denominator": "16", "numerator": "14085"},
-        {"denominator": "100", "numerator": "881721"}
+        {
+          "denominator": "625",
+          "numerator": "163386"
+        },
+        {
+          "denominator": "10000",
+          "numerator": "6543891"
+        },
+        {
+          "denominator": "16",
+          "numerator": "14085"
+        },
+        {
+          "denominator": "100",
+          "numerator": "881721"
+        }
       ]
     ],
     "source_precision_policy": "Table 18 diagonal values control covariance construction because they are the more precise source-reported standard uncertainties; Table 16 whole-ppm values are retained as rounded display records.",
-    "standard_uncertainty_ppm": ["23.2", "30.3", "37.5", "93.9"],
+    "standard_uncertainty_ppm": [
+      "23.2",
+      "30.3",
+      "37.5",
+      "93.9"
+    ],
     "verdict": "GO"
   },
   "integrity": {
@@ -93,11 +211,26 @@
     "preregistration_sha256": "32e03cb85102bda3281fef8b0a5b3eee4133de181154526f1f605aa4be182b47",
     "source_snapshot": {
       "files": [
-        {"path": "Discovery/nist_2026_estimator_feasibility.py", "sha256": "8fbd5f495305f9136ea4e76941aad2abb93706c4cbff14d9a88bbd070e0dde39"},
-        {"path": "Notes/NIST2026EstimatorFeasibilitySpecification.md", "sha256": "ef421cee33d3c826d2a0ac8162276d167b06a0b6ca4429845527324ade4c8409"},
-        {"path": "Notes/NIST2026EstimatorFeasibility.md", "sha256": "ae3d55a5ba41ace1344898d594ca47700276fa9cf9282736b613c43cce082787"},
-        {"path": "Experiments/GMeasurements/nist_2026_estimator_feasibility_preregistration_v1.json", "sha256": "32e03cb85102bda3281fef8b0a5b3eee4133de181154526f1f605aa4be182b47"},
-        {"path": "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json", "sha256": "9e976877bfd9890ba50ed4f2d183d3241a3f8dfb8af0b2fc046d53c4e9639f45"}
+        {
+          "path": "Discovery/nist_2026_estimator_feasibility.py",
+          "sha256": "8fbd5f495305f9136ea4e76941aad2abb93706c4cbff14d9a88bbd070e0dde39"
+        },
+        {
+          "path": "Notes/NIST2026EstimatorFeasibilitySpecification.md",
+          "sha256": "ef421cee33d3c826d2a0ac8162276d167b06a0b6ca4429845527324ade4c8409"
+        },
+        {
+          "path": "Notes/NIST2026EstimatorFeasibility.md",
+          "sha256": "ae3d55a5ba41ace1344898d594ca47700276fa9cf9282736b613c43cce082787"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_estimator_feasibility_preregistration_v1.json",
+          "sha256": "32e03cb85102bda3281fef8b0a5b3eee4133de181154526f1f605aa4be182b47"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json",
+          "sha256": "9e976877bfd9890ba50ed4f2d183d3241a3f8dfb8af0b2fc046d53c4e9639f45"
+        }
       ],
       "source_commit_sha": "481f5f3210f26c160a87619e35b3fb9784ccc97e"
     }
@@ -118,11 +251,31 @@
       "Huber M and Qn conventions are fully specified enough to give a unique deterministic artifact"
     ],
     "missing_result_driving_information": [
-      {"id": "epsilon_likelihood_distribution", "observation": "epsilon_j is described as measurement error whose typical size comes from the uncertainty budget, but the probability distribution/likelihood for epsilon is not explicitly stated in the consensus-model section.", "promotion": "required for unique deterministic reproduction of the posterior"},
-      {"id": "posterior_sampler_algorithm", "observation": "The paper says the model was calibrated using a Bayesian procedure and cites references, but does not specify the paper-specific sampler/integration algorithm.", "promotion": "required unless an analytic posterior construction is supplied"},
-      {"id": "posterior_sampling_controls", "observation": "The paper says 'large samples' from the posterior but does not state a sample count, random seed, burn-in/warmup, thinning, chains, or convergence criterion.", "promotion": "required for byte-deterministic sample-based reproduction"},
-      {"id": "robust_estimator_computational_conventions", "observation": "Huber's M and Qn are named and referenced, but the paper does not state all implementation/tuning conventions used on the posterior samples.", "promotion": "required for unique reproduction of the exact published summaries unless a canonical convention is source-authorized"},
-      {"id": "dark_correlation_matrix_identity", "observation": "The consensus paragraph refers to a correlation matrix R in Sigma_ij = tau_i tau_j R_ij. Its identification with the experimental Table 18 correlation matrix is strongly suggested by local context but is not explicitly labeled as 'Table 18' in the equation paragraph.", "promotion": "must be explicit before claiming exact reproduction of the dark-uncertainty covariance"}
+      {
+        "id": "epsilon_likelihood_distribution",
+        "observation": "epsilon_j is described as measurement error whose typical size comes from the uncertainty budget, but the probability distribution/likelihood for epsilon is not explicitly stated in the consensus-model section.",
+        "promotion": "required for unique deterministic reproduction of the posterior"
+      },
+      {
+        "id": "posterior_sampler_algorithm",
+        "observation": "The paper says the model was calibrated using a Bayesian procedure and cites references, but does not specify the paper-specific sampler/integration algorithm.",
+        "promotion": "required unless an analytic posterior construction is supplied"
+      },
+      {
+        "id": "posterior_sampling_controls",
+        "observation": "The paper says 'large samples' from the posterior but does not state a sample count, random seed, burn-in/warmup, thinning, chains, or convergence criterion.",
+        "promotion": "required for byte-deterministic sample-based reproduction"
+      },
+      {
+        "id": "robust_estimator_computational_conventions",
+        "observation": "Huber's M and Qn are named and referenced, but the paper does not state all implementation/tuning conventions used on the posterior samples.",
+        "promotion": "required for unique reproduction of the exact published summaries unless a canonical convention is source-authorized"
+      },
+      {
+        "id": "dark_correlation_matrix_identity",
+        "observation": "The consensus paragraph refers to a correlation matrix R in Sigma_ij = tau_i tau_j R_ij. Its identification with the experimental Table 18 correlation matrix is strongly suggested by local context but is not explicitly labeled as 'Table 18' in the equation paragraph.",
+        "promotion": "must be explicit before claiming exact reproduction of the dark-uncertainty covariance"
+      }
     ],
     "nonclaim": "No GLS or conventional Bayesian implementation is substituted for equation (64).",
     "reason": "primary_paper_does_not_uniquely_specify_deterministic_equation_64_reproduction",
@@ -137,7 +290,12 @@
       "mu_prior_family": "Gaussian",
       "mu_prior_standard_deviation_si": "9e-15",
       "tau_prior_family": "independent half-Cauchy",
-      "tau_prior_median_multipliers": {"copper_free": "1", "copper_servo": "2", "sapphire_free": "3", "sapphire_servo": "4"},
+      "tau_prior_median_multipliers": {
+        "copper_free": "1",
+        "copper_servo": "2",
+        "sapphire_free": "3",
+        "sapphire_servo": "4"
+      },
       "tau_reference_si": "9.6e-15",
       "tau_summary": "posterior medians"
     },
@@ -157,8 +315,17 @@
   },
   "source_authority": {
     "controlling_source": "peer-reviewed journal article PDF served by the NIST local-download endpoint",
-    "journal_pdf_result": {"G_decimal_in_1e_minus_11_units": "6.67387", "locator": "PDF page 27, equation (64); also abstract on PDF page 1", "relative_standard_uncertainty": "5.7e-5", "standard_uncertainty_decimal_in_1e_minus_11_units": "0.00038"},
-    "landing_page_displayed_result": {"G_decimal_in_1e_minus_11_units": "6.67366", "relative_standard_uncertainty_text": "3.0e-6", "standard_uncertainty_decimal_in_1e_minus_11_units": "0.00020"},
+    "journal_pdf_result": {
+      "G_decimal_in_1e_minus_11_units": "6.67387",
+      "locator": "PDF page 27, equation (64); also abstract on PDF page 1",
+      "relative_standard_uncertainty": "5.7e-5",
+      "standard_uncertainty_decimal_in_1e_minus_11_units": "0.00038"
+    },
+    "landing_page_displayed_result": {
+      "G_decimal_in_1e_minus_11_units": "6.67366",
+      "relative_standard_uncertainty_text": "3.0e-6",
+      "standard_uncertainty_decimal_in_1e_minus_11_units": "0.00020"
+    },
     "landing_page_numerical_role": "bibliographic and availability evidence only",
     "numerical_conflict_present": true,
     "resolution": "peer_reviewed_article_pdf_controls_scientific_transcription"
