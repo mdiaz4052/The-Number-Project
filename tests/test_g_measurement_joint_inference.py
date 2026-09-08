@@ -34,18 +34,17 @@ class JointBehaviorTests(unittest.TestCase):
     def test_all_27_verdict_combinations(self):
         seen = set()
         for verdicts in product(('compatible', 'incompatible', 'unresolved'), repeat=3):
-            with self.subTest(verdicts=verdicts):
-                pubs, joint = j.compose(synthetic(verdicts))
-                expected = ('not_all_representable' if 'incompatible' in verdicts else
-                            'undetermined' if 'unresolved' in verdicts else
-                            'all_representable_under_separate_declared_models')
-                self.assertEqual(joint['status'], expected)
-                seen.add(joint['status'])
-                for publication, inputs in zip(pubs, (verdicts[:1], verdicts[1:])):
-                    expected_pub = ('not_representable' if 'incompatible' in inputs else
-                                    'undetermined' if 'unresolved' in inputs else 'representable')
-                    self.assertEqual(publication['status'], expected_pub)
-                    self.assertEqual(len(publication['reasoning_trace']['operands']), len(inputs))
+            pubs, joint = j.compose(synthetic(verdicts))
+            expected = ('not_all_representable' if 'incompatible' in verdicts else
+                        'undetermined' if 'unresolved' in verdicts else
+                        'all_representable_under_separate_declared_models')
+            self.assertEqual(joint['status'], expected)
+            seen.add(joint['status'])
+            for publication, inputs in zip(pubs, (verdicts[:1], verdicts[1:])):
+                expected_pub = ('not_representable' if 'incompatible' in inputs else
+                                'undetermined' if 'unresolved' in inputs else 'representable')
+                self.assertEqual(publication['status'], expected_pub)
+                self.assertEqual(len(publication['reasoning_trace']['operands']), len(inputs))
         self.assertEqual(seen, {'all_representable_under_separate_declared_models',
                                'not_all_representable', 'undetermined'})
 
