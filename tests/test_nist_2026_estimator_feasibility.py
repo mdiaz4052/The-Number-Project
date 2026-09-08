@@ -85,15 +85,19 @@ class NIST2026EstimatorFeasibilityBehaviorTests(unittest.TestCase):
             tuple(item["id"] for item in audit["missing_result_driving_information"]),
             n.CONSENSUS_MISSING_IDS,
         )
-        self.assertIn("generalized least-squares", audit["nonclaim"])
+        self.assertIn("GLS", audit["nonclaim"])
 
     def test_bayesian_missing_inventory_cannot_be_silently_erased(self):
         changed = deepcopy(self.attestation)
         changed["consensus_layer"]["not_uniquely_specified_in_primary_paper"] = []
         with self.assertRaises(n.NISTFeasibilityError):
             n.bayesian_consensus_audit(self.protocol, changed)
-        with self.assertRaises(n.NISTFeasibilityError):
-            n.load_source_attestation(self.protocol, root=_RootOverride(changed))
+        override = _RootOverride(changed)
+        try:
+            with self.assertRaises(n.NISTFeasibilityError):
+                n.load_source_attestation(self.protocol, root=override)
+        finally:
+            override.close()
 
     def test_source_authority_resolves_landing_pdf_conflict(self):
         audit = n.source_authority_audit(self.attestation)
@@ -125,6 +129,9 @@ class _RootOverride:
 
     def __truediv__(self, other):
         return self.path / other
+
+    def close(self):
+        self._temp.cleanup()
 
 
 class NIST2026EstimatorFeasibilityArtifactTests(unittest.TestCase):
