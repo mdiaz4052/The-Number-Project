@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "artifact_id": "bipm_2014_correlated_estimator_source_attestation_v1",
+  "primary_source": {
+    "publication": "T. Quinn, C. Speake, H. Parks, R. Davis, The BIPM measurements of the Newtonian constant of gravitation, G",
+    "journal": "Philosophical Transactions of the Royal Society A",
+    "volume_issue_article": "372(2026):20140032",
+    "doi": "10.1098/rsta.2014.0032",
+    "publisher": "The Royal Society",
+    "publication_date": "2014-10-13"
+  },
+  "correction_provenance": {
+    "original_2013_prl_doi": "10.1103/PhysRevLett.111.101102",
+    "2014_erratum_doi": "10.1103/PhysRevLett.113.039901",
+    "interpretation": "Use the 2014 Philosophical Transactions treatment as the authoritative corrected detailed estimator source; the erratum corroborates the corrected 2013-result provenance."
+  },
+  "transcription": {
+    "estimator_inputs": {
+      "servo": {
+        "value_decimal_in_1e_minus_11_units": "6.67515",
+        "printed_decimal_places": 5,
+        "relative_standard_uncertainty_ppm": "61",
+        "locator": "Section 12, equation (12.1a); uncertainty summary in Table 1"
+      },
+      "cavendish": {
+        "value_decimal_in_1e_minus_11_units": "6.67586",
+        "printed_decimal_places": 5,
+        "relative_standard_uncertainty_ppm": "54",
+        "locator": "Section 12, equation (12.1b); uncertainty summary in Table 1"
+      },
+      "covariance_ppm_squared": {
+        "value": "-2080",
+        "locator": "Table 1; covariance kappa"
+      }
+    },
+    "estimator_semantics": {
+      "covariance_matrix": "Section 11(d), equations (11.13a)-(11.14d)",
+      "general_linear_combination": "G_w = lambda G_s + mu G_c, equation (11.15a)",
+      "variance": "delta G_w^2 = lambda^2 sigma_s^2 + 2 lambda mu kappa + mu^2 sigma_c^2, equation (11.15b)",
+      "unbiased_constraint": "Text following equation (11.15b): set mu = 1 - lambda and choose the value minimizing the variance"
+    },
+    "comparison_only": {
+      "printed_servo_weight": "0.46",
+      "printed_cavendish_weight": "0.54",
+      "printed_combined_relative_uncertainty_ppm": "25",
+      "published_combined_value_decimal_in_1e_minus_11_units": "6.67554",
+      "published_combined_printed_decimal_places": 5,
+      "locator": "Text following equation (11.15b), Table 1, and Section 12 equation (12.2)"
+    }
+  },
+  "source_access": {
+    "publisher_doi_resolves": true,
+    "publisher_pdf_runtime_note": "The Royal Society publisher endpoint returned HTTP 403 to the model web runtime during source verification; no publisher-PDF byte digest is claimed.",
+    "bibliographic_cross_check": "PubMed PMID 25201995 independently confirms title, authors, journal, article number, and DOI.",
+    "text_cross_check": "Equation/table transcription was cross-checked against an accessible text rendering of the published paper and the APS 2014 erratum.",
+    "raw_source_bytes_persisted": false
+  },
+  "claim_boundary": [
+    "This is a source transcription/semantic attestation, not an independent apparatus validation.",
+    "The comparison-only final value and printed weights are not authorized estimator inputs.",
+    "No hidden unrounded method values are asserted."
+  ]
+}

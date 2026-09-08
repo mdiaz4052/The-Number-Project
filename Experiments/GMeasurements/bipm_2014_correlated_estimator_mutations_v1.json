@@ -1,0 +1,473 @@
+{
+  "anti_false_kill_rule": "Only named assertion failures count; import, syntax, infrastructure, skip, and source-state failures are invalid.",
+  "artifact_id": "bipm_2014_correlated_estimator_mutations_v1",
+  "calibration_valid": true,
+  "definitions_sha256": "35d5c563b3f859b58959445843706cc58cd1bac088902df5e409599f5d272deb",
+  "family_status": "valid",
+  "preregistration_sha256": "e5516661e79a222a5fca6f8de61e7c461575129a34a3e1e41359491fa42076a9",
+  "production_count": 8,
+  "records": [
+    {
+      "applied_source_sha256": "8bfb5ff7e55cdf0bd4437575e685718d46f5fffde61295fe8c01c944d4bd6664",
+      "category": "baseline",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 5,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "unmutated_baseline",
+      "outcome": "SURVIVED",
+      "path": null,
+      "tests": [
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_decimal_cells_and_sign_aware_linear_enclosure",
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_exact_minimum_variance_weights_and_sum",
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_real_source_midpoint_and_enclosure_are_distinct",
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_synthetic_compatible_and_incompatible_classification",
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_target_and_printed_summary_invariance"
+      ]
+    },
+    {
+      "applied_source_sha256": "0ae95877761f1036d764b32ee73b6d296d87ebdeb4b0f7da16f2603cf1363482",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_decimal_cells_and_sign_aware_linear_enclosure"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "calibration_killable_half_width",
+      "outcome": "KILLED",
+      "path": "Discovery/correlated_weighted_mean.py",
+      "tests": [
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_decimal_cells_and_sign_aware_linear_enclosure"
+      ]
+    },
+    {
+      "applied_source_sha256": "1f7b145b623ca875a3b6b9e8a6b0cacf675ef271f22d4752834c9a3e255f22e7",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "calibration_equivalent_fraction_wrap",
+      "outcome": "SURVIVED",
+      "path": "Discovery/correlated_weighted_mean.py",
+      "tests": [
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_exact_minimum_variance_weights_and_sum"
+      ]
+    },
+    {
+      "applied_source_sha256": "82ba07540ce5775cc9d49abc2c9a8528547ad43766930ec0a239f5063def7dc6",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_exact_minimum_variance_weights_and_sum"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "erase_covariance_from_combined_variance",
+      "outcome": "KILLED",
+      "path": "Discovery/correlated_weighted_mean.py",
+      "tests": [
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_exact_minimum_variance_weights_and_sum"
+      ]
+    },
+    {
+      "applied_source_sha256": "47168c4dd1c73547732adf8d9e921897f6249f8d1ddad1826eb24a0f74d2aeb9",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_exact_minimum_variance_weights_and_sum"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "flip_covariance_sign_in_servo_weight",
+      "outcome": "KILLED",
+      "path": "Discovery/correlated_weighted_mean.py",
+      "tests": [
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_exact_minimum_variance_weights_and_sum"
+      ]
+    },
+    {
+      "applied_source_sha256": "ce2b625e4a320f6e2ad1afe33331c40cf030a7dcd9eda6ff5d8e60b68f250c81",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_real_source_midpoint_and_enclosure_are_distinct"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "replace_covariance_with_zero",
+      "outcome": "KILLED",
+      "path": "Discovery/bipm_2014_correlated_estimator.py",
+      "tests": [
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_real_source_midpoint_and_enclosure_are_distinct"
+      ]
+    },
+    {
+      "applied_source_sha256": "5000c3c98d5a2330695c3521e90baa923c23eb2eda86a2fd5def3a7bb2cf957e",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_target_and_printed_summary_invariance"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "use_printed_weights_for_enclosure",
+      "outcome": "KILLED",
+      "path": "Discovery/bipm_2014_correlated_estimator.py",
+      "tests": [
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_target_and_printed_summary_invariance"
+      ]
+    },
+    {
+      "applied_source_sha256": "cea1d5f5fb128c04b5cdcfeec00b38a54c13b0ae3d28c1bc11fa745cfab7adb2",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_target_and_printed_summary_invariance"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "leak_printed_combined_uncertainty_into_covariance",
+      "outcome": "KILLED",
+      "path": "Discovery/bipm_2014_correlated_estimator.py",
+      "tests": [
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_target_and_printed_summary_invariance"
+      ]
+    },
+    {
+      "applied_source_sha256": "75ab59bcc937ad447a5e93b681b39454eaf82a33793a755b1c82b064282beb77",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_real_source_midpoint_and_enclosure_are_distinct"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "collapse_input_rounding_cells_to_midpoints",
+      "outcome": "KILLED",
+      "path": "Discovery/correlated_weighted_mean.py",
+      "tests": [
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_real_source_midpoint_and_enclosure_are_distinct"
+      ]
+    },
+    {
+      "applied_source_sha256": "fa77fa2533558a603aef094771a28a2838b70c7230f0079e6729839e368dd6df",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_real_source_midpoint_and_enclosure_are_distinct"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "corrupt_positive_weight_lower_enclosure_extremum",
+      "outcome": "KILLED",
+      "path": "Discovery/correlated_weighted_mean.py",
+      "tests": [
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_real_source_midpoint_and_enclosure_are_distinct"
+      ]
+    },
+    {
+      "applied_source_sha256": "2928f9fa24ea0fb622adb4066082131d9b7afd59064718f22c789a3fc6f886ed",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_synthetic_compatible_and_incompatible_classification"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_2014_correlated_estimator": "Discovery/bipm_2014_correlated_estimator.py",
+          "Discovery.correlated_weighted_mean": "Discovery/correlated_weighted_mean.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_bipm_2014_correlated_estimator": "tests/test_bipm_2014_correlated_estimator.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "erase_model_relative_incompatible_qualifier",
+      "outcome": "KILLED",
+      "path": "Discovery/bipm_2014_correlated_estimator.py",
+      "tests": [
+        "tests.test_bipm_2014_correlated_estimator.BIPMCorrelatedEstimatorBehaviorTests.test_synthetic_compatible_and_incompatible_classification"
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "scope": "covariance-driven weights, target independence, finite-resolution enclosure, and model-relative classification",
+  "source_snapshot": {
+    "files": [
+      {
+        "path": "Discovery/correlated_weighted_mean.py",
+        "sha256": "5ca6a083363bcc04f38f8b0919fe592ec653328176768f8460af0e4ccc5bd827"
+      },
+      {
+        "path": "Discovery/bipm_2014_correlated_estimator.py",
+        "sha256": "8bfb5ff7e55cdf0bd4437575e685718d46f5fffde61295fe8c01c944d4bd6664"
+      },
+      {
+        "path": "Notes/BIPM2014CorrelatedEstimatorSpecification.md",
+        "sha256": "5fff12fb82e74547038ece7c37e153c63021d33dff7403c359ab740c8d0bb3ef"
+      },
+      {
+        "path": "Notes/BIPM2014CorrelatedEstimator.md",
+        "sha256": "96cdd27b2422faccd29ab9978b7caf7963c1dfabd4aa0a3eaecfd0815065b4b5"
+      },
+      {
+        "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_preregistration_v1.json",
+        "sha256": "e5516661e79a222a5fca6f8de61e7c461575129a34a3e1e41359491fa42076a9"
+      },
+      {
+        "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_source_attestation_v1.json",
+        "sha256": "92086b06b38b5ab6fbed23ba9a1fb2ac08c9157c3ae246cfa3c841f28a6e539b"
+      },
+      {
+        "path": "Discovery/bipm_2014_correlated_estimator_mutations.py",
+        "sha256": "162c3b6196177fbbe0d60f78363be72beed8d5ed84c472c0ab06504dc8287e0d"
+      },
+      {
+        "path": "tests/test_bipm_2014_correlated_estimator.py",
+        "sha256": "7c464abdd257d4a4a2e84a3987d7bc883fc0221dbf57d10535b432f6f0195382"
+      },
+      {
+        "path": "tests/test_bipm_2014_correlated_estimator_mutations.py",
+        "sha256": "b4f7e52b8e65a190d5a95ad62be47b15f59b18f88b97e0eedeffdd21f39324c7"
+      },
+      {
+        "path": "Discovery/mutation_test_runner.py",
+        "sha256": "2d128a4b368fe70b56cc98886da506e4bef1fed5bb641e7aee6272c613a6ce34"
+      },
+      {
+        "path": "Discovery/preregistration_history.py",
+        "sha256": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0"
+      },
+      {
+        "path": "Discovery/source_history.py",
+        "sha256": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb"
+      }
+    ],
+    "source_commit_sha": "aa9b711c60b081564a8eae671e48b9c8cdd51e45"
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "artifact_id": "bipm_2014_correlated_estimator_v1",
+  "claim_limits": [
+    "No new laboratory measurement of G.",
+    "No independent validation of the BIPM apparatus or uncertainty budget.",
+    "No claim that the displayed method central values equal hidden unrounded author values.",
+    "No probability model beyond the source-declared covariance/variance use in the minimum-variance linear estimator.",
+    "No cross-publication common-constant inference or universality claim.",
+    "No outcome-blind discovery claim.",
+    "Compatible means the exact weighted image of the two printed method cells intersects the printed combined-value cell; it does not recover unique hidden author values.",
+    "The exact derived weights condition on the displayed 61 ppm, 54 ppm, and -2080 ppm^2 summaries as declared source inputs.",
+    "The printed 0.46/0.54 weights and 25 ppm combined uncertainty are corroboration only."
+  ],
+  "comparison_only": {
+    "printed_combined_relative_uncertainty_ppm": "25",
+    "published_combined_G_decimal_in_1e_minus_11_units": "6.67554",
+    "published_combined_printed_decimal_places": 5
+  },
+  "decision": {
+    "outcome": "compatible",
+    "reason": "aggregate_enclosure_intersects_published_combined_cell",
+    "status": "representable_under_the_declared_bipm_2014_correlated_weighted_mean_model"
+  },
+  "estimator": {
+    "combined_relative_standard_uncertainty_ppm_decimal": "24.581400556337",
+    "combined_relative_variance_ppm_squared": {
+      "denominator": "10797",
+      "numerator": "6524036"
+    },
+    "covariance_matrix_ppm_squared": [
+      [
+        {
+          "denominator": "1",
+          "numerator": "3721"
+        },
+        {
+          "denominator": "1",
+          "numerator": "-2080"
+        }
+      ],
+      [
+        {
+          "denominator": "1",
+          "numerator": "-2080"
+        },
+        {
+          "denominator": "1",
+          "numerator": "2916"
+        }
+      ]
+    ],
+    "denominator_ppm_squared": {
+      "denominator": "1",
+      "numerator": "10797"
+    },
+    "derived_weights": {
+      "cavendish": {
+        "denominator": "10797",
+        "numerator": "5801"
+      },
+      "cavendish_decimal": "0.537278873761",
+      "servo": {
+        "denominator": "10797",
+        "numerator": "4996"
+      },
+      "servo_decimal": "0.462721126239",
+      "sum": {
+        "denominator": "1",
+        "numerator": "1"
+      }
+    },
+    "determinant_ppm_fourth": {
+      "denominator": "1",
+      "numerator": "6524036"
+    },
+    "input_order": [
+      "servo",
+      "cavendish"
+    ],
+    "printed_weight_corroboration": {
+      "cavendish_difference": {
+        "denominator": "539850",
+        "numerator": "-1469"
+      },
+      "cavendish_printed": "0.54",
+      "role": "comparison_only_not_estimator_input",
+      "servo_difference": {
+        "denominator": "539850",
+        "numerator": "1469"
+      },
+      "servo_printed": "0.46"
+    }
+  },
+  "integrity": {
+    "baseline_main_sha": "fe9b6ee4301612530143ae13e814a16cc5fef2cb",
+    "external_anchor": {
+      "created_at": "2026-09-08T20:29:13Z",
+      "event": "draft_pull_request_created",
+      "outcome_blind": false,
+      "preregistration_commit_sha": "1d71e27e1655f3cef7f674e507c03a1a14e2a340",
+      "url": "https://github.com/mdiaz4052/The-Number-Project/pull/44"
+    },
+    "preregistration_commit_sha": "1d71e27e1655f3cef7f674e507c03a1a14e2a340",
+    "preregistration_sha256": "e5516661e79a222a5fca6f8de61e7c461575129a34a3e1e41359491fa42076a9",
+    "source_snapshot": {
+      "files": [
+        {
+          "path": "Discovery/correlated_weighted_mean.py",
+          "sha256": "5ca6a083363bcc04f38f8b0919fe592ec653328176768f8460af0e4ccc5bd827"
+        },
+        {
+          "path": "Discovery/bipm_2014_correlated_estimator.py",
+          "sha256": "8bfb5ff7e55cdf0bd4437575e685718d46f5fffde61295fe8c01c944d4bd6664"
+        },
+        {
+          "path": "Notes/BIPM2014CorrelatedEstimatorSpecification.md",
+          "sha256": "5fff12fb82e74547038ece7c37e153c63021d33dff7403c359ab740c8d0bb3ef"
+        },
+        {
+          "path": "Notes/BIPM2014CorrelatedEstimator.md",
+          "sha256": "96cdd27b2422faccd29ab9978b7caf7963c1dfabd4aa0a3eaecfd0815065b4b5"
+        },
+        {
+          "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_preregistration_v1.json",
+          "sha256": "e5516661e79a222a5fca6f8de61e7c461575129a34a3e1e41359491fa42076a9"
+        },
+        {
+          "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_source_attestation_v1.json",
+          "sha256": "92086b06b38b5ab6fbed23ba9a1fb2ac08c9157c3ae246cfa3c841f28a6e539b"
+        }
+      ],
+      "source_commit_sha": "cfc1fae9b22969a44f1c24046bf276d8bfca0d71"
+    }
+  },
+  "kind": "conditional_correlated_two_input_weighted_estimator_reconstruction",
+  "known_prior_information": {
+    "allowed_claim": "The estimator structure and derived weights must be functions only of the frozen method uncertainties and covariance; the published combined central value is comparison-only.",
+    "outcome_blind": false,
+    "reason": "The candidate-selection discussion before this freeze already exposed the paper's reported combined value, printed weights, and covariance summary. This PR therefore claims target-independent implementation, not outcome blindness."
+  },
+  "representation": {
+    "aggregate_enclosure_in_1e_minus_11_units": {
+      "high": {
+        "denominator": "2159400000",
+        "numerator": "14415153449"
+      },
+      "low": {
+        "denominator": "431880000",
+        "numerator": "2883026371"
+      }
+    },
+    "input_cells_in_1e_minus_11_units": {
+      "cavendish": {
+        "high": {
+          "denominator": "200000",
+          "numerator": "1335173"
+        },
+        "low": {
+          "denominator": "200000",
+          "numerator": "1335171"
+        }
+      },
+      "servo": {
+        "high": {
+          "denominator": "200000",
+          "numerator": "1335031"
+        },
+        "low": {
+          "denominator": "200000",
+          "numerator": "1335029"
+        }
+      }
+    },
+    "intersection_in_1e_minus_11_units": {
+      "high": {
+        "denominator": "2159400000",
+        "numerator": "14415153449"
+      },
+      "low": {
+        "denominator": "200000",
+        "numerator": "1335107"
+      }
+    },
+    "midpoint_aggregate_decimal": "6.675531468000",
+    "midpoint_aggregate_in_1e_minus_11_units": {
+      "denominator": "539850000",
+      "numerator": "3603785663"
+    },
+    "published_combined_cell_in_1e_minus_11_units": {
+      "high": {
+        "denominator": "200000",
+        "numerator": "1335109"
+      },
+      "low": {
+        "denominator": "200000",
+        "numerator": "1335107"
+      }
+    }
+  },
+  "schema_version": 1,
+  "source": {
+    "doi": "10.1098/rsta.2014.0032",
+    "locators": {
+      "cavendish_value": "Section 12, equation (12.1b)",
+      "combined_value": "Section 12, equation (12.2)",
+      "covariance_form": "Section 11(d), equations (11.13a)-(11.14d)",
+      "general_weighted_combination": "Section 11(d), equations (11.15a)-(11.15b)",
+      "servo_value": "Section 12, equation (12.1a)",
+      "unbiased_minimum_variance_rule": "Section 11(d), text immediately following equation (11.15b)",
+      "uncertainty_summary": "Table 1, printed/PDF page 26"
+    },
+    "source_attestation_path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_source_attestation_v1.json"
+  }
+}
