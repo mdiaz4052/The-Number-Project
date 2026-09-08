@@ -1,0 +1,453 @@
+{
+  "anti_false_kill_rule": "Named assertion failures only; infrastructure, import, syntax, skip, and source-freshness failures are invalid.",
+  "artifact_id": "newman_2014_table11_rounding_consistency_mutations_v1",
+  "calibration_valid": true,
+  "definitions_sha256": "a42c0b8412603ab78697258e0610cf06f2bd6322800cbe6ab6754e04b1e731e8",
+  "family_status": "valid",
+  "preregistration_sha256": "a1943c7bcbd71706119e3c2a82dc85d05ea8abde33f9f2a7d124c208691e3dcd",
+  "production_count": 8,
+  "records": [
+    {
+      "applied_source_sha256": "20e85ca83c0b5072cf6f6e3aeb590cd101ca48ade268c25dacd927a8706bf3a3",
+      "category": "baseline",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 8,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "unmutated_baseline",
+      "outcome": "SURVIVED",
+      "tests": [
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_all_three_published_scopes_are_required",
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_central_value_cannot_affect_variance_or_truth",
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_component_rounding_bin_is_exact",
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_model_relative_negative_label",
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_schedule_order_freeze",
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_synthetic_incompatible_and_unresolved_statuses",
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_tensor_schedule_and_independent_coordinates",
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_terminal_resolution_cannot_drive_candidate_generation"
+      ]
+    },
+    {
+      "applied_source_sha256": "5f37487cf55181c8287a093fb56cb5cf472ba0afad63d67b788ceed236c1811e",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_schedule_order_freeze"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "calibration_killable_schedule_order",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_schedule_order_freeze"
+      ]
+    },
+    {
+      "applied_source_sha256": "fee9d80c807054907020e018fef35c08524130197ac6e34944049cad64b8683d",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "calibration_equivalent_tuple_materialization",
+      "outcome": "SURVIVED",
+      "tests": [
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_tensor_schedule_and_independent_coordinates"
+      ]
+    },
+    {
+      "applied_source_sha256": "171dfcb1f224ab0e995b21bc8930b218c0c7870b4dc628bf0fdb166d214a74b5",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_tensor_schedule_and_independent_coordinates"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "collapse_second_tensor_coordinate",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_tensor_schedule_and_independent_coordinates"
+      ]
+    },
+    {
+      "applied_source_sha256": "c5f2e27ea041452b2a56f9963c582d68496f4c60fd2cc2a03bef121b47b6ebec",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_all_three_published_scopes_are_required"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "ignore_third_scope",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_all_three_published_scopes_are_required"
+      ]
+    },
+    {
+      "applied_source_sha256": "74d4fd99a60b441478975eaa33984c1e6966dff97f7270e6e088b5b530873586",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_terminal_resolution_cannot_drive_candidate_generation"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "terminal_resolution_leaks_into_components",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_terminal_resolution_cannot_drive_candidate_generation"
+      ]
+    },
+    {
+      "applied_source_sha256": "eaacc670ea09262c4fce06e7fe19f7ef3bd1ac0def71c81c07a1c16f37838fe8",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_component_rounding_bin_is_exact"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "widen_component_rounding_bin",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_component_rounding_bin_is_exact"
+      ]
+    },
+    {
+      "applied_source_sha256": "ccbcbd497f3ff05472e9d8209097ea4d0dd5027a49631888c09fa4c32b8ebd87",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_synthetic_incompatible_and_unresolved_statuses"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "unresolved_promoted_true",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_synthetic_incompatible_and_unresolved_statuses"
+      ]
+    },
+    {
+      "applied_source_sha256": "61ebb9deba1748526658744ad02ca5fb4c4699d11ae3b958a24abc63e2ff931f",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_synthetic_incompatible_and_unresolved_statuses"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "incompatible_promoted_unresolved",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_synthetic_incompatible_and_unresolved_statuses"
+      ]
+    },
+    {
+      "applied_source_sha256": "14d264145d4a8ac53aec4a1329aa239ead9c700e4e36ecf434422509af9bddb0",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_model_relative_negative_label"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "erase_model_relative_negative_qualifier",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_model_relative_negative_label"
+      ]
+    },
+    {
+      "applied_source_sha256": "a616250b9f9e020d251529444bf23caa8d89def13c0148a1ac3d4d895c19423c",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_central_value_cannot_affect_variance_or_truth"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.newman_2014_table11_rounding_consistency": "Discovery/newman_2014_table11_rounding_consistency.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.rounding_consistency": "Discovery/rounding_consistency.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests.test_newman_2014_table11_rounding_consistency": "tests/test_newman_2014_table11_rounding_consistency.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "central_G_affects_truth",
+      "outcome": "KILLED",
+      "tests": [
+        "tests.test_newman_2014_table11_rounding_consistency.NewmanBehaviorTests.test_central_value_cannot_affect_variance_or_truth"
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Newman Table 11 tensor schedule, rounding boundary, and three-scope classification only.",
+  "source_snapshot": {
+    "files": [
+      {
+        "path": "Discovery/newman_2014_table11_rounding_consistency.py",
+        "sha256": "20e85ca83c0b5072cf6f6e3aeb590cd101ca48ade268c25dacd927a8706bf3a3"
+      },
+      {
+        "path": "Notes/Newman2014Table11RoundingConsistencySpecification.md",
+        "sha256": "fec7694f1f8d504f45b8963ee12a948ac5eff932ec913bf5751a79635b4302e2"
+      },
+      {
+        "path": "Notes/Newman2014Table11RoundingConsistency.md",
+        "sha256": "727e82788382398c77383bd58069db5b1db55f2072f620e9657beb3056552e6c"
+      },
+      {
+        "path": "Experiments/GMeasurements/newman_2014_table11_rounding_consistency_preregistration_v1.json",
+        "sha256": "a1943c7bcbd71706119e3c2a82dc85d05ea8abde33f9f2a7d124c208691e3dcd"
+      },
+      {
+        "path": "Experiments/GMeasurements/newman_2014_source_attestation_v1.json",
+        "sha256": "a787f63e4c4377a6daf778d5402c065743e2f1b61d3a0c3a469f915e461653a6"
+      },
+      {
+        "path": "Discovery/newman_2014_table11_rounding_consistency_mutations.py",
+        "sha256": "4afebeb3e3ae69cfb453e218989102fc005005e13bd7db4b48d18caf7c5701ed"
+      },
+      {
+        "path": "tests/test_newman_2014_table11_rounding_consistency.py",
+        "sha256": "a53728991f55931e9aa0a04eae41cfd894917d36f5351402047f7b711a2f06ab"
+      },
+      {
+        "path": "tests/test_newman_2014_table11_rounding_consistency_mutations.py",
+        "sha256": "6d2f911f3a3b66916837fd1bb48f2eb94a291edce15c08ac61c8d68ddf5021c2"
+      },
+      {
+        "path": "Discovery/mutation_test_runner.py",
+        "sha256": "2d128a4b368fe70b56cc98886da506e4bef1fed5bb641e7aee6272c613a6ce34"
+      }
+    ],
+    "source_commit_sha": "bd6e059d0e4087c68841167dbc55c022ea46e8bf"
+  }
+}
