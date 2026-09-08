@@ -1,0 +1,293 @@
+{
+  "calculation": {
+    "arithmetic": "exact rational; display never determines classification",
+    "central_value_invariance": "q_1 = 1; any positive central schema value cancels",
+    "correlation_tag": "independent",
+    "engine_primitives": "Discovery/rounding_consistency.py unchanged",
+    "identity": "R^2 = x_statistical^2 + x_systematic^2 + x_analysis_method^2",
+    "new_schedule_wrapper": "Discovery/newman_2014_table11_rounding_consistency.py",
+    "one_run_per_scope": true,
+    "output_ppm_decimal_places": 6
+  },
+  "candidate_schedule": {
+    "adaptive_search": false,
+    "all_candidates_before_comparison": true,
+    "candidate_count_per_scope": 3375,
+    "cell_rule": "For each component independently: midpoint + t_k * half_width.",
+    "dimensions_per_scope": 3,
+    "kind": "full_independent_tensor_grid",
+    "ordering": "lexicographic itertools.product over component order [statistical, systematic, analysis_method] and the parameter list exactly as frozen",
+    "parameters": [
+      "0",
+      "-1/8",
+      "1/8",
+      "-2/8",
+      "2/8",
+      "-3/8",
+      "3/8",
+      "-4/8",
+      "4/8",
+      "-5/8",
+      "5/8",
+      "-6/8",
+      "6/8",
+      "-7/8",
+      "7/8"
+    ],
+    "terminal_blind_generation": true,
+    "total_candidate_count": 10125
+  },
+  "chronology": {
+    "amendments": "Versioned; never rewrite these bytes.",
+    "external_anchor": "Push freeze, create draft PR, then record GitHub-created timestamp before production implementation or classification.",
+    "first_commit": "Only this preregistration file; sole parent intended_base_sha.",
+    "implementation_after_freeze": true,
+    "merge_method": "merge_commit_only"
+  },
+  "claim_limits": [
+    "Conditional Newman et al. 2014 Table 11 rounding representation only.",
+    "No raw-data or full cryogenic torsion-pendulum estimator reproduction.",
+    "No audit of the conclusion's integer 14 ppm, 22 ppm, or 20 ppm statements; only Table 11's one-decimal quadrature sums are terminal targets.",
+    "No inference of hidden unrounded author values, historical nearest rounding, or uniqueness.",
+    "Compatible means at least one scheduled interior representation exists under the declared one-decimal rounding model.",
+    "Incompatible means not representable anywhere in the declared component rounding box under the stated Table 11 quadrature model; it is model-relative, not a statement of physical impossibility.",
+    "Unresolved is schedule-relative even under the richer tensor grid.",
+    "No discrepancy cause, sampling model, p-value, likelihood, or probability is established.",
+    "No comparison of measured central G values with HUST, Schlamminger, CODATA, or any external reference.",
+    "No common-cause, common-constant, universality, or cross-measurement estimator claim.",
+    "No update to the PR #41 joint representation object in this PR.",
+    "No E-001 artifact is an input or dependency."
+  ],
+  "classification": {
+    "compatible": "At least one frozen interior tensor-grid point has exact squared uncertainty strictly inside the terminal rounding interval squared.",
+    "incompatible": "The guaranteed exact squared-uncertainty enclosure over the entire declared component box is disjoint from the closed squared terminal interval.",
+    "invalid": "Malformed, missing, or provenance-invalid evidence raises and never becomes a numerical verdict.",
+    "negative_label": "not_representable_under_the_declared_table11_rounding_model",
+    "unresolved": "The guaranteed enclosure overlaps the terminal interval but none of the frozen tensor-grid candidates supplies a witness; schedule-relative, not publication-relative."
+  },
+  "component_ids": [
+    "statistical",
+    "systematic",
+    "analysis_method"
+  ],
+  "epistemic_routing": {
+    "DM-051": "Joint-inference negative-label maintenance is not on this PR's dependency surface; this new certificate nevertheless uses an explicitly model-relative negative label.",
+    "DM-053": "The third publication is not joined to the cross-measurement conjunction in this PR, so the joint-artifact resolution-caveat promotion condition does not fire here.",
+    "E-001": "Must remain structurally outside imports, filesystem inputs, source projections, and claims.",
+    "FH-2": "Handled prospectively by a 3375-point per-scope independent tensor grid; unresolved remains explicitly schedule-relative."
+  },
+  "intended_base_sha": "96ec62325d2f5b5e78dee36754ed934234c5d0e1",
+  "mandatory_scopes": [
+    "fibre_1",
+    "fibre_2",
+    "fibre_3"
+  ],
+  "preserved_baseline_paths": [
+    "Discovery/rounding_consistency.py",
+    "Discovery/g_measurement_joint_inference.py",
+    "Discovery/preregistration_history.py",
+    "Discovery/source_history.py",
+    "Experiments/GMeasurements/hust_2018_aaf_rounding_consistency_v1.json",
+    "Experiments/GMeasurements/schlamminger_2006_rounding_consistency_v1.json",
+    "Experiments/GMeasurements/g_measurement_joint_representation_inference_v1.json"
+  ],
+  "record_id": "newman_2014_table11_rounding_consistency_preregistration_v1",
+  "rounding_policy": {
+    "bin_interpretation": "Printed one-decimal cells denote closed rounding bins for conservative enclosure; witnesses must use strict interior component values and land strictly inside nondegenerate terminal bins.",
+    "component_half_width_ppm": "0.05",
+    "component_printed_decimal_places": 1,
+    "terminal_half_width_ppm": "0.05",
+    "terminal_printed_decimal_places": 1
+  },
+  "schema_version": 1,
+  "selection": {
+    "candidates": [
+      {
+        "doi": "10.1098/rsta.2014.0025",
+        "id": "newman_2014_uci14",
+        "reason": "Table 11 gives three named uncertainty components and a printed quadrature sum for each of three fibre results; surrounding text states quadrature combination; one paper supplies all required numerical and semantic inputs.",
+        "status": "selected"
+      },
+      {
+        "doi": "10.1038/nature13433",
+        "id": "rosi_2014_lens14",
+        "reason": "Primary measurement and companion uncertainty discussion are available, but Newman offers a cleaner same-table three-scope reconstruction for the first real falsification attempt. No arithmetic outcome was used in this ordering.",
+        "status": "scientifically_viable_deferred"
+      }
+    ],
+    "criteria": [
+      "peer-reviewed source identity",
+      "numerical table directly accessible for independent transcription",
+      "explicit component inventory and printed aggregate in same publication",
+      "declared aggregation semantics sufficient for an exact bounded reconstruction",
+      "no dependence on raw-data recovery",
+      "candidate chosen without pre-checking rounding-consistency outcome"
+    ],
+    "decision": "select_newman_2014_uci14_table11",
+    "selection_time_semantics": "Source feasibility and table structure examined before freeze; no RSS, interval-overlap, witness, or terminal classification calculation performed before freeze."
+  },
+  "source_attestation": {
+    "byte_length": 4566,
+    "path": "Experiments/GMeasurements/newman_2014_source_attestation_v1.json",
+    "prepared_before_freeze": true,
+    "projection": {
+      "input_projection": {
+        "central_values": {
+          "fibre_1": {
+            "role": "positive_schema_context_only",
+            "unit": "m^3 kg^-1 s^-2",
+            "value": "6.67435e-11"
+          },
+          "fibre_2": {
+            "role": "positive_schema_context_only",
+            "unit": "m^3 kg^-1 s^-2",
+            "value": "6.67408e-11"
+          },
+          "fibre_3": {
+            "role": "positive_schema_context_only",
+            "unit": "m^3 kg^-1 s^-2",
+            "value": "6.67455e-11"
+          }
+        },
+        "component_unit": "ppm",
+        "components": {
+          "fibre_1": [
+            {
+              "id": "statistical",
+              "value_ppm": "7.7"
+            },
+            {
+              "id": "systematic",
+              "value_ppm": "10.1"
+            },
+            {
+              "id": "analysis_method",
+              "value_ppm": "6.9"
+            }
+          ],
+          "fibre_2": [
+            {
+              "id": "statistical",
+              "value_ppm": "15.7"
+            },
+            {
+              "id": "systematic",
+              "value_ppm": "10.2"
+            },
+            {
+              "id": "analysis_method",
+              "value_ppm": "12.0"
+            }
+          ],
+          "fibre_3": [
+            {
+              "id": "statistical",
+              "value_ppm": "11.3"
+            },
+            {
+              "id": "systematic",
+              "value_ppm": "12.4"
+            },
+            {
+              "id": "analysis_method",
+              "value_ppm": "10.2"
+            }
+          ]
+        },
+        "scope_order": [
+          "fibre_1",
+          "fibre_2",
+          "fibre_3"
+        ]
+      },
+      "input_projection_sha256": "72c5c569d42bbc545d933e369647a29ba8af95900572a8fe9adc76b4d772d35c",
+      "limitations": [
+        "Hashes bind the frozen source projection and attestation bytes, not automatic comprehension of an external publication.",
+        "CI performs no live source download.",
+        "No raw-data, estimator, fibre-correlation, or final integer-ppm uncertainty reconstruction is claimed."
+      ],
+      "record_id": "newman_2014_source_attestation_v1",
+      "schema_version": 1,
+      "semantics": {
+        "audit_total_rule": "For each fibre separately, Table 11 labels the terminal row 'quadrature sum'; surrounding text says statistical, systematic, and analysis-method contributions and their quadrature sum are assigned.",
+        "final_integer_ppm_statements": "Outside this audit; the paper's conclusion gives 14, 22, and 20 ppm, but this certificate targets Table 11's 14.5, 22.2, and 19.6 only.",
+        "rounding_resolution": "All audited Table 11 component and terminal cells are printed to one decimal place.",
+        "scope_relationship": "Three separate mandatory fibre audits; no averaging or cross-fibre covariance model.",
+        "uncertainty_unit": "ppm"
+      },
+      "sources": {
+        "publication": {
+          "article": "20140025",
+          "authors": [
+            "Riley Newman",
+            "Michael Bantel",
+            "Eric Berg",
+            "William Cross"
+          ],
+          "canonical_url": "https://doi.org/10.1098/rsta.2014.0025",
+          "doi": "10.1098/rsta.2014.0025",
+          "identity_verification": "DOI/PubMed metadata and publisher-layout full text cross-checked",
+          "issue_date": "2014-10-13",
+          "journal": "Philosophical Transactions of the Royal Society A",
+          "numerical_locator": "Table 11, printed/PDF page 22",
+          "published_online": "2014-09-08",
+          "publisher": "The Royal Society",
+          "raw_capture_limitation": "The runtime could inspect the publication through web retrieval but could not persist authenticated/raw publisher PDF bytes; the frozen exact projection below, DOI identity, table locator, and independent rendered/text checks are the reproducible in-repository authority for this bounded audit.",
+          "raw_capture_sha256": null,
+          "role": "peer_reviewed_numerical_transcription_authority",
+          "semantic_verification": "Table 11 was visually and textually checked: all three component rows, all three quadrature-sum cells, and the surrounding statement that the contributions and quadrature sum are assigned to the three fibre results.",
+          "title": "A measurement of G with a cryogenic torsion pendulum",
+          "volume": "372"
+        }
+      },
+      "terminal_comparisons": {
+        "fibre_1": {
+          "half_width_ppm": "0.05",
+          "role": "terminal_only",
+          "scope": "fibre_1",
+          "value_ppm": "14.5"
+        },
+        "fibre_2": {
+          "half_width_ppm": "0.05",
+          "role": "terminal_only",
+          "scope": "fibre_2",
+          "value_ppm": "22.2"
+        },
+        "fibre_3": {
+          "half_width_ppm": "0.05",
+          "role": "terminal_only",
+          "scope": "fibre_3",
+          "value_ppm": "19.6"
+        }
+      },
+      "terminal_projection_sha256": "9736a6f6f9b2a1c5d99d84d036e3d1b966d4d9bba8fdd14abfb767188723afca"
+    },
+    "sha256": "a787f63e4c4377a6daf778d5402c065743e2f1b61d3a0c3a469f915e461653a6"
+  },
+  "specification": {
+    "byte_length": 6362,
+    "path": "Notes/Newman2014Table11RoundingConsistencySpecification.md",
+    "prepared_before_freeze": true,
+    "sha256": "fec7694f1f8d504f45b8963ee12a948ac5eff932ec913bf5751a79635b4302e2"
+  },
+  "validation": {
+    "exact_head_ci_authoritative": true,
+    "focused_tests": [
+      "source schema and frozen attestation identity",
+      "all three mandatory scopes and component inventories",
+      "3375 distinct tensor candidates per scope and terminal-blind construction",
+      "one-decimal rounding-bin semantics",
+      "exact enclosure and witness membership",
+      "synthetic compatible/incompatible/unresolved controls",
+      "central-value invariance",
+      "model-relative negative label",
+      "source/provenance/freshness",
+      "E-001 dependency isolation"
+    ],
+    "full_python_suite_once_on_final_tree": true,
+    "git_diff_check": true,
+    "lean_local_required": false,
+    "mutation_required": true,
+    "new_check_guards": 2
+  }
+}
