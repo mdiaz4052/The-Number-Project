@@ -1,0 +1,412 @@
+{
+  "calculation": {
+    "arithmetic": "exact rational; display never determines classification",
+    "central_value_invariance": "for every positive central G",
+    "engine": "Discovery/rounding_consistency.py",
+    "existing_correlation_tag": "independent",
+    "identity": "q_1 = 1; R^2 = sum_k x_k^2",
+    "one_run_per_scope": true,
+    "output_ppm_decimal_places": 6
+  },
+  "candidate_schedule": {
+    "adaptive_search": false,
+    "all_candidates_before_comparison": true,
+    "both_scopes_mandatory": true,
+    "cell_rule": "midpoint + t * half_width",
+    "parameters": [
+      "0",
+      "-1/8",
+      "1/8",
+      "-2/8",
+      "2/8",
+      "-3/8",
+      "3/8",
+      "-4/8",
+      "4/8",
+      "-5/8",
+      "5/8",
+      "-6/8",
+      "6/8",
+      "-7/8",
+      "7/8"
+    ]
+  },
+  "chronology": {
+    "amendments": "versioned; never rewrite these bytes",
+    "external_anchor": "push freeze then create draft PR before production implementation or either classification; record GitHub-created timestamp",
+    "first_commit": "only this preregistration; sole parent intended_base_sha",
+    "merge_method": "merge_commit_only"
+  },
+  "claim_limits": [
+    "Conditional Table VII rounding representation only.",
+    "No raw-data or full beam-balance estimator reproduction.",
+    "No final absolute (109)(54) uncertainty reproduction.",
+    "No inference of hidden unrounded author values or historical nearest rounding.",
+    "No discrepancy cause or probability established.",
+    "No comparison of G with HUST or external reference; no universality test.",
+    "No physical prediction or replication-depth upgrade.",
+    "No change to HUST evidence status."
+  ],
+  "classification": {
+    "acceptance": "No particular experimental classification required.",
+    "compatible": "First frozen candidate with valid interior components and exact squared uncertainty strictly inside nondegenerate comparison interval. Generic zero-width controls retain equality.",
+    "incompatible": "Guaranteed exact squared-uncertainty enclosure disjoint from closed squared comparison interval.",
+    "invalid": "Malformed or missing evidence raises; never a numerical verdict.",
+    "unresolved": "Enclosure overlaps but no frozen candidate supplies a witness."
+  },
+  "intended_base_sha": "7e01334a911ab5bd664b2e32c16149c6739b5f7c",
+  "mandatory_scopes": [
+    "statistical",
+    "systematic"
+  ],
+  "preserved_baseline_files": [
+    {
+      "byte_length": 22109,
+      "path": "Experiments/GMeasurements/README.md",
+      "sha256": "0a2e1aafd6ece4ac3fed23503b0972d7b8cf231901db914a66a1de74e47e4049"
+    },
+    {
+      "byte_length": 17319,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_combined_feasibility_preregistration_v1.json",
+      "sha256": "14cda7a63b8f5ad2c40455300465a3c5b169e14f4ac7390742a172db30ba750a"
+    },
+    {
+      "byte_length": 44279,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_combined_feasibility_v1.json",
+      "sha256": "08c6e555221662586ac5750faa1145aaecc54727fe88bdf1a662e26fa29b7a8c"
+    },
+    {
+      "byte_length": 21027,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_combined_measurement_model_preregistration_v1.json",
+      "sha256": "284957ec010d25bc7d5e0e64696df11b8d9c1af5358670c3a7bb7d7c2cf8961f"
+    },
+    {
+      "byte_length": 211216,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_combined_measurement_model_v1.json",
+      "sha256": "a0aae4845350bad41cc8dbcdb84c73cfbb189491e25d27bab708c55c5292d35f"
+    },
+    {
+      "byte_length": 6102,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v1.json",
+      "sha256": "06338de9b24ead21f5b24da12d1cd0c94ba584ad740368b128d6f552023ec6f3"
+    },
+    {
+      "byte_length": 9137,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_authorization_v2.json",
+      "sha256": "2bf6bb803d18600147c17bd94f5b05a3118f9bfd76136e0b7c22c5dfa1e77170"
+    },
+    {
+      "byte_length": 3288,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_clarification_v1.json",
+      "sha256": "7b193a70fa1ccbf3097dba0f9316fe446e5b8f8c4073f440ea7e25bba18276b4"
+    },
+    {
+      "byte_length": 6268,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_feasibility_v1.json",
+      "sha256": "e2969a0223641d8a13d2199e3ea34879a4ed437a8f23c09e510cec327b7a72d8"
+    },
+    {
+      "byte_length": 843,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_model_preregistration_v1.anchor.json",
+      "sha256": "54556b9bfc9cf855c100c6049285612baaa8885eb4e0ba7bc455a6cc9f8d83b9"
+    },
+    {
+      "byte_length": 10981,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_model_preregistration_v1.md",
+      "sha256": "05913514c25be9bf722454f6369261f529b7bd19c97d1ee81cf054a9bc9bb49f"
+    },
+    {
+      "byte_length": 240705,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v1.json",
+      "sha256": "a13944b8a6f8691c46398b4374cfb29df94f8cdfc698a70ad47addcf05cad0a3"
+    },
+    {
+      "byte_length": 241071,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_measurement_models_v2.json",
+      "sha256": "9ab68481e2f11a08dd184aec25781822fd4c3b9beaa13fc5edb34cfa4e5a7b00"
+    },
+    {
+      "byte_length": 5461,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v1.json",
+      "sha256": "82f6715fa40a9d951d8f4b4e7f9d5f5e64ae9d80c645027acda08f39becc79ba"
+    },
+    {
+      "byte_length": 8165,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v2.json",
+      "sha256": "5d7f197b9eae5a18f302eb9eca3073346106d6363c59cbd35573e6a53fcb9809"
+    },
+    {
+      "byte_length": 10386,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_mutation_results_v3.json",
+      "sha256": "c114045c78e97b81e70c9a216c279c58076732a6445906effa83bd94f61b7561"
+    },
+    {
+      "byte_length": 2183,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_depth_2b_official_source_v1.json",
+      "sha256": "de73536119564f28b61f330eea5ce8841fd5e2ba21f52dc3ce6a7f44b620476d"
+    },
+    {
+      "byte_length": 6315,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_external_sources_v1.json",
+      "sha256": "3b37b6548a23ef3138909bed638dd13cf571c084fdfaad84a70d41aac02eb559"
+    },
+    {
+      "byte_length": 4693,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_independent_human_attestation_v1.json",
+      "sha256": "560fbef2b08b46a29086e26becbe47701b84ba9e3aa6ecc3ffdda502fbc891b1"
+    },
+    {
+      "byte_length": 6080,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_measurement_model_preregistration_v1.md",
+      "sha256": "5becdb7cfc6daed8a1a6c47cfeede18d5349ee2820197d8c3d17a5b61b705a62"
+    },
+    {
+      "byte_length": 71092,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_measurement_models_v1.json",
+      "sha256": "6da4917504be9b3db944c8be8b4e86ad2643ab383f68e83d2cfb920680cd02bb"
+    },
+    {
+      "byte_length": 1885,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_post_audit_clarification_v1.md",
+      "sha256": "5e36d76f243603aabf05e37e52061831988fa5e680afd568e487ce87b1499b95"
+    },
+    {
+      "byte_length": 7257,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_preregistration_v1.md",
+      "sha256": "fa297ecfa4cc4ae2ee7737e413dc8bf0f6ad63c70ca2d1ff070ae81dd2ec8885"
+    },
+    {
+      "byte_length": 7412,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v1.json",
+      "sha256": "624d84db3ef855edc9f126a8f5f974b2aa799600e94d2fb39f1d048ffa7afe5b"
+    },
+    {
+      "byte_length": 8009,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_depth_2b_v2.json",
+      "sha256": "ef8a23cee8d1d7c7e417ca69d8b0e75a66d5cf272e6fcd59ba92fb84d1468326"
+    },
+    {
+      "byte_length": 13213,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_required_inputs_v1.json",
+      "sha256": "8328bec85e5356d833d7f36b9e16833edc0d3c415bdd1eba59c7a01790c7f37a"
+    },
+    {
+      "byte_length": 1999,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_rounding_consistency_implementation_clarification_v1.json",
+      "sha256": "bfe04d6302499b44d11fec8144103456cfe93369a2a76b8e83d2b8660679d888"
+    },
+    {
+      "byte_length": 19400,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_rounding_consistency_preregistration_v1.json",
+      "sha256": "0c86cfdbe5efa97c6c585db25c1194eb7d798e532ebe8aed03990bde38983233"
+    },
+    {
+      "byte_length": 242916,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_rounding_consistency_v1.json",
+      "sha256": "d04a1837ba66514930668303eb059442bde237c83f0bb6a3a274f1eea3af99b5"
+    },
+    {
+      "byte_length": 1632,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_semantic_source_review_v1.json",
+      "sha256": "1628e7a3eac2fadddf75f892e8128807fd07bed7b51b920672826e4915c68b1f"
+    },
+    {
+      "byte_length": 5088,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.manifest.json",
+      "sha256": "867bff124fbd6b46a1ae1710aeaa13fb19698455c5fbaa8971bb3c08f10b162a"
+    },
+    {
+      "byte_length": 8325,
+      "path": "Experiments/GMeasurements/hust_2018_aaf_source_audit_v1.md",
+      "sha256": "883dea16d9713a14224a399a4894c443b9a019a42e1f19e6e500999261db4117"
+    },
+    {
+      "byte_length": 33680,
+      "path": "Experiments/GMeasurements/inverse_square_bridge_example.json",
+      "sha256": "6b20ceaa94c99b68de91fa1db97a6031b15526298b78de0afd7bd3738d045795"
+    },
+    {
+      "byte_length": 13676,
+      "path": "Experiments/GMeasurements/physical_bridge_contract.json",
+      "sha256": "7724d5b450cd22f66cf9cd4af533463cb635404ffb460e631ad0078beacad47b"
+    },
+    {
+      "byte_length": 1465,
+      "path": "Experiments/GMeasurements/uw_2000_published_data_pilot_v1.manifest.json",
+      "sha256": "d6cdd45deef761d73a7de5a8d02c93d927ced3ad9c26abe9b3eac0fd990959b7"
+    },
+    {
+      "byte_length": 7003,
+      "path": "Experiments/GMeasurements/uw_2000_published_data_preregistration_v1.md",
+      "sha256": "487d4d584e412b404815d8f22eb90d7b4690465d4984d91aa072fb1520326971"
+    },
+    {
+      "byte_length": 1895,
+      "path": "Experiments/GMeasurements/uw_2000_published_data_preregistration_v1_clarification_1.md",
+      "sha256": "f2bac432714e8d480c51daf090d69463df2239deb704f0283c4b3274db5c5735"
+    },
+    {
+      "byte_length": 18738,
+      "path": "Experiments/GMeasurements/uw_2000_source_audit_v1.md",
+      "sha256": "1ff8b755a1eb2c68af1a51c670fa81a5caa7a39a8e3b627cfa962707f00cc6b5"
+    },
+    {
+      "byte_length": 10845,
+      "path": "Discovery/rounding_consistency.py",
+      "sha256": "5487ce47dcc2c4ecdd3abdfb83000e87f9a414c8381dbe11ba737f678225468a"
+    }
+  ],
+  "prior_knowledge": "The publication, Table VII component values, printed subtotals, HUST result, generic classifier behavior, and candidate feasibility assessment were known before preregistration. No Schlamminger rounding-consistency classification was calculated before this freeze. Candidate selection was based on source quality, methodological independence, reconstructability, and compatibility with the existing primitive, not on the eventual classification. This is a prospective classification freeze, not a blind physical prediction.",
+  "protocol_id": "schlamminger_2006_rounding_consistency_preregistration_v1",
+  "required_validation": [
+    "Exact eight components and two subtotals; omit blank cells.",
+    "Exact +/-0.05 ppm domains.",
+    "Scopes cannot be dropped, merged or swapped.",
+    "Both scopes execute regardless of first verdict.",
+    "Independent exact sum-of-squares point/enclosure oracle and q_1=1.",
+    "Relative classification invariant for any positive central G.",
+    "Exact complete 15-candidate schedule and ordering.",
+    "Terminal changes cannot alter enclosure or candidates.",
+    "Source substitution/deletion fails source/freshness checks.",
+    "Missing/malformed comparison raises, never unresolved.",
+    "Separate calculation and terminal decision artifact records.",
+    "Existing generic three-outcome controls pass.",
+    "All pre-existing GMeasurements artifacts and generic engine byte-identical.",
+    "No HUST target or external G input in calculator.",
+    "Bounded calibrated mutations attack source, radius, scope omission, leakage, verdict inversion and freeze/source-pin bypass.",
+    "Behavioral kills exclude syntax/import/infrastructure and dirty-source freshness failures.",
+    "Final focused and complete Python suites, relevant artifact/source/mutation guards, git diff --check.",
+    "Exact-head protected CI supplies Lean/proof attestation."
+  ],
+  "rounding_policy": {
+    "alternate_conventions": "not_tested",
+    "component_half_width_ppm": "0.05",
+    "component_quantum_ppm": "0.1",
+    "exclusion_bounds": "closed",
+    "kind": "declared_nearest_not_historical_fact",
+    "witness_membership": "strict_interior_for_nondegenerate_intervals"
+  },
+  "schema_version": 1,
+  "source_attestation": {
+    "input_projection": {
+      "central_value": {
+        "role": "positive_schema_context_only",
+        "unit": "m^3 kg^-1 s^-2",
+        "value": "6.674252e-11"
+      },
+      "component_unit": "ppm",
+      "components": {
+        "statistical": [
+          {
+            "id": "weighings",
+            "value_ppm": "11.6"
+          },
+          {
+            "id": "tm_sorption",
+            "value_ppm": "7.4"
+          },
+          {
+            "id": "linearity",
+            "value_ppm": "6.1"
+          },
+          {
+            "id": "calibration",
+            "value_ppm": "4.0"
+          },
+          {
+            "id": "mass_integration",
+            "value_ppm": "5.0"
+          }
+        ],
+        "systematic": [
+          {
+            "id": "tm_sorption",
+            "value_ppm": "7.4"
+          },
+          {
+            "id": "calibration",
+            "value_ppm": "0.5"
+          },
+          {
+            "id": "mass_integration",
+            "value_ppm": "3.3"
+          }
+        ]
+      },
+      "scope_order": [
+        "statistical",
+        "systematic"
+      ]
+    },
+    "input_projection_sha256": "0801da583b662ac4c5ddec671c37c0421af454272b8a22fb78efebe7cc4b29bd",
+    "limitations": [
+      "Hashes bind recorded bytes and projections, not automatic PDF comprehension.",
+      "No publisher PDF identity or arXiv-as-publisher claim.",
+      "CI performs no live source download."
+    ],
+    "record_id": "schlamminger_2006_source_attestation_v1",
+    "schema_version": 1,
+    "semantics": {
+      "audit_subtotal_rule": "declared root-sum-square over each Table VII column; no cross-component covariance inferred",
+      "authors_total_rule": "Section V combines statistical and systematic uncertainties by root-sum-square",
+      "blank_cells": "omitted, not zero",
+      "measured_signal": "group heading, not component",
+      "scope_relationship": "separate mandatory audits; no joint hidden-value or sampling claim",
+      "uncertainty_level": "one_standard_deviation"
+    },
+    "sources": {
+      "manuscript": {
+        "byte_length": 871396,
+        "capture_representation": "raw PDF response bytes",
+        "host": "arXiv",
+        "identifier": "gr-qc/0609027v1",
+        "locator": "Table VII and Section V, printed/PDF page 22",
+        "pdf_magic_validated": true,
+        "repository_storage": "hash_only; external PDF not redistributed",
+        "retrieval_date": "2026-09-08",
+        "role": "numerical_transcription_authority",
+        "semantic_verification": "PDF page 22 rendered and visually read; all eight component cells, both subtotals, and Section V context checked",
+        "sha256": "789db21fc81c12bff11e8a13e2db69529a88c1927e4c22657ad35d54e442a954",
+        "title": "A Measurement of Newton's Gravitational Constant",
+        "url": "https://arxiv.org/pdf/gr-qc/0609027v1",
+        "version": 1,
+        "version_date": "2006-09-07"
+      },
+      "publication": {
+        "article": "082001",
+        "capture_sha256": null,
+        "doi": "10.1103/PhysRevD.74.082001",
+        "identity_verification": "APS DOI record retrieved through search; direct journal HTML returned HTTP 403",
+        "journal": "Physical Review D",
+        "published_date": "2006-10-04",
+        "publisher": "American Physical Society",
+        "repository_storage": "metadata_only; no reproducible publisher response stored",
+        "role": "peer_reviewed_publication_identity",
+        "title": "Measurement of Newton's gravitational constant",
+        "url": "https://link.aps.org/doi/10.1103/PhysRevD.74.082001",
+        "volume": "74"
+      }
+    },
+    "terminal_comparisons": {
+      "statistical": {
+        "half_width_ppm": "0.05",
+        "role": "terminal_only",
+        "scope": "statistical",
+        "value_ppm": "16.3"
+      },
+      "systematic": {
+        "half_width_ppm": "0.05",
+        "role": "terminal_only",
+        "scope": "systematic",
+        "value_ppm": "8.1"
+      }
+    },
+    "terminal_projection_sha256": "0139795415aa9766012b58c893eae2b4d061f087093b6306686689c5b02ca036"
+  },
+  "source_attestation_sha256": "b299f909feb2e8a1d61123b464087ff96308d53bab71cabe91c6b4a3806e1e1e",
+  "specification": {
+    "byte_length": 9054,
+    "path": "Notes/Schlamminger2006RoundingConsistencySpecification.md",
+    "sha256": "180b25f5bc9239f8d93fca2753a4e195bbc154c80c2a5e14282b21cabc95cf11"
+  }
+}
