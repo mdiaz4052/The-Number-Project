@@ -565,7 +565,7 @@
       },
       {
         "path": "Notes/NIST2026ConfigurationModelsSpecification.md",
-        "sha256": "bd4e50c4fc66ac81f3ac5de45fa94a4ea9441fc5319aa6c755294186344244b3"
+        "sha256": "621a078a47c3d037105ca4ce56e1b94d72d54cbd0d6c640bcf23ab1d1a7bc5eb"
       },
       {
         "path": "Notes/NIST2026ConfigurationModels.md",
@@ -616,6 +616,6 @@
         "sha256": "21526b146d357c127bcb67f709ab133a117ebc6842d1e113c95cc873189cd05f"
       }
     ],
-    "source_commit_sha": "f542f84405549a8248bf07c0e079e6df19b652a4"
+    "source_commit_sha": "67b84994bdfb25c4fa84e5445a1aa38ccf1cfde2"
   }
 }

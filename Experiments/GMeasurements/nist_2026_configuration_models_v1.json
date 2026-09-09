@@ -96,7 +96,7 @@
         },
         {
           "path": "Notes/NIST2026ConfigurationModelsSpecification.md",
-          "sha256": "bd4e50c4fc66ac81f3ac5de45fa94a4ea9441fc5319aa6c755294186344244b3"
+          "sha256": "621a078a47c3d037105ca4ce56e1b94d72d54cbd0d6c640bcf23ab1d1a7bc5eb"
         },
         {
           "path": "Notes/NIST2026ConfigurationModels.md",
@@ -127,7 +127,7 @@
           "sha256": "9e976877bfd9890ba50ed4f2d183d3241a3f8dfb8af0b2fc046d53c4e9639f45"
         }
       ],
-      "source_commit_sha": "f542f84405549a8248bf07c0e079e6df19b652a4"
+      "source_commit_sha": "67b84994bdfb25c4fa84e5445a1aa38ccf1cfde2"
     }
   },
   "kind": "restricted_mean_contrast_diagnostics",
