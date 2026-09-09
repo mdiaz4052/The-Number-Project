@@ -28,34 +28,47 @@ jobs:
 
   python:
     name: Python tests and bounded search
-    if: github.event_name == 'pull_request' && github.head_ref == 'codex/nist-2026-n4-experimental-estimator' && github.repository == 'mdiaz4052/The-Number-Project'
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          ref: codex/nist-2026-n4-experimental-estimator
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - name: Regenerate and commit only the deterministic n=4 artifact
-        run: |
-          set -euo pipefail
-          path='Experiments/GMeasurements/nist_2026_n4_experimental_estimator_v1.json'
-          python -m Discovery.nist_2026_n4_experimental_estimator --output "$path"
-          python -m unittest tests.test_nist_2026_n4_experimental_estimator.NIST2026N4EstimatorBehaviorTests -v
-          python -m unittest tests.test_nist_2026_n4_experimental_estimator.NIST2026N4EstimatorArtifactTests.test_preregistration_anchor_and_read_closure_prerequisite_chronology tests.test_nist_2026_n4_experimental_estimator.NIST2026N4EstimatorArtifactTests.test_source_inventory_is_bounded_and_nist_scoped tests.test_nist_2026_n4_experimental_estimator.NIST2026N4EstimatorArtifactTests.test_committed_artifact_matches_rebuild -v
-          git diff --check
-          if git diff --quiet -- "$path"; then
-            echo 'deterministic artifact already exact'
-            exit 0
-          fi
-          changed="$(git status --porcelain)"
-          test "$changed" = " M $path"
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- "$path"
-          git commit -m 'Refresh deterministic NIST n=4 estimator artifact'
-          git push origin HEAD:codex/nist-2026-n4-experimental-estimator
+      - run: python -m unittest discover -s tests -v
+      - run: python -m Discovery.dimensional_search --check
+      - run: python -m Discovery.inverse_square_search --check
+      - run: python -m Discovery.dependency_analysis --check
+      - run: python -m Discovery.physical_bridge --check
+      - run: python -m Discovery.published_data_pilot --check
+      - run: python -m Discovery.hust_2018_aaf_source_audit --check
+      # Keep the three authorized HUST depth-2a empirical central-value records current.
+      - run: python -m Discovery.hust_2018_aaf_measurement_models --check
+      # Keep the separately authorized HUST depth-2b uncertainty records current.
+      - run: python -m Discovery.hust_2018_aaf_depth_2b_authorization --check
+      - run: python -m Discovery.hust_2018_aaf_depth_2b_measurement_models --check
+      - run: python -m Discovery.hust_2018_aaf_depth_2b_mutations --check
+      - run: python -m Discovery.hust_2018_aaf_combined_feasibility --check
+      - run: python -m Discovery.hust_2018_aaf_combined_measurement_model --check
+      - run: python -m Discovery.hust_2018_aaf_rounding_consistency --check
+      - run: python -m Discovery.schlamminger_2006_rounding_consistency --check
+      - run: python -m Discovery.schlamminger_2006_mutations --check
+      - run: python -m Discovery.g_measurement_joint_inference --check
+      - run: python -m Discovery.g_measurement_joint_inference_mutations --check
+      - run: python -m Discovery.newman_2014_table11_rounding_consistency --check
+      - run: python -m Discovery.newman_2014_table11_rounding_consistency_mutations --check
+      - run: python -m Discovery.newman_2014_multiresolution_rounding_consistency --check
+      - run: python -m Discovery.newman_2014_multiresolution_mutations --check
+      - run: python -m Discovery.bipm_2014_correlated_estimator --check
+      - run: python -m Discovery.bipm_2014_correlated_estimator_mutations --check
+      - run: python -m Discovery.nist_2026_estimator_feasibility --check
+      - run: python -m Discovery.nist_2026_n4_experimental_estimator --check
+      - run: python -m Discovery.falsification_preregistration --check
+      - run: python -m Discovery.null_experiments --check
+      - run: python -m Discovery.mutation_harness --check
+      - run: python -m Discovery.pydimension_comparison --check
+      - run: python -m Discovery.pysr_leakage_check_v2 --check
+      - run: python -m Discovery.pysr_leakage_mutations --check
+      - run: python -m Discovery.pysr_leakage_hardening --check
+      - run: python -m Discovery.pysr_leakage_hardening_mutations --check
