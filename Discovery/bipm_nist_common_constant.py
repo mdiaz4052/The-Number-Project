@@ -37,6 +37,16 @@ HELPERS = ('Discovery/__init__.py', 'Discovery/nist_2026_n4_experimental_estimat
 NOTES = ('Notes/BIPMNISTCommonConstantDiagnosticSpecification.md',
          'Notes/BIPMNISTCommonConstantDiagnostic.md')
 PROVISIONAL = 'PROVISIONAL — INDEPENDENT AUDIT PENDING'
+SOURCE_ACCESS_CORRECTION = {'correction': 'The frozen phrase stating that Table 18/19 page screenshots were inspected overstates the '
+               'access obtained. Screenshot requests returned citation references without model-visible '
+               'image pixels. The pre-freeze review inspected parsed primary-PDF text, including the '
+               'relevant tables and passages; it did not perform visual screenshot inspection.',
+ 'effect': 'No numerical input, source identity, cutoff, statistical assumption, diagnostic, or decision '
+           'policy changes. Frozen bytes are retained; this explicit correction supersedes only that '
+           'access-method statement.',
+ 'frozen_field': 'source_review.sources[1].access',
+ 'phase': 'post_freeze_provenance_correction',
+ 'recorded_utc_date': '2026-09-09'}
 
 
 class DiagnosticError(ValueError):
@@ -505,7 +515,8 @@ def build_artifact(root=ROOT):
     attestation = _json((root / ATTESTATION).read_bytes())
     require(attestation == {'schema_version': 1, 'artifact_id': NAME + '_source_attestation_v1',
             'preregistration_sha256': PREREGISTRATION_SHA256, 'external_anchor': EXTERNAL_ANCHOR,
-            'review': protocol['source_review'], 'preparation_phase': 'review_before_freeze_attestation_serialized_after_anchor'},
+            'review': protocol['source_review'], 'preparation_phase': 'review_before_freeze_attestation_serialized_after_anchor',
+            'post_freeze_access_correction': SOURCE_ACCESS_CORRECTION},
             'source attestation differs from frozen bounded review')
     inputs = project_records(protocol, load_records(protocol, root))
     within = within_nist(inputs.x, inputs.V, inputs.w,
@@ -521,7 +532,9 @@ def build_artifact(root=ROOT):
                 'D_display_bound_U': [decimal_text(v) for v in cross['difference_enclosure']]},
             'claim_boundary': claim_boundary(protocol, within['midpoint_status'] == 'FLAGGED_UNDER_DECLARED_MODEL'),
             'audit_status_at_freeze': protocol['audit_status_at_freeze'],
-            'known_prior_information': protocol['known_prior_information'], 'source_review': protocol['source_review'],
+            'known_prior_information': protocol['known_prior_information'],
+            'source_review': {'frozen_record': protocol['source_review'],
+                              'post_freeze_access_correction': SOURCE_ACCESS_CORRECTION},
             'upstream_pins_and_projections': protocol['upstream_records'],
             'integrity': {'baseline_main_sha': BASELINE, 'preregistration_commit_sha': PREREGISTRATION_COMMIT,
                 'preregistration_sha256': PREREGISTRATION_SHA256, 'external_anchor': EXTERNAL_ANCHOR,

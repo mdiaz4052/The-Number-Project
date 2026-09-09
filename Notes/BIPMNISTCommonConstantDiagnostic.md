@@ -54,6 +54,13 @@ absence. Inaccessible BIPM evidence is distinguished from accessible NIST
 material. The full rho interval [-1,1] is a mathematical covariance class, not a
 measured uncertainty interval or a prior for rho.
 
+A post-freeze access-method correction is explicit in the source attestation and
+result artifact: the frozen phrase saying Table 18/19 screenshots were inspected
+is inaccurate. Screenshot requests returned references without model-visible
+image pixels. The pre-freeze review used parsed primary-PDF text, including the
+tables, rather than visual screenshot inspection. This correction changes no
+numerical source projection or statistical policy; frozen bytes are preserved.
+
 The uncorrelated rho=0 reference is hypothetical. New personnel and location
 do not establish statistical independence. Table 19, the Bayesian consensus,
 CODATA, printed terminal values, rounded final errors and target-conditioned

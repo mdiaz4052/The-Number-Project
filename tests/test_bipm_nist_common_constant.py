@@ -223,6 +223,8 @@ class DiagnosticArtifactTests(unittest.TestCase):
         p=d.verify_preregistration();a=d.check_artifact()
         self.assertEqual(a['integrity']['preregistration_sha256'],d.PREREGISTRATION_SHA256)
         self.assertEqual(a['audit_status_at_freeze']['status'],d.PROVISIONAL)
+        self.assertEqual(a['source_review']['post_freeze_access_correction'],d.SOURCE_ACCESS_CORRECTION)
+        self.assertEqual(a['source_review']['frozen_record'],p['source_review'])
         # A deterministic clean rebuild is the new guard's own comparison.
         self.assertNotIn(d.OUTPUT.as_posix(),d.source_paths(p))
 

@@ -7,6 +7,13 @@
     "preregistration_commit_sha": "bf310acdbbef61100efa50fe411ae7873593db4c",
     "url": "https://github.com/mdiaz4052/The-Number-Project/pull/48"
   },
+  "post_freeze_access_correction": {
+    "correction": "The frozen phrase stating that Table 18/19 page screenshots were inspected overstates the access obtained. Screenshot requests returned citation references without model-visible image pixels. The pre-freeze review inspected parsed primary-PDF text, including the relevant tables and passages; it did not perform visual screenshot inspection.",
+    "effect": "No numerical input, source identity, cutoff, statistical assumption, diagnostic, or decision policy changes. Frozen bytes are retained; this explicit correction supersedes only that access-method statement.",
+    "frozen_field": "source_review.sources[1].access",
+    "phase": "post_freeze_provenance_correction",
+    "recorded_utc_date": "2026-09-09"
+  },
   "preparation_phase": "review_before_freeze_attestation_serialized_after_anchor",
   "preregistration_sha256": "376af6dad8d6df462eee2f6ed82ae6d168ed7e44afda11d041b401d1e2bfdaca",
   "review": {
