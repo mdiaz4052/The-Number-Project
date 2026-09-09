@@ -1,0 +1,621 @@
+{
+  "anti_false_kill_rule": "Named behavioral assertion failures only; errors, skips, missing history, source-state, syntax and import failures receive no credit.",
+  "artifact_id": "nist_2026_configuration_models_mutations_v1",
+  "calibration_valid": true,
+  "definitions_sha256": "6d6683991aabe6c22d4a373ba947b7d1c29ab5b6aa1c4d3d7508577db39caa23",
+  "family_status": "valid",
+  "isolation": {
+    "python_flags": [
+      "-I",
+      "-B"
+    ],
+    "temporary_tests_init_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "preregistration_sha256": "e19a32c3f6c6ed190a7c6593b77a37b1d44b1b6f586734489e9c30c742fa6a2d",
+  "production_count": 8,
+  "production_killed": 8,
+  "records": [
+    {
+      "applied_source_sha256": "eca1bab6e0bdc056b8f28abb6bdbb4caac16789c7b967125ba03f9f03bce0350",
+      "category": "baseline",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 10,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "unmutated_baseline",
+      "outcome": "SURVIVED",
+      "path": "Discovery/nist_2026_configuration_models.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_contrast_order",
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_display_classification",
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_equivalent_calibration",
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_faulty_calibration",
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_forbidden_input_invariance",
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_frozen_cutoff_policy",
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_full_covariance",
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_marginal_covariance",
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_rank_df_policy",
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_saturated_non_test"
+      ]
+    },
+    {
+      "applied_source_sha256": "6f18cc5081a4b83d19a5fe4a66119dd8730eab1e2159fd7197c0c3a80d8bf9c9",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_faulty_calibration"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "calibration_bound_linear_term",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_configuration_models.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_faulty_calibration"
+      ]
+    },
+    {
+      "applied_source_sha256": "61f512750abb50863a5cec2b0eff75430a807392ac9184855c647875fd0d7673",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "calibration_equivalent_quadratic",
+      "outcome": "SURVIVED",
+      "path": "Discovery/nist_2026_configuration_models.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_equivalent_calibration"
+      ]
+    },
+    {
+      "applied_source_sha256": "fce4c67ecb8fbe951b42ffa983a3b0aafed6dcf9dc83e67609c3be7d94134944",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_contrast_order"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "contrast_order",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_configuration_models.py",
+      "requirement_index": 0,
+      "tests": [
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_contrast_order"
+      ]
+    },
+    {
+      "applied_source_sha256": "40b554024899cfede279bafe1166ab6a9894f920492281da7bece4c156378c18",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_full_covariance"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "dropped_covariance",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_configuration_models.py",
+      "requirement_index": 1,
+      "tests": [
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_full_covariance"
+      ]
+    },
+    {
+      "applied_source_sha256": "522a7b3d72fbbedd944aad18002f05b968a042fb56525a0ad65ca56e4fe7a0ac",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_marginal_covariance"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "conditional_covariance",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_configuration_models.py",
+      "requirement_index": 2,
+      "tests": [
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_marginal_covariance"
+      ]
+    },
+    {
+      "applied_source_sha256": "1d88548942ad8c5359ec3d77e73573045e5c8302fa6ec440862129cb23d77057",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_rank_df_policy"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "rank_df_policy",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_configuration_models.py",
+      "requirement_index": 3,
+      "tests": [
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_rank_df_policy"
+      ]
+    },
+    {
+      "applied_source_sha256": "cfc5ef8e50162bd31d0381fdc79c3beb47dcfb1d680f71184f034dd55ed7e5bd",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_forbidden_input_invariance"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "forbidden_input_conditioning",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_configuration_models.py",
+      "requirement_index": 4,
+      "tests": [
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_forbidden_input_invariance"
+      ]
+    },
+    {
+      "applied_source_sha256": "ea1a7ce79755ac24534b0513ef3139c1d0f90032659f32ce5f06709d790e01c5",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_saturated_non_test"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "saturated_acceptance",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_configuration_models.py",
+      "requirement_index": 5,
+      "tests": [
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_saturated_non_test"
+      ]
+    },
+    {
+      "applied_source_sha256": "58cfec2fa2f8ede22eb3839c67c1e78b06e683d4d57588f1d39c978799139611",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_display_classification"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "unsound_display_classification",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_configuration_models.py",
+      "requirement_index": 6,
+      "tests": [
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_display_classification"
+      ]
+    },
+    {
+      "applied_source_sha256": "8d0176be2ba3acef67962ae6d04bebf11b232a083149740c8fd5dab9f734bdaa",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_frozen_cutoff_policy"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.nist_2026_configuration_models": "Discovery/nist_2026_configuration_models.py",
+          "Discovery.nist_2026_configuration_models_mutations": "Discovery/nist_2026_configuration_models_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_configuration_models": "tests/test_nist_2026_configuration_models.py",
+          "tests.test_nist_2026_configuration_models_mutations": "tests/test_nist_2026_configuration_models_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "frozen_cutoff_policy",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_configuration_models.py",
+      "requirement_index": 7,
+      "tests": [
+        "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_frozen_cutoff_policy"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "contrast_order",
+      "test": "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_contrast_order"
+    },
+    {
+      "id": "dropped_covariance",
+      "test": "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_full_covariance"
+    },
+    {
+      "id": "conditional_covariance",
+      "test": "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_marginal_covariance"
+    },
+    {
+      "id": "rank_df_policy",
+      "test": "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_rank_df_policy"
+    },
+    {
+      "id": "forbidden_input_conditioning",
+      "test": "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_forbidden_input_invariance"
+    },
+    {
+      "id": "saturated_acceptance",
+      "test": "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_saturated_non_test"
+    },
+    {
+      "id": "unsound_display_classification",
+      "test": "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_display_classification"
+    },
+    {
+      "id": "frozen_cutoff_policy",
+      "test": "tests.test_nist_2026_configuration_models_mutations.ConfigurationMutationBehaviorTests.test_frozen_cutoff_policy"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Eight frozen configuration-model boundaries; conditional and provisional claims only.",
+  "source_snapshot": {
+    "files": [
+      {
+        "path": "Discovery/nist_2026_configuration_models.py",
+        "sha256": "eca1bab6e0bdc056b8f28abb6bdbb4caac16789c7b967125ba03f9f03bce0350"
+      },
+      {
+        "path": "Discovery/__init__.py",
+        "sha256": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078"
+      },
+      {
+        "path": "Discovery/nist_2026_n4_experimental_estimator.py",
+        "sha256": "6be6184716075565424e2ebc96225d5d27b31709dc014c88ef14f718a326b0ee"
+      },
+      {
+        "path": "Discovery/preregistration_history.py",
+        "sha256": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0"
+      },
+      {
+        "path": "Discovery/source_history.py",
+        "sha256": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb"
+      },
+      {
+        "path": "Notes/NIST2026ConfigurationModelsSpecification.md",
+        "sha256": "bd4e50c4fc66ac81f3ac5de45fa94a4ea9441fc5319aa6c755294186344244b3"
+      },
+      {
+        "path": "Notes/NIST2026ConfigurationModels.md",
+        "sha256": "5863b9514eb1d9143bfc7672c35daab9d3a8d897ec29bf9d31faa16eb3f886d5"
+      },
+      {
+        "path": "Experiments/GMeasurements/nist_2026_configuration_models_preregistration_v1.json",
+        "sha256": "e19a32c3f6c6ed190a7c6593b77a37b1d44b1b6f586734489e9c30c742fa6a2d"
+      },
+      {
+        "path": "Experiments/GMeasurements/nist_2026_configuration_models_source_attestation_v1.json",
+        "sha256": "1d06f436b679db6c09ed4bd72b4b5912d2229f9375aafed6637c31a1eaea0c02"
+      },
+      {
+        "path": "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json",
+        "sha256": "8e9f7f135dc7f71158ba85dc3a62bf81cbea1b71ad0ce4f89681a1a110d96533"
+      },
+      {
+        "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_v1.json",
+        "sha256": "2d4da6080896ff45f25203b356d101124a10046f2f63daa76b19b309d7c875c2"
+      },
+      {
+        "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+        "sha256": "e83f08f323aa1e397be1b6ef50e25d541d05307949148efbff02971e8eaf4ca6"
+      },
+      {
+        "path": "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json",
+        "sha256": "9e976877bfd9890ba50ed4f2d183d3241a3f8dfb8af0b2fc046d53c4e9639f45"
+      },
+      {
+        "path": "Discovery/nist_2026_configuration_models_mutations.py",
+        "sha256": "faa56d63500b8f0b78b2a90e699c630db6c15a6432fa6babdbf3f8b1b4e32363"
+      },
+      {
+        "path": "tests/test_nist_2026_configuration_models_mutations.py",
+        "sha256": "9a420e6531c160e767c11adebeafa8b013c1159e70474f5e9f3ace13017320a0"
+      },
+      {
+        "path": "tests/test_nist_2026_configuration_models.py",
+        "sha256": "075a18fab8abf49636b15513a87b7aaf4948d07c1582ad004a68857c05928b32"
+      },
+      {
+        "path": "Discovery/mutation_test_runner.py",
+        "sha256": "2d128a4b368fe70b56cc98886da506e4bef1fed5bb641e7aee6272c613a6ce34"
+      },
+      {
+        "path": "Notes/NIST2026ConfigurationModelsMutationValidation.md",
+        "sha256": "21526b146d357c127bcb67f709ab133a117ebc6842d1e113c95cc873189cd05f"
+      }
+    ],
+    "source_commit_sha": "f542f84405549a8248bf07c0e079e6df19b652a4"
+  }
+}
