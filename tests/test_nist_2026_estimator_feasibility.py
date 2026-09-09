@@ -2,7 +2,9 @@ from __future__ import annotations
 
 from copy import deepcopy
 from fractions import Fraction
+from pathlib import Path
 import unittest
+from unittest.mock import patch
 
 from Discovery import nist_2026_estimator_feasibility as n
 
@@ -143,6 +145,35 @@ class NIST2026EstimatorFeasibilityArtifactTests(unittest.TestCase):
     def test_e001_inventory_is_disjoint(self):
         n.verify_e001_isolation()
         self.assertFalse(set(n.E001_FORBIDDEN) & set(n.SOURCE_PATHS))
+
+    def test_build_artifact_read_closure_is_exact(self):
+        root = n.ROOT.resolve()
+        seen = set()
+        original_read_bytes = Path.read_bytes
+        original_read_text = Path.read_text
+
+        def record(path):
+            try:
+                relative = path.resolve().relative_to(root)
+            except ValueError:
+                return
+            if ".git" not in relative.parts:
+                seen.add(relative.as_posix())
+
+        def tracked_read_bytes(path):
+            record(path)
+            return original_read_bytes(path)
+
+        def tracked_read_text(path, *args, **kwargs):
+            record(path)
+            return original_read_text(path, *args, **kwargs)
+
+        with patch.object(Path, "read_bytes", tracked_read_bytes), patch.object(
+            Path, "read_text", tracked_read_text
+        ):
+            n.build_artifact()
+
+        self.assertEqual(seen, set(n.SOURCE_PATHS))
 
     def test_committed_artifact_matches_rebuild(self):
         path = n.ROOT / n.DEFAULT_OUTPUT
