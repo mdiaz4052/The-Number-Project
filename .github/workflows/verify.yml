@@ -67,6 +67,8 @@ jobs:
       - run: python -m Discovery.nist_2026_n4_experimental_estimator_mutations --check
       - run: python -m Discovery.bipm_nist_common_constant --check
       - run: python -m Discovery.bipm_nist_common_constant_mutations --check
+      - run: python -m Discovery.nist_2026_configuration_models --check
+      - run: python -m Discovery.nist_2026_configuration_models_mutations --check
       - run: python -m Discovery.falsification_preregistration --check
       - run: python -m Discovery.null_experiments --check
       - run: python -m Discovery.mutation_harness --check

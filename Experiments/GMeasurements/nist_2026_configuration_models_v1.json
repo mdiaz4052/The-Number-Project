@@ -1,0 +1,1676 @@
+{
+  "artifact_id": "nist_2026_configuration_models_v1",
+  "audit_status_at_freeze": {
+    "current_drive_id": "1flh4pHVdz80ClLZO5IQo2xG63EGWVsN0",
+    "dependency_head": "621f5ddc938bc62273eac42004e56d940ef376fa",
+    "dependency_merge": "4e8acdebc5b03d03d5039c24a73bcc37e44711e2",
+    "direct_scientific_dependency_pr": 47,
+    "handoff_drive_id": "145QAdhOeEC8Ef1j3gLnw8YuI_ej9e0sd",
+    "last_audited_pr": 46,
+    "routing": "E-001 outside read/claim closure. DM-073 input diagonals and blockers frozen; DM-070/077 production read closure instrumented; DM-075 full-history chronology; DM-076 frozen-field consumption; DM-078 source limits retained. Prior repair dispositions remain Claude-owned; no IDs assigned or closed. Current and handoff retrieved September 9; no new independent audit.",
+    "status": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING"
+  },
+  "calibration": {
+    "cutoffs_by_df": {
+      "1": "3.841459",
+      "2": "5.991465",
+      "3": "7.814728"
+    },
+    "joint_error_rate_claim": false,
+    "nominal_alpha": "0.05",
+    "one_three_df_policy": "inherit prior upward-rounded operational conventions",
+    "separate_diagnostics": true,
+    "tail": "upper",
+    "two_df_prefreeze_check": {
+      "decision_authority": "exact operational rational; Decimal check is calibration corroboration only",
+      "method": "data-free Decimal at 70 digits: 2*ln(20); 5.991464 < 2*ln(20) < 5.991465",
+      "operational_cutoff": "5.991465",
+      "quantile_decimal": "5.991464547107981986870447152285081551353203245978056460308015820921932"
+    }
+  },
+  "claim_limits": {
+    "conditional_only": true,
+    "no_Bayesian_consensus_reproduction": true,
+    "no_causal_identification": true,
+    "no_composition_dependent_gravity_claim": true,
+    "no_configuration_removal": true,
+    "no_corrected_or_pooled_G": true,
+    "no_equal_torque_inference": true,
+    "no_independent_confirmation": true,
+    "no_joint_familywise_error_rate": true,
+    "no_model_selection_guarantee": true,
+    "no_new_observations": true,
+    "no_newly_discovered_author_missed_effect": true,
+    "no_p_value": true,
+    "no_probability_of_universality": true,
+    "no_variance_inflation": true,
+    "no_winning_model": true
+  },
+  "decision_policy": {
+    "B": "2*sum_i h_i*abs((A*x)_i)",
+    "E": "sum_ij h_i*h_j*abs(A_ij)",
+    "bound_interpretation": "conservative_outer_bounds_not_attained_extrema",
+    "display_flagged": "FLAGGED_FOR_ALL_DISPLAY_VALUES",
+    "display_not_flagged": "NOT_FLAGGED_FOR_ALL_DISPLAY_VALUES",
+    "display_unresolved": "UNRESOLVED_FROM_CERTIFIED_BOUNDS",
+    "equality": "not_flagged",
+    "flag_rule": "strictly_greater",
+    "lower": "max(0,Q-B)",
+    "midpoint_flagged": "FLAGGED_UNDER_DECLARED_MODEL",
+    "midpoint_not_flagged": "NOT_FLAGGED_UNDER_DECLARED_MODEL",
+    "unresolved_interpretation": "does_not_establish_attainable_outcomes_on_both_sides",
+    "upper": "Q+B+E"
+  },
+  "integrity": {
+    "baseline_main_sha": "61b7b2a0b0136b4859c52a56a8ab8a501284f244",
+    "external_anchor": {
+      "created_at": "2026-09-09T14:29:55Z",
+      "event": "draft_pull_request_created",
+      "outcome_blind": false,
+      "preregistration_commit_sha": "9b15de44f1fef889ae8744e4e7e4e4c4b60a12b0",
+      "url": "https://github.com/mdiaz4052/The-Number-Project/pull/49"
+    },
+    "preregistration_commit_sha": "9b15de44f1fef889ae8744e4e7e4e4c4b60a12b0",
+    "preregistration_sha256": "e19a32c3f6c6ed190a7c6593b77a37b1d44b1b6f586734489e9c30c742fa6a2d",
+    "source_snapshot": {
+      "files": [
+        {
+          "path": "Discovery/nist_2026_configuration_models.py",
+          "sha256": "eca1bab6e0bdc056b8f28abb6bdbb4caac16789c7b967125ba03f9f03bce0350"
+        },
+        {
+          "path": "Discovery/__init__.py",
+          "sha256": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078"
+        },
+        {
+          "path": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "sha256": "6be6184716075565424e2ebc96225d5d27b31709dc014c88ef14f718a326b0ee"
+        },
+        {
+          "path": "Discovery/preregistration_history.py",
+          "sha256": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0"
+        },
+        {
+          "path": "Discovery/source_history.py",
+          "sha256": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb"
+        },
+        {
+          "path": "Notes/NIST2026ConfigurationModelsSpecification.md",
+          "sha256": "621a078a47c3d037105ca4ce56e1b94d72d54cbd0d6c640bcf23ab1d1a7bc5eb"
+        },
+        {
+          "path": "Notes/NIST2026ConfigurationModels.md",
+          "sha256": "5863b9514eb1d9143bfc7672c35daab9d3a8d897ec29bf9d31faa16eb3f886d5"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_configuration_models_preregistration_v1.json",
+          "sha256": "e19a32c3f6c6ed190a7c6593b77a37b1d44b1b6f586734489e9c30c742fa6a2d"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_configuration_models_source_attestation_v1.json",
+          "sha256": "1d06f436b679db6c09ed4bd72b4b5912d2229f9375aafed6637c31a1eaea0c02"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json",
+          "sha256": "8e9f7f135dc7f71158ba85dc3a62bf81cbea1b71ad0ce4f89681a1a110d96533"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_v1.json",
+          "sha256": "2d4da6080896ff45f25203b356d101124a10046f2f63daa76b19b309d7c875c2"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+          "sha256": "e83f08f323aa1e397be1b6ef50e25d541d05307949148efbff02971e8eaf4ca6"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json",
+          "sha256": "9e976877bfd9890ba50ed4f2d183d3241a3f8dfb8af0b2fc046d53c4e9639f45"
+        }
+      ],
+      "source_commit_sha": "67b84994bdfb25c4fa84e5445a1aa38ccf1cfde2"
+    }
+  },
+  "kind": "restricted_mean_contrast_diagnostics",
+  "known_prior_information": {
+    "disclosure": "The four source summaries, PR #48 common-mean Q, and published servo/free offset discussion are known. No new candidate-model statistics were computed before this freeze. The freeze controls subsequent implementation, not historical exposure or hypothesis discovery.",
+    "outcome_blind": false
+  },
+  "mathematical_policy": {
+    "A": "R^T*(R*V*R^T)^-1*R",
+    "Q": "(R*x)^T*(R*V*R^T)^-1*(R*x)",
+    "common_mode": "L*1=0; x+a*1 and V+t*11^T for t>=0 preserve every contrast diagnostic",
+    "contrast_covariance": "full_marginal_R_V_R_transpose",
+    "covariance": "inherited_absolute_V_fixed_at_midpoint",
+    "covariance_assumption": "fixed_known_working_summary_model",
+    "display": "central_value_cells_only",
+    "errors": "contract_or_computation_failure_is_error",
+    "gaussian_null": "joint_normal_with_mean_in_declared_subspace",
+    "nuisance": "profile_allowed_mean_subspace",
+    "reference": "chi_square_rank_R",
+    "saturated": "NOT_TESTABLE_ZERO_RESIDUAL_DF"
+  },
+  "model_inventory": [
+    {
+      "allowed_columns": [
+        "common"
+      ],
+      "constraints": [
+        "material",
+        "method",
+        "interaction"
+      ],
+      "id": "M0",
+      "residual_df": 3
+    },
+    {
+      "allowed_columns": [
+        "common",
+        "method"
+      ],
+      "constraints": [
+        "material",
+        "interaction"
+      ],
+      "id": "M_method",
+      "residual_df": 2
+    },
+    {
+      "allowed_columns": [
+        "common",
+        "material"
+      ],
+      "constraints": [
+        "method",
+        "interaction"
+      ],
+      "id": "M_material",
+      "residual_df": 2
+    },
+    {
+      "allowed_columns": [
+        "common",
+        "method",
+        "material"
+      ],
+      "constraints": [
+        "interaction"
+      ],
+      "id": "M_additive",
+      "residual_df": 1
+    }
+  ],
+  "objective": "Diagnose residual lack of fit under the four fixed NIST mean restrictions; project-defined descriptive models only.",
+  "readability_only": {
+    "contrast_covariance_U_squared": [
+      [
+        "1.22644250418218713e-7",
+        "-7.82880645345023230e-8",
+        "1.59078388254830982e-7"
+      ],
+      [
+        "-7.82880645345023230e-8",
+        "1.14161495297094613e-7",
+        "-1.69170072900258955e-7"
+      ],
+      [
+        "1.59078388254830982e-7",
+        "-1.69170072900258955e-7",
+        "3.74296942757381486e-7"
+      ]
+    ],
+    "contrast_enclosures_U": [
+      [
+        "0.000694",
+        "0.000696"
+      ],
+      [
+        "0.000688",
+        "0.00069"
+      ],
+      [
+        "-0.000622",
+        "-0.000618"
+      ]
+    ],
+    "contrasts_U": [
+      "0.000695",
+      "0.000689",
+      "-0.00062"
+    ],
+    "models": [
+      {
+        "Q": "25.0383749520680043",
+        "display_bound": [
+          "24.9984677125400346",
+          "25.0783261791220178"
+        ],
+        "id": "M0"
+      },
+      {
+        "Q": "17.7205344138661919",
+        "display_bound": [
+          "17.6843006199167339",
+          "17.7567920228871171"
+        ],
+        "id": "M_method"
+      },
+      {
+        "Q": "5.45913601272793691",
+        "display_bound": [
+          "5.43745127940459314",
+          "5.48085310524452115"
+        ],
+        "id": "M_material"
+      },
+      {
+        "Q": "1.02699209127435298",
+        "display_bound": [
+          "1.02036633584677651",
+          "1.03362853340423200"
+        ],
+        "id": "M_additive"
+      }
+    ]
+  },
+  "results": {
+    "common_mode": {
+      "L_times_one": [
+        {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        {
+          "denominator": "1",
+          "numerator": "0"
+        }
+      ],
+      "identity": "(L1)=0 => L(x+a1)=Lx; L(V+t11^T)L^T=LVL^T for t>=0",
+      "limit": "Only exactly equal additive G-unit loadings; unequal sensitivities, multiplicative and time-varying effects remain possible."
+    },
+    "contrasts": {
+      "L": [
+        [
+          {
+            "denominator": "2",
+            "numerator": "1"
+          },
+          {
+            "denominator": "2",
+            "numerator": "1"
+          },
+          {
+            "denominator": "2",
+            "numerator": "-1"
+          },
+          {
+            "denominator": "2",
+            "numerator": "-1"
+          }
+        ],
+        [
+          {
+            "denominator": "2",
+            "numerator": "-1"
+          },
+          {
+            "denominator": "2",
+            "numerator": "1"
+          },
+          {
+            "denominator": "2",
+            "numerator": "-1"
+          },
+          {
+            "denominator": "2",
+            "numerator": "1"
+          }
+        ],
+        [
+          {
+            "denominator": "1",
+            "numerator": "-1"
+          },
+          {
+            "denominator": "1",
+            "numerator": "1"
+          },
+          {
+            "denominator": "1",
+            "numerator": "1"
+          },
+          {
+            "denominator": "1",
+            "numerator": "-1"
+          }
+        ]
+      ],
+      "S": [
+        [
+          {
+            "denominator": "20000000000000000000000000000",
+            "numerator": "2452885008364374268541"
+          },
+          {
+            "denominator": "20000000000000000000000000000",
+            "numerator": "-1565761290690046460363"
+          },
+          {
+            "denominator": "2500000000000000000000000000",
+            "numerator": "397695970637077455001"
+          }
+        ],
+        [
+          {
+            "denominator": "20000000000000000000000000000",
+            "numerator": "-1565761290690046460363"
+          },
+          {
+            "denominator": "4000000000000000000000000000",
+            "numerator": "456645981188378452297"
+          },
+          {
+            "denominator": "2500000000000000000000000000",
+            "numerator": "-422925182250647388631"
+          }
+        ],
+        [
+          {
+            "denominator": "2500000000000000000000000000",
+            "numerator": "397695970637077455001"
+          },
+          {
+            "denominator": "2500000000000000000000000000",
+            "numerator": "-422925182250647388631"
+          },
+          {
+            "denominator": "5000000000000000000000000000",
+            "numerator": "1871484713786907427667"
+          }
+        ]
+      ],
+      "d": [
+        {
+          "denominator": "200000",
+          "numerator": "139"
+        },
+        {
+          "denominator": "1000000",
+          "numerator": "689"
+        },
+        {
+          "denominator": "50000",
+          "numerator": "-31"
+        }
+      ],
+      "display_enclosures": [
+        [
+          {
+            "denominator": "500000",
+            "numerator": "347"
+          },
+          {
+            "denominator": "125000",
+            "numerator": "87"
+          }
+        ],
+        [
+          {
+            "denominator": "62500",
+            "numerator": "43"
+          },
+          {
+            "denominator": "100000",
+            "numerator": "69"
+          }
+        ],
+        [
+          {
+            "denominator": "500000",
+            "numerator": "-311"
+          },
+          {
+            "denominator": "500000",
+            "numerator": "-309"
+          }
+        ]
+      ],
+      "independence_assumed": false,
+      "order": [
+        "material",
+        "method",
+        "interaction"
+      ]
+    },
+    "models": [
+      {
+        "A": [
+          [
+            {
+              "denominator": "293734500207598481106485362497071232997517854993839218929963",
+              "numerator": "11020301407318204306481886995726146731199687500000000000000000000000"
+            },
+            {
+              "denominator": "881203500622795443319456087491213698992553564981517656789889",
+              "numerator": "-20587893452448765088480089347000443921101250000000000000000000000000"
+            },
+            {
+              "denominator": "881203500622795443319456087491213698992553564981517656789889",
+              "numerator": "-12924706876212960914193358322853799115318750000000000000000000000000"
+            },
+            {
+              "denominator": "293734500207598481106485362497071232997517854993839218929963",
+              "numerator": "150565368902371027742595560891934280940312500000000000000000000000"
+            }
+          ],
+          [
+            {
+              "denominator": "881203500622795443319456087491213698992553564981517656789889",
+              "numerator": "-20587893452448765088480089347000443921101250000000000000000000000000"
+            },
+            {
+              "denominator": "881203500622795443319456087491213698992553564981517656789889",
+              "numerator": "24447967295483158717783015105896312447665000000000000000000000000000"
+            },
+            {
+              "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+              "numerator": "-6949358456723620458934569920202515817545000000000000000000000000000"
+            },
+            {
+              "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+              "numerator": "-4630863072379560428974207356485089762146250000000000000000000000000"
+            }
+          ],
+          [
+            {
+              "denominator": "881203500622795443319456087491213698992553564981517656789889",
+              "numerator": "-12924706876212960914193358322853799115318750000000000000000000000000"
+            },
+            {
+              "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+              "numerator": "-6949358456723620458934569920202515817545000000000000000000000000000"
+            },
+            {
+              "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+              "numerator": "49891342371119559968836480818150811352915000000000000000000000000000"
+            },
+            {
+              "denominator": "881203500622795443319456087491213698992553564981517656789889",
+              "numerator": "-1389287761919018922440611976462299396471250000000000000000000000000"
+            }
+          ],
+          [
+            {
+              "denominator": "293734500207598481106485362497071232997517854993839218929963",
+              "numerator": "150565368902371027742595560891934280940312500000000000000000000000"
+            },
+            {
+              "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+              "numerator": "-4630863072379560428974207356485089762146250000000000000000000000000"
+            },
+            {
+              "denominator": "881203500622795443319456087491213698992553564981517656789889",
+              "numerator": "-1389287761919018922440611976462299396471250000000000000000000000000"
+            },
+            {
+              "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+              "numerator": "7443638038015277946612683237844579423097187500000000000000000000000"
+            }
+          ]
+        ],
+        "C": [
+          [
+            {
+              "denominator": "20000000000000000000000000000",
+              "numerator": "2452885008364374268541"
+            },
+            {
+              "denominator": "20000000000000000000000000000",
+              "numerator": "-1565761290690046460363"
+            },
+            {
+              "denominator": "2500000000000000000000000000",
+              "numerator": "397695970637077455001"
+            }
+          ],
+          [
+            {
+              "denominator": "20000000000000000000000000000",
+              "numerator": "-1565761290690046460363"
+            },
+            {
+              "denominator": "4000000000000000000000000000",
+              "numerator": "456645981188378452297"
+            },
+            {
+              "denominator": "2500000000000000000000000000",
+              "numerator": "-422925182250647388631"
+            }
+          ],
+          [
+            {
+              "denominator": "2500000000000000000000000000",
+              "numerator": "397695970637077455001"
+            },
+            {
+              "denominator": "2500000000000000000000000000",
+              "numerator": "-422925182250647388631"
+            },
+            {
+              "denominator": "5000000000000000000000000000",
+              "numerator": "1871484713786907427667"
+            }
+          ]
+        ],
+        "GLS_identity_verified": true,
+        "Q": {
+          "denominator": "881203500622795443319456087491213698992553564981517656789889",
+          "numerator": "22063903657668443425767398062229151670397955346250000000000000"
+        },
+        "constraints": [
+          "material",
+          "method",
+          "interaction"
+        ],
+        "cutoff": {
+          "denominator": "125000",
+          "numerator": "976841"
+        },
+        "display": {
+          "B": {
+            "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+            "numerator": "105499197516717735164025868412843995030785295000000000000000"
+          },
+          "E": {
+            "denominator": "293734500207598481106485362497071232997517854993839218929963",
+            "numerator": "12920653977871712851472328468404136986485000000000000000"
+          },
+          "bounds": [
+            {
+              "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+              "numerator": "66086211775488612542138168318274611016163080743750000000000000"
+            },
+            {
+              "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+              "numerator": "66297326456407848857881883306056514643457529698750000000000000"
+            }
+          ]
+        },
+        "display_status": "FLAGGED_FOR_ALL_DISPLAY_VALUES",
+        "id": "M0",
+        "midpoint_status": "FLAGGED_UNDER_DECLARED_MODEL",
+        "rank": 3,
+        "residual_df": 3,
+        "y": [
+          {
+            "denominator": "200000",
+            "numerator": "139"
+          },
+          {
+            "denominator": "1000000",
+            "numerator": "689"
+          },
+          {
+            "denominator": "50000",
+            "numerator": "-31"
+          }
+        ]
+      },
+      {
+        "A": [
+          [
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "4169965270693278520120000000000000000000000000000"
+            },
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "-323000163654148244930000000000000000000000000000"
+            },
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "-4169965270693278520120000000000000000000000000000"
+            },
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "323000163654148244930000000000000000000000000000"
+            }
+          ],
+          [
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "-323000163654148244930000000000000000000000000000"
+            },
+            {
+              "denominator": "2059943436855522237369983438665824112563831",
+              "numerator": "5714009785273310281000000000000000000000000000000"
+            },
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "323000163654148244930000000000000000000000000000"
+            },
+            {
+              "denominator": "2059943436855522237369983438665824112563831",
+              "numerator": "-5714009785273310281000000000000000000000000000000"
+            }
+          ],
+          [
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "-4169965270693278520120000000000000000000000000000"
+            },
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "323000163654148244930000000000000000000000000000"
+            },
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "4169965270693278520120000000000000000000000000000"
+            },
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "-323000163654148244930000000000000000000000000000"
+            }
+          ],
+          [
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "323000163654148244930000000000000000000000000000"
+            },
+            {
+              "denominator": "2059943436855522237369983438665824112563831",
+              "numerator": "-5714009785273310281000000000000000000000000000000"
+            },
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "-323000163654148244930000000000000000000000000000"
+            },
+            {
+              "denominator": "2059943436855522237369983438665824112563831",
+              "numerator": "5714009785273310281000000000000000000000000000000"
+            }
+          ]
+        ],
+        "C": [
+          [
+            {
+              "denominator": "20000000000000000000000000000",
+              "numerator": "2452885008364374268541"
+            },
+            {
+              "denominator": "2500000000000000000000000000",
+              "numerator": "397695970637077455001"
+            }
+          ],
+          [
+            {
+              "denominator": "2500000000000000000000000000",
+              "numerator": "397695970637077455001"
+            },
+            {
+              "denominator": "5000000000000000000000000000",
+              "numerator": "1871484713786907427667"
+            }
+          ]
+        ],
+        "GLS_identity_verified": true,
+        "Q": {
+          "denominator": "2059943436855522237369983438665824112563831",
+          "numerator": "36503298563416080577907327500000000000000000"
+        },
+        "constraints": [
+          "material",
+          "interaction"
+        ],
+        "cutoff": {
+          "denominator": "200000",
+          "numerator": "1198293"
+        },
+        "display": {
+          "B": {
+            "denominator": "2059943436855522237369983438665824112563831",
+            "numerator": "74639566038561253926019600000000000000000"
+          },
+          "E": {
+            "denominator": "2059943436855522237369983438665824112563831",
+            "numerator": "49057700167287485370820000000000000000"
+          },
+          "bounds": [
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "4047628777486391035997923100000000000000000"
+            },
+            {
+              "denominator": "228882604095058026374442604296202679173759",
+              "numerator": "4064220798572756568813190880000000000000000"
+            }
+          ]
+        },
+        "display_status": "FLAGGED_FOR_ALL_DISPLAY_VALUES",
+        "id": "M_method",
+        "midpoint_status": "FLAGGED_UNDER_DECLARED_MODEL",
+        "rank": 2,
+        "residual_df": 2,
+        "y": [
+          {
+            "denominator": "200000",
+            "numerator": "139"
+          },
+          {
+            "denominator": "50000",
+            "numerator": "-31"
+          }
+        ]
+      },
+      {
+        "A": [
+          [
+            {
+              "denominator": "156797612280386318018577575031109102070991",
+              "numerator": "4187842265407765999000000000000000000000000000000"
+            },
+            {
+              "denominator": "156797612280386318018577575031109102070991",
+              "numerator": "-4187842265407765999000000000000000000000000000000"
+            },
+            {
+              "denominator": "470392836841158954055732725093327306212973",
+              "numerator": "-686241986924974723030000000000000000000000000000"
+            },
+            {
+              "denominator": "470392836841158954055732725093327306212973",
+              "numerator": "686241986924974723030000000000000000000000000000"
+            }
+          ],
+          [
+            {
+              "denominator": "156797612280386318018577575031109102070991",
+              "numerator": "-4187842265407765999000000000000000000000000000000"
+            },
+            {
+              "denominator": "156797612280386318018577575031109102070991",
+              "numerator": "4187842265407765999000000000000000000000000000000"
+            },
+            {
+              "denominator": "470392836841158954055732725093327306212973",
+              "numerator": "686241986924974723030000000000000000000000000000"
+            },
+            {
+              "denominator": "470392836841158954055732725093327306212973",
+              "numerator": "-686241986924974723030000000000000000000000000000"
+            }
+          ],
+          [
+            {
+              "denominator": "470392836841158954055732725093327306212973",
+              "numerator": "-686241986924974723030000000000000000000000000000"
+            },
+            {
+              "denominator": "470392836841158954055732725093327306212973",
+              "numerator": "686241986924974723030000000000000000000000000000"
+            },
+            {
+              "denominator": "1411178510523476862167198175279981918638919",
+              "numerator": "3856565808618102900520000000000000000000000000000"
+            },
+            {
+              "denominator": "1411178510523476862167198175279981918638919",
+              "numerator": "-3856565808618102900520000000000000000000000000000"
+            }
+          ],
+          [
+            {
+              "denominator": "470392836841158954055732725093327306212973",
+              "numerator": "686241986924974723030000000000000000000000000000"
+            },
+            {
+              "denominator": "470392836841158954055732725093327306212973",
+              "numerator": "-686241986924974723030000000000000000000000000000"
+            },
+            {
+              "denominator": "1411178510523476862167198175279981918638919",
+              "numerator": "-3856565808618102900520000000000000000000000000000"
+            },
+            {
+              "denominator": "1411178510523476862167198175279981918638919",
+              "numerator": "3856565808618102900520000000000000000000000000000"
+            }
+          ]
+        ],
+        "C": [
+          [
+            {
+              "denominator": "4000000000000000000000000000",
+              "numerator": "456645981188378452297"
+            },
+            {
+              "denominator": "2500000000000000000000000000",
+              "numerator": "-422925182250647388631"
+            }
+          ],
+          [
+            {
+              "denominator": "2500000000000000000000000000",
+              "numerator": "-422925182250647388631"
+            },
+            {
+              "denominator": "5000000000000000000000000000",
+              "numerator": "1871484713786907427667"
+            }
+          ]
+        ],
+        "GLS_identity_verified": true,
+        "Q": {
+          "denominator": "156797612280386318018577575031109102070991",
+          "numerator": "855979491909609158659226860000000000000000"
+        },
+        "constraints": [
+          "method",
+          "interaction"
+        ],
+        "cutoff": {
+          "denominator": "200000",
+          "numerator": "1198293"
+        },
+        "display": {
+          "B": {
+            "denominator": "470392836841158954055732725093327306212973",
+            "numerator": "10200343224111686076801640000000000000000"
+          },
+          "E": {
+            "denominator": "1411178510523476862167198175279981918638919",
+            "numerator": "45664598118837845229700000000000000000"
+          },
+          "bounds": [
+            {
+              "denominator": "470392836841158954055732725093327306212973",
+              "numerator": "2557738132504715789900878940000000000000000"
+            },
+            {
+              "denominator": "108552193117190527859015244252306301433763",
+              "numerator": "594958624727456640308359720000000000000000"
+            }
+          ]
+        },
+        "display_status": "NOT_FLAGGED_FOR_ALL_DISPLAY_VALUES",
+        "id": "M_material",
+        "midpoint_status": "NOT_FLAGGED_UNDER_DECLARED_MODEL",
+        "rank": 2,
+        "residual_df": 2,
+        "y": [
+          {
+            "denominator": "1000000",
+            "numerator": "689"
+          },
+          {
+            "denominator": "50000",
+            "numerator": "-31"
+          }
+        ]
+      },
+      {
+        "A": [
+          [
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "5000000000000000000000000000"
+            },
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "-5000000000000000000000000000"
+            },
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "-5000000000000000000000000000"
+            },
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "5000000000000000000000000000"
+            }
+          ],
+          [
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "-5000000000000000000000000000"
+            },
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "5000000000000000000000000000"
+            },
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "5000000000000000000000000000"
+            },
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "-5000000000000000000000000000"
+            }
+          ],
+          [
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "-5000000000000000000000000000"
+            },
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "5000000000000000000000000000"
+            },
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "5000000000000000000000000000"
+            },
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "-5000000000000000000000000000"
+            }
+          ],
+          [
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "5000000000000000000000000000"
+            },
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "-5000000000000000000000000000"
+            },
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "-5000000000000000000000000000"
+            },
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "5000000000000000000000000000"
+            }
+          ]
+        ],
+        "C": [
+          [
+            {
+              "denominator": "5000000000000000000000000000",
+              "numerator": "1871484713786907427667"
+            }
+          ]
+        ],
+        "GLS_identity_verified": true,
+        "Q": {
+          "denominator": "1871484713786907427667",
+          "numerator": "1922000000000000000000"
+        },
+        "constraints": [
+          "interaction"
+        ],
+        "cutoff": {
+          "denominator": "1000000",
+          "numerator": "3841459"
+        },
+        "display": {
+          "B": {
+            "denominator": "1871484713786907427667",
+            "numerator": "12400000000000000000"
+          },
+          "E": {
+            "denominator": "1871484713786907427667",
+            "numerator": "20000000000000000"
+          },
+          "bounds": [
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "1909600000000000000000"
+            },
+            {
+              "denominator": "1871484713786907427667",
+              "numerator": "1934420000000000000000"
+            }
+          ]
+        },
+        "display_status": "NOT_FLAGGED_FOR_ALL_DISPLAY_VALUES",
+        "id": "M_additive",
+        "midpoint_status": "NOT_FLAGGED_UNDER_DECLARED_MODEL",
+        "rank": 1,
+        "residual_df": 1,
+        "y": [
+          {
+            "denominator": "50000",
+            "numerator": "-31"
+          }
+        ]
+      }
+    ],
+    "saturated_control": {
+      "Q": {
+        "denominator": "1",
+        "numerator": "0"
+      },
+      "residual_df": 0,
+      "role": "synthetic_control_only",
+      "scientific_acceptance": false,
+      "status": "NOT_TESTABLE_ZERO_RESIDUAL_DF"
+    }
+  },
+  "schema_version": 1,
+  "source_review": {
+    "doi": "10.1088/1681-7575/ae570f",
+    "independent_audit_claim": false,
+    "labels": "copper/sapphire are source-mass configurations, not suspension-fibre materials; servo/free are electrostatic-servo/free-deflection",
+    "limitations": "published method offsets have unresolved origin; equal G-unit offsets are not equal parasitic torques; a torque model requires separately authorized mapping through configuration aggregation; source does not endorse these tests",
+    "planning_inspection": "September 9 planning review as recorded in the supplied specification and existing handoff: GPT obtained and visually inspected PDF indices 25 and 26, printed pages 25 and 26, Tables 16 and 18. This implementation attributes that earlier check; it does not claim a second visual check.",
+    "preserve_earlier_corrections": true,
+    "primary_pdf": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075",
+    "raw_pdf_hash_claim": false
+  },
+  "unit": {
+    "SI": "10^-11 m^3 kg^-1 s^-2",
+    "symbol": "U",
+    "variance_unit": "U^2"
+  },
+  "upstream_pins_and_projections": {
+    "authorization": {
+      "fields": {
+        "decision": {
+          "path": [
+            "decision"
+          ],
+          "value": {
+            "authorized_next_step": "preregister_n4_experimental_covariance_correlated_estimator_certificate",
+            "common_constant_comparison": "NOT_EVALUATED",
+            "equation_64_reproduction": "NOT_AUTHORIZED",
+            "experimental_covariance": "GO",
+            "published_bayesian_consensus": "NO_GO"
+          }
+        },
+        "identity": {
+          "path": [
+            "artifact_id"
+          ],
+          "value": "nist_2026_estimator_feasibility_v1"
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        }
+      },
+      "path": "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json",
+      "sha256": "8e9f7f135dc7f71158ba85dc3a62bf81cbea1b71ad0ce4f89681a1a110d96533"
+    },
+    "certificate": {
+      "fields": {
+        "V": {
+          "path": [
+            "estimator",
+            "absolute_covariance_matrix_in_1e_minus_11_units_squared"
+          ],
+          "value": [
+            [
+              {
+                "denominator": "390625000000000000000000",
+                "numerator": "9364008858660481"
+              },
+              {
+                "denominator": "312500000000000000000000000",
+                "numerator": "4109418767688500007"
+              },
+              {
+                "denominator": "2500000000000000000000000",
+                "numerator": "36804698376312981"
+              },
+              {
+                "denominator": "39062500000000000000000000",
+                "numerator": "454799814467046777"
+              }
+            ],
+            [
+              {
+                "denominator": "312500000000000000000000000",
+                "numerator": "4109418767688500007"
+              },
+              {
+                "denominator": "100000000000000000000000000",
+                "numerator": "4089407552121659769"
+              },
+              {
+                "denominator": "80000000000000000000000000",
+                "numerator": "931058110020822939"
+              },
+              {
+                "denominator": "2500000000000000000000000000",
+                "numerator": "72866204707101833799"
+              }
+            ],
+            [
+              {
+                "denominator": "2500000000000000000000000",
+                "numerator": "36804698376312981"
+              },
+              {
+                "denominator": "80000000000000000000000000",
+                "numerator": "931058110020822939"
+              },
+              {
+                "denominator": "6400000000000000000000",
+                "numerator": "400716760803921"
+              },
+              {
+                "denominator": "800000000000000000000000",
+                "numerator": "31360781038309461"
+              }
+            ],
+            [
+              {
+                "denominator": "39062500000000000000000000",
+                "numerator": "454799814467046777"
+              },
+              {
+                "denominator": "2500000000000000000000000000",
+                "numerator": "72866204707101833799"
+              },
+              {
+                "denominator": "800000000000000000000000",
+                "numerator": "31360781038309461"
+              },
+              {
+                "denominator": "6250000000000000000000000",
+                "numerator": "2454348516292874601"
+              }
+            ]
+          ]
+        },
+        "authorization": {
+          "path": [
+            "upstream_authorization"
+          ],
+          "value": {
+            "bayesian_blocker_ids": [
+              "epsilon_likelihood_distribution",
+              "posterior_sampler_algorithm",
+              "posterior_sampling_controls",
+              "robust_estimator_computational_conventions",
+              "dark_correlation_matrix_identity"
+            ],
+            "decisions": {
+              "common_constant_comparison": "NOT_EVALUATED",
+              "equation_64_reproduction": "NOT_AUTHORIZED",
+              "experimental_covariance": "GO",
+              "published_bayesian_consensus": "NO_GO"
+            },
+            "feasibility_artifact_id": "nist_2026_estimator_feasibility_v1",
+            "source_attestation_id": "nist_2026_estimator_source_attestation_v1"
+          }
+        },
+        "cells": {
+          "path": [
+            "finite_resolution",
+            "input_cells_in_1e_minus_11_units"
+          ],
+          "value": [
+            {
+              "high": {
+                "denominator": "400000",
+                "numerator": "2669457"
+              },
+              "low": {
+                "denominator": "2000000",
+                "numerator": "13347283"
+              }
+            },
+            {
+              "high": {
+                "denominator": "2000000",
+                "numerator": "13348043"
+              },
+              "low": {
+                "denominator": "2000000",
+                "numerator": "13348041"
+              }
+            },
+            {
+              "high": {
+                "denominator": "80000",
+                "numerator": "533811"
+              },
+              "low": {
+                "denominator": "2000000",
+                "numerator": "13345273"
+              }
+            },
+            {
+              "high": {
+                "denominator": "2000000",
+                "numerator": "13347273"
+              },
+              "low": {
+                "denominator": "2000000",
+                "numerator": "13347271"
+              }
+            }
+          ]
+        },
+        "identity": {
+          "path": [
+            "artifact_id"
+          ],
+          "value": "nist_2026_n4_experimental_estimator_v1"
+        },
+        "order": {
+          "path": [
+            "estimator",
+            "input_order"
+          ],
+          "value": [
+            "copper_servo",
+            "copper_free",
+            "sapphire_servo",
+            "sapphire_free"
+          ]
+        },
+        "rho": {
+          "path": [
+            "estimator",
+            "correlation_matrix"
+          ],
+          "value": [
+            [
+              {
+                "denominator": "1",
+                "numerator": "1"
+              },
+              {
+                "denominator": "50",
+                "numerator": "21"
+              },
+              {
+                "denominator": "50",
+                "numerator": "19"
+              },
+              {
+                "denominator": "25",
+                "numerator": "3"
+              }
+            ],
+            [
+              {
+                "denominator": "50",
+                "numerator": "21"
+              },
+              {
+                "denominator": "1",
+                "numerator": "1"
+              },
+              {
+                "denominator": "100",
+                "numerator": "23"
+              },
+              {
+                "denominator": "100",
+                "numerator": "23"
+              }
+            ],
+            [
+              {
+                "denominator": "50",
+                "numerator": "19"
+              },
+              {
+                "denominator": "100",
+                "numerator": "23"
+              },
+              {
+                "denominator": "1",
+                "numerator": "1"
+              },
+              {
+                "denominator": "4",
+                "numerator": "1"
+              }
+            ],
+            [
+              {
+                "denominator": "25",
+                "numerator": "3"
+              },
+              {
+                "denominator": "100",
+                "numerator": "23"
+              },
+              {
+                "denominator": "4",
+                "numerator": "1"
+              },
+              {
+                "denominator": "1",
+                "numerator": "1"
+              }
+            ]
+          ]
+        },
+        "s": {
+          "path": [
+            "estimator",
+            "relative_standard_uncertainty_ppm"
+          ],
+          "value": [
+            {
+              "denominator": "5",
+              "numerator": "116"
+            },
+            {
+              "denominator": "10",
+              "numerator": "303"
+            },
+            {
+              "denominator": "2",
+              "numerator": "75"
+            },
+            {
+              "denominator": "10",
+              "numerator": "939"
+            }
+          ]
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        },
+        "x": {
+          "path": [
+            "estimator",
+            "displayed_values_in_1e_minus_11_units"
+          ],
+          "value": [
+            {
+              "denominator": "500000",
+              "numerator": "3336821"
+            },
+            {
+              "denominator": "1000000",
+              "numerator": "6674021"
+            },
+            {
+              "denominator": "1000000",
+              "numerator": "6672637"
+            },
+            {
+              "denominator": "250000",
+              "numerator": "1668409"
+            }
+          ]
+        }
+      },
+      "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_v1.json",
+      "sha256": "2d4da6080896ff45f25203b356d101124a10046f2f63daa76b19b309d7c875c2"
+    },
+    "protocol": {
+      "fields": {
+        "authorization": {
+          "path": [
+            "upstream_authorization",
+            "required_decisions"
+          ],
+          "value": {
+            "common_constant_comparison": "NOT_EVALUATED",
+            "equation_64_reproduction": "NOT_AUTHORIZED",
+            "experimental_covariance": "GO",
+            "published_bayesian_consensus": "NO_GO"
+          }
+        },
+        "doi": {
+          "path": [
+            "source",
+            "doi"
+          ],
+          "value": "10.1088/1681-7575/ae570f"
+        },
+        "identity": {
+          "path": [
+            "experiment_id"
+          ],
+          "value": "nist_2026_n4_experimental_correlated_estimator_v1"
+        },
+        "inputs": {
+          "path": [
+            "input_projection"
+          ],
+          "value": {
+            "correlation_matrix": [
+              [
+                "1",
+                "0.42",
+                "0.38",
+                "0.12"
+              ],
+              [
+                "0.42",
+                "1",
+                "0.23",
+                "0.23"
+              ],
+              [
+                "0.38",
+                "0.23",
+                "1",
+                "0.25"
+              ],
+              [
+                "0.12",
+                "0.23",
+                "0.25",
+                "1"
+              ]
+            ],
+            "measurements": [
+              {
+                "G_decimal_in_1e_minus_11_units": "6.673642",
+                "id": "copper_servo",
+                "printed_decimal_places": 6,
+                "relative_standard_uncertainty_ppm": "23.2"
+              },
+              {
+                "G_decimal_in_1e_minus_11_units": "6.674021",
+                "id": "copper_free",
+                "printed_decimal_places": 6,
+                "relative_standard_uncertainty_ppm": "30.3"
+              },
+              {
+                "G_decimal_in_1e_minus_11_units": "6.672637",
+                "id": "sapphire_servo",
+                "printed_decimal_places": 6,
+                "relative_standard_uncertainty_ppm": "37.5"
+              },
+              {
+                "G_decimal_in_1e_minus_11_units": "6.673636",
+                "id": "sapphire_free",
+                "printed_decimal_places": 6,
+                "relative_standard_uncertainty_ppm": "93.9"
+              }
+            ],
+            "order": [
+              "copper_servo",
+              "copper_free",
+              "sapphire_servo",
+              "sapphire_free"
+            ],
+            "precision_policy": "Table 18 precise combined relative standard uncertainties control estimator covariance; Table 16 whole-ppm uncertainty labels are display-only corroboration."
+          }
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        }
+      },
+      "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+      "sha256": "e83f08f323aa1e397be1b6ef50e25d541d05307949148efbff02971e8eaf4ca6"
+    },
+    "source": {
+      "fields": {
+        "doi": {
+          "path": [
+            "source",
+            "doi"
+          ],
+          "value": "10.1088/1681-7575/ae570f"
+        },
+        "identity": {
+          "path": [
+            "artifact_id"
+          ],
+          "value": "nist_2026_estimator_source_attestation_v1"
+        },
+        "order": {
+          "path": [
+            "experimental_layer",
+            "input_order"
+          ],
+          "value": [
+            "copper_servo",
+            "copper_free",
+            "sapphire_servo",
+            "sapphire_free"
+          ]
+        },
+        "rho": {
+          "path": [
+            "experimental_layer",
+            "table_18",
+            "correlation_matrix"
+          ],
+          "value": [
+            [
+              "1",
+              "0.42",
+              "0.38",
+              "0.12"
+            ],
+            [
+              "0.42",
+              "1",
+              "0.23",
+              "0.23"
+            ],
+            [
+              "0.38",
+              "0.23",
+              "1",
+              "0.25"
+            ],
+            [
+              "0.12",
+              "0.23",
+              "0.25",
+              "1"
+            ]
+          ]
+        },
+        "row_0_G_decimal_in_1e_minus_11_units": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            0,
+            "G_decimal_in_1e_minus_11_units"
+          ],
+          "value": "6.673642"
+        },
+        "row_0_id": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            0,
+            "id"
+          ],
+          "value": "copper_servo"
+        },
+        "row_1_G_decimal_in_1e_minus_11_units": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            1,
+            "G_decimal_in_1e_minus_11_units"
+          ],
+          "value": "6.674021"
+        },
+        "row_1_id": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            1,
+            "id"
+          ],
+          "value": "copper_free"
+        },
+        "row_2_G_decimal_in_1e_minus_11_units": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            2,
+            "G_decimal_in_1e_minus_11_units"
+          ],
+          "value": "6.672637"
+        },
+        "row_2_id": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            2,
+            "id"
+          ],
+          "value": "sapphire_servo"
+        },
+        "row_3_G_decimal_in_1e_minus_11_units": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            3,
+            "G_decimal_in_1e_minus_11_units"
+          ],
+          "value": "6.673636"
+        },
+        "row_3_id": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            3,
+            "id"
+          ],
+          "value": "sapphire_free"
+        },
+        "s": {
+          "path": [
+            "experimental_layer",
+            "table_18",
+            "diagonal_relative_standard_uncertainty_ppm"
+          ],
+          "value": [
+            "23.2",
+            "30.3",
+            "37.5",
+            "93.9"
+          ]
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        }
+      },
+      "path": "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json",
+      "sha256": "9e976877bfd9890ba50ed4f2d183d3241a3f8dfb8af0b2fc046d53c4e9639f45"
+    }
+  },
+  "verification_only_context": "PR #48 NIST baseline is checked in tests, never opened by production; shared data, not additional evidence."
+}
