@@ -400,7 +400,7 @@
     "locators": {
       "determinations": "PDF page 25, Table 16",
       "precise_uncertainties_and_correlations": "PDF page 26, Table 18",
-      "uncertainty_components_and_combined": "PDF pae 26, Table 17"
+      "uncertainty_components_and_combined": "PDF page 26, Table 17"
     },
     "source_attestation_path": "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json"
   },
