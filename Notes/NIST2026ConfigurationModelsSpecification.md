@@ -1,9 +1,9 @@
 # The Number Project — NIST Configuration-Model Diagnostics
 
-**Status:** Bounded specification implemented in PR #49 under the separately published JSON preregistration; independent audit pending.  
-**Prepared:** September 9, 2026.  
-**Intended base:** `61b7b2a0b0136b4859c52a56a8ab8a501284f244`, the verified true merge of PR #48.  
-**Working title:** NIST four-configuration contrast and restricted-mean diagnostics.  
+**Status:** Bounded specification implemented in PR #49 under the separately published JSON preregistration; independent audit pending.
+**Prepared:** September 9, 2026.
+**Intended base:** `61b7b2a0b0136b4859c52a56a8ab8a501284f244`, the verified true merge of PR #48.
+**Working title:** NIST four-configuration contrast and restricted-mean diagnostics.
 **Evidence qualification:** Any scientific result using PR #47's experimental-covariance certificate remains **PROVISIONAL — INDEPENDENT AUDIT PENDING** until that dependency and the new result receive independent acceptance.
 
 ## 1. Objective and claim boundary
