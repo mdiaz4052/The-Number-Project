@@ -248,7 +248,7 @@ class DiagnosticArtifactTests(unittest.TestCase):
             return run
         real_run=subprocess.run
         def tracked_run(args,*more,**kwargs):
-            commands.append(args)
+            commands.append((args, kwargs.get("cwd")))
             for arg in args:
                 if isinstance(arg,str) and ':' in arg:
                     ref,path=arg.split(':',1)
@@ -262,7 +262,11 @@ class DiagnosticArtifactTests(unittest.TestCase):
         expected=set(d.source_paths(local_protocol()))
         self.assertEqual(seen,expected)
         self.assertEqual(git_paths,expected)
-        for command in commands:
+        for command, cwd in commands:
+            if command[1] != '-C':
+                self.assertIn(command, [['git', 'rev-parse', '--show-toplevel'], ['git', 'rev-parse', '--is-shallow-repository']])
+                self.assertEqual(Path(cwd).resolve(), root)
+                continue
             self.assertEqual(command[:3],['git','-C',str(root)])
             self.assertIn(command[3],{'show','log','merge-base','rev-parse','rev-list','diff','cat-file'})
             if command[3] == 'show' and '-s' not in command:

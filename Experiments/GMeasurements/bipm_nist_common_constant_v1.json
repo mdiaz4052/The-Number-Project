@@ -1,0 +1,1602 @@
+{
+  "aggregate_contrast": {
+    "D_midpoint": {
+      "denominator": "1585725699370720400253361229440439051337100140184241023393405255500000",
+      "numerator": "3045234633121248130236535180514755966783145230866227510373159566999"
+    },
+    "all_rho_all_display": {
+      "T_max": {
+        "cutoff_comparison": 1,
+        "decimal_readability_only": "7291.09639575431611",
+        "denominator": {
+          "radicand": {
+            "denominator": "1536584720666263179516343003840592111985768130631656470845536707217578125000000000000000000000000000000000000",
+            "numerator": "828885621015686600411620422952039120029404056717165100076587440469188645639967991334001251871"
+          },
+          "rational": {
+            "denominator": "57767595256504030981281011960786292331682555717470998690143783400503406093750000000000000000",
+            "numerator": "2712774512863853074573379594510791035692774561135337754843395966833758248862320025331"
+          },
+          "sqrt_coefficient": {
+            "denominator": "1",
+            "numerator": "-2"
+          }
+        },
+        "numerator": {
+          "denominator": "40232415898316165324609210247550264636901353664183977099439867854122803414136494073066134229998883025801933481736967168880324484000000000000",
+          "numerator": "149226368162788894201228119207377150580001565971737841709465400200937494228611143874050670719344952034441758286417641861023271277202689"
+        },
+        "rho": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "status": "FLAGGED_UNDER_DECLARED_MODEL"
+      },
+      "T_min": {
+        "cutoff_comparison": 1,
+        "decimal_readability_only": "39.2548696181928982",
+        "denominator": {
+          "radicand": {
+            "denominator": "1536584720666263179516343003840592111985768130631656470845536707217578125000000000000000000000000000000000000",
+            "numerator": "828885621015686600411620422952039120029404056717165100076587440469188645639967991334001251871"
+          },
+          "rational": {
+            "denominator": "57767595256504030981281011960786292331682555717470998690143783400503406093750000000000000000",
+            "numerator": "2712774512863853074573379594510791035692774561135337754843395966833758248862320025331"
+          },
+          "sqrt_coefficient": {
+            "denominator": "1",
+            "numerator": "2"
+          }
+        },
+        "numerator": {
+          "denominator": "2574874617492234580774989455843216936761686634507774534364151542663859418504735620676232590719928513651323742831165898808340766976000000",
+          "numerator": "9441701949614607380463558759211678496698562987599753510927268658286109972170158552201262722095726064036787210480905314753449178761"
+        },
+        "rho": {
+          "denominator": "1",
+          "numerator": "-1"
+        },
+        "status": "FLAGGED_UNDER_DECLARED_MODEL"
+      },
+      "maximum_absolute_difference": {
+        "denominator": "6342902797482881601013444917761756205348400560736964093573621022000000",
+        "numerator": "12215824497871148369751714669106713526261997126548963344007293183617"
+      },
+      "minimum_absolute_difference": {
+        "denominator": "50743222379863052808107559342094049642787204485895712748588968176000",
+        "numerator": "97168420536790693377124534200090673664025317763046853911823866819"
+      },
+      "status": "FLAGGED_FOR_ALL_RHO_AND_DISPLAY_VALUES"
+    },
+    "cutoff": {
+      "denominator": "1000000",
+      "numerator": "3841459"
+    },
+    "df": 1,
+    "difference_enclosure": [
+      {
+        "denominator": "50743222379863052808107559342094049642787204485895712748588968176000",
+        "numerator": "97168420536790693377124534200090673664025317763046853911823866819"
+      },
+      {
+        "denominator": "6342902797482881601013444917761756205348400560736964093573621022000000",
+        "numerator": "12215824497871148369751714669106713526261997126548963344007293183617"
+      }
+    ],
+    "midpoint_all_rho": {
+      "T_max": {
+        "cutoff_comparison": 1,
+        "decimal_readability_only": "7249.51201639121303",
+        "denominator": {
+          "radicand": {
+            "denominator": "1536584720666263179516343003840592111985768130631656470845536707217578125000000000000000000000000000000000000",
+            "numerator": "828885621015686600411620422952039120029404056717165100076587440469188645639967991334001251871"
+          },
+          "rational": {
+            "denominator": "57767595256504030981281011960786292331682555717470998690143783400503406093750000000000000000",
+            "numerator": "2712774512863853074573379594510791035692774561135337754843395966833758248862320025331"
+          },
+          "sqrt_coefficient": {
+            "denominator": "1",
+            "numerator": "-2"
+          }
+        },
+        "numerator": {
+          "denominator": "2514525993644760332788075640471891539806334604011498568714991740882675213383530879566633389374930189112620842608560448055020280250000000000",
+          "numerator": "9273453970761102699780283936338739071872065003783978349596545527332899628567603624821999382842804901643546794787691947422881169866001"
+        },
+        "rho": {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        "status": "FLAGGED_UNDER_DECLARED_MODEL"
+      },
+      "T_min": {
+        "cutoff_comparison": 1,
+        "decimal_readability_only": "39.4806896000923686",
+        "denominator": {
+          "radicand": {
+            "denominator": "1536584720666263179516343003840592111985768130631656470845536707217578125000000000000000000000000000000000000",
+            "numerator": "828885621015686600411620422952039120029404056717165100076587440469188645639967991334001251871"
+          },
+          "rational": {
+            "denominator": "57767595256504030981281011960786292331682555717470998690143783400503406093750000000000000000",
+            "numerator": "2712774512863853074573379594510791035692774561135337754843395966833758248862320025331"
+          },
+          "sqrt_coefficient": {
+            "denominator": "1",
+            "numerator": "2"
+          }
+        },
+        "numerator": {
+          "denominator": "2514525993644760332788075640471891539806334604011498568714991740882675213383530879566633389374930189112620842608560448055020280250000000000",
+          "numerator": "9273453970761102699780283936338739071872065003783978349596545527332899628567603624821999382842804901643546794787691947422881169866001"
+        },
+        "rho": {
+          "denominator": "1",
+          "numerator": "-1"
+        },
+        "status": "FLAGGED_UNDER_DECLARED_MODEL"
+      },
+      "maximum_absolute_difference": {
+        "denominator": "1585725699370720400253361229440439051337100140184241023393405255500000",
+        "numerator": "3045234633121248130236535180514755966783145230866227510373159566999"
+      },
+      "minimum_absolute_difference": {
+        "denominator": "1585725699370720400253361229440439051337100140184241023393405255500000",
+        "numerator": "3045234633121248130236535180514755966783145230866227510373159566999"
+      },
+      "status": "FLAGGED_FOR_ALL_RHO_AND_DISPLAY_VALUES"
+    },
+    "rho_domain": [
+      {
+        "denominator": "1",
+        "numerator": "-1"
+      },
+      {
+        "denominator": "1",
+        "numerator": "1"
+      }
+    ],
+    "rho_zero_reference": {
+      "display_T_max": {
+        "cutoff_comparison": 1,
+        "decimal_readability_only": "78.9841683909271149",
+        "denominator": {
+          "radicand": {
+            "denominator": "1536584720666263179516343003840592111985768130631656470845536707217578125000000000000000000000000000000000000",
+            "numerator": "828885621015686600411620422952039120029404056717165100076587440469188645639967991334001251871"
+          },
+          "rational": {
+            "denominator": "57767595256504030981281011960786292331682555717470998690143783400503406093750000000000000000",
+            "numerator": "2712774512863853074573379594510791035692774561135337754843395966833758248862320025331"
+          },
+          "sqrt_coefficient": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "numerator": {
+          "denominator": "40232415898316165324609210247550264636901353664183977099439867854122803414136494073066134229998883025801933481736967168880324484000000000000",
+          "numerator": "149226368162788894201228119207377150580001565971737841709465400200937494228611143874050670719344952034441758286417641861023271277202689"
+        },
+        "rho": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "status": "FLAGGED_UNDER_DECLARED_MODEL"
+      },
+      "display_T_min": {
+        "cutoff_comparison": 1,
+        "decimal_readability_only": "78.0844927352021474",
+        "denominator": {
+          "radicand": {
+            "denominator": "1536584720666263179516343003840592111985768130631656470845536707217578125000000000000000000000000000000000000",
+            "numerator": "828885621015686600411620422952039120029404056717165100076587440469188645639967991334001251871"
+          },
+          "rational": {
+            "denominator": "57767595256504030981281011960786292331682555717470998690143783400503406093750000000000000000",
+            "numerator": "2712774512863853074573379594510791035692774561135337754843395966833758248862320025331"
+          },
+          "sqrt_coefficient": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "numerator": {
+          "denominator": "2574874617492234580774989455843216936761686634507774534364151542663859418504735620676232590719928513651323742831165898808340766976000000",
+          "numerator": "9441701949614607380463558759211678496698562987599753510927268658286109972170158552201262722095726064036787210480905314753449178761"
+        },
+        "rho": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "status": "FLAGGED_UNDER_DECLARED_MODEL"
+      },
+      "display_status": "FLAGGED_FOR_ALL_DISPLAY_VALUES",
+      "midpoint": {
+        "cutoff_comparison": 1,
+        "decimal_readability_only": "78.5336863997741613",
+        "denominator": {
+          "radicand": {
+            "denominator": "1536584720666263179516343003840592111985768130631656470845536707217578125000000000000000000000000000000000000",
+            "numerator": "828885621015686600411620422952039120029404056717165100076587440469188645639967991334001251871"
+          },
+          "rational": {
+            "denominator": "57767595256504030981281011960786292331682555717470998690143783400503406093750000000000000000",
+            "numerator": "2712774512863853074573379594510791035692774561135337754843395966833758248862320025331"
+          },
+          "sqrt_coefficient": {
+            "denominator": "1",
+            "numerator": "0"
+          }
+        },
+        "numerator": {
+          "denominator": "2514525993644760332788075640471891539806334604011498568714991740882675213383530879566633389374930189112620842608560448055020280250000000000",
+          "numerator": "9273453970761102699780283936338739071872065003783978349596545527332899628567603624821999382842804901643546794787691947422881169866001"
+        },
+        "rho": {
+          "denominator": "1",
+          "numerator": "0"
+        },
+        "status": "FLAGGED_UNDER_DECLARED_MODEL"
+      },
+      "role": "hypothetical_uncorrelated_not_established_independence"
+    },
+    "v_B": {
+      "denominator": "786664082233125000000000000000000",
+      "numerator": "21182356057441077746185121"
+    },
+    "v_N": {
+      "denominator": "183584062629749050691553351560669520623448659371149511831226875000000000000000000",
+      "numerator": "3677800177239233001142779782632832550875338485270741620041938912543006237"
+    }
+  },
+  "artifact_id": "bipm_nist_common_constant_v1",
+  "audit_status_at_freeze": {
+    "audited_head": "be5eeaafe81c7b86a5f62582cd2c5c67b7f41379",
+    "current_drive_id": "1flh4pHVdz80ClLZO5IQo2xG63EGWVsN0",
+    "dependency_implementation_head": "621f5ddc938bc62273eac42004e56d940ef376fa",
+    "dependency_merge_sha": "4e8acdebc5b03d03d5039c24a73bcc37e44711e2",
+    "last_independently_audited_pr": 46,
+    "retrieved_utc_date": "2026-09-09",
+    "rule": "Freeze-time provenance; not mutable evidence of later approval. E-001 outside read/claim closure. DM IDs remain owned by Claude.",
+    "status": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+    "unaudited_dependency_pr": 47
+  },
+  "calibration": {
+    "cutoffs": {
+      "aggregate_contrast": {
+        "df": 1,
+        "value": "3.841459"
+      },
+      "within_nist": {
+        "df": 3,
+        "value": "7.814728"
+      }
+    },
+    "flag_rule": "strictly_greater",
+    "joint_error_rate_claim": false,
+    "label": "nominal 5% under fixed-summary Gaussian assumptions",
+    "p_values": false,
+    "tail": "upper",
+    "verification": {
+      "method": "Data-free 60-step bisection of F1(t)=erf(sqrt(t/2)); F3(t)=F1(t)-sqrt(2t/pi)*exp(-t/2), using Python math. NIST table independently cross-checks three-decimal references. Diagnostic decisions use exact operational rationals, never these numerical CDF values.",
+      "reference": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda3674.htm",
+      "results": [
+        {
+          "cutoff_cdf": "0.9500000053468043",
+          "df": 1,
+          "lower_last_digit_cdf": "0.9499999755273371",
+          "operational_cutoff": "3.841459",
+          "quantile_approximation": "3.841458820694123"
+        },
+        {
+          "cutoff_cdf": "0.9500000021680338",
+          "df": 3,
+          "lower_last_digit_cdf": "0.9499999797591373",
+          "operational_cutoff": "7.814728",
+          "quantile_approximation": "7.814727903251173"
+        }
+      ]
+    }
+  },
+  "claim_boundary": {
+    "allowed_conclusion": "The declared model is flagged by this diagnostic under the stated uncertainty/dependence assumptions.",
+    "calibration": "nominal 5% under fixed-summary Gaussian assumptions",
+    "conditional_only": true,
+    "interpretation": "The experimental-only NIST model is already flagged internally; the cross-campaign diagnostic remains conditional under that same model and is not independent confirmation.",
+    "limits": {
+      "conditional_model_only": true,
+      "inherited_provisional_status": true,
+      "no_apparatus_or_physical_cause_identification": true,
+      "no_bayesian_or_equation64_reproduction": true,
+      "no_combined_test_or_independent_confirmation": true,
+      "no_outcome_blind_discovery": true,
+      "no_pooled_G_estimate": true,
+      "no_universality_probability": true,
+      "no_variance_inflation_or_configuration_removal": true,
+      "nominal_not_experimental_error_guarantee": true,
+      "preserve_upstream_not_evaluated_no_go": true,
+      "publication_cells_are_deterministic_sensitivity": true
+    },
+    "status": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+    "within_model_challenged": true
+  },
+  "integrity": {
+    "baseline_main_sha": "4e8acdebc5b03d03d5039c24a73bcc37e44711e2",
+    "external_anchor": {
+      "created_at": "2026-09-09T02:59:14Z",
+      "event": "draft_pull_request_created",
+      "outcome_blind": false,
+      "preregistration_commit_sha": "bf310acdbbef61100efa50fe411ae7873593db4c",
+      "url": "https://github.com/mdiaz4052/The-Number-Project/pull/48"
+    },
+    "preregistration_commit_sha": "bf310acdbbef61100efa50fe411ae7873593db4c",
+    "preregistration_sha256": "376af6dad8d6df462eee2f6ed82ae6d168ed7e44afda11d041b401d1e2bfdaca",
+    "source_snapshot": {
+      "files": [
+        {
+          "path": "Discovery/bipm_nist_common_constant.py",
+          "sha256": "883f87c7c917bfebbdcb62e5904e7c00ddfc23e96a2b0954cbec71148e0781f2"
+        },
+        {
+          "path": "Discovery/__init__.py",
+          "sha256": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078"
+        },
+        {
+          "path": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "sha256": "6be6184716075565424e2ebc96225d5d27b31709dc014c88ef14f718a326b0ee"
+        },
+        {
+          "path": "Discovery/preregistration_history.py",
+          "sha256": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0"
+        },
+        {
+          "path": "Discovery/source_history.py",
+          "sha256": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb"
+        },
+        {
+          "path": "Notes/BIPMNISTCommonConstantDiagnosticSpecification.md",
+          "sha256": "e86e74e0d4e4650d2c29e7da933c9988d85bd8246486eef5dbf5a46b457861a6"
+        },
+        {
+          "path": "Notes/BIPMNISTCommonConstantDiagnostic.md",
+          "sha256": "786b931cb879be4089d1a0905ee3053877b1676b88773393a248c90f3a9d0001"
+        },
+        {
+          "path": "Experiments/GMeasurements/bipm_nist_common_constant_preregistration_v1.json",
+          "sha256": "376af6dad8d6df462eee2f6ed82ae6d168ed7e44afda11d041b401d1e2bfdaca"
+        },
+        {
+          "path": "Experiments/GMeasurements/bipm_nist_common_constant_source_attestation_v1.json",
+          "sha256": "c73dbcd92e519c17e51028cb9e5f11bc2354da55cff8f7a1ff36cefe2a839d14"
+        },
+        {
+          "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_source_attestation_v1.json",
+          "sha256": "92086b06b38b5ab6fbed23ba9a1fb2ac08c9157c3ae246cfa3c841f28a6e539b"
+        },
+        {
+          "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_preregistration_v1.json",
+          "sha256": "e5516661e79a222a5fca6f8de61e7c461575129a34a3e1e41359491fa42076a9"
+        },
+        {
+          "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_v1.json",
+          "sha256": "3e3e44884c1f00d31effdf44a595886a931a35bce6b3aa1667a6ef6468a4ca95"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json",
+          "sha256": "9e976877bfd9890ba50ed4f2d183d3241a3f8dfb8af0b2fc046d53c4e9639f45"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json",
+          "sha256": "8e9f7f135dc7f71158ba85dc3a62bf81cbea1b71ad0ce4f89681a1a110d96533"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+          "sha256": "e83f08f323aa1e397be1b6ef50e25d541d05307949148efbff02971e8eaf4ca6"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_v1.json",
+          "sha256": "2d4da6080896ff45f25203b356d101124a10046f2f63daa76b19b309d7c875c2"
+        }
+      ],
+      "source_commit_sha": "8d43a5ebb4361ffe4ce9ead27e6a592b99b2a130"
+    }
+  },
+  "kind": "fixed_summary_gaussian_common_mean_and_aggregate_contrast_v1",
+  "known_prior_information": {
+    "disclosure": "Source numbers, published discrepancy, earlier estimator outputs and source discussion were known before freeze. Source review, cutoff verification and input-contract validation occurred before freeze; new diagnostics and result-bearing notes are post-anchor work.",
+    "outcome_blind": false
+  },
+  "model": {
+    "bipm_reference": "frozen_reconstructed_midpoint",
+    "bipm_scaling": "b_squared_times_relative_covariance_over_10^12",
+    "continuous_extrema": "analytic_absolute_difference_and_variance_endpoints",
+    "covariance": "fixed_known_working_assumption",
+    "cross_variance": "v_B+v_N-2*rho*sqrt(v_B*v_N)",
+    "display_covariance_weights": "fixed_at_displayed_midpoints",
+    "gaussian_errors": "joint_zero_mean",
+    "id": "fixed_summary_gaussian_common_mean_and_aggregate_contrast_v1",
+    "invalid_input_policy": "validation_error",
+    "nist_scaling": "inherited_x_i_times_s_i_over_10^6",
+    "numerical_comparison": "exact_sign_aware_rational_plus_rational_sqrt",
+    "ppm_squared_denominator": "1000000000000",
+    "rho_interval": [
+      "-1",
+      "1"
+    ],
+    "rho_reference": "0",
+    "rho_reference_role": "hypothetical_uncorrelated_not_established_independence",
+    "singular_policy": "UNRESOLVED_SINGULAR_ENDPOINT",
+    "within_display_bound": "max(0,Q-L),Q+L+E",
+    "within_nist": "fitted_common_mean_residual_quadratic"
+  },
+  "readability_only": {
+    "D_display_bound_U": [
+      "0.00191490441441399320",
+      "0.00192590441441399320"
+    ],
+    "D_midpoint_U": "0.00192040441441399320",
+    "Q_N": "25.0383749520680043",
+    "Q_N_display_bound": [
+      "24.9984677125400346",
+      "25.0783261791220178"
+    ]
+  },
+  "schema_version": 1,
+  "source_review": {
+    "cross_campaign_covariance_status": "NOT_IDENTIFIED_IN_REVIEWED_MATERIAL",
+    "evidence_access": "NIST full relevant PDF passages accessible; BIPM publisher full-page/PDF access failed (403/internal error), with relevant indexed publisher passages available and existing corrected attestation inherited. No new BIPM PDF-byte/transcription verification claimed.",
+    "numerical_covariance": null,
+    "prepared_utc_date": "2026-09-09",
+    "review_scope": "Bounded passages only; not exhaustive absence. Full rho envelope retained regardless of source suggestions.",
+    "sources": [
+      {
+        "access": "indexed passages plus frozen upstream attestation; full publisher response inaccessible",
+        "doi": "10.1098/rsta.2014.0032",
+        "locators": [
+          "section 11(d), equations 11.14d and 11.15a-b",
+          "section 12; Table 1, p.26"
+        ],
+        "positive_statements": "Indexed publisher passages describe covariance from shared input sensitivities, a variance-minimizing unbiased weighted mean, and Table 1 uncertainties 61/54 ppm with covariance -2080 ppm squared. This is within-BIPM combination information.",
+        "url": "https://royalsocietypublishing.org/rsta/article/372/2026/20140032/58577/The-BIPM-measurements-of-the-Newtonian-constant-of",
+        "version": "2014 corrected detailed treatment; correction DOI 10.1103/PhysRevLett.113.039901 inherited"
+      },
+      {
+        "access": "PDF text pp.3-5,25-28 and Table 18/19 page screenshots inspected",
+        "doi": "10.1088/1681-7575/ae570f",
+        "locators": [
+          "printed pp.3-5 apparatus lineage",
+          "section 9, pp.25-27; Tables 16-19",
+          "section 10, pp.27-28"
+        ],
+        "positive_statements": "The apparatus moved to NIST; a collaborator contributed to both efforts. Table 18 describes correlations among four NIST determinations. The conclusion discusses unresolved discrepancy and added dark uncertainty. These passages do not identify an aggregate cross-campaign covariance.",
+        "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075",
+        "version": "Metrologia 63 (2026) 025012; published 2026-04-16; NIST-hosted publisher PDF, cover downloaded 2026-05-02"
+      }
+    ]
+  },
+  "unit": {
+    "SI": "10^-11 m^3 kg^-1 s^-2",
+    "symbol": "U",
+    "variance_unit": "U^2"
+  },
+  "upstream_pins_and_projections": {
+    "b_attestation": {
+      "fields": {
+        "correction": {
+          "path": [
+            "correction_provenance"
+          ],
+          "value": {
+            "2014_erratum_doi": "10.1103/PhysRevLett.113.039901",
+            "interpretation": "Use the 2014 Philosophical Transactions treatment as the authoritative corrected detailed estimator source; the erratum corroborates the corrected 2013-result provenance.",
+            "original_2013_prl_doi": "10.1103/PhysRevLett.111.101102"
+          }
+        },
+        "doi": {
+          "path": [
+            "primary_source",
+            "doi"
+          ],
+          "value": "10.1098/rsta.2014.0032"
+        },
+        "identity": {
+          "path": [
+            "artifact_id"
+          ],
+          "value": "bipm_2014_correlated_estimator_source_attestation_v1"
+        },
+        "inputs": {
+          "path": [
+            "transcription",
+            "estimator_inputs"
+          ],
+          "value": {
+            "cavendish": {
+              "locator": "Section 12, equation (12.1b); uncertainty summary in Table 1",
+              "printed_decimal_places": 5,
+              "relative_standard_uncertainty_ppm": "54",
+              "value_decimal_in_1e_minus_11_units": "6.67586"
+            },
+            "covariance_ppm_squared": {
+              "locator": "Table 1; covariance kappa",
+              "value": "-2080"
+            },
+            "servo": {
+              "locator": "Section 12, equation (12.1a); uncertainty summary in Table 1",
+              "printed_decimal_places": 5,
+              "relative_standard_uncertainty_ppm": "61",
+              "value_decimal_in_1e_minus_11_units": "6.67515"
+            }
+          }
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        }
+      },
+      "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_source_attestation_v1.json",
+      "sha256": "92086b06b38b5ab6fbed23ba9a1fb2ac08c9157c3ae246cfa3c841f28a6e539b"
+    },
+    "b_protocol": {
+      "fields": {
+        "doi": {
+          "path": [
+            "primary_source",
+            "doi"
+          ],
+          "value": "10.1098/rsta.2014.0032"
+        },
+        "identity": {
+          "path": [
+            "experiment_id"
+          ],
+          "value": "bipm_2014_correlated_two_method_estimator_v1"
+        },
+        "inputs": {
+          "path": [
+            "source_projection",
+            "estimator_inputs"
+          ],
+          "value": {
+            "cavendish": {
+              "G_decimal_in_1e_minus_11_units": "6.67586",
+              "printed_decimal_places": 5,
+              "standard_uncertainty_ppm": "54"
+            },
+            "covariance_ppm_squared": "-2080",
+            "servo": {
+              "G_decimal_in_1e_minus_11_units": "6.67515",
+              "printed_decimal_places": 5,
+              "standard_uncertainty_ppm": "61"
+            }
+          }
+        },
+        "order": {
+          "path": [
+            "mathematical_model",
+            "input_order"
+          ],
+          "value": [
+            "servo",
+            "cavendish"
+          ]
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        }
+      },
+      "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_preregistration_v1.json",
+      "sha256": "e5516661e79a222a5fca6f8de61e7c461575129a34a3e1e41359491fa42076a9"
+    },
+    "b_result": {
+      "fields": {
+        "C": {
+          "path": [
+            "estimator",
+            "covariance_matrix_ppm_squared"
+          ],
+          "value": [
+            [
+              {
+                "denominator": "1",
+                "numerator": "3721"
+              },
+              {
+                "denominator": "1",
+                "numerator": "-2080"
+              }
+            ],
+            [
+              {
+                "denominator": "1",
+                "numerator": "-2080"
+              },
+              {
+                "denominator": "1",
+                "numerator": "2916"
+              }
+            ]
+          ]
+        },
+        "b": {
+          "path": [
+            "representation",
+            "midpoint_aggregate_in_1e_minus_11_units"
+          ],
+          "value": {
+            "denominator": "539850000",
+            "numerator": "3603785663"
+          }
+        },
+        "cells": {
+          "path": [
+            "representation",
+            "input_cells_in_1e_minus_11_units"
+          ],
+          "value": {
+            "cavendish": {
+              "high": {
+                "denominator": "200000",
+                "numerator": "1335173"
+              },
+              "low": {
+                "denominator": "200000",
+                "numerator": "1335171"
+              }
+            },
+            "servo": {
+              "high": {
+                "denominator": "200000",
+                "numerator": "1335031"
+              },
+              "low": {
+                "denominator": "200000",
+                "numerator": "1335029"
+              }
+            }
+          }
+        },
+        "doi": {
+          "path": [
+            "source",
+            "doi"
+          ],
+          "value": "10.1098/rsta.2014.0032"
+        },
+        "enclosure": {
+          "path": [
+            "representation",
+            "aggregate_enclosure_in_1e_minus_11_units"
+          ],
+          "value": {
+            "high": {
+              "denominator": "2159400000",
+              "numerator": "14415153449"
+            },
+            "low": {
+              "denominator": "431880000",
+              "numerator": "2883026371"
+            }
+          }
+        },
+        "identity": {
+          "path": [
+            "artifact_id"
+          ],
+          "value": "bipm_2014_correlated_estimator_v1"
+        },
+        "model": {
+          "path": [
+            "kind"
+          ],
+          "value": "conditional_correlated_two_input_weighted_estimator_reconstruction"
+        },
+        "order": {
+          "path": [
+            "estimator",
+            "input_order"
+          ],
+          "value": [
+            "servo",
+            "cavendish"
+          ]
+        },
+        "r": {
+          "path": [
+            "estimator",
+            "combined_relative_variance_ppm_squared"
+          ],
+          "value": {
+            "denominator": "10797",
+            "numerator": "6524036"
+          }
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        },
+        "w_cavendish": {
+          "path": [
+            "estimator",
+            "derived_weights",
+            "cavendish"
+          ],
+          "value": {
+            "denominator": "10797",
+            "numerator": "5801"
+          }
+        },
+        "w_servo": {
+          "path": [
+            "estimator",
+            "derived_weights",
+            "servo"
+          ],
+          "value": {
+            "denominator": "10797",
+            "numerator": "4996"
+          }
+        }
+      },
+      "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_v1.json",
+      "sha256": "3e3e44884c1f00d31effdf44a595886a931a35bce6b3aa1667a6ef6468a4ca95"
+    },
+    "n_attestation": {
+      "fields": {
+        "R": {
+          "path": [
+            "experimental_layer",
+            "table_18",
+            "correlation_matrix"
+          ],
+          "value": [
+            [
+              "1",
+              "0.42",
+              "0.38",
+              "0.12"
+            ],
+            [
+              "0.42",
+              "1",
+              "0.23",
+              "0.23"
+            ],
+            [
+              "0.38",
+              "0.23",
+              "1",
+              "0.25"
+            ],
+            [
+              "0.12",
+              "0.23",
+              "0.25",
+              "1"
+            ]
+          ]
+        },
+        "doi": {
+          "path": [
+            "source",
+            "doi"
+          ],
+          "value": "10.1088/1681-7575/ae570f"
+        },
+        "identity": {
+          "path": [
+            "artifact_id"
+          ],
+          "value": "nist_2026_estimator_source_attestation_v1"
+        },
+        "order": {
+          "path": [
+            "experimental_layer",
+            "input_order"
+          ],
+          "value": [
+            "copper_servo",
+            "copper_free",
+            "sapphire_servo",
+            "sapphire_free"
+          ]
+        },
+        "row_0_G_decimal_in_1e_minus_11_units": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            0,
+            "G_decimal_in_1e_minus_11_units"
+          ],
+          "value": "6.673642"
+        },
+        "row_0_id": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            0,
+            "id"
+          ],
+          "value": "copper_servo"
+        },
+        "row_1_G_decimal_in_1e_minus_11_units": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            1,
+            "G_decimal_in_1e_minus_11_units"
+          ],
+          "value": "6.674021"
+        },
+        "row_1_id": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            1,
+            "id"
+          ],
+          "value": "copper_free"
+        },
+        "row_2_G_decimal_in_1e_minus_11_units": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            2,
+            "G_decimal_in_1e_minus_11_units"
+          ],
+          "value": "6.672637"
+        },
+        "row_2_id": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            2,
+            "id"
+          ],
+          "value": "sapphire_servo"
+        },
+        "row_3_G_decimal_in_1e_minus_11_units": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            3,
+            "G_decimal_in_1e_minus_11_units"
+          ],
+          "value": "6.673636"
+        },
+        "row_3_id": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            3,
+            "id"
+          ],
+          "value": "sapphire_free"
+        },
+        "s": {
+          "path": [
+            "experimental_layer",
+            "table_18",
+            "diagonal_relative_standard_uncertainty_ppm"
+          ],
+          "value": [
+            "23.2",
+            "30.3",
+            "37.5",
+            "93.9"
+          ]
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        }
+      },
+      "path": "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json",
+      "sha256": "9e976877bfd9890ba50ed4f2d183d3241a3f8dfb8af0b2fc046d53c4e9639f45"
+    },
+    "n_feasibility": {
+      "fields": {
+        "decision": {
+          "path": [
+            "decision"
+          ],
+          "value": {
+            "authorized_next_step": "preregister_n4_experimental_covariance_correlated_estimator_certificate",
+            "common_constant_comparison": "NOT_EVALUATED",
+            "equation_64_reproduction": "NOT_AUTHORIZED",
+            "experimental_covariance": "GO",
+            "published_bayesian_consensus": "NO_GO"
+          }
+        },
+        "identity": {
+          "path": [
+            "artifact_id"
+          ],
+          "value": "nist_2026_estimator_feasibility_v1"
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        }
+      },
+      "path": "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json",
+      "sha256": "8e9f7f135dc7f71158ba85dc3a62bf81cbea1b71ad0ce4f89681a1a110d96533"
+    },
+    "n_protocol": {
+      "fields": {
+        "authorization": {
+          "path": [
+            "upstream_authorization",
+            "required_decisions"
+          ],
+          "value": {
+            "common_constant_comparison": "NOT_EVALUATED",
+            "equation_64_reproduction": "NOT_AUTHORIZED",
+            "experimental_covariance": "GO",
+            "published_bayesian_consensus": "NO_GO"
+          }
+        },
+        "doi": {
+          "path": [
+            "source",
+            "doi"
+          ],
+          "value": "10.1088/1681-7575/ae570f"
+        },
+        "identity": {
+          "path": [
+            "experiment_id"
+          ],
+          "value": "nist_2026_n4_experimental_correlated_estimator_v1"
+        },
+        "inputs": {
+          "path": [
+            "input_projection"
+          ],
+          "value": {
+            "correlation_matrix": [
+              [
+                "1",
+                "0.42",
+                "0.38",
+                "0.12"
+              ],
+              [
+                "0.42",
+                "1",
+                "0.23",
+                "0.23"
+              ],
+              [
+                "0.38",
+                "0.23",
+                "1",
+                "0.25"
+              ],
+              [
+                "0.12",
+                "0.23",
+                "0.25",
+                "1"
+              ]
+            ],
+            "measurements": [
+              {
+                "G_decimal_in_1e_minus_11_units": "6.673642",
+                "id": "copper_servo",
+                "printed_decimal_places": 6,
+                "relative_standard_uncertainty_ppm": "23.2"
+              },
+              {
+                "G_decimal_in_1e_minus_11_units": "6.674021",
+                "id": "copper_free",
+                "printed_decimal_places": 6,
+                "relative_standard_uncertainty_ppm": "30.3"
+              },
+              {
+                "G_decimal_in_1e_minus_11_units": "6.672637",
+                "id": "sapphire_servo",
+                "printed_decimal_places": 6,
+                "relative_standard_uncertainty_ppm": "37.5"
+              },
+              {
+                "G_decimal_in_1e_minus_11_units": "6.673636",
+                "id": "sapphire_free",
+                "printed_decimal_places": 6,
+                "relative_standard_uncertainty_ppm": "93.9"
+              }
+            ],
+            "order": [
+              "copper_servo",
+              "copper_free",
+              "sapphire_servo",
+              "sapphire_free"
+            ],
+            "precision_policy": "Table 18 precise combined relative standard uncertainties control estimator covariance; Table 16 whole-ppm uncertainty labels are display-only corroboration."
+          }
+        },
+        "model": {
+          "path": [
+            "estimator_definition"
+          ],
+          "value": {
+            "absolute_covariance_rule": "V_ij = rho_ij * u_i * u_j.",
+            "absolute_standard_uncertainty_rule": "For displayed midpoint x_i in units of 1e-11 and relative standard uncertainty s_i ppm, u_i = x_i * s_i / 1e6 in the same displayed units.",
+            "failure_conditions": [
+              "input inventory/order mismatch",
+              "nonpositive standard uncertainty",
+              "correlation matrix not symmetric with unit diagonal",
+              "absolute covariance not positive definite",
+              "linear solve singular or normalization denominator zero",
+              "weights fail exact sum-to-one"
+            ],
+            "kind": "project_defined_experimental_covariance_generalized_minimum_variance_unbiased_mean",
+            "matrix_arithmetic": "exact rational Gaussian elimination; no binary floating-point decision path",
+            "point_estimate_rule": "G_hat = sum_i w_i x_i using the displayed midpoint values.",
+            "unbiased_constraint": "sum_i w_i = 1 exactly.",
+            "variance_rule": "var(G_hat) = 1 / (1^T V^-1 1) = w^T V w.",
+            "weights_rule": "Solve V z = 1 exactly; w = z / sum(z). Do not constrain weight signs."
+          }
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        }
+      },
+      "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+      "sha256": "e83f08f323aa1e397be1b6ef50e25d541d05307949148efbff02971e8eaf4ca6"
+    },
+    "n_result": {
+      "fields": {
+        "R": {
+          "path": [
+            "estimator",
+            "correlation_matrix"
+          ],
+          "value": [
+            [
+              {
+                "denominator": "1",
+                "numerator": "1"
+              },
+              {
+                "denominator": "50",
+                "numerator": "21"
+              },
+              {
+                "denominator": "50",
+                "numerator": "19"
+              },
+              {
+                "denominator": "25",
+                "numerator": "3"
+              }
+            ],
+            [
+              {
+                "denominator": "50",
+                "numerator": "21"
+              },
+              {
+                "denominator": "1",
+                "numerator": "1"
+              },
+              {
+                "denominator": "100",
+                "numerator": "23"
+              },
+              {
+                "denominator": "100",
+                "numerator": "23"
+              }
+            ],
+            [
+              {
+                "denominator": "50",
+                "numerator": "19"
+              },
+              {
+                "denominator": "100",
+                "numerator": "23"
+              },
+              {
+                "denominator": "1",
+                "numerator": "1"
+              },
+              {
+                "denominator": "4",
+                "numerator": "1"
+              }
+            ],
+            [
+              {
+                "denominator": "25",
+                "numerator": "3"
+              },
+              {
+                "denominator": "100",
+                "numerator": "23"
+              },
+              {
+                "denominator": "4",
+                "numerator": "1"
+              },
+              {
+                "denominator": "1",
+                "numerator": "1"
+              }
+            ]
+          ]
+        },
+        "V": {
+          "path": [
+            "estimator",
+            "absolute_covariance_matrix_in_1e_minus_11_units_squared"
+          ],
+          "value": [
+            [
+              {
+                "denominator": "390625000000000000000000",
+                "numerator": "9364008858660481"
+              },
+              {
+                "denominator": "312500000000000000000000000",
+                "numerator": "4109418767688500007"
+              },
+              {
+                "denominator": "2500000000000000000000000",
+                "numerator": "36804698376312981"
+              },
+              {
+                "denominator": "39062500000000000000000000",
+                "numerator": "454799814467046777"
+              }
+            ],
+            [
+              {
+                "denominator": "312500000000000000000000000",
+                "numerator": "4109418767688500007"
+              },
+              {
+                "denominator": "100000000000000000000000000",
+                "numerator": "4089407552121659769"
+              },
+              {
+                "denominator": "80000000000000000000000000",
+                "numerator": "931058110020822939"
+              },
+              {
+                "denominator": "2500000000000000000000000000",
+                "numerator": "72866204707101833799"
+              }
+            ],
+            [
+              {
+                "denominator": "2500000000000000000000000",
+                "numerator": "36804698376312981"
+              },
+              {
+                "denominator": "80000000000000000000000000",
+                "numerator": "931058110020822939"
+              },
+              {
+                "denominator": "6400000000000000000000",
+                "numerator": "400716760803921"
+              },
+              {
+                "denominator": "800000000000000000000000",
+                "numerator": "31360781038309461"
+              }
+            ],
+            [
+              {
+                "denominator": "39062500000000000000000000",
+                "numerator": "454799814467046777"
+              },
+              {
+                "denominator": "2500000000000000000000000000",
+                "numerator": "72866204707101833799"
+              },
+              {
+                "denominator": "800000000000000000000000",
+                "numerator": "31360781038309461"
+              },
+              {
+                "denominator": "6250000000000000000000000",
+                "numerator": "2454348516292874601"
+              }
+            ]
+          ]
+        },
+        "authorization": {
+          "path": [
+            "upstream_authorization"
+          ],
+          "value": {
+            "bayesian_blocker_ids": [
+              "epsilon_likelihood_distribution",
+              "posterior_sampler_algorithm",
+              "posterior_sampling_controls",
+              "robust_estimator_computational_conventions",
+              "dark_correlation_matrix_identity"
+            ],
+            "decisions": {
+              "common_constant_comparison": "NOT_EVALUATED",
+              "equation_64_reproduction": "NOT_AUTHORIZED",
+              "experimental_covariance": "GO",
+              "published_bayesian_consensus": "NO_GO"
+            },
+            "feasibility_artifact_id": "nist_2026_estimator_feasibility_v1",
+            "source_attestation_id": "nist_2026_estimator_source_attestation_v1"
+          }
+        },
+        "cells": {
+          "path": [
+            "finite_resolution",
+            "input_cells_in_1e_minus_11_units"
+          ],
+          "value": [
+            {
+              "high": {
+                "denominator": "400000",
+                "numerator": "2669457"
+              },
+              "low": {
+                "denominator": "2000000",
+                "numerator": "13347283"
+              }
+            },
+            {
+              "high": {
+                "denominator": "2000000",
+                "numerator": "13348043"
+              },
+              "low": {
+                "denominator": "2000000",
+                "numerator": "13348041"
+              }
+            },
+            {
+              "high": {
+                "denominator": "80000",
+                "numerator": "533811"
+              },
+              "low": {
+                "denominator": "2000000",
+                "numerator": "13345273"
+              }
+            },
+            {
+              "high": {
+                "denominator": "2000000",
+                "numerator": "13347273"
+              },
+              "low": {
+                "denominator": "2000000",
+                "numerator": "13347271"
+              }
+            }
+          ]
+        },
+        "decision": {
+          "path": [
+            "decision"
+          ],
+          "value": {
+            "common_constant_comparison": "NOT_EVALUATED",
+            "estimator_constructed": true,
+            "probabilistic_compatibility": "NOT_EVALUATED",
+            "published_equation_64_reproduction": "NOT_CLAIMED"
+          }
+        },
+        "doi": {
+          "path": [
+            "source",
+            "doi"
+          ],
+          "value": "10.1088/1681-7575/ae570f"
+        },
+        "enclosure": {
+          "path": [
+            "finite_resolution",
+            "aggregate_enclosure_in_1e_minus_11_units"
+          ],
+          "value": {
+            "high": {
+              "denominator": "23498760016607878488518828999765698639801428399507137514397040000",
+              "numerator": "156821596576765660623525006551644076745979307251307750963109413983"
+            },
+            "low": {
+              "denominator": "587469000415196962212970724994142465995035709987678437859926000000",
+              "numerator": "3920539326950141100391162950820376924507016686246983786399297489649"
+            }
+          }
+        },
+        "identity": {
+          "path": [
+            "artifact_id"
+          ],
+          "value": "nist_2026_n4_experimental_estimator_v1"
+        },
+        "model": {
+          "path": [
+            "kind"
+          ],
+          "value": "project_defined_n4_experimental_covariance_generalized_mean"
+        },
+        "n": {
+          "path": [
+            "estimator",
+            "point_estimate_in_1e_minus_11_units"
+          ],
+          "value": {
+            "denominator": "146867250103799240553242681248535616498758927496919609464981500000",
+            "numerator": "980134905171160326997411014326434855394562420941209695059629104903"
+          }
+        },
+        "order": {
+          "path": [
+            "estimator",
+            "input_order"
+          ],
+          "value": [
+            "copper_servo",
+            "copper_free",
+            "sapphire_servo",
+            "sapphire_free"
+          ]
+        },
+        "s": {
+          "path": [
+            "estimator",
+            "relative_standard_uncertainty_ppm"
+          ],
+          "value": [
+            {
+              "denominator": "5",
+              "numerator": "116"
+            },
+            {
+              "denominator": "10",
+              "numerator": "303"
+            },
+            {
+              "denominator": "2",
+              "numerator": "75"
+            },
+            {
+              "denominator": "10",
+              "numerator": "939"
+            }
+          ]
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        },
+        "u": {
+          "path": [
+            "estimator",
+            "absolute_standard_uncertainty_in_1e_minus_11_units"
+          ],
+          "value": [
+            {
+              "denominator": "625000000000",
+              "numerator": "96767809"
+            },
+            {
+              "denominator": "10000000000000",
+              "numerator": "2022228363"
+            },
+            {
+              "denominator": "80000000000",
+              "numerator": "20017911"
+            },
+            {
+              "denominator": "2500000000000",
+              "numerator": "1566636051"
+            }
+          ]
+        },
+        "v": {
+          "path": [
+            "estimator",
+            "combined_variance_in_1e_minus_11_units_squared"
+          ],
+          "value": {
+            "denominator": "183584062629749050691553351560669520623448659371149511831226875000000000000000000",
+            "numerator": "3677800177239233001142779782632832550875338485270741620041938912543006237"
+          }
+        },
+        "w": {
+          "path": [
+            "estimator",
+            "weights"
+          ],
+          "value": [
+            {
+              "denominator": "293734500207598481106485362497071232997517854993839218929963",
+              "numerator": "181474220273038136445997331644980427243882454968781951500875"
+            },
+            {
+              "denominator": "293734500207598481106485362497071232997517854993839218929963",
+              "numerator": "74703562192978080723054215110332740654356494138987194012000"
+            },
+            {
+              "denominator": "293734500207598481106485362497071232997517854993839218929963",
+              "numerator": "37211613495473325961533370812925220434050442661784089117088"
+            },
+            {
+              "denominator": "293734500207598481106485362497071232997517854993839218929963",
+              "numerator": "345104246108937975900444928832844665228463224285984300000"
+            }
+          ]
+        },
+        "x": {
+          "path": [
+            "estimator",
+            "displayed_values_in_1e_minus_11_units"
+          ],
+          "value": [
+            {
+              "denominator": "500000",
+              "numerator": "3336821"
+            },
+            {
+              "denominator": "1000000",
+              "numerator": "6674021"
+            },
+            {
+              "denominator": "1000000",
+              "numerator": "6672637"
+            },
+            {
+              "denominator": "250000",
+              "numerator": "1668409"
+            }
+          ]
+        }
+      },
+      "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_v1.json",
+      "sha256": "2d4da6080896ff45f25203b356d101124a10046f2f63daa76b19b309d7c875c2"
+    }
+  },
+  "within_nist": {
+    "A": [
+      [
+        {
+          "denominator": "293734500207598481106485362497071232997517854993839218929963",
+          "numerator": "11020301407318204306481886995726146731199687500000000000000000000000"
+        },
+        {
+          "denominator": "881203500622795443319456087491213698992553564981517656789889",
+          "numerator": "-20587893452448765088480089347000443921101250000000000000000000000000"
+        },
+        {
+          "denominator": "881203500622795443319456087491213698992553564981517656789889",
+          "numerator": "-12924706876212960914193358322853799115318750000000000000000000000000"
+        },
+        {
+          "denominator": "293734500207598481106485362497071232997517854993839218929963",
+          "numerator": "150565368902371027742595560891934280940312500000000000000000000000"
+        }
+      ],
+      [
+        {
+          "denominator": "881203500622795443319456087491213698992553564981517656789889",
+          "numerator": "-20587893452448765088480089347000443921101250000000000000000000000000"
+        },
+        {
+          "denominator": "881203500622795443319456087491213698992553564981517656789889",
+          "numerator": "24447967295483158717783015105896312447665000000000000000000000000000"
+        },
+        {
+          "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+          "numerator": "-6949358456723620458934569920202515817545000000000000000000000000000"
+        },
+        {
+          "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+          "numerator": "-4630863072379560428974207356485089762146250000000000000000000000000"
+        }
+      ],
+      [
+        {
+          "denominator": "881203500622795443319456087491213698992553564981517656789889",
+          "numerator": "-12924706876212960914193358322853799115318750000000000000000000000000"
+        },
+        {
+          "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+          "numerator": "-6949358456723620458934569920202515817545000000000000000000000000000"
+        },
+        {
+          "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+          "numerator": "49891342371119559968836480818150811352915000000000000000000000000000"
+        },
+        {
+          "denominator": "881203500622795443319456087491213698992553564981517656789889",
+          "numerator": "-1389287761919018922440611976462299396471250000000000000000000000000"
+        }
+      ],
+      [
+        {
+          "denominator": "293734500207598481106485362497071232997517854993839218929963",
+          "numerator": "150565368902371027742595560891934280940312500000000000000000000000"
+        },
+        {
+          "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+          "numerator": "-4630863072379560428974207356485089762146250000000000000000000000000"
+        },
+        {
+          "denominator": "881203500622795443319456087491213698992553564981517656789889",
+          "numerator": "-1389287761919018922440611976462299396471250000000000000000000000000"
+        },
+        {
+          "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+          "numerator": "7443638038015277946612683237844579423097187500000000000000000000000"
+        }
+      ]
+    ],
+    "A_rank": 3,
+    "E": {
+      "denominator": "293734500207598481106485362497071232997517854993839218929963",
+      "numerator": "12920653977871712851472328468404136986485000000000000000"
+    },
+    "L": {
+      "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+      "numerator": "105499197516717735164025868412843995030785295000000000000000"
+    },
+    "Q": {
+      "denominator": "881203500622795443319456087491213698992553564981517656789889",
+      "numerator": "22063903657668443425767398062229151670397955346250000000000000"
+    },
+    "bound_kind": "certified_outer_bound_not_exact_extrema",
+    "cutoff": {
+      "denominator": "125000",
+      "numerator": "976841"
+    },
+    "df": 3,
+    "display_bound": [
+      {
+        "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+        "numerator": "66086211775488612542138168318274611016163080743750000000000000"
+      },
+      {
+        "denominator": "2643610501868386329958368262473641096977660694944552970369667",
+        "numerator": "66297326456407848857881883306056514643457529698750000000000000"
+      }
+    ],
+    "display_status": "FLAGGED_FOR_ALL_DISPLAY_VALUES",
+    "mean": {
+      "denominator": "146867250103799240553242681248535616498758927496919609464981500000",
+      "numerator": "980134905171160326997411014326434855394562420941209695059629104903"
+    },
+    "midpoint_status": "FLAGGED_UNDER_DECLARED_MODEL"
+  }
+}
