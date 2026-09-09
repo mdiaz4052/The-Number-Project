@@ -16,7 +16,7 @@
   "production_killed": 8,
   "records": [
     {
-      "applied_source_sha256": "883f87c7c917bfebbdcb62e5904e7c00ddfc23e96a2b0954cbec71148e0781f2",
+      "applied_source_sha256": "54f0642c3c4340719b8973ecf8ea05a6415820d85abc56f9d0143eb79271c7c5",
       "category": "baseline",
       "evidence": {
         "error_tests": [],
@@ -65,7 +65,7 @@
       ]
     },
     {
-      "applied_source_sha256": "ca696977cc6fff9b7f7926cfe6a61c93aed6867c41144204d396c5a0b6f2e47f",
+      "applied_source_sha256": "c22e6896d6d74a2eca5f4d8839918198a98595533371dbd50956f00e1914d629",
       "category": "calibration",
       "evidence": {
         "error_tests": [],
@@ -107,7 +107,7 @@
       ]
     },
     {
-      "applied_source_sha256": "cbb071f983cad96193e7c26b0511f7dbc9dff07e3b978350ac813d6b39fae062",
+      "applied_source_sha256": "37496737354785c818f8efbe905d46db51bc8f023ce835592df70724982368d5",
       "category": "calibration",
       "evidence": {
         "error_tests": [],
@@ -147,7 +147,7 @@
       ]
     },
     {
-      "applied_source_sha256": "27c86dae48ec58e9935adf87c9852527e18a42f0c8c5acf7c06ba5319c8af141",
+      "applied_source_sha256": "cf9dd76eb12bd425b9a9c8b1423fbb7a1872da1e5b7fc87006ed09be47471a47",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -189,7 +189,7 @@
       ]
     },
     {
-      "applied_source_sha256": "39351b0c1f9b37c482e414a824bd22ad20e235f03294a84f7bc874777c2f496f",
+      "applied_source_sha256": "925af430b0a549562cf4d5fe31f1a14541e17b8b05b21f425441d53d8ddbd253",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -231,7 +231,7 @@
       ]
     },
     {
-      "applied_source_sha256": "93f807ce9fae6c63a7b4c48a084cfa8540c8eee3095121c9d008c74b50ad69ce",
+      "applied_source_sha256": "a252e14729432fc524485256d1c79c97fcb0e6ae3c26eaba763b7403de3d50d9",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -273,7 +273,7 @@
       ]
     },
     {
-      "applied_source_sha256": "71db61623e4da49b32d15a8748e20afa486df0ea3e34deaad91a7bf9a691a98b",
+      "applied_source_sha256": "82d0c600591398d440ef218554506d72fd44a57a59831317319ca3571a5cd8b6",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -315,7 +315,7 @@
       ]
     },
     {
-      "applied_source_sha256": "0c1cf299eecfdf0bf19d9ab4f89ed30509cd4f60ee46eda6a176afa310c73033",
+      "applied_source_sha256": "bc59c5ce0465cea416b5fd07e64bbb74ab3ba406cf19c674642cbc9a08c4d182",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -357,7 +357,7 @@
       ]
     },
     {
-      "applied_source_sha256": "33182f3dd9e6d390c3b0921b6bcbc64ec248fb9fafa28d8ef32a27128da8f694",
+      "applied_source_sha256": "d152e65fbd5f58371e471258fe8429aa6f8affc52c8cac064c17a076aa0f24f6",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -399,7 +399,7 @@
       ]
     },
     {
-      "applied_source_sha256": "3a3e5038e236e5ba5419b440dbdd3fe08d9475f054b876a1840ffc24465d5656",
+      "applied_source_sha256": "0fcd5fa212a279761fd34ad0c28f1a8456b718dedaefcbf4fa1ced89bfa6f3a3",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -441,7 +441,7 @@
       ]
     },
     {
-      "applied_source_sha256": "46f9f286be464833dc606442f6cf6a77b0e0cfbb0568d59c4533000b2bfa508d",
+      "applied_source_sha256": "310e319320b6af6cd45a4d244913a37ae3a4e9ed100f38b70b08a7acfa79892b",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -523,7 +523,7 @@
     "files": [
       {
         "path": "Discovery/bipm_nist_common_constant.py",
-        "sha256": "883f87c7c917bfebbdcb62e5904e7c00ddfc23e96a2b0954cbec71148e0781f2"
+        "sha256": "54f0642c3c4340719b8973ecf8ea05a6415820d85abc56f9d0143eb79271c7c5"
       },
       {
         "path": "Discovery/__init__.py",
@@ -547,7 +547,7 @@
       },
       {
         "path": "Notes/BIPMNISTCommonConstantDiagnostic.md",
-        "sha256": "786b931cb879be4089d1a0905ee3053877b1676b88773393a248c90f3a9d0001"
+        "sha256": "92d77eda8578e96555bf55257d3c3edf8c54f771bbe55bde7260aca87c9019a2"
       },
       {
         "path": "Experiments/GMeasurements/bipm_nist_common_constant_preregistration_v1.json",
@@ -555,7 +555,7 @@
       },
       {
         "path": "Experiments/GMeasurements/bipm_nist_common_constant_source_attestation_v1.json",
-        "sha256": "c73dbcd92e519c17e51028cb9e5f11bc2354da55cff8f7a1ff36cefe2a839d14"
+        "sha256": "0b2ce49bc63f1607a2ec25965196ef5162bc2f734de949c05668b4380c1c61de"
       },
       {
         "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_source_attestation_v1.json",
@@ -602,6 +602,6 @@
         "sha256": "34bd190c27084d85d6e1c5b7063323255f30ce60ba68523d96d40d6e28a3b528"
       }
     ],
-    "source_commit_sha": "8d43a5ebb4361ffe4ce9ead27e6a592b99b2a130"
+    "source_commit_sha": "5bc0077e09a7efee17367686b3f462fae1e934d7"
   }
 }
