@@ -1,0 +1,52 @@
+{
+  "artifact_id": "bipm_nist_common_constant_source_attestation_v1",
+  "external_anchor": {
+    "created_at": "2026-09-09T02:59:14Z",
+    "event": "draft_pull_request_created",
+    "outcome_blind": false,
+    "preregistration_commit_sha": "bf310acdbbef61100efa50fe411ae7873593db4c",
+    "url": "https://github.com/mdiaz4052/The-Number-Project/pull/48"
+  },
+  "post_freeze_access_correction": {
+    "correction": "The frozen phrase stating that Table 18/19 page screenshots were inspected overstates the access obtained. Screenshot requests returned citation references without model-visible image pixels. The pre-freeze review inspected parsed primary-PDF text, including the relevant tables and passages; it did not perform visual screenshot inspection.",
+    "effect": "No numerical input, source identity, cutoff, statistical assumption, diagnostic, or decision policy changes. Frozen bytes are retained; this explicit correction supersedes only that access-method statement.",
+    "frozen_field": "source_review.sources[1].access",
+    "phase": "post_freeze_provenance_correction",
+    "recorded_utc_date": "2026-09-09"
+  },
+  "preparation_phase": "review_before_freeze_attestation_serialized_after_anchor",
+  "preregistration_sha256": "376af6dad8d6df462eee2f6ed82ae6d168ed7e44afda11d041b401d1e2bfdaca",
+  "review": {
+    "cross_campaign_covariance_status": "NOT_IDENTIFIED_IN_REVIEWED_MATERIAL",
+    "evidence_access": "NIST full relevant PDF passages accessible; BIPM publisher full-page/PDF access failed (403/internal error), with relevant indexed publisher passages available and existing corrected attestation inherited. No new BIPM PDF-byte/transcription verification claimed.",
+    "numerical_covariance": null,
+    "prepared_utc_date": "2026-09-09",
+    "review_scope": "Bounded passages only; not exhaustive absence. Full rho envelope retained regardless of source suggestions.",
+    "sources": [
+      {
+        "access": "indexed passages plus frozen upstream attestation; full publisher response inaccessible",
+        "doi": "10.1098/rsta.2014.0032",
+        "locators": [
+          "section 11(d), equations 11.14d and 11.15a-b",
+          "section 12; Table 1, p.26"
+        ],
+        "positive_statements": "Indexed publisher passages describe covariance from shared input sensitivities, a variance-minimizing unbiased weighted mean, and Table 1 uncertainties 61/54 ppm with covariance -2080 ppm squared. This is within-BIPM combination information.",
+        "url": "https://royalsocietypublishing.org/rsta/article/372/2026/20140032/58577/The-BIPM-measurements-of-the-Newtonian-constant-of",
+        "version": "2014 corrected detailed treatment; correction DOI 10.1103/PhysRevLett.113.039901 inherited"
+      },
+      {
+        "access": "PDF text pp.3-5,25-28 and Table 18/19 page screenshots inspected",
+        "doi": "10.1088/1681-7575/ae570f",
+        "locators": [
+          "printed pp.3-5 apparatus lineage",
+          "section 9, pp.25-27; Tables 16-19",
+          "section 10, pp.27-28"
+        ],
+        "positive_statements": "The apparatus moved to NIST; a collaborator contributed to both efforts. Table 18 describes correlations among four NIST determinations. The conclusion discusses unresolved discrepancy and added dark uncertainty. These passages do not identify an aggregate cross-campaign covariance.",
+        "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075",
+        "version": "Metrologia 63 (2026) 025012; published 2026-04-16; NIST-hosted publisher PDF, cover downloaded 2026-05-02"
+      }
+    ]
+  },
+  "schema_version": 1
+}

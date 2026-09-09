@@ -1,0 +1,607 @@
+{
+  "anti_false_kill_rule": "Named behavioral assertion failures only; errors, skips, missing history, source-state, syntax and import failures receive no credit.",
+  "artifact_id": "bipm_nist_common_constant_mutations_v1",
+  "calibration_valid": true,
+  "definitions_sha256": "4661079ef3c966bec7c410c8ca9c92a026f4c99bfb4c1a884e44fb52f353ead2",
+  "family_status": "valid",
+  "isolation": {
+    "python_flags": [
+      "-I",
+      "-B"
+    ],
+    "temporary_tests_init_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "preregistration_sha256": "376af6dad8d6df462eee2f6ed82ae6d168ed7e44afda11d041b401d1e2bfdaca",
+  "production_count": 8,
+  "production_killed": 8,
+  "records": [
+    {
+      "applied_source_sha256": "54f0642c3c4340719b8973ecf8ea05a6415820d85abc56f9d0143eb79271c7c5",
+      "category": "baseline",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 10,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "unmutated_baseline",
+      "outcome": "SURVIVED",
+      "path": "Discovery/bipm_nist_common_constant.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_bipm_scaling",
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_claim_boundary",
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_covariance",
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_cutoff_mapping",
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_difference_calibration",
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_display_bound",
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_equivalent_calibration",
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_mean_fitting",
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_rho_sign",
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_terminal_invariance"
+      ]
+    },
+    {
+      "applied_source_sha256": "c22e6896d6d74a2eca5f4d8839918198a98595533371dbd50956f00e1914d629",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_difference_calibration"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "calibration_difference_endpoint",
+      "outcome": "KILLED",
+      "path": "Discovery/bipm_nist_common_constant.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_difference_calibration"
+      ]
+    },
+    {
+      "applied_source_sha256": "37496737354785c818f8efbe905d46db51bc8f023ce835592df70724982368d5",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "calibration_equivalent_square",
+      "outcome": "SURVIVED",
+      "path": "Discovery/bipm_nist_common_constant.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_equivalent_calibration"
+      ]
+    },
+    {
+      "applied_source_sha256": "cf9dd76eb12bd425b9a9c8b1423fbb7a1872da1e5b7fc87006ed09be47471a47",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_covariance"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "covariance_off_diagonal",
+      "outcome": "KILLED",
+      "path": "Discovery/bipm_nist_common_constant.py",
+      "requirement_index": 0,
+      "tests": [
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_covariance"
+      ]
+    },
+    {
+      "applied_source_sha256": "925af430b0a549562cf4d5fe31f1a14541e17b8b05b21f425441d53d8ddbd253",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_bipm_scaling"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "bipm_ppm_squared_scaling",
+      "outcome": "KILLED",
+      "path": "Discovery/bipm_nist_common_constant.py",
+      "requirement_index": 1,
+      "tests": [
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_bipm_scaling"
+      ]
+    },
+    {
+      "applied_source_sha256": "a252e14729432fc524485256d1c79c97fcb0e6ae3c26eaba763b7403de3d50d9",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_rho_sign"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "cross_covariance_sign",
+      "outcome": "KILLED",
+      "path": "Discovery/bipm_nist_common_constant.py",
+      "requirement_index": 2,
+      "tests": [
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_rho_sign"
+      ]
+    },
+    {
+      "applied_source_sha256": "82d0c600591398d440ef218554506d72fd44a57a59831317319ca3571a5cd8b6",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_display_bound"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "display_cell_collapse",
+      "outcome": "KILLED",
+      "path": "Discovery/bipm_nist_common_constant.py",
+      "requirement_index": 3,
+      "tests": [
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_display_bound"
+      ]
+    },
+    {
+      "applied_source_sha256": "bc59c5ce0465cea416b5fd07e64bbb74ab3ba406cf19c674642cbc9a08c4d182",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_cutoff_mapping"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "df_cutoff_mapping",
+      "outcome": "KILLED",
+      "path": "Discovery/bipm_nist_common_constant.py",
+      "requirement_index": 4,
+      "tests": [
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_cutoff_mapping"
+      ]
+    },
+    {
+      "applied_source_sha256": "d152e65fbd5f58371e471258fe8429aa6f8affc52c8cac064c17a076aa0f24f6",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_mean_fitting"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "omitted_mean_fitting",
+      "outcome": "KILLED",
+      "path": "Discovery/bipm_nist_common_constant.py",
+      "requirement_index": 5,
+      "tests": [
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_mean_fitting"
+      ]
+    },
+    {
+      "applied_source_sha256": "0fcd5fa212a279761fd34ad0c28f1a8456b718dedaefcbf4fa1ced89bfa6f3a3",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_terminal_invariance"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "forbidden_terminal_consumption",
+      "outcome": "KILLED",
+      "path": "Discovery/bipm_nist_common_constant.py",
+      "requirement_index": 6,
+      "tests": [
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_terminal_invariance"
+      ]
+    },
+    {
+      "applied_source_sha256": "310e319320b6af6cd45a4d244913a37ae3a4e9ed100f38b70b08a7acfa79892b",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_claim_boundary"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.bipm_nist_common_constant": "Discovery/bipm_nist_common_constant.py",
+          "Discovery.bipm_nist_common_constant_mutations": "Discovery/bipm_nist_common_constant_mutations.py",
+          "Discovery.nist_2026_n4_experimental_estimator": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_bipm_nist_common_constant_mutations": "tests/test_bipm_nist_common_constant_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "unsupported_claim_promotion",
+      "outcome": "KILLED",
+      "path": "Discovery/bipm_nist_common_constant.py",
+      "requirement_index": 7,
+      "tests": [
+        "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_claim_boundary"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "covariance_off_diagonal",
+      "test": "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_covariance"
+    },
+    {
+      "id": "bipm_ppm_squared_scaling",
+      "test": "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_bipm_scaling"
+    },
+    {
+      "id": "cross_covariance_sign",
+      "test": "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_rho_sign"
+    },
+    {
+      "id": "display_cell_collapse",
+      "test": "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_display_bound"
+    },
+    {
+      "id": "df_cutoff_mapping",
+      "test": "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_cutoff_mapping"
+    },
+    {
+      "id": "omitted_mean_fitting",
+      "test": "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_mean_fitting"
+    },
+    {
+      "id": "forbidden_terminal_consumption",
+      "test": "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_terminal_invariance"
+    },
+    {
+      "id": "unsupported_claim_promotion",
+      "test": "tests.test_bipm_nist_common_constant_mutations.DiagnosticMutationBehaviorTests.test_claim_boundary"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Eight frozen common-constant diagnostic boundaries; conditional and provisional claims only.",
+  "source_snapshot": {
+    "files": [
+      {
+        "path": "Discovery/bipm_nist_common_constant.py",
+        "sha256": "54f0642c3c4340719b8973ecf8ea05a6415820d85abc56f9d0143eb79271c7c5"
+      },
+      {
+        "path": "Discovery/__init__.py",
+        "sha256": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078"
+      },
+      {
+        "path": "Discovery/nist_2026_n4_experimental_estimator.py",
+        "sha256": "6be6184716075565424e2ebc96225d5d27b31709dc014c88ef14f718a326b0ee"
+      },
+      {
+        "path": "Discovery/preregistration_history.py",
+        "sha256": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0"
+      },
+      {
+        "path": "Discovery/source_history.py",
+        "sha256": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb"
+      },
+      {
+        "path": "Notes/BIPMNISTCommonConstantDiagnosticSpecification.md",
+        "sha256": "e86e74e0d4e4650d2c29e7da933c9988d85bd8246486eef5dbf5a46b457861a6"
+      },
+      {
+        "path": "Notes/BIPMNISTCommonConstantDiagnostic.md",
+        "sha256": "92d77eda8578e96555bf55257d3c3edf8c54f771bbe55bde7260aca87c9019a2"
+      },
+      {
+        "path": "Experiments/GMeasurements/bipm_nist_common_constant_preregistration_v1.json",
+        "sha256": "376af6dad8d6df462eee2f6ed82ae6d168ed7e44afda11d041b401d1e2bfdaca"
+      },
+      {
+        "path": "Experiments/GMeasurements/bipm_nist_common_constant_source_attestation_v1.json",
+        "sha256": "0b2ce49bc63f1607a2ec25965196ef5162bc2f734de949c05668b4380c1c61de"
+      },
+      {
+        "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_source_attestation_v1.json",
+        "sha256": "92086b06b38b5ab6fbed23ba9a1fb2ac08c9157c3ae246cfa3c841f28a6e539b"
+      },
+      {
+        "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_preregistration_v1.json",
+        "sha256": "e5516661e79a222a5fca6f8de61e7c461575129a34a3e1e41359491fa42076a9"
+      },
+      {
+        "path": "Experiments/GMeasurements/bipm_2014_correlated_estimator_v1.json",
+        "sha256": "3e3e44884c1f00d31effdf44a595886a931a35bce6b3aa1667a6ef6468a4ca95"
+      },
+      {
+        "path": "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json",
+        "sha256": "9e976877bfd9890ba50ed4f2d183d3241a3f8dfb8af0b2fc046d53c4e9639f45"
+      },
+      {
+        "path": "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json",
+        "sha256": "8e9f7f135dc7f71158ba85dc3a62bf81cbea1b71ad0ce4f89681a1a110d96533"
+      },
+      {
+        "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+        "sha256": "e83f08f323aa1e397be1b6ef50e25d541d05307949148efbff02971e8eaf4ca6"
+      },
+      {
+        "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_v1.json",
+        "sha256": "2d4da6080896ff45f25203b356d101124a10046f2f63daa76b19b309d7c875c2"
+      },
+      {
+        "path": "Discovery/bipm_nist_common_constant_mutations.py",
+        "sha256": "2741ec25ea18ab7cfb507262559298b3996f2a414761e95896d58d2fe1a904c3"
+      },
+      {
+        "path": "tests/test_bipm_nist_common_constant_mutations.py",
+        "sha256": "e084ab3d4e428d5fe8ba2fd13f78432b3e1f372016edba26b2f93fc3e2faa280"
+      },
+      {
+        "path": "Discovery/mutation_test_runner.py",
+        "sha256": "2d128a4b368fe70b56cc98886da506e4bef1fed5bb641e7aee6272c613a6ce34"
+      },
+      {
+        "path": "Notes/BIPMNISTCommonConstantMutationValidation.md",
+        "sha256": "34bd190c27084d85d6e1c5b7063323255f30ce60ba68523d96d40d6e28a3b528"
+      }
+    ],
+    "source_commit_sha": "5bc0077e09a7efee17367686b3f462fae1e934d7"
+  }
+}
