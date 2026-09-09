@@ -1,0 +1,424 @@
+{
+  "artifact_id": "nist_2026_n4_experimental_estimator_v1",
+  "claim_limits": [
+    "This is The Number Project's experimental-covariance generalized estimator, not NIST equation (64).",
+    "Dark uncertainty, Table 19, CODATA, and BIPM measurements are not estimator inputs.",
+    "The finite-resolution enclosure is conditional on weights fixed from the displayed summary values.",
+    "No common-constant, p-value, apparatus-bias, or new-physics claim is made."
+  ],
+  "decision": {
+    "common_constant_comparison": "NOT_EVALUATED",
+    "estimator_constructed": true,
+    "probabilistic_compatibility": "NOT_EVALUATED",
+    "published_equation_64_reproduction": "NOT_CLAIMED"
+  },
+  "estimator": {
+    "absolute_covariance_matrix_in_1e_minus_11_units_squared": [
+      [
+        {
+          "denominator": "390625000000000000000000",
+          "numerator": "9364008858660481"
+        },
+        {
+          "denominator": "312500000000000000000000000",
+          "numerator": "4109418767688500007"
+        },
+        {
+          "denominator": "2500000000000000000000000",
+          "numerator": "36804698376312981"
+        },
+        {
+          "denominator": "39062500000000000000000000",
+          "numerator": "454799814467046777"
+        }
+      ],
+      [
+        {
+          "denominator": "312500000000000000000000000",
+          "numerator": "4109418767688500007"
+        },
+        {
+          "denominator": "100000000000000000000000000",
+          "numerator": "4089407552121659769"
+        },
+        {
+          "denominator": "80000000000000000000000000",
+          "numerator": "931058110020822939"
+        },
+        {
+          "denominator": "2500000000000000000000000000",
+          "numerator": "72866204707101833799"
+        }
+      ],
+      [
+        {
+          "denominator": "2500000000000000000000000",
+          "numerator": "36804698376312981"
+        },
+        {
+          "denominator": "80000000000000000000000000",
+          "numerator": "931058110020822939"
+        },
+        {
+          "denominator": "6400000000000000000000",
+          "numerator": "400716760803921"
+        },
+        {
+          "denominator": "800000000000000000000000",
+          "numerator": "31360781038309461"
+        }
+      ],
+      [
+        {
+          "denominator": "39062500000000000000000000",
+          "numerator": "454799814467046777"
+        },
+        {
+          "denominator": "2500000000000000000000000000",
+          "numerator": "72866204707101833799"
+        },
+        {
+          "denominator": "800000000000000000000000",
+          "numerator": "31360781038309461"
+        },
+        {
+          "denominator": "6250000000000000000000000",
+          "numerator": "2454348516292874601"
+        }
+      ]
+    ],
+    "absolute_standard_uncertainty_in_1e_minus_11_units": [
+      {
+        "denominator": "625000000000",
+        "numerator": "96767809"
+      },
+      {
+        "denominator": "10000000000000",
+        "numerator": "2022228363"
+      },
+      {
+        "denominator": "80000000000",
+        "numerator": "20017911"
+      },
+      {
+        "denominator": "2500000000000",
+        "numerator": "1566636051"
+      }
+    ],
+    "combined_relative_standard_uncertainty_ppm_decimal": "21.208779847252525",
+    "combined_standard_uncertainty_decimal_in_1e_minus_11_units": "0.000141539147833783",
+    "combined_variance_in_1e_minus_11_units_squared": {
+      "denominator": "183584062629749050691553351560669520623448659371149511831226875000000000000000000",
+      "numerator": "3677800177239233001142779782632832550875338485270741620041938912543006237"
+    },
+    "correlation_matrix": [
+      [
+        {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        {
+          "denominator": "50",
+          "numerator": "21"
+        },
+        {
+          "denominator": "50",
+          "numerator": "19"
+        },
+        {
+          "denominator": "25",
+          "numerator": "3"
+        }
+      ],
+      [
+        {
+          "denominator": "50",
+          "numerator": "21"
+        },
+        {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        {
+          "denominator": "100",
+          "numerator": "23"
+        },
+        {
+          "denominator": "100",
+          "numerator": "23"
+        }
+      ],
+      [
+        {
+          "denominator": "50",
+          "numerator": "19"
+        },
+        {
+          "denominator": "100",
+          "numerator": "23"
+        },
+        {
+          "denominator": "1",
+          "numerator": "1"
+        },
+        {
+          "denominator": "4",
+          "numerator": "1"
+        }
+      ],
+      [
+        {
+          "denominator": "25",
+          "numerator": "3"
+        },
+        {
+          "denominator": "100",
+          "numerator": "23"
+        },
+        {
+          "denominator": "4",
+          "numerator": "1"
+        },
+        {
+          "denominator": "1",
+          "numerator": "1"
+        }
+      ]
+    ],
+    "displayed_values_in_1e_minus_11_units": [
+      {
+        "denominator": "500000",
+        "numerator": "3336821"
+      },
+      {
+        "denominator": "1000000",
+        "numerator": "6674021"
+      },
+      {
+        "denominator": "1000000",
+        "numerator": "6672637"
+      },
+      {
+        "denominator": "250000",
+        "numerator": "1668409"
+      }
+    ],
+    "input_order": [
+      "copper_servo",
+      "copper_free",
+      "sapphire_servo",
+      "sapphire_free"
+    ],
+    "leading_principal_minors": [
+      {
+        "denominator": "390625000000000000000000",
+        "numerator": "9364008858660481"
+      },
+      {
+        "denominator": "97656250000000000000000000000000000000000000000000000",
+        "numerator": "78845798753620266910862854422083222451"
+      },
+      {
+        "denominator": "62500000000000000000000000000000000000000000000000000000000000000000000000000",
+        "numerator": "2684241163561120655401145986242270467862275392718677401"
+      },
+      {
+        "denominator": "19531250000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "numerator": "297901814356377873092565162393259436620902417306930071223397051915983505197"
+      }
+    ],
+    "normalization": {
+      "denominator": "3677800177239233001142779782632832550875338485270741620041938912543006237",
+      "numerator": "183584062629749050691553351560669520623448659371149511831226875000000000000000000"
+    },
+    "point_estimate_decimal": "6.673611063585956",
+    "point_estimate_in_1e_minus_11_units": {
+      "denominator": "146867250103799240553242681248535616498758927496919609464981500000",
+      "numerator": "980134905171160326997411014326434855394562420941209695059629104903"
+    },
+    "positive_definite": true,
+    "relative_standard_uncertainty_ppm": [
+      {
+        "denominator": "5",
+        "numerator": "116"
+      },
+      {
+        "denominator": "10",
+        "numerator": "303"
+      },
+      {
+        "denominator": "2",
+        "numerator": "75"
+      },
+      {
+        "denominator": "10",
+        "numerator": "939"
+      }
+    ],
+    "weight_decimals": [
+      "0.617817178931247",
+      "0.254323418393757",
+      "0.126684517716420",
+      "0.001174884958577"
+    ],
+    "weight_sum": {
+      "denominator": "1",
+      "numerator": "1"
+    },
+    "weights": [
+      {
+        "denominator": "293734500207598481106485362497071232997517854993839218929963",
+        "numerator": "181474220273038136445997331644980427243882454968781951500875"
+      },
+      {
+        "denominator": "293734500207598481106485362497071232997517854993839218929963",
+        "numerator": "74703562192978080723054215110332740654356494138987194012000"
+      },
+      {
+        "denominator": "293734500207598481106485362497071232997517854993839218929963",
+        "numerator": "37211613495473325961533370812925220434050442661784089117088"
+      },
+      {
+        "denominator": "293734500207598481106485362497071232997517854993839218929963",
+        "numerator": "345104246108937975900444928832844665228463224285984300000"
+      }
+    ]
+  },
+  "finite_resolution": {
+    "aggregate_enclosure_in_1e_minus_11_units": {
+      "high": {
+        "denominator": "23498760016607878488518828999765698639801428399507137514397040000",
+        "numerator": "156821596576765660623525006551644076745979307251307750963109413983"
+      },
+      "low": {
+        "denominator": "587469000415196962212970724994142465995035709987678437859926000000",
+        "numerator": "3920539326950141100391162950820376924507016686246983786399297489649"
+      }
+    },
+    "aggregate_high_decimal": "6.673611563585956",
+    "aggregate_low_decimal": "6.673610563585956",
+    "claim_limit": "The enclosure represents publication-resolution ambiguity under the frozen summary-level estimator; it does not recover the authors' hidden unrounded values.",
+    "input_cells_in_1e_minus_11_units": [
+      {
+        "high": {
+          "denominator": "400000",
+          "numerator": "2669457"
+        },
+        "low": {
+          "denominator": "2000000",
+          "numerator": "13347283"
+        }
+      },
+      {
+        "high": {
+          "denominator": "2000000",
+          "numerator": "13348043"
+        },
+        "low": {
+          "denominator": "2000000",
+          "numerator": "13348041"
+        }
+      },
+      {
+        "high": {
+          "denominator": "80000",
+          "numerator": "533811"
+        },
+        "low": {
+          "denominator": "2000000",
+          "numerator": "13345273"
+        }
+      },
+      {
+        "high": {
+          "denominator": "2000000",
+          "numerator": "13347273"
+        },
+        "low": {
+          "denominator": "2000000",
+          "numerator": "13347271"
+        }
+      }
+    ],
+    "weight_policy": "Estimator weights are fixed from the source-reported displayed midpoints and Table 18 covariance summary; they are not recomputed over hidden values inside the display cells."
+  },
+  "integrity": {
+    "baseline_main_sha": "30227abeb3f6ab009b70c429e491bb015e798542",
+    "external_anchor": {
+      "created_at": "2026-09-09T00:26:16Z",
+      "event": "draft_pull_request_created",
+      "outcome_blind": false,
+      "preregistration_commit_sha": "504200ae817a60b211decec4432b43be9087e9e3",
+      "url": "https://github.com/mdiaz4052/The-Number-Project/pull/47"
+    },
+    "preregistration_commit_sha": "504200ae817a60b211decec4432b43be9087e9e3",
+    "preregistration_sha256": "e83f08f323aa1e397be1b6ef50e25d541d05307949148efbff02971e8eaf4ca6",
+    "source_snapshot": {
+      "files": [
+        {
+          "path": "Discovery/nist_2026_n4_experimental_estimator.py",
+          "sha256": "6be6184716075565424e2ebc96225d5d27b31709dc014c88ef14f718a326b0ee"
+        },
+        {
+          "path": "Notes/NIST2026N4ExperimentalEstimatorSpecification.md",
+          "sha256": "e17dc3f28a77f5b304f8853109777ca82ac2fcd5aeacb1065375745659f929f4"
+        },
+        {
+          "path": "Notes/NIST2026N4ExperimentalEstimator.md",
+          "sha256": "949cbf933f633c017454143b42f1957edd52db6dfdc29c83123fb0c36ddccb71"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+          "sha256": "e83f08f323aa1e397be1b6ef50e25d541d05307949148efbff02971e8eaf4ca6"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json",
+          "sha256": "8e9f7f135dc7f71158ba85dc3a62bf81cbea1b71ad0ce4f89681a1a110d96533"
+        },
+        {
+          "path": "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json",
+          "sha256": "9e976877bfd9890ba50ed4f2d183d3241a3f8dfb8af0b2fc046d53c4e9639f45"
+        },
+        {
+          "path": "tests/test_nist_2026_estimator_feasibility.py",
+          "sha256": "74f06885c2a9034cba6ca95bc7a05fa82f7b5a1a870df3fa3cd3a22115aa5f1f"
+        }
+      ],
+      "source_commit_sha": "6e4004014446f77a718e5b78798c388898c6ca6b"
+    }
+  },
+  "kind": "project_defined_n4_experimental_covariance_generalized_mean",
+  "known_prior_information": {
+    "allowed_claim": "Target-independent deterministic implementation of the prospectively frozen experimental-only generalized least-squares estimator and its finite-resolution representation.",
+    "outcome_blind": false,
+    "reason": "The four determinations, Table 18 covariance inputs, the published Bayesian final result, the BIPM discrepancy, and Claude's qualitative observation that a GLS combination is numerically close to equation (64) were known before this freeze. No blind-discovery claim is permitted."
+  },
+  "schema_version": 1,
+  "source": {
+    "doi": "10.1088/1681-7575/ae570f",
+    "feasibility_artifact_path": "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json",
+    "locators": {
+      "determinations": "PDF page 25, Table 16",
+      "precise_uncertainties_and_correlations": "PDF page 26, Table 18",
+      "uncertainty_components_and_combined": "PDF page 26, Table 17"
+    },
+    "source_attestation_path": "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json"
+  },
+  "upstream_authorization": {
+    "bayesian_blocker_ids": [
+      "epsilon_likelihood_distribution",
+      "posterior_sampler_algorithm",
+      "posterior_sampling_controls",
+      "robust_estimator_computational_conventions",
+      "dark_correlation_matrix_identity"
+    ],
+    "decisions": {
+      "common_constant_comparison": "NOT_EVALUATED",
+      "equation_64_reproduction": "NOT_AUTHORIZED",
+      "experimental_covariance": "GO",
+      "published_bayesian_consensus": "NO_GO"
+    },
+    "feasibility_artifact_id": "nist_2026_estimator_feasibility_v1",
+    "source_attestation_id": "nist_2026_estimator_source_attestation_v1"
+  }
+}
