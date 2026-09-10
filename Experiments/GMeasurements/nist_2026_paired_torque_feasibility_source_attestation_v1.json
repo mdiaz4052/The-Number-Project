@@ -1,0 +1,436 @@
+{
+  "anchor": {
+    "created_at": "2026-09-10T13:31:25Z",
+    "head_sha_at_creation": "5e104cd4a070167e2354619d473043f2528f169b",
+    "pr_number": 51,
+    "provider": "GitHub",
+    "url": "https://github.com/mdiaz4052/The-Number-Project/pull/51"
+  },
+  "attribution": "GPT implementation attestation after published freeze/anchor. Source review and supplied specification preceded freeze; no independent source audit or new raw-PDF hash. No added decision-driving facts.",
+  "corpus": {
+    "GUM": {
+      "access": "Official ISO HTML inspected; general guidance supplies no experimental covariance.",
+      "source": "JCGM 100:2008 sections 3.3 and 5.1-5.2",
+      "urls": [
+        "https://www.iso.org/sites/JCGM/GUM/JCGM100/C045315e-html/C045315e_FILES/MAIN_C045315e/03_e.html",
+        "https://www.iso.org/sites/JCGM/GUM/JCGM100/C045315e-html/C045315e_FILES/MAIN_C045315e/05_e.html"
+      ]
+    },
+    "article": {
+      "access": "This preparation read web-parsed journal PDF at bounded locators in sections 3,7.7,8,9 and end matter. Supplied specification attributes prior planning screenshots at indices 23-26; not a new screenshot inspection.",
+      "authors": "Schlamminger et al.",
+      "doi": "10.1088/1681-7575/ae570f",
+      "journal": "Metrologia 63 (2026) 025012",
+      "license": "CC BY 4.0",
+      "raw_hash": "c79552d62f4d4f4e85cfbbb00f135c1d985b596d9cdcde9bee57cfe4618f33dc",
+      "raw_hash_attribution": "PR 50; this run did not obtain/hash raw bytes",
+      "title": "Redetermination of the gravitational constant with the BIPM torsion balance at NIST",
+      "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075"
+    },
+    "closure": "No specific essential supplement identified. PTB calibration file mentioned by article is not a linked campaign-contrast uncertainty supplement and not required if direct C can be supplied. Future material requires explicit replacement/version, never silent entry.",
+    "landing": {
+      "access": "Inspected publication/download links; DOI and NIST PDF only directly relevant links found.",
+      "role": "discovery only",
+      "url": "https://www.nist.gov/publications/redetermination-gravitational-constant-bipm-torsion-balance-nist"
+    },
+    "publisher": {
+      "access": "Direct access returned Internal Error; preparation spec records earlier robots restriction. Associated-material index not fully reviewed.",
+      "essential_named_supplement": null,
+      "urls": [
+        "https://doi.org/10.1088/1681-7575/ae570f",
+        "https://iopscience.iop.org/article/10.1088/1681-7575/ae570f"
+      ]
+    },
+    "search": {
+      "closed": true,
+      "followed_associated_resources": 0,
+      "maximum": 3,
+      "query": "\"ae570f\" covariance data code supplementary torque",
+      "result": "One targeted search; returned article-index/copy material, no identified campaign covariance/data-code supplement. No general absence claim."
+    }
+  },
+  "effect_inventory": [
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_0_free",
+        "copper_120_servo",
+        "copper_120_free",
+        "copper_240_servo",
+        "copper_240_free",
+        "sapphire_servo",
+        "sapphire_free"
+      ],
+      "correction_status": "UNCERTAINTY_ONLY_ASSIGNMENT",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "TYPE_A",
+      "id": "type_a",
+      "loading": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "locator": "S1: sections 3.2-3.3 pp.6-8; Table 15 p.25",
+      "missing": "Within-pair and cross-campaign dependence for the eight summaries.",
+      "smallest_repair": "Direct Type A projected C, or relevant signed covariances.",
+      "stage": "campaign_torque",
+      "supplies": "Eight marginal standard uncertainties at k=1; extraction and averaging procedures."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_120_servo",
+        "copper_240_servo",
+        "sapphire_servo"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "TYPE_A_AND_TYPE_B",
+      "id": "electrical",
+      "loading": null,
+      "locator": "S1: section 3.3 pp.7-8 equations (12)-(20); Table 17 p.26",
+      "missing": "Signed campaign-level voltage/capacitance residual joint effects and stage coverage.",
+      "smallest_repair": "Projected electrical uncertainty with cross terms, or signed torque sensitivities and joint calibration uncertainty.",
+      "stage": "campaign_torque",
+      "supplies": "Voltage traceability and capacitance-gradient measurement described; budget concerns later G."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_0_free",
+        "copper_120_servo",
+        "copper_120_free",
+        "copper_240_servo",
+        "copper_240_free",
+        "sapphire_servo",
+        "sapphire_free"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "TYPE_B",
+      "id": "autocollimator_scale",
+      "loading": null,
+      "locator": "S1: section 3.4 p.9; section 8.5 p.23",
+      "missing": "Campaign torque loadings, calibration correlations, and correction stage; no equal-absolute-loading assertion.",
+      "smallest_repair": "Signed torque-stage scale loadings and covariance or direct projected term.",
+      "stage": "campaign_torque",
+      "supplies": "Opposite angle sensitivities of the two G extraction methods are described."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_0_free",
+        "copper_120_servo",
+        "copper_120_free",
+        "copper_240_servo",
+        "copper_240_free",
+        "sapphire_servo",
+        "sapphire_free"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "MODEL_BASED_ASSIGNMENT",
+      "id": "autocollimator_nonlinearity",
+      "loading": null,
+      "locator": "S1: section 8.5 pp.23-24 equations (59)-(62), Table 14",
+      "missing": "Joint campaign-level shifts/residual covariance and Table 15 correction convention.",
+      "smallest_repair": "Mean correction rule and centered residual projected uncertainty, or correctly interpreted conservative projected assignment.",
+      "stage": "campaign_torque",
+      "supplies": "Relative G shifts and marginal assignments; systematic mean combined in quadrature; full correlation stated for four final results."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_0_free",
+        "copper_120_servo",
+        "copper_120_free",
+        "copper_240_servo",
+        "copper_240_free",
+        "sapphire_servo",
+        "sapphire_free"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "EXTRAPOLATION",
+      "id": "pressure_thermal",
+      "loading": null,
+      "locator": "S1: section 7.7 pp.20-21",
+      "missing": "Exact Table 15 application stage and dependence of extrapolation/calibration among methods/campaigns.",
+      "smallest_repair": "Stage confirmation and projected extrapolation uncertainty including relevant cross terms.",
+      "stage": "campaign_torque",
+      "supplies": "Two-pressure measurements and zero-pressure extrapolation described for G values."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_120_servo",
+        "copper_240_servo",
+        "sapphire_servo"
+      ],
+      "correction_status": "APPLIED_AT_THIS_STAGE",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "CORRECTION_AND_RESIDUAL",
+      "id": "finite_servo_gain",
+      "loading": null,
+      "locator": "S1: section 3.3 p.8 after equation (20)",
+      "missing": "Campaign residual uncertainty and cross terms; association with reported Type A scope.",
+      "smallest_repair": "Stage coverage declaration and remaining projected servo-gain uncertainty; do not reapply correction.",
+      "stage": "campaign_torque",
+      "supplies": "Residual elastic torque is added to applied electrostatic torque."
+    },
+    {
+      "coordinates": [
+        "copper_0_free",
+        "copper_120_free",
+        "copper_240_free",
+        "sapphire_free"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "TYPE_A_AND_TYPE_B",
+      "id": "free_frequency_inertia_anelasticity",
+      "loading": null,
+      "locator": "S1: section 3.2 p.6 equations (5)-(10); sections 8.1,8.4 pp.21-22",
+      "missing": "Whether Table 15 includes the anelastic correction and how mechanical residual terms co-vary.",
+      "smallest_repair": "Free-mode correction stage and signed joint residual projected uncertainty. Frequency, inertia and anelasticity grouped as the free mechanical extraction path.",
+      "stage": "campaign_torque",
+      "supplies": "Free extraction uses frequency/inertia; anelastic correction is stated for Gfree; servo has no such stiffness correction."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_0_free",
+        "copper_120_servo",
+        "copper_120_free",
+        "copper_240_servo",
+        "copper_240_free",
+        "sapphire_servo",
+        "sapphire_free"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "CONSERVATIVE_ASSIGNMENT",
+      "id": "background_zero_torque",
+      "loading": null,
+      "locator": "S1: sections 8.2-8.3 p.22; Table 17 p.26",
+      "missing": "Which terms enter torque-stage residuals and their signed shared loadings; conversion-only part must be excluded.",
+      "smallest_repair": "Separate background torque contribution from mass-integration validation and provide the surviving projected term.",
+      "stage": "campaign_torque",
+      "supplies": "Empty carousel supplies background assignment; empty disk checks mass integration."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_0_free",
+        "copper_120_servo",
+        "copper_120_free",
+        "copper_240_servo",
+        "copper_240_free",
+        "sapphire_servo",
+        "sapphire_free"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "STAGE_AND_LOADING",
+      "id": "seating_geometry_drift",
+      "loading": null,
+      "locator": "S1: section 3.3 p.8 Figure 7; section 9 pp.24-25",
+      "missing": "Stage comparability under drift/seating and joint residual loadings; same apparatus does not prove cancellation.",
+      "smallest_repair": "Confirm common campaign signal; supply any non-canceling signed drift/seating correction or projected uncertainty.",
+      "stage": "campaign_torque",
+      "supplies": "Campaign labels and capacitance-gradient changes with seating are described."
+    },
+    {
+      "coordinates": [],
+      "correction_status": "DOES_NOT_ENTER_THIS_STAGE",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "CONVERSION_ONLY",
+      "id": "G_conversion_only",
+      "loading": [
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "locator": "S1: section 3.1 p.5; section 9 p.25 Table 15",
+      "missing": "Any overlap with mechanical calibration is routed to the free-mode or seating row, not erased.",
+      "smallest_repair": "No conversion-only numerical data requested.",
+      "stage": "G_conversion_only",
+      "supplies": "Mass integration, density and geometry factors used only in conversion to G do not enter symbolic torque comparison."
+    }
+  ],
+  "freeze_sha256": "88be1281c71e2ec952bd9d1f7bf2f88def4a0b3f9d57c3dfe170c4b62225622c",
+  "review_qualification": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+  "schema_version": 1,
+  "source_contract": {
+    "candidate_completion_premises": [],
+    "comparison_contract": "source_described",
+    "comparison_detail": "Sections 3 and 9 describe the same recovered torque difference in each campaign; source does not establish every correction-stage and residual loading needed for a completed mean/uncertainty model. No demonstrated mismatch is asserted.",
+    "comparison_locator": "S1 pp.5-8 equations (5)-(20), pp.24-25 Table 15",
+    "correction_rule": null,
+    "essential_access_gaps": [],
+    "full_matrix_unknown": true,
+    "matrix": null,
+    "mean_correction_status": "UNKNOWN",
+    "omitted_effects_exhaustive": true,
+    "precision_scope": "exact reported decimals only; no restored physical precision; future rounding/statistical calibration separate",
+    "sampling_calibration": "NOT_ESTABLISHED_FOR_CAMPAIGN_CONTRAST",
+    "uncertainty_interpretation": "Type A marginal standard uncertainties; other source assignments include conservative and noncentered effects; no complete campaign matrix."
+  },
+  "source_projection": {
+    "coverage_factor": 1,
+    "locator": "S1 p.25 Table 15",
+    "reference_role": "transcription_context_only_not_used_for_uncertainty_or_verdict",
+    "rows": [
+      {
+        "label": "copper_0_servo",
+        "reference_nNm": "31.1962",
+        "u_A_nNm": "0.0004"
+      },
+      {
+        "label": "copper_0_free",
+        "reference_nNm": "31.1979",
+        "u_A_nNm": "0.0003"
+      },
+      {
+        "label": "copper_120_servo",
+        "reference_nNm": "31.1828",
+        "u_A_nNm": "0.0006"
+      },
+      {
+        "label": "copper_120_free",
+        "reference_nNm": "31.1842",
+        "u_A_nNm": "0.0003"
+      },
+      {
+        "label": "copper_240_servo",
+        "reference_nNm": "31.1836",
+        "u_A_nNm": "0.0003"
+      },
+      {
+        "label": "copper_240_free",
+        "reference_nNm": "31.1856",
+        "u_A_nNm": "0.0002"
+      },
+      {
+        "label": "sapphire_servo",
+        "reference_nNm": "13.9778",
+        "u_A_nNm": "0.0003"
+      },
+      {
+        "label": "sapphire_free",
+        "reference_nNm": "13.9799",
+        "u_A_nNm": "0.0002"
+      }
+    ],
+    "stage": "table15_campaign_torque",
+    "uncertainty_scope": "type_a_marginals_only"
+  }
+}
