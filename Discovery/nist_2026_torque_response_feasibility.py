@@ -366,8 +366,27 @@ def verify_implementation_chronology(root=ROOT):
 
 
 def source_snapshot(root, paths=SOURCE_PATHS):
-    # Latest commit touching result-driving paths (full history), not current HEAD.
-    sha = git(root, 'log', '--full-history', '-1', '--format=%H', '--', *paths).decode().strip()
+    # Full-history candidates include synthetic/true merges. A commit inheriting
+    # the complete relevant state from any parent is not a new source snapshot.
+    # A conflict resolution that changes that state against every parent remains
+    # a genuine source change and must receive freshly emitted artifacts.
+    candidates = git(root, 'log', '--full-history', '--format=%H', '--', *paths).decode().splitlines()
+    sha = None
+    for candidate in candidates:
+        parents = git(root, 'rev-list', '--parents', '-n', '1', candidate).decode().split()[1:]
+        inherited = False
+        for parent in parents:
+            diff = subprocess.run(['git', '-C', str(root), 'diff', '--quiet', parent, candidate, '--', *paths], capture_output=True)
+            if diff.returncode not in (0, 1):
+                raise FeasibilityError('source-state parent comparison failed')
+            if diff.returncode == 0:
+                inherited = True
+                break
+        if not inherited:
+            sha = candidate
+            break
+    if sha is None:
+        raise FeasibilityError('no result-driving source introduction found')
     verify_committed_source_state(root, sha, source_paths=paths, artifact_label=STEM)
     hashes = {}
     for path in paths:

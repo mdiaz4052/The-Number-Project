@@ -247,6 +247,22 @@ class TorqueArtifactTests(unittest.TestCase):
         self.assertEqual(n.git(n.ROOT,'diff','--name-only',n.BASE,n.FREEZE).decode().splitlines(),[n.PREREGISTRATION_PATH.as_posix()])
         n.verify_implementation_chronology()
 
+    def test_source_snapshot_survives_true_and_synthetic_merges(self):
+        with TemporaryDirectory() as temp:
+            root=Path(temp)
+            def git(*args):return subprocess.run(['git','-C',str(root),*args],check=True,capture_output=True).stdout.decode().strip()
+            git('init');git('config','user.name','Test');git('config','user.email','test@example.invalid')
+            (root/'base').write_text('base');git('add','.');git('commit','-m','base');base=git('rev-parse','HEAD')
+            git('checkout','-b','feature');(root/'source').write_text('source');git('add','.');git('commit','-m','source');source=git('rev-parse','HEAD')
+            git('checkout','-b','integration',base);(root/'other').write_text('unrelated');git('add','.');git('commit','-m','unrelated')
+            git('merge','--no-ff','feature','-m','true merge')
+            self.assertEqual(n.source_snapshot(root,('source',))['source_commit_sha'],source)
+            # A merge-resolution source change is a new snapshot, not discarded.
+            (root/'source').write_text('resolved differently');git('add','.');tree=git('write-tree')
+            merged=git('commit-tree',tree,'-p',base,'-p',source,'-m','synthetic resolution')
+            git('update-ref','HEAD',merged)
+            self.assertEqual(n.source_snapshot(root,('source',))['source_commit_sha'],merged)
+
     def test_history_fixtures(self):
         # Minimal real Git histories exercise chronology and strict freeze without full project fixtures.
         with TemporaryDirectory() as temp:
