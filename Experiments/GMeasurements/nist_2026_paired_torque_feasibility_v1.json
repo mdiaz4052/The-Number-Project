@@ -1081,7 +1081,7 @@
     "C_rank": null,
     "additional_premises": [],
     "cancelled_unknowns": [],
-    "combined_contrast_uncertainty": "PARTIALLY_IDENTIFIED",
+    "combined_contrast_uncertainty": "UNIDENTIFIED",
     "comparison_contract": "source_described",
     "comparison_detail": "Sections 3 and 9 describe the same recovered torque difference in each campaign; source does not establish every correction-stage and residual loading needed for a completed mean/uncertainty model. No demonstrated mismatch is asserted.",
     "disposition": "NO_GO_CONTRAST_UNCERTAINTY",
@@ -1143,14 +1143,14 @@
     },
     "freeze_commit": "5e104cd4a070167e2354619d473043f2528f169b",
     "freeze_sha256": "88be1281c71e2ec952bd9d1f7bf2f88def4a0b3f9d57c3dfe170c4b62225622c",
-    "source_commit_sha": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d",
+    "source_commit_sha": "d2b9662af3c8046dbfa0ef3c09f4cf74be640f3a",
     "source_sha256": {
-      "Discovery/nist_2026_paired_torque_feasibility.py": "6fcef2378e678ee32ddb6214ec15779ed0389ba8d6644221fad16ccbaa83924a",
+      "Discovery/nist_2026_paired_torque_feasibility.py": "1e1b9adbb31342bbc259d7debe7f8c48a46eff122871e49625ae683b9e25747c",
       "Discovery/preregistration_history.py": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0",
       "Discovery/source_history.py": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb",
       "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_preregistration_v1.json": "88be1281c71e2ec952bd9d1f7bf2f88def4a0b3f9d57c3dfe170c4b62225622c",
       "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_source_attestation_v1.json": "1c0a3a79a13a0cada2e7521b29477b174ab26d2472a79f726aab3a0767d46c47",
-      "Notes/NIST2026PairedTorqueFeasibility.md": "f7f57c6a29687d105a2438382bba244b22ec09a19443ffc62537a3c5eda90c3f",
+      "Notes/NIST2026PairedTorqueFeasibility.md": "3c911f0e99fceb26d48635e49ea128cffdbae0d50b7412056e4d8df2b0b34743",
       "Notes/NIST2026PairedTorqueFeasibilitySpecification.md": "9db52b8703da2ba2b034d4dc701c957adae0a48b0ec8505dd0952afd872931e7",
       "Notes/NIST2026PairedTorqueSourceRequest.md": "31321490221db289667f26e0169e9e682163ec2248a06dcae2ae65f574198120"
     }
@@ -1371,6 +1371,7 @@
   },
   "type_a_projection": {
     "C_type_a": null,
+    "correction_transfer": "UNRESOLVED",
     "equation": "C_A = known_diagonal_contribution + sum_{i<j} Cov_A(y_i,y_j) coefficient_ij; all off-diagonal quantities remain unknown.",
     "interpretation": "Marginal standard uncertainties at k=1; evaluation type does not imply independence or a sampling law.",
     "known_diagonal_contribution_not_C": [
@@ -1417,6 +1418,61 @@
         }
       ]
     ],
+    "permitted_uncertainty_projection": {
+      "rows": [
+        {
+          "label": "copper_0_servo",
+          "u_A_nNm": "0.0004"
+        },
+        {
+          "label": "copper_0_free",
+          "u_A_nNm": "0.0003"
+        },
+        {
+          "label": "copper_120_servo",
+          "u_A_nNm": "0.0006"
+        },
+        {
+          "label": "copper_120_free",
+          "u_A_nNm": "0.0003"
+        },
+        {
+          "label": "copper_240_servo",
+          "u_A_nNm": "0.0003"
+        },
+        {
+          "label": "copper_240_free",
+          "u_A_nNm": "0.0002"
+        },
+        {
+          "label": "sapphire_servo",
+          "u_A_nNm": "0.0003"
+        },
+        {
+          "label": "sapphire_free",
+          "u_A_nNm": "0.0002"
+        }
+      ],
+      "stage": "table15_campaign_torque",
+      "torque_reference_role": "context only; no reference values consumed by uncertainty propagation",
+      "units": {
+        "covariance": "(N m)^2",
+        "covariance_MLT": [
+          2,
+          4,
+          -4
+        ],
+        "internal": "N m",
+        "nNm_to_Nm": "1/1000000000",
+        "pNm_to_Nm": "1/1000000000000",
+        "torque_MLT": [
+          1,
+          2,
+          -2
+        ]
+      }
+    },
+    "representation": "as-published Table 15 y; not an authorized contribution to corrected y_star without a stage map",
     "scope": "TYPE_A_PARTIAL_EXPRESSION_NOT_A_COVARIANCE_COMPLETION",
     "u_A_SI": [
       {
