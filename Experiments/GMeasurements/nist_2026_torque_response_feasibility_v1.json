@@ -485,9 +485,9 @@
     },
     "freeze_commit": "daf900f5fdac06d47b13c9de9272b9e734245cd6",
     "freeze_sha256": "44f56d0e889474765910439329f81896db61df75d48d7a7e379ea233ff2802bb",
-    "source_commit_sha": "1331008a146ca1017a8167956e6f3199c7c396e0",
+    "source_commit_sha": "b09b7ab326d561f86a3ef41cb187b5a18e6077b5",
     "source_sha256": {
-      "Discovery/nist_2026_torque_response_feasibility.py": "63307ccfb49d89e344bfda14ab92f1d51caa0027b8d9a2546b10aa1c21290476",
+      "Discovery/nist_2026_torque_response_feasibility.py": "7d02656b1b6f1e5fb24ef064fe32e28e838b749df7a174a0ec773f5869a650ed",
       "Discovery/preregistration_history.py": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0",
       "Discovery/source_history.py": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb",
       "Experiments/GMeasurements/nist_2026_torque_response_feasibility_preregistration_v1.json": "44f56d0e889474765910439329f81896db61df75d48d7a7e379ea233ff2802bb",

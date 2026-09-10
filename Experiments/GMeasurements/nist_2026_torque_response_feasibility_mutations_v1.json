@@ -18,7 +18,7 @@
   "production_killed": 8,
   "records": [
     {
-      "applied_source_sha256": "63307ccfb49d89e344bfda14ab92f1d51caa0027b8d9a2546b10aa1c21290476",
+      "applied_source_sha256": "7d02656b1b6f1e5fb24ef064fe32e28e838b749df7a174a0ec773f5869a650ed",
       "category": "baseline",
       "evidence": {
         "error_tests": [],
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "applied_source_sha256": "ab22ae5af2f7fdc8bcbf98c8a2f00f0f5126d27dc957462c3823420767ebcdaf",
+      "applied_source_sha256": "b04f032f22d49b0ab704241386a937f264d5f7403fd1a05c03790b6c3d444e76",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -109,7 +109,7 @@
       ]
     },
     {
-      "applied_source_sha256": "889eb972afba16b5989f08f3807b176ca86fcbe40f982a6d40da9a64675dcc86",
+      "applied_source_sha256": "7ec3dcff86950c659018bec44e0c8cc0fa1696c75e73e34d3cdc0e218a8df663",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -151,7 +151,7 @@
       ]
     },
     {
-      "applied_source_sha256": "01b4cc34d90aa6bb5f15f81df549b7476589f4295935d7130bb46824d6f188ae",
+      "applied_source_sha256": "c5792841fad2729dda3ec249201fda2aabbef1a5419d3afb0d6e1f27ca743b2b",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -193,7 +193,7 @@
       ]
     },
     {
-      "applied_source_sha256": "41cdc63a5c7db2084e17dc29c8064ae841bd9961fde555513b3d625e245d4312",
+      "applied_source_sha256": "f03ffe289ade08590a20399979a98ffb2f648f5d0c184aa79c6313ac24fe14df",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -235,7 +235,7 @@
       ]
     },
     {
-      "applied_source_sha256": "01a6172affe05957a6d159910cb9ff40780dde3d7d7dd04b62c64519dc0636c0",
+      "applied_source_sha256": "84a65bbae335b31824ce59e475003c9a002f82e340d86552fc70ec1d92c1fea1",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -277,7 +277,7 @@
       ]
     },
     {
-      "applied_source_sha256": "0e2ac17237342dcda19bc349607096d7a4b4585d38912ad356a3e9d5d092a2a1",
+      "applied_source_sha256": "14ec297f32a4fff8896f362218ca63da6e2cf812cbdb7d7f1cea4ee1311aefc2",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -319,7 +319,7 @@
       ]
     },
     {
-      "applied_source_sha256": "a6951d6977a3edb893e359a295faa60c7f6041d42499d1c3885a17ae923047ee",
+      "applied_source_sha256": "f07b4300adbcff104fc576a50b61d01aa36cc200082060326e048411c3db5f65",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -361,7 +361,7 @@
       ]
     },
     {
-      "applied_source_sha256": "5eb214ef887ec078512f5a537aec715cdb689ecc833de756e77c218da1769a32",
+      "applied_source_sha256": "68b2fa756c1a947e2fac9050d862b404544ac0839d34b59d8488748c64104fc1",
       "category": "production",
       "evidence": {
         "error_tests": [],
@@ -403,7 +403,7 @@
       ]
     },
     {
-      "applied_source_sha256": "388c2a966e2b2b6bff351945eaf25780fc358a1a7086177df9433e863aa7d261",
+      "applied_source_sha256": "2e127b542e862b23789cae37e087601f2348ad2809a0d1f18565edd410ac8d33",
       "category": "calibration",
       "evidence": {
         "error_tests": [],
@@ -445,7 +445,7 @@
       ]
     },
     {
-      "applied_source_sha256": "15adb1a1272391975d16e39f668b80eed007238f8551fd3728e0617484f84e29",
+      "applied_source_sha256": "93b174f796ad3d5bfc7f8cdb2d8af9d4a2f6c6207b99e0db1a98adb64372fee8",
       "category": "calibration",
       "evidence": {
         "error_tests": [],
@@ -521,11 +521,11 @@
   ],
   "review_qualification": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
   "source_snapshot": {
-    "source_commit_sha": "1331008a146ca1017a8167956e6f3199c7c396e0",
+    "source_commit_sha": "b09b7ab326d561f86a3ef41cb187b5a18e6077b5",
     "source_sha256": {
       "Discovery/__init__.py": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078",
       "Discovery/mutation_test_runner.py": "2d128a4b368fe70b56cc98886da506e4bef1fed5bb641e7aee6272c613a6ce34",
-      "Discovery/nist_2026_torque_response_feasibility.py": "63307ccfb49d89e344bfda14ab92f1d51caa0027b8d9a2546b10aa1c21290476",
+      "Discovery/nist_2026_torque_response_feasibility.py": "7d02656b1b6f1e5fb24ef064fe32e28e838b749df7a174a0ec773f5869a650ed",
       "Discovery/nist_2026_torque_response_feasibility_mutations.py": "712c42144d8a0705add698591c6f4751bf72799b132fd5efb877d6d7413aa674",
       "Discovery/preregistration_history.py": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0",
       "Discovery/source_history.py": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb",
@@ -533,7 +533,7 @@
       "Experiments/GMeasurements/nist_2026_torque_response_feasibility_source_attestation_v1.json": "f347d20248d84c7d857ba3ab355d73b5e0519d95360aff33f49d862f68175bac",
       "Notes/NIST2026TorqueResponseFeasibility.md": "bde5a751018d06d3fd3bf4e9ab2361c1d74a10d43d683ff2f55d3ca72713d8f5",
       "Notes/NIST2026TorqueResponseFeasibilitySpecification.md": "8feaecb9d30020795c86050c6241620d886f312663619fabb49d64b17c58f475",
-      "tests/test_nist_2026_torque_response_feasibility.py": "73fce3cf4ae0be7257b502b6ffa1c01c80c338fb20c7310f3b6391e00b19200a",
+      "tests/test_nist_2026_torque_response_feasibility.py": "bc874fce65dfc08c5c7dd0052ff2f146c4cace30c891465cd8107b07440897ba",
       "tests/test_nist_2026_torque_response_feasibility_mutations.py": "5f795c96f943dbc49658d69a2d4259b5c8775e563eb5df904f42e8d5c8d77bac"
     }
   }
