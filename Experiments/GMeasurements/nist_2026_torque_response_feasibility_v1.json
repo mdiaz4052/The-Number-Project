@@ -1,0 +1,834 @@
+{
+  "aggregation_findings": [
+    {
+      "absolute_response_relevance": "supports declared preliminary convention or boundary",
+      "category": "consensus_boundary",
+      "locator": "\u00a79, transition after Table 16 on printed p.25 and paragraph introducing equation (63), printed p.26",
+      "mean_subspace_relevance": "does not alone authorize final subspace",
+      "source": "10.1088/1681-7575/ae570f",
+      "stage_disposition": "BOUNDED_SOURCE_SUPPORT",
+      "supplies": "Four determinations and combined uncertainty evaluation precede separate dark-uncertainty consensus.",
+      "unspecified": "No equation (64), dark-uncertainty or CODATA numerical input authorized."
+    },
+    {
+      "absolute_response_relevance": "unresolved summary functional",
+      "category": "copper",
+      "locator": "\u00a79, Figure 25 caption and adjacent paragraphs, printed pp.24-25; Figure 14, printed p.17",
+      "mean_subspace_relevance": "no universal equivariance contract",
+      "source": "10.1088/1681-7575/ae570f",
+      "stage_disposition": "UNIDENTIFIED_FROM_REVIEWED_PASSAGES",
+      "supplies": "Joint model G(theta)=Gi+A*sin(theta-theta0), common amplitude/phase and two method intercepts; posterior means and standard deviations form copper summaries.",
+      "unspecified": "Likelihood, copper-stage prior distributions and a global directional equivariance contract are not specified in these reviewed passages. Later consensus priors are a separate stage."
+    },
+    {
+      "absolute_response_relevance": "supports declared preliminary convention or boundary",
+      "category": "corrections",
+      "locator": "\u00a73.2-3.3, equation (20) and following paragraph, printed pp.6-8",
+      "mean_subspace_relevance": "does not alone authorize final subspace",
+      "source": "10.1088/1681-7575/ae570f",
+      "stage_disposition": "BOUNDED_SOURCE_SUPPORT",
+      "supplies": "Recovered electrostatic torque difference converts using equation (5); residual elastic torque kappa delta_phi is added for finite servo gain.",
+      "unspecified": "No new correction is inferred; operational injection is after declared existing extraction/corrections."
+    },
+    {
+      "absolute_response_relevance": "supports declared preliminary convention or boundary",
+      "category": "geometry",
+      "locator": "Table 15 caption/last two columns, printed p.25; Table 10 and \u00a76.8, printed p.17",
+      "mean_subspace_relevance": "does not alone authorize final subspace",
+      "source": "10.1088/1681-7575/ae570f",
+      "stage_disposition": "BOUNDED_SOURCE_SUPPORT",
+      "supplies": "Table 15 explicitly prescribes delta_N=G*16*Gamma_max*ms*mt/Rs; Table 10 distinguishes full half-difference from peak and has a dimensionally inconsistent Gamma column heading relative to \u00a73.1.",
+      "unspecified": "Table 15 named Gamma_max is used solely in its explicitly printed conversion. It is not independently identified as a true exact peak or full half-difference; Table 10 numbers are not substituted."
+    },
+    {
+      "absolute_response_relevance": "supports declared preliminary convention or boundary",
+      "category": "masses",
+      "locator": "Table 2 caption and footnotes a/b, printed p.10",
+      "mean_subspace_relevance": "does not alone authorize final subspace",
+      "source": "10.1088/1681-7575/ae570f",
+      "stage_disposition": "BOUNDED_SOURCE_SUPPORT",
+      "supplies": "Per-body averages; apparent source masses are air-buoyancy corrected.",
+      "unspecified": "Unrounded masses and their joint physical uncertainty are not recovered."
+    },
+    {
+      "absolute_response_relevance": "supports declared preliminary convention or boundary",
+      "category": "orders",
+      "locator": "Table 15 rows/columns and Table 16 labels, printed p.25",
+      "mean_subspace_relevance": "does not alone authorize final subspace",
+      "source": "10.1088/1681-7575/ae570f",
+      "stage_disposition": "BOUNDED_SOURCE_SUPPORT",
+      "supplies": "Table 15 row order sapphire, copper 0, copper 120, copper 240; torque columns free then servo. Table 16 order copper servo, copper free, sapphire servo, sapphire free.",
+      "unspecified": "None for the label mapping."
+    },
+    {
+      "absolute_response_relevance": "supports declared preliminary convention or boundary",
+      "category": "rotation",
+      "locator": "\u00a76.7, equations (40)-(41), printed pp.15-17",
+      "mean_subspace_relevance": "does not alone authorize final subspace",
+      "source": "10.1088/1681-7575/ae570f",
+      "stage_disposition": "BOUNDED_SOURCE_SUPPORT",
+      "supplies": "Common-geometry homogeneous torque plus shared sinusoid; three clockings cancel that sinusoid in the stated ideal identity.",
+      "unspecified": "Identity does not specify the final posterior estimator for differing campaign gains and errors."
+    },
+    {
+      "absolute_response_relevance": "unresolved summary functional",
+      "category": "sapphire",
+      "locator": "\u00a79, Table 15 caption and paragraphs surrounding Figure 25/Table 16, printed p.25",
+      "mean_subspace_relevance": "no universal equivariance contract",
+      "source": "10.1088/1681-7575/ae570f",
+      "stage_disposition": "UNIDENTIFIED_FROM_REVIEWED_PASSAGES",
+      "supplies": "One sapphire campaign per method; preliminary ratios followed by corresponding quantities combined with copper to form four determinations.",
+      "unspecified": "No explicit sapphire posterior/summary functional or directional equivariance statement in these passages; identity is only an additional assumption."
+    },
+    {
+      "absolute_response_relevance": "supports declared preliminary convention or boundary",
+      "category": "torque",
+      "locator": "\u00a73.1, equations (1)-(5), printed p.5",
+      "mean_subspace_relevance": "does not alone authorize final subspace",
+      "source": "10.1088/1681-7575/ae570f",
+      "stage_disposition": "BOUNDED_SOURCE_SUPPORT",
+      "supplies": "General difference gain 8 ms mt (Gamma_plus-Gamma_minus)/Rs; symmetric approximation uses 16 ms mt Gamma_max/Rs. Positive source azimuth is counterclockwise viewed from above.",
+      "unspecified": "Campaign-specific separate extrema are not tabulated in the reviewed passages."
+    }
+  ],
+  "decision_policy": {
+    "GO_requires": "source-authorized global four-summary mapping or all-admissible-equivalent rank-two subspace; a preliminary/local/assumed representative cannot authorize GO",
+    "access": "UNRESOLVED_SOURCE_ACCESS",
+    "conditional": "CONDITIONAL_MAPPING_ONLY",
+    "confounded": "NOT_TESTABLE_AS_INTERNAL_CONTRAST",
+    "errors": "contract, implementation, provenance and evidence errors fail the build; never a scientific disposition",
+    "full": "GO_FULL_RESPONSE",
+    "shape": "GO_MEAN_SUBSPACE_ONLY",
+    "unidentified": "NO_GO_IDENTIFIABILITY"
+  },
+  "dependencies": {
+    "code_reuse": {
+      "Discovery/mutation_test_runner.py": "2d128a4b368fe70b56cc98886da506e4bef1fed5bb641e7aee6272c613a6ce34",
+      "Discovery/preregistration_history.py": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0",
+      "Discovery/source_history.py": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb"
+    },
+    "git_ancestry": "PR #49 true merge; not an independent observation",
+    "motivation_only": [
+      "Notes/NIST2026ConfigurationModels.md at intended base"
+    ],
+    "numerical_scientific": [],
+    "runner_role": "mutation_test_runner verification only; standard library and Fraction; no prior measurement imports"
+  },
+  "excluded_numerical_fields": [
+    "torque fit",
+    "new real-data residual statistic",
+    "p-value",
+    "corrected G",
+    "pooled G",
+    "uncertainty adjustment",
+    "winning mechanism",
+    "new BIPM-NIST comparison",
+    "raw data replication",
+    "Bayesian consensus reproduction",
+    "numerical torque central values",
+    "numerical G values",
+    "Table 19",
+    "equation (64)",
+    "CODATA",
+    "fitted posterior amplitudes/phases",
+    "HUST authorizations"
+  ],
+  "final_mapping_evidence": {
+    "absolute_identified": false,
+    "all_admissible_same": false,
+    "domain": "global",
+    "essential_access": true,
+    "locators": [
+      "\u00a79, Figure 25 caption and adjacent paragraphs, printed pp.24-25; Figure 14, printed p.17",
+      "\u00a79, Table 15 caption and paragraphs surrounding Figure 25/Table 16, printed p.25"
+    ],
+    "obstruction": "The reviewed copper posterior and sapphire summary descriptions do not specify an aggregation functional or prove the required directional equivariance. Unequal campaign gains preclude treating the injected servo direction as a uniform intercept translation.",
+    "representatives": [],
+    "source_authorized": false,
+    "stage": "final"
+  },
+  "identification": {
+    "contrast_status": "UNKNOWN",
+    "disposition": "NO_GO_IDENTIFIABILITY",
+    "response": null,
+    "subspace": null
+  },
+  "intervention": {
+    "alternative_loadings_forbidden": true,
+    "b": [
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0
+    ],
+    "fixed": [
+      "geometry",
+      "calibration conventions",
+      "extraction settings",
+      "existing corrections",
+      "aggregation rule"
+    ],
+    "injection_point": "Recovered peak-to-peak servo torque after extraction and declared existing corrections, before preliminary G conversion",
+    "name": "servo_peak_to_peak_readout_offset",
+    "not_physical_DC_torque": true,
+    "tau_domain": "all signed real tau; fixed representation and fixed aggregation conventions; narrower certificates must state domain"
+  },
+  "limitations": [
+    "Exact rational arithmetic on reported decimals only; no physical exact symmetry or coefficient-rounding robustness claim",
+    "NIST landing page has DOI and local PDF links; no separate associated material identified there or in reviewed PDF. Publisher DOI/article access failed; publisher associated-material index not reviewed. No global absence assertion.",
+    "No physical DC torque, cause, unbiased common mean, or sampling distribution identified.",
+    "No global impossibility claim; obtain copper likelihood/prior or a directional-equivariance proof and sapphire summary map.",
+    "The equation-(64) consensus NO-GO is neither an input nor a blocker for this earlier stage."
+  ],
+  "mathematical_policy": {
+    "evaluated_formula": "K=16*ms*mt*Gamma_table15/Rs; d=b/K",
+    "expected_mean_and_sampling_model_not_established": true,
+    "final_identity": "F(g+tau*d;eta)-F(g;eta)=tau*a on declared domain",
+    "general_formula": "K=8*ms*mt*(Gamma_plus-Gamma_minus)/Rs",
+    "local_is_not_global": true,
+    "no_zero_for_unknown": true,
+    "precision": "Exact rational arithmetic on reported decimals only; no physical exact symmetry or coefficient-rounding robustness claim",
+    "preliminary_convention": "table15_reported_conversion_factor16",
+    "sampler_missing_not_automatic_blocker": true,
+    "subspace_equivalence": "span(1,a)=span(1,c*a+q*1), c!=0"
+  },
+  "objective": "Identify preliminary response, final four-summary response, or mean subspace to one frozen operational torque intervention; feasibility only.",
+  "orders": {
+    "canonical_to_paper_indices": [
+      3,
+      2,
+      5,
+      4,
+      7,
+      6,
+      1,
+      0
+    ],
+    "clocking_angle": "theta distinct from source-position azimuth phi_s",
+    "configuration": [
+      "copper_servo",
+      "copper_free",
+      "sapphire_servo",
+      "sapphire_free"
+    ],
+    "paper_table15_row_major": [
+      "sapphire_free",
+      "sapphire_servo",
+      "copper_0_free",
+      "copper_0_servo",
+      "copper_120_free",
+      "copper_120_servo",
+      "copper_240_free",
+      "copper_240_servo"
+    ],
+    "preliminary": [
+      "copper_0_servo",
+      "copper_0_free",
+      "copper_120_servo",
+      "copper_120_free",
+      "copper_240_servo",
+      "copper_240_free",
+      "sapphire_servo",
+      "sapphire_free"
+    ]
+  },
+  "outcome_blind": false,
+  "permitted_input_projection": {
+    "campaigns": [
+      {
+        "Gamma_table15": "0.485637",
+        "Rs_mm": "213.9642",
+        "id": "copper_0",
+        "material": "copper"
+      },
+      {
+        "Gamma_table15": "0.485467",
+        "Rs_mm": "213.9817",
+        "id": "copper_120",
+        "material": "copper"
+      },
+      {
+        "Gamma_table15": "0.485464",
+        "Rs_mm": "213.9822",
+        "id": "copper_240",
+        "material": "copper"
+      },
+      {
+        "Gamma_table15": "0.485613",
+        "Rs_mm": "213.9680",
+        "id": "sapphire",
+        "material": "sapphire"
+      }
+    ],
+    "source_masses_g": {
+      "copper": "11191.68",
+      "sapphire": "5015.60"
+    },
+    "test_mass_g": "1150.156"
+  },
+  "preliminary_response": [
+    {
+      "K_SI": {
+        "denominator": 386943359375,
+        "numerator": 180879799184966
+      },
+      "b": {
+        "denominator": 1,
+        "numerator": 1
+      },
+      "campaign": "copper_0",
+      "convention": "table15_reported_conversion_factor16",
+      "d_SI": {
+        "denominator": 180879799184966,
+        "numerator": 386943359375
+      },
+      "d_U_per_pNm": {
+        "denominator": 361759598369932,
+        "numerator": 77388671875
+      },
+      "paper_table15_index": 3,
+      "preliminary_label": "copper_0_servo",
+      "stage": "preliminary_reported_input_only"
+    },
+    {
+      "K_SI": {
+        "denominator": 386943359375,
+        "numerator": 180879799184966
+      },
+      "b": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "campaign": "copper_0",
+      "convention": "table15_reported_conversion_factor16",
+      "d_SI": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "d_U_per_pNm": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "paper_table15_index": 2,
+      "preliminary_label": "copper_0_free",
+      "stage": "preliminary_reported_input_only"
+    },
+    {
+      "K_SI": {
+        "denominator": 20896650390625,
+        "numerator": 9764089983732924
+      },
+      "b": {
+        "denominator": 1,
+        "numerator": 1
+      },
+      "campaign": "copper_120",
+      "convention": "table15_reported_conversion_factor16",
+      "d_SI": {
+        "denominator": 9764089983732924,
+        "numerator": 20896650390625
+      },
+      "d_U_per_pNm": {
+        "denominator": 19528179967465848,
+        "numerator": 4179330078125
+      },
+      "paper_table15_index": 5,
+      "preliminary_label": "copper_120_servo",
+      "stage": "preliminary_reported_input_only"
+    },
+    {
+      "K_SI": {
+        "denominator": 20896650390625,
+        "numerator": 9764089983732924
+      },
+      "b": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "campaign": "copper_120",
+      "convention": "table15_reported_conversion_factor16",
+      "d_SI": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "d_U_per_pNm": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "paper_table15_index": 4,
+      "preliminary_label": "copper_120_free",
+      "stage": "preliminary_reported_input_only"
+    },
+    {
+      "K_SI": {
+        "denominator": 1160927734375,
+        "numerator": 542446091411056
+      },
+      "b": {
+        "denominator": 1,
+        "numerator": 1
+      },
+      "campaign": "copper_240",
+      "convention": "table15_reported_conversion_factor16",
+      "d_SI": {
+        "denominator": 542446091411056,
+        "numerator": 1160927734375
+      },
+      "d_U_per_pNm": {
+        "denominator": 1084892182822112,
+        "numerator": 232185546875
+      },
+      "paper_table15_index": 7,
+      "preliminary_label": "copper_240_servo",
+      "stage": "preliminary_reported_input_only"
+    },
+    {
+      "K_SI": {
+        "denominator": 1160927734375,
+        "numerator": 542446091411056
+      },
+      "b": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "campaign": "copper_240",
+      "convention": "table15_reported_conversion_factor16",
+      "d_SI": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "d_U_per_pNm": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "paper_table15_index": 6,
+      "preliminary_label": "copper_240_free",
+      "stage": "preliminary_reported_input_only"
+    },
+    {
+      "K_SI": {
+        "denominator": 8358125000000,
+        "numerator": 1750854129467373
+      },
+      "b": {
+        "denominator": 1,
+        "numerator": 1
+      },
+      "campaign": "sapphire",
+      "convention": "table15_reported_conversion_factor16",
+      "d_SI": {
+        "denominator": 1750854129467373,
+        "numerator": 8358125000000
+      },
+      "d_U_per_pNm": {
+        "denominator": 1750854129467373,
+        "numerator": 835812500000
+      },
+      "paper_table15_index": 1,
+      "preliminary_label": "sapphire_servo",
+      "stage": "preliminary_reported_input_only"
+    },
+    {
+      "K_SI": {
+        "denominator": 8358125000000,
+        "numerator": 1750854129467373
+      },
+      "b": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "campaign": "sapphire",
+      "convention": "table15_reported_conversion_factor16",
+      "d_SI": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "d_U_per_pNm": {
+        "denominator": 1,
+        "numerator": 0
+      },
+      "paper_table15_index": 0,
+      "preliminary_label": "sapphire_free",
+      "stage": "preliminary_reported_input_only"
+    }
+  ],
+  "preliminary_status": "AVAILABLE_TABLE15_REPORTED_CONVERSION_ONLY",
+  "prior_knowledge": {
+    "known_outputs": "PR #47 experimental covariance exists; #48 common-constant diagnostics flagged; #49 M0/method flagged and material/additive not flagged under their declared covariance. Outcomes read in motivation note; not numerical inputs. Published torque/G fields visible incidentally in source pages. No new response coefficients, torque fit, or feasibility verdict computed before freeze.",
+    "specification_authorship": "Supplied specification was authored before this freeze; its planning rendered-page review is attributed, not independently audited.",
+    "specification_sha256": "8feaecb9d30020795c86050c6241620d886f312663619fabb49d64b17c58f475"
+  },
+  "prohibited_action_flags": {
+    "independently_audited": false,
+    "new_G_estimate": false,
+    "real_data_torque_fit_performed": false,
+    "statistical_test_performed": false
+  },
+  "protocol_id": "nist_2026_torque_response_feasibility_v1",
+  "provenance": {
+    "anchor": {
+      "created_at": "2026-09-10T01:49:24Z",
+      "head_sha_at_creation": "daf900f5fdac06d47b13c9de9272b9e734245cd6",
+      "pr_number": 50,
+      "provider": "GitHub",
+      "url": "https://github.com/mdiaz4052/The-Number-Project/pull/50"
+    },
+    "base": "81169a9d54e1540d82b4ad14ffa7dcd6d4fd3c77",
+    "first_introductions": {
+      "Discovery/nist_2026_torque_response_feasibility.py": "1331008a146ca1017a8167956e6f3199c7c396e0",
+      "Experiments/GMeasurements/nist_2026_torque_response_feasibility_source_attestation_v1.json": "1331008a146ca1017a8167956e6f3199c7c396e0",
+      "Notes/NIST2026TorqueResponseFeasibility.md": "1331008a146ca1017a8167956e6f3199c7c396e0"
+    },
+    "freeze_commit": "daf900f5fdac06d47b13c9de9272b9e734245cd6",
+    "freeze_sha256": "44f56d0e889474765910439329f81896db61df75d48d7a7e379ea233ff2802bb",
+    "source_commit_sha": "1331008a146ca1017a8167956e6f3199c7c396e0",
+    "source_sha256": {
+      "Discovery/nist_2026_torque_response_feasibility.py": "63307ccfb49d89e344bfda14ab92f1d51caa0027b8d9a2546b10aa1c21290476",
+      "Discovery/preregistration_history.py": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0",
+      "Discovery/source_history.py": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb",
+      "Experiments/GMeasurements/nist_2026_torque_response_feasibility_preregistration_v1.json": "44f56d0e889474765910439329f81896db61df75d48d7a7e379ea233ff2802bb",
+      "Experiments/GMeasurements/nist_2026_torque_response_feasibility_source_attestation_v1.json": "f347d20248d84c7d857ba3ab355d73b5e0519d95360aff33f49d862f68175bac",
+      "Notes/NIST2026TorqueResponseFeasibility.md": "bde5a751018d06d3fd3bf4e9ab2361c1d74a10d43d683ff2f55d3ca72713d8f5",
+      "Notes/NIST2026TorqueResponseFeasibilitySpecification.md": "8feaecb9d30020795c86050c6241620d886f312663619fabb49d64b17c58f475"
+    }
+  },
+  "review_qualification": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+  "schema_version": 1,
+  "source_identity": {
+    "associated_material_check": "NIST landing page has DOI and local PDF links; no separate associated material identified there or in reviewed PDF. Publisher DOI/article access failed; publisher associated-material index not reviewed. No global absence assertion.",
+    "citation": "Schlamminger et al., Metrologia 63 (2026) 025012, CC BY 4.0",
+    "doi": "10.1088/1681-7575/ae570f",
+    "inaccessible_urls": [
+      "https://doi.org/10.1088/1681-7575/ae570f",
+      "https://iopscience.iop.org/article/10.1088/1681-7575/ae570f"
+    ],
+    "known_essential_unreviewed_material": false,
+    "pdf_url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075",
+    "raw_pdf_bytes": 4457947,
+    "raw_pdf_sha256": "c79552d62f4d4f4e85cfbbb00f135c1d985b596d9cdcde9bee57cfe4618f33dc",
+    "reviewed_materials": [
+      "NIST-hosted article PDF",
+      "NIST publication landing-page associated-material links"
+    ],
+    "source_access": {
+      "access_date": "2026-09-10",
+      "attributed_planning_indices": [
+        5,
+        10,
+        17,
+        25,
+        26
+      ],
+      "custody_note": "Raw PDF obtained and hashed in implementation preparation; not retrospectively attributed to planning. Evaluator reads the frozen projection, never PDF bytes.",
+      "independent_review": false,
+      "parsed_pdf_indices": [
+        5,
+        6,
+        7,
+        8,
+        10,
+        15,
+        16,
+        17,
+        24,
+        25,
+        26
+      ],
+      "raw_bytes_obtained": true,
+      "rendered_pdf_indices": [
+        5,
+        10,
+        17,
+        25
+      ]
+    }
+  },
+  "synthetic_certificate": {
+    "alternatives": [
+      {
+        "posterior_parameter_response": [
+          {
+            "denominator": 295,
+            "numerator": 811
+          },
+          {
+            "denominator": 590,
+            "numerator": -111
+          },
+          {
+            "denominator": 59,
+            "numerator": -27
+          },
+          {
+            "denominator": 590,
+            "numerator": -261
+          }
+        ],
+        "prior_precision": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        "subspace": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1733,
+              "numerator": 1881
+            },
+            {
+              "denominator": 1733,
+              "numerator": 111
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1733,
+              "numerator": -148
+            },
+            {
+              "denominator": 1733,
+              "numerator": 1622
+            }
+          ]
+        ],
+        "synthetic_four_summary_response": [
+          {
+            "denominator": 295,
+            "numerator": 811
+          },
+          {
+            "denominator": 590,
+            "numerator": -111
+          },
+          {
+            "denominator": 1,
+            "numerator": 3
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ]
+      },
+      {
+        "posterior_parameter_response": [
+          {
+            "denominator": 4403,
+            "numerator": 12221
+          },
+          {
+            "denominator": 4403,
+            "numerator": -741
+          },
+          {
+            "denominator": 4403,
+            "numerator": -1728
+          },
+          {
+            "denominator": 4403,
+            "numerator": -1854
+          }
+        ],
+        "prior_precision": [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        "subspace": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 6481,
+              "numerator": 6975
+            },
+            {
+              "denominator": 12962,
+              "numerator": 741
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 6481,
+              "numerator": -494
+            },
+            {
+              "denominator": 12962,
+              "numerator": 12221
+            }
+          ]
+        ],
+        "synthetic_four_summary_response": [
+          {
+            "denominator": 4403,
+            "numerator": 12221
+          },
+          {
+            "denominator": 4403,
+            "numerator": -741
+          },
+          {
+            "denominator": 1,
+            "numerator": 3
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ]
+      }
+    ],
+    "classification": "SYNTHETIC_CONTRACT_COMPLETIONS_ONLY",
+    "constraints_satisfied": [
+      "shared sine/cosine nuisance at three clockings",
+      "two method intercepts",
+      "posterior means",
+      "fixed Gaussian likelihood for one synthetic error design",
+      "fixed priors; no observed outcomes used to choose them"
+    ],
+    "different_mean_subspaces": true,
+    "limits": "Completes the published qualitative model on synthetic inputs; does not match or reproduce any NIST numerical posterior, plot, covariance, or final value."
+  },
+  "units": {
+    "Gamma_table15": "dimensionless under the explicitly printed Table 15 conversion",
+    "K": "kg^2 m^-1",
+    "U_to_SI_G": "1/100000000000",
+    "gram_to_kg": "1/1000",
+    "inverse_K": "m kg^-2",
+    "mm_to_m": "1/1000",
+    "nNm_to_Nm": "1/1000000000",
+    "pNm_to_Nm": "1/1000000000000",
+    "tau": "N m"
+  },
+  "validation_contract": {
+    "acceptance_criteria": [
+      "all frozen choices consumed or rejected",
+      "source-supported stage distinctions",
+      "eight designated semantic mutation kills with baseline and two calibrated controls",
+      "focused/full suite, two guards, worktree and PR-range whitespace checks",
+      "exact-head CI; unmerged; Create a merge commit only"
+    ],
+    "focused_requirements": [
+      "independent forward/inverse gain identity, SI prefixes, signs and orders",
+      "fixed affine and coupled nuisance synthetic propagation",
+      "unequal-gain/weight/prior counterexample; genuine equivariant success",
+      "exact rank/subspace equivalence, changed subspace, confounding, local limits",
+      "all dispositions, missing versus inaccessible evidence, locators, finite inputs",
+      "field consumption or explicit rejection; excluded-context invariance independent of digest checks",
+      "actual builder filesystem and Git blob closure; import closure",
+      "sole-file freeze, full-history first-introduction, source snapshot before artifact",
+      "strict duplicate/nonfinite JSON rejection and freshness; prohibited outputs absent"
+    ],
+    "mutation_requirements": [
+      {
+        "id": "one_sided_factor",
+        "test": "tests.test_nist_2026_torque_response_feasibility_mutations.TorqueMutationBehaviorTests.test_peak_difference"
+      },
+      {
+        "id": "metric_prefix",
+        "test": "tests.test_nist_2026_torque_response_feasibility_mutations.TorqueMutationBehaviorTests.test_metric_prefix"
+      },
+      {
+        "id": "nominal_geometry",
+        "test": "tests.test_nist_2026_torque_response_feasibility_mutations.TorqueMutationBehaviorTests.test_campaign_geometry"
+      },
+      {
+        "id": "excluded_dependency",
+        "test": "tests.test_nist_2026_torque_response_feasibility_mutations.TorqueMutationBehaviorTests.test_excluded_invariance"
+      },
+      {
+        "id": "unlicensed_averaging",
+        "test": "tests.test_nist_2026_torque_response_feasibility_mutations.TorqueMutationBehaviorTests.test_unlicensed_aggregation"
+      },
+      {
+        "id": "erased_coupling",
+        "test": "tests.test_nist_2026_torque_response_feasibility_mutations.TorqueMutationBehaviorTests.test_coupled_response"
+      },
+      {
+        "id": "subspace_equivalence",
+        "test": "tests.test_nist_2026_torque_response_feasibility_mutations.TorqueMutationBehaviorTests.test_subspace_equivalence"
+      },
+      {
+        "id": "promoted_local",
+        "test": "tests.test_nist_2026_torque_response_feasibility_mutations.TorqueMutationBehaviorTests.test_stage_promotion"
+      }
+    ],
+    "planned_surfaces": {
+      "modified": {
+        ".github/workflows/verify.yml": "exactly two new read-only guards"
+      },
+      "new": [
+        "Discovery/nist_2026_torque_response_feasibility.py",
+        "Discovery/nist_2026_torque_response_feasibility_mutations.py",
+        "Experiments/GMeasurements/nist_2026_torque_response_feasibility_preregistration_v1.json",
+        "Experiments/GMeasurements/nist_2026_torque_response_feasibility_source_attestation_v1.json",
+        "Experiments/GMeasurements/nist_2026_torque_response_feasibility_v1.json",
+        "Experiments/GMeasurements/nist_2026_torque_response_feasibility_mutations_v1.json",
+        "Notes/NIST2026TorqueResponseFeasibilitySpecification.md",
+        "Notes/NIST2026TorqueResponseFeasibility.md",
+        "tests/test_nist_2026_torque_response_feasibility.py",
+        "tests/test_nist_2026_torque_response_feasibility_mutations.py"
+      ]
+    }
+  }
+}
