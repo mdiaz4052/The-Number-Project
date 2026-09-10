@@ -1,0 +1,3108 @@
+{
+  "algebra": {
+    "coordinate_invariance": "For invertible T, ker(T A)=ker(A); covariance transforms as T C T^T.",
+    "identities": {
+      "A_E_zero": true,
+      "A_b_zero": true,
+      "B_E_zero": true,
+      "B_b_one": true,
+      "R_one_zero": true,
+      "rank_A_three": true,
+      "rank_B_four": true,
+      "rank_Eb_five": true,
+      "rank_R_three": true
+    },
+    "ker_A_equals_col_Eb": true,
+    "kernel_basis_rows": [
+      [
+        {
+          "denominator": 1,
+          "numerator": 1
+        },
+        {
+          "denominator": 1,
+          "numerator": 1
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        }
+      ],
+      [
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1
+        },
+        {
+          "denominator": 1,
+          "numerator": 1
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        }
+      ],
+      [
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1
+        },
+        {
+          "denominator": 1,
+          "numerator": 1
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        }
+      ],
+      [
+        {
+          "denominator": 1,
+          "numerator": 1
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        }
+      ],
+      [
+        {
+          "denominator": 1,
+          "numerator": -1
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": -1
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": -1
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1
+        }
+      ]
+    ],
+    "kernel_proof": "A[E,b]=0 and rank([E,b])=5=8-rank(A); exact inclusion and equal dimensions.",
+    "operators": {
+      "A": [
+        [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": -1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": -1
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": -1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": -1
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": -1
+          },
+          {
+            "denominator": 1,
+            "numerator": -1
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ]
+      ],
+      "B": [
+        [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": -1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": -1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": -1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": -1
+          }
+        ]
+      ],
+      "E": [
+        [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ]
+      ],
+      "R": [
+        [
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": -1
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": -1
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 1
+          },
+          {
+            "denominator": 1,
+            "numerator": -1
+          }
+        ]
+      ],
+      "b": [
+        [
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 1
+          }
+        ],
+        [
+          {
+            "denominator": 1,
+            "numerator": 0
+          }
+        ]
+      ]
+    }
+  },
+  "corpus": {
+    "GUM": {
+      "access": "Official ISO HTML inspected; general guidance supplies no experimental covariance.",
+      "source": "JCGM 100:2008 sections 3.3 and 5.1-5.2",
+      "urls": [
+        "https://www.iso.org/sites/JCGM/GUM/JCGM100/C045315e-html/C045315e_FILES/MAIN_C045315e/03_e.html",
+        "https://www.iso.org/sites/JCGM/GUM/JCGM100/C045315e-html/C045315e_FILES/MAIN_C045315e/05_e.html"
+      ]
+    },
+    "article": {
+      "access": "This preparation read web-parsed journal PDF at bounded locators in sections 3,7.7,8,9 and end matter. Supplied specification attributes prior planning screenshots at indices 23-26; not a new screenshot inspection.",
+      "authors": "Schlamminger et al.",
+      "doi": "10.1088/1681-7575/ae570f",
+      "journal": "Metrologia 63 (2026) 025012",
+      "license": "CC BY 4.0",
+      "raw_hash": "c79552d62f4d4f4e85cfbbb00f135c1d985b596d9cdcde9bee57cfe4618f33dc",
+      "raw_hash_attribution": "PR 50; this run did not obtain/hash raw bytes",
+      "title": "Redetermination of the gravitational constant with the BIPM torsion balance at NIST",
+      "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075"
+    },
+    "closure": "No specific essential supplement identified. PTB calibration file mentioned by article is not a linked campaign-contrast uncertainty supplement and not required if direct C can be supplied. Future material requires explicit replacement/version, never silent entry.",
+    "landing": {
+      "access": "Inspected publication/download links; DOI and NIST PDF only directly relevant links found.",
+      "role": "discovery only",
+      "url": "https://www.nist.gov/publications/redetermination-gravitational-constant-bipm-torsion-balance-nist"
+    },
+    "publisher": {
+      "access": "Direct access returned Internal Error; preparation spec records earlier robots restriction. Associated-material index not fully reviewed.",
+      "essential_named_supplement": null,
+      "urls": [
+        "https://doi.org/10.1088/1681-7575/ae570f",
+        "https://iopscience.iop.org/article/10.1088/1681-7575/ae570f"
+      ]
+    },
+    "search": {
+      "closed": true,
+      "followed_associated_resources": 0,
+      "maximum": 3,
+      "query": "\"ae570f\" covariance data code supplementary torque",
+      "result": "One targeted search; returned article-index/copy material, no identified campaign covariance/data-code supplement. No general absence claim."
+    }
+  },
+  "decision_policy": {
+    "conditional_requires": "explicit bounded source-linked candidate premises, not arbitrary completions",
+    "flags": {
+      "corrected_G_produced": false,
+      "corrected_torques_produced": false,
+      "observed_paired_differences_computed": false,
+      "observed_residuals_computed": false,
+      "real_data_test_executed": false,
+      "torque_fit_executed": false
+    },
+    "go_requires": "comparison and correction contract; complete relevant C with declared interpretation and positive definiteness; never sampling/physical acceptance",
+    "precedence": [
+      "UNRESOLVED_SOURCE_ACCESS",
+      "NO_GO_COMPARABILITY",
+      "CONDITIONAL_ASSUMPTIONS_REQUIRED",
+      "NO_GO_CONTRAST_UNCERTAINTY",
+      "IDENTIFIED_DEGENERATE_CONTRAST",
+      "GO_CONTRAST_UNCERTAINTY"
+    ]
+  },
+  "dependencies": {
+    "E001": "Excluded from numerical, file/import and claim boundaries.",
+    "audit": "Current read; DM-070/073-078 patterns and FH-13 reviewed; targeted detail search and Deferred listing did not retrieve those detail files; no IDs assigned or closed.",
+    "code_reuse": {
+      "Discovery/mutation_test_runner.py": "2d128a4b368fe70b56cc98886da506e4bef1fed5bb641e7aee6272c613a6ce34",
+      "Discovery/preregistration_history.py": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0",
+      "Discovery/source_history.py": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb"
+    },
+    "motivation_only": [
+      "PRs 47-50; no scientific builder/artifact imports/reads"
+    ]
+  },
+  "effect_inventory": [
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_0_free",
+        "copper_120_servo",
+        "copper_120_free",
+        "copper_240_servo",
+        "copper_240_free",
+        "sapphire_servo",
+        "sapphire_free"
+      ],
+      "correction_status": "UNCERTAINTY_ONLY_ASSIGNMENT",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "TYPE_A",
+      "id": "type_a",
+      "loading": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "locator": "S1: sections 3.2-3.3 pp.6-8; Table 15 p.25",
+      "missing": "Within-pair and cross-campaign dependence for the eight summaries.",
+      "smallest_repair": "Direct Type A projected C, or relevant signed covariances.",
+      "stage": "campaign_torque",
+      "supplies": "Eight marginal standard uncertainties at k=1; extraction and averaging procedures."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_120_servo",
+        "copper_240_servo",
+        "sapphire_servo"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "TYPE_A_AND_TYPE_B",
+      "id": "electrical",
+      "loading": null,
+      "locator": "S1: section 3.3 pp.7-8 equations (12)-(20); Table 17 p.26",
+      "missing": "Signed campaign-level voltage/capacitance residual joint effects and stage coverage.",
+      "smallest_repair": "Projected electrical uncertainty with cross terms, or signed torque sensitivities and joint calibration uncertainty.",
+      "stage": "campaign_torque",
+      "supplies": "Voltage traceability and capacitance-gradient measurement described; budget concerns later G."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_0_free",
+        "copper_120_servo",
+        "copper_120_free",
+        "copper_240_servo",
+        "copper_240_free",
+        "sapphire_servo",
+        "sapphire_free"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "TYPE_B",
+      "id": "autocollimator_scale",
+      "loading": null,
+      "locator": "S1: section 3.4 p.9; section 8.5 p.23",
+      "missing": "Campaign torque loadings, calibration correlations, and correction stage; no equal-absolute-loading assertion.",
+      "smallest_repair": "Signed torque-stage scale loadings and covariance or direct projected term.",
+      "stage": "campaign_torque",
+      "supplies": "Opposite angle sensitivities of the two G extraction methods are described."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_0_free",
+        "copper_120_servo",
+        "copper_120_free",
+        "copper_240_servo",
+        "copper_240_free",
+        "sapphire_servo",
+        "sapphire_free"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "MODEL_BASED_ASSIGNMENT",
+      "id": "autocollimator_nonlinearity",
+      "loading": null,
+      "locator": "S1: section 8.5 pp.23-24 equations (59)-(62), Table 14",
+      "missing": "Joint campaign-level shifts/residual covariance and Table 15 correction convention.",
+      "smallest_repair": "Mean correction rule and centered residual projected uncertainty, or correctly interpreted conservative projected assignment.",
+      "stage": "campaign_torque",
+      "supplies": "Relative G shifts and marginal assignments; systematic mean combined in quadrature; full correlation stated for four final results."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_0_free",
+        "copper_120_servo",
+        "copper_120_free",
+        "copper_240_servo",
+        "copper_240_free",
+        "sapphire_servo",
+        "sapphire_free"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "EXTRAPOLATION",
+      "id": "pressure_thermal",
+      "loading": null,
+      "locator": "S1: section 7.7 pp.20-21",
+      "missing": "Exact Table 15 application stage and dependence of extrapolation/calibration among methods/campaigns.",
+      "smallest_repair": "Stage confirmation and projected extrapolation uncertainty including relevant cross terms.",
+      "stage": "campaign_torque",
+      "supplies": "Two-pressure measurements and zero-pressure extrapolation described for G values."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_120_servo",
+        "copper_240_servo",
+        "sapphire_servo"
+      ],
+      "correction_status": "APPLIED_AT_THIS_STAGE",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "CORRECTION_AND_RESIDUAL",
+      "id": "finite_servo_gain",
+      "loading": null,
+      "locator": "S1: section 3.3 p.8 after equation (20)",
+      "missing": "Campaign residual uncertainty and cross terms; association with reported Type A scope.",
+      "smallest_repair": "Stage coverage declaration and remaining projected servo-gain uncertainty; do not reapply correction.",
+      "stage": "campaign_torque",
+      "supplies": "Residual elastic torque is added to applied electrostatic torque."
+    },
+    {
+      "coordinates": [
+        "copper_0_free",
+        "copper_120_free",
+        "copper_240_free",
+        "sapphire_free"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "TYPE_A_AND_TYPE_B",
+      "id": "free_frequency_inertia_anelasticity",
+      "loading": null,
+      "locator": "S1: section 3.2 p.6 equations (5)-(10); sections 8.1,8.4 pp.21-22",
+      "missing": "Whether Table 15 includes the anelastic correction and how mechanical residual terms co-vary.",
+      "smallest_repair": "Free-mode correction stage and signed joint residual projected uncertainty. Frequency, inertia and anelasticity grouped as the free mechanical extraction path.",
+      "stage": "campaign_torque",
+      "supplies": "Free extraction uses frequency/inertia; anelastic correction is stated for Gfree; servo has no such stiffness correction."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_0_free",
+        "copper_120_servo",
+        "copper_120_free",
+        "copper_240_servo",
+        "copper_240_free",
+        "sapphire_servo",
+        "sapphire_free"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "CONSERVATIVE_ASSIGNMENT",
+      "id": "background_zero_torque",
+      "loading": null,
+      "locator": "S1: sections 8.2-8.3 p.22; Table 17 p.26",
+      "missing": "Which terms enter torque-stage residuals and their signed shared loadings; conversion-only part must be excluded.",
+      "smallest_repair": "Separate background torque contribution from mass-integration validation and provide the surviving projected term.",
+      "stage": "campaign_torque",
+      "supplies": "Empty carousel supplies background assignment; empty disk checks mass integration."
+    },
+    {
+      "coordinates": [
+        "copper_0_servo",
+        "copper_0_free",
+        "copper_120_servo",
+        "copper_120_free",
+        "copper_240_servo",
+        "copper_240_free",
+        "sapphire_servo",
+        "sapphire_free"
+      ],
+      "correction_status": "UNKNOWN",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "STAGE_AND_LOADING",
+      "id": "seating_geometry_drift",
+      "loading": null,
+      "locator": "S1: section 3.3 p.8 Figure 7; section 9 pp.24-25",
+      "missing": "Stage comparability under drift/seating and joint residual loadings; same apparatus does not prove cancellation.",
+      "smallest_repair": "Confirm common campaign signal; supply any non-canceling signed drift/seating correction or projected uncertainty.",
+      "stage": "campaign_torque",
+      "supplies": "Campaign labels and capacitance-gradient changes with seating are described."
+    },
+    {
+      "coordinates": [],
+      "correction_status": "DOES_NOT_ENTER_THIS_STAGE",
+      "covariance": null,
+      "covariance_meaning": "UNSPECIFIED_AT_CAMPAIGN_STAGE",
+      "evaluation_type": "CONVERSION_ONLY",
+      "id": "G_conversion_only",
+      "loading": [
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "locator": "S1: section 3.1 p.5; section 9 p.25 Table 15",
+      "missing": "Any overlap with mechanical calibration is routed to the free-mode or seating row, not erased.",
+      "smallest_repair": "No conversion-only numerical data requested.",
+      "stage": "G_conversion_only",
+      "supplies": "Mass integration, density and geometry factors used only in conversion to G do not enter symbolic torque comparison."
+    }
+  ],
+  "experiment_id": "nist_2026_paired_torque_feasibility_v1",
+  "identification": {
+    "C": null,
+    "C_nullspace": null,
+    "C_rank": null,
+    "additional_premises": [],
+    "cancelled_unknowns": [],
+    "combined_contrast_uncertainty": "PARTIALLY_IDENTIFIED",
+    "comparison_contract": "source_described",
+    "comparison_detail": "Sections 3 and 9 describe the same recovered torque difference in each campaign; source does not establish every correction-stage and residual loading needed for a completed mean/uncertainty model. No demonstrated mismatch is asserted.",
+    "disposition": "NO_GO_CONTRAST_UNCERTAINTY",
+    "essential_access_gaps": [],
+    "limitations": [
+      "NO_SOURCE_SUPPLIED_JOINT_OBJECT",
+      "UNRESOLVED_MEAN_CORRECTION_CONTRACT",
+      "NONCANCELING_OR_UNKNOWN_LOADING_TERMS"
+    ],
+    "mean_correction_status": "UNKNOWN",
+    "precision_scope": "exact reported decimals only; no restored physical precision; future rounding/statistical calibration separate",
+    "sampling_calibration": "NOT_ESTABLISHED_FOR_CAMPAIGN_CONTRAST",
+    "type_a_uncertainty": "MISSING_DEPENDENCE",
+    "uncertainty_interpretation": "Type A marginal standard uncertainties; other source assignments include conservative and noncentered effects; no complete campaign matrix.",
+    "unresolved_terms": [
+      "type_a",
+      "electrical",
+      "autocollimator_scale",
+      "autocollimator_nonlinearity",
+      "pressure_thermal",
+      "finite_servo_gain",
+      "free_frequency_inertia_anelasticity",
+      "background_zero_torque",
+      "seating_geometry_drift"
+    ]
+  },
+  "mean_contract": {
+    "cancellation": "B E=0; B b=1_4; R 1_4=0; A E=A b=0; ranks B=4,R=A=3,[E,b]=5; ker A=col([E,b]). Invertible contrast-coordinate changes preserve null restriction.",
+    "definition": "E[y_star]=E t+b tau; d=B y_star, z=R d, A=R B; actual d,z symbolic only.",
+    "reference": "Sapphire is a contrast coordinate convention; free mode is not designated unbiased.",
+    "representation": "Corrected common campaign signal with documented residual treatment. Whether y_star=y needs stage confirmation; no actual correction is applied.",
+    "signal": "Each Table 15 entry already differs two source positions; no additional factor of two. Clocking labels are not source reversal azimuth."
+  },
+  "objective": "Determine source-bound feasibility of equality of four campaign servo-minus-free expected torque differences using the minimum contrast uncertainty C.",
+  "outcome_blind": false,
+  "prior_knowledge": "Table 15 and published offsets, PRs 47-50 results and the supplied September 10 planning specification are known. This is not outcome-independent protocol selection. Earlier numerical results are not inputs.",
+  "prohibited_action_flags": {
+    "corrected_G_produced": false,
+    "corrected_torques_produced": false,
+    "observed_paired_differences_computed": false,
+    "observed_residuals_computed": false,
+    "real_data_test_executed": false,
+    "torque_fit_executed": false
+  },
+  "provenance": {
+    "anchor": {
+      "created_at": "2026-09-10T13:31:25Z",
+      "head_sha_at_creation": "5e104cd4a070167e2354619d473043f2528f169b",
+      "pr_number": 51,
+      "provider": "GitHub",
+      "url": "https://github.com/mdiaz4052/The-Number-Project/pull/51"
+    },
+    "base": "6f722e92a09bc598aa06920e89ba02059bf1e7a4",
+    "first_introductions": {
+      "Discovery/nist_2026_paired_torque_feasibility.py": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d",
+      "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_source_attestation_v1.json": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d",
+      "Notes/NIST2026PairedTorqueFeasibility.md": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d",
+      "Notes/NIST2026PairedTorqueSourceRequest.md": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d"
+    },
+    "freeze_commit": "5e104cd4a070167e2354619d473043f2528f169b",
+    "freeze_sha256": "88be1281c71e2ec952bd9d1f7bf2f88def4a0b3f9d57c3dfe170c4b62225622c",
+    "source_commit_sha": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d",
+    "source_sha256": {
+      "Discovery/nist_2026_paired_torque_feasibility.py": "6fcef2378e678ee32ddb6214ec15779ed0389ba8d6644221fad16ccbaa83924a",
+      "Discovery/preregistration_history.py": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0",
+      "Discovery/source_history.py": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb",
+      "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_preregistration_v1.json": "88be1281c71e2ec952bd9d1f7bf2f88def4a0b3f9d57c3dfe170c4b62225622c",
+      "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_source_attestation_v1.json": "1c0a3a79a13a0cada2e7521b29477b174ab26d2472a79f726aab3a0767d46c47",
+      "Notes/NIST2026PairedTorqueFeasibility.md": "f7f57c6a29687d105a2438382bba244b22ec09a19443ffc62537a3c5eda90c3f",
+      "Notes/NIST2026PairedTorqueFeasibilitySpecification.md": "9db52b8703da2ba2b034d4dc701c957adae0a48b0ec8505dd0952afd872931e7",
+      "Notes/NIST2026PairedTorqueSourceRequest.md": "31321490221db289667f26e0169e9e682163ec2248a06dcae2ae65f574198120"
+    }
+  },
+  "read_roles": {
+    "provenance": [
+      "Discovery/nist_2026_paired_torque_feasibility.py",
+      "Discovery/preregistration_history.py",
+      "Discovery/source_history.py",
+      "Notes/NIST2026PairedTorqueFeasibilitySpecification.md",
+      "Notes/NIST2026PairedTorqueFeasibility.md",
+      "Notes/NIST2026PairedTorqueSourceRequest.md"
+    ],
+    "scientific": [
+      "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_preregistration_v1.json",
+      "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_source_attestation_v1.json"
+    ]
+  },
+  "review_qualification": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+  "schema_version": 1,
+  "source_requests": [
+    {
+      "effect": "type_a",
+      "locator": "S1: sections 3.2-3.3 pp.6-8; Table 15 p.25",
+      "request": "Direct Type A projected C, or relevant signed covariances."
+    },
+    {
+      "effect": "electrical",
+      "locator": "S1: section 3.3 pp.7-8 equations (12)-(20); Table 17 p.26",
+      "request": "Projected electrical uncertainty with cross terms, or signed torque sensitivities and joint calibration uncertainty."
+    },
+    {
+      "effect": "autocollimator_scale",
+      "locator": "S1: section 3.4 p.9; section 8.5 p.23",
+      "request": "Signed torque-stage scale loadings and covariance or direct projected term."
+    },
+    {
+      "effect": "autocollimator_nonlinearity",
+      "locator": "S1: section 8.5 pp.23-24 equations (59)-(62), Table 14",
+      "request": "Mean correction rule and centered residual projected uncertainty, or correctly interpreted conservative projected assignment."
+    },
+    {
+      "effect": "pressure_thermal",
+      "locator": "S1: section 7.7 pp.20-21",
+      "request": "Stage confirmation and projected extrapolation uncertainty including relevant cross terms."
+    },
+    {
+      "effect": "finite_servo_gain",
+      "locator": "S1: section 3.3 p.8 after equation (20)",
+      "request": "Stage coverage declaration and remaining projected servo-gain uncertainty; do not reapply correction."
+    },
+    {
+      "effect": "free_frequency_inertia_anelasticity",
+      "locator": "S1: section 3.2 p.6 equations (5)-(10); sections 8.1,8.4 pp.21-22",
+      "request": "Free-mode correction stage and signed joint residual projected uncertainty. Frequency, inertia and anelasticity grouped as the free mechanical extraction path."
+    },
+    {
+      "effect": "background_zero_torque",
+      "locator": "S1: sections 8.2-8.3 p.22; Table 17 p.26",
+      "request": "Separate background torque contribution from mass-integration validation and provide the surviving projected term."
+    },
+    {
+      "effect": "seating_geometry_drift",
+      "locator": "S1: section 3.3 p.8 Figure 7; section 9 pp.24-25",
+      "request": "Confirm common campaign signal; supply any non-canceling signed drift/seating correction or projected uncertainty."
+    }
+  ],
+  "synthetic_certificate": {
+    "C0": [
+      [
+        {
+          "denominator": 1,
+          "numerator": 4
+        },
+        {
+          "denominator": 1,
+          "numerator": 2
+        },
+        {
+          "denominator": 1,
+          "numerator": 2
+        }
+      ],
+      [
+        {
+          "denominator": 1,
+          "numerator": 2
+        },
+        {
+          "denominator": 1,
+          "numerator": 4
+        },
+        {
+          "denominator": 1,
+          "numerator": 2
+        }
+      ],
+      [
+        {
+          "denominator": 1,
+          "numerator": 2
+        },
+        {
+          "denominator": 1,
+          "numerator": 2
+        },
+        {
+          "denominator": 1,
+          "numerator": 4
+        }
+      ]
+    ],
+    "C1": [
+      [
+        {
+          "denominator": 1,
+          "numerator": 3
+        },
+        {
+          "denominator": 1,
+          "numerator": 2
+        },
+        {
+          "denominator": 1,
+          "numerator": 2
+        }
+      ],
+      [
+        {
+          "denominator": 1,
+          "numerator": 2
+        },
+        {
+          "denominator": 1,
+          "numerator": 4
+        },
+        {
+          "denominator": 1,
+          "numerator": 2
+        }
+      ],
+      [
+        {
+          "denominator": 1,
+          "numerator": 2
+        },
+        {
+          "denominator": 1,
+          "numerator": 2
+        },
+        {
+          "denominator": 1,
+          "numerator": 4
+        }
+      ]
+    ],
+    "V0_status": "POSITIVE_DEFINITE",
+    "V1_status": "POSITIVE_DEFINITE",
+    "larger_differential_loading_B_L": [
+      [
+        {
+          "denominator": 1,
+          "numerator": -4
+        }
+      ],
+      [
+        {
+          "denominator": 1,
+          "numerator": -6
+        }
+      ],
+      [
+        {
+          "denominator": 1,
+          "numerator": -8
+        }
+      ],
+      [
+        {
+          "denominator": 1,
+          "numerator": -10
+        }
+      ]
+    ],
+    "same_marginals": true,
+    "same_marginals_different_C": true,
+    "scope": "Generic exact vulnerability and cancellation controls, not fitted or inferred NIST covariances or source-specific completion witnesses.",
+    "synthetic_only": true,
+    "unequal_shared_loading_A_L": [
+      [
+        {
+          "denominator": 1,
+          "numerator": -3
+        }
+      ],
+      [
+        {
+          "denominator": 1,
+          "numerator": -2
+        }
+      ],
+      [
+        {
+          "denominator": 1,
+          "numerator": -1
+        }
+      ]
+    ],
+    "unknown_col_E": {
+      "A_E_zero": true,
+      "B_E_zero": true
+    },
+    "unknown_lambda_b_bT": {
+      "A_b_zero": true,
+      "B_b_nonzero": true,
+      "proof": "A b=0 implies A(I+lambda b b^T)A^T=A A^T for every lambda>=0; no sampling of completions."
+    }
+  },
+  "type_a_projection": {
+    "C_type_a": null,
+    "equation": "C_A = known_diagonal_contribution + sum_{i<j} Cov_A(y_i,y_j) coefficient_ij; all off-diagonal quantities remain unknown.",
+    "interpretation": "Marginal standard uncertainties at k=1; evaluation type does not imply independence or a sampling law.",
+    "known_diagonal_contribution_not_C": [
+      [
+        {
+          "denominator": 50000000000000000000000000,
+          "numerator": 19
+        },
+        {
+          "denominator": 100000000000000000000000000,
+          "numerator": 13
+        },
+        {
+          "denominator": 100000000000000000000000000,
+          "numerator": 13
+        }
+      ],
+      [
+        {
+          "denominator": 100000000000000000000000000,
+          "numerator": 13
+        },
+        {
+          "denominator": 50000000000000000000000000,
+          "numerator": 29
+        },
+        {
+          "denominator": 100000000000000000000000000,
+          "numerator": 13
+        }
+      ],
+      [
+        {
+          "denominator": 100000000000000000000000000,
+          "numerator": 13
+        },
+        {
+          "denominator": 100000000000000000000000000,
+          "numerator": 13
+        },
+        {
+          "denominator": 50000000000000000000000000,
+          "numerator": 13
+        }
+      ]
+    ],
+    "scope": "TYPE_A_PARTIAL_EXPRESSION_NOT_A_COVARIANCE_COMPLETION",
+    "u_A_SI": [
+      {
+        "denominator": 2500000000000,
+        "numerator": 1
+      },
+      {
+        "denominator": 10000000000000,
+        "numerator": 3
+      },
+      {
+        "denominator": 5000000000000,
+        "numerator": 3
+      },
+      {
+        "denominator": 10000000000000,
+        "numerator": 3
+      },
+      {
+        "denominator": 10000000000000,
+        "numerator": 3
+      },
+      {
+        "denominator": 5000000000000,
+        "numerator": 1
+      },
+      {
+        "denominator": 10000000000000,
+        "numerator": 3
+      },
+      {
+        "denominator": 5000000000000,
+        "numerator": 1
+      }
+    ],
+    "unresolved_covariance_terms": [
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": -2
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          0,
+          1
+        ],
+        "labels": [
+          "copper_0_servo",
+          "copper_0_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          0,
+          2
+        ],
+        "labels": [
+          "copper_0_servo",
+          "copper_120_servo"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          0,
+          3
+        ],
+        "labels": [
+          "copper_0_servo",
+          "copper_120_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          0,
+          4
+        ],
+        "labels": [
+          "copper_0_servo",
+          "copper_240_servo"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          0,
+          5
+        ],
+        "labels": [
+          "copper_0_servo",
+          "copper_240_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": -2
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          0,
+          6
+        ],
+        "labels": [
+          "copper_0_servo",
+          "sapphire_servo"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 2
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          0,
+          7
+        ],
+        "labels": [
+          "copper_0_servo",
+          "sapphire_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          1,
+          2
+        ],
+        "labels": [
+          "copper_0_free",
+          "copper_120_servo"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          1,
+          3
+        ],
+        "labels": [
+          "copper_0_free",
+          "copper_120_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          1,
+          4
+        ],
+        "labels": [
+          "copper_0_free",
+          "copper_240_servo"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          1,
+          5
+        ],
+        "labels": [
+          "copper_0_free",
+          "copper_240_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 2
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          1,
+          6
+        ],
+        "labels": [
+          "copper_0_free",
+          "sapphire_servo"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": -2
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          1,
+          7
+        ],
+        "labels": [
+          "copper_0_free",
+          "sapphire_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -2
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          2,
+          3
+        ],
+        "labels": [
+          "copper_120_servo",
+          "copper_120_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          2,
+          4
+        ],
+        "labels": [
+          "copper_120_servo",
+          "copper_240_servo"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          2,
+          5
+        ],
+        "labels": [
+          "copper_120_servo",
+          "copper_240_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": -2
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          2,
+          6
+        ],
+        "labels": [
+          "copper_120_servo",
+          "sapphire_servo"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 2
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          2,
+          7
+        ],
+        "labels": [
+          "copper_120_servo",
+          "sapphire_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          3,
+          4
+        ],
+        "labels": [
+          "copper_120_free",
+          "copper_240_servo"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          3,
+          5
+        ],
+        "labels": [
+          "copper_120_free",
+          "copper_240_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 2
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          3,
+          6
+        ],
+        "labels": [
+          "copper_120_free",
+          "sapphire_servo"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": -2
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          3,
+          7
+        ],
+        "labels": [
+          "copper_120_free",
+          "sapphire_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -2
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          4,
+          5
+        ],
+        "labels": [
+          "copper_240_servo",
+          "copper_240_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": -2
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          4,
+          6
+        ],
+        "labels": [
+          "copper_240_servo",
+          "sapphire_servo"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 2
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          4,
+          7
+        ],
+        "labels": [
+          "copper_240_servo",
+          "sapphire_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 1
+            },
+            {
+              "denominator": 1,
+              "numerator": 2
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          5,
+          6
+        ],
+        "labels": [
+          "copper_240_free",
+          "sapphire_servo"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": 0
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": -1
+            },
+            {
+              "denominator": 1,
+              "numerator": -2
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          5,
+          7
+        ],
+        "labels": [
+          "copper_240_free",
+          "sapphire_free"
+        ]
+      },
+      {
+        "coefficient": [
+          [
+            {
+              "denominator": 1,
+              "numerator": -2
+            },
+            {
+              "denominator": 1,
+              "numerator": -2
+            },
+            {
+              "denominator": 1,
+              "numerator": -2
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -2
+            },
+            {
+              "denominator": 1,
+              "numerator": -2
+            },
+            {
+              "denominator": 1,
+              "numerator": -2
+            }
+          ],
+          [
+            {
+              "denominator": 1,
+              "numerator": -2
+            },
+            {
+              "denominator": 1,
+              "numerator": -2
+            },
+            {
+              "denominator": 1,
+              "numerator": -2
+            }
+          ]
+        ],
+        "covariance_SI_squared": null,
+        "indices": [
+          6,
+          7
+        ],
+        "labels": [
+          "sapphire_servo",
+          "sapphire_free"
+        ]
+      }
+    ]
+  },
+  "uncertainty_policy": {
+    "all_admissible": "Finite complete unknown-loading span; A L=0 removes variances and cross terms for all joint completions; equality of two examples is insufficient.",
+    "exact_arithmetic": "standard library Fraction; reject floats, booleans, nonfinite, duplicate keys and malformed dimensions",
+    "forbidden_transfer": "Tables 14,17,18 and four-final-result correlations are not campaign torque covariance.",
+    "matrix_validity": "Exact symmetry, all principal minors for PSD, rank/nullspace; invalid code matrices are errors, faithful conflicting published matrices are source limitations.",
+    "mean_correction": "UNKNOWN blocks; SPECIFIED_NOT_APPLIED requires an explicit source rule and residual mean scope but no actual outcome correction.",
+    "meaning": "Centered covariance, conservative uncertainty, second moment, interval and bound remain distinct. Nonremoved shift is not centered covariance.",
+    "primary_target": "C=A V_y A^T",
+    "routes": [
+      "direct_C",
+      "V_d",
+      "V_y",
+      "J_U"
+    ],
+    "scope": "Type A matrix alone cannot imply combined coverage; omitted effects must be source-specified absent/included or proven annihilated.",
+    "summation": "One joint J/U model retains cross terms; no unlicensed sum of independent components.",
+    "units": "Covariance conversion squared; signed sensitivities retain units.",
+    "unknowns": "Explicit null/loading/covariance/dependence records; never zero by omission."
+  },
+  "validation_contract": {
+    "acceptance_criteria": [
+      "Bounded corpus closure",
+      "Evidence-derived disposition and no forbidden real-data computations",
+      "Minimum-C positive controls succeed; unknown noncanceling terms withheld",
+      "Eight designated production assertions kill mutations with valid calibrations",
+      "Fresh committed sources before artifact emission and exact-head CI",
+      "Drive rolling handoff in place and readback",
+      "Leave unmerged; true merge only; preserve provisional audit qualification"
+    ],
+    "focused_requirements": [
+      "independent hand-expanded signs/orders/identities/ranks and invertible contrast change",
+      "independent projection with within-pair/cross-campaign terms and all routes",
+      "same marginals different C; complete unknown cancellation and unequal loadings",
+      "all dispositions and limited axes; stage/type-A/meaning/correction distinctions",
+      "strict parsing, schema, units, serialization, source-field consumption and excluded-context invariance beyond hashes",
+      "freeze sole file/first-introduction anchor/full-history chronology",
+      "source snapshot freshness across inherited versus changed merges",
+      "observed file/Git/import closure including actual runner",
+      "read-only guards never execute mutations or write/network"
+    ],
+    "mutation_requirements": [
+      {
+        "id": "M1_method_sign",
+        "new": "B[0][1] = F(1)",
+        "old": "B[0][1] = F(-1)",
+        "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_method_sign"
+      },
+      {
+        "id": "M2_covariance_units",
+        "new": "factor = rational(scale)",
+        "old": "factor = rational(scale) ** 2",
+        "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_covariance_units"
+      },
+      {
+        "id": "M3_dropped_covariance",
+        "new": "return mm(mm(P, tuple(tuple(v if i == j else F(0) for j,v in enumerate(row)) for i,row in enumerate(V))), transpose(P))",
+        "old": "return mm(mm(P, V), transpose(P))",
+        "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_covariance_cross_terms"
+      },
+      {
+        "id": "M4_false_cancellation",
+        "new": "return len(L[0]) == 1 or all(v == 0 for row in image for v in row)",
+        "old": "return all(v == 0 for row in image for v in row)",
+        "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_shared_loading"
+      },
+      {
+        "id": "M5_full_matrix_requirement",
+        "new": "if unresolved or model[\"full_matrix_unknown\"]:\n",
+        "old": "if unresolved:\n",
+        "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_minimum_C"
+      },
+      {
+        "id": "M6_type_a_promotion",
+        "new": "coverage_ok = True",
+        "old": "coverage_ok = obj[\"scope\"] == \"combined\" or omitted_complete",
+        "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_type_a_scope"
+      },
+      {
+        "id": "M7_mean_correction",
+        "new": "mean_ok = True",
+        "old": "mean_ok = model[\"mean_correction_status\"] in (\"APPLIED_AT_THIS_STAGE\", \"SPECIFIED_NOT_APPLIED\", \"NOT_NEEDED\")",
+        "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_unknown_correction"
+      },
+      {
+        "id": "M8_unknown_dependence",
+        "new": "unresolved.extend([] if row[\"kind\"] == \"dependence\" else [row[\"id\"]])",
+        "old": "unresolved.append(row[\"id\"])",
+        "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_unknown_dependence"
+      }
+    ],
+    "planned_surfaces": {
+      "modified": [
+        ".github/workflows/verify.yml"
+      ],
+      "new": [
+        "Discovery/nist_2026_paired_torque_feasibility.py",
+        "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+        "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_preregistration_v1.json",
+        "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_source_attestation_v1.json",
+        "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_v1.json",
+        "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_mutations_v1.json",
+        "Notes/NIST2026PairedTorqueFeasibilitySpecification.md",
+        "Notes/NIST2026PairedTorqueFeasibility.md",
+        "Notes/NIST2026PairedTorqueSourceRequest.md",
+        "tests/test_nist_2026_paired_torque_feasibility.py",
+        "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+      ],
+      "workflow": "exactly two new read-only --check commands"
+    }
+  }
+}
