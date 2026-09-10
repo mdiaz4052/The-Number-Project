@@ -38,6 +38,7 @@
         "tests_run": 10,
         "validated_imports_after": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -48,6 +49,7 @@
         },
         "validated_imports_before": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -89,6 +91,7 @@
         "tests_run": 1,
         "validated_imports_after": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -99,6 +102,7 @@
         },
         "validated_imports_before": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -131,6 +135,7 @@
         "tests_run": 1,
         "validated_imports_after": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -141,6 +146,7 @@
         },
         "validated_imports_before": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -173,6 +179,7 @@
         "tests_run": 1,
         "validated_imports_after": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -183,6 +190,7 @@
         },
         "validated_imports_before": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -215,6 +223,7 @@
         "tests_run": 1,
         "validated_imports_after": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -225,6 +234,7 @@
         },
         "validated_imports_before": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -257,6 +267,7 @@
         "tests_run": 1,
         "validated_imports_after": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -267,6 +278,7 @@
         },
         "validated_imports_before": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -299,6 +311,7 @@
         "tests_run": 1,
         "validated_imports_after": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -309,6 +322,7 @@
         },
         "validated_imports_before": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -341,6 +355,7 @@
         "tests_run": 1,
         "validated_imports_after": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -351,6 +366,7 @@
         },
         "validated_imports_before": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -383,6 +399,7 @@
         "tests_run": 1,
         "validated_imports_after": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -393,6 +410,7 @@
         },
         "validated_imports_before": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -425,6 +443,7 @@
         "tests_run": 1,
         "validated_imports_after": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -435,6 +454,7 @@
         },
         "validated_imports_before": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -465,6 +485,7 @@
         "tests_run": 1,
         "validated_imports_after": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -475,6 +496,7 @@
         },
         "validated_imports_before": {
           "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
           "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
           "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
           "Discovery.preregistration_history": "Discovery/preregistration_history.py",
@@ -546,12 +568,12 @@
   ],
   "review_qualification": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
   "source_snapshot": {
-    "source_commit_sha": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d",
+    "source_commit_sha": "97828044f3041de2f2057ef15025b1841e9af7b9",
     "source_sha256": {
       "Discovery/__init__.py": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078",
       "Discovery/mutation_test_runner.py": "2d128a4b368fe70b56cc98886da506e4bef1fed5bb641e7aee6272c613a6ce34",
       "Discovery/nist_2026_paired_torque_feasibility.py": "6fcef2378e678ee32ddb6214ec15779ed0389ba8d6644221fad16ccbaa83924a",
-      "Discovery/nist_2026_paired_torque_feasibility_mutations.py": "96e227a938238007c25728d4c3d97b1f562a11238f874caf534387422c996e2b",
+      "Discovery/nist_2026_paired_torque_feasibility_mutations.py": "0822d5f69b515e028e06676b0891828170e13a9b8d77a681d657743ef7a8897b",
       "Discovery/preregistration_history.py": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0",
       "Discovery/source_history.py": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb",
       "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_preregistration_v1.json": "88be1281c71e2ec952bd9d1f7bf2f88def4a0b3f9d57c3dfe170c4b62225622c",
