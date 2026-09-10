@@ -1,0 +1,588 @@
+{
+  "anchor": {
+    "created_at": "2026-09-10T13:31:25Z",
+    "head_sha_at_creation": "5e104cd4a070167e2354619d473043f2528f169b",
+    "pr_number": 51,
+    "provider": "GitHub",
+    "url": "https://github.com/mdiaz4052/The-Number-Project/pull/51"
+  },
+  "artifact_id": "nist_2026_paired_torque_feasibility_mutations_v1",
+  "baseline_survived": true,
+  "definitions_sha256": "8c4ae46460cb5872424bf55afd9fc32ce1200f3f6418b2d10ab7ec0751af74a6",
+  "equivalent_control_survived": true,
+  "family_status": "valid",
+  "faulty_calibration_killed": true,
+  "first_introductions": {
+    "Discovery/nist_2026_paired_torque_feasibility.py": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d",
+    "Discovery/nist_2026_paired_torque_feasibility_mutations.py": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d",
+    "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_source_attestation_v1.json": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d",
+    "Notes/NIST2026PairedTorqueFeasibility.md": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d",
+    "Notes/NIST2026PairedTorqueSourceRequest.md": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d",
+    "tests/test_nist_2026_paired_torque_feasibility.py": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d",
+    "tests/test_nist_2026_paired_torque_feasibility_mutations.py": "a29faab5e44a1de2043bebe98a1d3da6dcafe86d"
+  },
+  "kill_rule": "Designated semantic assertion only; errors, runtime/import/syntax/history/digest failures and skips earn no credit.",
+  "preregistration_sha256": "88be1281c71e2ec952bd9d1f7bf2f88def4a0b3f9d57c3dfe170c4b62225622c",
+  "production_count": 8,
+  "production_killed": 8,
+  "records": [
+    {
+      "applied_source_sha256": "1e1b9adbb31342bbc259d7debe7f8c48a46eff122871e49625ae683b9e25747c",
+      "category": "baseline",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 10,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "unmutated_baseline",
+      "outcome": "SURVIVED",
+      "path": "Discovery/nist_2026_paired_torque_feasibility.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_covariance_cross_terms",
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_covariance_units",
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_equivalent_control",
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_faulty_calibration",
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_method_sign",
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_minimum_C",
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_shared_loading",
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_type_a_scope",
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_unknown_correction",
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_unknown_dependence"
+      ]
+    },
+    {
+      "applied_source_sha256": "746cfbe42dce27177480f34c63bf053567ae513b6d4853be5c61453488a877e3",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_method_sign"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M1_method_sign",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_paired_torque_feasibility.py",
+      "requirement_index": 0,
+      "tests": [
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_method_sign"
+      ]
+    },
+    {
+      "applied_source_sha256": "4a64cc858a368170e0b07fb389711fb15bcd50b02d3048407231bf9d2c04e836",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_covariance_units"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M2_covariance_units",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_paired_torque_feasibility.py",
+      "requirement_index": 1,
+      "tests": [
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_covariance_units"
+      ]
+    },
+    {
+      "applied_source_sha256": "7c64868b653e1b1aac75f63ce4004f215e44733c37508f3cb568325a40f1d512",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_covariance_cross_terms"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M3_dropped_covariance",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_paired_torque_feasibility.py",
+      "requirement_index": 2,
+      "tests": [
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_covariance_cross_terms"
+      ]
+    },
+    {
+      "applied_source_sha256": "a6febe9b0210252c8d5630df7a4f78a9236fdd557be4b7f8a5561403b95717e8",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_shared_loading"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M4_false_cancellation",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_paired_torque_feasibility.py",
+      "requirement_index": 3,
+      "tests": [
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_shared_loading"
+      ]
+    },
+    {
+      "applied_source_sha256": "26d5672a9a3723cad48ff30a6c7dbc274f1343a3c48125e7f151ccdc46b6a66f",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_minimum_C"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M5_full_matrix_requirement",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_paired_torque_feasibility.py",
+      "requirement_index": 4,
+      "tests": [
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_minimum_C"
+      ]
+    },
+    {
+      "applied_source_sha256": "2c5566f7f1e432f386aa5c484085122bd8d890f966ff28e6f203c97b2030aed4",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_type_a_scope"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M6_type_a_promotion",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_paired_torque_feasibility.py",
+      "requirement_index": 5,
+      "tests": [
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_type_a_scope"
+      ]
+    },
+    {
+      "applied_source_sha256": "36105a0aff891e8db23901fe0841ad929a1829551d90d0677ac559056ebf1561",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_unknown_correction"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M7_mean_correction",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_paired_torque_feasibility.py",
+      "requirement_index": 6,
+      "tests": [
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_unknown_correction"
+      ]
+    },
+    {
+      "applied_source_sha256": "72925738bdec2324d2cffbd5c694a200113913560afe6ff13e9b00d8ddbd1e64",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_unknown_dependence"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M8_unknown_dependence",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_paired_torque_feasibility.py",
+      "requirement_index": 7,
+      "tests": [
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_unknown_dependence"
+      ]
+    },
+    {
+      "applied_source_sha256": "76d0fdb2d5639ccf9b7acb7fe0aa8ac930c82b7987fb9abdfc42bf0dac53d5d0",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_faulty_calibration"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "faulty_scale_calibration",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_paired_torque_feasibility.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_faulty_calibration"
+      ]
+    },
+    {
+      "applied_source_sha256": "5bd074caddeba5d2c8925c0cff9b7f4593951d97f8f1387add1ec5a7fecc81e9",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_paired_torque_feasibility": "Discovery/nist_2026_paired_torque_feasibility.py",
+          "Discovery.nist_2026_paired_torque_feasibility_mutations": "Discovery/nist_2026_paired_torque_feasibility_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_paired_torque_feasibility": "tests/test_nist_2026_paired_torque_feasibility.py",
+          "tests.test_nist_2026_paired_torque_feasibility_mutations": "tests/test_nist_2026_paired_torque_feasibility_mutations.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "equivalent_projection_control",
+      "outcome": "SURVIVED",
+      "path": "Discovery/nist_2026_paired_torque_feasibility.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_equivalent_control"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "M1_method_sign",
+      "new": "B[0][1] = F(1)",
+      "old": "B[0][1] = F(-1)",
+      "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_method_sign"
+    },
+    {
+      "id": "M2_covariance_units",
+      "new": "factor = rational(scale)",
+      "old": "factor = rational(scale) ** 2",
+      "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_covariance_units"
+    },
+    {
+      "id": "M3_dropped_covariance",
+      "new": "return mm(mm(P, tuple(tuple(v if i == j else F(0) for j,v in enumerate(row)) for i,row in enumerate(V))), transpose(P))",
+      "old": "return mm(mm(P, V), transpose(P))",
+      "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_covariance_cross_terms"
+    },
+    {
+      "id": "M4_false_cancellation",
+      "new": "return len(L[0]) == 1 or all(v == 0 for row in image for v in row)",
+      "old": "return all(v == 0 for row in image for v in row)",
+      "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_shared_loading"
+    },
+    {
+      "id": "M5_full_matrix_requirement",
+      "new": "if unresolved or model[\"full_matrix_unknown\"]:\n",
+      "old": "if unresolved:\n",
+      "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_minimum_C"
+    },
+    {
+      "id": "M6_type_a_promotion",
+      "new": "coverage_ok = True",
+      "old": "coverage_ok = obj[\"scope\"] == \"combined\" or omitted_complete",
+      "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_type_a_scope"
+    },
+    {
+      "id": "M7_mean_correction",
+      "new": "mean_ok = True",
+      "old": "mean_ok = model[\"mean_correction_status\"] in (\"APPLIED_AT_THIS_STAGE\", \"SPECIFIED_NOT_APPLIED\", \"NOT_NEEDED\")",
+      "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_unknown_correction"
+    },
+    {
+      "id": "M8_unknown_dependence",
+      "new": "unresolved.extend([] if row[\"kind\"] == \"dependence\" else [row[\"id\"]])",
+      "old": "unresolved.append(row[\"id\"])",
+      "test": "tests.test_nist_2026_paired_torque_feasibility_mutations.PairedMutationBehaviorTests.test_unknown_dependence"
+    }
+  ],
+  "review_qualification": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+  "source_snapshot": {
+    "source_commit_sha": "d2b9662af3c8046dbfa0ef3c09f4cf74be640f3a",
+    "source_sha256": {
+      "Discovery/__init__.py": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078",
+      "Discovery/mutation_test_runner.py": "2d128a4b368fe70b56cc98886da506e4bef1fed5bb641e7aee6272c613a6ce34",
+      "Discovery/nist_2026_paired_torque_feasibility.py": "1e1b9adbb31342bbc259d7debe7f8c48a46eff122871e49625ae683b9e25747c",
+      "Discovery/nist_2026_paired_torque_feasibility_mutations.py": "0822d5f69b515e028e06676b0891828170e13a9b8d77a681d657743ef7a8897b",
+      "Discovery/preregistration_history.py": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0",
+      "Discovery/source_history.py": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb",
+      "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_preregistration_v1.json": "88be1281c71e2ec952bd9d1f7bf2f88def4a0b3f9d57c3dfe170c4b62225622c",
+      "Experiments/GMeasurements/nist_2026_paired_torque_feasibility_source_attestation_v1.json": "1c0a3a79a13a0cada2e7521b29477b174ab26d2472a79f726aab3a0767d46c47",
+      "Notes/NIST2026PairedTorqueFeasibility.md": "3c911f0e99fceb26d48635e49ea128cffdbae0d50b7412056e4d8df2b0b34743",
+      "Notes/NIST2026PairedTorqueFeasibilitySpecification.md": "9db52b8703da2ba2b034d4dc701c957adae0a48b0ec8505dd0952afd872931e7",
+      "Notes/NIST2026PairedTorqueSourceRequest.md": "31321490221db289667f26e0169e9e682163ec2248a06dcae2ae65f574198120",
+      "tests/test_nist_2026_paired_torque_feasibility.py": "d2d845fc609cf210a0f02d26193701afc33f6f5599e0e4d599c2cf8e38f420b0",
+      "tests/test_nist_2026_paired_torque_feasibility_mutations.py": "2f22c861b38a5df0a421704dddb8b53814ee246f5b3c5dc1bd9c8f20b8353275"
+    }
+  }
+}
