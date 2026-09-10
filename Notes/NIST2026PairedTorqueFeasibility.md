@@ -25,7 +25,7 @@ shift and not a finding that a required uncertainty object cannot exist.
 |---|---|
 | Comparison | Source describes both methods recovering the campaign torque difference; no demonstrated signal mismatch asserted |
 | Type A | Eight standard-uncertainty marginals; within-pair and cross-campaign dependence unresolved |
-| Combined contrast uncertainty | Partially identified; **C remains null** |
+| Combined contrast uncertainty | Unidentified; **C remains null**; partial Type A information is retained only for the as-published entries |
 | Mean correction | Exact Table 15 correction convention remains unresolved for several effects |
 | Meaning | Type A marginals and later conservative/noncentered assignments do not specify a centered campaign covariance |
 | Precision | Exact arithmetic on reported decimal quantities, without recovering undisplayed precision |
@@ -77,7 +77,9 @@ response differentiation is present.
 
 The artifact records the Type A marginal contribution as a **partial matrix
 expression**, together with all 28 explicitly unknown covariance terms and their
-exact coefficient matrices. The diagonal contribution is not a covariance
+exact coefficient matrices. This expression belongs to as-published Table 15 y. Its transfer to a corrected
+y_star is unresolved; it is not licensed as a component of the requested combined
+C without the stage/correction map. The diagonal contribution is not a covariance
 completion and must not be used as an independence covariance. For example,
 `Cov_A(y_0,y_1)` has coefficient `-2` in the first contrast variance. Within-pair
 dependence therefore survives this restriction. Cross-campaign terms also survive.

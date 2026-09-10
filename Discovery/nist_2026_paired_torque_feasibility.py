@@ -380,7 +380,13 @@ def type_a_projection(p):
             if any(v for row in coefficient for v in row):
                 terms.append({'indices':[i,j],'labels':[p['orders']['canonical'][i],p['orders']['canonical'][j]],
                               'covariance_SI_squared':None,'coefficient':matrix_record(coefficient)})
-    return {'scope':'TYPE_A_PARTIAL_EXPRESSION_NOT_A_COVARIANCE_COMPLETION','u_A_SI':records(marginals),
+    return {'scope':'TYPE_A_PARTIAL_EXPRESSION_NOT_A_COVARIANCE_COMPLETION',
+            'representation':'as-published Table 15 y; not an authorized contribution to corrected y_star without a stage map',
+            'correction_transfer':'UNRESOLVED',
+            'permitted_uncertainty_projection':{'stage':p['source_projection']['stage'],'units':p['units'],
+                'rows':[{'label':r['label'],'u_A_nNm':r['u_A_nNm']} for r in p['source_projection']['rows']],
+                'torque_reference_role':'context only; no reference values consumed by uncertainty propagation'},
+            'u_A_SI':records(marginals),
             'known_diagonal_contribution_not_C':matrix_record(project(A,diagonal)),
             'unresolved_covariance_terms':terms,'C_type_a':None,
             'equation':'C_A = known_diagonal_contribution + sum_{i<j} Cov_A(y_i,y_j) coefficient_ij; all off-diagonal quantities remain unknown.',
@@ -424,8 +430,6 @@ def result_from_inputs(p,attestation):
         if attestation[key]!=p[key]:raise FeasibilityError('post-freeze attestation changed frozen facts: '+key)
     uncertainty=type_a_projection(p);identification=classify(p,source_model(p))
     identification['type_a_uncertainty']='MISSING_DEPENDENCE' if uncertainty['unresolved_covariance_terms'] else 'IDENTIFIED_PROJECTED_CONTRIBUTION'
-    if identification['combined_contrast_uncertainty']=='UNIDENTIFIED' and uncertainty['unresolved_covariance_terms']:
-        identification['combined_contrast_uncertainty']='PARTIALLY_IDENTIFIED'
     return {'identification':identification,'algebra':algebra_certificate(p),'type_a_projection':uncertainty,
             'effect_inventory':p['effect_inventory'],'synthetic_certificate':synthetic_certificate(p),
             'source_requests':[{'effect':r['id'],'locator':r['locator'],'request':r['smallest_repair']} for r in p['effect_inventory'] if r['stage']!='G_conversion_only'],

@@ -241,6 +241,9 @@ class PairedBehaviorTests(unittest.TestCase):
         self.assertEqual(r['identification']['disposition'],'NO_GO_CONTRAST_UNCERTAINTY')
         self.assertEqual(r['identification']['comparison_contract'],'source_described')
         self.assertEqual(r['identification']['mean_correction_status'],'UNKNOWN');self.assertIsNone(r['identification']['C'])
+        self.assertEqual(r['identification']['combined_contrast_uncertainty'],'UNIDENTIFIED')
+        self.assertEqual(r['type_a_projection']['correction_transfer'],'UNRESOLVED')
+        self.assertIn('as-published',r['type_a_projection']['representation'])
         self.assertTrue(all(v is False for v in r['prohibited_action_flags'].values()))
         self.assertTrue(all(row['locator'] and row['supplies'] and row['missing'] and row['smallest_repair'] for row in r['effect_inventory']))
         a['anchor']['created_at']='2000-01-01T00:00:00Z'
