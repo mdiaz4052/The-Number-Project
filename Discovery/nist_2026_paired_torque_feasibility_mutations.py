@@ -19,7 +19,7 @@ COPY_PATHS = (n.MODULE, SELF, TEST, BEHAVIOR_TEST, n.PREREGISTRATION_PATH.as_pos
               n.ATTESTATION.as_posix(), 'Discovery/__init__.py', *n.HELPERS, 'Discovery/mutation_test_runner.py')
 SOURCE_PATHS = tuple(dict.fromkeys((*n.SOURCE_PATHS, *COPY_PATHS)))
 IMPORTS = {'Discovery.' + n.STEM: n.MODULE, 'Discovery.' + n.STEM + '_mutations': SELF,
-           'tests.test_' + n.STEM: BEHAVIOR_TEST, 'tests.test_' + n.STEM + '_mutations': TEST}
+           'tests.test_' + n.STEM: BEHAVIOR_TEST, 'tests.test_' + n.STEM + '_mutations': TEST, 'Discovery.mutation_test_runner': 'Discovery/mutation_test_runner.py'}
 
 
 class MutationEvidenceError(ValueError):
@@ -94,7 +94,7 @@ def execute(root, c):
                 raise MutationEvidenceError('patch not unique')
             source = source.replace(c['old'], c['new'])
             (target / n.MODULE).write_text(source)
-        bootstrap = "import runpy,sys;sys.path.insert(0,sys.argv.pop(1));runpy.run_module('Discovery.mutation_test_runner',run_name='__main__')"
+        bootstrap = "import sys;sys.path.insert(0,sys.argv.pop(1));from Discovery import mutation_test_runner;mutation_test_runner.main()"
         cmd = [sys.executable, '-I', '-B', '-c', bootstrap, str(target), '--mutation-root', str(target)]
         for module in IMPORTS:
             cmd += ['--required-module', module]
