@@ -1,0 +1,143 @@
+{
+  "claude_inspection_attributed_to_report": {
+    "actual_coverage": "Claude inspected supplied PNG after checking manifest hash and confirmed all ten entries and caption; DM-081 transcription component discharged, item remains open and narrowed.",
+    "current_url_at_specification": "https://drive.google.com/file/d/1sGpOKbessezs7bcbWsaA8X-5HbvxUfpS/view",
+    "independent_retrieval": false,
+    "new_specification_audited_by_claude": false,
+    "report_date": "2026-09-10",
+    "report_url": "https://drive.google.com/file/d/1vs_7eTG60upfg8kLX-VwA2i-iLbs24d2/view"
+  },
+  "compiled_by": "GPT",
+  "compiled_date": "2026-09-10",
+  "gpt_image_transcription_and_comparison": {
+    "comparison_blob_sha": "58d7946560150947a92d6a91dcc4379277de9966",
+    "comparison_head_sha": "621f5ddc938bc62273eac42004e56d940ef376fa",
+    "comparison_path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+    "diagonal_meaning": "relative standard uncertainties multiplied by 10^6",
+    "incorrect_typed_pairs_ever_selected_as_scientific_inputs": false,
+    "ocr_used": false,
+    "off_diagonal_meaning": "dimensionless correlation coefficients",
+    "order": [
+      "copper_servo",
+      "copper_free",
+      "sapphire_servo",
+      "sapphire_free"
+    ],
+    "reconciled_typed_discrepancies": [
+      {
+        "human_typed": "0.23",
+        "image_and_repository": "0.12",
+        "pair": [
+          "copper_servo",
+          "sapphire_free"
+        ]
+      },
+      {
+        "human_typed": "0.12",
+        "image_and_repository": "0.23",
+        "pair": [
+          "copper_free",
+          "sapphire_servo"
+        ]
+      }
+    ],
+    "relative_standard_uncertainty_ppm": [
+      "23.2",
+      "30.3",
+      "37.5",
+      "93.9"
+    ],
+    "repository_match": "all ten entries and their label associations",
+    "row_association": "row indices correspond to the column configuration order under the symmetric-table convention",
+    "upper_triangle": [
+      {
+        "i": 0,
+        "j": 1,
+        "value": "0.42"
+      },
+      {
+        "i": 0,
+        "j": 2,
+        "value": "0.38"
+      },
+      {
+        "i": 0,
+        "j": 3,
+        "value": "0.12"
+      },
+      {
+        "i": 1,
+        "j": 2,
+        "value": "0.23"
+      },
+      {
+        "i": 1,
+        "j": 3,
+        "value": "0.23"
+      },
+      {
+        "i": 2,
+        "j": 3,
+        "value": "0.25"
+      }
+    ]
+  },
+  "human_report": {
+    "explicit_human_correction_of_typed_pairs_received": false,
+    "original_report_path": "evidence/NIST_Original_User_Report_20260910.md",
+    "outcome_blind": false,
+    "printed_page_as_reported": 26,
+    "reader": "Miguel Diaz",
+    "reading_time_as_reported": "2026-09-10 12:04 PM",
+    "reading_timezone": null,
+    "report_received_at_utc": "2026-09-10T16:13:05Z",
+    "role": "project owner; source reader and provider, not external auditor",
+    "source_url_as_reported": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075&utm_source=chatgpt.com",
+    "viewer_page_as_reported": 27
+  },
+  "image": {
+    "hash_scope": "uploaded PNG bytes only, not PDF bytes or source authenticity",
+    "not_visible": [
+      "document title",
+      "DOI",
+      "URL",
+      "printed page number",
+      "full document"
+    ],
+    "original_attachment_filename": "2BC27080-4481-4F8C-9DEC-02A55A853AFC.png",
+    "path": "evidence/nist_2026_table18_miguel_20260910.png",
+    "received_at_utc": "2026-09-10T16:15:53Z",
+    "sha256": "78107a66872667edb71eaaa819e6ee716abb0645e89c5c1ee9540789c3db98f5",
+    "size_bytes": 142517,
+    "transformation": "none; exact byte copy",
+    "visible": [
+      "Table 18 number",
+      "caption",
+      "column labels",
+      "row indices 1-4",
+      "ten entries"
+    ]
+  },
+  "operating_boundary": "No external outreach; canceled drafts are not instructions. No Gmail access, correspondence, or third-party requests.",
+  "original_nist_report_text": "B. NIST 2026\n\n```\nSource URL or uploaded filename: https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075&utm_source=chatgpt.com\nDate/time and time zone of my reading: 2026-09-10 12:04 PM\nPrinted page and PDF viewer page: printed 26, viewer 27\nColumn labels, left to right: (the first one over the numbers is blank), Copper servo, Copper free, Sapphire servo, Sapphire free\nCaption's meaning and scaling of the diagonal: Bold diagonal entries are the relative standard uncertainties (×10^6).\nCaption's meaning of the off-diagonal: Off-diagonal entries are correlation coefficients.\n\nFour bold diagonal entries:\n  Copper servo: 23.2\n  Copper free: 30.3\n  Sapphire servo: 37.5\n  Sapphire free: 93.9\n\nSix off-diagonal entries:\n  Copper servo / Copper free: 0.42\n  Copper servo / Sapphire servo: 0.38\n  Copper servo / Sapphire free: 0.23\n  Copper free / Sapphire servo: 0.12\n  Copper free / Sapphire free: 0.23\n  Sapphire servo / Sapphire free: 0.25\n\nUnclear entries or access limitation: n/a\nScreenshot or original PDF attached? (filename, or no): no\nI read directly from: pdf from above url\n```\n",
+  "record_kind": "supplied_NIST_source_evidence_receipt_not_scientific_preregistration",
+  "relative_path_scope": "Original delivery capsule paths, not live repository paths. A later repository attestation must map the unchanged receipt and image to their actual repository storage paths.",
+  "remaining_limits": [
+    "Publication identity and page are human-attributed rather than visible in this crop.",
+    "No full-publication authentication or retained-PDF digest is asserted.",
+    "Table 16 central G values are outside this crop.",
+    "The source caption does not verify the new project-declared nearest-rounding enclosure policy.",
+    "A source-check record does not complete a code audit or close a Claude-owned finding.",
+    "Final-summary covariance does not identify campaign-torque covariance; existing torque NO-GOs remain."
+  ],
+  "schema_version": 1,
+  "scope": "NIST Table 18 source crop and attributed reading only; no numerical robustness result",
+  "source_identity_inherited_not_visible_in_crop": {
+    "canonical_source_url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075",
+    "doi": "10.1088/1681-7575/ae570f",
+    "journal": "Metrologia 63 (2026) 025012",
+    "original_pdf_authenticated": false,
+    "original_pdf_sha256": null,
+    "publication": "Redetermination of the gravitational constant with the BIPM torsion balance at NIST"
+  }
+}
