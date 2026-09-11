@@ -1,0 +1,1407 @@
+{
+  "acceptance_criteria": "Accept delivery only when the sole-file freeze and genuine draft-PR timestamp precede new computation; all fixed inputs/rounding/model/budget choices are consumed and enforced; all four models receive a supported disposition; the entire domain is certified or its validity limitation is explicit; every universal claim has complete coverage and every variation claim has checked witnesses; exact baseline/zero-radius parity and independent synthetic oracles pass; the eight legitimate mutations and controls have actual execution evidence; source attribution remains bounded; final local validation and exact-head CI succeed; and old frozen/source/result bytes remain unchanged.\n\n**No favorable scientific result is required.** A mathematically justified unresolved result after the frozen budget is a completed study. An exception, bad proof, missing evidence file, or broken implementation is not.",
+  "allowed_mean_columns": {
+    "common": [
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "material": [
+      "1",
+      "1",
+      "0",
+      "0"
+    ],
+    "method": [
+      "0",
+      "1",
+      "0",
+      "1"
+    ]
+  },
+  "chronology": {
+    "anchor": "actual GitHub draft PR created_at, URL and freeze SHA recorded before evaluator or any new precision-family computation",
+    "freeze": "sole-file addition, sole parent intended base; shared strict verifier",
+    "introductions": "full-history candidates and all-parent checks; source committed before output emission; all new paths after anchor",
+    "merge": "true merge only; no squash/rebase",
+    "snapshot": "skip pure merge inheriting all relevant paths from a parent; changed conflict resolution creates new snapshot"
+  },
+  "claim_limits": {
+    "fixed_anchor_scope": "does not certify alternative hidden-value normalization",
+    "known_covariance_Gaussian_interpretation": "inherited working assumption at each candidate, not newly validated sampling law",
+    "no_confidence_interval_or_posterior": true,
+    "no_correspondence_preparation": true,
+    "no_covariance_completeness_claim": true,
+    "no_gmail": true,
+    "no_model_selection": true,
+    "no_new_or_corrected_G": true,
+    "no_outreach": true,
+    "no_p_values_or_joint_error_rate": true,
+    "no_rounding_probability_or_added_uncertainty": true,
+    "no_torque_calculation": true,
+    "no_unbiasedness_or_causality_or_G_universality_claim": true,
+    "no_variance_inflation": true,
+    "robust_nonflag": "not model acceptance"
+  },
+  "closure": {
+    "excluded_outputs": [
+      "Experiments/GMeasurements/nist_2026_covariance_precision_v1.json",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_mutations_v1.json",
+      "Notes/NIST2026CovariancePrecision.md"
+    ],
+    "excluded_science": [
+      "BIPM records",
+      "#48 context/results",
+      "#50/#51 evaluator/results",
+      "HUST/AAF",
+      "Lean",
+      "aggregate estimate/weights",
+      "terminal Bayesian/dark uncertainty",
+      "audit prose"
+    ],
+    "mutation_project_imports": [
+      "Discovery",
+      "Discovery.nist_2026_covariance_precision",
+      "Discovery.nist_2026_covariance_precision_mutations",
+      "Discovery.preregistration_history",
+      "Discovery.source_history",
+      "Discovery.mutation_test_runner",
+      "tests",
+      "tests.test_nist_2026_covariance_precision_mutations"
+    ],
+    "read_verification": "observe file opens/reads, Git blob arguments, imports in builder/main check/mutation execution/mutation check; no upstream builder/check subroutine",
+    "result_project_imports": [
+      "Discovery",
+      "Discovery.nist_2026_covariance_precision",
+      "Discovery.preregistration_history",
+      "Discovery.source_history"
+    ],
+    "result_scientific_reads": [
+      "Experiments/GMeasurements/nist_2026_covariance_precision_preregistration_v1.json",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_source_attestation_v1.json",
+      "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_miguel_20260910.png",
+      "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_receipt_20260910.json",
+      "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json",
+      "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_v1.json",
+      "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+      "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json",
+      "Experiments/GMeasurements/nist_2026_configuration_models_preregistration_v1.json"
+    ],
+    "source_snapshot": [
+      "Discovery/nist_2026_covariance_precision.py",
+      "Discovery/nist_2026_covariance_precision_mutations.py",
+      "tests/test_nist_2026_covariance_precision.py",
+      "tests/test_nist_2026_covariance_precision_mutations.py",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_preregistration_v1.json",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_source_attestation_v1.json",
+      "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_miguel_20260910.png",
+      "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_receipt_20260910.json",
+      "Notes/NIST2026CovariancePrecisionSpecification.md",
+      "Discovery/__init__.py",
+      "Discovery/preregistration_history.py",
+      "Discovery/source_history.py",
+      "Discovery/mutation_test_runner.py",
+      "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json",
+      "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_v1.json",
+      "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+      "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json",
+      "Experiments/GMeasurements/nist_2026_configuration_models_preregistration_v1.json"
+    ],
+    "verification_only": "Experiments/GMeasurements/nist_2026_configuration_models_v1.json in tests only"
+  },
+  "contrasts": [
+    {
+      "meaning": "copper minus sapphire, averaged over methods",
+      "name": "material",
+      "row": [
+        "1/2",
+        "1/2",
+        "-1/2",
+        "-1/2"
+      ]
+    },
+    {
+      "meaning": "free minus servo, averaged over source materials",
+      "name": "method",
+      "row": [
+        "-1/2",
+        "1/2",
+        "-1/2",
+        "1/2"
+      ]
+    },
+    {
+      "meaning": "copper method gap minus sapphire method gap",
+      "name": "interaction",
+      "row": [
+        "-1",
+        "1",
+        "1",
+        "-1"
+      ]
+    }
+  ],
+  "cutoffs": {
+    "1": "3.841459",
+    "2": "5.991465",
+    "3": "7.814728"
+  },
+  "decisions": {
+    "contradiction": "error; never precedence choice",
+    "domain_unresolved": "UNRESOLVED_COVARIANCE_DOMAIN",
+    "equality": "not_flagged",
+    "flag_rule": "Q > cutoff",
+    "unavailable_upper": "null plus reason",
+    "universal_flagged": "FLAGGED_FOR_ALL_PRECISION_VALUES",
+    "universal_not_flagged": "NOT_FLAGGED_FOR_ALL_PRECISION_VALUES",
+    "unresolved": "UNRESOLVED_FROM_CERTIFIED_BOUNDS",
+    "variation": "CLASSIFICATION_VARIATION_WITNESSED"
+  },
+  "experiment_id": "nist_2026_covariance_precision_v1",
+  "family": {
+    "closed_endpoints": true,
+    "covariance_unit": "U^2",
+    "dimension": 14,
+    "fixed_anchors": [
+      "6.673642",
+      "6.674021",
+      "6.672637",
+      "6.673636"
+    ],
+    "hidden_author_values_all_realizable_claim": false,
+    "independence_assumed": false,
+    "input_order": [
+      "copper_servo",
+      "copper_free",
+      "sapphire_servo",
+      "sapphire_free"
+    ],
+    "normalization": "D(s)=diag(a_i*s_i/10^6); V=D P D; a fixed at displayed midpoints, independent of variable x",
+    "parameter_order": [
+      "s0",
+      "s1",
+      "s2",
+      "s3",
+      "rho01",
+      "rho02",
+      "rho03",
+      "rho12",
+      "rho13",
+      "rho23"
+    ],
+    "probability_distribution": null,
+    "rho_center": [
+      "0.42",
+      "0.38",
+      "0.12",
+      "0.23",
+      "0.23",
+      "0.25"
+    ],
+    "rho_diagonal": "1",
+    "rho_half_width": "0.005",
+    "rho_pairs": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "rho_symmetric_shared_entries": true,
+    "rounding_policy_origin": "project_declared_conditional_nearest_rounding_enclosure",
+    "s_center_ppm": [
+      "23.2",
+      "30.3",
+      "37.5",
+      "93.9"
+    ],
+    "s_half_width_ppm": "0.05",
+    "source_rounding_convention_verified": false,
+    "unit": "U = 10^-11 m^3 kg^-1 s^-2",
+    "x_half_width": "0.0000005"
+  },
+  "intended_base_sha": "13c6b7b3bcaedda9acb1318c8a96ae39e18f538f",
+  "method": {
+    "Q": "(R x)^T (R V R^T)^-1 (R x)",
+    "arithmetic": "canonical exact rational; decimals outward-readable only",
+    "bounds": "outer certificates, not necessarily attained extrema; full x box analytic, never subdivided",
+    "covariance": "full marginal; nuisance means profiled, never conditioned",
+    "display": "q=a^T H a; B=2 sum_i h_i abs((H a)_i); E=sum_ij h_i h_j abs(H_ij); lower=max(0,q_lower-B_lower); upper=q_upper+B_upper+E_upper; zero covariance radius reduces exactly to #49; all zero widths to midpoint",
+    "interval": "positive diagonal squares; all endpoint products s_i*s_j*rho_ij including signed/sign-crossing; immutable a_i*a_j/10^12; mirrored exactly",
+    "matrix_validity": "positive s, rho endpoints in [-1,1], symmetric unit diagonal; all 64 lexicographic upper-triangle corner matrices with exact leading principal minors; affine convexity proves full-box SPD; any non-PD corner => domain unresolved for all; no jitter/filter/pseudoinverse",
+    "sandwich": "Vc at parameter midpoint; E_ij=max(abs(Vminus_ij-Vc_ij),abs(Vplus_ij-Vc_ij)); Cc=R Vc R^T=L diag(d) L^T; T=L^-1; Z=T R; F=abs(Z) E abs(Z)^T; g=row_sums(F); Hlower=Z^T diag(1/(d+g)) Z; Hupper=Z^T diag(1/(d-g)) Z only if all d-g>0; otherwise upper=null with reason; verify factorization, congruence and matrix-order proof"
+  },
+  "models": [
+    {
+      "allowed_columns": [
+        "common"
+      ],
+      "constraints": [
+        "material",
+        "method",
+        "interaction"
+      ],
+      "id": "M0",
+      "residual_df": 3
+    },
+    {
+      "allowed_columns": [
+        "common",
+        "method"
+      ],
+      "constraints": [
+        "material",
+        "interaction"
+      ],
+      "id": "M_method",
+      "residual_df": 2
+    },
+    {
+      "allowed_columns": [
+        "common",
+        "material"
+      ],
+      "constraints": [
+        "method",
+        "interaction"
+      ],
+      "id": "M_material",
+      "residual_df": 2
+    },
+    {
+      "allowed_columns": [
+        "common",
+        "method",
+        "material"
+      ],
+      "constraints": [
+        "interaction"
+      ],
+      "id": "M_additive",
+      "residual_df": 1
+    }
+  ],
+  "mutation_requirements": [
+    {
+      "id": "M1_precision_width",
+      "semantic_fault": "Collapse or understate a consumed last-digit half-width",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_precision_width"
+    },
+    {
+      "id": "M2_anchor_scaling",
+      "semantic_fault": "Omit or replace an individual fixed a factor in absolute covariance",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_anchor_scaling"
+    },
+    {
+      "id": "M3_signed_interval",
+      "semantic_fault": "Drop a necessary endpoint product or use unsigned-only multiplication",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_signed_interval"
+    },
+    {
+      "id": "M4_covariance_radius",
+      "semantic_fault": "Omit cross terms or off-diagonal radius contributions",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_covariance_radius"
+    },
+    {
+      "id": "M5_inverse_order",
+      "semantic_fault": "Use d+g instead of d-g for upper inverse bound",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_inverse_order"
+    },
+    {
+      "id": "M6_display_remainder",
+      "semantic_fault": "Remove required quadratic display remainder from upper bound",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_display_remainder"
+    },
+    {
+      "id": "M7_partition_coverage",
+      "semantic_fault": "Accept frontier missing a required branch or drop unresolved leaf",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_partition_coverage"
+    },
+    {
+      "id": "M8_false_variation",
+      "semantic_fault": "Treat straddling bounds as witnessed variation",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_false_variation"
+    }
+  ],
+  "objective": "Classify all four inherited NIST model restrictions over the simultaneous conditional fixed-anchor published-precision family.",
+  "outcome_blind": false,
+  "planned_surfaces": {
+    "helper_sha256": {
+      "Discovery/__init__.py": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078",
+      "Discovery/mutation_test_runner.py": "2d128a4b368fe70b56cc98886da506e4bef1fed5bb641e7aee6272c613a6ce34",
+      "Discovery/preregistration_history.py": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0",
+      "Discovery/source_history.py": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb"
+    },
+    "helpers": [
+      "Discovery/__init__.py",
+      "Discovery/preregistration_history.py",
+      "Discovery/source_history.py",
+      "Discovery/mutation_test_runner.py"
+    ],
+    "modified_existing": [
+      ".github/workflows/verify.yml"
+    ],
+    "new": [
+      "Discovery/nist_2026_covariance_precision.py",
+      "Discovery/nist_2026_covariance_precision_mutations.py",
+      "tests/test_nist_2026_covariance_precision.py",
+      "tests/test_nist_2026_covariance_precision_mutations.py",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_preregistration_v1.json",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_source_attestation_v1.json",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_v1.json",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_mutations_v1.json",
+      "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_miguel_20260910.png",
+      "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_receipt_20260910.json",
+      "Notes/NIST2026CovariancePrecisionSpecification.md",
+      "Notes/NIST2026CovariancePrecision.md"
+    ],
+    "workflow_change": "exactly two added read-only checks; preserve all existing settings/guards"
+  },
+  "prior_knowledge": {
+    "disclosure": "Prior #47 estimator and all #49 Q/display outcomes are known; known M_material margin motivates this study. Source-reading and supplemental audit preceded this freeze. No new family validity, perturbed Q, bounds or witness computed before freeze and actual GitHub draft anchor. This controls subsequent work, not origin of hypotheses.",
+    "inherited_approximate_Q": {
+      "M0": "25.0383749521",
+      "M_additive": "1.0269920913",
+      "M_material": "5.4591360127",
+      "M_method": "17.7205344139"
+    },
+    "inherited_classes": {
+      "M0": "flagged",
+      "M_additive": "not_flagged",
+      "M_material": "not_flagged",
+      "M_method": "flagged"
+    },
+    "pr47_head": "621f5ddc938bc62273eac42004e56d940ef376fa",
+    "pr49_head": "c329ead29399699164b8ff305530a0ee9a9300f0",
+    "production_consumption": "Prior reported results are disclosure only, never classifier/refinement/witness inputs."
+  },
+  "refinement": {
+    "coverage": "retain every sibling and unsplit leaf; validate exact root-to-frontier binary tree",
+    "eligibility": "bounds straddle cutoff for at least one globally unresolved model, including unavailable upper",
+    "inheritance": "intersect local and parent valid bounds; reject contradiction",
+    "leaf_order": "breadth_first_then_lexicographic_binary_path",
+    "max_binary_splits": 255,
+    "max_evaluated_nodes": 511,
+    "max_final_leaves": 256,
+    "shared_across_all_models": true,
+    "split": "exact rational midpoint; closed children share boundary",
+    "split_dimension": "widest normalized by original width; ties parameter_order; never zero width",
+    "stop": "all models universal or two-witness resolved; else 255 splits exhausted; else no eligible splittable leaf; no second pass or budget enlargement",
+    "witness_order": "node covariance center, x=a then lexicographic product of lower/upper x endpoints, deduplicate in insertion order; unresolved models only; reuse center inverse; at most 17 points/node/model",
+    "witness_storage": "earliest exact flagged and not-flagged actual V(s,P), full x/s/rho/V/Q/cutoff/membership/minors; no other point family"
+  },
+  "review": {
+    "current_drive_id": "1sGpOKbessezs7bcbWsaA8X-5HbvxUfpS",
+    "handoff_drive_id": "145QAdhOeEC8Ef1j3gLnw8YuI_ej9e0sd",
+    "inherited_scope": "Claude accepted #47 and #49 numerical/behavior layer; inspected supplied Table18 crop. No independent audit of this new study. DM-081 narrowed structured-attestation surface addressed forward; do not close ID. E-001 outside closure; DM-080/079/FH-14 outside scope; DM-082 withdrawn.",
+    "status": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING"
+  },
+  "schema_version": 1,
+  "source_evidence": {
+    "access_method_as_reported": "direct reading of NIST-served PDF",
+    "image_repository_path": "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_miguel_20260910.png",
+    "nearest_rounding_evidence": false,
+    "path_mapping_scope": "receipt internal relative paths refer to original delivery capsule",
+    "prior_reader_heads": {
+      "pr47": "621f5ddc938bc62273eac42004e56d940ef376fa",
+      "pr49": "c329ead29399699164b8ff305530a0ee9a9300f0"
+    },
+    "receipt": {
+      "claude_inspection_attributed_to_report": {
+        "actual_coverage": "Claude inspected supplied PNG after checking manifest hash and confirmed all ten entries and caption; DM-081 transcription component discharged, item remains open and narrowed.",
+        "current_url_at_specification": "https://drive.google.com/file/d/1sGpOKbessezs7bcbWsaA8X-5HbvxUfpS/view",
+        "independent_retrieval": false,
+        "new_specification_audited_by_claude": false,
+        "report_date": "2026-09-10",
+        "report_url": "https://drive.google.com/file/d/1vs_7eTG60upfg8kLX-VwA2i-iLbs24d2/view"
+      },
+      "compiled_by": "GPT",
+      "compiled_date": "2026-09-10",
+      "gpt_image_transcription_and_comparison": {
+        "comparison_blob_sha": "58d7946560150947a92d6a91dcc4379277de9966",
+        "comparison_head_sha": "621f5ddc938bc62273eac42004e56d940ef376fa",
+        "comparison_path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+        "diagonal_meaning": "relative standard uncertainties multiplied by 10^6",
+        "incorrect_typed_pairs_ever_selected_as_scientific_inputs": false,
+        "ocr_used": false,
+        "off_diagonal_meaning": "dimensionless correlation coefficients",
+        "order": [
+          "copper_servo",
+          "copper_free",
+          "sapphire_servo",
+          "sapphire_free"
+        ],
+        "reconciled_typed_discrepancies": [
+          {
+            "human_typed": "0.23",
+            "image_and_repository": "0.12",
+            "pair": [
+              "copper_servo",
+              "sapphire_free"
+            ]
+          },
+          {
+            "human_typed": "0.12",
+            "image_and_repository": "0.23",
+            "pair": [
+              "copper_free",
+              "sapphire_servo"
+            ]
+          }
+        ],
+        "relative_standard_uncertainty_ppm": [
+          "23.2",
+          "30.3",
+          "37.5",
+          "93.9"
+        ],
+        "repository_match": "all ten entries and their label associations",
+        "row_association": "row indices correspond to the column configuration order under the symmetric-table convention",
+        "upper_triangle": [
+          {
+            "i": 0,
+            "j": 1,
+            "value": "0.42"
+          },
+          {
+            "i": 0,
+            "j": 2,
+            "value": "0.38"
+          },
+          {
+            "i": 0,
+            "j": 3,
+            "value": "0.12"
+          },
+          {
+            "i": 1,
+            "j": 2,
+            "value": "0.23"
+          },
+          {
+            "i": 1,
+            "j": 3,
+            "value": "0.23"
+          },
+          {
+            "i": 2,
+            "j": 3,
+            "value": "0.25"
+          }
+        ]
+      },
+      "human_report": {
+        "explicit_human_correction_of_typed_pairs_received": false,
+        "original_report_path": "evidence/NIST_Original_User_Report_20260910.md",
+        "outcome_blind": false,
+        "printed_page_as_reported": 26,
+        "reader": "Miguel Diaz",
+        "reading_time_as_reported": "2026-09-10 12:04 PM",
+        "reading_timezone": null,
+        "report_received_at_utc": "2026-09-10T16:13:05Z",
+        "role": "project owner; source reader and provider, not external auditor",
+        "source_url_as_reported": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075&utm_source=chatgpt.com",
+        "viewer_page_as_reported": 27
+      },
+      "image": {
+        "hash_scope": "uploaded PNG bytes only, not PDF bytes or source authenticity",
+        "not_visible": [
+          "document title",
+          "DOI",
+          "URL",
+          "printed page number",
+          "full document"
+        ],
+        "original_attachment_filename": "2BC27080-4481-4F8C-9DEC-02A55A853AFC.png",
+        "path": "evidence/nist_2026_table18_miguel_20260910.png",
+        "received_at_utc": "2026-09-10T16:15:53Z",
+        "sha256": "78107a66872667edb71eaaa819e6ee716abb0645e89c5c1ee9540789c3db98f5",
+        "size_bytes": 142517,
+        "transformation": "none; exact byte copy",
+        "visible": [
+          "Table 18 number",
+          "caption",
+          "column labels",
+          "row indices 1-4",
+          "ten entries"
+        ]
+      },
+      "operating_boundary": "No external outreach; canceled drafts are not instructions. No Gmail access, correspondence, or third-party requests.",
+      "original_nist_report_text": "B. NIST 2026\n\n```\nSource URL or uploaded filename: https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075&utm_source=chatgpt.com\nDate/time and time zone of my reading: 2026-09-10 12:04 PM\nPrinted page and PDF viewer page: printed 26, viewer 27\nColumn labels, left to right: (the first one over the numbers is blank), Copper servo, Copper free, Sapphire servo, Sapphire free\nCaption's meaning and scaling of the diagonal: Bold diagonal entries are the relative standard uncertainties (\u00d710^6).\nCaption's meaning of the off-diagonal: Off-diagonal entries are correlation coefficients.\n\nFour bold diagonal entries:\n  Copper servo: 23.2\n  Copper free: 30.3\n  Sapphire servo: 37.5\n  Sapphire free: 93.9\n\nSix off-diagonal entries:\n  Copper servo / Copper free: 0.42\n  Copper servo / Sapphire servo: 0.38\n  Copper servo / Sapphire free: 0.23\n  Copper free / Sapphire servo: 0.12\n  Copper free / Sapphire free: 0.23\n  Sapphire servo / Sapphire free: 0.25\n\nUnclear entries or access limitation: n/a\nScreenshot or original PDF attached? (filename, or no): no\nI read directly from: pdf from above url\n```\n",
+      "record_kind": "supplied_NIST_source_evidence_receipt_not_scientific_preregistration",
+      "relative_path_scope": "Original delivery capsule paths, not live repository paths. A later repository attestation must map the unchanged receipt and image to their actual repository storage paths.",
+      "remaining_limits": [
+        "Publication identity and page are human-attributed rather than visible in this crop.",
+        "No full-publication authentication or retained-PDF digest is asserted.",
+        "Table 16 central G values are outside this crop.",
+        "The source caption does not verify the new project-declared nearest-rounding enclosure policy.",
+        "A source-check record does not complete a code audit or close a Claude-owned finding.",
+        "Final-summary covariance does not identify campaign-torque covariance; existing torque NO-GOs remain."
+      ],
+      "schema_version": 1,
+      "scope": "NIST Table 18 source crop and attributed reading only; no numerical robustness result",
+      "source_identity_inherited_not_visible_in_crop": {
+        "canonical_source_url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075",
+        "doi": "10.1088/1681-7575/ae570f",
+        "journal": "Metrologia 63 (2026) 025012",
+        "original_pdf_authenticated": false,
+        "original_pdf_sha256": null,
+        "publication": "Redetermination of the gravitational constant with the BIPM torsion balance at NIST"
+      }
+    },
+    "receipt_repository_path": "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_receipt_20260910.json",
+    "receipt_sha256": "1622982acb461aa393e5d9dcb03a9961c450f9a1952bd464140705b010fc74e6",
+    "specification_delivered_sha256": "d90badf81c0921a6559d3de30b16d2cf2804e151c5d82e9c2a41b8e2aa89e038",
+    "specification_prepared": "2026-09-10",
+    "table": 18,
+    "table16_evidence": "inherited pinned records; not supplied crop"
+  },
+  "upstream_records": {
+    "authorization": {
+      "base_sha": "13c6b7b3bcaedda9acb1318c8a96ae39e18f538f",
+      "fields": {
+        "claim_limits": {
+          "path": [
+            "claim_limits"
+          ],
+          "value": [
+            "Deterministic reconstructability is established only for the four-dimensional experimental covariance object.",
+            "Equation (64) and the dark-uncertainty posterior are not reproduced.",
+            "No NIST-26/BIPM-14/CODATA common-constant comparison is performed.",
+            "The peer-reviewed PDF controls over conflicting landing-page numerics.",
+            "No HUST AAF E-001 evidence boundary is used."
+          ]
+        },
+        "decision": {
+          "path": [
+            "decision"
+          ],
+          "value": {
+            "authorized_next_step": "preregister_n4_experimental_covariance_correlated_estimator_certificate",
+            "common_constant_comparison": "NOT_EVALUATED",
+            "equation_64_reproduction": "NOT_AUTHORIZED",
+            "experimental_covariance": "GO",
+            "published_bayesian_consensus": "NO_GO"
+          }
+        },
+        "identity": {
+          "path": [
+            "artifact_id"
+          ],
+          "value": "nist_2026_estimator_feasibility_v1"
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        }
+      },
+      "path": "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json",
+      "sha256": "8e9f7f135dc7f71158ba85dc3a62bf81cbea1b71ad0ce4f89681a1a110d96533"
+    },
+    "certificate": {
+      "base_sha": "13c6b7b3bcaedda9acb1318c8a96ae39e18f538f",
+      "fields": {
+        "V": {
+          "path": [
+            "estimator",
+            "absolute_covariance_matrix_in_1e_minus_11_units_squared"
+          ],
+          "value": [
+            [
+              {
+                "denominator": "390625000000000000000000",
+                "numerator": "9364008858660481"
+              },
+              {
+                "denominator": "312500000000000000000000000",
+                "numerator": "4109418767688500007"
+              },
+              {
+                "denominator": "2500000000000000000000000",
+                "numerator": "36804698376312981"
+              },
+              {
+                "denominator": "39062500000000000000000000",
+                "numerator": "454799814467046777"
+              }
+            ],
+            [
+              {
+                "denominator": "312500000000000000000000000",
+                "numerator": "4109418767688500007"
+              },
+              {
+                "denominator": "100000000000000000000000000",
+                "numerator": "4089407552121659769"
+              },
+              {
+                "denominator": "80000000000000000000000000",
+                "numerator": "931058110020822939"
+              },
+              {
+                "denominator": "2500000000000000000000000000",
+                "numerator": "72866204707101833799"
+              }
+            ],
+            [
+              {
+                "denominator": "2500000000000000000000000",
+                "numerator": "36804698376312981"
+              },
+              {
+                "denominator": "80000000000000000000000000",
+                "numerator": "931058110020822939"
+              },
+              {
+                "denominator": "6400000000000000000000",
+                "numerator": "400716760803921"
+              },
+              {
+                "denominator": "800000000000000000000000",
+                "numerator": "31360781038309461"
+              }
+            ],
+            [
+              {
+                "denominator": "39062500000000000000000000",
+                "numerator": "454799814467046777"
+              },
+              {
+                "denominator": "2500000000000000000000000000",
+                "numerator": "72866204707101833799"
+              },
+              {
+                "denominator": "800000000000000000000000",
+                "numerator": "31360781038309461"
+              },
+              {
+                "denominator": "6250000000000000000000000",
+                "numerator": "2454348516292874601"
+              }
+            ]
+          ]
+        },
+        "authorization": {
+          "path": [
+            "upstream_authorization"
+          ],
+          "value": {
+            "bayesian_blocker_ids": [
+              "epsilon_likelihood_distribution",
+              "posterior_sampler_algorithm",
+              "posterior_sampling_controls",
+              "robust_estimator_computational_conventions",
+              "dark_correlation_matrix_identity"
+            ],
+            "decisions": {
+              "common_constant_comparison": "NOT_EVALUATED",
+              "equation_64_reproduction": "NOT_AUTHORIZED",
+              "experimental_covariance": "GO",
+              "published_bayesian_consensus": "NO_GO"
+            },
+            "feasibility_artifact_id": "nist_2026_estimator_feasibility_v1",
+            "source_attestation_id": "nist_2026_estimator_source_attestation_v1"
+          }
+        },
+        "cells": {
+          "path": [
+            "finite_resolution",
+            "input_cells_in_1e_minus_11_units"
+          ],
+          "value": [
+            {
+              "high": {
+                "denominator": "400000",
+                "numerator": "2669457"
+              },
+              "low": {
+                "denominator": "2000000",
+                "numerator": "13347283"
+              }
+            },
+            {
+              "high": {
+                "denominator": "2000000",
+                "numerator": "13348043"
+              },
+              "low": {
+                "denominator": "2000000",
+                "numerator": "13348041"
+              }
+            },
+            {
+              "high": {
+                "denominator": "80000",
+                "numerator": "533811"
+              },
+              "low": {
+                "denominator": "2000000",
+                "numerator": "13345273"
+              }
+            },
+            {
+              "high": {
+                "denominator": "2000000",
+                "numerator": "13347273"
+              },
+              "low": {
+                "denominator": "2000000",
+                "numerator": "13347271"
+              }
+            }
+          ]
+        },
+        "identity": {
+          "path": [
+            "artifact_id"
+          ],
+          "value": "nist_2026_n4_experimental_estimator_v1"
+        },
+        "order": {
+          "path": [
+            "estimator",
+            "input_order"
+          ],
+          "value": [
+            "copper_servo",
+            "copper_free",
+            "sapphire_servo",
+            "sapphire_free"
+          ]
+        },
+        "rho": {
+          "path": [
+            "estimator",
+            "correlation_matrix"
+          ],
+          "value": [
+            [
+              {
+                "denominator": "1",
+                "numerator": "1"
+              },
+              {
+                "denominator": "50",
+                "numerator": "21"
+              },
+              {
+                "denominator": "50",
+                "numerator": "19"
+              },
+              {
+                "denominator": "25",
+                "numerator": "3"
+              }
+            ],
+            [
+              {
+                "denominator": "50",
+                "numerator": "21"
+              },
+              {
+                "denominator": "1",
+                "numerator": "1"
+              },
+              {
+                "denominator": "100",
+                "numerator": "23"
+              },
+              {
+                "denominator": "100",
+                "numerator": "23"
+              }
+            ],
+            [
+              {
+                "denominator": "50",
+                "numerator": "19"
+              },
+              {
+                "denominator": "100",
+                "numerator": "23"
+              },
+              {
+                "denominator": "1",
+                "numerator": "1"
+              },
+              {
+                "denominator": "4",
+                "numerator": "1"
+              }
+            ],
+            [
+              {
+                "denominator": "25",
+                "numerator": "3"
+              },
+              {
+                "denominator": "100",
+                "numerator": "23"
+              },
+              {
+                "denominator": "4",
+                "numerator": "1"
+              },
+              {
+                "denominator": "1",
+                "numerator": "1"
+              }
+            ]
+          ]
+        },
+        "s": {
+          "path": [
+            "estimator",
+            "relative_standard_uncertainty_ppm"
+          ],
+          "value": [
+            {
+              "denominator": "5",
+              "numerator": "116"
+            },
+            {
+              "denominator": "10",
+              "numerator": "303"
+            },
+            {
+              "denominator": "2",
+              "numerator": "75"
+            },
+            {
+              "denominator": "10",
+              "numerator": "939"
+            }
+          ]
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        },
+        "x": {
+          "path": [
+            "estimator",
+            "displayed_values_in_1e_minus_11_units"
+          ],
+          "value": [
+            {
+              "denominator": "500000",
+              "numerator": "3336821"
+            },
+            {
+              "denominator": "1000000",
+              "numerator": "6674021"
+            },
+            {
+              "denominator": "1000000",
+              "numerator": "6672637"
+            },
+            {
+              "denominator": "250000",
+              "numerator": "1668409"
+            }
+          ]
+        }
+      },
+      "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_v1.json",
+      "sha256": "2d4da6080896ff45f25203b356d101124a10046f2f63daa76b19b309d7c875c2"
+    },
+    "models": {
+      "base_sha": "13c6b7b3bcaedda9acb1318c8a96ae39e18f538f",
+      "fields": {
+        "allowed_mean_columns": {
+          "path": [
+            "allowed_mean_columns"
+          ],
+          "value": {
+            "common": [
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "material": [
+              "1",
+              "1",
+              "0",
+              "0"
+            ],
+            "method": [
+              "0",
+              "1",
+              "0",
+              "1"
+            ]
+          }
+        },
+        "claim_limits": {
+          "path": [
+            "claim_limits"
+          ],
+          "value": {
+            "conditional_only": true,
+            "no_Bayesian_consensus_reproduction": true,
+            "no_causal_identification": true,
+            "no_composition_dependent_gravity_claim": true,
+            "no_configuration_removal": true,
+            "no_corrected_or_pooled_G": true,
+            "no_equal_torque_inference": true,
+            "no_independent_confirmation": true,
+            "no_joint_familywise_error_rate": true,
+            "no_model_selection_guarantee": true,
+            "no_new_observations": true,
+            "no_newly_discovered_author_missed_effect": true,
+            "no_p_value": true,
+            "no_probability_of_universality": true,
+            "no_variance_inflation": true,
+            "no_winning_model": true
+          }
+        },
+        "contrasts": {
+          "path": [
+            "contrasts"
+          ],
+          "value": [
+            {
+              "meaning": "copper minus sapphire, averaged over methods",
+              "name": "material",
+              "row": [
+                "1/2",
+                "1/2",
+                "-1/2",
+                "-1/2"
+              ]
+            },
+            {
+              "meaning": "free minus servo, averaged over source materials",
+              "name": "method",
+              "row": [
+                "-1/2",
+                "1/2",
+                "-1/2",
+                "1/2"
+              ]
+            },
+            {
+              "meaning": "copper method gap minus sapphire method gap",
+              "name": "interaction",
+              "row": [
+                "-1",
+                "1",
+                "1",
+                "-1"
+              ]
+            }
+          ]
+        },
+        "cutoffs": {
+          "path": [
+            "calibration",
+            "cutoffs_by_df"
+          ],
+          "value": {
+            "1": "3.841459",
+            "2": "5.991465",
+            "3": "7.814728"
+          }
+        },
+        "models": {
+          "path": [
+            "models"
+          ],
+          "value": [
+            {
+              "allowed_columns": [
+                "common"
+              ],
+              "constraints": [
+                "material",
+                "method",
+                "interaction"
+              ],
+              "id": "M0",
+              "residual_df": 3
+            },
+            {
+              "allowed_columns": [
+                "common",
+                "method"
+              ],
+              "constraints": [
+                "material",
+                "interaction"
+              ],
+              "id": "M_method",
+              "residual_df": 2
+            },
+            {
+              "allowed_columns": [
+                "common",
+                "material"
+              ],
+              "constraints": [
+                "method",
+                "interaction"
+              ],
+              "id": "M_material",
+              "residual_df": 2
+            },
+            {
+              "allowed_columns": [
+                "common",
+                "method",
+                "material"
+              ],
+              "constraints": [
+                "interaction"
+              ],
+              "id": "M_additive",
+              "residual_df": 1
+            }
+          ]
+        }
+      },
+      "path": "Experiments/GMeasurements/nist_2026_configuration_models_preregistration_v1.json",
+      "sha256": "e19a32c3f6c6ed190a7c6593b77a37b1d44b1b6f586734489e9c30c742fa6a2d"
+    },
+    "protocol": {
+      "base_sha": "13c6b7b3bcaedda9acb1318c8a96ae39e18f538f",
+      "fields": {
+        "authorization": {
+          "path": [
+            "upstream_authorization",
+            "required_decisions"
+          ],
+          "value": {
+            "common_constant_comparison": "NOT_EVALUATED",
+            "equation_64_reproduction": "NOT_AUTHORIZED",
+            "experimental_covariance": "GO",
+            "published_bayesian_consensus": "NO_GO"
+          }
+        },
+        "doi": {
+          "path": [
+            "source",
+            "doi"
+          ],
+          "value": "10.1088/1681-7575/ae570f"
+        },
+        "identity": {
+          "path": [
+            "experiment_id"
+          ],
+          "value": "nist_2026_n4_experimental_correlated_estimator_v1"
+        },
+        "inputs": {
+          "path": [
+            "input_projection"
+          ],
+          "value": {
+            "correlation_matrix": [
+              [
+                "1",
+                "0.42",
+                "0.38",
+                "0.12"
+              ],
+              [
+                "0.42",
+                "1",
+                "0.23",
+                "0.23"
+              ],
+              [
+                "0.38",
+                "0.23",
+                "1",
+                "0.25"
+              ],
+              [
+                "0.12",
+                "0.23",
+                "0.25",
+                "1"
+              ]
+            ],
+            "measurements": [
+              {
+                "G_decimal_in_1e_minus_11_units": "6.673642",
+                "id": "copper_servo",
+                "printed_decimal_places": 6,
+                "relative_standard_uncertainty_ppm": "23.2"
+              },
+              {
+                "G_decimal_in_1e_minus_11_units": "6.674021",
+                "id": "copper_free",
+                "printed_decimal_places": 6,
+                "relative_standard_uncertainty_ppm": "30.3"
+              },
+              {
+                "G_decimal_in_1e_minus_11_units": "6.672637",
+                "id": "sapphire_servo",
+                "printed_decimal_places": 6,
+                "relative_standard_uncertainty_ppm": "37.5"
+              },
+              {
+                "G_decimal_in_1e_minus_11_units": "6.673636",
+                "id": "sapphire_free",
+                "printed_decimal_places": 6,
+                "relative_standard_uncertainty_ppm": "93.9"
+              }
+            ],
+            "order": [
+              "copper_servo",
+              "copper_free",
+              "sapphire_servo",
+              "sapphire_free"
+            ],
+            "precision_policy": "Table 18 precise combined relative standard uncertainties control estimator covariance; Table 16 whole-ppm uncertainty labels are display-only corroboration."
+          }
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        },
+        "source_identity_locators": {
+          "path": [
+            "source"
+          ],
+          "value": {
+            "doi": "10.1088/1681-7575/ae570f",
+            "journal": "Metrologia",
+            "locators": {
+              "determinations": "PDF page 25, Table 16",
+              "precise_uncertainties_and_correlations": "PDF page 26, Table 18",
+              "uncertainty_components_and_combined": "PDF page 26, Table 17"
+            },
+            "nist_pdf": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075",
+            "publication": "Stephan Schlamminger et al., Redetermination of the gravitational constant with the BIPM torsion balance at NIST",
+            "published": "2026-04-16",
+            "volume_article": "63 025012"
+          }
+        }
+      },
+      "path": "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+      "sha256": "e83f08f323aa1e397be1b6ef50e25d541d05307949148efbff02971e8eaf4ca6"
+    },
+    "source": {
+      "base_sha": "13c6b7b3bcaedda9acb1318c8a96ae39e18f538f",
+      "fields": {
+        "doi": {
+          "path": [
+            "source",
+            "doi"
+          ],
+          "value": "10.1088/1681-7575/ae570f"
+        },
+        "epistemic_limits": {
+          "path": [
+            "epistemic_limits"
+          ],
+          "value": [
+            "No raw NIST PDF bytes are committed or hash-attested in this artifact.",
+            "The transcription was reviewed against both machine-readable PDF text and visual page screenshots for Tables 16, 17, 18, 19 and equation (64).",
+            "This attestation does not authorize a BIPM-14 versus NIST-26 common-constant conclusion.",
+            "It does not authorize replacing the Bayesian hierarchy with generalized least squares and calling the result equation (64)."
+          ]
+        },
+        "identity": {
+          "path": [
+            "artifact_id"
+          ],
+          "value": "nist_2026_estimator_source_attestation_v1"
+        },
+        "order": {
+          "path": [
+            "experimental_layer",
+            "input_order"
+          ],
+          "value": [
+            "copper_servo",
+            "copper_free",
+            "sapphire_servo",
+            "sapphire_free"
+          ]
+        },
+        "rho": {
+          "path": [
+            "experimental_layer",
+            "table_18",
+            "correlation_matrix"
+          ],
+          "value": [
+            [
+              "1",
+              "0.42",
+              "0.38",
+              "0.12"
+            ],
+            [
+              "0.42",
+              "1",
+              "0.23",
+              "0.23"
+            ],
+            [
+              "0.38",
+              "0.23",
+              "1",
+              "0.25"
+            ],
+            [
+              "0.12",
+              "0.23",
+              "0.25",
+              "1"
+            ]
+          ]
+        },
+        "row_0_G_decimal_in_1e_minus_11_units": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            0,
+            "G_decimal_in_1e_minus_11_units"
+          ],
+          "value": "6.673642"
+        },
+        "row_0_id": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            0,
+            "id"
+          ],
+          "value": "copper_servo"
+        },
+        "row_1_G_decimal_in_1e_minus_11_units": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            1,
+            "G_decimal_in_1e_minus_11_units"
+          ],
+          "value": "6.674021"
+        },
+        "row_1_id": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            1,
+            "id"
+          ],
+          "value": "copper_free"
+        },
+        "row_2_G_decimal_in_1e_minus_11_units": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            2,
+            "G_decimal_in_1e_minus_11_units"
+          ],
+          "value": "6.672637"
+        },
+        "row_2_id": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            2,
+            "id"
+          ],
+          "value": "sapphire_servo"
+        },
+        "row_3_G_decimal_in_1e_minus_11_units": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            3,
+            "G_decimal_in_1e_minus_11_units"
+          ],
+          "value": "6.673636"
+        },
+        "row_3_id": {
+          "path": [
+            "experimental_layer",
+            "table_16",
+            "measurements",
+            3,
+            "id"
+          ],
+          "value": "sapphire_free"
+        },
+        "s": {
+          "path": [
+            "experimental_layer",
+            "table_18",
+            "diagonal_relative_standard_uncertainty_ppm"
+          ],
+          "value": [
+            "23.2",
+            "30.3",
+            "37.5",
+            "93.9"
+          ]
+        },
+        "schema": {
+          "path": [
+            "schema_version"
+          ],
+          "value": 1
+        },
+        "source_qualifications": {
+          "path": [
+            "source"
+          ],
+          "value": {
+            "access_date": "2026-09-08",
+            "doi": "10.1088/1681-7575/ae570f",
+            "journal": "Metrologia 63 (2026) 025012",
+            "license": "CC BY 4.0",
+            "nist_landing_page": "https://www.nist.gov/publications/redetermination-gravitational-constant-bipm-torsion-balance-nist",
+            "nist_pdf": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=961075",
+            "pdf_page_count": 31,
+            "publication": "Stephan Schlamminger et al., Redetermination of the gravitational constant with the BIPM torsion balance at NIST",
+            "published": "2026-04-16",
+            "raw_pdf_hash_claim": false,
+            "raw_pdf_persisted": false
+          }
+        }
+      },
+      "path": "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json",
+      "sha256": "9e976877bfd9890ba50ed4f2d183d3241a3f8dfb8af0b2fc046d53c4e9639f45"
+    }
+  },
+  "verification_obligations": "Use `unittest` and exact rationals. Separate mathematical behavior tests from artifact/provenance tests. Test actual field consumption beyond digest rejection. Minimum coverage:\n\n1. **Inputs and meaning:** exact decimal half-widths; all 14 dimensions; endpoints; correlation symmetry/unit diagonal; correct `rho03/rho12`; units/squared scaling; fixed a versus variable x; no zero/default for missing fields; strict schema and duplicate/nonfinite rejection. Synthetic changes to a, s width, correlation width, and h must affect the appropriate computation. Changing x alone must not change V when a is fixed.\n2. **Covariance validity:** 64-corner affine-box proof and exact minor inventory; a midpoint-PD synthetic box containing singular/indefinite corners must not acquire full-box validity. No endpoint filtering, inverse of a singular matrix, or invalid-source-as-nonflag behavior.\n3. **Interval algebra:** signed and sign-crossing products; positive squares; Vc distinguished from entrywise interval midpoint; exact containment at constructed synthetic points. Show why elementwise interval matrices need not be attainable source candidates.\n4. **Sandwich proof:** LDL reconstruction and inverse T; all cross terms in `abs(Z) E abs(Z)^T`; row-sum domination; inversion direction; positive-denominator requirement; a failed upper certificate with a genuinely positive-definite underlying family. Construct an admissible point that escapes an intentionally under-sized off-diagonal radius.\n5. **Central box:** first/second-order terms, zero center with nonzero widths, PSD lower truncation, exact zero-width reduction to #49, and candidate points within the certified interval. Point/corner checks supplement the proof, never replace it.\n6. **Model mathematics:** independent cofactor/adjugate inverse and mean-space GLS profiling oracle on synthetic fixtures; exact midpoint parity to the already-recorded #49 artifact; rank/nullspace/df; marginal versus conditioned covariance; common-mean shift with a held fixed; consistent unit changes and permutation of labels, anchors, cells and correlations.\n7. **Decisions:** strict `>` and equality; universal flag/nonflag, two genuine opposing witnesses, straddling enclosure with no evidence of opposing outcomes, unavailable upper bound, and non-PD domain. Include a quadratic whose corners lie on one side while an interior point lies on the other. No winner or robust-physical-model inference.\n8. **Coverage and budget:** exact root-to-leaf coverage; both children and shared midpoint retained; no omitted unfavorable leaf; normalized-width tie breaks and deterministic BFS ordering; inherited bounds; budget exhaustion producing honest unresolved status. Identical synthetic input yields byte-identical output, independent of traversal incidental container ordering.\n9. **Evidence and isolation:** cropped-source provenance qualifications; original typed mismatches preserved but never selected numerically; missing/altered record fields rejected; excluded prior estimates, terminal/dark outputs, #48 context and audit prose have no numerical effect in valid in-memory behavior tests. Observe actual filesystem opens/reads, Git blob arguments and imports for builder, main `--check`, mutation execution and mutation `--check`.\n10. **Chronology/freshness:** sole-file/single-parent freeze; GitHub anchor identity; full-history introduction checks; source commit precedes outputs; missing pinned files; modified results/certificates; pure-merge stability; changed conflict resolution; canonical serialization. Mutation of saved proof bounds, witnesses, or tree coverage must fail, even if the outer JSON is well formed.\n\nDo not execute old #47/#49 reconstructions or unrelated mutation families as a development ritual. The one final full suite remains required by the standing protocol; new focused parity tests exist to validate the new consumer, not to reissue Claude's audit."
+}
