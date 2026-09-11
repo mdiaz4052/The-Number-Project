@@ -81,3 +81,5 @@ jobs:
       - run: python -m Discovery.pysr_leakage_hardening_mutations --check
       - run: python -m Discovery.nist_2026_paired_torque_feasibility --check
       - run: python -m Discovery.nist_2026_paired_torque_feasibility_mutations --check
+      - run: python -m Discovery.nist_2026_covariance_precision --check
+      - run: python -m Discovery.nist_2026_covariance_precision_mutations --check
