@@ -1,0 +1,934 @@
+{
+  "anchor": {
+    "created_at": "2026-09-11T19:01:42Z",
+    "event": "draft_pull_request_created",
+    "freeze_head": "6496188c17c82410241d2d703121aa1e9d048c6a",
+    "outcome_blind": false,
+    "url": "https://github.com/mdiaz4052/The-Number-Project/pull/52"
+  },
+  "anti_false_kill_rule": "Only designated behavior assertion failures; no syntax/import/runtime/history/digest/skip failures.",
+  "artifact_id": "nist_2026_covariance_precision_mutations_v1",
+  "calibration_valid": true,
+  "definitions": [
+    {
+      "category": "calibration",
+      "expected": "KILLED",
+      "id": "calibration_linear_term",
+      "new": "B = 1 * sum((w * abs(z)",
+      "old": "B = 2 * sum((w * abs(z)",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_faulty_calibration"
+      ]
+    },
+    {
+      "category": "calibration",
+      "expected": "SURVIVED",
+      "id": "calibration_equivalent_quadratic",
+      "new": "return sum((a * b for a, b in zip(x, mv(A, x))), F(0))",
+      "old": "return dot(x, mv(A, x))",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_equivalent_control"
+      ]
+    },
+    {
+      "category": "production",
+      "expected": "KILLED",
+      "id": "M1_precision_width",
+      "new": "return center - half_width / 2, center + half_width / 2",
+      "old": "return center - half_width, center + half_width",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 0,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_precision_width"
+      ]
+    },
+    {
+      "category": "production",
+      "expected": "KILLED",
+      "id": "M2_anchor_scaling",
+      "new": "a[i] * a[i] * s[i] * s[j] * P[i][j]",
+      "old": "a[i] * a[j] * s[i] * s[j] * P[i][j]",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 1,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_anchor_scaling"
+      ]
+    },
+    {
+      "category": "production",
+      "expected": "KILLED",
+      "id": "M3_signed_interval",
+      "new": "products = [left[0] * right[0], left[1] * right[1]]",
+      "old": "products = [a * b for a in left for b in right]",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 2,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_signed_interval"
+      ]
+    },
+    {
+      "category": "production",
+      "expected": "KILLED",
+      "id": "M4_covariance_radius",
+      "new": "radius = mm(mm(abs_matrix(Z), diag(tuple(E[i][i] for i in range(len(E))))), transpose(abs_matrix(Z)))",
+      "old": "radius = mm(mm(abs_matrix(Z), E), transpose(abs_matrix(Z)))",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 3,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_covariance_radius"
+      ]
+    },
+    {
+      "category": "production",
+      "expected": "KILLED",
+      "id": "M5_inverse_order",
+      "new": "tuple(1 / x for x in lower_denominators)",
+      "old": "tuple(1 / x for x in upper_denominators)",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 4,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_inverse_order"
+      ]
+    },
+    {
+      "category": "production",
+      "expected": "KILLED",
+      "id": "M6_display_remainder",
+      "new": "'upper': q + B",
+      "old": "'upper': q + B + E",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 5,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_display_remainder"
+      ]
+    },
+    {
+      "category": "production",
+      "expected": "KILLED",
+      "id": "M7_partition_coverage",
+      "new": "set(frontier) <= set(leaves)",
+      "old": "set(frontier) == set(leaves)",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 6,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_partition_coverage"
+      ]
+    },
+    {
+      "category": "production",
+      "expected": "KILLED",
+      "id": "M8_false_variation",
+      "new": "if lo <= cutoff and (hi is None or hi > cutoff):",
+      "old": "if {'flagged', 'not_flagged'} <= set(witness_classes):",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 7,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_false_variation"
+      ]
+    }
+  ],
+  "definitions_sha256": "09dfe262e71af124f9d201e5e95057abda7eb2470f678eeec4e2f71fee077f4c",
+  "execution_read_closure": {
+    "files": [
+      "Discovery/__init__.py",
+      "Discovery/mutation_test_runner.py",
+      "Discovery/nist_2026_covariance_precision.py",
+      "Discovery/nist_2026_covariance_precision_mutations.py",
+      "Discovery/preregistration_history.py",
+      "Discovery/source_history.py",
+      "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_miguel_20260910.png",
+      "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_receipt_20260910.json",
+      "Experiments/GMeasurements/nist_2026_configuration_models_preregistration_v1.json",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_preregistration_v1.json",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_source_attestation_v1.json",
+      "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json",
+      "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json",
+      "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+      "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_v1.json",
+      "Notes/NIST2026CovariancePrecisionSpecification.md",
+      "tests/test_nist_2026_covariance_precision.py",
+      "tests/test_nist_2026_covariance_precision_mutations.py"
+    ],
+    "git_blobs": [
+      "Discovery/__init__.py",
+      "Discovery/mutation_test_runner.py",
+      "Discovery/nist_2026_covariance_precision.py",
+      "Discovery/nist_2026_covariance_precision_mutations.py",
+      "Discovery/preregistration_history.py",
+      "Discovery/source_history.py",
+      "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_miguel_20260910.png",
+      "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_receipt_20260910.json",
+      "Experiments/GMeasurements/nist_2026_configuration_models_preregistration_v1.json",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_preregistration_v1.json",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_source_attestation_v1.json",
+      "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json",
+      "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json",
+      "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json",
+      "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_v1.json",
+      "Notes/NIST2026CovariancePrecisionSpecification.md",
+      "tests/test_nist_2026_covariance_precision.py",
+      "tests/test_nist_2026_covariance_precision_mutations.py"
+    ],
+    "isolated_subprocesses": 11,
+    "other_subprocesses": []
+  },
+  "family_status": "valid",
+  "isolation": {
+    "ephemeral_tests_init_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_project_imports": {
+      "Discovery": "Discovery/__init__.py",
+      "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+      "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+      "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+      "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+      "Discovery.source_history": "Discovery/source_history.py",
+      "tests": "tests/__init__.py",
+      "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+    },
+    "python_flags": [
+      "-I",
+      "-B"
+    ]
+  },
+  "preregistration_sha256": "242551394632421d2362a57bab43f7eb1729f61620166244055bb26d141262f5",
+  "production_count": 8,
+  "production_killed": 8,
+  "records": [
+    {
+      "applied_source_sha256": "99f1de79595c024069caab4d32a6e9d701950a1c4da7a7951175cd9cdbd1ae61",
+      "category": "baseline",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "observed_file_open_paths": [
+          "Discovery/__init__.py",
+          "Discovery/__pycache__/__init__.cpython-312.pyc",
+          "Discovery/__pycache__/mutation_test_runner.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "Discovery/__pycache__/preregistration_history.cpython-312.pyc",
+          "Discovery/__pycache__/source_history.cpython-312.pyc",
+          "Discovery/mutation_test_runner.py",
+          "Discovery/nist_2026_covariance_precision.py",
+          "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery/preregistration_history.py",
+          "Discovery/source_history.py",
+          "tests/__init__.py",
+          "tests/__pycache__/__init__.cpython-312.pyc",
+          "tests/__pycache__/test_nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "tests/test_nist_2026_covariance_precision_mutations.py"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 10,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "unmutated_baseline",
+      "outcome": "SURVIVED",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_anchor_scaling",
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_covariance_radius",
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_display_remainder",
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_equivalent_control",
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_false_variation",
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_faulty_calibration",
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_inverse_order",
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_partition_coverage",
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_precision_width",
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_signed_interval"
+      ]
+    },
+    {
+      "applied_source_sha256": "dc8b3a705cc93e57954dd6105a47a2581a6e854b5237c1a94a5214b884d3fb7c",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_faulty_calibration"
+        ],
+        "observed_file_open_paths": [
+          "Discovery/__init__.py",
+          "Discovery/__pycache__/__init__.cpython-312.pyc",
+          "Discovery/__pycache__/mutation_test_runner.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "Discovery/__pycache__/preregistration_history.cpython-312.pyc",
+          "Discovery/__pycache__/source_history.cpython-312.pyc",
+          "Discovery/mutation_test_runner.py",
+          "Discovery/nist_2026_covariance_precision.py",
+          "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery/preregistration_history.py",
+          "Discovery/source_history.py",
+          "tests/__init__.py",
+          "tests/__pycache__/__init__.cpython-312.pyc",
+          "tests/__pycache__/test_nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "tests/test_nist_2026_covariance_precision_mutations.py"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "calibration_linear_term",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_faulty_calibration"
+      ]
+    },
+    {
+      "applied_source_sha256": "109c3f9dfd563ea11c2554d5b9c6865afed2b433d51d229c13ae551ea52519d5",
+      "category": "calibration",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [],
+        "observed_file_open_paths": [
+          "Discovery/__init__.py",
+          "Discovery/__pycache__/__init__.cpython-312.pyc",
+          "Discovery/__pycache__/mutation_test_runner.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "Discovery/__pycache__/preregistration_history.cpython-312.pyc",
+          "Discovery/__pycache__/source_history.cpython-312.pyc",
+          "Discovery/mutation_test_runner.py",
+          "Discovery/nist_2026_covariance_precision.py",
+          "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery/preregistration_history.py",
+          "Discovery/source_history.py",
+          "tests/__init__.py",
+          "tests/__pycache__/__init__.cpython-312.pyc",
+          "tests/__pycache__/test_nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "tests/test_nist_2026_covariance_precision_mutations.py"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": true,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        }
+      },
+      "expected": "SURVIVED",
+      "id": "calibration_equivalent_quadratic",
+      "outcome": "SURVIVED",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": null,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_equivalent_control"
+      ]
+    },
+    {
+      "applied_source_sha256": "0f61388fae518da87f455641ab86bfc4649ddb21f57365f8d5ae1ecbbf9121de",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_precision_width"
+        ],
+        "observed_file_open_paths": [
+          "Discovery/__init__.py",
+          "Discovery/__pycache__/__init__.cpython-312.pyc",
+          "Discovery/__pycache__/mutation_test_runner.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "Discovery/__pycache__/preregistration_history.cpython-312.pyc",
+          "Discovery/__pycache__/source_history.cpython-312.pyc",
+          "Discovery/mutation_test_runner.py",
+          "Discovery/nist_2026_covariance_precision.py",
+          "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery/preregistration_history.py",
+          "Discovery/source_history.py",
+          "tests/__init__.py",
+          "tests/__pycache__/__init__.cpython-312.pyc",
+          "tests/__pycache__/test_nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "tests/test_nist_2026_covariance_precision_mutations.py"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M1_precision_width",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 0,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_precision_width"
+      ]
+    },
+    {
+      "applied_source_sha256": "6132c5289e31e0932be84c640d5c2095d25acbf0d40467f25ee37c86ea2ceddf",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_anchor_scaling"
+        ],
+        "observed_file_open_paths": [
+          "Discovery/__init__.py",
+          "Discovery/__pycache__/__init__.cpython-312.pyc",
+          "Discovery/__pycache__/mutation_test_runner.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "Discovery/__pycache__/preregistration_history.cpython-312.pyc",
+          "Discovery/__pycache__/source_history.cpython-312.pyc",
+          "Discovery/mutation_test_runner.py",
+          "Discovery/nist_2026_covariance_precision.py",
+          "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery/preregistration_history.py",
+          "Discovery/source_history.py",
+          "tests/__init__.py",
+          "tests/__pycache__/__init__.cpython-312.pyc",
+          "tests/__pycache__/test_nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "tests/test_nist_2026_covariance_precision_mutations.py"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M2_anchor_scaling",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 1,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_anchor_scaling"
+      ]
+    },
+    {
+      "applied_source_sha256": "0adf03a7aafad2a530df9071a65ebab05e52220fe1b144c2263a2587695aa556",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_signed_interval"
+        ],
+        "observed_file_open_paths": [
+          "Discovery/__init__.py",
+          "Discovery/__pycache__/__init__.cpython-312.pyc",
+          "Discovery/__pycache__/mutation_test_runner.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "Discovery/__pycache__/preregistration_history.cpython-312.pyc",
+          "Discovery/__pycache__/source_history.cpython-312.pyc",
+          "Discovery/mutation_test_runner.py",
+          "Discovery/nist_2026_covariance_precision.py",
+          "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery/preregistration_history.py",
+          "Discovery/source_history.py",
+          "tests/__init__.py",
+          "tests/__pycache__/__init__.cpython-312.pyc",
+          "tests/__pycache__/test_nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "tests/test_nist_2026_covariance_precision_mutations.py"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M3_signed_interval",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 2,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_signed_interval"
+      ]
+    },
+    {
+      "applied_source_sha256": "b5c0a1a7154417bd0f4b01c9b7763782589512f7f5e726f3890affe8b60d86c0",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_covariance_radius"
+        ],
+        "observed_file_open_paths": [
+          "Discovery/__init__.py",
+          "Discovery/__pycache__/__init__.cpython-312.pyc",
+          "Discovery/__pycache__/mutation_test_runner.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "Discovery/__pycache__/preregistration_history.cpython-312.pyc",
+          "Discovery/__pycache__/source_history.cpython-312.pyc",
+          "Discovery/mutation_test_runner.py",
+          "Discovery/nist_2026_covariance_precision.py",
+          "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery/preregistration_history.py",
+          "Discovery/source_history.py",
+          "tests/__init__.py",
+          "tests/__pycache__/__init__.cpython-312.pyc",
+          "tests/__pycache__/test_nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "tests/test_nist_2026_covariance_precision_mutations.py"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M4_covariance_radius",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 3,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_covariance_radius"
+      ]
+    },
+    {
+      "applied_source_sha256": "f27f62e4ce0b313a2aceb515c0dac81838bed31625ea5a0d21087a19b618f6c2",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_inverse_order"
+        ],
+        "observed_file_open_paths": [
+          "Discovery/__init__.py",
+          "Discovery/__pycache__/__init__.cpython-312.pyc",
+          "Discovery/__pycache__/mutation_test_runner.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "Discovery/__pycache__/preregistration_history.cpython-312.pyc",
+          "Discovery/__pycache__/source_history.cpython-312.pyc",
+          "Discovery/mutation_test_runner.py",
+          "Discovery/nist_2026_covariance_precision.py",
+          "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery/preregistration_history.py",
+          "Discovery/source_history.py",
+          "tests/__init__.py",
+          "tests/__pycache__/__init__.cpython-312.pyc",
+          "tests/__pycache__/test_nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "tests/test_nist_2026_covariance_precision_mutations.py"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M5_inverse_order",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 4,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_inverse_order"
+      ]
+    },
+    {
+      "applied_source_sha256": "2d3d0df707b49a173bac49153d828596b96d0858f98e3e8c52d8e6f96e0541ee",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_display_remainder"
+        ],
+        "observed_file_open_paths": [
+          "Discovery/__init__.py",
+          "Discovery/__pycache__/__init__.cpython-312.pyc",
+          "Discovery/__pycache__/mutation_test_runner.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "Discovery/__pycache__/preregistration_history.cpython-312.pyc",
+          "Discovery/__pycache__/source_history.cpython-312.pyc",
+          "Discovery/mutation_test_runner.py",
+          "Discovery/nist_2026_covariance_precision.py",
+          "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery/preregistration_history.py",
+          "Discovery/source_history.py",
+          "tests/__init__.py",
+          "tests/__pycache__/__init__.cpython-312.pyc",
+          "tests/__pycache__/test_nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "tests/test_nist_2026_covariance_precision_mutations.py"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M6_display_remainder",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 5,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_display_remainder"
+      ]
+    },
+    {
+      "applied_source_sha256": "c64797c46d3c5019d8c4608957d455b569293df2a108f98e546cdf85cf1d563d",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_partition_coverage"
+        ],
+        "observed_file_open_paths": [
+          "Discovery/__init__.py",
+          "Discovery/__pycache__/__init__.cpython-312.pyc",
+          "Discovery/__pycache__/mutation_test_runner.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "Discovery/__pycache__/preregistration_history.cpython-312.pyc",
+          "Discovery/__pycache__/source_history.cpython-312.pyc",
+          "Discovery/mutation_test_runner.py",
+          "Discovery/nist_2026_covariance_precision.py",
+          "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery/preregistration_history.py",
+          "Discovery/source_history.py",
+          "tests/__init__.py",
+          "tests/__pycache__/__init__.cpython-312.pyc",
+          "tests/__pycache__/test_nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "tests/test_nist_2026_covariance_precision_mutations.py"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M7_partition_coverage",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 6,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_partition_coverage"
+      ]
+    },
+    {
+      "applied_source_sha256": "0f965e74f1a707c8afc121e29900c376f7b3fb96f6943ebfc6febe9fbc9d5367",
+      "category": "production",
+      "evidence": {
+        "error_tests": [],
+        "failing_tests": [
+          "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_false_variation"
+        ],
+        "observed_file_open_paths": [
+          "Discovery/__init__.py",
+          "Discovery/__pycache__/__init__.cpython-312.pyc",
+          "Discovery/__pycache__/mutation_test_runner.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision.cpython-312.pyc",
+          "Discovery/__pycache__/nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "Discovery/__pycache__/preregistration_history.cpython-312.pyc",
+          "Discovery/__pycache__/source_history.cpython-312.pyc",
+          "Discovery/mutation_test_runner.py",
+          "Discovery/nist_2026_covariance_precision.py",
+          "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery/preregistration_history.py",
+          "Discovery/source_history.py",
+          "tests/__init__.py",
+          "tests/__pycache__/__init__.cpython-312.pyc",
+          "tests/__pycache__/test_nist_2026_covariance_precision_mutations.cpython-312.pyc",
+          "tests/test_nist_2026_covariance_precision_mutations.py"
+        ],
+        "runner_status": "completed",
+        "skipped_tests": [],
+        "successful": false,
+        "tests_run": 1,
+        "validated_imports_after": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        },
+        "validated_imports_before": {
+          "Discovery": "Discovery/__init__.py",
+          "Discovery.mutation_test_runner": "Discovery/mutation_test_runner.py",
+          "Discovery.nist_2026_covariance_precision": "Discovery/nist_2026_covariance_precision.py",
+          "Discovery.nist_2026_covariance_precision_mutations": "Discovery/nist_2026_covariance_precision_mutations.py",
+          "Discovery.preregistration_history": "Discovery/preregistration_history.py",
+          "Discovery.source_history": "Discovery/source_history.py",
+          "tests": "tests/__init__.py",
+          "tests.test_nist_2026_covariance_precision_mutations": "tests/test_nist_2026_covariance_precision_mutations.py"
+        }
+      },
+      "expected": "KILLED",
+      "id": "M8_false_variation",
+      "outcome": "KILLED",
+      "path": "Discovery/nist_2026_covariance_precision.py",
+      "requirement_index": 7,
+      "tests": [
+        "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_false_variation"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "M1_precision_width",
+      "semantic_fault": "Collapse or understate a consumed last-digit half-width",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_precision_width"
+    },
+    {
+      "id": "M2_anchor_scaling",
+      "semantic_fault": "Omit or replace an individual fixed a factor in absolute covariance",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_anchor_scaling"
+    },
+    {
+      "id": "M3_signed_interval",
+      "semantic_fault": "Drop a necessary endpoint product or use unsigned-only multiplication",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_signed_interval"
+    },
+    {
+      "id": "M4_covariance_radius",
+      "semantic_fault": "Omit cross terms or off-diagonal radius contributions",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_covariance_radius"
+    },
+    {
+      "id": "M5_inverse_order",
+      "semantic_fault": "Use d+g instead of d-g for upper inverse bound",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_inverse_order"
+    },
+    {
+      "id": "M6_display_remainder",
+      "semantic_fault": "Remove required quadratic display remainder from upper bound",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_display_remainder"
+    },
+    {
+      "id": "M7_partition_coverage",
+      "semantic_fault": "Accept frontier missing a required branch or drop unresolved leaf",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_partition_coverage"
+    },
+    {
+      "id": "M8_false_variation",
+      "semantic_fault": "Treat straddling bounds as witnessed variation",
+      "test": "tests.test_nist_2026_covariance_precision_mutations.PrecisionMutationBehaviorTests.test_false_variation"
+    }
+  ],
+  "review_qualification": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+  "schema_version": 1,
+  "source_snapshot": {
+    "source_commit_sha": "1b96f629c1f8384ffc0d641a706b5625a14ed133",
+    "source_sha256": {
+      "Discovery/__init__.py": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078",
+      "Discovery/mutation_test_runner.py": "2d128a4b368fe70b56cc98886da506e4bef1fed5bb641e7aee6272c613a6ce34",
+      "Discovery/nist_2026_covariance_precision.py": "99f1de79595c024069caab4d32a6e9d701950a1c4da7a7951175cd9cdbd1ae61",
+      "Discovery/nist_2026_covariance_precision_mutations.py": "f09dad35da48903dbfab0618d0cee211760db2a63621509ac7072045d7c66743",
+      "Discovery/preregistration_history.py": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0",
+      "Discovery/source_history.py": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb",
+      "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_miguel_20260910.png": "78107a66872667edb71eaaa819e6ee716abb0645e89c5c1ee9540789c3db98f5",
+      "Experiments/GMeasurements/SourceEvidence/nist_2026_table18_receipt_20260910.json": "1622982acb461aa393e5d9dcb03a9961c450f9a1952bd464140705b010fc74e6",
+      "Experiments/GMeasurements/nist_2026_configuration_models_preregistration_v1.json": "e19a32c3f6c6ed190a7c6593b77a37b1d44b1b6f586734489e9c30c742fa6a2d",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_preregistration_v1.json": "242551394632421d2362a57bab43f7eb1729f61620166244055bb26d141262f5",
+      "Experiments/GMeasurements/nist_2026_covariance_precision_source_attestation_v1.json": "645bc017f976510413d5317ba6cb4f06ced4c336b16e6c8dea691bca795e73b5",
+      "Experiments/GMeasurements/nist_2026_estimator_feasibility_v1.json": "8e9f7f135dc7f71158ba85dc3a62bf81cbea1b71ad0ce4f89681a1a110d96533",
+      "Experiments/GMeasurements/nist_2026_estimator_source_attestation_v1.json": "9e976877bfd9890ba50ed4f2d183d3241a3f8dfb8af0b2fc046d53c4e9639f45",
+      "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_preregistration_v1.json": "e83f08f323aa1e397be1b6ef50e25d541d05307949148efbff02971e8eaf4ca6",
+      "Experiments/GMeasurements/nist_2026_n4_experimental_estimator_v1.json": "2d4da6080896ff45f25203b356d101124a10046f2f63daa76b19b309d7c875c2",
+      "Notes/NIST2026CovariancePrecisionSpecification.md": "d90badf81c0921a6559d3de30b16d2cf2804e151c5d82e9c2a41b8e2aa89e038",
+      "tests/test_nist_2026_covariance_precision.py": "5184e049fe2393571f518ce67ba0d92c634c261b998abc356656508a65edd6ba",
+      "tests/test_nist_2026_covariance_precision_mutations.py": "d6af2c89ef25c7843dc9862dd1dbbbb8e209516e6e58c836e2cdef67aaf7ed5a"
+    }
+  }
+}
