@@ -404,7 +404,10 @@ def observed(operation):
             if path.is_relative_to(n.ROOT):files.add(path.relative_to(n.ROOT).as_posix())
     def b(file,*a,**kw):remember(file);return bopen(file,*a,**kw)
     def i(file,*a,**kw):remember(file);return iopen(file,*a,**kw)
-    def o(file,*a,**kw):remember(file);return oopen(file,*a,**kw)
+    def o(file,*a,**kw):
+        resolved=Path(os.readlink('/proc/self/fd/'+str(kw['dir_fd']))) / file if kw.get('dir_fd') is not None and not Path(file).is_absolute() else file
+        remember(resolved)
+        return oopen(file,*a,**kw)
     def r(cmd,*a,**kw):
         calls.append(cmd)
         for arg in cmd:

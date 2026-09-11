@@ -1,6 +1,9 @@
 """Eight frozen semantic precision mutations with isolated assertion-only scoring."""
 from __future__ import annotations
 import argparse
+import builtins
+import io
+from unittest.mock import patch
 import json
 import os
 from pathlib import Path
@@ -201,12 +204,14 @@ def prepare(root=n.ROOT):
     return p, source, snapshot
 
 
-def envelope(p, source, snapshot, records):
+def envelope(p, source, snapshot, records, observation):
     validate_records(records, source)
+    if observation != {'files': sorted(SOURCE_PATHS), 'git_blobs': sorted(SOURCE_PATHS), 'isolated_subprocesses': 11, 'other_subprocesses': []}:
+        raise MutationEvidenceError('mutation execution file/Git/subprocess closure differs')
     return {'schema_version': 1, 'artifact_id': n.STEM + '_mutations_v1',
             'preregistration_sha256': n.FREEZE_DIGEST, 'anchor': n.ANCHOR, 'source_snapshot': snapshot,
             'definitions': CASES, 'definitions_sha256': n.digest(n.serialize_artifact(CASES).encode()),
-            'requirements': p['mutation_requirements'], 'records': records,
+            'requirements': p['mutation_requirements'], 'records': records, 'execution_read_closure': observation,
             'production_count': 8, 'production_killed': sum(r['category'] == 'production' and r['outcome'] == 'KILLED' for r in records),
             'calibration_valid': True, 'family_status': 'valid', 'review_qualification': n.PROVISIONAL,
             'isolation': {'python_flags': ['-I', '-B'], 'exact_project_imports': IMPORTS,
@@ -215,18 +220,53 @@ def envelope(p, source, snapshot, records):
 
 
 def build_artifact(root=n.ROOT):
-    p, source, snapshot = prepare(root)
-    # Actual natural-source patches, source hashes and exact assertions are bound
-    # by this committed mutator and the pre-execution source snapshot.
-    records = [run_case(root, definition) for definition in (baseline(), *CASES)]
-    return envelope(p, source, snapshot, records)
+    # Observe real root reads and Git blob arguments, including prepare/copies;
+    # child source opens and before/after imports are retained per runner record.
+    files, blobs, other = set(), set(), []
+    isolated = 0
+    bopen, iopen, oopen, run = builtins.open, io.open, os.open, subprocess.run
+    def remember(file):
+        if isinstance(file, (str, os.PathLike)):
+            path = Path(file).resolve()
+            if path.is_relative_to(root): files.add(path.relative_to(root).as_posix())
+    def b(file, *a, **kw):
+        remember(file)
+        return bopen(file, *a, **kw)
+    def i(file, *a, **kw):
+        remember(file)
+        return iopen(file, *a, **kw)
+    def o(file, *a, **kw):
+        # shutil cleanup uses descriptor-relative directory opens. They are
+        # temporary-tree operations, not cwd-relative scientific source reads.
+        if kw.get('dir_fd') is None or Path(file).is_absolute(): remember(file)
+        return oopen(file, *a, **kw)
+    def r(cmd, *a, **kw):
+        nonlocal isolated
+        if cmd[0] == 'git':
+            for arg in cmd:
+                if ':' in str(arg):
+                    path = str(arg).split(':', 1)[1]
+                    if path.startswith(('Discovery/', 'Experiments/', 'Notes/', 'tests/')): blobs.add(path)
+        elif len(cmd) > 3 and cmd[1:3] == ['-I', '-B']:
+            isolated += 1
+        else:
+            other.append(str(cmd[0]))
+        return run(cmd, *a, **kw)
+    with patch('builtins.open', b), patch('io.open', i), patch('os.open', o), patch('subprocess.run', r):
+        p, source, snapshot = prepare(root)
+        # Patches, source hashes and exact assertions are bound by the committed
+        # mutator and source snapshot before any isolated case executes.
+        records = [run_case(root, definition) for definition in (baseline(), *CASES)]
+    observation = {'files': sorted(files), 'git_blobs': sorted(blobs),
+                   'isolated_subprocesses': isolated, 'other_subprocesses': other}
+    return envelope(p, source, snapshot, records, observation)
 
 
 def check_artifact(root=n.ROOT):
     p, source, snapshot = prepare(root)
     raw = (root / OUTPUT).read_bytes()
     artifact = n._json(raw)
-    expected = envelope(p, source, snapshot, artifact['records'])
+    expected = envelope(p, source, snapshot, artifact['records'], artifact['execution_read_closure'])
     # JSON canonicalization normalizes Python tuple inventories to arrays.
     expected = n._json(n.serialize_artifact(expected))
     if artifact != expected or raw != n.serialize_artifact(expected).encode():
