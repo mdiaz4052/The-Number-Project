@@ -64,10 +64,29 @@ Lean build belongs to this experiment.
 
 ## Disposition and evidence
 
-Execution is pending. Both final per-target dispositions and a durable sealed
-bundle (or explicit sealing failure) are required before package 3 closes.
-The execution record will be linked here after the bounded run. Leave this PR
-unmerged; eventual merge must use **Create a merge commit**, never squash/rebase.
+**Final technical disposition: DEPENDENCY_CLOSURE_UNRESOLVED for both targets.**
+Two environment attempts were made; **zero target replays** occurred. In epoch 2,
+all pinned packages and auxiliary tools were reproduced. Controller fixture
+creation then failed on workspace ownership before the required Lean controls.
+The single operational retry allowance is exhausted. The workflow is now inert.
+
+The [detached reconciliation](runner/reconciliation.json) is the controlling
+package-3 disposition. The raw collector's catch-all environment-failure label
+was too broad; original sealed bytes remain unchanged. This failure belongs to
+the project-authored harness, not to the external mathematical proof.
+
+[Epoch 1 sealed evidence](https://drive.google.com/file/d/1UMGLPrKYRFCmXKEsdkO5-zrRY_j_zMwH/view)
+and [epoch 2 sealed evidence](https://drive.google.com/file/d/1L58D5TvrfrayTGU--w2ecA5a0KkNzejs/view)
+are durably preserved. Commands, statuses, diagnostics, identities and failure
+sentinels are included; no axiom/graph emptiness is inferred from those sentinels.
+All seven formal package-2 boundaries remain unchanged. No proof replay,
+Comparator target comparison/policy check, nanoda target replay, elaborated target
+statement or measured target closure is credited.
+
+Leave this PR unmerged; eventual merge must use **Create a merge commit**, never
+squash/rebase. Independent review remains pending. Any later reuse must first
+repair control/probe staging across the two Unix identities and the collector's
+failure-to-axis mapping; this package does not authorize another execution.
 
 ## Diagnosed operational exception, before any target replay
 
@@ -82,3 +101,18 @@ binds `RUSTC` to `rustup which --toolchain 1.98.1 rustc` and activates only on
 creation of `execute/external-ns-replay-v1-operational-retry`. All external pins
 and resource limits remain unchanged. No further rerun is authorized. The first
 workflow is an environment attempt, not a scientific target replay.
+
+
+## Workflow-observation closure
+
+Package 3 is decision-complete as an unsuccessful bounded execution, not as a
+successful replay capability demonstration. Freeze/anchor chronology, finalized
+runner activation, isolation, one justified retry and separate sealing were
+preserved. Execution fidelity failed at control staging; the raw disposition also
+required explicit reconciliation. The core scientific uncertainties remain open.
+
+The cross-package recommendation is **ADJUST**, advisory only: retain minimal
+current-state retrieval, immutable verification epochs, autonomous handoffs and
+scope-specific independent-review qualifiers. Propose earlier execution-vehicle
+and cross-user staging checks and tighter output budgeting. No standing workflow
+change is adopted here, and no further housekeeping PR is proposed.

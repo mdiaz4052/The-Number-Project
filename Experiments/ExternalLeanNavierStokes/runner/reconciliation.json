@@ -1,0 +1,260 @@
+{
+  "schema_version": "1.0",
+  "record_type": "DETACHED_FINAL_RECONCILIATION",
+  "outcome_blind": false,
+  "external": {
+    "commit": "f9e8bc5b38b6e212696e8a30e3e91517af887bbd",
+    "lean_toolchain": "leanprover/lean4:v4.34.0-rc2",
+    "repository": "openai/NavierStokesAndEuler",
+    "tree": "a503f07635f200c0f2f9c5361df1fa07f95c4741"
+  },
+  "base_sha": "63aa9c724d8f1009833014e456d5d067bf7ed01a",
+  "freeze_sha": "8e47e770a24b60b2b1f6abea753aebca27d9abfd",
+  "anchor_sha": "56506bb888a0ccafae42c394203e4e434cf2b63f",
+  "pr_created_at": "2026-09-12T22:52:12Z",
+  "primary_disposition": "DEPENDENCY_CLOSURE_UNRESOLVED",
+  "failure_class": "BUILD_OR_CONFIGURATION_FAILURE",
+  "epochs": [
+    {
+      "runner_code_sha": "95453146f1119d809a90953d2aacee944d24d392",
+      "run_id": 34724754702,
+      "execute_job_id": 103636829943,
+      "seal_job_id": 103637043825,
+      "target_execution_started": false,
+      "archive_sha256": "9c5e4a8a1d8722d811e960cd43ab0622f14311647c62ff15532f4e1a1deb7135",
+      "zip_sha256": "971f0d5eaeaaffe79cec49afd9c7ff19b3c5bc6b74ee072c219b65ca2b57d293",
+      "durable_url": "https://drive.google.com/file/d/1UMGLPrKYRFCmXKEsdkO5-zrRY_j_zMwH/view",
+      "raw_artifact_id": 10307895826,
+      "sealed_artifact_id": 10307481869
+    },
+    {
+      "runner_code_sha": "f6d51820c248ed5342aa17ebfcc5c43d6d66259b",
+      "run_id": 34725111346,
+      "execute_job_id": 103637779306,
+      "seal_job_id": 103638496114,
+      "target_execution_started": false,
+      "archive_sha256": "8b97c902ac33e72adaf4c06d3b0de6a389a75b7bdd66407235c7f3f0e1d73eff",
+      "zip_sha256": "8690485f9265923136b663b66471e656786cc65f4ad161f29e525668242f5fe1",
+      "durable_url": "https://drive.google.com/file/d/1L58D5TvrfrayTGU--w2ecA5a0KkNzejs/view",
+      "raw_artifact_id": 10307766987,
+      "sealed_artifact_id": 10307702264
+    }
+  ],
+  "correction": {
+    "raw_primary_disposition": "ENVIRONMENT_NOT_REPRODUCIBLE",
+    "raw_failure_class": "EXTRACTION_OR_TOOLING_FAILURE",
+    "raw_environment_axis": "FAIL",
+    "reason": "Collector finish() used a blanket pre-target environment-failure label. Epoch 2 identity.json instead records ESTABLISHED; traceback identifies controller PermissionError creating fixtures. This is harness configuration failure with replay/closure unresolved, not a demonstrated immutable environment incompatibility.",
+    "original_sealed_bytes_modified": false,
+    "evidence_sha256": {
+      "identity.json": "619093c4c88521bccf0ab3e4c40bfc2cf55aa5db9dfb641b5aec7276880a39a1",
+      "run_manifest.json": "82d47aa2a2b0ccccddd444ffdced79d6d5030046d245f5718666481b8f40c9a0",
+      "targets.json": "55d343677313df48c8fe84a5ce77885d1f8804e9ddb24f7ea06dbd219d92ce00",
+      "logs/controller.stderr.log": "40d6ffaf31420629255ef0f6106f1f779c4af8a71c4fa8439aa5e0e35e694264"
+    }
+  },
+  "final_targets": {
+    "R3": {
+      "name": "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+      "axes": {
+        "environment_identity": {
+          "status": "PASS",
+          "reason": "All pinned source, complete manifest/package and auxiliary binary identities bound in epoch 2; user systemd capability reported separately.",
+          "failure_class": null
+        },
+        "target_elaboration": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "lean_kernel_replay": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "comparator_statement_identity": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "comparator_axiom_policy": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "nanoda_replay": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "elaborated_statement_extraction": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "axiom_closure": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "dependency_graph": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "package2_boundary_narrowing": {
+          "status": "REPORTED",
+          "reason": "All seven formal boundaries unchanged; dependency availability narrowed operationally only.",
+          "failure_class": null
+        }
+      },
+      "primary_disposition": "DEPENDENCY_CLOSURE_UNRESOLVED",
+      "failure_class": "BUILD_OR_CONFIGURATION_FAILURE",
+      "measured_axioms": null,
+      "dependency_node_count": null,
+      "dependency_edge_count": null,
+      "statement": null,
+      "structural_digest": null,
+      "compiled_target_olean": null
+    },
+    "periodic": {
+      "name": "NavierStokes.Comparator.navier_stokes_breakdown_periodic",
+      "axes": {
+        "environment_identity": {
+          "status": "PASS",
+          "reason": "All pinned source, complete manifest/package and auxiliary binary identities bound in epoch 2; user systemd capability reported separately.",
+          "failure_class": null
+        },
+        "target_elaboration": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "lean_kernel_replay": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "comparator_statement_identity": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "comparator_axiom_policy": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "nanoda_replay": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "elaborated_statement_extraction": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "axiom_closure": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "dependency_graph": {
+          "status": "NOT_RUN",
+          "reason": "control fixture staging failed before Lean controls or target execution",
+          "failure_class": "BUILD_OR_CONFIGURATION_FAILURE"
+        },
+        "package2_boundary_narrowing": {
+          "status": "REPORTED",
+          "reason": "All seven formal boundaries unchanged; dependency availability narrowed operationally only.",
+          "failure_class": null
+        }
+      },
+      "primary_disposition": "DEPENDENCY_CLOSURE_UNRESOLVED",
+      "failure_class": "BUILD_OR_CONFIGURATION_FAILURE",
+      "measured_axioms": null,
+      "dependency_node_count": null,
+      "dependency_edge_count": null,
+      "statement": null,
+      "structural_digest": null,
+      "compiled_target_olean": null
+    }
+  },
+  "replay_execution_count": 0,
+  "environment_attempt_count": 2,
+  "justified_operational_retry_count": 1,
+  "further_execution_authorized": false,
+  "controls": {
+    "required_Lean_controls": "NOT_RUN",
+    "landrun_allowed_read": "PASS",
+    "landrun_denied_write": "PASS",
+    "user_systemd_outer_command": "UNAVAILABLE: Failed to connect to bus: No medium found"
+  },
+  "stopping_boundaries": [
+    {
+      "category": "Actual profile and certificates",
+      "R3": "unchanged",
+      "periodic": "unchanged",
+      "reachability": null,
+      "paths": null,
+      "remaining_uncertainty": "Target proof/axiom/dependency ancestry was not measured."
+    },
+    {
+      "category": "Singular-axis argument",
+      "R3": "unchanged",
+      "periodic": "unchanged",
+      "reachability": null,
+      "paths": null,
+      "remaining_uncertainty": "Target proof/axiom/dependency ancestry was not measured."
+    },
+    {
+      "category": "Finite stages and limits",
+      "R3": "unchanged",
+      "periodic": "unchanged",
+      "reachability": null,
+      "paths": null,
+      "remaining_uncertainty": "Target proof/axiom/dependency ancestry was not measured."
+    },
+    {
+      "category": "Admissible forcing/extension jets",
+      "R3": "unchanged",
+      "periodic": "unchanged",
+      "reachability": null,
+      "paths": null,
+      "remaining_uncertainty": "Target proof/axiom/dependency ancestry was not measured."
+    },
+    {
+      "category": "Whole-space uniqueness/comparison",
+      "R3": "unchanged",
+      "periodic": "unchanged",
+      "reachability": null,
+      "paths": null,
+      "remaining_uncertainty": "Target proof/axiom/dependency ancestry was not measured."
+    },
+    {
+      "category": "Periodic uniqueness",
+      "R3": "unchanged",
+      "periodic": "unchanged",
+      "reachability": null,
+      "paths": null,
+      "remaining_uncertainty": "Target proof/axiom/dependency ancestry was not measured."
+    },
+    {
+      "category": "Statement and trusted foundation",
+      "R3": "unchanged",
+      "periodic": "unchanged",
+      "reachability": null,
+      "paths": null,
+      "remaining_uncertainty": "Target proof/axiom/dependency ancestry was not measured."
+    }
+  ],
+  "claim": "Pinned dependencies and tools were obtainable/buildable on the recorded isolated runner; no selected target was replayed and no target-specific closure was established.",
+  "no_claims": [
+    "No theorem/proof failure demonstrated.",
+    "No external environment incompatibility demonstrated by the control-staging failure.",
+    "No empty axiom or dependency closure measured.",
+    "No physical truth or unforced blow-up established."
+  ],
+  "independent_review": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING"
+}
