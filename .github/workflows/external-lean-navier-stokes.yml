@@ -1,0 +1,64 @@
+name: External Lean Navier-Stokes pinned replay
+
+# Deliberate one-time branch creation only. No PR, push, dispatch, or scheduled
+# target execution; summary commits cannot silently create another proof run.
+on:
+  create:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: external-ns-f9e8bc5-v1-${{ github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  execute:
+    if: github.event.ref_type == 'branch' && github.event.ref == 'execute/external-ns-replay-v1' && github.run_attempt == 1
+    runs-on: ubuntu-24.04
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
+        with:
+          go-version: 1.24.0
+          cache: false
+        continue-on-error: true
+      - name: Bounded credential-free execution
+        run: bash Experiments/ExternalLeanNavierStokes/runner/run.sh
+      - name: Preserve raw evidence even after failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: external-ns-raw-${{ github.run_id }}
+          path: ${{ runner.temp }}/external-ns-raw
+          retention-days: 30
+          if-no-files-found: error
+          include-hidden-files: false
+  seal:
+    needs: execute
+    if: always() && needs.execute.result != 'skipped'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: external-ns-raw-${{ github.run_id }}
+          path: raw
+      - name: Seal data without executing downloaded content
+        run: python3 Experiments/ExternalLeanNavierStokes/runner/seal.py seal raw sealed
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: external-ns-sealed-${{ github.run_id }}
+          path: sealed
+          retention-days: 30
+          if-no-files-found: error
