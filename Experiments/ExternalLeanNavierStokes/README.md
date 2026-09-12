@@ -68,3 +68,17 @@ Execution is pending. Both final per-target dispositions and a durable sealed
 bundle (or explicit sealing failure) are required before package 3 closes.
 The execution record will be linked here after the bounded run. Leave this PR
 unmerged; eventual merge must use **Create a merge commit**, never squash/rebase.
+
+## Diagnosed operational exception, before any target replay
+
+Epoch 1 (`95453146f1119d809a90953d2aacee944d24d392`, run `34724754702`)
+stopped at Cargo exit 101: `rustc -vV` could not be found. Rust 1.98.1
+installation and direct version invocation succeeded. Neither target ran. The
+raw and freshly sealed evidence is retained; archive SHA-256 is
+`9c5e4a8a1d8722d811e960cd43ab0622f14311647c62ff15532f4e1a1deb7135`.
+
+The anchor records the single packet-authorized operational exception. Epoch 2
+binds `RUSTC` to `rustup which --toolchain 1.98.1 rustc` and activates only on
+creation of `execute/external-ns-replay-v1-operational-retry`. All external pins
+and resource limits remain unchanged. No further rerun is authorized. The first
+workflow is an environment attempt, not a scientific target replay.

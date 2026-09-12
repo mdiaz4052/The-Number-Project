@@ -77,7 +77,7 @@ class Controls(unittest.TestCase):
         workflow=(ROOT.parents[1]/'.github/workflows/external-lean-navier-stokes.yml').read_text()
         self.assertIn('  create:',workflow)
         self.assertNotIn('  pull_request:',workflow);self.assertNotIn('  push:',workflow)
-        self.assertIn("github.event.ref == 'execute/external-ns-replay-v1'",workflow)
+        self.assertIn("github.event.ref == 'execute/external-ns-replay-v1-operational-retry'",workflow)
         self.assertIn('github.run_attempt == 1',workflow)
         self.assertIn('persist-credentials: false',workflow)
         self.assertNotIn('${{ secrets.',workflow)

@@ -21,5 +21,20 @@
     "policy": "Create this branch once from the final runner code SHA. Workflow gates exact branch, create event, first attempt. No pull_request/push triggers. Later documentation or sealing commits cannot execute target. Forward rerun requires documented packet exception; never mutate old evidence.",
     "external_and_resource_pins_changed": false
   },
-  "execution_code_sha": null
+  "execution_code_sha": null,
+  "operational_rerun_exception": {
+    "version": 1,
+    "prior_runner_code_sha": "95453146f1119d809a90953d2aacee944d24d392",
+    "prior_run_id": 34724754702,
+    "prior_execute_job_id": 103636829943,
+    "prior_seal_job_id": 103637043825,
+    "prior_archive_sha256": "9c5e4a8a1d8722d811e960cd43ab0622f14311647c62ff15532f4e1a1deb7135",
+    "prior_target_execution_started": false,
+    "diagnosis": "056-nanoda-build: Cargo exit 101; rustc -vV never executed, os error 2. Pinned Rust 1.98.1 installation and direct version invocation succeeded; Cargo child compiler resolution lacked a usable PATH proxy.",
+    "repair": "Resolve rustc using rustup which --toolchain 1.98.1 rustc and set RUSTC to that absolute installed compiler path; no source/version/lockfile/policy/resource change.",
+    "authorization": "Controlling packet \u00a78 single operational rerun exception; no interpretable target result in first epoch.",
+    "activation_branch": "execute/external-ns-replay-v1-operational-retry",
+    "planned_run_ordinal": 2,
+    "further_rerun_permitted": false
+  }
 }

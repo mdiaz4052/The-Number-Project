@@ -88,7 +88,7 @@ class Run:
           'runner_code_commit':os.environ.get('TNP_CODE_SHA'),'workflow':os.environ.get('GITHUB_WORKFLOW'),'run_id':os.environ.get('GITHUB_RUN_ID'),
           'run_attempt':os.environ.get('GITHUB_RUN_ATTEMPT'),'job_key':os.environ.get('GITHUB_JOB'),'job_id':None,
           'job_id_reason':'numeric job ID is bound in detached GitHub API receipt after execution; environment supplies only job key',
-          'external':P['external'],'start_utc':utc(),'end_utc':None,'resource_caps':P['resource_limits'],'planned_run_ordinal':1,'rerun_justification':None,
+          'external':P['external'],'start_utc':utc(),'end_utc':None,'resource_caps':P['resource_limits'],'planned_run_ordinal':A.get('operational_rerun_exception',{}).get('planned_run_ordinal',1),'rerun_justification':A.get('operational_rerun_exception'),
           'raw_artifact':{'name':'external-ns-raw-'+os.environ.get('GITHUB_RUN_ID','local'),'id':None,'digest':None,'reason':'filled by GitHub artifact receipt after upload'},
           'sealed_artifact':{'id':None,'digest':None,'reason':'separate sealing receipt; no self-referential digest'},
           'target_execution_started':False,'actual_runner':{'ImageOS':os.environ.get('ImageOS'),'ImageVersion':os.environ.get('ImageVersion'),
@@ -208,6 +208,9 @@ class Run:
         self.identity['actual']['rust']=self.text('rust-version',['/opt/tnp-bin/rustup','run','1.98.1','rustc','--version'])
         self.identity['actual']['cargo']=self.text('cargo-version',['/opt/tnp-bin/rustup','run','1.98.1','cargo','--version'])
         if not self.identity['actual']['rust'].startswith('rustc 1.98.1 '):raise Stop('DEPENDENCY_OR_VERSION_FAILURE','Rust compiler mismatch')
+        self.env['RUSTC']=self.text('rust-compiler-path',['/opt/tnp-bin/rustup','which','--toolchain','1.98.1','rustc'])
+        self.identity['actual']['RUSTC']=self.env['RUSTC']
+        if not Path(self.env['RUSTC']).is_absolute():raise Stop('BUILD_OR_CONFIGURATION_FAILURE','rustc path is not absolute')
         self.command('nanoda-build',['/opt/tnp-bin/rustup','run','1.98.1','cargo','build','--release','--locked'],self.nanoda)
         self.command('comparator-packages-directory',['mkdir','-p',self.comparator/'.lake/packages'])
         self.clone('lean4export',export_pin['url'],export_pin['rev'],parent=self.comparator/'.lake/packages')
