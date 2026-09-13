@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "tnp-external-ns-result-v1",
+  "title": "Per-target replay result",
+  "type": "object",
+  "required": [
+    "name",
+    "axes",
+    "primary_disposition",
+    "failure_class",
+    "declaration_exists",
+    "declaration_kind",
+    "statement",
+    "structural_digest",
+    "challenge_comparison",
+    "evidence",
+    "limitations"
+  ],
+  "properties": {
+    "name": {
+      "enum": [
+        "NavierStokes.Comparator.navier_stokes_breakdown_R3",
+        "NavierStokes.Comparator.navier_stokes_breakdown_periodic"
+      ]
+    },
+    "axes": {
+      "type": "object",
+      "required": [
+        "environment_identity",
+        "target_elaboration",
+        "lean_kernel_replay",
+        "comparator_statement_identity",
+        "comparator_axiom_policy",
+        "nanoda_replay",
+        "elaborated_statement_extraction",
+        "axiom_closure",
+        "dependency_graph",
+        "package2_boundary_narrowing"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "environment_identity": {
+          "$ref": "#/$defs/axis"
+        },
+        "target_elaboration": {
+          "$ref": "#/$defs/axis"
+        },
+        "lean_kernel_replay": {
+          "$ref": "#/$defs/axis"
+        },
+        "comparator_statement_identity": {
+          "$ref": "#/$defs/axis"
+        },
+        "comparator_axiom_policy": {
+          "$ref": "#/$defs/axis"
+        },
+        "nanoda_replay": {
+          "$ref": "#/$defs/axis"
+        },
+        "elaborated_statement_extraction": {
+          "$ref": "#/$defs/axis"
+        },
+        "axiom_closure": {
+          "$ref": "#/$defs/axis"
+        },
+        "dependency_graph": {
+          "$ref": "#/$defs/axis"
+        },
+        "package2_boundary_narrowing": {
+          "$ref": "#/$defs/axis"
+        }
+      }
+    },
+    "primary_disposition": {
+      "enum": [
+        "REPLAY_AND_CLOSURE_ESTABLISHED",
+        "REPLAY_AND_CLOSURE_ESTABLISHED_AUXILIARY_KERNEL_UNRESOLVED",
+        "REPLAY_ESTABLISHED_CLOSURE_PARTIAL",
+        "REPLAY_FAILED_FORMAL",
+        "ENVIRONMENT_NOT_REPRODUCIBLE",
+        "DEPENDENCY_CLOSURE_UNRESOLVED",
+        "AXIOM_CLOSURE_VIOLATION",
+        "STATEMENT_TARGET_MISMATCH"
+      ]
+    },
+    "failure_class": {
+      "enum": [
+        null,
+        "THEOREM_OR_PROOF_FAILURE",
+        "DEPENDENCY_OR_VERSION_FAILURE",
+        "BUILD_OR_CONFIGURATION_FAILURE",
+        "UNAVAILABLE_RUNNER_CAPABILITY",
+        "EXTRACTION_OR_TOOLING_FAILURE",
+        "RESOURCE_LIMIT",
+        "SOURCE_IDENTITY_FAILURE",
+        "STATEMENT_IDENTITY_FAILURE",
+        "AXIOM_POLICY_FAILURE"
+      ]
+    }
+  },
+  "$defs": {
+    "axis": {
+      "type": "object",
+      "required": [
+        "status",
+        "reason",
+        "failure_class"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_RUN",
+            "PASS",
+            "FAIL",
+            "UNRESOLVED",
+            "PARTIAL",
+            "VIOLATION",
+            "REPORTED"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "failure_class": {
+          "enum": [
+            null,
+            "THEOREM_OR_PROOF_FAILURE",
+            "DEPENDENCY_OR_VERSION_FAILURE",
+            "BUILD_OR_CONFIGURATION_FAILURE",
+            "UNAVAILABLE_RUNNER_CAPABILITY",
+            "EXTRACTION_OR_TOOLING_FAILURE",
+            "RESOURCE_LIMIT",
+            "SOURCE_IDENTITY_FAILURE",
+            "STATEMENT_IDENTITY_FAILURE",
+            "AXIOM_POLICY_FAILURE"
+          ]
+        }
+      }
+    }
+  }
+}
