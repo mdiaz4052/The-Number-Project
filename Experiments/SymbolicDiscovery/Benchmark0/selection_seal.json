@@ -1,0 +1,8 @@
+{
+  "commitment_commit_sha": "2e7a6b0395d27887dd72292eb8e8027e4bb7b9b2",
+  "commitment_sha256": "b03d07d29a740b19f79023ec06ec834effd8306dce6a9583ccf84cc3a8f10d70",
+  "heldout_accessed": false,
+  "oracle_revealed": false,
+  "sealed_at": "2026-09-13T14:01:22.445733+00:00",
+  "selection_sha256": "d71eba82fcec74a07b8cba385fe2e648912a3971d64c964d7078c05d4af7fb04"
+}
