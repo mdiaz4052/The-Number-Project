@@ -1,0 +1,133 @@
+{
+  "corrected_control": "3_oracle_separation",
+  "corrected_control_pass": true,
+  "correction_class": "OPERATIONAL RECEIPT INTERPRETATION",
+  "final_disposition": "BENCHMARK_0_PASS",
+  "mechanism": "The audit hook runs on open attempts, before FileNotFoundError. Staging copies exactly the eight recorded .py files into a new empty directory; -B and the write-denying hook prohibit cache creation. Exact paired cache-miss attempts are not oracle access.",
+  "metrics_or_thresholds_changed": false,
+  "no_new_realization_or_selection": true,
+  "raw_disposition": "BENCHMARK_0_FAIL",
+  "raw_epoch_sha": "b01c01af1a30bbf8726842d3b05905a350cd5c1f",
+  "raw_record_sha256": {
+    "Experiments/SymbolicDiscovery/Benchmark0/anchor.json": "9b74eb01742257d7d2577d94add1a7a5d8ddcc5ce99a847d12d1c427829aeafe",
+    "Experiments/SymbolicDiscovery/Benchmark0/boundary_controls.json": "26ed81f687b234bce7312afe366536e2ced800556502cc934e9e34acc39c490e",
+    "Experiments/SymbolicDiscovery/Benchmark0/commitment.json": "b03d07d29a740b19f79023ec06ec834effd8306dce6a9583ccf84cc3a8f10d70",
+    "Experiments/SymbolicDiscovery/Benchmark0/discovery_inputs.json": "ca9a43b965a406a90b8cbf37eb8df0286840571dc13944f150dc46f904621251",
+    "Experiments/SymbolicDiscovery/Benchmark0/eligibility.json": "4235436e2af783b7879a8b16415b38ad6694e15a9387dac7c8879174a8bc0f96",
+    "Experiments/SymbolicDiscovery/Benchmark0/evaluation.json": "09956c89beab63bc2832138dddf232530ff934d42e6807f77310c0142b131a5e",
+    "Experiments/SymbolicDiscovery/Benchmark0/heldout_reveal.json": "8e25750b26d880967af34f6478d4965508b1213330465e56869b4530c728b020",
+    "Experiments/SymbolicDiscovery/Benchmark0/operational_defect.json": "559115ba2320ecaac49d6ba1acbd0b35db4f3d9fcd360772b5121729d7c38860",
+    "Experiments/SymbolicDiscovery/Benchmark0/oracle_reveal.json": "68ab617f36a4f9679794ca9bef0e91dabb0dcd8f923854c45bb99a4dcc3f8304",
+    "Experiments/SymbolicDiscovery/Benchmark0/preregistration.v1.json": "a733b8779d8bc37873456a1d13db3ffe15d90f3fad0fbc995dd13a653bac96b5",
+    "Experiments/SymbolicDiscovery/Benchmark0/public.json": "abb3acb24191828cfd7baf7dbf9ea4d3f188f2690fe49164b9e8488a3bef3a66",
+    "Experiments/SymbolicDiscovery/Benchmark0/result.json": "a346fe732f0b2934d6ad6fbfe1fd6d2f5cf327bb8423af624e53d973514249fe",
+    "Experiments/SymbolicDiscovery/Benchmark0/sealed_discovery.json": "d71eba82fcec74a07b8cba385fe2e648912a3971d64c964d7078c05d4af7fb04",
+    "Experiments/SymbolicDiscovery/Benchmark0/selection_seal.json": "d5ab8279907c7eca4b10910a28c0ea29919280cc642a25a27897bc98e1ac63aa"
+  },
+  "reconciliation_source_sha": "8579c249e8dcbba04a44e671a6b7365f1bdb82fc",
+  "review_status": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+  "scientific_checks_unchanged": {
+    "A_recovery": true,
+    "B_leakage": true,
+    "B_recovery": true,
+    "C_equivalence": true,
+    "C_irrelevant_robustness": true,
+    "C_recovery": true,
+    "D_negative": true
+  },
+  "scientific_law_claim": false,
+  "world_traces": {
+    "A": {
+      "absent_cache_attempt_paths": [
+        "<stage>/Discovery/__pycache__/__init__.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/constants.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/dependency_definitions.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/dimensional_search.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/dimensions.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/monomial_constraints.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/planck_identities.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/symbolic_benchmark_engine.cpython-312.pyc"
+      ],
+      "forbidden_path_or_module_observed": false,
+      "source_paths": [
+        "<stage>/Discovery/__init__.py",
+        "<stage>/Discovery/constants.py",
+        "<stage>/Discovery/dependency_definitions.py",
+        "<stage>/Discovery/dimensional_search.py",
+        "<stage>/Discovery/dimensions.py",
+        "<stage>/Discovery/monomial_constraints.py",
+        "<stage>/Discovery/planck_identities.py",
+        "<stage>/Discovery/symbolic_benchmark_engine.py"
+      ]
+    },
+    "B": {
+      "absent_cache_attempt_paths": [
+        "<stage>/Discovery/__pycache__/__init__.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/constants.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/dependency_definitions.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/dimensional_search.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/dimensions.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/monomial_constraints.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/planck_identities.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/symbolic_benchmark_engine.cpython-312.pyc"
+      ],
+      "forbidden_path_or_module_observed": false,
+      "source_paths": [
+        "<stage>/Discovery/__init__.py",
+        "<stage>/Discovery/constants.py",
+        "<stage>/Discovery/dependency_definitions.py",
+        "<stage>/Discovery/dimensional_search.py",
+        "<stage>/Discovery/dimensions.py",
+        "<stage>/Discovery/monomial_constraints.py",
+        "<stage>/Discovery/planck_identities.py",
+        "<stage>/Discovery/symbolic_benchmark_engine.py"
+      ]
+    },
+    "C": {
+      "absent_cache_attempt_paths": [
+        "<stage>/Discovery/__pycache__/__init__.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/constants.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/dependency_definitions.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/dimensional_search.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/dimensions.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/monomial_constraints.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/planck_identities.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/symbolic_benchmark_engine.cpython-312.pyc"
+      ],
+      "forbidden_path_or_module_observed": false,
+      "source_paths": [
+        "<stage>/Discovery/__init__.py",
+        "<stage>/Discovery/constants.py",
+        "<stage>/Discovery/dependency_definitions.py",
+        "<stage>/Discovery/dimensional_search.py",
+        "<stage>/Discovery/dimensions.py",
+        "<stage>/Discovery/monomial_constraints.py",
+        "<stage>/Discovery/planck_identities.py",
+        "<stage>/Discovery/symbolic_benchmark_engine.py"
+      ]
+    },
+    "D": {
+      "absent_cache_attempt_paths": [
+        "<stage>/Discovery/__pycache__/__init__.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/constants.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/dependency_definitions.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/dimensional_search.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/dimensions.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/monomial_constraints.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/planck_identities.cpython-312.pyc",
+        "<stage>/Discovery/__pycache__/symbolic_benchmark_engine.cpython-312.pyc"
+      ],
+      "forbidden_path_or_module_observed": false,
+      "source_paths": [
+        "<stage>/Discovery/__init__.py",
+        "<stage>/Discovery/constants.py",
+        "<stage>/Discovery/dependency_definitions.py",
+        "<stage>/Discovery/dimensional_search.py",
+        "<stage>/Discovery/dimensions.py",
+        "<stage>/Discovery/monomial_constraints.py",
+        "<stage>/Discovery/planck_identities.py",
+        "<stage>/Discovery/symbolic_benchmark_engine.py"
+      ]
+    }
+  }
+}
