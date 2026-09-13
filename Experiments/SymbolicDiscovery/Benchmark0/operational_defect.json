@@ -1,0 +1,16 @@
+{
+  "affected_control": "3_oracle_separation",
+  "classification": "OPERATIONAL RECEIPT-INTERPRETATION DEFECT",
+  "diagnosis": "sys.addaudithook records open attempts before success; Python import machinery attempts nonexistent staged __pycache__/*.cpython-312.pyc files. The worker stages only eight allowlisted .py files, forbids writes, uses -B, and imports only the staged allowlisted Discovery modules. The validator allowed only .py paths and rejected these cache-miss attempts. No observed oracle read or forbidden module is present.",
+  "observed_result": "BENCHMARK_0_FAIL",
+  "preservation": "Raw source, seed, worlds, selections, evaluation, boundary_controls.json and result.json remain unchanged. Any corrected disposition must be in a separately sourced operational reconciliation, with no new world/selection epoch.",
+  "raw_sha256": {
+    "boundary_controls.json": "26ed81f687b234bce7312afe366536e2ced800556502cc934e9e34acc39c490e",
+    "evaluation.json": "09956c89beab63bc2832138dddf232530ff934d42e6807f77310c0142b131a5e",
+    "result.json": "a346fe732f0b2934d6ad6fbfe1fd6d2f5cf327bb8423af624e53d973514249fe",
+    "sealed_discovery.json": "d71eba82fcec74a07b8cba385fe2e648912a3971d64c964d7078c05d4af7fb04"
+  },
+  "scientific_dimension_results": "all frozen checks pass; not sufficient to override failed integrity gate",
+  "selection_commit_sha": "a63dec875ebfc0918bc33bd5778a255cb8acaad2",
+  "source_sha": "994acc372705155597af86f7d953081c6f0d695e"
+}

@@ -1,0 +1,16 @@
+{
+  "fixture_tests_passed": true,
+  "fixture_tests_run": 7,
+  "real_epoch_controls": {
+    "1_leakage": true,
+    "2_heldout_seal": true,
+    "3_oracle_separation": false,
+    "4_equivalence": true,
+    "5_no_significance_credit": true,
+    "6_negative_pipeline": true,
+    "7_metric_oracle": true
+  },
+  "selection_sha256": "d71eba82fcec74a07b8cba385fe2e648912a3971d64c964d7078c05d4af7fb04",
+  "source_sha": "994acc372705155597af86f7d953081c6f0d695e",
+  "tests_sha256": "ad8274a776e3628904e5068d6feeef606eb69c6c3fa8eca9a33191431614aa90"
+}
