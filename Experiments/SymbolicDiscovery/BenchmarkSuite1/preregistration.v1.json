@@ -1,0 +1,419 @@
+{
+  "authorization": "Miguel, 2026-09-14: design and execute Suite 1 autonomously; leave PR unmerged; no external engines or outreach.",
+  "base_sha": "c01ecf876969eb28d6426022a6ddadf61f691a06",
+  "baseline": {
+    "authoritative": "Experiments/SymbolicDiscovery/Benchmark0/receipt_reconciliation.json",
+    "immutable": true,
+    "pr": 54,
+    "raw": "Experiments/SymbolicDiscovery/Benchmark0/result.json",
+    "reuse": "Shared pure primitives only; no prospective evidence from known Benchmark 0 worlds; no local regeneration or rediscovery.",
+    "status": "BENCHMARK_0_PASS independently accepted"
+  },
+  "blinding": {
+    "engine_dataflow_isolation": "Fresh staged exact source allowlist; stdin payload; -I -B Python; outcome-aware open/read receipts; before/after full stage inventory; no generator/evaluator/history/oracle staged.",
+    "evaluator_knowledge": "Truth/heldout first consumed for evaluation after all selections are committed. Trusted generator creates private files earlier.",
+    "hostile_code_isolation": false,
+    "operator_limit": "Same trusted OS identity. Cryptographic commitments bind admissible outcomes under recorded history; they cannot prove an operator never ran unlogged private computations or rewrote external history.",
+    "outcome_blind": true,
+    "scope": "No Suite 1 realized data or scores exist before design/source freeze. Designer knows families, generator and evaluator. Engine sees one anonymous sanitized payload, not class, realization identity, seed, truth or held-out values. Public noise-based tolerances and feature schemas can suggest design family; no conceptual ignorance claim."
+  },
+  "cells": {
+    "clean": {
+      "epsilon": 0,
+      "expected": "recovery",
+      "features": [
+        "x",
+        "t",
+        "z"
+      ],
+      "law": "k*x*t^-2*z^p"
+    },
+    "leakage": {
+      "epsilon": 0.005,
+      "expected": "recovery_and_pre_score_exclusion",
+      "features": [
+        "x",
+        "t",
+        "z",
+        "leak",
+        "leak_alias",
+        "leak_power",
+        "leak_transform",
+        "leak_cancel"
+      ],
+      "law": "k*x*t^-2*z^p"
+    },
+    "nuisance": {
+      "epsilon": 0.015,
+      "expected": "recovery_and_nuisance_robustness",
+      "features": [
+        "x",
+        "t",
+        "z",
+        "n0",
+        "n1",
+        "q",
+        "acc",
+        "velocity",
+        "z2",
+        "q_alias"
+      ],
+      "law": "k*x*t^-2*z^p"
+    },
+    "regime": {
+      "epsilon": 0,
+      "expected": "no_stable_law_with_paired_contradiction",
+      "features": [
+        "x",
+        "t",
+        "z"
+      ],
+      "law": "k*x*t^-2*z^p times multiplier m in g1, 1 in g0",
+      "paired_all_splits": true
+    },
+    "wrong_curve": {
+      "epsilon": 0.0001,
+      "expected": "good_approximation_but_hypothesis_family_misspecification",
+      "features": [
+        "x",
+        "t",
+        "z"
+      ],
+      "law": "k*x*t^-2*z^p*exp(beta*(log z)^2)",
+      "proof": "Every admitted monomial has log-response affine in log z at fixed x,t; this law has nonzero second derivative 2*beta. Its near-monomial approximation can be useful but is not a structurally correct recovery."
+    },
+    "wrong_power": {
+      "epsilon": 0.005,
+      "expected": "hypothesis_family_misspecification",
+      "features": [
+        "x",
+        "t",
+        "z"
+      ],
+      "law": "k*x*t^-2*z^(1/2)",
+      "proof": "Independent positive x,t,z imply x exponent 1 and t exponent -2; z exponent 1/2 is excluded from the integer grammar. No available alias supplies a square root."
+    }
+  },
+  "chronology": {
+    "external_anchor": "Published draft PR anchors design before source introduction. Seed-commitment GitHub commit and non-force branch update/readback precede generation. Source and later custody commit objects are created on GitHub and imported before dependent execution.",
+    "failure": "No outcome tuning, data filtering, replacement seeds, retries or frozen criterion changes. Preserve operational failure record before any narrow operational repair; if criteria ambiguous keep PARTIAL/FAIL/NO_GO/UNRESOLVED.",
+    "history": "True merge required; never squash/rebase. Read-only deterministic verification is explicitly replay of the same epoch. No Benchmark0 local replay.",
+    "stages": [
+      "sole-file design freeze",
+      "GitHub draft PR server anchor",
+      "implementation and outcome-independent fixtures; commit frozen sources",
+      "sole-file seed commitment and publish externally before generation",
+      "one deterministic generation; commit public/eligibility and private hashes",
+      "discover all anonymous payloads; commit selections before reveal",
+      "reveal fixed seed/heldout/oracle; evaluate without refit",
+      "raw results/controls; concise report; final exact-head CI and independent-review prompt"
+    ]
+  },
+  "controls": {
+    "FH19": "Live forward-runner probe is cheap and included; no change to archived Benchmark0 correction.",
+    "custody": "Tamper seed/public/heldout/selection and chronology ancestry must fail closed; source and every epoch artifact immutable from unique introductions.",
+    "disposition": "Forward machine-readable routing distinguishes Benchmark0 raw FAIL and accepted reconciliation PASS, Suite1 raw result and optional reconciliation, suite aggregation; validated source byte digests. Historical files untouched.",
+    "frozen_literals": "All tolerances/regime multipliers/noise values read from policy/preregistration. Different fixture values must change evaluator outcomes.",
+    "leakage": "Poison target-derived values before gate; direct/transitive/powered/reconstructive/cancelled paths excluded before scoring; unexpected fields/modules/source/cache/oracle rejected.",
+    "receipt_v2": "Successful completed reads, expected missing-cache attempts, denied/unexpected attempts, full before/after staged inventory, exact module allowlist. Present cache file is a successful cache read and an integrity failure, never a miss. Focused live target-free probes before realization and at check time."
+  },
+  "design": {
+    "cells": [
+      "clean",
+      "leakage",
+      "nuisance",
+      "regime",
+      "wrong_power",
+      "wrong_curve"
+    ],
+    "coverage": "Different coefficient, input-scale, exponent where applicable, noise and nuisance streams in every realization. Distinct seeds/streams do not guarantee distinct parameter values; realized collisions are reported, never rerolled.",
+    "rationale": "Four independent streams per six prespecified cells are the smallest balanced suite used here to separate all-four, one-to-three, and zero correct outcomes while covering two materially different wrong-grammar challenges. Counts describe this designed suite, not a population false-positive rate. No stopping, replacement, selection or retry by outcome.",
+    "replicates_per_cell": 4,
+    "total_realizations": 24
+  },
+  "environment": {
+    "cache_tag": "cpython-312",
+    "external_dependencies": "Python standard library only, existing internal discovery modules. No external symbolic-regression engine. DM-090 remains deferred; environment boundary unchanged.",
+    "python_minor": "3.12"
+  },
+  "evaluation": {
+    "aggregation": {
+      "FAIL": "Any integrity/leakage/credit violation, or zero cell-specific successes despite interpretable execution.",
+      "NO_GO_CAPABILITY": "No interpretable scientific realization because capability or operational execution fails; never use to disguise an interpretable poor score.",
+      "PARTIAL": "Integrity sound and at least one interpretable cell-specific success, but fewer than all 24. Missing/failed realizations are counted explicitly and never dropped.",
+      "PASS": "All 24 cell-specific success criteria and all integrity/receipt/chronology controls pass."
+    },
+    "classification": "Per realization and per candidate distinguish true_structural_recovery, algebraically_equivalent_recovery, predictive_but_structurally_wrong, nuisance_contaminated, leakage_contaminated, no_stable_law, hypothesis_family_misspecification. Overlapping diagnostic flags allowed, no forced unique causal inference from data.",
+    "consistency": "For each cell: 4/4 consistent_success; 1-3/4 occasional_success; 0/4 systematic_failure_in_this_suite. Record false-positive selections, justified abstentions and grammar recognitions as integer counts, not rates.",
+    "labels": {
+      "FAIL": "BENCHMARK_SUITE_1_FAIL",
+      "NO_GO_CAPABILITY": "BENCHMARK_SUITE_1_NO_GO_CAPABILITY",
+      "PARTIAL": "BENCHMARK_SUITE_1_PARTIAL",
+      "PASS": "BENCHMARK_SUITE_1_PASS"
+    },
+    "recovery": "Rank 1 true atomic class (direct or algebraically equivalent); preseal stable; train/validation/heldout <= noise-based adequacy; coefficient relative error <= frozen bound; expanded complexity equals truth. Leakage cell additionally excludes all five target routes before any scoring and shows zero-error evaluator-only reconstructed target. Nuisance additionally >=3 equivalent surfaces, all three irrelevant ablations stable, no selected irrelevant atom, and at least one wrong nuisance class survives validation approximation tolerance.",
+    "regime": "Nonempty enumeration, preseal no_stable_law and family_inadequate_on_validation; every paired heldout row has equal features and ratio frozen realized m; all-class heldout error >= log(m)/2 within numeric tolerance.",
+    "wrong_grammar": "Nonempty exhaustive enumeration, no true class, preseal no_stable_law AND family_inadequate_on_validation; every class fails heldout noise-based adequacy; oracle proof matches frozen family. Wrong_curve additionally top validation AND heldout <= approximation bound, demonstrating good approximation denied recovery credit."
+  },
+  "features": {
+    "acc": {
+      "definition": {
+        "t": -2,
+        "x": 1
+      },
+      "dimension": {
+        "L": 1,
+        "T": -2
+      },
+      "unit": "m s^-2"
+    },
+    "leak": {
+      "definition": {
+        "y": 1
+      },
+      "dimension": {
+        "L": 1,
+        "T": -2
+      },
+      "unit": "m s^-2"
+    },
+    "leak_alias": {
+      "definition": {
+        "leak": 1
+      },
+      "dimension": {
+        "L": 1,
+        "T": -2
+      },
+      "unit": "m s^-2"
+    },
+    "leak_cancel": {
+      "definition": {
+        "leak_alias": 1,
+        "y": -1
+      },
+      "dimension": {},
+      "unit": "1"
+    },
+    "leak_power": {
+      "definition": {
+        "leak_alias": 2
+      },
+      "dimension": {
+        "L": 2,
+        "T": -4
+      },
+      "unit": "m^2 s^-4"
+    },
+    "leak_transform": {
+      "definition": {
+        "leak_alias": 1,
+        "z": 1
+      },
+      "dimension": {
+        "L": 1,
+        "T": -2
+      },
+      "unit": "m s^-2"
+    },
+    "n0": {
+      "definition": null,
+      "dimension": {
+        "L": 1,
+        "T": -2
+      },
+      "unit": "m s^-2"
+    },
+    "n1": {
+      "definition": null,
+      "dimension": {},
+      "unit": "1"
+    },
+    "q": {
+      "definition": null,
+      "dimension": {
+        "L": 1
+      },
+      "unit": "m"
+    },
+    "q_alias": {
+      "definition": {
+        "q": 1
+      },
+      "dimension": {
+        "L": 1
+      },
+      "unit": "m"
+    },
+    "t": {
+      "definition": null,
+      "dimension": {
+        "T": 1
+      },
+      "unit": "s"
+    },
+    "velocity": {
+      "definition": {
+        "t": -1,
+        "x": 1
+      },
+      "dimension": {
+        "L": 1,
+        "T": -1
+      },
+      "unit": "m s^-1"
+    },
+    "x": {
+      "definition": null,
+      "dimension": {
+        "L": 1
+      },
+      "unit": "m"
+    },
+    "z": {
+      "definition": null,
+      "dimension": {},
+      "unit": "1"
+    },
+    "z2": {
+      "definition": {
+        "z": 2
+      },
+      "dimension": {},
+      "unit": "1"
+    }
+  },
+  "generation": {
+    "base_offset_log_ranges": {
+      "t": [
+        -0.6,
+        0.6
+      ],
+      "x": [
+        -1,
+        1
+      ],
+      "z": [
+        -1,
+        1
+      ]
+    },
+    "coefficient_log_range": [
+      -3,
+      3
+    ],
+    "curve_beta_range": [
+      0.008,
+      0.012
+    ],
+    "curve_exponent_domain": [
+      -1,
+      1
+    ],
+    "definitions": "Evaluate metadata dependency products with target y available only inside trusted generator. Transitive, cancelling, powered and reconstructive target routes remain leakage regardless of net cancellation.",
+    "exponent_domain": [
+      -2,
+      -1,
+      1,
+      2
+    ],
+    "heldout_offset_log_ranges": {
+      "t": [
+        -0.8,
+        0.8
+      ],
+      "x": [
+        -1.3,
+        1.3
+      ],
+      "z": [
+        -1.3,
+        1.3
+      ]
+    },
+    "noise": "Independent uniform log noise [-epsilon,epsilon] per row; exact feature values. No row removal or outcome-based splitting.",
+    "nuisance": {
+      "heldout_independent_q_fraction": 1.0,
+      "intervention": "q is an exogenous predictor in length units, observationally x*exp(jitter) on train/first validation half, independently set on remaining validation/heldout. Its registered atomic provenance is not target-derived. n0 independent acceleration; n1 near-constant dimensionless. All are causally irrelevant by generator construction, not inferred from correlation.",
+      "n0_log_range": [
+        -1.5,
+        1.5
+      ],
+      "n1_half_width_noise_ratio": 0.3333333333333333,
+      "q_correlated_log_jitter": 0.003,
+      "validation_independent_q_fraction": 0.5
+    },
+    "regime_multiplier_domain": [
+      2.5,
+      3,
+      5,
+      7
+    ],
+    "sample_counts": {
+      "heldout": 64,
+      "train": 64,
+      "validation": 48
+    },
+    "scale_center_log_ranges": {
+      "t": [
+        -1,
+        1
+      ],
+      "x": [
+        -2,
+        2
+      ],
+      "z": [
+        -0.25,
+        0.25
+      ]
+    },
+    "seed": "One secrets.token_hex(32) value; SHA256 of UTF-8 suite1: + seed committed alone after frozen source and before generate. Reveal only after selection seal. Child realization seed = SHA256 UTF-8 seed + :suite1: + cell + : + decimal replicate (0..3). Stream uniform = first uint64 big-endian of SHA256(child_seed + : + stream_name + : + decimal counter)/2^64. No other randomness.",
+    "version": "suite1-v1",
+    "wrong_power_exponent": 0.5
+  },
+  "grammar": {
+    "coefficient": "exp(mean training log(target)-log(monomial))); never refit on validation/heldout",
+    "enumeration": "Existing neutral-value dimensional enumerator, exact dependency expansion, equivalence classes, expanded exponent complexity, nullspace diagnostic. No sums, logarithms, exponentials or fractional powers in candidate language; logs are used only for fitting/scoring.",
+    "equivalence": "Expand operational monomial aliases to atomic exponent signatures; one class, no alias complexity discount. Oracle law is never added to feature metadata.",
+    "family": "positive dimensionless coefficient times monomial of at most three registered feature surfaces",
+    "max_abs_power": 2,
+    "max_denominator": 1,
+    "max_factors": 3,
+    "target": {
+      "dimension": {
+        "L": 1,
+        "T": -2
+      },
+      "key": "y"
+    }
+  },
+  "nonclaims": [
+    "No discovery of unknown natural laws",
+    "No arbitrary physical-data performance",
+    "No universal false-positive rate or population statistical inference",
+    "No superiority over external symbolic-regression systems",
+    "No empirical evidence for any Number Project physical hypothesis",
+    "No hostile-code sandbox or human family blindness",
+    "Finite-data family rejection does not uniquely identify wrong grammar outside this known-truth design"
+  ],
+  "question": "Across fresh realizations, recover adequate governing structure, reject leakage and nuisance coincidences, abstain from false universality, and recognize inadequate grammar.",
+  "schema": "tnp-symbolic-benchmark-suite-1/preregistration-v1",
+  "scoring": {
+    "abstention": "No rescue by an oracle-selected lower-ranked candidate. Empty enumeration means no candidate capability, not recognized misspecification.",
+    "adequacy": "Bound = adequacy_noise_multiplier * known epsilon + numeric_floor; same rule for all cells. Stable selected candidate only if rank-1 validation RMSE <= bound. The smallest raw validation RMSE across the exhaustive eligible family is checked separately. If all exceed bound, seal family_inadequate_on_validation. This is finite-data adequacy, not proof of the unique cause of failure.",
+    "adequacy_noise_multiplier": 2.0,
+    "all_candidate_reporting": "For every class, report validation/heldout RMSE, both adequacy and approximation survival, oracle match, nuisance/leakage flags, exact/alias recovery type, evidence class. Counts are designed-suite counts only.",
+    "approximation": "Seal top predictive_approximation if validation RMSE <= approximation_rmse_max, independently of adequacy and without structural credit. After reveal, test heldout against the same approximation bound.",
+    "approximation_rmse_max": 0.04,
+    "coefficient_relative_error_max": 0.04,
+    "complexity_lambda": 0.001,
+    "equivalent_surface_min_nuisance": 3,
+    "independent_metric_tolerance": 1e-10,
+    "numeric_floor": 1e-09,
+    "pair_ratio_tolerance": 1e-10,
+    "rank": "validation natural-log RMSE + lambda * expanded exponent L1 complexity, ties complexity then canonical class ID",
+    "robustness": "Preserve pre-reveal leave-one-atomic-group-out scores and descendant removals from existing engine. Nuisance success requires selected class unchanged and still stable after each of n0,n1,q removals; selected class cannot contain any irrelevant atom. Heldout intervenes on q."
+  },
+  "validation": "Affected boundary fixtures and Suite1 read-only integrity/evaluation replay. No local unrelated suite, Lean, historic empirical or Benchmark0 execution. Existing protected repository CI stays intact; its unchanged jobs may execute historical guards as the repository gate. Add Suite1 guard only."
+}
