@@ -1,0 +1,67 @@
+{
+  "generator_version": "1",
+  "seed": "fe0bf68c5ad0b8f8ce5547b5e20fed67d76c328b7b260799fcf367e306f4db62",
+  "worlds": {
+    "A": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "coefficient": 0.5,
+      "irrelevant_atoms": [],
+      "noise_log_half_width": 0,
+      "regime_multipliers": {
+        "g0": 1
+      },
+      "single_family_member": true
+    },
+    "B": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "coefficient": 2,
+      "irrelevant_atoms": [],
+      "noise_log_half_width": 0.005,
+      "regime_multipliers": {
+        "g0": 1
+      },
+      "single_family_member": true
+    },
+    "C": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "coefficient": 2,
+      "irrelevant_atoms": [
+        "n0",
+        "n1",
+        "n2"
+      ],
+      "noise_log_half_width": 0.015,
+      "regime_multipliers": {
+        "g0": 1
+      },
+      "single_family_member": true
+    },
+    "D": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "coefficient": 1.25,
+      "irrelevant_atoms": [],
+      "noise_log_half_width": 0,
+      "regime_multipliers": {
+        "g0": 1,
+        "g1": 4
+      },
+      "single_family_member": false
+    }
+  }
+}

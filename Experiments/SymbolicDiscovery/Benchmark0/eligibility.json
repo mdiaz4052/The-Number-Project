@@ -1,0 +1,90 @@
+{
+  "A": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "B": {
+    "leak": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_alias": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "C": {
+    "acc": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "n0": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "n1": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "n2": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "velocity": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z2": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "D": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  }
+}

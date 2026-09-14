@@ -1,0 +1,13 @@
+{
+  "schema": "benchmark0-anchor/v1",
+  "pr_number": 54,
+  "pr_url": "https://github.com/mdiaz4052/The-Number-Project/pull/54",
+  "created_at": "2026-09-13T13:49:08Z",
+  "freeze_sha": "a2f2e67ba76c90383e70ac2b6f878e446ec943e4",
+  "preregistration_sha256": "a733b8779d8bc37873456a1d13db3ffe15d90f3fad0fbc995dd13a653bac96b5",
+  "base_sha": "d38826b231d0afe524ef4de656ed1ba3e9293bb4",
+  "outcome_blind": true,
+  "meaning": "Realized outcome-blind freeze; implementer knows benchmark family",
+  "generator_not_run": true
+}
+

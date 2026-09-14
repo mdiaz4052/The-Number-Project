@@ -1,0 +1,323 @@
+{
+  "schema": "tnp-symbolic-benchmark-0/v1",
+  "experiment": "Controlled Symbolic Discovery and Hidden-Law Benchmarks — Benchmark 0",
+  "base_sha": "d38826b231d0afe524ef4de656ed1ba3e9293bb4",
+  "authorization": {
+    "by": "Miguel",
+    "date": "2026-09-13",
+    "scope": "Benchmark 0 only; ordinary science; no external engines; leave PR unmerged"
+  },
+  "idea": {
+    "drive_id": "1yttxj0iD2DYSM1t34eSVVzxqGL5zvrTq",
+    "concept": "Recover hidden synthetic relationships for the right reasons"
+  },
+  "blinding": {
+    "outcome_blind": true,
+    "meaning": "Prospective realized worlds and metrics; engine-level blinding only. Implementer knows the family.",
+    "discovery_inputs": [
+      "eligible feature metadata including operational definitions",
+      "eligible training and validation feature values and targets",
+      "public group labels used only for diagnostics",
+      "grammar and scoring policy"
+    ],
+    "excluded": [
+      "world/law identity",
+      "oracle seed",
+      "planted coefficient/exponents",
+      "held-out features and targets",
+      "oracle truth",
+      "truth-equivalence labels",
+      "ineligible feature values"
+    ],
+    "separation": "Pure discovery API and a worker staged with only allowlisted discovery modules in a temporary directory. No generator, oracle, seed, full preregistration, held-out files or repository history staged. This is dataflow isolation, not a hostile-code OS sandbox."
+  },
+  "grammar": {
+    "family": "positive coefficient times monomial",
+    "max_factors": 3,
+    "max_abs_power": 2,
+    "max_denominator": 1,
+    "target_key": "y",
+    "target_dimension": {
+      "L": 1,
+      "T": -2
+    },
+    "coefficient": "Fit a positive dimensionless coefficient: exp(mean(training log(y)-log(monomial))). Never refit on validation or held-out.",
+    "dimensional_filter": "Discovery.dimensional_search.search_candidates with neutral value_si=1 for all factors and target; discard legacy scalar ranking",
+    "rank_nullspace": "Discovery.monomial_constraints.solve_monomial_constraints diagnostic; never used to infer truth"
+  },
+  "generation": {
+    "version": "1",
+    "seed_rule": "Generate exactly one 256-bit secret via secrets.token_hex(32) after freeze and generator-source commit. Save before any world realization. Each independent stream draws uint64/2^64 from SHA256(seed + ':' + stream + ':' + decimal counter), first 8 bytes big endian. Seeds revealed only after selection seal.",
+    "law_exponent_domain": [
+      -2,
+      -1,
+      1,
+      2
+    ],
+    "world_C_exponent_domain": [
+      -2,
+      2
+    ],
+    "coefficient_domain": [
+      0.5,
+      1.25,
+      2,
+      3
+    ],
+    "law": "y_clean = k*x*t^(-2)*z^p",
+    "base_observables": {
+      "x": {
+        "dimension": {
+          "L": 1
+        },
+        "unit": "m",
+        "operation": "positive independently set length",
+        "log_uniform": [
+          -1,
+          1
+        ]
+      },
+      "t": {
+        "dimension": {
+          "T": 1
+        },
+        "unit": "s",
+        "operation": "positive independently set duration",
+        "log_uniform": [
+          -0.6,
+          0.6
+        ]
+      },
+      "z": {
+        "dimension": {},
+        "unit": "1",
+        "operation": "positive independently set dimensionless control",
+        "log_uniform": [
+          -0.8,
+          0.8
+        ]
+      }
+    },
+    "held_out_base_log_ranges": {
+      "x": [
+        -1.3,
+        1.3
+      ],
+      "t": [
+        -0.8,
+        0.8
+      ],
+      "z": [
+        -1,
+        1
+      ]
+    },
+    "splits": "Independent named streams; no outcome-dependent partition or sample dropping. train 64, validation 32, held-out 64 per world. D uses paired inputs for two regimes in validation and held-out.",
+    "noise": "log(y_observed)=log(y_clean)+uniform(-epsilon,+epsilon), independent per observation; no feature measurement error",
+    "nuisance_parameters": "Only frozen domains; no tuning, retries for scientific performance, or seed selection"
+  },
+  "worlds": {
+    "A": {
+      "class": "clean recovery",
+      "train": 64,
+      "validation": 32,
+      "held_out": 64,
+      "log_noise_half_width": 0,
+      "features": [
+        "x",
+        "t",
+        "z"
+      ],
+      "expected": "identifiable true class"
+    },
+    "B": {
+      "class": "leakage trap",
+      "train": 64,
+      "validation": 32,
+      "held_out": 64,
+      "log_noise_half_width": 0.005,
+      "features": [
+        "x",
+        "t",
+        "z",
+        "leak",
+        "leak_alias"
+      ],
+      "definitions": {
+        "leak": {
+          "y": 1
+        },
+        "leak_alias": {
+          "leak": 1
+        }
+      },
+      "expected": "both target-derived features ineligible before candidate scoring; evaluator-only eligibility-disabled diagnostic shows exact fit beating lawful noisy fit"
+    },
+    "C": {
+      "class": "redundancy noise irrelevant features",
+      "train": 64,
+      "validation": 32,
+      "held_out": 64,
+      "log_noise_half_width": 0.015,
+      "features": [
+        "x",
+        "t",
+        "z",
+        "acc",
+        "z2",
+        "n0",
+        "n1",
+        "n2",
+        "velocity"
+      ],
+      "definitions": {
+        "acc": {
+          "x": 1,
+          "t": -2
+        },
+        "z2": {
+          "z": 2
+        },
+        "velocity": {
+          "x": 1,
+          "t": -1
+        }
+      },
+      "irrelevant": {
+        "n0": {
+          "dimension": {
+            "L": 1,
+            "T": -2
+          },
+          "unit": "m s^-2",
+          "log_uniform": [
+            -1,
+            1
+          ]
+        },
+        "n1": {
+          "dimension": {},
+          "unit": "1",
+          "log_uniform": [
+            -0.005,
+            0.005
+          ]
+        },
+        "n2": {
+          "dimension": {},
+          "unit": "1",
+          "log_uniform": [
+            -1,
+            1
+          ]
+        }
+      },
+      "expected": "acc*z^p, x*t^-2*z^p and acc*z2^(p/2) collapse; near-constant n1 creates potentially surviving predictive false positives. velocity alone is a dimensional near-miss."
+    },
+    "D": {
+      "class": "false universality regime trap",
+      "train": 64,
+      "validation": 32,
+      "held_out": 64,
+      "log_noise_half_width": 0,
+      "features": [
+        "x",
+        "t",
+        "z"
+      ],
+      "regimes": {
+        "g0": "base law",
+        "g1": "4 times base law"
+      },
+      "train_groups": {
+        "g0": 48,
+        "g1": 16
+      },
+      "validation_groups": {
+        "g0": 16,
+        "g1": 16
+      },
+      "held_out_groups": {
+        "g0": 32,
+        "g1": 32
+      },
+      "pairing": "Each validation and held-out input appears once in each regime with targets ratio 4. Group labels cannot be candidate features. No deterministic member of this feature-only monomial family can govern paired outputs.",
+      "expected": "Abstain: no stable law in tested grammar. Best candidate and group-specific training fits retained."
+    }
+  },
+  "eligibility": {
+    "mechanism": "Use validated DependencyCatalog exact expansions and transitive dependency reachability. Reject every feature with any path to y even when exponents cancel, or unresolved provenance. y is never a generator. Redact classified ineligible values before discovery API; retain classifications and schema only.",
+    "unknown_metadata": "fail closed; no unclassified features",
+    "evidence_class": "GENERATED/FITTED CANDIDATE"
+  },
+  "equivalence": {
+    "mechanism": "DependencyCatalog.expand_signature plus normalize_exponent_signature; group exact expanded monomials, ignoring fitted coefficient for structural class. Fit one coefficient per class using lexicographically first surface. Retain every member.",
+    "complexity": "Sum abs(numerator)+denominator-1 over expanded exponents. The fitted coefficient costs one for every class, so omit that common offset. Rank penalty exactly lambda*expanded exponent complexity; aliases earn no complexity discount."
+  },
+  "scoring": {
+    "metric": "RMS natural-log prediction error",
+    "rank": "ascending (validation_rmse + complexity_lambda*expanded_complexity, expanded_complexity, canonical_signature_text)",
+    "complexity_lambda": 0.001,
+    "acceptance_validation_rmse": 0.03,
+    "selection": "Seal full eligible class ranking, fitted coefficients, top class and pre-reveal stable_candidate/no_stable_law decision. Validation rejects if top RMSE >0.03. No held-out selection or rescue by a lower-ranked truth-equivalent candidate.",
+    "robustness": "Before reveal perform leave-one-atomic-input-group-out for every eligible atomic input. Remove its derived descendants too. Reuse fitted class scores on remaining candidates (same observations); verify parity with re-enumeration in tests. Evaluator later identifies irrelevant removals; discovery sees no irrelevant labels.",
+    "group_diagnostics": "For top class only retain per-group training RMSE, independently fitted per-group training intercepts and validation group RMSE. No group-specific fit is a universal candidate."
+  },
+  "thresholds": {
+    "clean_rmse_max": 1e-10,
+    "B_rmse_max": 0.015,
+    "C_rmse_max": 0.03,
+    "coefficient_relative_error_max": 0.03,
+    "true_class_rank_required": 1,
+    "leakage_rejection_fraction_required": 1,
+    "equivalence_duplicate_class_count_required": 1,
+    "C_true_class_surface_members_min": 3,
+    "C_irrelevant_ablation_top_class_changes_max": 0,
+    "C_selected_irrelevant_factors_max": 0,
+    "D_decision_required": "no_stable_law",
+    "D_heldout_rmse_min": 0.3,
+    "D_all_classes_heldout_rmse_min": 0.3,
+    "false_positive_requirement": "List every nontrue class passing validation and/or held-out 0.03 separately, including canonical factors, complexity, scores and reasons. Predictive survival alone is never significance or scientific-law credit.",
+    "complexity_requirement": "Selected expanded complexity equals true-class complexity in A/B/C; D not applicable",
+    "controls": "All seven boundary controls must pass"
+  },
+  "controls": [
+    "Leaked values would yield lower apparent training and validation RMSE under evaluator-only disabled eligibility; production excludes both direct and transitive routes.",
+    "Changing held-out outcomes changes evaluation, never the sealed discovery ranking/selection bytes; mutation of seal data fails commitment verification.",
+    "Discovery rejects oracle/seed/heldout/truth fields; observe worker filesystem reads and staged file allowlist; no forbidden module import.",
+    "At least three C algebraic surfaces map to one exact structural class; altered dependency dimensions rejected.",
+    "Every C irrelevant atomic removal leaves selected true class unchanged; surviving nuisance formulas retain GENERATED/FITTED CANDIDATE and no significance assignment.",
+    "D paired-output contradiction and all-class held-out failure support negative result; no forced universal-law claim.",
+    "Independent scalar fixture hand calculations check coefficient, RMS, rank penalty, strict threshold boundary and exact class expansion."
+  ],
+  "dispositions": {
+    "BENCHMARK_0_PASS": "All A/B/C recovery (rank1, coefficient, train/validation/heldout thresholds and complexity), B leakage exclusion/temptation, C duplicate/irrelevant robustness, D abstention+paired contradiction+all-class heldout >=0.3, complete false-positive reporting and all seven controls pass.",
+    "BENCHMARK_0_PARTIAL": "All integrity controls interpretable and pass; at least one of A/B/C recovery or D negative behavior succeeds but one or more scientific PASS dimensions fail.",
+    "BENCHMARK_0_FAIL": "Interpretable integrity/leakage/sealing failure, or none of A/B/C recovery and D negative behavior succeeds. A planted equation merely appearing is not success.",
+    "NO_GO_CAPABILITY": "A diagnosed capability or operational defect prevents interpretable scoring; preserve failed epoch and classify it separately. Never substitute for an interpretable poor score."
+  },
+  "chronology": {
+    "stages": [
+      "sole-file preregistration commit",
+      "published draft PR server-time anchor",
+      "source commit before generating secret seed and realized data",
+      "commit oracle/heldout/public hashes before discovery without oracle reveal",
+      "publish sealed rankings before evaluator accesses oracle/heldout",
+      "reveal and evaluate",
+      "final validation and exact-head CI"
+    ],
+    "commitments": "SHA256 canonical JSON bytes (sorted keys, indent2, allow_nan=false, newline) for oracle and heldout separately, full public datasets and sanitized API requests, then rankings; commit parent chain anchors order.",
+    "reruns": "One realized seed/epoch. No score-based rerun. Preserve any failed epoch and diagnosis before operational repair. Read-only deterministic artifact verification is explicit reproducibility, not new outcome selection.",
+    "history": "Create a merge commit; no squash/rebase"
+  },
+  "nonclaims": [
+    "No unknown natural law discovery",
+    "No engine/human conceptual ignorance of benchmark family",
+    "No hostile-code OS isolation claim",
+    "No statistical significance or universal false-positive-rate calibration from four synthetic worlds",
+    "No external-engine evaluation",
+    "No Lean proof or empirical G result change",
+    "Prediction and oracle structural equivalence are separate; neither alone makes a law"
+  ]
+}
+

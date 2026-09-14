@@ -1,0 +1,12 @@
+{
+  "created_at": "2026-09-13T14:00:50.456494+00:00",
+  "eligibility_sha256": "4235436e2af783b7879a8b16415b38ad6694e15a9387dac7c8879174a8bc0f96",
+  "engine_blinded": true,
+  "heldout_sha256": "8e25750b26d880967af34f6478d4965508b1213330465e56869b4530c728b020",
+  "inputs_sha256": "ca9a43b965a406a90b8cbf37eb8df0286840571dc13944f150dc46f904621251",
+  "oracle_revealed": false,
+  "oracle_sha256": "68ab617f36a4f9679794ca9bef0e91dabb0dcd8f923854c45bb99a4dcc3f8304",
+  "preregistration_sha256": "a733b8779d8bc37873456a1d13db3ffe15d90f3fad0fbc995dd13a653bac96b5",
+  "public_sha256": "abb3acb24191828cfd7baf7dbf9ea4d3f188f2690fe49164b9e8488a3bef3a66",
+  "source_sha": "994acc372705155597af86f7d953081c6f0d695e"
+}

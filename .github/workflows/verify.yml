@@ -83,3 +83,5 @@ jobs:
       - run: python -m Discovery.nist_2026_paired_torque_feasibility_mutations --check
       - run: python -m Discovery.nist_2026_covariance_precision --check
       - run: python -m Discovery.nist_2026_covariance_precision_mutations --check
+      - run: python -m Discovery.symbolic_benchmark --check
+      - run: python -m Discovery.symbolic_benchmark_receipt --check

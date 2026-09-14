@@ -1,0 +1,12 @@
+{
+  "controls_sha256": "26ed81f687b234bce7312afe366536e2ced800556502cc934e9e34acc39c490e",
+  "disposition": "BENCHMARK_0_FAIL",
+  "evaluation_sha256": "09956c89beab63bc2832138dddf232530ff934d42e6807f77310c0142b131a5e",
+  "evidence_class": "GENERATED/FITTED CANDIDATE",
+  "integrity_controls_pass": false,
+  "review_status": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+  "scientific_disposition": "BENCHMARK_0_PASS",
+  "scientific_law_claim": false,
+  "selection_sha256": "d71eba82fcec74a07b8cba385fe2e648912a3971d64c964d7078c05d4af7fb04",
+  "source_sha": "994acc372705155597af86f7d953081c6f0d695e"
+}
