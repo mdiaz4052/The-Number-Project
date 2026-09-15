@@ -1,0 +1,13 @@
+{
+  "schema": "tnp-margin1/design-anchor-v1",
+  "task": "NP-MISSPEC-MARGIN-01",
+  "revision": 1,
+  "scientific_base_sha": "0420b0cadc2019b8497556c8bacd9c93bf5e39c1",
+  "snapshot_sha": "8a4e9a6879603a7f0f4fcc4948f92d578699fd5d",
+  "freeze_sha": "197433b37e36938c597d2a820905fe6c71226b07",
+  "pr_number": 57,
+  "created_at": "2026-09-15T14:41:08Z",
+  "pr_url": "https://github.com/mdiaz4052/The-Number-Project/pull/57",
+  "outcome_blind": false,
+  "prospective_realized_outcomes_unseen_at_freeze": true
+}
