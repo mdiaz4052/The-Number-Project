@@ -1,0 +1,338 @@
+{
+  "b01-adequate-n1": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b01-adequate-n2": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b01-adequate-n3": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b01-curved-n1": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b01-curved-n2": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b01-curved-n3": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b02-adequate-n1": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b02-adequate-n2": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b02-adequate-n3": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b02-curved-n1": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b02-curved-n2": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b02-curved-n3": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b03-adequate-n1": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b03-adequate-n2": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b03-adequate-n3": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b03-curved-n1": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b03-curved-n2": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b03-curved-n3": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b04-adequate-n1": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b04-adequate-n2": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b04-adequate-n3": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b04-curved-n1": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b04-curved-n2": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "b04-curved-n3": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  }
+}

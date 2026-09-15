@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-09-15T14:53:06.660805+00:00",
+  "environment": {
+    "cache_tag": "cpython-312",
+    "implementation": "cpython",
+    "python_minor": "3.12"
+  },
+  "preflight_sha256": "2ddf1884ff0fb19f6c550b204242628f5fac735f38a8190e5f34c631a726b587",
+  "preregistration_sha256": "ab372eebf9dd7bca8ada197605db56b504568c85adced9492d742547ac1ffd4c",
+  "schema": "tnp-margin1/seed-v1",
+  "seed_sha256": "cbc6f6e2fa680ef3fde14d0630a42dd3b34c35e825d3f0af899cbe1ecbfdb746",
+  "source_sha": "b81278440db1c1b234caca26f98bf91162bcfb52"
+}

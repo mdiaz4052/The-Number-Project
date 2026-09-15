@@ -1,0 +1,88 @@
+{
+  "all_killed": false,
+  "before_target_seed": true,
+  "cases": [
+    {
+      "killed_by_assertion": true,
+      "mutant_sha256": "dd4a81c0c906cf95678fe4f6e3a7b251caadc5de40eaa2eec8eb1a5cec986f93",
+      "name": "threshold_equality",
+      "new": "'inadequate': error >= bound",
+      "old": "'inadequate': error > bound",
+      "output": "test_exact_threshold_equality_and_flip (tests.test_symbolic_margin.MarginMathTests.test_exact_threshold_equality_and_flip) ... FAIL\n\n======================================================================\nFAIL: test_exact_threshold_equality_and_flip (tests.test_symbolic_margin.MarginMathTests.test_exact_threshold_equality_and_flip)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/aef732573f08/The-Number-Project/tests/test_symbolic_margin.py\", line 62, in test_exact_threshold_equality_and_flip\n    self.assertFalse(m['inadequate'])\nAssertionError: True is not false\n\n----------------------------------------------------------------------\nRan 1 test in 0.004s\n\nFAILED (failures=1)\n",
+      "returncode": 1,
+      "test": "MarginMathTests.test_exact_threshold_equality_and_flip"
+    },
+    {
+      "killed_by_assertion": true,
+      "mutant_sha256": "24962668b0789312aca49591a5ece1915f3fe483560d50d54d6e128371cfdf60",
+      "name": "stale_multiplier",
+      "new": "m, delta = 2.0, scoring['numeric_floor']",
+      "old": "m, delta = scoring['adequacy_noise_multiplier'], scoring['numeric_floor']",
+      "output": "test_policy_values_not_stale_literals (tests.test_symbolic_margin.MarginMathTests.test_policy_values_not_stale_literals) ... FAIL\n\n======================================================================\nFAIL: test_policy_values_not_stale_literals (tests.test_symbolic_margin.MarginMathTests.test_policy_values_not_stale_literals)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/aef732573f08/The-Number-Project/tests/test_symbolic_margin.py\", line 89, in test_policy_values_not_stale_literals\n    self.assertFalse(r['inadequate'])\nAssertionError: True is not false\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n",
+      "returncode": 1,
+      "test": "MarginMathTests.test_policy_values_not_stale_literals"
+    },
+    {
+      "killed_by_assertion": true,
+      "mutant_sha256": "bd6d5acab1b2be2b2603aef9752a183f2079afb28d29264ee21762715d0241de",
+      "name": "noise_not_varied",
+      "new": "clean + 0.02 * noise",
+      "old": "clean + epsilon * noise",
+      "output": "test_independent_formula_matching_strata_streams_and_changed_noise (tests.test_symbolic_margin.GeneratorAndEvaluationTests.test_independent_formula_matching_strata_streams_and_changed_noise) ... FAIL\n\n======================================================================\nFAIL: test_independent_formula_matching_strata_streams_and_changed_noise (tests.test_symbolic_margin.GeneratorAndEvaluationTests.test_independent_formula_matching_strata_streams_and_changed_noise)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/aef732573f08/The-Number-Project/tests/test_symbolic_margin.py\", line 133, in test_independent_formula_matching_strata_streams_and_changed_noise\n    self.assertAlmostEqual(observed_u, u, places=11)\nAssertionError: 0.010147987902256857 != 0.035517957657899 within 11 places (0.025369969755642145 difference)\n\n----------------------------------------------------------------------\nRan 1 test in 0.002s\n\nFAILED (failures=1)\n",
+      "returncode": 1,
+      "test": "GeneratorAndEvaluationTests.test_independent_formula_matching_strata_streams_and_changed_noise"
+    },
+    {
+      "killed_by_assertion": true,
+      "mutant_sha256": "a02ee51e8db72cd625bf99d87467aacffd291c56965a1f791dc81560be4180d1",
+      "name": "curvature_removed",
+      "new": "else 0.0",
+      "old": "else g['curvature_beta']",
+      "output": "test_independent_formula_matching_strata_streams_and_changed_noise (tests.test_symbolic_margin.GeneratorAndEvaluationTests.test_independent_formula_matching_strata_streams_and_changed_noise) ... FAIL\n\n======================================================================\nFAIL: test_independent_formula_matching_strata_streams_and_changed_noise (tests.test_symbolic_margin.GeneratorAndEvaluationTests.test_independent_formula_matching_strata_streams_and_changed_noise)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/aef732573f08/The-Number-Project/tests/test_symbolic_margin.py\", line 133, in test_independent_formula_matching_strata_streams_and_changed_noise\n    self.assertAlmostEqual(observed_u, u, places=11)\nAssertionError: -0.6781523444474652 != 0.035517957657899 within 11 places (0.7136703021053642 difference)\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n",
+      "returncode": 1,
+      "test": "GeneratorAndEvaluationTests.test_independent_formula_matching_strata_streams_and_changed_noise"
+    },
+    {
+      "killed_by_assertion": true,
+      "mutant_sha256": "183404388fad66ce7e9b68884e51db2175701ca2db8d415b0bfc4091850a820e",
+      "name": "block_seed_reused",
+      "new": "f'{seed}:margin1:block:0'",
+      "old": "f'{seed}:margin1:block:{block}'",
+      "output": "test_independent_formula_matching_strata_streams_and_changed_noise (tests.test_symbolic_margin.GeneratorAndEvaluationTests.test_independent_formula_matching_strata_streams_and_changed_noise) ... FAIL\n\n======================================================================\nFAIL: test_independent_formula_matching_strata_streams_and_changed_noise (tests.test_symbolic_margin.GeneratorAndEvaluationTests.test_independent_formula_matching_strata_streams_and_changed_noise)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/aef732573f08/The-Number-Project/tests/test_symbolic_margin.py\", line 115, in test_independent_formula_matching_strata_streams_and_changed_noise\n    self.assertEqual(len(children), 2)\nAssertionError: 1 != 2\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n",
+      "returncode": 1,
+      "test": "GeneratorAndEvaluationTests.test_independent_formula_matching_strata_streams_and_changed_noise"
+    },
+    {
+      "killed_by_assertion": false,
+      "mutant_sha256": "7a70a066f260df9a43678a62082716391d9ea824c9e56501777bd89366f4c454",
+      "name": "wrong_law_credited",
+      "new": "credit = bool((correct or not truth['in_family']) and d['decision']",
+      "old": "credit = bool(correct and d['decision']",
+      "output": "test_wrong_predictive_stable_selection_gets_no_structural_credit (tests.test_symbolic_margin.GeneratorAndEvaluationTests.test_wrong_predictive_stable_selection_gets_no_structural_credit) ... ERROR\n\n======================================================================\nERROR: test_wrong_predictive_stable_selection_gets_no_structural_credit (tests.test_symbolic_margin.GeneratorAndEvaluationTests.test_wrong_predictive_stable_selection_gets_no_structural_credit)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/aef732573f08/The-Number-Project/tests/test_symbolic_margin.py\", line 160, in test_wrong_predictive_stable_selection_gets_no_structural_credit\n    result = science.evaluate(p, raw, wrapped, truth, held)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/aef732573f08/The-Number-Project/Discovery/symbolic_margin_science.py\", line 110, in evaluate\n    and relative <= s['coefficient_relative_error_max'] and\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: '<=' not supported between instances of 'NoneType' and 'float'\n\n----------------------------------------------------------------------\nRan 1 test in 0.015s\n\nFAILED (errors=1)\n",
+      "returncode": 1,
+      "test": "GeneratorAndEvaluationTests.test_wrong_predictive_stable_selection_gets_no_structural_credit"
+    },
+    {
+      "killed_by_assertion": true,
+      "mutant_sha256": "2197f81072011c85bd5804b45c99031bebe7967414be551e5a3e4a6e2f1a94d9",
+      "name": "rank1_substituted_for_family",
+      "new": "family = ranking[0]['validation_rmse']",
+      "old": "family = min(c['validation_rmse'] for c in ranking)",
+      "output": "test_retrospective_family_and_rank1_are_distinct (tests.test_symbolic_margin.MarginMathTests.test_retrospective_family_and_rank1_are_distinct) ... FAIL\n\n======================================================================\nFAIL: test_retrospective_family_and_rank1_are_distinct (tests.test_symbolic_margin.MarginMathTests.test_retrospective_family_and_rank1_are_distinct)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/aef732573f08/The-Number-Project/tests/test_symbolic_margin.py\", line 100, in test_retrospective_family_and_rank1_are_distinct\n    self.assertAlmostEqual(r['family']['critical_assumed_noise'], .02)\nAssertionError: 0.030000000000000002 != 0.02 within 7 places (0.010000000000000002 difference)\n\n----------------------------------------------------------------------\nRan 1 test in 0.001s\n\nFAILED (failures=1)\n",
+      "returncode": 1,
+      "test": "MarginMathTests.test_retrospective_family_and_rank1_are_distinct"
+    },
+    {
+      "killed_by_assertion": true,
+      "mutant_sha256": "aee1682b3f18b83d4e380dbec7a26e80bc830d92a029f1adf73609728a2fecbf",
+      "name": "adverse_outcomes_fail_completion",
+      "new": "'COMPLETE' if not any(v['unjustified_family_rejection'] for v in records.values()) and set(records) == set(expected)",
+      "old": "'COMPLETE' if set(records) == set(expected)",
+      "output": "test_adverse_performance_complete_partial_failure_and_nonmonotonic (tests.test_symbolic_margin.CustodyAndAggregationTests.test_adverse_performance_complete_partial_failure_and_nonmonotonic) ... FAIL\n\n======================================================================\nFAIL: test_adverse_performance_complete_partial_failure_and_nonmonotonic (tests.test_symbolic_margin.CustodyAndAggregationTests.test_adverse_performance_complete_partial_failure_and_nonmonotonic)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/aef732573f08/The-Number-Project/tests/test_symbolic_margin.py\", line 242, in test_adverse_performance_complete_partial_failure_and_nonmonotonic\n    self.assertEqual(result['disposition'], 'FIXTURE_COMPLETE')\nAssertionError: 'FIXTURE_PARTIAL' != 'FIXTURE_COMPLETE'\n- FIXTURE_PARTIAL\n+ FIXTURE_COMPLETE\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.110s\n\nFAILED (failures=1)\n",
+      "returncode": 1,
+      "test": "CustodyAndAggregationTests.test_adverse_performance_complete_partial_failure_and_nonmonotonic"
+    }
+  ],
+  "production_source_sha256": "f5258fed52941b913f8552a097ce82ea6c7e249d481b14f1d563fb265bbbf44b",
+  "schema": "tnp-margin1/mutation-preflight-v1"
+}

@@ -1,0 +1,245 @@
+{
+  "authorization": "Miguel activates revision 1; complete one bounded study, leave unmerged. No outreach, automatic merge, workflow dispatch or further campaign.",
+  "blinding": {
+    "engine": "Unchanged Suite1 CPython3.12 staged runner: sanitized anonymous train/validation payload only; no block/law label, seed, generator, evaluator, history, oracle or heldout. Public noise threshold is visible.",
+    "evaluator": "Private truth/heldout created by generator, first consumed by evaluator after committed selection seal.",
+    "hostile_code_isolation": false,
+    "known_information": "Designer knows law families and the disclosed Suite1 retrospective metrics. This is informed design, not global outcome blindness.",
+    "limitation": "Trusted operator and same OS identity; commitments do not prove absence of unlogged private work.",
+    "outcome_blind": false,
+    "prospective_realized_outcomes_unseen_at_freeze": true
+  },
+  "chronology": [
+    "instruction snapshot commit",
+    "sole-file preregistration commit with snapshot as parent",
+    "GitHub draft-PR creation timestamp",
+    "source/environment/fixture preflight committed before seed",
+    "sole-file seed commitment published and read back",
+    "one generation: public inputs/eligibility plus private hashes committed",
+    "all selections and decisions committed before evaluator reveal",
+    "reveal/evaluate immutable raw results",
+    "forward explicit-key routing, report and final exact-head CI"
+  ],
+  "design": {
+    "analysis_unit": "Four independent random blocks with deterministic exponent strata; six matched law/noise conditions within each. Not 24 independent replicates, not identically distributed population sampling.",
+    "conditions": [
+      "adequate",
+      "curved"
+    ],
+    "independent_blocks": 4,
+    "matching": "Within each block share coefficient, exact features and normalized row noise across both laws and all noise levels. Across splits and blocks streams are distinct.",
+    "noise_levels": [
+      0.0001,
+      0.0016,
+      0.005
+    ],
+    "noise_rationale": "Suite1 fixed-residual curvature critical range 0.0012542-0.0016277 informs design. For log z uniform [-1,1], beta=0.01 gives curvature RMS beta*sqrt(4/45)=0.00298142 after intercept fit in the population; adding independent uniform log noise gives approximate boundary epsilon=R/sqrt(4-1/3)=0.001557. Finite training intercept and matched cross terms change realized results. Freeze 0.0001 detectable, 0.0016 transition, 0.005 likely nondetection. No guarantee or population inference.",
+    "rationale": "Small balanced 2 x 3 x 4 design supplied by work order. Measures coarse transition and 0/1-3/4 block behavior; no expansion for favorable outcomes.",
+    "stratification": "Block i uses exponent i, exactly once, fixed before outcomes. No random assignment or rerolls.",
+    "stratified_exponents": [
+      -2,
+      -1,
+      1,
+      2
+    ],
+    "total_datasets": 24
+  },
+  "environment": {
+    "cache_tag": "cpython-312",
+    "external_dependencies": "Python standard library only, existing internal discovery modules. No external symbolic-regression engine. DM-090 remains deferred; environment boundary unchanged.",
+    "python_minor": "3.12"
+  },
+  "evaluation": {
+    "aggregation": "Each condition/noise: 4 expected blocks, recognition/missed-inadequacy/control-rejection counts, stable-wrong counts, approximation and structural-credit counts. Across noise within each block record nonmonotonic false->true recognition explicitly. All 24 retained. No confidence intervals or population false-positive rate.",
+    "credit": "Only rank1 selected stable oracle-matching adequate truth can receive credit, with train/validation/heldout <= policy bound, coefficient error <= coefficient_relative_error_max, no leakage/nuisance. Curved candidates get no credit even if stable and predictive. Wrong stable selections are measured detector limitations, not integrity failures unless granted structural credit.",
+    "dispositions": {
+      "COMPLETE": "All 24 nonempty interpretable records, all frozen metrics and integrity/chronology/credit controls valid; irrespective of favorable detector performance.",
+      "FAIL": "Established integrity, leakage, chronology or wrong-credit violation.",
+      "NO_GO": "No interpretable dataset due to capability/operational failure; no disguised poor score.",
+      "PARTIAL": "Integrity sound, 1-23 interpretable records; retain and account for missing/failed cases.",
+      "UNRESOLVED": "Necessary evidence unavailable or frozen scientific interpretation ambiguous; no replacement epoch."
+    },
+    "labels": {
+      "COMPLETE": "MISSPEC_MARGIN_1_COMPLETE",
+      "FAIL": "MISSPEC_MARGIN_1_FAIL",
+      "NO_GO": "MISSPEC_MARGIN_1_NO_GO",
+      "PARTIAL": "MISSPEC_MARGIN_1_PARTIAL",
+      "UNRESOLVED": "MISSPEC_MARGIN_1_UNRESOLVED"
+    },
+    "metrics": [
+      "all-family minimum validation error",
+      "rank1 validation and heldout error",
+      "heldout minimum across sealed fitted candidates (evaluation only)",
+      "known noise and adequacy bound",
+      "signed family and rank1 margin r-bound, ratio r/bound",
+      "family critical epsilon and dimensionless critical/original noise",
+      "missed inadequacy in curved condition",
+      "unjustified family rejection and rank1 abstention in adequate condition",
+      "structurally wrong stable selections",
+      "approximation separately from exact/equivalent oracle match",
+      "all candidate class metrics and structural credit"
+    ],
+    "performance_requirements": "None for completion. Low-noise failure, high-noise nondetection, adequate-control rejection or nonmonotonic recognition are outcomes to report, not reasons to retune.",
+    "primary": "Nonempty exhaustive candidate family; sealed minimum validation error > m*known epsilon+delta denotes family inadequacy. Empty search is capability failure. Equality adequate.",
+    "selection": "Rank1 stable_candidate/no_stable_law is sealed separately; no lower-rank oracle rescue."
+  },
+  "features": {
+    "t": {
+      "definition": null,
+      "dimension": {
+        "T": 1
+      },
+      "unit": "s"
+    },
+    "x": {
+      "definition": null,
+      "dimension": {
+        "L": 1
+      },
+      "unit": "m"
+    },
+    "z": {
+      "definition": null,
+      "dimension": {},
+      "unit": "1"
+    }
+  },
+  "generation": {
+    "adequate_beta": 0.0,
+    "base_offset_log_ranges": {
+      "t": [
+        -0.6,
+        0.6
+      ],
+      "x": [
+        -1,
+        1
+      ],
+      "z": [
+        -1,
+        1
+      ]
+    },
+    "coefficient_log_range": [
+      -3,
+      3
+    ],
+    "curvature_beta": 0.01,
+    "failure": "Exclusive stage markers and writes. No retries, dropped samples, replacement seed, criterion changes or additional blocks after outcomes. Retain all partial writes and operational failures.",
+    "heldout_offset_log_ranges": {
+      "t": [
+        -0.8,
+        0.8
+      ],
+      "x": [
+        -1.3,
+        1.3
+      ],
+      "z": [
+        -1.3,
+        1.3
+      ]
+    },
+    "law": "k*x*t^-2*z^p*exp(beta*(log z)^2)",
+    "noise": "target=exp(log clean+epsilon*u), u uniform [-1,1]; epsilon is known half-width, not standard deviation. Features exact. Actual observations regenerated once at each frozen noise condition, using matched u.",
+    "proof": "At fixed x,t every admitted monomial is affine in log z; curved truth has nonzero second derivative 2*beta. Features contain no curvature alias.",
+    "sample_counts": {
+      "heldout": 64,
+      "train": 64,
+      "validation": 48
+    },
+    "scale_center_log_ranges": {
+      "t": [
+        -1,
+        1
+      ],
+      "x": [
+        -2,
+        2
+      ],
+      "z": [
+        0,
+        0
+      ]
+    },
+    "seed": "One secrets.token_hex(32). Commit SHA256(UTF8 margin1:+seed) alone after source freeze; publish branch head and read back before generate. Block seed=SHA256(UTF8 seed+:margin1:block:+zero-based block). Stream=existing SHA256 Stream(block_seed, split+:inputs or split+:noise); law stream for coefficient/centers. Same normalized u reused across conditions.",
+    "version": "margin1-v1"
+  },
+  "grammar": {
+    "coefficient": "exp(mean training log(target)-log(monomial))); never refit on validation/heldout",
+    "enumeration": "Existing neutral-value dimensional enumerator, exact dependency expansion, equivalence classes, expanded exponent complexity, nullspace diagnostic. No sums, logarithms, exponentials or fractional powers in candidate language; logs are used only for fitting/scoring.",
+    "equivalence": "Expand operational monomial aliases to atomic exponent signatures; one class, no alias complexity discount. Oracle law is never added to feature metadata.",
+    "family": "positive dimensionless coefficient times monomial of at most three registered feature surfaces",
+    "max_abs_power": 2,
+    "max_denominator": 1,
+    "max_factors": 3,
+    "target": {
+      "dimension": {
+        "L": 1,
+        "T": -2
+      },
+      "key": "y"
+    }
+  },
+  "instruction_snapshot_sha": "8a4e9a6879603a7f0f4fcc4948f92d578699fd5d",
+  "nonclaims": [
+    "No discovery of unknown natural laws",
+    "No arbitrary physical-data performance",
+    "No universal false-positive rate or population statistical inference",
+    "No superiority over external symbolic-regression systems",
+    "No empirical evidence for any Number Project physical hypothesis",
+    "No hostile-code sandbox or human family blindness",
+    "Finite-data family rejection does not uniquely identify wrong grammar outside this known-truth design"
+  ],
+  "question": "With fixed grammar and decision rule, how does observed family-inadequacy recognition change as fixed curvature becomes small relative to known generated noise?",
+  "retrospective": {
+    "counterfactual_assumed_noise": [
+      0,
+      0.005,
+      0.015
+    ],
+    "paths": "Suite1 preregistration, oracle_reveal (noise labels only), input policies and sealed selection records; explicit disposition index. No generation, fit or discovery.",
+    "rank1": "Compute separate rank1 critical and stability; do not substitute complexity-ranked top error for family minimum.",
+    "rule": "critical=(minimum raw validation RMSE - numeric_floor)/adequacy_noise_multiplier; inadequacy iff assumed epsilon>=0 and raw error > m*epsilon+delta; equality adequate.",
+    "source_sha": "e0c018923c799c41870cb1c11eef7d1f6b5741ba",
+    "zero_noise": "critical/original epsilon null if epsilon=0; nonpositive critical means no nonnegative assumed epsilon declares inadequacy."
+  },
+  "routing": "New study-local explicit-key index references immutable accepted global v2 route; raw, optional operational failures, reconciliation and study conclusion distinct. Never mutate old global index or historical bytes.",
+  "schema": "tnp-misspecification-margin/preregistration-v1",
+  "scientific_base_sha": "0420b0cadc2019b8497556c8bacd9c93bf5e39c1",
+  "scoring": {
+    "abstention": "No rescue by an oracle-selected lower-ranked candidate. Empty enumeration means no candidate capability, not recognized misspecification.",
+    "adequacy": "Bound = adequacy_noise_multiplier * known epsilon + numeric_floor; same rule for all cells. Stable selected candidate only if rank-1 validation RMSE <= bound. The smallest raw validation RMSE across the exhaustive eligible family is checked separately. If all exceed bound, seal family_inadequate_on_validation. This is finite-data adequacy, not proof of the unique cause of failure.",
+    "adequacy_noise_multiplier": 2.0,
+    "all_candidate_reporting": "For every class, report validation/heldout RMSE, both adequacy and approximation survival, oracle match, nuisance/leakage flags, exact/alias recovery type, evidence class. Counts are designed-suite counts only.",
+    "approximation": "Seal top predictive_approximation if validation RMSE <= approximation_rmse_max, independently of adequacy and without structural credit. After reveal, test heldout against the same approximation bound.",
+    "approximation_rmse_max": 0.04,
+    "coefficient_relative_error_max": 0.04,
+    "complexity_lambda": 0.001,
+    "equivalent_surface_min_nuisance": 3,
+    "independent_metric_tolerance": 1e-10,
+    "numeric_floor": 1e-09,
+    "pair_ratio_tolerance": 1e-10,
+    "rank": "validation natural-log RMSE + lambda * expanded exponent L1 complexity, ties complexity then canonical class ID",
+    "robustness": "Preserve pre-reveal leave-one-atomic-group-out scores and descendant removals from existing engine. Nuisance success requires selected class unchanged and still stable after each of n0,n1,q removals; selected class cannot contain any irrelevant atom. Heldout intervenes on q."
+  },
+  "task": "NP-MISSPEC-MARGIN-01",
+  "validation": {
+    "final": "Focused tests, relevant new artifact/history guard, git diff --check, exact-head protected CI. Work order limits local unrelated suite repetition; full existing Python suite runs once in required CI; no manual unrelated mutations, Lean or old-world regeneration.",
+    "preflight": "Independent deterministic fixtures before target seed; generator formulas/matching/strata tested on different numerical policy and fixture seed. Forward adapter consumes explicit-key route, never old make_index.",
+    "required": [
+      "threshold equality and flip including zero noise/nonpositive critical",
+      "different m/delta/approximation/coefficient values",
+      "training-only fit and heldout cannot change seal",
+      "curved stable prediction denied credit",
+      "empty family not recognition",
+      "matched dependence and block stream separation",
+      "seed/data/selection/source tamper",
+      "aggregation adverse/nonmonotonic outcomes",
+      "live receipt/cache and leakage poison regressions"
+    ],
+    "same_epoch_replay": "New study guard may regenerate known revealed seed and re-evaluate metrics for reproduction only; discovery replay only if needed. Never count as fresh evidence."
+  },
+  "work_order_revision": 1,
+  "work_order_sha256": "57b2270673e179f183103eb3ab8aceaaa26704cf49da039d9aaeaa0a17001cab"
+}

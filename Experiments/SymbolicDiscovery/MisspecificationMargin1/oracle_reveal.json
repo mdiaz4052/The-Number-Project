@@ -1,0 +1,582 @@
+{
+  "generator_version": "margin1-v1",
+  "realizations": {
+    "b01-adequate-n1": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "block": 0,
+      "child_seed": "c2d6d1f01493c5242c227b33b6a4869b2db10db79e9e7d0294a46686d85c4fe2",
+      "coefficient": 6.229494938592967,
+      "condition": "adequate",
+      "curve_beta": 0.0,
+      "epsilon": 0.0001,
+      "exponent": -2,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "noise_index": 0,
+      "scale_centers": {
+        "t": 0.1247333547346754,
+        "x": -1.545904507334598,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": null
+    },
+    "b01-adequate-n2": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "block": 0,
+      "child_seed": "c2d6d1f01493c5242c227b33b6a4869b2db10db79e9e7d0294a46686d85c4fe2",
+      "coefficient": 6.229494938592967,
+      "condition": "adequate",
+      "curve_beta": 0.0,
+      "epsilon": 0.0016,
+      "exponent": -2,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "noise_index": 1,
+      "scale_centers": {
+        "t": 0.1247333547346754,
+        "x": -1.545904507334598,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": null
+    },
+    "b01-adequate-n3": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "block": 0,
+      "child_seed": "c2d6d1f01493c5242c227b33b6a4869b2db10db79e9e7d0294a46686d85c4fe2",
+      "coefficient": 6.229494938592967,
+      "condition": "adequate",
+      "curve_beta": 0.0,
+      "epsilon": 0.005,
+      "exponent": -2,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "noise_index": 2,
+      "scale_centers": {
+        "t": 0.1247333547346754,
+        "x": -1.545904507334598,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": null
+    },
+    "b01-curved-n1": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "block": 0,
+      "child_seed": "c2d6d1f01493c5242c227b33b6a4869b2db10db79e9e7d0294a46686d85c4fe2",
+      "coefficient": 6.229494938592967,
+      "condition": "curved",
+      "curve_beta": 0.01,
+      "epsilon": 0.0001,
+      "exponent": -2,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "noise_index": 0,
+      "scale_centers": {
+        "t": 0.1247333547346754,
+        "x": -1.545904507334598,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": "At fixed x,t every admitted monomial is affine in log z; curved truth has nonzero second derivative 2*beta. Features contain no curvature alias."
+    },
+    "b01-curved-n2": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "block": 0,
+      "child_seed": "c2d6d1f01493c5242c227b33b6a4869b2db10db79e9e7d0294a46686d85c4fe2",
+      "coefficient": 6.229494938592967,
+      "condition": "curved",
+      "curve_beta": 0.01,
+      "epsilon": 0.0016,
+      "exponent": -2,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "noise_index": 1,
+      "scale_centers": {
+        "t": 0.1247333547346754,
+        "x": -1.545904507334598,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": "At fixed x,t every admitted monomial is affine in log z; curved truth has nonzero second derivative 2*beta. Features contain no curvature alias."
+    },
+    "b01-curved-n3": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "block": 0,
+      "child_seed": "c2d6d1f01493c5242c227b33b6a4869b2db10db79e9e7d0294a46686d85c4fe2",
+      "coefficient": 6.229494938592967,
+      "condition": "curved",
+      "curve_beta": 0.01,
+      "epsilon": 0.005,
+      "exponent": -2,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "noise_index": 2,
+      "scale_centers": {
+        "t": 0.1247333547346754,
+        "x": -1.545904507334598,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": "At fixed x,t every admitted monomial is affine in log z; curved truth has nonzero second derivative 2*beta. Features contain no curvature alias."
+    },
+    "b02-adequate-n1": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "block": 1,
+      "child_seed": "8399666ab05e97711011a43cc7ebaf8163ae8ac238e6dde6a5c5afc8f887c477",
+      "coefficient": 18.727643008936006,
+      "condition": "adequate",
+      "curve_beta": 0.0,
+      "epsilon": 0.0001,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "noise_index": 0,
+      "scale_centers": {
+        "t": 0.5765666387295401,
+        "x": -0.34334061494191803,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": null
+    },
+    "b02-adequate-n2": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "block": 1,
+      "child_seed": "8399666ab05e97711011a43cc7ebaf8163ae8ac238e6dde6a5c5afc8f887c477",
+      "coefficient": 18.727643008936006,
+      "condition": "adequate",
+      "curve_beta": 0.0,
+      "epsilon": 0.0016,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "noise_index": 1,
+      "scale_centers": {
+        "t": 0.5765666387295401,
+        "x": -0.34334061494191803,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": null
+    },
+    "b02-adequate-n3": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "block": 1,
+      "child_seed": "8399666ab05e97711011a43cc7ebaf8163ae8ac238e6dde6a5c5afc8f887c477",
+      "coefficient": 18.727643008936006,
+      "condition": "adequate",
+      "curve_beta": 0.0,
+      "epsilon": 0.005,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "noise_index": 2,
+      "scale_centers": {
+        "t": 0.5765666387295401,
+        "x": -0.34334061494191803,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": null
+    },
+    "b02-curved-n1": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "block": 1,
+      "child_seed": "8399666ab05e97711011a43cc7ebaf8163ae8ac238e6dde6a5c5afc8f887c477",
+      "coefficient": 18.727643008936006,
+      "condition": "curved",
+      "curve_beta": 0.01,
+      "epsilon": 0.0001,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "noise_index": 0,
+      "scale_centers": {
+        "t": 0.5765666387295401,
+        "x": -0.34334061494191803,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": "At fixed x,t every admitted monomial is affine in log z; curved truth has nonzero second derivative 2*beta. Features contain no curvature alias."
+    },
+    "b02-curved-n2": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "block": 1,
+      "child_seed": "8399666ab05e97711011a43cc7ebaf8163ae8ac238e6dde6a5c5afc8f887c477",
+      "coefficient": 18.727643008936006,
+      "condition": "curved",
+      "curve_beta": 0.01,
+      "epsilon": 0.0016,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "noise_index": 1,
+      "scale_centers": {
+        "t": 0.5765666387295401,
+        "x": -0.34334061494191803,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": "At fixed x,t every admitted monomial is affine in log z; curved truth has nonzero second derivative 2*beta. Features contain no curvature alias."
+    },
+    "b02-curved-n3": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "block": 1,
+      "child_seed": "8399666ab05e97711011a43cc7ebaf8163ae8ac238e6dde6a5c5afc8f887c477",
+      "coefficient": 18.727643008936006,
+      "condition": "curved",
+      "curve_beta": 0.01,
+      "epsilon": 0.005,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "noise_index": 2,
+      "scale_centers": {
+        "t": 0.5765666387295401,
+        "x": -0.34334061494191803,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": "At fixed x,t every admitted monomial is affine in log z; curved truth has nonzero second derivative 2*beta. Features contain no curvature alias."
+    },
+    "b03-adequate-n1": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "block": 2,
+      "child_seed": "f8eeae5015c14c95e8c17f4f7c5e8e42b8da4b074dd8b56045209061064f636a",
+      "coefficient": 0.1543085842774766,
+      "condition": "adequate",
+      "curve_beta": 0.0,
+      "epsilon": 0.0001,
+      "exponent": 1,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "noise_index": 0,
+      "scale_centers": {
+        "t": -0.3365878049241805,
+        "x": 1.7526223814680297,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": null
+    },
+    "b03-adequate-n2": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "block": 2,
+      "child_seed": "f8eeae5015c14c95e8c17f4f7c5e8e42b8da4b074dd8b56045209061064f636a",
+      "coefficient": 0.1543085842774766,
+      "condition": "adequate",
+      "curve_beta": 0.0,
+      "epsilon": 0.0016,
+      "exponent": 1,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "noise_index": 1,
+      "scale_centers": {
+        "t": -0.3365878049241805,
+        "x": 1.7526223814680297,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": null
+    },
+    "b03-adequate-n3": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "block": 2,
+      "child_seed": "f8eeae5015c14c95e8c17f4f7c5e8e42b8da4b074dd8b56045209061064f636a",
+      "coefficient": 0.1543085842774766,
+      "condition": "adequate",
+      "curve_beta": 0.0,
+      "epsilon": 0.005,
+      "exponent": 1,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "noise_index": 2,
+      "scale_centers": {
+        "t": -0.3365878049241805,
+        "x": 1.7526223814680297,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": null
+    },
+    "b03-curved-n1": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "block": 2,
+      "child_seed": "f8eeae5015c14c95e8c17f4f7c5e8e42b8da4b074dd8b56045209061064f636a",
+      "coefficient": 0.1543085842774766,
+      "condition": "curved",
+      "curve_beta": 0.01,
+      "epsilon": 0.0001,
+      "exponent": 1,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "noise_index": 0,
+      "scale_centers": {
+        "t": -0.3365878049241805,
+        "x": 1.7526223814680297,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": "At fixed x,t every admitted monomial is affine in log z; curved truth has nonzero second derivative 2*beta. Features contain no curvature alias."
+    },
+    "b03-curved-n2": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "block": 2,
+      "child_seed": "f8eeae5015c14c95e8c17f4f7c5e8e42b8da4b074dd8b56045209061064f636a",
+      "coefficient": 0.1543085842774766,
+      "condition": "curved",
+      "curve_beta": 0.01,
+      "epsilon": 0.0016,
+      "exponent": 1,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "noise_index": 1,
+      "scale_centers": {
+        "t": -0.3365878049241805,
+        "x": 1.7526223814680297,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": "At fixed x,t every admitted monomial is affine in log z; curved truth has nonzero second derivative 2*beta. Features contain no curvature alias."
+    },
+    "b03-curved-n3": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "block": 2,
+      "child_seed": "f8eeae5015c14c95e8c17f4f7c5e8e42b8da4b074dd8b56045209061064f636a",
+      "coefficient": 0.1543085842774766,
+      "condition": "curved",
+      "curve_beta": 0.01,
+      "epsilon": 0.005,
+      "exponent": 1,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "noise_index": 2,
+      "scale_centers": {
+        "t": -0.3365878049241805,
+        "x": 1.7526223814680297,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": "At fixed x,t every admitted monomial is affine in log z; curved truth has nonzero second derivative 2*beta. Features contain no curvature alias."
+    },
+    "b04-adequate-n1": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "block": 3,
+      "child_seed": "2cf0fd92edf0cfa68b1c3b71556850f68325b8ba931e5b875ba93dd9d5ae7871",
+      "coefficient": 0.7398499740289912,
+      "condition": "adequate",
+      "curve_beta": 0.0,
+      "epsilon": 0.0001,
+      "exponent": 2,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "noise_index": 0,
+      "scale_centers": {
+        "t": 0.7019314820449851,
+        "x": -0.15532921423851453,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": null
+    },
+    "b04-adequate-n2": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "block": 3,
+      "child_seed": "2cf0fd92edf0cfa68b1c3b71556850f68325b8ba931e5b875ba93dd9d5ae7871",
+      "coefficient": 0.7398499740289912,
+      "condition": "adequate",
+      "curve_beta": 0.0,
+      "epsilon": 0.0016,
+      "exponent": 2,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "noise_index": 1,
+      "scale_centers": {
+        "t": 0.7019314820449851,
+        "x": -0.15532921423851453,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": null
+    },
+    "b04-adequate-n3": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "block": 3,
+      "child_seed": "2cf0fd92edf0cfa68b1c3b71556850f68325b8ba931e5b875ba93dd9d5ae7871",
+      "coefficient": 0.7398499740289912,
+      "condition": "adequate",
+      "curve_beta": 0.0,
+      "epsilon": 0.005,
+      "exponent": 2,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "noise_index": 2,
+      "scale_centers": {
+        "t": 0.7019314820449851,
+        "x": -0.15532921423851453,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": null
+    },
+    "b04-curved-n1": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "block": 3,
+      "child_seed": "2cf0fd92edf0cfa68b1c3b71556850f68325b8ba931e5b875ba93dd9d5ae7871",
+      "coefficient": 0.7398499740289912,
+      "condition": "curved",
+      "curve_beta": 0.01,
+      "epsilon": 0.0001,
+      "exponent": 2,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "noise_index": 0,
+      "scale_centers": {
+        "t": 0.7019314820449851,
+        "x": -0.15532921423851453,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": "At fixed x,t every admitted monomial is affine in log z; curved truth has nonzero second derivative 2*beta. Features contain no curvature alias."
+    },
+    "b04-curved-n2": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "block": 3,
+      "child_seed": "2cf0fd92edf0cfa68b1c3b71556850f68325b8ba931e5b875ba93dd9d5ae7871",
+      "coefficient": 0.7398499740289912,
+      "condition": "curved",
+      "curve_beta": 0.01,
+      "epsilon": 0.0016,
+      "exponent": 2,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "noise_index": 1,
+      "scale_centers": {
+        "t": 0.7019314820449851,
+        "x": -0.15532921423851453,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": "At fixed x,t every admitted monomial is affine in log z; curved truth has nonzero second derivative 2*beta. Features contain no curvature alias."
+    },
+    "b04-curved-n3": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "block": 3,
+      "child_seed": "2cf0fd92edf0cfa68b1c3b71556850f68325b8ba931e5b875ba93dd9d5ae7871",
+      "coefficient": 0.7398499740289912,
+      "condition": "curved",
+      "curve_beta": 0.01,
+      "epsilon": 0.005,
+      "exponent": 2,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "noise_index": 2,
+      "scale_centers": {
+        "t": 0.7019314820449851,
+        "x": -0.15532921423851453,
+        "z": 0.0
+      },
+      "wrong_grammar_proof": "At fixed x,t every admitted monomial is affine in log z; curved truth has nonzero second derivative 2*beta. Features contain no curvature alias."
+    }
+  },
+  "seed": "2925018aa4aedaf98ded8b3d2aff45950b90155afab3bea4307965c32aa382bb"
+}

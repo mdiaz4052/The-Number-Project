@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-09-15T14:53:41.792480+00:00",
+  "dataset_ids": [
+    "b01-adequate-n1",
+    "b01-adequate-n2",
+    "b01-adequate-n3",
+    "b01-curved-n1",
+    "b01-curved-n2",
+    "b01-curved-n3",
+    "b02-adequate-n1",
+    "b02-adequate-n2",
+    "b02-adequate-n3",
+    "b02-curved-n1",
+    "b02-curved-n2",
+    "b02-curved-n3",
+    "b03-adequate-n1",
+    "b03-adequate-n2",
+    "b03-adequate-n3",
+    "b03-curved-n1",
+    "b03-curved-n2",
+    "b03-curved-n3",
+    "b04-adequate-n1",
+    "b04-adequate-n2",
+    "b04-adequate-n3",
+    "b04-curved-n1",
+    "b04-curved-n2",
+    "b04-curved-n3"
+  ],
+  "eligibility_sha256": "74865bb3c169e3b839eb3c66f45e7d03d86ecafd02272e6b87c4a8efabbc277d",
+  "heldout_sha256": "6d4dd80df5cbaba646e675c1f6e2823fac2c1a78edd55668b8016ad6805be662",
+  "inputs_sha256": "ab64ff702789405b88458a4e1cf3483a1632540424baa5581306552fe486a943",
+  "oracle_sha256": "a1fbf9933990434d2f38188516e3212771b77f9d096f3af476a53d382e7c9daf",
+  "public_sha256": "ab64ff702789405b88458a4e1cf3483a1632540424baa5581306552fe486a943",
+  "remote_publication": {
+    "before_generation": true,
+    "observed_sha": "6678a82593a821cd56b095faab3bf0cc4fb7c966",
+    "ref": "refs/heads/experiment/np-misspec-margin-01"
+  },
+  "schema": "tnp-margin1/data-v1",
+  "seed_commit_sha": "6678a82593a821cd56b095faab3bf0cc4fb7c966",
+  "seed_commitment_sha256": "ce5f6bdf129e7f29285399fc2acd212d5aa72db988c3251f00773bdd77ac83d4",
+  "source_sha": "b81278440db1c1b234caca26f98bf91162bcfb52"
+}

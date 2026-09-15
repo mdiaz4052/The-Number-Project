@@ -1,0 +1,10 @@
+{
+  "commitment_sha256": "f22f295447e28f4d2a4debca496e37759dd8498ae59200b80478250d04c778f5",
+  "data_commit_sha": "884bf4a26fb0cb9ee01d3916e89ec92a6142ae59",
+  "dataset_count": 24,
+  "heldout_accessed": false,
+  "oracle_revealed": false,
+  "schema": "tnp-margin1/seal-v1",
+  "sealed_at": "2026-09-15T14:54:36.372425+00:00",
+  "selection_sha256": "ff5371bc3a649447f910e8bd7ed5f9265fb8b043dbad3afa6e58575e61dc89f8"
+}

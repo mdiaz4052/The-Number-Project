@@ -1,0 +1,20 @@
+{
+  "accepted_suite1_head": "e0c018923c799c41870cb1c11eef7d1f6b5741ba",
+  "audit_current_file_id": "14AXp7ZnxGuhoiMl7UwgmQYFi7JSsG9tb",
+  "consumed_byte_count": 16781,
+  "consumed_sha256": "57b2270673e179f183103eb3ab8aceaaa26704cf49da039d9aaeaa0a17001cab",
+  "drive_file_id": "1bJhHoxjzqIopMgASqmUIO71S1SBZP7ly",
+  "drive_revision_id": "0B4E-uj-ArwK4c3BwTWNsOHI2eUhUVVhtbk1hUEhBYjBmbXRjPQ",
+  "live_main_sha": "0420b0cadc2019b8497556c8bacd9c93bf5e39c1",
+  "merge_ci": {
+    "actions_runs": 0,
+    "audited_head_ci_is_not_merge_ci": true,
+    "commit_check_runs": 0,
+    "dispatch_authorized": false,
+    "observed_at": "2026-09-15T14:37:59.619Z",
+    "status": "ABSENT"
+  },
+  "observed_modified_time": "2026-09-15T14:29:59.022Z",
+  "revision": 1,
+  "task": "NP-MISSPEC-MARGIN-01"
+}

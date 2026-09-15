@@ -1,0 +1,12 @@
+{
+  "cause": "Frozen check compared summary schema tnp-margin1/summary-v1 against raw schema tnp-margin1/raw-result-v1. All other summary fields and evaluation/controls matched before this guard stopped.",
+  "classification": "operational_verifier_schema_failure_not_a_scientific_disposition",
+  "created_at": "2026-09-15T14:58:19.665371+00:00",
+  "disposition": "MISSPEC_MARGIN_1_NO_GO",
+  "frozen_source_sha": "b81278440db1c1b234caca26f98bf91162bcfb52",
+  "output": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/workspace/scratch/aef732573f08/The-Number-Project/Discovery/symbolic_margin.py\", line 456, in <module>\n    main()\n  File \"/workspace/scratch/aef732573f08/The-Number-Project/Discovery/symbolic_margin.py\", line 438, in main\n    check(args.replay)\n  File \"/workspace/scratch/aef732573f08/The-Number-Project/Discovery/symbolic_margin.py\", line 402, in check\n    raise ValueError('raw result binding mismatch')\nValueError: raw result binding mismatch\n",
+  "raw_epoch_sha": "a9ab67b3baf3d40d461300ba7539cecd07b7d715",
+  "same_epoch_generation_replay_reached": false,
+  "schema": "tnp-margin1/verification-failure-v1",
+  "stage": "post-result-read-only-verification"
+}
