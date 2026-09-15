@@ -1,0 +1,90 @@
+{
+  "MisspecificationMargin1": {
+    "authoritative": "raw_epoch",
+    "independent_status": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+    "operational_failures": [],
+    "raw_epoch": {
+      "binding_kind": "artifact_state",
+      "disposition": "MISSPEC_MARGIN_1_COMPLETE",
+      "disposition_key": "disposition",
+      "path": "Experiments/SymbolicDiscovery/MisspecificationMargin1/result.json",
+      "sha256": "90c26123a0b7221089c6694fdcdb0a441094728a1fd6ed8b01dfb5173ab81872",
+      "source_commit_sha": "a9ab67b3baf3d40d461300ba7539cecd07b7d715"
+    },
+    "reconciliation": null,
+    "study_aggregation": {
+      "binding_kind": "artifact_state",
+      "disposition": "MISSPEC_MARGIN_1_COMPLETE",
+      "disposition_key": "disposition",
+      "path": "Experiments/SymbolicDiscovery/MisspecificationMargin1/summary.json",
+      "sha256": "ff0dc0afcbfc52abe4e6f27df40dc8c0a15ca42a05873b55da267471549fd696",
+      "source_commit_sha": "a9ab67b3baf3d40d461300ba7539cecd07b7d715"
+    }
+  },
+  "accepted_baseline_routes": {
+    "Benchmark0": {
+      "authoritative": "reconciliation",
+      "independent_status": "accepted by Claude PR54 audit and user activation",
+      "operational_failures": [],
+      "raw_epoch": {
+        "binding_kind": "artifact_state",
+        "disposition": "BENCHMARK_0_FAIL",
+        "disposition_key": "disposition",
+        "path": "Experiments/SymbolicDiscovery/Benchmark0/result.json",
+        "sha256": "a346fe732f0b2934d6ad6fbfe1fd6d2f5cf327bb8423af624e53d973514249fe",
+        "source_commit_sha": "b01c01af1a30bbf8726842d3b05905a350cd5c1f"
+      },
+      "reconciliation": {
+        "binding_kind": "artifact_state",
+        "disposition": "BENCHMARK_0_PASS",
+        "disposition_key": "final_disposition",
+        "path": "Experiments/SymbolicDiscovery/Benchmark0/receipt_reconciliation.json",
+        "sha256": "83243ecf73a8aebf660bd393c4b9f22f7782a47b94ee189371d19d10e0fc2ea2",
+        "source_commit_sha": "a1016953d5289dd9eca211c8b736d8d08f1a6153"
+      },
+      "suite_aggregation": null
+    },
+    "BenchmarkSuite1": {
+      "authoritative": "reconciliation",
+      "independent_status": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+      "operational_failures": [
+        {
+          "binding_kind": "artifact_state",
+          "disposition": "BENCHMARK_SUITE_1_NO_GO_CAPABILITY",
+          "disposition_key": "disposition",
+          "path": "Experiments/SymbolicDiscovery/BenchmarkSuite1/operational_failures/reveal-55c2783a20edfa2208094129f3c5efa6cf6247cc.json",
+          "sha256": "15c7b146131492887d473361ae37a4716d7479b33914b587ad4ec5a8b9380bc0",
+          "source_commit_sha": "d5a6845816f8183902ed68f6060becc1f58d8526"
+        }
+      ],
+      "raw_epoch": {
+        "binding_kind": "artifact_state",
+        "disposition": "BENCHMARK_SUITE_1_PASS",
+        "disposition_key": "disposition",
+        "path": "Experiments/SymbolicDiscovery/BenchmarkSuite1/result.json",
+        "sha256": "45d9a19967f5c1b08e6e49aa98601043dfc4b7b2f52f3b260c9f68306bb6e292",
+        "source_commit_sha": "d5a6845816f8183902ed68f6060becc1f58d8526"
+      },
+      "reconciliation": {
+        "binding_kind": "record_producer_source",
+        "disposition": "BENCHMARK_SUITE_1_PASS",
+        "disposition_key": "disposition",
+        "path": "Experiments/SymbolicDiscovery/BenchmarkSuite1/routing_reconciliation.json",
+        "sha256": "e30c259a4e7bc06f1497c2eaee57474a7e2ebf1e7aaa5496fcd777a918533919",
+        "source_commit_sha": "4e146e71aa97c2e3d7e18832fc1d7ab3f2b51e0d"
+      },
+      "suite_aggregation": {
+        "binding_kind": "artifact_state",
+        "disposition": "BENCHMARK_SUITE_1_PASS",
+        "disposition_key": "disposition",
+        "path": "Experiments/SymbolicDiscovery/BenchmarkSuite1/evaluation_summary.json",
+        "sha256": "a2a2fa1b9674118d11d8168d77e5c562b781babfe1bddb2b0d5ff6f1468231b3",
+        "source_commit_sha": "d5a6845816f8183902ed68f6060becc1f58d8526"
+      }
+    },
+    "current_acceptance_note": "Both independently accepted and merged; old provisional navigation is historical.",
+    "path": "Experiments/SymbolicDiscovery/disposition_index.json",
+    "sha256": "9ace5a8a21c2e6685f9220785f5a12b5328088e3b9311dd40c0e4eb034010889"
+  },
+  "schema": "tnp-margin1/disposition-routing-v1"
+}

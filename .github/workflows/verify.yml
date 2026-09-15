@@ -86,4 +86,4 @@ jobs:
       - run: python -m Discovery.symbolic_benchmark --check
       - run: python -m Discovery.symbolic_benchmark_receipt --check
       - run: python -m Discovery.symbolic_suite_routing --check --replay
-      - run: python -m Discovery.symbolic_margin check --replay
+      - run: python -m Discovery.symbolic_margin_verifier check --replay
