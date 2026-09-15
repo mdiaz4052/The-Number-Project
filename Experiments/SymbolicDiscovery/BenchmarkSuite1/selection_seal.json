@@ -1,0 +1,10 @@
+{
+  "commitment_commit_sha": "f79aaa0b43ffc2a3fb225923231587cdb9ac3d05",
+  "commitment_sha256": "cbacfa6f5770480df8e83b2550d24a3850ad1232f9a207cff054e26e0dccd73a",
+  "heldout_accessed": false,
+  "oracle_revealed": false,
+  "realization_count": 24,
+  "schema": "tnp-suite1/selection-seal-v1",
+  "sealed_at": "2026-09-15T00:09:44.665534+00:00",
+  "selection_sha256": "bde968309623692e9f48b26471e56edfb5c7b156708d1c564582e117005ebded"
+}

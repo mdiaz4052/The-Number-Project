@@ -1,0 +1,530 @@
+{
+  "clean-01": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "clean-02": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "clean-03": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "clean-04": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "leakage-01": {
+    "leak": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_alias": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_cancel": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_power": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_transform": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "leakage-02": {
+    "leak": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_alias": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_cancel": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_power": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_transform": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "leakage-03": {
+    "leak": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_alias": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_cancel": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_power": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_transform": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "leakage-04": {
+    "leak": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_alias": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_cancel": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_power": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "leak_transform": {
+      "reason": "target_dependency_path",
+      "status": "ineligible"
+    },
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "nuisance-01": {
+    "acc": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "n0": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "n1": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "q": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "q_alias": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "velocity": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z2": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "nuisance-02": {
+    "acc": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "n0": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "n1": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "q": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "q_alias": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "velocity": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z2": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "nuisance-03": {
+    "acc": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "n0": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "n1": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "q": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "q_alias": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "velocity": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z2": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "nuisance-04": {
+    "acc": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "n0": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "n1": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "q": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "q_alias": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "velocity": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z2": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "regime-01": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "regime-02": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "regime-03": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "regime-04": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "wrong_curve-01": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "wrong_curve-02": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "wrong_curve-03": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "wrong_curve-04": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "wrong_power-01": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "wrong_power-02": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "wrong_power-03": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  },
+  "wrong_power-04": {
+    "t": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "x": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    },
+    "z": {
+      "reason": "no_registered_target_dependency",
+      "status": "eligible"
+    }
+  }
+}

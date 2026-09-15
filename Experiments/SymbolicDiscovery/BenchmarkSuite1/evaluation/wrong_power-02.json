@@ -1,0 +1,154 @@
+{
+  "candidate_count": 5,
+  "candidates": [
+    {
+      "class_id": "t:-2|x:1",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 0.4052758193263953,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 1,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 0.2867847512795715
+    },
+    {
+      "class_id": "t:-2|x:1|z:1",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 0.4063207405033725,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 2,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 0.28588317957275194
+    },
+    {
+      "class_id": "t:-2|x:1|z:-1",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 1.2168436772792766,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 3,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 0.8594161709075232
+    },
+    {
+      "class_id": "t:-2|x:1|z:2",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 1.217888623081822,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 4,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 0.85851456085833
+    },
+    {
+      "class_id": "t:-2|x:1|z:-2",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 2.0284172844301103,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 5,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 1.4320548788769294
+    }
+  ],
+  "cell": "wrong_power",
+  "checks": {
+    "leakage_safe": true,
+    "misspecification_recognition": true
+  },
+  "classification": "hypothesis_family_misspecification",
+  "coefficient_relative_error": null,
+  "diagnostics": {
+    "family_rejection_meaning": "Finite-data inadequacy before reveal; known generator establishes grammar misspecification after reveal.",
+    "log_curvature": 0.0,
+    "oracle_wrong_grammar_proof": "Independent positive x,t,z imply x exponent 1 and t exponent -2; z exponent 1/2 is excluded from the integer grammar. No available alias supplies a square root.",
+    "proof_conditions_verified": true
+  },
+  "evidence_class": "GENERATED/FITTED CANDIDATE",
+  "false_positive_selection": false,
+  "grammar_recognition": true,
+  "justified_abstention": true,
+  "policy": {
+    "acceptance_validation_rmse": 0.010000001,
+    "approximation_rmse_max": 0.04,
+    "complexity_lambda": 0.001,
+    "max_abs_power": 2,
+    "max_denominator": 1,
+    "max_factors": 3
+  },
+  "pre_reveal_approximation_status": "poor_approximation",
+  "pre_reveal_decision": "no_stable_law",
+  "pre_reveal_family_assessment": "family_inadequate_on_validation",
+  "predictively_surviving_wrong_classes": 0,
+  "rejected_features": [],
+  "replicate": 1,
+  "scientific_law_claim": false,
+  "selected_class": "t:-2|x:1",
+  "selected_expanded_complexity": 3,
+  "selected_heldout_rmse": 0.4052758193263953,
+  "selected_surface": {
+    "t": "-2",
+    "x": "1"
+  },
+  "selected_training_rmse": 0.2833449074814739,
+  "selected_validation_rmse": 0.2867847512795715,
+  "success": true,
+  "surface_count": 5,
+  "true_class_rank": null,
+  "true_class_surfaces": 0
+}

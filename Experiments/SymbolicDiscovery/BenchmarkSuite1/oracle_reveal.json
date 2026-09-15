@@ -1,0 +1,622 @@
+{
+  "generator_version": "suite1-v1",
+  "realizations": {
+    "clean-01": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "cell": "clean",
+      "child_seed": "74e830fe681c37f0c7fce54593d8d0eaebf76d3c9339b403d5cf1fc9ac818c0a",
+      "coefficient": 0.3869859969453465,
+      "curve_beta": 0.0,
+      "epsilon": 0,
+      "exponent": 1,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 0,
+      "scale_centers": {
+        "t": 0.6608445993691696,
+        "x": -0.9258500266879961,
+        "z": -0.003915041016253229
+      },
+      "wrong_grammar_proof": null
+    },
+    "clean-02": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "cell": "clean",
+      "child_seed": "dcbd37d56035099f8ad679f23d7433ef8b7b8f20fe06627cb0592ec51077485c",
+      "coefficient": 3.4239772997498963,
+      "curve_beta": 0.0,
+      "epsilon": 0,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 1,
+      "scale_centers": {
+        "t": -0.8364023790012021,
+        "x": -1.0917734009578366,
+        "z": -0.1155596277283735
+      },
+      "wrong_grammar_proof": null
+    },
+    "clean-03": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "cell": "clean",
+      "child_seed": "aaa42c32b11687e8eee1da726c32d6f057d24ac149230c4c422a6df7b1023102",
+      "coefficient": 0.2224810152914622,
+      "curve_beta": 0.0,
+      "epsilon": 0,
+      "exponent": -2,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 2,
+      "scale_centers": {
+        "t": 0.6413134257124828,
+        "x": 0.5764523793366112,
+        "z": 0.002506450279711858
+      },
+      "wrong_grammar_proof": null
+    },
+    "clean-04": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "cell": "clean",
+      "child_seed": "2a12c6c290c523f994140a5541f090bf975bbb8bb588313b50ee0f7e41be0039",
+      "coefficient": 0.3063122703650314,
+      "curve_beta": 0.0,
+      "epsilon": 0,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 3,
+      "scale_centers": {
+        "t": 0.329839006277173,
+        "x": 1.9334406433838525,
+        "z": 0.15299132616660954
+      },
+      "wrong_grammar_proof": null
+    },
+    "leakage-01": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "cell": "leakage",
+      "child_seed": "9380da3e4f5bf89e174fc5f26a5602ea0868a8a79193adcc4168c5efc6d60a2f",
+      "coefficient": 0.08818763156317679,
+      "curve_beta": 0.0,
+      "epsilon": 0.005,
+      "exponent": -2,
+      "forbidden_features": [
+        "leak",
+        "leak_alias",
+        "leak_power",
+        "leak_transform",
+        "leak_cancel"
+      ],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 0,
+      "scale_centers": {
+        "t": 0.637960624312712,
+        "x": 1.5862562869818086,
+        "z": -0.08090726434036966
+      },
+      "wrong_grammar_proof": null
+    },
+    "leakage-02": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "cell": "leakage",
+      "child_seed": "d88d02bb24eaaae4db4e9d3b028b5f91804d1505264fbf5670d1e363ccfb970a",
+      "coefficient": 7.686592914374463,
+      "curve_beta": 0.0,
+      "epsilon": 0.005,
+      "exponent": 1,
+      "forbidden_features": [
+        "leak",
+        "leak_alias",
+        "leak_power",
+        "leak_transform",
+        "leak_cancel"
+      ],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 1,
+      "scale_centers": {
+        "t": -0.789842335279912,
+        "x": -0.9016221486116529,
+        "z": -0.2211740264793102
+      },
+      "wrong_grammar_proof": null
+    },
+    "leakage-03": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "cell": "leakage",
+      "child_seed": "4e15cd11b933c99d8094b32989095bd71688e750dc2871c8002c8aac86178c96",
+      "coefficient": 0.39943289478852,
+      "curve_beta": 0.0,
+      "epsilon": 0.005,
+      "exponent": 1,
+      "forbidden_features": [
+        "leak",
+        "leak_alias",
+        "leak_power",
+        "leak_transform",
+        "leak_cancel"
+      ],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 2,
+      "scale_centers": {
+        "t": 0.19966435807953942,
+        "x": -0.4483991996091299,
+        "z": -0.08613891589728748
+      },
+      "wrong_grammar_proof": null
+    },
+    "leakage-04": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "cell": "leakage",
+      "child_seed": "1c4e7150f46f54aa691fcb8cbd99642a88d3bd82c7e0d29cc0de218762e7069b",
+      "coefficient": 0.06657522321172538,
+      "curve_beta": 0.0,
+      "epsilon": 0.005,
+      "exponent": -2,
+      "forbidden_features": [
+        "leak",
+        "leak_alias",
+        "leak_power",
+        "leak_transform",
+        "leak_cancel"
+      ],
+      "in_family": true,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 3,
+      "scale_centers": {
+        "t": 0.3249361755301823,
+        "x": -0.18567837877653504,
+        "z": 0.1701628272040971
+      },
+      "wrong_grammar_proof": null
+    },
+    "nuisance-01": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "cell": "nuisance",
+      "child_seed": "d6be5ab0aa3c05caa656a195f1f1b17527d1e9c47d791645b3147bdcd29f2d2d",
+      "coefficient": 0.7045662368606531,
+      "curve_beta": 0.0,
+      "epsilon": 0.015,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [
+        "n0",
+        "n1",
+        "q"
+      ],
+      "regime_multiplier": 1.0,
+      "replicate": 0,
+      "scale_centers": {
+        "t": 0.3278919738005259,
+        "x": 0.6636258598835685,
+        "z": -0.07044391998179214
+      },
+      "wrong_grammar_proof": null
+    },
+    "nuisance-02": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "cell": "nuisance",
+      "child_seed": "889a52c29adc1aa78c99ee23218053236bdb695813662b5adcec8bdaed7b1bb9",
+      "coefficient": 1.0697177391547128,
+      "curve_beta": 0.0,
+      "epsilon": 0.015,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [
+        "n0",
+        "n1",
+        "q"
+      ],
+      "regime_multiplier": 1.0,
+      "replicate": 1,
+      "scale_centers": {
+        "t": -0.30617373226698397,
+        "x": 0.9500849031282157,
+        "z": -0.05216508161053507
+      },
+      "wrong_grammar_proof": null
+    },
+    "nuisance-03": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "cell": "nuisance",
+      "child_seed": "25d354010ba884883465f59f3b4c98ef91b1876a484475425ddd8860086a58d6",
+      "coefficient": 0.1037866964627937,
+      "curve_beta": 0.0,
+      "epsilon": 0.015,
+      "exponent": 2,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [
+        "n0",
+        "n1",
+        "q"
+      ],
+      "regime_multiplier": 1.0,
+      "replicate": 2,
+      "scale_centers": {
+        "t": 0.20175623371862605,
+        "x": -1.1418613051768411,
+        "z": -0.08770283508694215
+      },
+      "wrong_grammar_proof": null
+    },
+    "nuisance-04": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "cell": "nuisance",
+      "child_seed": "827f0e4913a4def316599cd17411073e2bd865523fff37bda6ed669c3f0f2b28",
+      "coefficient": 2.8578025981041915,
+      "curve_beta": 0.0,
+      "epsilon": 0.015,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": true,
+      "irrelevant_atoms": [
+        "n0",
+        "n1",
+        "q"
+      ],
+      "regime_multiplier": 1.0,
+      "replicate": 3,
+      "scale_centers": {
+        "t": -0.18743328519456004,
+        "x": 1.079946841229531,
+        "z": 0.08419912414379499
+      },
+      "wrong_grammar_proof": null
+    },
+    "regime-01": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "cell": "regime",
+      "child_seed": "6a503b94ccf2ab9cb0c3547e78a2b910de769226707cf6afacab07584dd8e037",
+      "coefficient": 0.4619084221578927,
+      "curve_beta": 0.0,
+      "epsilon": 0,
+      "exponent": 2,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 3,
+      "replicate": 0,
+      "scale_centers": {
+        "t": 0.3292231021283796,
+        "x": -0.15785184553987253,
+        "z": 0.20096938387080948
+      },
+      "wrong_grammar_proof": null
+    },
+    "regime-02": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "cell": "regime",
+      "child_seed": "edbf9cd4358dbde498850b33673cb06c22cfcc20366905a483be4a771bd7b42d",
+      "coefficient": 7.62273252771997,
+      "curve_beta": 0.0,
+      "epsilon": 0,
+      "exponent": 2,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 2.5,
+      "replicate": 1,
+      "scale_centers": {
+        "t": -0.18483462521136462,
+        "x": 0.3879398751870715,
+        "z": 0.18414811592277136
+      },
+      "wrong_grammar_proof": null
+    },
+    "regime-03": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "cell": "regime",
+      "child_seed": "b85d0645f89fe0279f549e493ada6aeb2f360f090f3badff73cb5e765ca895e1",
+      "coefficient": 0.0954104755767816,
+      "curve_beta": 0.0,
+      "epsilon": 0,
+      "exponent": -2,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 2.5,
+      "replicate": 2,
+      "scale_centers": {
+        "t": -0.5626501947294067,
+        "x": -1.0333258781883985,
+        "z": -0.20179929758578063
+      },
+      "wrong_grammar_proof": null
+    },
+    "regime-04": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "cell": "regime",
+      "child_seed": "b476aa235cb74db0f6fd837bd074be657e64163983ac69f3344ab6020828028a",
+      "coefficient": 2.110382673175997,
+      "curve_beta": 0.0,
+      "epsilon": 0,
+      "exponent": -2,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 3,
+      "replicate": 3,
+      "scale_centers": {
+        "t": -0.8073320563596225,
+        "x": 0.3383818717287208,
+        "z": 0.24493463392637577
+      },
+      "wrong_grammar_proof": null
+    },
+    "wrong_curve-01": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "cell": "wrong_curve",
+      "child_seed": "1c3ce70de219c4f31e31204842e3b7cbe7e7eac13a9863ea5a39f6c6c5576057",
+      "coefficient": 0.19496436502230005,
+      "curve_beta": 0.010235262324726078,
+      "epsilon": 0.0001,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 0,
+      "scale_centers": {
+        "t": -0.8799587267051152,
+        "x": 1.881723045052437,
+        "z": 0.05487594513817301
+      },
+      "wrong_grammar_proof": "Every admitted monomial has log-response affine in log z at fixed x,t; this law has nonzero second derivative 2*beta. Its near-monomial approximation can be useful but is not a structurally correct recovery."
+    },
+    "wrong_curve-02": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "cell": "wrong_curve",
+      "child_seed": "d4f931d0fa4952084e01f8596e8b4361b5d38ff4930d5b12d2c7988bf9394884",
+      "coefficient": 3.126121932517284,
+      "curve_beta": 0.009836967789905287,
+      "epsilon": 0.0001,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 1,
+      "scale_centers": {
+        "t": 0.5182945160264161,
+        "x": 0.9044581035447705,
+        "z": 0.20176023635679646
+      },
+      "wrong_grammar_proof": "Every admitted monomial has log-response affine in log z at fixed x,t; this law has nonzero second derivative 2*beta. Its near-monomial approximation can be useful but is not a structurally correct recovery."
+    },
+    "wrong_curve-03": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "cell": "wrong_curve",
+      "child_seed": "71aed80840d99082df9d3b3f258b5d0c78c39f757753aa51c392d2a489404c74",
+      "coefficient": 0.21629660487365315,
+      "curve_beta": 0.008584378687396924,
+      "epsilon": 0.0001,
+      "exponent": -1,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 2,
+      "scale_centers": {
+        "t": -0.024586825892237263,
+        "x": 0.4058963528284494,
+        "z": 0.16675500017739991
+      },
+      "wrong_grammar_proof": "Every admitted monomial has log-response affine in log z at fixed x,t; this law has nonzero second derivative 2*beta. Its near-monomial approximation can be useful but is not a structurally correct recovery."
+    },
+    "wrong_curve-04": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "cell": "wrong_curve",
+      "child_seed": "12a3ea918b5ec4a769523c4bcb3298d356359e8c0fb7ed755afd40e74875f6f8",
+      "coefficient": 16.235826937604745,
+      "curve_beta": 0.008200605404443504,
+      "epsilon": 0.0001,
+      "exponent": 1,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 3,
+      "scale_centers": {
+        "t": -0.19125049892291401,
+        "x": -0.5808748388447813,
+        "z": 0.11341653697317805
+      },
+      "wrong_grammar_proof": "Every admitted monomial has log-response affine in log z at fixed x,t; this law has nonzero second derivative 2*beta. Its near-monomial approximation can be useful but is not a structurally correct recovery."
+    },
+    "wrong_power-01": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "0.5"
+      },
+      "cell": "wrong_power",
+      "child_seed": "7517c3c54443972cb1481833ca9ed6ee8b222eb69b5024070cd4dd334b3c9513",
+      "coefficient": 0.8716988762592378,
+      "curve_beta": 0.0,
+      "epsilon": 0.005,
+      "exponent": 0.5,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 0,
+      "scale_centers": {
+        "t": 0.5007068227914462,
+        "x": -1.2289489426451026,
+        "z": 0.02379617506527537
+      },
+      "wrong_grammar_proof": "Independent positive x,t,z imply x exponent 1 and t exponent -2; z exponent 1/2 is excluded from the integer grammar. No available alias supplies a square root."
+    },
+    "wrong_power-02": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "0.5"
+      },
+      "cell": "wrong_power",
+      "child_seed": "f4c4352d02399162ae0152bdcddbe6b787ff8082431ef13cf55aef9751480df8",
+      "coefficient": 9.297726739931102,
+      "curve_beta": 0.0,
+      "epsilon": 0.005,
+      "exponent": 0.5,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 1,
+      "scale_centers": {
+        "t": -0.07544309721271103,
+        "x": -0.1986870148920068,
+        "z": 0.048665290477183765
+      },
+      "wrong_grammar_proof": "Independent positive x,t,z imply x exponent 1 and t exponent -2; z exponent 1/2 is excluded from the integer grammar. No available alias supplies a square root."
+    },
+    "wrong_power-03": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "0.5"
+      },
+      "cell": "wrong_power",
+      "child_seed": "b8c7d00193985b143e245d46fd80c743a9696dcb9d4a1b4bbba86b5aae96adfc",
+      "coefficient": 0.14974886648775795,
+      "curve_beta": 0.0,
+      "epsilon": 0.005,
+      "exponent": 0.5,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 2,
+      "scale_centers": {
+        "t": 0.3459494722402918,
+        "x": -0.30367179548190526,
+        "z": -0.09729931888165941
+      },
+      "wrong_grammar_proof": "Independent positive x,t,z imply x exponent 1 and t exponent -2; z exponent 1/2 is excluded from the integer grammar. No available alias supplies a square root."
+    },
+    "wrong_power-04": {
+      "base_signature": {
+        "t": "-2",
+        "x": "1",
+        "z": "0.5"
+      },
+      "cell": "wrong_power",
+      "child_seed": "463cd2d6ae908b592fc0002edd44e496fa77ee295285b0afd73c54cf0a7d322e",
+      "coefficient": 0.08531598409481313,
+      "curve_beta": 0.0,
+      "epsilon": 0.005,
+      "exponent": 0.5,
+      "forbidden_features": [],
+      "in_family": false,
+      "irrelevant_atoms": [],
+      "regime_multiplier": 1.0,
+      "replicate": 3,
+      "scale_centers": {
+        "t": 0.9893519941299411,
+        "x": 1.8513435165207501,
+        "z": 0.06817659233978512
+      },
+      "wrong_grammar_proof": "Independent positive x,t,z imply x exponent 1 and t exponent -2; z exponent 1/2 is excluded from the integer grammar. No available alias supplies a square root."
+    }
+  },
+  "seed": "3b34c3c5d0ddc4ca515aa0269d13097b41dd399c64906d5ad300ec358e9c925d"
+}

@@ -1,0 +1,27 @@
+{
+  "development_observation": "Initial outcome-independent runner fixtures rejected __future__ because it was absent from the standard-library preload. Added that existing source dependency before source freeze; 2 fixture errors resolved. No scientific realization, seed or epoch existed.",
+  "passed": true,
+  "realized_suite1_data_generated": false,
+  "schema": "tnp-suite1/preflight-v1",
+  "seed_generated": false,
+  "source_manifest": {
+    "Discovery/__init__.py": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078",
+    "Discovery/constants.py": "952c23a9b8219125c3a6a04a6266c2d2158529aa3ece4753198e11f20734fccb",
+    "Discovery/dependency_definitions.py": "66e6e8c1d90f8ca5bba7596828dcf33fad3dbca3e8458375df19d624fd47058f",
+    "Discovery/dimensional_search.py": "f9512b3c060b5c04c69045713f3cd0bbac8f484715188d5ee0e53fe88e708adf",
+    "Discovery/dimensions.py": "40c01117063c69e73c36aabf08d73776b3c50bd21b25a73b782cabae5489e2b2",
+    "Discovery/monomial_constraints.py": "6d972444722d702e5db9f1c188f21d405352c97bdd8abba565cde19680497a81",
+    "Discovery/planck_identities.py": "d1b561ab3ca7a91bb4f974cebff032bcd2d52c044b59df6befc40b1df58c988c",
+    "Discovery/preregistration_history.py": "1f60d7b37bf5a924f6eb1cc9bdc988596459d10a7fbc0de619b14c2a64e161c0",
+    "Discovery/source_history.py": "a0413cdb3552b2aab9c7372c8f5a7d2534473b7ba2d128602838cd7d6f4f45eb",
+    "Discovery/symbolic_benchmark_engine.py": "91ac2e902efac1ba593b5934598aa5d3d394f2c4b966d466406e0b965f2e9841",
+    "Discovery/symbolic_suite.py": "65620f40628946ea3fcb095375cef90120aabf02ff8449f480fb180b2ec80af1",
+    "Discovery/symbolic_suite_engine.py": "a2a39c214689957591355cd2943c5fa0315e5367848c18d4d7ec9912435325d6",
+    "Discovery/symbolic_suite_evaluation.py": "b3be69df5af0772a3478cb2d0bde22465f49be96a87a2eb43561c4c1af1955d5",
+    "Discovery/symbolic_suite_runner.py": "35dadd66b5ec92c1aaab18bd85d03af6e96e296785b4aa2dfd67ced386f81ecd",
+    "Discovery/symbolic_suite_worlds.py": "2887e05f129a50a80becc0a428baee05f7ef386091fb7a350d563d9bebac3fa2",
+    "tests/test_symbolic_suite.py": "974adb3c03985c1e87c4f8e363714d62ca8412aaab347755465c51c5e0d3828c"
+  },
+  "test_log": "test_aggregation_is_strict_and_retains_partial_counts (tests.test_symbolic_suite.ForwardEvaluationTests.test_aggregation_is_strict_and_retains_partial_counts) ... ok\ntest_different_frozen_tolerances_and_regime_factor (tests.test_symbolic_suite.ForwardEvaluationTests.test_different_frozen_tolerances_and_regime_factor) ... ok\ntest_disposition_routing_rejects_raw_fail_as_authoritative (tests.test_symbolic_suite.ForwardEvaluationTests.test_disposition_routing_rejects_raw_fail_as_authoritative) ... ok\ntest_equivalence_and_descendant_ablations_match_reenumeration (tests.test_symbolic_suite.ForwardEvaluationTests.test_equivalence_and_descendant_ablations_match_reenumeration) ... ok\ntest_noise_policy_is_derived_not_copied_literal (tests.test_symbolic_suite.ForwardEvaluationTests.test_noise_policy_is_derived_not_copied_literal) ... ok\ntest_missing_cache_and_completed_reads_live (tests.test_symbolic_suite.ForwardReceiptTests.test_missing_cache_and_completed_reads_live) ... ok\ntest_present_stale_cache_read_is_not_a_miss (tests.test_symbolic_suite.ForwardReceiptTests.test_present_stale_cache_read_is_not_a_miss) ... ok\ntest_receipt_tamper_rejected (tests.test_symbolic_suite.ForwardReceiptTests.test_receipt_tamper_rejected) ... ok\ntest_unexpected_source_cache_oracle_modules_rejected (tests.test_symbolic_suite.ForwardReceiptTests.test_unexpected_source_cache_oracle_modules_rejected) ... ok\ntest_fractional_power_excluded_and_regimes_abstain (tests.test_symbolic_suite.NegativeFamilyTests.test_fractional_power_excluded_and_regimes_abstain) ... ok\ntest_api_rejects_hidden_information (tests.test_symbolic_suite.ScientificBoundaryTests.test_api_rejects_hidden_information) ... ok\ntest_approximation_is_not_adequacy_or_structural_credit (tests.test_symbolic_suite.ScientificBoundaryTests.test_approximation_is_not_adequacy_or_structural_credit) ... ok\ntest_leakage_poison_reconstructive_and_cancelling_paths (tests.test_symbolic_suite.ScientificBoundaryTests.test_leakage_poison_reconstructive_and_cancelling_paths) ... ok\ntest_metrics_against_independent_hand_calculation (tests.test_symbolic_suite.ScientificBoundaryTests.test_metrics_against_independent_hand_calculation) ... ok\ntest_sealed_engine_cannot_access_heldout_and_tamper_fails (tests.test_symbolic_suite.ScientificBoundaryTests.test_sealed_engine_cannot_access_heldout_and_tamper_fails) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 0.884s\n\nOK\n",
+  "tests_run": 15
+}
