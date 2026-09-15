@@ -1,0 +1,43 @@
+{
+  "created_at": "2026-09-15T00:07:57.677183+00:00",
+  "eligibility_sha256": "56e73d40c1fd3a42818a840fc14204cb1403cdd53425d72d0645420e3a99d4af",
+  "heldout_sha256": "9a6cf5749faa3de6ec7d2aae44e64f21919c0db8c13e1f70a0dbc2f9790d8df5",
+  "inputs_sha256": "49a04c1b341bdcfb78e9cd04b1af1912785ff314a609c9c25bceff79e56e39f3",
+  "oracle_sha256": "3cd8386dbc53cee0e0897fe53b461970f4a2b5acaa8eca29687fd6b1a1a87455",
+  "public_sha256": "8e51f34aff0e9f3fe440d1a8340fd35a51d29c7dd6b911fa52402e8cc5ea4e05",
+  "realization_ids": [
+    "clean-01",
+    "clean-02",
+    "clean-03",
+    "clean-04",
+    "leakage-01",
+    "leakage-02",
+    "leakage-03",
+    "leakage-04",
+    "nuisance-01",
+    "nuisance-02",
+    "nuisance-03",
+    "nuisance-04",
+    "regime-01",
+    "regime-02",
+    "regime-03",
+    "regime-04",
+    "wrong_curve-01",
+    "wrong_curve-02",
+    "wrong_curve-03",
+    "wrong_curve-04",
+    "wrong_power-01",
+    "wrong_power-02",
+    "wrong_power-03",
+    "wrong_power-04"
+  ],
+  "schema": "tnp-suite1/data-commitment-v1",
+  "seed_commit_sha": "e43b18b9b43e91a8b2a171c924cbd83ff98d7ac5",
+  "seed_commitment_sha256": "9061cc7c38ed9b3cf7fbbc3a16d28c000552bf5c6fc38189c334d77a51367be2",
+  "seed_publication": {
+    "observed_before_generation": true,
+    "observed_sha": "e43b18b9b43e91a8b2a171c924cbd83ff98d7ac5",
+    "remote_ref": "refs/heads/experiment/symbolic-benchmark-suite-1"
+  },
+  "source_sha": "dc2532ec55d865177144d780bcf3983c1b65a624"
+}
