@@ -1,0 +1,15 @@
+{
+  "complete_ids": true,
+  "eligibility": true,
+  "eligibility_commitment": true,
+  "exhaustive_family": true,
+  "four_block_streams": true,
+  "heldout_commitment": true,
+  "independent_all_candidate_arithmetic": true,
+  "inputs_commitment": true,
+  "oracle_commitment": true,
+  "payloads": true,
+  "public_commitment": true,
+  "receipts": true,
+  "source_inventory": true
+}

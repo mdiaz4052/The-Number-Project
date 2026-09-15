@@ -1,0 +1,191 @@
+{
+  "cells": {
+    "adequate-n1": {
+      "adequate_control_abstention": 0,
+      "condition": "adequate",
+      "evaluated_blocks": 4,
+      "expected_blocks": 4,
+      "family_margin_by_block": {
+        "0": -0.00013890922648377292,
+        "1": -0.00013524875649255282,
+        "2": -0.00014069353729180214,
+        "3": -0.00014324690360045252
+      },
+      "heldout_approximation": 4,
+      "interpretable_blocks": 4,
+      "known_noise": 0.0001,
+      "missed_inadequacy": 0,
+      "recognition_pattern": "no_blocks",
+      "recognized_inadequacy": 0,
+      "structural_credit": 4,
+      "structurally_wrong_stable_selection": 0,
+      "unjustified_family_rejection": 0
+    },
+    "adequate-n2": {
+      "adequate_control_abstention": 0,
+      "condition": "adequate",
+      "evaluated_blocks": 4,
+      "expected_blocks": 4,
+      "family_margin_by_block": {
+        "0": -0.002222532623740875,
+        "1": -0.0021639651038811987,
+        "2": -0.0022510815966690382,
+        "3": -0.002291935457607986
+      },
+      "heldout_approximation": 4,
+      "interpretable_blocks": 4,
+      "known_noise": 0.0016,
+      "missed_inadequacy": 0,
+      "recognition_pattern": "no_blocks",
+      "recognized_inadequacy": 0,
+      "structural_credit": 4,
+      "structurally_wrong_stable_selection": 0,
+      "unjustified_family_rejection": 0
+    },
+    "adequate-n3": {
+      "adequate_control_abstention": 0,
+      "condition": "adequate",
+      "evaluated_blocks": 4,
+      "expected_blocks": 4,
+      "family_margin_by_block": {
+        "0": -0.00694541232419032,
+        "1": -0.006762388824628577,
+        "2": -0.0070346278645907236,
+        "3": -0.007162296180025022
+      },
+      "heldout_approximation": 4,
+      "interpretable_blocks": 4,
+      "known_noise": 0.005,
+      "missed_inadequacy": 0,
+      "recognition_pattern": "no_blocks",
+      "recognized_inadequacy": 0,
+      "structural_credit": 4,
+      "structurally_wrong_stable_selection": 0,
+      "unjustified_family_rejection": 0
+    },
+    "curved-n1": {
+      "adequate_control_abstention": 0,
+      "condition": "curved",
+      "evaluated_blocks": 4,
+      "expected_blocks": 4,
+      "family_margin_by_block": {
+        "0": 0.0028276911142162027,
+        "1": 0.002744610843182395,
+        "2": 0.002660036064138259,
+        "3": 0.002957683216798917
+      },
+      "heldout_approximation": 4,
+      "interpretable_blocks": 4,
+      "known_noise": 0.0001,
+      "missed_inadequacy": 0,
+      "recognition_pattern": "all_blocks",
+      "recognized_inadequacy": 4,
+      "structural_credit": 0,
+      "structurally_wrong_stable_selection": 0,
+      "unjustified_family_rejection": 0
+    },
+    "curved-n2": {
+      "adequate_control_abstention": 0,
+      "condition": "curved",
+      "evaluated_blocks": 4,
+      "expected_blocks": 4,
+      "family_margin_by_block": {
+        "0": -0.00013139091450595523,
+        "1": -0.00039580190877128813,
+        "2": -0.0003517805142832474,
+        "3": 4.4032365493423126e-05
+      },
+      "heldout_approximation": 4,
+      "interpretable_blocks": 4,
+      "known_noise": 0.0016,
+      "missed_inadequacy": 3,
+      "recognition_pattern": "some_blocks",
+      "recognized_inadequacy": 1,
+      "structural_credit": 0,
+      "structurally_wrong_stable_selection": 3,
+      "unjustified_family_rejection": 0
+    },
+    "curved-n3": {
+      "adequate_control_abstention": 0,
+      "condition": "curved",
+      "evaluated_blocks": 4,
+      "expected_blocks": 4,
+      "family_margin_by_block": {
+        "0": -0.005975123706546419,
+        "1": -0.00639179397312774,
+        "2": -0.0062825535503108505,
+        "3": -0.005859595378315889
+      },
+      "heldout_approximation": 4,
+      "interpretable_blocks": 4,
+      "known_noise": 0.005,
+      "missed_inadequacy": 4,
+      "recognition_pattern": "no_blocks",
+      "recognized_inadequacy": 0,
+      "structural_credit": 0,
+      "structurally_wrong_stable_selection": 4,
+      "unjustified_family_rejection": 0
+    }
+  },
+  "completion_is_not_favorable_performance": true,
+  "controls_sha256": "040bf46b9680ac878412b552787bb59e7e1af681f3658e2e30cf49dbffec9533",
+  "curved_block_sequences": {
+    "0": {
+      "nonmonotonic_false_to_true": false,
+      "recognized_by_increasing_noise": [
+        true,
+        false,
+        false
+      ]
+    },
+    "1": {
+      "nonmonotonic_false_to_true": false,
+      "recognized_by_increasing_noise": [
+        true,
+        false,
+        false
+      ]
+    },
+    "2": {
+      "nonmonotonic_false_to_true": false,
+      "recognized_by_increasing_noise": [
+        true,
+        false,
+        false
+      ]
+    },
+    "3": {
+      "nonmonotonic_false_to_true": false,
+      "recognized_by_increasing_noise": [
+        true,
+        true,
+        false
+      ]
+    }
+  },
+  "disposition": "MISSPEC_MARGIN_1_COMPLETE",
+  "evaluated_at": "2026-09-15T14:55:11.035360+00:00",
+  "evaluation_sha256": "0fd1490fae51db5aefbc876ffd6b0c3d776f095310abe0074631ba2b6c8da49c",
+  "expected_datasets": 24,
+  "independent_blocks": 4,
+  "integrity_pass": true,
+  "interpretable_datasets": 24,
+  "interpretation": "Four independent random blocks with deterministic exponent strata; six matched law/noise conditions within each. Not 24 independent replicates, not identically distributed population sampling.",
+  "matched_conditions_per_block": 6,
+  "missing_ids": [],
+  "nonclaims": [
+    "No discovery of unknown natural laws",
+    "No arbitrary physical-data performance",
+    "No universal false-positive rate or population statistical inference",
+    "No superiority over external symbolic-regression systems",
+    "No empirical evidence for any Number Project physical hypothesis",
+    "No hostile-code sandbox or human family blindness",
+    "Finite-data family rejection does not uniquely identify wrong grammar outside this known-truth design"
+  ],
+  "review_status": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+  "schema": "tnp-margin1/raw-result-v1",
+  "scientific_law_claim": false,
+  "selection_commit_sha": "59a6bde5d5691df5be5a68f35295cfbe02bd1199",
+  "source_sha": "b81278440db1c1b234caca26f98bf91162bcfb52",
+  "summary_sha256": "ff0dc0afcbfc52abe4e6f27df40dc8c0a15ca42a05873b55da267471549fd696"
+}
