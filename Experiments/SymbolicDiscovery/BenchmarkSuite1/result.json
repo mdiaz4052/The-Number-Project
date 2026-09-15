@@ -1,0 +1,83 @@
+{
+  "cells": {
+    "clean": {
+      "consistency": "consistent_success",
+      "evaluated": 4,
+      "expected": 4,
+      "false_positive_selections": 0,
+      "grammar_recognitions": 0,
+      "justified_abstentions": 0,
+      "successes": 4
+    },
+    "leakage": {
+      "consistency": "consistent_success",
+      "evaluated": 4,
+      "expected": 4,
+      "false_positive_selections": 0,
+      "grammar_recognitions": 0,
+      "justified_abstentions": 0,
+      "successes": 4
+    },
+    "nuisance": {
+      "consistency": "consistent_success",
+      "evaluated": 4,
+      "expected": 4,
+      "false_positive_selections": 0,
+      "grammar_recognitions": 0,
+      "justified_abstentions": 0,
+      "successes": 4
+    },
+    "regime": {
+      "consistency": "consistent_success",
+      "evaluated": 4,
+      "expected": 4,
+      "false_positive_selections": 0,
+      "grammar_recognitions": 0,
+      "justified_abstentions": 4,
+      "successes": 4
+    },
+    "wrong_curve": {
+      "consistency": "consistent_success",
+      "evaluated": 4,
+      "expected": 4,
+      "false_positive_selections": 0,
+      "grammar_recognitions": 4,
+      "justified_abstentions": 4,
+      "successes": 4
+    },
+    "wrong_power": {
+      "consistency": "consistent_success",
+      "evaluated": 4,
+      "expected": 4,
+      "false_positive_selections": 0,
+      "grammar_recognitions": 4,
+      "justified_abstentions": 4,
+      "successes": 4
+    }
+  },
+  "controls_sha256": "ef9afa0c5d903426356ac9e44b773c33795e78e1764cef2b5cf98cc7c67b6519",
+  "disposition": "BENCHMARK_SUITE_1_PASS",
+  "evaluated_at": "2026-09-15T00:10:36.741889+00:00",
+  "evaluated_realizations": 24,
+  "evaluation_sha256": "c9f8fd7c9957719d10c8a49be89f36c496693afff98c9f4cf3c8cbe4090f1319",
+  "expected_realizations": 24,
+  "integrity_controls_pass": true,
+  "interpretation": "Counts over this prespecified synthetic suite, not a general false-positive rate.",
+  "nonclaims": [
+    "No discovery of unknown natural laws",
+    "No arbitrary physical-data performance",
+    "No universal false-positive rate or population statistical inference",
+    "No superiority over external symbolic-regression systems",
+    "No empirical evidence for any Number Project physical hypothesis",
+    "No hostile-code sandbox or human family blindness",
+    "Finite-data family rejection does not uniquely identify wrong grammar outside this known-truth design"
+  ],
+  "review_status": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+  "schema": "tnp-suite1/raw-result-v1",
+  "scientific_law_claim": false,
+  "selection_commit_sha": "55c2783a20edfa2208094129f3c5efa6cf6247cc",
+  "selection_sha256": "bde968309623692e9f48b26471e56edfb5c7b156708d1c564582e117005ebded",
+  "source_sha": "dc2532ec55d865177144d780bcf3983c1b65a624",
+  "successful_realizations": 24,
+  "summary_sha256": "a2a2fa1b9674118d11d8168d77e5c562b781babfe1bddb2b0d5ff6f1468231b3"
+}

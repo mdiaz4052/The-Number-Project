@@ -1,0 +1,156 @@
+{
+  "candidate_count": 5,
+  "candidates": [
+    {
+      "class_id": "t:-2|x:1|z:1",
+      "classification": "predictive_but_structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": true,
+      "heldout_rmse": 0.005328831207875201,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 1,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": true,
+      "validation_rmse": 0.0025208979727823527
+    },
+    {
+      "class_id": "t:-2|x:1",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 0.8087291075080831,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 2,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 0.5643990506403667
+    },
+    {
+      "class_id": "t:-2|x:1|z:2",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 0.8052975100474992,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 3,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 0.563365730728734
+    },
+    {
+      "class_id": "t:-2|x:1|z:-1",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 1.6157187869041563,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 4,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 1.1282733475851474
+    },
+    {
+      "class_id": "t:-2|x:1|z:-2",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 2.4227137023417966,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 5,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 1.692149440932547
+    }
+  ],
+  "cell": "wrong_curve",
+  "checks": {
+    "good_approximation_denied_recovery": true,
+    "leakage_safe": true,
+    "misspecification_recognition": true
+  },
+  "classification": "hypothesis_family_misspecification",
+  "coefficient_relative_error": null,
+  "diagnostics": {
+    "family_rejection_meaning": "Finite-data inadequacy before reveal; known generator establishes grammar misspecification after reveal.",
+    "log_curvature": 0.01640121080888701,
+    "oracle_wrong_grammar_proof": "Every admitted monomial has log-response affine in log z at fixed x,t; this law has nonzero second derivative 2*beta. Its near-monomial approximation can be useful but is not a structurally correct recovery.",
+    "proof_conditions_verified": true
+  },
+  "evidence_class": "GENERATED/FITTED CANDIDATE",
+  "false_positive_selection": false,
+  "grammar_recognition": true,
+  "justified_abstention": true,
+  "policy": {
+    "acceptance_validation_rmse": 0.000200001,
+    "approximation_rmse_max": 0.04,
+    "complexity_lambda": 0.001,
+    "max_abs_power": 2,
+    "max_denominator": 1,
+    "max_factors": 3
+  },
+  "pre_reveal_approximation_status": "predictive_approximation",
+  "pre_reveal_decision": "no_stable_law",
+  "pre_reveal_family_assessment": "family_inadequate_on_validation",
+  "predictively_surviving_wrong_classes": 1,
+  "rejected_features": [],
+  "replicate": 3,
+  "scientific_law_claim": false,
+  "selected_class": "t:-2|x:1|z:1",
+  "selected_expanded_complexity": 4,
+  "selected_heldout_rmse": 0.005328831207875201,
+  "selected_surface": {
+    "t": "-2",
+    "x": "1",
+    "z": "1"
+  },
+  "selected_training_rmse": 0.0028558184862259887,
+  "selected_validation_rmse": 0.0025208979727823527,
+  "success": true,
+  "surface_count": 5,
+  "true_class_rank": null,
+  "true_class_surfaces": 0
+}

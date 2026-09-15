@@ -1,0 +1,75 @@
+{
+  "cells": {
+    "clean": {
+      "consistency": "consistent_success",
+      "evaluated": 4,
+      "expected": 4,
+      "false_positive_selections": 0,
+      "grammar_recognitions": 0,
+      "justified_abstentions": 0,
+      "successes": 4
+    },
+    "leakage": {
+      "consistency": "consistent_success",
+      "evaluated": 4,
+      "expected": 4,
+      "false_positive_selections": 0,
+      "grammar_recognitions": 0,
+      "justified_abstentions": 0,
+      "successes": 4
+    },
+    "nuisance": {
+      "consistency": "consistent_success",
+      "evaluated": 4,
+      "expected": 4,
+      "false_positive_selections": 0,
+      "grammar_recognitions": 0,
+      "justified_abstentions": 0,
+      "successes": 4
+    },
+    "regime": {
+      "consistency": "consistent_success",
+      "evaluated": 4,
+      "expected": 4,
+      "false_positive_selections": 0,
+      "grammar_recognitions": 0,
+      "justified_abstentions": 4,
+      "successes": 4
+    },
+    "wrong_curve": {
+      "consistency": "consistent_success",
+      "evaluated": 4,
+      "expected": 4,
+      "false_positive_selections": 0,
+      "grammar_recognitions": 4,
+      "justified_abstentions": 4,
+      "successes": 4
+    },
+    "wrong_power": {
+      "consistency": "consistent_success",
+      "evaluated": 4,
+      "expected": 4,
+      "false_positive_selections": 0,
+      "grammar_recognitions": 4,
+      "justified_abstentions": 4,
+      "successes": 4
+    }
+  },
+  "disposition": "BENCHMARK_SUITE_1_PASS",
+  "evaluated_realizations": 24,
+  "expected_realizations": 24,
+  "integrity_controls_pass": true,
+  "interpretation": "Counts over this prespecified synthetic suite, not a general false-positive rate.",
+  "nonclaims": [
+    "No discovery of unknown natural laws",
+    "No arbitrary physical-data performance",
+    "No universal false-positive rate or population statistical inference",
+    "No superiority over external symbolic-regression systems",
+    "No empirical evidence for any Number Project physical hypothesis",
+    "No hostile-code sandbox or human family blindness",
+    "Finite-data family rejection does not uniquely identify wrong grammar outside this known-truth design"
+  ],
+  "review_status": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+  "scientific_law_claim": false,
+  "successful_realizations": 24
+}

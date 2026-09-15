@@ -1,0 +1,154 @@
+{
+  "candidate_count": 5,
+  "candidates": [
+    {
+      "class_id": "t:-2|x:1|z:-2",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 0.45814536593707755,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 1,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 0.45814536593707755
+    },
+    {
+      "class_id": "t:-2|x:1|z:-1",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 0.86826788132282,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 2,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 0.7584860565915406
+    },
+    {
+      "class_id": "t:-2|x:1",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 1.5446245258827203,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 3,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 1.2928700101658661
+    },
+    {
+      "class_id": "t:-2|x:1|z:1",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 2.259607181125608,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 4,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 1.8704364388444537
+    },
+    {
+      "class_id": "t:-2|x:1|z:2",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 2.9855934376342694,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 5,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 2.4609672740116415
+    }
+  ],
+  "cell": "regime",
+  "checks": {
+    "leakage_safe": true,
+    "regime_abstention": true
+  },
+  "classification": "no_stable_law",
+  "coefficient_relative_error": null,
+  "diagnostics": {
+    "paired_input_contradiction": true,
+    "paired_log_rmse_lower_bound": 0.45814536593707755,
+    "realized_regime_multiplier": 2.5
+  },
+  "evidence_class": "GENERATED/FITTED CANDIDATE",
+  "false_positive_selection": false,
+  "grammar_recognition": false,
+  "justified_abstention": true,
+  "policy": {
+    "acceptance_validation_rmse": 1e-09,
+    "approximation_rmse_max": 0.04,
+    "complexity_lambda": 0.001,
+    "max_abs_power": 2,
+    "max_denominator": 1,
+    "max_factors": 3
+  },
+  "pre_reveal_approximation_status": "poor_approximation",
+  "pre_reveal_decision": "no_stable_law",
+  "pre_reveal_family_assessment": "family_inadequate_on_validation",
+  "predictively_surviving_wrong_classes": 0,
+  "rejected_features": [],
+  "replicate": 2,
+  "scientific_law_claim": false,
+  "selected_class": "t:-2|x:1|z:-2",
+  "selected_expanded_complexity": 5,
+  "selected_heldout_rmse": 0.45814536593707755,
+  "selected_surface": {
+    "t": "-2",
+    "x": "1",
+    "z": "-2"
+  },
+  "selected_training_rmse": 0.45814536593707755,
+  "selected_validation_rmse": 0.45814536593707755,
+  "success": true,
+  "surface_count": 5,
+  "true_class_rank": null,
+  "true_class_surfaces": 0
+}

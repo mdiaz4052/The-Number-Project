@@ -1,0 +1,180 @@
+{
+  "candidate_count": 5,
+  "candidates": [
+    {
+      "class_id": "t:-2|x:1|z:-2",
+      "classification": "true_structural_recovery",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "heldout_adequate": true,
+      "heldout_approximation": true,
+      "heldout_rmse": 0.0031092403108679,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": true,
+      "rank": 1,
+      "scientific_credit": true,
+      "validation_adequate": true,
+      "validation_approximation": true,
+      "validation_rmse": 0.0035757935915760736
+    },
+    {
+      "class_id": "t:-2|x:1|z:-1",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 0.7382034165194395,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 2,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 0.563815351660562
+    },
+    {
+      "class_id": "t:-2|x:1",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 1.4767401119158923,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 3,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 1.128051267122024
+    },
+    {
+      "class_id": "t:-2|x:1|z:1",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 2.21527896422019,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 4,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 1.6922909081367339
+    },
+    {
+      "class_id": "t:-2|x:1|z:2",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 2.9538183555673023,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 5,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 2.256531480012647
+    }
+  ],
+  "cell": "leakage",
+  "checks": {
+    "leakage_safe": true,
+    "leakage_temptation": true,
+    "selected_recovery": true
+  },
+  "classification": "true_structural_recovery",
+  "coefficient_relative_error": 0.00032989788224147,
+  "diagnostics": {
+    "leakage_counterfactuals": {
+      "errors": {
+        "direct": {
+          "train": 0.0,
+          "validation": 0.0
+        },
+        "powered": {
+          "train": 1.3877787807814457e-17,
+          "validation": 0.0
+        },
+        "reconstructive": {
+          "train": 1.9724042404289787e-16,
+          "validation": 2.5438405243138006e-16
+        },
+        "transitive": {
+          "train": 0.0,
+          "validation": 0.0
+        }
+      },
+      "powered_outside_candidate_grammar": true,
+      "scientific_credit": false
+    }
+  },
+  "evidence_class": "GENERATED/FITTED CANDIDATE",
+  "false_positive_selection": false,
+  "grammar_recognition": false,
+  "justified_abstention": false,
+  "policy": {
+    "acceptance_validation_rmse": 0.010000001,
+    "approximation_rmse_max": 0.04,
+    "complexity_lambda": 0.001,
+    "max_abs_power": 2,
+    "max_denominator": 1,
+    "max_factors": 3
+  },
+  "pre_reveal_approximation_status": "predictive_approximation",
+  "pre_reveal_decision": "stable_candidate",
+  "pre_reveal_family_assessment": "contains_validation_adequate_member",
+  "predictively_surviving_wrong_classes": 0,
+  "rejected_features": [
+    "leak",
+    "leak_alias",
+    "leak_cancel",
+    "leak_power",
+    "leak_transform"
+  ],
+  "replicate": 3,
+  "scientific_law_claim": false,
+  "selected_class": "t:-2|x:1|z:-2",
+  "selected_expanded_complexity": 5,
+  "selected_heldout_rmse": 0.0031092403108679,
+  "selected_surface": {
+    "t": "-2",
+    "x": "1",
+    "z": "-2"
+  },
+  "selected_training_rmse": 0.003101221063003181,
+  "selected_validation_rmse": 0.0035757935915760736,
+  "success": true,
+  "surface_count": 5,
+  "true_class_rank": 1,
+  "true_class_surfaces": 1
+}

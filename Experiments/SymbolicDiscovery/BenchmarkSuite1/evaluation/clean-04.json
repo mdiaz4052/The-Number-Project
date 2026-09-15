@@ -1,0 +1,150 @@
+{
+  "candidate_count": 5,
+  "candidates": [
+    {
+      "class_id": "t:-2|x:1|z:-1",
+      "classification": "true_structural_recovery",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "-1"
+      },
+      "heldout_adequate": true,
+      "heldout_approximation": true,
+      "heldout_rmse": 1.8234411131298637e-16,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": true,
+      "rank": 1,
+      "scientific_credit": true,
+      "validation_adequate": true,
+      "validation_approximation": true,
+      "validation_rmse": 1.0088899796564627e-16
+    },
+    {
+      "class_id": "t:-2|x:1",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 0.813850193126533,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 2,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 0.6247556201907875
+    },
+    {
+      "class_id": "t:-2|x:1|z:-2",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "-2"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 0.8138501931265331,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 3,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 0.6247556201907875
+    },
+    {
+      "class_id": "t:-2|x:1|z:1",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "1"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 1.6277003862530661,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 4,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 1.2495112403815751
+    },
+    {
+      "class_id": "t:-2|x:1|z:2",
+      "classification": "structurally_wrong",
+      "evidence_class": "GENERATED/FITTED CANDIDATE",
+      "expanded": {
+        "t": "-2",
+        "x": "1",
+        "z": "2"
+      },
+      "heldout_adequate": false,
+      "heldout_approximation": false,
+      "heldout_rmse": 2.4415505793795993,
+      "leakage_contaminated": false,
+      "nuisance_atoms": [],
+      "oracle_structural_match": false,
+      "rank": 5,
+      "scientific_credit": false,
+      "validation_adequate": false,
+      "validation_approximation": false,
+      "validation_rmse": 1.8742668605723627
+    }
+  ],
+  "cell": "clean",
+  "checks": {
+    "leakage_safe": true,
+    "selected_recovery": true
+  },
+  "classification": "true_structural_recovery",
+  "coefficient_relative_error": 0.0,
+  "diagnostics": {},
+  "evidence_class": "GENERATED/FITTED CANDIDATE",
+  "false_positive_selection": false,
+  "grammar_recognition": false,
+  "justified_abstention": false,
+  "policy": {
+    "acceptance_validation_rmse": 1e-09,
+    "approximation_rmse_max": 0.04,
+    "complexity_lambda": 0.001,
+    "max_abs_power": 2,
+    "max_denominator": 1,
+    "max_factors": 3
+  },
+  "pre_reveal_approximation_status": "predictive_approximation",
+  "pre_reveal_decision": "stable_candidate",
+  "pre_reveal_family_assessment": "contains_validation_adequate_member",
+  "predictively_surviving_wrong_classes": 0,
+  "rejected_features": [],
+  "replicate": 3,
+  "scientific_law_claim": false,
+  "selected_class": "t:-2|x:1|z:-1",
+  "selected_expanded_complexity": 4,
+  "selected_heldout_rmse": 1.8234411131298637e-16,
+  "selected_surface": {
+    "t": "-2",
+    "x": "1",
+    "z": "-1"
+  },
+  "selected_training_rmse": 1.0204318241915047e-16,
+  "selected_validation_rmse": 1.0088899796564627e-16,
+  "success": true,
+  "surface_count": 5,
+  "true_class_rank": 1,
+  "true_class_surfaces": 1
+}

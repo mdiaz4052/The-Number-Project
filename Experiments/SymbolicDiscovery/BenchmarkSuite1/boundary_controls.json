@@ -1,0 +1,10 @@
+{
+  "complete_ids": true,
+  "forward_receipts": true,
+  "independent_all_candidate_arithmetic": true,
+  "no_candidate_law_claim": true,
+  "payload_identity": true,
+  "pre_score_eligibility": true,
+  "seed_stream_uniqueness": true,
+  "source_inventory": true
+}

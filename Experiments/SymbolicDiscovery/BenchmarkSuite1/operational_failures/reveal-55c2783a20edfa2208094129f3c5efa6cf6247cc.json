@@ -1,0 +1,10 @@
+{
+  "disposition": "BENCHMARK_SUITE_1_NO_GO_CAPABILITY",
+  "error": "KeyError: 'disposition'",
+  "head_sha": "55c2783a20edfa2208094129f3c5efa6cf6247cc",
+  "receipt": null,
+  "recorded_at": "2026-09-15T00:10:36.743858+00:00",
+  "scientific_interpretation": "Operational failure; preserve partial artifacts and fixed seed. No retry or scientific tuning implied.",
+  "stage": "reveal",
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/scratch/a5c3a89b3b2b/The-Number-Project/Discovery/symbolic_suite.py\", line 346, in main\n    try: {'seed':seed,'realize':realize,'seal':seal,'reveal':reveal}[args.stage]()\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a5c3a89b3b2b/The-Number-Project/Discovery/symbolic_suite.py\", line 237, in reveal\n    write_new(INDEX,make_index(result))\n                    ^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a5c3a89b3b2b/The-Number-Project/Discovery/symbolic_suite.py\", line 192, in make_index\n    'Benchmark0':{'raw_epoch':entry(baseline/'result.json'),'reconciliation':entry(baseline/'receipt_reconciliation.json'),\n                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/a5c3a89b3b2b/The-Number-Project/Discovery/symbolic_suite.py\", line 190, in entry\n    return {'path':path.relative_to(ROOT).as_posix(),'sha256':sha_file(path),'disposition':value['disposition']}\n                                                                                           ~~~~~^^^^^^^^^^^^^^^\nKeyError: 'disposition'\n"
+}
