@@ -1,0 +1,225 @@
+[
+  {
+    "basis": "8 / 2\u00b2 = 2; 18 / 3\u00b2 = 2",
+    "expected": [
+      2.0,
+      2.0
+    ],
+    "postfix": {
+      "assertions": {},
+      "coefficients": {},
+      "label": "postfix-10",
+      "metrics": {
+        "cached_answer": "untrusted"
+      },
+      "opaque": {},
+      "render": "mock postfix",
+      "tokens": [
+        {
+          "name": "t",
+          "op": "variable"
+        },
+        {
+          "exponent": -2,
+          "operator": "power"
+        },
+        {
+          "name": "x",
+          "op": "variable"
+        },
+        "*"
+      ]
+    },
+    "tree": {
+      "claims": {},
+      "diagnostics": {
+        "cached_answer": "untrusted"
+      },
+      "display": "mock tree",
+      "expression": {
+        "denominator": {
+          "arg": {
+            "name": "t",
+            "op": "variable"
+          },
+          "exponent": 2,
+          "op": "power"
+        },
+        "numerator": {
+          "name": "x",
+          "op": "variable"
+        },
+        "op": "divide"
+      },
+      "id": "tree-0",
+      "opaque": {},
+      "parameters": {}
+    }
+  },
+  {
+    "basis": "twice those accelerations = 4",
+    "expected": [
+      4.0,
+      4.0
+    ],
+    "postfix": {
+      "assertions": {},
+      "coefficients": {},
+      "label": "postfix-11",
+      "metrics": {
+        "cached_answer": "untrusted"
+      },
+      "opaque": {},
+      "render": "mock postfix",
+      "tokens": [
+        {
+          "name": "x",
+          "op": "variable"
+        },
+        {
+          "name": "t",
+          "op": "variable"
+        },
+        {
+          "exponent": 2,
+          "operator": "power"
+        },
+        "/",
+        {
+          "name": "t",
+          "op": "variable"
+        },
+        {
+          "exponent": -2,
+          "operator": "power"
+        },
+        {
+          "name": "x",
+          "op": "variable"
+        },
+        "*",
+        "+"
+      ]
+    },
+    "tree": {
+      "claims": {},
+      "diagnostics": {
+        "cached_answer": "untrusted"
+      },
+      "display": "mock tree",
+      "expression": {
+        "args": [
+          {
+            "denominator": {
+              "arg": {
+                "name": "t",
+                "op": "variable"
+              },
+              "exponent": 2,
+              "op": "power"
+            },
+            "numerator": {
+              "name": "x",
+              "op": "variable"
+            },
+            "op": "divide"
+          },
+          {
+            "denominator": {
+              "arg": {
+                "name": "t",
+                "op": "variable"
+              },
+              "exponent": 2,
+              "op": "power"
+            },
+            "numerator": {
+              "name": "x",
+              "op": "variable"
+            },
+            "op": "divide"
+          }
+        ],
+        "op": "add"
+      },
+      "id": "tree-1",
+      "opaque": {},
+      "parameters": {}
+    }
+  },
+  {
+    "basis": "log(1)=0; log(e)=1 within floating tolerance",
+    "expected": [
+      0.0,
+      2.0
+    ],
+    "postfix": {
+      "assertions": {},
+      "coefficients": {},
+      "label": "postfix-12",
+      "metrics": {
+        "cached_answer": "untrusted"
+      },
+      "opaque": {},
+      "render": "mock postfix",
+      "tokens": [
+        {
+          "name": "z",
+          "op": "variable"
+        },
+        "log",
+        {
+          "name": "t",
+          "op": "variable"
+        },
+        {
+          "exponent": -2,
+          "operator": "power"
+        },
+        "*",
+        {
+          "name": "x",
+          "op": "variable"
+        },
+        "*"
+      ]
+    },
+    "tree": {
+      "claims": {},
+      "diagnostics": {
+        "cached_answer": "untrusted"
+      },
+      "display": "mock tree",
+      "expression": {
+        "args": [
+          {
+            "denominator": {
+              "arg": {
+                "name": "t",
+                "op": "variable"
+              },
+              "exponent": 2,
+              "op": "power"
+            },
+            "numerator": {
+              "name": "x",
+              "op": "variable"
+            },
+            "op": "divide"
+          },
+          {
+            "arg": {
+              "name": "z",
+              "op": "variable"
+            },
+            "op": "log"
+          }
+        ],
+        "op": "multiply"
+      },
+      "id": "tree-2",
+      "opaque": {},
+      "parameters": {}
+    }
+  }
+]

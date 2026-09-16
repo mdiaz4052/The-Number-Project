@@ -1,0 +1,8 @@
+{
+  "base_sha": "c7229812f4d88c11f958f317b67bb51f7ba0c384",
+  "created_at": "2026-09-16T19:46:23Z",
+  "freeze_sha": "895f6888130e7d16ab3234297b4a6d730418a862",
+  "pr": 58,
+  "schema": "tnp-candidate-exchange/1/anchor",
+  "snapshot_sha": "b3d81457f1c776655601a3dcfdd6f73feac1fcb5"
+}
