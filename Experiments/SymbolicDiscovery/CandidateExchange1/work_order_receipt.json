@@ -1,0 +1,13 @@
+{
+  "bytes": 29450,
+  "consumed_source": "user-uploaded attachment; bytes agree with observed Drive text",
+  "drive_id": "1bJhHoxjzqIopMgASqmUIO71S1SBZP7ly",
+  "drive_revision": "not_returned_by_connector",
+  "evidence_mode": "deterministic_contract_conformance",
+  "intended_base": "c7229812f4d88c11f958f317b67bb51f7ba0c384",
+  "observed_modified_time": "2026-09-16T19:29:48.939Z",
+  "outcome_blind": false,
+  "revision": 1,
+  "sha256": "25d2181b3368dd8743c11bda3fe6816dbb3509dc3607f4d7d2d2c6c0d08c5f1e",
+  "task": "NP-CANDIDATE-EXCHANGE-01"
+}
