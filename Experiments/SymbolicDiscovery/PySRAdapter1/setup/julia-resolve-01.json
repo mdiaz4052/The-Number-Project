@@ -1,0 +1,15 @@
+{
+  "schema": "np-pysr-adapter/1/setup-step",
+  "step": "julia-resolve-01",
+  "command": [
+    "timeout",
+    "600",
+    ".tnp-local/venv/bin/python",
+    ".tnp-local/resolve_stack.py"
+  ],
+  "started_at": "2026-09-17T14:37:12.392923+00:00",
+  "finished_at": "2026-09-17T14:37:12.553040+00:00",
+  "returncode": 1,
+  "stdout_sha256": "21c1dd38383587282baf8296d000bb8c810b6a74d19506fcf23bbb9d9bd5aee0",
+  "stderr_sha256": "2b2d4c380850ab45f6b05549810b407b79c90de06c00e4e556f200e0fcb16b35"
+}

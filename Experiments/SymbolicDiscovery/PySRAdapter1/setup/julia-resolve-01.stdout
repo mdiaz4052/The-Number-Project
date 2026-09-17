@@ -1,0 +1,9 @@
+[juliapkg] Found dependencies: /workspace/scratch/27958cd78985/The-Number-Project/.tnp-local/julia-project/pyjuliapkg/juliapkg.json
+[juliapkg] Found dependencies: /workspace/scratch/27958cd78985/The-Number-Project/.tnp-local/venv/lib/python3.12/site-packages/juliapkg/juliapkg.json
+[juliapkg] Found dependencies: /workspace/scratch/27958cd78985/The-Number-Project/.tnp-local/venv/lib/python3.12/site-packages/pysr/juliapkg.json
+[juliapkg] Found dependencies: /workspace/scratch/27958cd78985/The-Number-Project/.tnp-local/venv/lib/python3.12/site-packages/juliacall/juliapkg.json
+[juliapkg] Locating Julia ^1.10.3
+[juliapkg] Using Julia 1.10.10 at /workspace/scratch/27958cd78985/The-Number-Project/.tnp-local/julia-1.10.10/bin/julia
+[juliapkg] Finding libjulia:
+           | using Libdl
+           | print(abspath(Libdl.dlpath("libjulia")))

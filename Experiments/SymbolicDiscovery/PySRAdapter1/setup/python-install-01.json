@@ -1,0 +1,23 @@
+{
+  "schema": "np-pysr-adapter/1/setup-step",
+  "step": "python-install-01",
+  "command": [
+    ".tnp-local/venv/bin/python",
+    "-m",
+    "pip",
+    "install",
+    "--disable-pip-version-check",
+    "--retries",
+    "0",
+    "--timeout",
+    "30",
+    "--report",
+    ".tnp-local/pip-install-report.json",
+    "pysr==1.5.10"
+  ],
+  "started_at": "2026-09-17T14:35:21.938805+00:00",
+  "finished_at": "2026-09-17T14:36:16.145542+00:00",
+  "returncode": 0,
+  "stdout_sha256": "439e601a734e08e057d82cafdb90716fc23fde87981065e5b845037b5465fc0c",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "np-pysr-adapter/1/setup-step",
+  "step": "julia-download-01",
+  "command": [
+    "curl",
+    "--fail",
+    "--show-error",
+    "--silent",
+    "--location",
+    "--connect-timeout",
+    "15",
+    "--max-time",
+    "180",
+    "-o",
+    ".tnp-local/julia-1.10.10-linux-x86_64.tar.gz",
+    "https://julialang-s3.julialang.org/bin/linux/x64/1.10/julia-1.10.10-linux-x86_64.tar.gz"
+  ],
+  "started_at": "2026-09-17T14:35:21.937734+00:00",
+  "finished_at": "2026-09-17T14:35:40.472711+00:00",
+  "returncode": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

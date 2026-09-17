@@ -1,0 +1,14 @@
+{
+  "schema": "np-pysr-adapter/1/setup-step",
+  "step": "julia-verify-01",
+  "command": [
+    "python3.12",
+    "-c",
+    "from pathlib import Path;import hashlib; p=Path(\".tnp-local/julia-1.10.10-linux-x86_64.tar.gz\");actual=hashlib.sha256(p.read_bytes()).hexdigest();print(\"bytes\",p.stat().st_size,\"sha256\",actual);assert actual==\"6a78a03a71c7ab792e8673dc5cedb918e037f081ceb58b50971dfb7c64c5bf81\""
+  ],
+  "started_at": "2026-09-17T14:35:53.316945+00:00",
+  "finished_at": "2026-09-17T14:35:54.004618+00:00",
+  "returncode": 0,
+  "stdout_sha256": "97f8b30361fcdbd008c925dd205e79742ca0344b6c98f552e9a5ab9e81998d0a",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
