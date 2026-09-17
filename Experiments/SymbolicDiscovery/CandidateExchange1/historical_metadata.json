@@ -1,0 +1,85 @@
+{
+  "design_sha256": "ab372eebf9dd7bca8ada197605db56b504568c85adced9492d742547ac1ffd4c",
+  "inputs_sha256": "ab64ff702789405b88458a4e1cf3483a1632540424baa5581306552fe486a943",
+  "selections": {
+    "b01-adequate-n1": {
+      "features": {
+        "t": {
+          "definition": null,
+          "dimension": {
+            "T": 1
+          },
+          "unit": "s"
+        },
+        "x": {
+          "definition": null,
+          "dimension": {
+            "L": 1
+          },
+          "unit": "m"
+        },
+        "z": {
+          "definition": null,
+          "dimension": {},
+          "unit": "1"
+        }
+      },
+      "input_digest": "b496c267bb82194ca7beac09607d3868a59d448e2c59ee3ef243c10d415190e1",
+      "policy": {
+        "acceptance_validation_rmse": 0.000200001,
+        "approximation_rmse_max": 0.04,
+        "complexity_lambda": 0.001,
+        "max_abs_power": 2,
+        "max_denominator": 1,
+        "max_factors": 3
+      },
+      "target": {
+        "dimension": {
+          "L": 1,
+          "T": -2
+        },
+        "key": "y"
+      }
+    },
+    "b01-curved-n2": {
+      "features": {
+        "t": {
+          "definition": null,
+          "dimension": {
+            "T": 1
+          },
+          "unit": "s"
+        },
+        "x": {
+          "definition": null,
+          "dimension": {
+            "L": 1
+          },
+          "unit": "m"
+        },
+        "z": {
+          "definition": null,
+          "dimension": {},
+          "unit": "1"
+        }
+      },
+      "input_digest": "257f33d0c82e1410f68417e92b629713b3fb7f640aeaa24c5070997dea0d186f",
+      "policy": {
+        "acceptance_validation_rmse": 0.003200001,
+        "approximation_rmse_max": 0.04,
+        "complexity_lambda": 0.001,
+        "max_abs_power": 2,
+        "max_denominator": 1,
+        "max_factors": 3
+      },
+      "target": {
+        "dimension": {
+          "L": 1,
+          "T": -2
+        },
+        "key": "y"
+      }
+    }
+  },
+  "source_head": "7405d07e717fbe1e84d3c1afb5b7f737e86c6103"
+}

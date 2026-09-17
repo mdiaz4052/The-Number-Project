@@ -1,0 +1,6 @@
+{
+  "conformance_sha256": "260c586db0ec39c21b20b5ef0db331a8b90e41f668640a7d96c589d89a9c7067",
+  "evidence_sha": "d9273e0656bbbc25432635ce2685603215681242",
+  "schema": "tnp-candidate-exchange/1/evidence-binding",
+  "source_snapshot_sha256": "02b08f661ae263d9539ffb12b8989233dce534075dd3c59ddb8aa28885a3faa4"
+}

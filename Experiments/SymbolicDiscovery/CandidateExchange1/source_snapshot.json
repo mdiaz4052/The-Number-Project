@@ -1,0 +1,44 @@
+{
+  "environment": {
+    "cache_tag": "cpython-312",
+    "implementation": "cpython",
+    "platform": "linux",
+    "version": "3.12.14"
+  },
+  "files": {
+    "Discovery/candidate_exchange.py": "dfdab7c2312995cddfb6d9ffa05c059141d489500c8e3c0d042f155480e72d61",
+    "Discovery/candidate_exchange_adapters.py": "08a550a783a2b1f0eadc848f9c1dce8c5a27e54e5d1438ffb99f14d2e98783b0",
+    "Discovery/candidate_exchange_conformance.py": "2db675adc09e2ae3a539e7dd837fe44707da40bef78a9bc0865c0a9617fc6629",
+    "Discovery/candidate_exchange_fixtures.py": "9433dbc5861fa024ef4c2ef94dd7c4381095b5d88582540ce42f780ac1197db3",
+    "Discovery/candidate_exchange_history.py": "8d880908302b8c1278618c0b9329f816c7c2add36d6eb8bc837368eba91d54da",
+    "Discovery/candidate_exchange_mutations.py": "286161cd48bdf16abcae75a51e159bbd3020fb10d4550e2e6da6121f2c53b1bf",
+    "Discovery/constants.py": "952c23a9b8219125c3a6a04a6266c2d2158529aa3ece4753198e11f20734fccb",
+    "Discovery/dependency_definitions.py": "66e6e8c1d90f8ca5bba7596828dcf33fad3dbca3e8458375df19d624fd47058f",
+    "Discovery/dimensional_search.py": "f9512b3c060b5c04c69045713f3cd0bbac8f484715188d5ee0e53fe88e708adf",
+    "Discovery/dimensions.py": "40c01117063c69e73c36aabf08d73776b3c50bd21b25a73b782cabae5489e2b2",
+    "Discovery/monomial_constraints.py": "6d972444722d702e5db9f1c188f21d405352c97bdd8abba565cde19680497a81",
+    "Discovery/planck_identities.py": "d1b561ab3ca7a91bb4f974cebff032bcd2d52c044b59df6befc40b1df58c988c",
+    "Discovery/symbolic_benchmark_engine.py": "91ac2e902efac1ba593b5934598aa5d3d394f2c4b966d466406e0b965f2e9841",
+    "Experiments/SymbolicDiscovery/CandidateExchange1/anchor.json": "2a9d48b5e2600cbbbd721b2ecaccc0861d848b69b2a0b3f6bbdbd26f2eeda2b5",
+    "Experiments/SymbolicDiscovery/CandidateExchange1/contract.v1.md": "bf9973346c48b59b34c6ea60ce34b0b377fa4e50cd26d5b7e77dd01729a3d98f",
+    "Experiments/SymbolicDiscovery/CandidateExchange1/historical_metadata.json": "e5538a147b18436e8636331218ca74ffeaf44400f741db118879d60d545092c3",
+    "Experiments/SymbolicDiscovery/CandidateExchange1/interface.md": "9f550b0f2144b13c54db548a5a877f5b473cb8128a241f92961aee88e1ad31bf",
+    "Experiments/SymbolicDiscovery/CandidateExchange1/mock_pairs.json": "c0d0f9e215474154eb246773310821a9a657e45ae03f854f8ded84f337102b61",
+    "Experiments/SymbolicDiscovery/CandidateExchange1/work_order.r1.md": "25d2181b3368dd8743c11bda3fe6816dbb3509dc3607f4d7d2d2c6c0d08c5f1e",
+    "Experiments/SymbolicDiscovery/CandidateExchange1/work_order_receipt.json": "64f320b99a3685348502fa397d4d290baf6083d7529c3ed91f145b67a3bbccda",
+    "tests/test_candidate_exchange.py": "d575b733ab8a4add48f14541df35eb71bf7134591edc8d4c5ca128baff24189a"
+  },
+  "historical_blobs": {
+    "b01-adequate-n1": "7937d9f84d56e2c12a39cbe2e6ee44a21247b338",
+    "b01-curved-n2": "6e3124c349e746d994d9a860ecd25e193653898f"
+  },
+  "historical_head": "7405d07e717fbe1e84d3c1afb5b7f737e86c6103",
+  "numeric_policy": {
+    "comparison": "original_log_route_vs_expression_route",
+    "historical_absolute_tolerance": 1e-14,
+    "historical_relative_tolerance": 2e-12,
+    "paired_absolute_tolerance": 1e-13
+  },
+  "schema": "tnp-candidate-exchange/1/source-snapshot",
+  "source_sha": "48bf982096c459ec8126e7a82f1d5224d944415b"
+}
