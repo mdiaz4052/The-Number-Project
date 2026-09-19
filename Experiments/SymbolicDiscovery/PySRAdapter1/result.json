@@ -1,0 +1,97 @@
+{
+  "adapter_conformance": "NO_GO",
+  "disposition": "PYSR_ADAPTER_1_NO_GO",
+  "evidence": {
+    "adapter_parity": "NOT_EXECUTED",
+    "dimensional_domain_provenance_checks": "NOT_EXECUTED",
+    "failure_class": "JULIA_LIBJULIA_PROBE_SIGBUS",
+    "heldout_diagnostics": [],
+    "native_output_inventory": [],
+    "setup_file_sha256": {
+      "attempt-01.json": "c034d461c34a1da1b34251fb9ce27cf770b3387b2e4089837b3d363a22df2418",
+      "attempt-01.stderr": "6ad899c2edb7f80dcb4813fc5e0aa257c8c4db34f176d4eb39ead55b8c9d2b89",
+      "attempt-01.stdout": "69d076c07986af96ceb2a3f0078df2af1c392d676442a8f2bc82b0e5bf43b405",
+      "engine-env.json": "48d891f0c3db3b55ef31a348f688a29320c75ed859ddbf8d275258ac25384856",
+      "extraction-failure.json": "83bad3c1ca685977002d4baefe4938aad3019c9d231117e2f577bc5c8a874b47",
+      "extraction-retry-01.json": "e16158d68527408ef023a35aef1c1f151a501ec82e6d6f2d1bed0f10c55f2ef3",
+      "extraction-retry-01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "extraction-retry-01.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "julia-download-01.json": "f243dbc17416cd00225e1426c90dcc9f7d6610c6d22d45ddd438e8d39cba9c0d",
+      "julia-download-01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "julia-download-01.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "julia-resolve-01.json": "ea164420fb3346b967adde3b0d9db07a38a680f70a8e2036de3c08f25595a60d",
+      "julia-resolve-01.stderr": "2b2d4c380850ab45f6b05549810b407b79c90de06c00e4e556f200e0fcb16b35",
+      "julia-resolve-01.stdout": "21c1dd38383587282baf8296d000bb8c810b6a74d19506fcf23bbb9d9bd5aee0",
+      "julia-verify-01.json": "3b1fa78bab1226763f8cd90bf30860008ce931d2f2625cb41db65455dec01b2f",
+      "julia-verify-01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "julia-verify-01.stdout": "97f8b30361fcdbd008c925dd205e79742ca0344b6c98f552e9a5ab9e81998d0a",
+      "juliacall-juliapkg.json": "6ede5552d6a82f280768eacc10a93299eaaa43b5b312d4adef07fae7c5da541f",
+      "pysr-juliapkg.json": "85911f6f49260a13f5f9eb4bacbbdfa0d90c730ba4d2cf6a65d57f2df4e81bff",
+      "python-freeze.txt": "54f3e619ce912eb0a3130ab8ecf17cd36e41e81698829e7680ac08f664e9c68d",
+      "python-install-01.json": "d38909325af9a8bcb7aea895164f782ba510101a960adb7f3f6b885460d1878d",
+      "python-install-01.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "python-install-01.stdout": "439e601a734e08e057d82cafdb90716fc23fde87981065e5b845037b5465fc0c",
+      "python-resolution.json": "b439546111eeae0da05cf0fab13328f7c0f012ceb74420a5e9c9efd7fb9eab22",
+      "requested-juliapkg.json": "725211d3b2b504d4fdb918b400776a4ca57bfe0f63c1fc77d7c9ca6d898a3a37",
+      "resolve_stack.py": "302f8c7fc94434a942caaabbb5bce7be5e14812be85a628dab67f5d2ab879261",
+      "setup_step.py": "b709db8ac5fc26486c8a513e1b91269cee4254e6bd78feb58066046886f62497",
+      "stop.json": "3f6602c2e5da45934eef19af55470b24b706c70a80562bd0cf34bd09cfe6a963"
+    },
+    "unperformed": {
+      "adapter_fixtures": "NOT_EXECUTED",
+      "adapter_implementation": "NOT_EXECUTED",
+      "eight_adapter_mutations": "NOT_EXECUTED",
+      "native_export_qualification": "NOT_EXECUTED"
+    },
+    "validation_diagnostics": []
+  },
+  "evidence_integrity": "PASS",
+  "limitations": [
+    "Terminal setup-only NO_GO; no executable adapter was qualified or delivered.",
+    "SIGBUS root cause unresolved; not evidence of an upstream PySR/Julia defect.",
+    "Initial tar ownership-failure output survives as attributed excerpts, not full stderr.",
+    "Python packages resolved, but backend and complete transitive Julia locks did not.",
+    "No native outputs, arithmetic parity, dimensions, domains or DM-099 gate were exercised.",
+    "No target seed, data, search, selection or heldout evaluation occurred.",
+    "Offline checks validate committed records; they do not rerun Julia or prove operator truthfulness.",
+    "DM-098 coverage is limited to this reached setup route; no broad outcome framework or finding closure."
+  ],
+  "operational_acceptance": false,
+  "outcome_blind": false,
+  "planned_runs": [
+    {
+      "reason": "prerequisite_failed_before_seed_generation",
+      "run_id": "r01",
+      "state": "NOT_EXECUTED"
+    },
+    {
+      "reason": "prerequisite_failed_before_seed_generation",
+      "run_id": "r02",
+      "state": "NOT_EXECUTED"
+    },
+    {
+      "reason": "prerequisite_failed_before_seed_generation",
+      "run_id": "r03",
+      "state": "NOT_EXECUTED"
+    },
+    {
+      "reason": "prerequisite_failed_before_seed_generation",
+      "run_id": "r04",
+      "state": "NOT_EXECUTED"
+    }
+  ],
+  "review_status": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+  "schema": "np-pysr-adapter/1/result",
+  "scientific_evidence": {
+    "empirical_support": "NOT_ASSESSED",
+    "family_adequacy": "NOT_ASSESSED",
+    "formal_proof": "NOT_ASSESSED",
+    "independent_replication": "NOT_ASSESSED",
+    "significance": "NOT_ASSESSED",
+    "structural_recovery": "NOT_ASSESSED"
+  },
+  "search_coverage": "NOT_ESTABLISHED",
+  "source_binding": "28da3978f50d62f4777ada6e9d11f03ef1c00e8aaca7e220d49af1a8e319d921",
+  "stage": "setup",
+  "task": "NP-PYSR-ADAPTER-01"
+}

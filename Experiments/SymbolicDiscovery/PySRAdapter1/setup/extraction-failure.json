@@ -1,0 +1,20 @@
+{
+  "schema": "np-pysr-adapter/1/operational-failure",
+  "stage": "julia_archive_extraction",
+  "command": [
+    "tar",
+    "-xzf",
+    ".tnp-local/julia-1.10.10-linux-x86_64.tar.gz",
+    "-C",
+    ".tnp-local"
+  ],
+  "returncode": 2,
+  "diagnosis": "Archive bytes were checksum-verified. GNU tar attempted to restore uid/gid 1000, rejected by the execution namespace. Extracted Julia reports version 1.10.10. Retry uses --no-same-owner; no binary/version substitution.",
+  "retention": "Original tool output was truncated at 89756 tokens; these are exact diagnostic excerpts, not a complete stderr archive. No search/output existed.",
+  "stderr_excerpts": [
+    "tar: julia-1.10.10/lib/libjulia.so.1.10.10: Cannot change ownership to uid 1000, gid 1000: Invalid argument",
+    "tar: julia-1.10.10/bin/julia: Cannot change ownership to uid 1000, gid 1000: Invalid argument",
+    "tar: Exiting with failure status due to previous errors"
+  ],
+  "setup_retry_used": 1
+}

@@ -1,0 +1,8 @@
+{
+  "JULIA_DEPOT_PATH": "/workspace/scratch/27958cd78985/The-Number-Project/.tnp-local/julia-depot",
+  "PYTHON_JULIAPKG_EXE": "/workspace/scratch/27958cd78985/The-Number-Project/.tnp-local/julia-1.10.10/bin/julia",
+  "PYTHON_JULIAPKG_PROJECT": "/workspace/scratch/27958cd78985/The-Number-Project/.tnp-local/julia-project",
+  "PYTHON_JULIACALL_THREADS": "1",
+  "JULIA_NUM_THREADS": "1",
+  "JULIA_PKG_PRECOMPILE_AUTO": "0"
+}

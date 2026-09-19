@@ -1,0 +1,28 @@
+{
+  "schema": "np-pysr-adapter/1/setup-attempt",
+  "attempt": 1,
+  "stage": "official_julia_checksum_transport",
+  "command": [
+    "curl",
+    "--fail",
+    "--show-error",
+    "--location",
+    "--connect-timeout",
+    "15",
+    "--max-time",
+    "45",
+    "https://julialang-s3.julialang.org/bin/checksums/julia-1.10.10.sha256"
+  ],
+  "started_at": "2026-09-17T14:34:36.130333+00:00",
+  "finished_at": "2026-09-17T14:34:42.271899+00:00",
+  "returncode": 0,
+  "stdout_sha256": "69d076c07986af96ceb2a3f0078df2af1c392d676442a8f2bc82b0e5bf43b405",
+  "stderr_sha256": "6ad899c2edb7f80dcb4813fc5e0aa257c8c4db34f176d4eb39ead55b8c9d2b89",
+  "python": {
+    "version": "3.12.14",
+    "implementation": "cpython",
+    "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "executable_sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+  },
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39"
+}

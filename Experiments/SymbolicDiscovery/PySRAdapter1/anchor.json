@@ -1,0 +1,9 @@
+{
+  "schema": "np-pysr-adapter/1/anchor",
+  "base_sha": "9d59d7e7a9e2f056f73d277282a49387287311ff",
+  "snapshot_sha": "87780b9e7880b0e7afb8dd6034a609ce1391cf37",
+  "freeze_sha": "97002d47a9be50716a24e061567a0b8f9c4c2019",
+  "pr": 59,
+  "created_at": "2026-09-17T14:33:57Z",
+  "publication_note": "Initial shell push was policy-blocked; destination/explicit packet publication requirements were checked, retry reached missing shell credentials. Connected GitHub API published the same instruction bytes and a contract referencing the actual published snapshot. Unpublished local commits were retained on a local branch; they are not the authoritative freeze."
+}

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/27958cd78985/The-Number-Project/.tnp-local/resolve_stack.py", line 6, in <module>
+    juliapkg.resolve()
+  File "/workspace/scratch/27958cd78985/The-Number-Project/.tnp-local/venv/lib/python3.12/site-packages/juliapkg/deps.py", line 541, in resolve
+    libjulia = run_script(
+               ^^^^^^^^^^^
+  File "/workspace/scratch/27958cd78985/The-Number-Project/.tnp-local/venv/lib/python3.12/site-packages/juliapkg/deps.py", line 688, in run_script
+    return run(
+           ^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/workspace/scratch/27958cd78985/The-Number-Project/.tnp-local/julia-1.10.10/bin/julia', '--project=/workspace/scratch/27958cd78985/The-Number-Project/.tnp-local/julia-project', '--startup-file=no', '-e', 'using Libdl\nprint(abspath(Libdl.dlpath("libjulia")))']' died with <Signals.SIGBUS: 7>.

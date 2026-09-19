@@ -1,0 +1,39 @@
+{
+  "schema": "np-pysr-adapter/1/setup-stop",
+  "observed_at": "2026-09-17T14:37:54.465387+00:00",
+  "failed_step": "julia-resolve-01",
+  "failure_class": "JULIA_LIBJULIA_PROBE_SIGBUS",
+  "underlying_signal": 7,
+  "wrapper_returncode": 1,
+  "diagnosis": "Julia 1.10.10 terminated with SIGBUS while JuliaPkg ran the initial Libdl probe. Root cause unresolved; no inference about PySR adapter correctness or upstream compatibility.",
+  "retry_budget": 1,
+  "retry_used": 1,
+  "retry_evidence": "extraction-failure.json",
+  "qualified_environment": false,
+  "smoke_fits_executed": 0,
+  "target_fits_executed": 0,
+  "master_seed_created": false,
+  "target_rows_created": 0,
+  "cards_issued": 0,
+  "selections_sealed": 0,
+  "heldout_evaluations": 0,
+  "julia_project_exists": false,
+  "julia_manifest_exists": false,
+  "full_native_stack_imported": false,
+  "native_export_qualification": "NOT_EXECUTED",
+  "adapter_implementation": "NOT_EXECUTED",
+  "adapter_fixtures": "NOT_EXECUTED",
+  "eight_adapter_mutations": "NOT_EXECUTED",
+  "script_sha256": {
+    "setup_step.py": "b709db8ac5fc26486c8a513e1b91269cee4254e6bd78feb58066046886f62497",
+    "resolve_stack.py": "302f8c7fc94434a942caaabbb5bce7be5e14812be85a628dab67f5d2ab879261",
+    "engine-env.json": "48d891f0c3db3b55ef31a348f688a29320c75ed859ddbf8d275258ac25384856"
+  },
+  "prerequisite_component_status": {
+    "python": "CPython 3.12.14 observed",
+    "pysr_python_distribution": "1.5.10 installed; not imported or source-qualified",
+    "julia_distribution": "1.10.10 official x86_64 SHA-256 verified; Libdl probe SIGBUS",
+    "symbolic_regression_backend": "1.11.0 requested; not resolved or installed",
+    "transitive_julia_lock": "NOT_CREATED"
+  }
+}

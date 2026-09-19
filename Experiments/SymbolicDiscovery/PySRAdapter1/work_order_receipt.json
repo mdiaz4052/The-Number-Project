@@ -1,0 +1,19 @@
+{
+  "task": "NP-PYSR-ADAPTER-01",
+  "revision": 1,
+  "drive_id": "1bJhHoxjzqIopMgASqmUIO71S1SBZP7ly",
+  "drive_modified_time": "2026-09-17T13:42:13.662Z",
+  "drive_revision_id": "0B4E-uj-ArwK4NVI4SXVlQ1hLamFPdStoQmhaZFA2cUhla1AwPQ",
+  "sha256": "938d7c884cc2b6add3dae4775de8159b387d2addd7fd5654f4cd50eff3670583",
+  "bytes": 48337,
+  "base_sha": "9d59d7e7a9e2f056f73d277282a49387287311ff",
+  "observed_open_prs": [],
+  "observed_at_utc": "2026-09-17T14:30:21.633834+00:00",
+  "authorization": "Miguel launched NP-PYSR-ADAPTER-01 revision 1 in execution context; no merge authorization.",
+  "independent_audit_reference": {
+    "drive_id": "1r3-FRMF68tcM_FTtadM-6M7mByw8kI3m",
+    "accepted_head": "abe6c20332776740022cff6fee1756373022fc8c",
+    "verdict": "MERGE; zero blocking within accepted #58 scope"
+  },
+  "governance_scope": "Existing project controls and selected dimensional/provenance concepts; no standard-wide conformance, retrofits, or new authority."
+}
