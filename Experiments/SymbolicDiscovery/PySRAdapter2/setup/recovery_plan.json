@@ -1,0 +1,23 @@
+{
+  "schema": "tnp-pysr-adapter/2/recovery-plan",
+  "recorded_at": "2026-09-20T16:15:54.434299+00:00",
+  "epoch": 2,
+  "setup_epochs_total_cap": 2,
+  "recovery_used_if_launched": 1,
+  "prior_stop_sha256": "4fa4699ec3e3f473ffc113c087442adf64cfbcd48b0f8e2184962ff7284a09e5",
+  "prior_diagnostic_sha256": "31c2cb0dffdeb9049fa2269e24af62df15e4161d4f752a648faf9630259725fe",
+  "observed_failure": "bwrap: loopback: Failed to create NETLINK_ROUTE socket: Operation not permitted",
+  "changed_condition": "Add only --share-net to the already-installed namespace tool, retaining existing host restrictions and all filesystem/process namespace requests. New task-owned epoch directory; no host permissions modified.",
+  "basis": "Work order section 6 allows disclosure of unavailable OS network isolation while requiring credential/staged-file separation. First failure localizes to private-network setup. This single documented recovery tests the already-present native filesystem-isolation facility under the allowed host network; it must pass subsequent credential canaries before external software.",
+  "upstream_reference": "https://github.com/containers/bubblewrap/blob/main/bwrap.xml",
+  "source_statement": "--share-net retains the network namespace and overrides the network part of --unshare-all; no other isolation option is removed.",
+  "recovery_order_assessment": [
+    "No archive was downloaded/extracted, so extraction/storage repair is inapplicable.",
+    "No Julia loader or Python bridge ran, so loader or bridge remedies are inapplicable.",
+    "One identified restricted-context change uses the existing namespace program, without privilege or infrastructure expansion."
+  ],
+  "prior_stop_interpretation": "Retain epoch-01 stop unchanged. Its no-remedy assessment was preliminary; the specific NETLINK error plus documented host-network allowance supports this one forward recovery. No package result exists yet.",
+  "deadline_seconds": 120,
+  "epoch_budget_seconds": 1200,
+  "if_failure": "Stop; preserve both epochs; no third setup attempt; no external engine launch."
+}
