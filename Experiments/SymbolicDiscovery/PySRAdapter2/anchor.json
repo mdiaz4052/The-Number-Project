@@ -1,0 +1,9 @@
+{
+  "schema": "tnp-pysr-adapter/2/anchor",
+  "base_sha": "79b56e0db86605e569c6d8a68a59315a00ab0177",
+  "snapshot_sha": "dfbe2bd9bb6e0197bbb12ded6e0f3f59a1fffd2c",
+  "freeze_sha": "e0b13171714a6d359ef442249f4e0e45c5513874",
+  "pr": 60,
+  "url": "https://github.com/mdiaz4052/The-Number-Project/pull/60",
+  "created_at": "2026-09-20T16:04:26Z"
+}

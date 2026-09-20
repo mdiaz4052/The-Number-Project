@@ -1,0 +1,14 @@
+{
+  "schema": "tnp-pysr-adapter/2/publication-receipt",
+  "authorization": "User explicitly authorizes complete text of work_order.r1.md, work_order_receipt.json and contract.v1.md, including embedded Drive links/IDs and planning/audit references, for public mdiaz4052/The-Number-Project. No credentials, unrelated private material, sharing changes, merge or scientific scope expansion.",
+  "initial_pushes": "Two automatic-review rejections retained in execution transcript; no publication occurred. User subsequently supplied explicit public-disclosure authorization.",
+  "post_authorization_shell": "Normal approval passed; git push failed: fatal: unable to get password from user.",
+  "transport": "connected GitHub app, normal approval process",
+  "local_snapshot_sha": "5cfdf035abf2dbf3f65ad31890d5cb1322be5949",
+  "local_freeze_sha": "a703c415bf55e8f1172656a8982aaa915e1ff4d9",
+  "published_snapshot_sha": "dfbe2bd9bb6e0197bbb12ded6e0f3f59a1fffd2c",
+  "published_freeze_sha": "e0b13171714a6d359ef442249f4e0e45c5513874",
+  "byte_changes": "Work order and launch receipt unchanged. Contract changes only its instruction snapshot SHA to the actual server-created snapshot. No criteria or scientific contents changed.",
+  "local_preservation": "local-unpublished-np-pysr-adapter2-freeze",
+  "runtime_execution_before_draft": false
+}
