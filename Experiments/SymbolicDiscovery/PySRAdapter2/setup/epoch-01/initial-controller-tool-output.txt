@@ -1,0 +1,15 @@
+From https://github.com/mdiaz4052/The-Number-Project
+ * branch            feature/np-pysr-adapter-02 -> FETCH_HEAD
+   e0b1317..1c637ce  feature/np-pysr-adapter-02 -> origin/feature/np-pysr-adapter-02
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/ce871f085e44/The-Number-Project/Discovery/pysr_adapter2_runtime.py", line 449, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/workspace/scratch/ce871f085e44/The-Number-Project/Discovery/pysr_adapter2_runtime.py", line 445, in main
+    return native_gate()
+           ^^^^^^^^^^^^^
+  File "/workspace/scratch/ce871f085e44/The-Number-Project/Discovery/pysr_adapter2_runtime.py", line 288, in native_gate
+    os.chown(task, WORK_UID, WORK_GID)
+OSError: [Errno 22] Invalid argument: '/tmp/tnp-pysr-adapter2-e01'
