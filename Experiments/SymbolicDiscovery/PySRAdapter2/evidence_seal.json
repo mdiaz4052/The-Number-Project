@@ -1,0 +1,26 @@
+{
+  "evidence_sha": "7bf62c482b1ee7d6a2a9db8178cc280b93124571",
+  "files": {
+    "Experiments/SymbolicDiscovery/PySRAdapter2/anchor.json": "99e62628840118bb9fa367aef78332124a08cd20dc76b004574d9f3ef724cce1",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/contract.v1.md": "45b2f157d8e1f4352a1ee4b9a677a1a3dc19bbb101df5603827c6d44f07f010f",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/publication_receipt.json": "e130e549db9abc81ccb865355e6efd637d61d289236fbd94648b486dc715d056",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/result.json": "3a29d6d8bf97c9582030fca4971a32f27360476e9ae185dcbab73c877125b21a",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/runtime_qualification.json": "c9b8f401cbab275be8fea5bcbac20d0bd90c7659849a5430d10b45600d736c90",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/setup/epoch-01/host.json": "5814bbfe9b9b7e75cd2664663898ba12644c7648f4db75aa7de6afda3bf62ffe",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/setup/epoch-01/initial-controller-tool-output.txt": "9ab90d434f24c178772b426810819b0374372ba5707c72505535fcb753b0ac1b",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/setup/epoch-01/initial-retention.md": "b4ad5b20eb1cb26b980dc2520f20bff0b9e9c51b30687f5383c857a47171184b",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/setup/epoch-01/namespace-capability.json": "b5f20c80ba82e5b8b8b0b04bce02b13b266a57b02186281f3521d9bdd0ab7719",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/setup/epoch-01/namespace-capability.stderr": "31c2cb0dffdeb9049fa2269e24af62df15e4161d4f752a648faf9630259725fe",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/setup/epoch-01/namespace-capability.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/setup/epoch-01/stop.json": "4fa4699ec3e3f473ffc113c087442adf64cfbcd48b0f8e2184962ff7284a09e5",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/setup/epoch-02/namespace-shared-network.json": "8a20c1c4f8bf383a138093af8a38ba1ce1948d20b77693e497bb88d6c3bb066d",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/setup/epoch-02/namespace-shared-network.stderr": "cd0ccbc42517924251d3c1c93678bd759abadea815f11a929853b6705cc02045",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/setup/epoch-02/namespace-shared-network.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/setup/epoch-02/stop.json": "63c17f1abbd346664c29925b5d02fc9bfae4df4a7622e279940377fb3b2d914c",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/setup/recovery_plan.json": "51a969f28103d1aa1664e73b78b129ff3bdfa7cdbfd45840f5c22aaf54944965",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/source_snapshot.json": "93e558cba68178c7ee0550e39e0b97b0a214625a5083e62b35b1841b4bb23d55",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/work_order.r1.md": "d6866c119695f40caefd576a8bd0c20acfd7a2441639b8933ed0d273edc73b39",
+    "Experiments/SymbolicDiscovery/PySRAdapter2/work_order_receipt.json": "27ca74fe734bd2b1d53fd7ce55732765bc1c451b53ed4c2e954e1e0bea0b8720"
+  },
+  "schema": "tnp-pysr-adapter/2/evidence-seal"
+}
