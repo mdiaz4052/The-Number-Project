@@ -1,0 +1,13 @@
+{
+  "accepted_files": {},
+  "accepted_source_sha": "79b56e0db86605e569c6d8a68a59315a00ab0177",
+  "files": {
+    "Discovery/pysr_adapter2_prerequisites.py": "13760ffd9a2ab00d70989bfe64c126446398910b1fd93b41d3459368d521a99b",
+    "Discovery/pysr_adapter2_recovery.py": "ad79e1ff39a6094298fbb95239c6569603c4ea3dcc151861384faafeb9a48b5a",
+    "Discovery/pysr_adapter2_runtime.py": "a68f307aa0137081eb6a983b0313a0b40d0b66010268e3e0d9e964f27155382d",
+    "Discovery/pysr_adapter2_verifier.py": "6218c2f3706285c150768fdd48baa73fea23223d1c32c573cc7f015390186ead",
+    "tests/test_pysr_adapter2.py": "1643832802599a24be8225ee7a75fbfcb6d3f08973368e892d6c4d0e9dd592a7"
+  },
+  "schema": "tnp-pysr-adapter/2/source-snapshot",
+  "source_sha": "6d68147f41f43f1e212d7c3a151287967bf0f18c"
+}

@@ -1,0 +1,32 @@
+{
+  "completed_layers": [],
+  "environment_digest": "5814bbfe9b9b7e75cd2664663898ba12644c7648f4db75aa7de6afda3bf62ffe",
+  "failures": [
+    {
+      "epoch": 1,
+      "failed_step": "worker-isolation-prerequisite",
+      "reason": "DISTINCT_UID_UNMAPPED_AND_UNPRIVILEGED_NAMESPACE_UNAVAILABLE"
+    },
+    {
+      "epoch": 2,
+      "failed_step": "namespace-shared-network",
+      "reason": "WORKER_ISOLATION_RECOVERY_FAILED"
+    }
+  ],
+  "limitations": [
+    "The host could not establish the required credential/staged-file worker isolation; no external engine executed.",
+    "The first controller traceback is a complete attributed execution-tool return, not separately captured original OS stdout/stderr. The controller failed before launching any child.",
+    "Both namespace child probes have full file-captured stdout/stderr, source bindings and deadline receipts.",
+    "Epoch 1 preliminary no-remedy assessment is retained unchanged; the pre-recorded single recovery supersedes that assessment, not its failed evidence.",
+    "No Julia download, checksum authentication, extraction, startup, bridge, dependency lock, PySR fit or native export was performed in this package.",
+    "No real adapter, trusted card path, integration fixtures, eight adapter mutations, target data, selection or held-out evaluation was delivered.",
+    "The old Julia SIGBUS cause remains unknown. This isolation failure is not evidence against PySR or Julia correctness.",
+    "Offline verification checks retained source-bound records, not host replay or arbitrary operator truthfulness.",
+    "DM-098 coverage is limited to this reached negative route. DM-099 is unexercised; no finding ID is closed.",
+    "No physical-memory cap, successful worker sandbox or network isolation is claimed. No host controls or Drive sharing were changed."
+  ],
+  "schema": "tnp-pysr-adapter/2/runtime-qualification",
+  "setup_epochs": 2,
+  "source_sha": "e6eff4622f0f02c638f31d76c1b6257ba62afec5",
+  "state": "NO_GO"
+}

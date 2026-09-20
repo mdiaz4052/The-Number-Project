@@ -1,0 +1,97 @@
+{
+  "adapter_conformance": "NO_GO",
+  "disposition": "PYSR_ADAPTER_2_NO_GO",
+  "evidence": {
+    "adapter_parity": "NOT_EXECUTED",
+    "dimensional_domain_provenance_checks": "NOT_EXECUTED",
+    "fixtures": "NOT_EXECUTED",
+    "heldout_diagnostics": [],
+    "mutations": "NOT_EXECUTED",
+    "native_output_inventory": [],
+    "raw_bindings": {
+      "epoch-01/host.json": "5814bbfe9b9b7e75cd2664663898ba12644c7648f4db75aa7de6afda3bf62ffe",
+      "epoch-01/initial-controller-tool-output.txt": "9ab90d434f24c178772b426810819b0374372ba5707c72505535fcb753b0ac1b",
+      "epoch-01/initial-retention.md": "b4ad5b20eb1cb26b980dc2520f20bff0b9e9c51b30687f5383c857a47171184b",
+      "epoch-01/namespace-capability.json": "b5f20c80ba82e5b8b8b0b04bce02b13b266a57b02186281f3521d9bdd0ab7719",
+      "epoch-01/namespace-capability.stderr": "31c2cb0dffdeb9049fa2269e24af62df15e4161d4f752a648faf9630259725fe",
+      "epoch-01/namespace-capability.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "epoch-01/stop.json": "4fa4699ec3e3f473ffc113c087442adf64cfbcd48b0f8e2184962ff7284a09e5",
+      "epoch-02/namespace-shared-network.json": "8a20c1c4f8bf383a138093af8a38ba1ce1948d20b77693e497bb88d6c3bb066d",
+      "epoch-02/namespace-shared-network.stderr": "cd0ccbc42517924251d3c1c93678bd759abadea815f11a929853b6705cc02045",
+      "epoch-02/namespace-shared-network.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "epoch-02/stop.json": "63c17f1abbd346664c29925b5d02fc9bfae4df4a7622e279940377fb3b2d914c",
+      "recovery_plan.json": "51a969f28103d1aa1664e73b78b129ff3bdfa7cdbfd45840f5c22aaf54944965"
+    },
+    "setup_inventory_digest": "979afafc5a47dbf626488cc0c91e918db997b1691d4feb2d41aaab51b606e4aa",
+    "validation_diagnostics": []
+  },
+  "evidence_integrity": "PASS",
+  "limitations": [
+    "The host could not establish the required credential/staged-file worker isolation; no external engine executed.",
+    "The first controller traceback is a complete attributed execution-tool return, not separately captured original OS stdout/stderr. The controller failed before launching any child.",
+    "Both namespace child probes have full file-captured stdout/stderr, source bindings and deadline receipts.",
+    "Epoch 1 preliminary no-remedy assessment is retained unchanged; the pre-recorded single recovery supersedes that assessment, not its failed evidence.",
+    "No Julia download, checksum authentication, extraction, startup, bridge, dependency lock, PySR fit or native export was performed in this package.",
+    "No real adapter, trusted card path, integration fixtures, eight adapter mutations, target data, selection or held-out evaluation was delivered.",
+    "The old Julia SIGBUS cause remains unknown. This isolation failure is not evidence against PySR or Julia correctness.",
+    "Offline verification checks retained source-bound records, not host replay or arbitrary operator truthfulness.",
+    "DM-098 coverage is limited to this reached negative route. DM-099 is unexercised; no finding ID is closed.",
+    "No physical-memory cap, successful worker sandbox or network isolation is claimed. No host controls or Drive sharing were changed."
+  ],
+  "operational_acceptance": false,
+  "outcome_blind": false,
+  "planned_runs": [
+    {
+      "fit_invocations": 0,
+      "reason": "worker_isolation_prerequisite_failed_before_native_execution",
+      "run_id": "r01",
+      "state": "NOT_EXECUTED"
+    },
+    {
+      "fit_invocations": 0,
+      "reason": "worker_isolation_prerequisite_failed_before_native_execution",
+      "run_id": "r02",
+      "state": "NOT_EXECUTED"
+    },
+    {
+      "fit_invocations": 0,
+      "reason": "worker_isolation_prerequisite_failed_before_native_execution",
+      "run_id": "r03",
+      "state": "NOT_EXECUTED"
+    },
+    {
+      "fit_invocations": 0,
+      "reason": "worker_isolation_prerequisite_failed_before_native_execution",
+      "run_id": "r04",
+      "state": "NOT_EXECUTED"
+    }
+  ],
+  "review_status": "PROVISIONAL — INDEPENDENT AUDIT PENDING",
+  "schema": "tnp-pysr-adapter/2/result",
+  "scientific_evidence": {
+    "empirical_support": "NOT_ASSESSED",
+    "family_adequacy": "NOT_ASSESSED",
+    "formal_proof": "NOT_ASSESSED",
+    "independent_replication": "NOT_ASSESSED",
+    "significance": "NOT_ASSESSED",
+    "structural_recovery": "NOT_ASSESSED"
+  },
+  "search_coverage": "NOT_ESTABLISHED",
+  "setup": {
+    "failed_step": "namespace-shared-network",
+    "failure_reason": "WORKER_ISOLATION_RECOVERY_FAILED",
+    "integration_qualification": "NOT_EXECUTED",
+    "limitations": [
+      "The host could not establish the required credential/staged-file worker isolation; no external engine executed.",
+      "The first controller traceback is a complete attributed execution-tool return, not separately captured original OS stdout/stderr. The controller failed before launching any child.",
+      "Both namespace child probes have full file-captured stdout/stderr, source bindings and deadline receipts.",
+      "Epoch 1 preliminary no-remedy assessment is retained unchanged; the pre-recorded single recovery supersedes that assessment, not its failed evidence."
+    ],
+    "recovery_used": 1,
+    "runtime_qualification": "NO_GO",
+    "setup_epochs": 2
+  },
+  "source_snapshot_digest": "93e558cba68178c7ee0550e39e0b97b0a214625a5083e62b35b1841b4bb23d55",
+  "stage": "runtime_prerequisite",
+  "task": "NP-PYSR-ADAPTER-02"
+}
