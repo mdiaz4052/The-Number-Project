@@ -1,0 +1,57 @@
+{
+  "activity": {
+    "cards_issued": 0,
+    "heldout_evaluations": 0,
+    "master_seed_created": false,
+    "selections_sealed": 0,
+    "smoke_fits_executed": 0,
+    "target_fits_executed": 0,
+    "target_rows_created": 0
+  },
+  "epoch": 2,
+  "evidence_inventory": {
+    "namespace-shared-network.json": {
+      "bytes": 1727,
+      "sha256": "8a20c1c4f8bf383a138093af8a38ba1ce1948d20b77693e497bb88d6c3bb066d"
+    },
+    "namespace-shared-network.stderr": {
+      "bytes": 51,
+      "sha256": "cd0ccbc42517924251d3c1c93678bd759abadea815f11a929853b6705cc02045"
+    },
+    "namespace-shared-network.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "failed_step": "namespace-shared-network",
+  "observed_at": "2026-09-20T16:16:24.926837+00:00",
+  "reason": "WORKER_ISOLATION_RECOVERY_FAILED",
+  "recovery": {
+    "budget": 1,
+    "changed_conditions": [
+      "--share-net retains the existing restricted host network"
+    ],
+    "prior_failure": "../epoch-01/namespace-capability.stderr",
+    "rationale": "Single diagnosed host-network recovery failed. No further setup epoch or speculative change is authorized.",
+    "used": 1
+  },
+  "runtime_layers": {
+    "cold_bridge": "NOT_EXECUTED",
+    "pinned_dependencies": "NOT_EXECUTED",
+    "python_child": "NOT_EXECUTED",
+    "standalone": "NOT_EXECUTED"
+  },
+  "schema": "tnp-pysr-adapter/2/setup-stop",
+  "source_sha": "e6eff4622f0f02c638f31d76c1b6257ba62afec5",
+  "unperformed": {
+    "data": "NOT_EXECUTED",
+    "fixtures": "NOT_EXECUTED",
+    "heldout": "NOT_EXECUTED",
+    "integration": "NOT_EXECUTED",
+    "mutations": "NOT_EXECUTED",
+    "native_export": "NOT_EXECUTED",
+    "seed": "NOT_EXECUTED",
+    "selections": "NOT_EXECUTED",
+    "target_fits": "NOT_EXECUTED"
+  }
+}
