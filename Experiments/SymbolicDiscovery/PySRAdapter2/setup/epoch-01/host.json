@@ -1,0 +1,65 @@
+{
+  "gid": 0,
+  "isolation": {
+    "credential_separation": "NOT_ESTABLISHED",
+    "gid_map": "         0          0          1\n",
+    "namespace_probe": "namespace-capability.json",
+    "network_isolation": "NOT_ESTABLISHED",
+    "process_status": {
+      "CapAmb": "0000000000000000",
+      "CapBnd": "0000000000000000",
+      "CapEff": "0000000000000000",
+      "CapInh": "0000000000000000",
+      "CapPrm": "0000000000000000",
+      "Gid": "0\t0\t0\t0",
+      "Groups": "",
+      "NoNewPrivs": "1",
+      "Seccomp": "2",
+      "Uid": "0\t0\t0\t0"
+    },
+    "task_mode": "0o700",
+    "task_uid": 0,
+    "uid_map": "         0          0          1\n"
+  },
+  "libc": [
+    "glibc",
+    "2.39"
+  ],
+  "limits": {
+    "RLIMIT_AS": [
+      -1,
+      -1
+    ],
+    "memory_cap_enforced": false,
+    "native_children_executed": 0
+  },
+  "machine": {
+    "hardware": "x86_64",
+    "process": "x86_64",
+    "virtualization": "not independently established"
+  },
+  "observed_at": "2026-09-20T16:13:33.263231+00:00",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "python": {
+    "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "implementation": "cpython",
+    "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+    "version": "3.12.14"
+  },
+  "relevant_environment": {
+    "child_allowlist": {
+      "LANG": "C.UTF-8",
+      "LC_ALL": "C.UTF-8",
+      "PATH": "/usr/bin:/bin"
+    },
+    "controller_values_copied": false
+  },
+  "schema": "tnp-pysr-adapter/2/host",
+  "storage": {
+    "device": 28,
+    "free_bytes": 30542073856,
+    "path": "/tmp/tnp-pysr-adapter2-e01",
+    "task_created_at": "2026-09-20T16:10:10.992808+00:00"
+  },
+  "uid": 0
+}

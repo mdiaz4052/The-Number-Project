@@ -1,0 +1,40 @@
+{
+  "schema": "tnp-pysr-adapter/2/work-order-receipt",
+  "task": "NP-PYSR-ADAPTER-02",
+  "revision": 1,
+  "drive_id": "1bJhHoxjzqIopMgASqmUIO71S1SBZP7ly",
+  "drive_modified_at": "2026-09-19T14:42:26.311Z",
+  "size_bytes": 81176,
+  "sha256": "d6866c119695f40caefd576a8bd0c20acfd7a2441639b8933ed0d273edc73b39",
+  "consumed_at": "2026-09-20T15:37:21.755060+00:00",
+  "authorization": "Miguel explicitly launched revision 1 in this execution conversation; bounded setup, pilot and one unmerged PR only. Options 2 and 3 are not activated.",
+  "base_sha": "79b56e0db86605e569c6d8a68a59315a00ab0177",
+  "base_ci": {
+    "url": "https://github.com/mdiaz4052/The-Number-Project/actions/runs/35415276376",
+    "head_sha": "79b56e0db86605e569c6d8a68a59315a00ab0177",
+    "conclusion": "success",
+    "basis": "reused authoritative September 19 merge-head attestation; no rerun"
+  },
+  "open_prs": [],
+  "matching_branch_preexisting": false,
+  "unchanged_boundaries": [
+    "PySRAdapter1 result and setup versus 0a598b8ab473a202e9ff15efb9f42428af29eceb",
+    "CandidateExchange1 interface and candidate_exchange.py versus abe6c20332776740022cff6fee1756373022fc8c"
+  ],
+  "claude_current_id": "11Jc9-qPUYoWPqurOqWvlziRdYK4DUX_x",
+  "claude_current_modified_at": "2026-09-19T14:18:40.007Z",
+  "prior_audit": {
+    "drive_id": "1sW3DZExBT4e7n_eVb3c5I_vWbdUgyP8y",
+    "head_sha": "0a598b8ab473a202e9ff15efb9f42428af29eceb",
+    "verdict": "MERGE — zero blocking",
+    "scope": "terminal setup NO_GO archive only"
+  },
+  "finding_routes": {
+    "DM-097": "no workflow edits",
+    "DM-098": "failure-aware new outcome authority",
+    "DM-099": "mandatory only if new card path reached",
+    "DM-100": "epoch-specific pins; no shared source edits",
+    "FH-23": "official checksum recheck before binary use; no signature claim",
+    "E-001": "unrelated, no HUST/AAF use"
+  }
+}

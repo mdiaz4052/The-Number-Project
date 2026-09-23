@@ -1,0 +1,67 @@
+{
+  "activity": {
+    "cards_issued": 0,
+    "heldout_evaluations": 0,
+    "master_seed_created": false,
+    "selections_sealed": 0,
+    "smoke_fits_executed": 0,
+    "target_fits_executed": 0,
+    "target_rows_created": 0
+  },
+  "epoch": 1,
+  "evidence_inventory": {
+    "host.json": {
+      "bytes": 1728,
+      "sha256": "5814bbfe9b9b7e75cd2664663898ba12644c7648f4db75aa7de6afda3bf62ffe"
+    },
+    "initial-controller-tool-output.txt": {
+      "bytes": 906,
+      "sha256": "9ab90d434f24c178772b426810819b0374372ba5707c72505535fcb753b0ac1b"
+    },
+    "initial-retention.md": {
+      "bytes": 1525,
+      "sha256": "b4ad5b20eb1cb26b980dc2520f20bff0b9e9c51b30687f5383c857a47171184b"
+    },
+    "namespace-capability.json": {
+      "bytes": 1704,
+      "sha256": "b5f20c80ba82e5b8b8b0b04bce02b13b266a57b02186281f3521d9bdd0ab7719"
+    },
+    "namespace-capability.stderr": {
+      "bytes": 80,
+      "sha256": "31c2cb0dffdeb9049fa2269e24af62df15e4161d4f752a648faf9630259725fe"
+    },
+    "namespace-capability.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "failed_step": "worker-isolation-prerequisite",
+  "observed_at": "2026-09-20T16:13:33.388215+00:00",
+  "reason": "DISTINCT_UID_UNMAPPED_AND_UNPRIVILEGED_NAMESPACE_UNAVAILABLE",
+  "recovery": {
+    "budget": 1,
+    "changed_conditions": [],
+    "prior_failure": "initial-controller-tool-output.txt",
+    "rationale": "Only UID/GID 0 is mapped and no process capabilities are available. The already-installed unprivileged namespace tool failed before launching its payload. No supported accessible isolated worker or permitted environment move is evidenced; do not alter host controls.",
+    "used": 0
+  },
+  "runtime_layers": {
+    "cold_bridge": "NOT_EXECUTED",
+    "pinned_dependencies": "NOT_EXECUTED",
+    "python_child": "NOT_EXECUTED",
+    "standalone": "NOT_EXECUTED"
+  },
+  "schema": "tnp-pysr-adapter/2/setup-stop",
+  "source_sha": "ffb1e46c747814c1620d84ee8c3e6e2c59e566e7",
+  "unperformed": {
+    "data": "NOT_EXECUTED",
+    "fixtures": "NOT_EXECUTED",
+    "heldout": "NOT_EXECUTED",
+    "integration": "NOT_EXECUTED",
+    "mutations": "NOT_EXECUTED",
+    "native_export": "NOT_EXECUTED",
+    "seed": "NOT_EXECUTED",
+    "selections": "NOT_EXECUTED",
+    "target_fits": "NOT_EXECUTED"
+  }
+}
