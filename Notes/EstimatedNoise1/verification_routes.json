@@ -1,0 +1,21 @@
+{
+  "post_science_operational_routes": [
+    {
+      "disposition": "RECOVERED_TRANSPORT_FAILURE",
+      "disposition_key": "disposition",
+      "path": "Notes/EstimatedNoise1/operational_failures/publication-01.json",
+      "sha256": "6032e849157be048f0e091016f600c05d9b067c7ade4c5da0ea910c1ea9bcdc6"
+    }
+  ],
+  "raw_result": {
+    "disposition_key": "data.disposition",
+    "path": "Experiments/SymbolicDiscovery/EstimatedNoise1/result.json",
+    "sha256": "279324653fb9556fc8460dc4ff41b1d6cd5e049c438870a07f8bc81992a2fb03"
+  },
+  "raw_science_routes": "Experiments/SymbolicDiscovery/EstimatedNoise1/verification_routes.json",
+  "revision": 1,
+  "schema": "tnp-estimated-noise/post-science-operational-routes-v1",
+  "scientific_reconciliation": null,
+  "separation": "Supplemental publication custody is outside the already sealed scientific evidence directory. It does not rewrite the raw result, its scientific route, source or evidence census.",
+  "task": "NP-ESTIMATED-NOISE-01"
+}
