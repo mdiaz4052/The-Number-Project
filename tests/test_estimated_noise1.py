@@ -217,7 +217,7 @@ class EstimatedNoise1Fixtures(unittest.TestCase):
 class EstimatedNoise1CommittedEvidence(unittest.TestCase):
     @unittest.skipUnless((PKG/'result.json').exists(), 'prospective epoch not executed at engineering preflight')
     def test_read_only_committed_evidence(self):
-        from Discovery.estimated_noise1_verifier import check
+        from Discovery.estimated_noise1_portable_verifier import check
         value = check()
         self.assertIn(value['disposition'], {'ESTIMATED_NOISE_1_'+s for s in ('COMPLETE', 'PARTIAL', 'NO_GO', 'FAIL', 'UNRESOLVED')})
 
