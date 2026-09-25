@@ -1,0 +1,126 @@
+{
+  "command": [
+    "/Users/migueldiaz/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "-m",
+    "unittest",
+    "tests.test_estimated_noise1",
+    "-v"
+  ],
+  "completed_utc": "2026-09-25T15:24:16.555431+00:00",
+  "environment": {
+    "cache_tag": "cpython-312",
+    "executable": "/Users/migueldiaz/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "executable_sha256": "ac60cfe0268614638d0ffa35f3b0284fc7b3a11482723793455e17eeb278509e",
+    "implementation": "cpython",
+    "machine": "arm64",
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "version": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+    "version_info": [
+      3,
+      12,
+      14
+    ]
+  },
+  "exception": null,
+  "fixture_seed_label": "deterministic engineering fixtures; e repeated 64 times, not scientific seed",
+  "mutations": {
+    "baseline": "SURVIVED",
+    "equivalent_control": "SURVIVED",
+    "mutants": {
+      "M1": {
+        "designated_assertion": "HALF_WIDTH_MOMENT",
+        "observed_assertion": "HALF_WIDTH_MOMENT",
+        "status": "KILLED"
+      },
+      "M10": {
+        "designated_assertion": "FAILURE_CANNOT_BECOME_COMPLETE",
+        "observed_assertion": "FAILURE_CANNOT_BECOME_COMPLETE",
+        "status": "KILLED"
+      },
+      "M2": {
+        "designated_assertion": "LOWER_TAIL_QUANTILE",
+        "observed_assertion": "LOWER_TAIL_QUANTILE",
+        "status": "KILLED"
+      },
+      "M3": {
+        "designated_assertion": "PRESCRIBED_PAD",
+        "observed_assertion": "PRESCRIBED_PAD",
+        "status": "KILLED"
+      },
+      "M4": {
+        "designated_assertion": "PAIR_ONLY_SCHEMA",
+        "observed_assertion": "PAIR_ONLY_SCHEMA",
+        "status": "KILLED"
+      },
+      "M5": {
+        "designated_assertion": "FIXED_PREFIX",
+        "observed_assertion": "FIXED_PREFIX",
+        "status": "KILLED"
+      },
+      "M6": {
+        "designated_assertion": "FAMILY_MINIMUM_NOT_RANK1",
+        "observed_assertion": "FAMILY_MINIMUM_NOT_RANK1",
+        "status": "KILLED"
+      },
+      "M7": {
+        "designated_assertion": "EQUALITY_ACCEPTED",
+        "observed_assertion": "EQUALITY_ACCEPTED",
+        "status": "KILLED"
+      },
+      "M8": {
+        "designated_assertion": "HELDOUT_INPUT_DENIED",
+        "observed_assertion": "HELDOUT_INPUT_DENIED",
+        "status": "KILLED"
+      },
+      "M9": {
+        "designated_assertion": "CURVATURE_NEVER_EXACT_CREDIT",
+        "observed_assertion": "CURVATURE_NEVER_EXACT_CREDIT",
+        "status": "KILLED"
+      }
+    }
+  },
+  "numerical_corners": {
+    "alternate_policy_cases": 2,
+    "candidate_corners": 192,
+    "corners": 640,
+    "max_candidate_metric_error": 4.114443551277886e-16,
+    "max_intended_difference_error": 1.7058796370249003e-15,
+    "max_log_difference_error": 1.6949313861549399e-16,
+    "pass": true
+  },
+  "qualified": true,
+  "returncode": 0,
+  "source_manifest": {
+    "Discovery/__init__.py": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078",
+    "Discovery/constants.py": "952c23a9b8219125c3a6a04a6266c2d2158529aa3ece4753198e11f20734fccb",
+    "Discovery/dependency_definitions.py": "66e6e8c1d90f8ca5bba7596828dcf33fad3dbca3e8458375df19d624fd47058f",
+    "Discovery/dimensional_search.py": "f9512b3c060b5c04c69045713f3cd0bbac8f484715188d5ee0e53fe88e708adf",
+    "Discovery/dimensions.py": "40c01117063c69e73c36aabf08d73776b3c50bd21b25a73b782cabae5489e2b2",
+    "Discovery/estimated_noise1.py": "6d4109372089eae60fbc9e7911baffb8120fa49bd479e72c2e51c490611782b2",
+    "Discovery/estimated_noise1_calibration.py": "85165f6c6fc59e3ab24197d699089348e7c6f3783d9b20dfbac9327003f3c291",
+    "Discovery/estimated_noise1_failure.py": "4b6d100000f5aabf6908087a62a7107a69e9074c18e0acf611ada4c398e94aeb",
+    "Discovery/estimated_noise1_fixtures.py": "3bdaf2a13ffa2dd6d9e2c27dec14a2856b506eb3d75fdc9c340004c84e503eb2",
+    "Discovery/estimated_noise1_launch.py": "7ea55fa4ac1ab2d92f07d2fb2982505ccb08f80ca393fdf7c47aaefa6cc85ac7",
+    "Discovery/estimated_noise1_mutations.py": "0749a160e132bdfaf65333162ebbd45c2f2e16f05fb21d6007f5e6521c84e290",
+    "Discovery/estimated_noise1_preflight.py": "f6e8ca2f09bc09fa8b53c1202d64be1688cf1d322d1396fceabe4091262f427b",
+    "Discovery/estimated_noise1_reference.py": "4a942351793c0a1c235465c5e392a97082dcb92f6f843c2200afb64847ef16dd",
+    "Discovery/estimated_noise1_schema.py": "f8f8e17ef90cc846dd71e7d439f1079029786ca75edcc736949e6dccead01b48",
+    "Discovery/estimated_noise1_science.py": "db6d9bcf6f5443786e1e421f95feb214a5e9603a9447be09be0cd3e5b4dc9558",
+    "Discovery/estimated_noise1_selection.py": "127995a0a28083f5ce3c30f871e605458eb3bfbb43817217a5745b6b421aa4c5",
+    "Discovery/estimated_noise1_verifier.py": "556d8d9c5316c5e04fc3abe2bc3492d8adffa8fe19d45de95b9fd10a182ceb94",
+    "Discovery/estimated_noise1_workers.py": "61f5473a49f4df375069667f8dda8af9d185767927957ab35e92cdb17b21abc5",
+    "Discovery/monomial_constraints.py": "6d972444722d702e5db9f1c188f21d405352c97bdd8abba565cde19680497a81",
+    "Discovery/planck_identities.py": "d1b561ab3ca7a91bb4f974cebff032bcd2d52c044b59df6befc40b1df58c988c",
+    "Discovery/symbolic_benchmark_engine.py": "91ac2e902efac1ba593b5934598aa5d3d394f2c4b966d466406e0b965f2e9841",
+    "Discovery/symbolic_suite_engine.py": "a2a39c214689957591355cd2943c5fa0315e5367848c18d4d7ec9912435325d6",
+    "Discovery/symbolic_suite_runner.py": "35dadd66b5ec92c1aaab18bd85d03af6e96e296785b4aa2dfd67ced386f81ecd",
+    "Discovery/symbolic_suite_worlds.py": "2887e05f129a50a80becc0a428baee05f7ef386091fb7a350d563d9bebac3fa2",
+    "Experiments/SymbolicDiscovery/EstimatedNoise1/anchor.json": "c127df62314e005e29969ad08d1586b3b1405e2255ef0862c0cba8f6de606635",
+    "Experiments/SymbolicDiscovery/EstimatedNoise1/preregistration.v1.json": "eb9fdb0fa9f0cdcedd587b6dd8d0302f150acea5e3898b629c719856a50bdd92",
+    "tests/test_estimated_noise1.py": "e9923f5527f079f5fb0a125f24755ec15e365c52f8e3e4b1b49be67f287fe36d"
+  },
+  "started_utc": "2026-09-25T15:23:42.335313+00:00",
+  "stderr_sha256": "907583826ce1ea59cf59fc7ee52482d27f24b0a8ee1c4f4d210c75dfffbd978c",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
