@@ -1,0 +1,61 @@
+{
+  "command": [
+    "/Users/migueldiaz/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+    "-B",
+    "-m",
+    "unittest",
+    "tests.test_estimated_noise1",
+    "-v"
+  ],
+  "completed_utc": "2026-09-25T15:15:28.149606+00:00",
+  "environment": {
+    "cache_tag": "cpython-312",
+    "executable": "/Users/migueldiaz/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "executable_sha256": "ac60cfe0268614638d0ffa35f3b0284fc7b3a11482723793455e17eeb278509e",
+    "implementation": "cpython",
+    "machine": "arm64",
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "version": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+    "version_info": [
+      3,
+      12,
+      14
+    ]
+  },
+  "exception": null,
+  "fixture_seed_label": "deterministic engineering fixtures; e repeated 64 times, not scientific seed",
+  "mutations": null,
+  "numerical_corners": null,
+  "qualified": false,
+  "returncode": 1,
+  "source_manifest": {
+    "Discovery/__init__.py": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078",
+    "Discovery/constants.py": "952c23a9b8219125c3a6a04a6266c2d2158529aa3ece4753198e11f20734fccb",
+    "Discovery/dependency_definitions.py": "66e6e8c1d90f8ca5bba7596828dcf33fad3dbca3e8458375df19d624fd47058f",
+    "Discovery/dimensional_search.py": "f9512b3c060b5c04c69045713f3cd0bbac8f484715188d5ee0e53fe88e708adf",
+    "Discovery/dimensions.py": "40c01117063c69e73c36aabf08d73776b3c50bd21b25a73b782cabae5489e2b2",
+    "Discovery/estimated_noise1.py": "7c55d7d7be4c5bf3fc705b2eea6e99e94936016d2a3c09cae70446a802f41abc",
+    "Discovery/estimated_noise1_calibration.py": "85165f6c6fc59e3ab24197d699089348e7c6f3783d9b20dfbac9327003f3c291",
+    "Discovery/estimated_noise1_fixtures.py": "156ac2058f60891cb76d9c3f0f17fc4052177d758b993b77e9bfc0acc1357362",
+    "Discovery/estimated_noise1_mutations.py": "fb83b23d03d5e7db8121ef08a9c69418388ad542fb49060e15c93e7b0e37b8eb",
+    "Discovery/estimated_noise1_preflight.py": "e3c377979042f23aa3c26e91e88779fb44b786ce735b5a202ae67e4ec4ff4135",
+    "Discovery/estimated_noise1_reference.py": "d199b06e57bc6e7c2a5918782f0ca1dfac4c90e6f4508ad7674dada256d4a2d9",
+    "Discovery/estimated_noise1_schema.py": "eaf53587ca0621e50dd257238498238f86c28c75a02a94b9325554459cbd3250",
+    "Discovery/estimated_noise1_science.py": "be37c4cfa8bb0c9c97ac13067c829f1020c5b14f7c5b210f7f5fee9f18efd4ad",
+    "Discovery/estimated_noise1_selection.py": "127995a0a28083f5ce3c30f871e605458eb3bfbb43817217a5745b6b421aa4c5",
+    "Discovery/estimated_noise1_verifier.py": "ad63ad3814c017e326124a8f074cd2f4a63528becba1e819fa96e82066bee675",
+    "Discovery/estimated_noise1_workers.py": "61f5473a49f4df375069667f8dda8af9d185767927957ab35e92cdb17b21abc5",
+    "Discovery/monomial_constraints.py": "6d972444722d702e5db9f1c188f21d405352c97bdd8abba565cde19680497a81",
+    "Discovery/planck_identities.py": "d1b561ab3ca7a91bb4f974cebff032bcd2d52c044b59df6befc40b1df58c988c",
+    "Discovery/symbolic_benchmark_engine.py": "91ac2e902efac1ba593b5934598aa5d3d394f2c4b966d466406e0b965f2e9841",
+    "Discovery/symbolic_suite_engine.py": "a2a39c214689957591355cd2943c5fa0315e5367848c18d4d7ec9912435325d6",
+    "Discovery/symbolic_suite_runner.py": "35dadd66b5ec92c1aaab18bd85d03af6e96e296785b4aa2dfd67ced386f81ecd",
+    "Discovery/symbolic_suite_worlds.py": "2887e05f129a50a80becc0a428baee05f7ef386091fb7a350d563d9bebac3fa2",
+    "Experiments/SymbolicDiscovery/EstimatedNoise1/anchor.json": "c127df62314e005e29969ad08d1586b3b1405e2255ef0862c0cba8f6de606635",
+    "Experiments/SymbolicDiscovery/EstimatedNoise1/preregistration.v1.json": "eb9fdb0fa9f0cdcedd587b6dd8d0302f150acea5e3898b629c719856a50bdd92",
+    "tests/test_estimated_noise1.py": "824f431c3f324b8522a21490fe94204d67d40a48caf583a8e28505518d79d70e"
+  },
+  "started_utc": "2026-09-25T15:15:26.796356+00:00",
+  "stderr_sha256": "df00b95ac69bc2a94bae5c3c0a7ac31889ce38f44301ed2d54311ad1563afbb8",
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

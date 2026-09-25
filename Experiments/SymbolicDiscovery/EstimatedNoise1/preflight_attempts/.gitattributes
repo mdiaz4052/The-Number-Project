@@ -1,0 +1,4 @@
+# Exact historical source copies retain their existing final blank line.
+# Scope this whitespace exception to those two copied files; never edit bytes.
+attempt-*/source/Discovery/__init__.py whitespace=-blank-at-eof
+attempt-*/source/Discovery/constants.py whitespace=-blank-at-eof

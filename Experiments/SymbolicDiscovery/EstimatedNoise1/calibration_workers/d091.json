@@ -1,0 +1,123 @@
+{
+  "bindings": {
+    "actual_base_sha": "0b3d31269c7fde9a75e9d7045ff483e71b4b9f4f",
+    "freeze_sha": "e7670b8218f7cfd129529dc8afb8bc8f96ad2e09",
+    "preregistration_sha256": "eb9fdb0fa9f0cdcedd587b6dd8d0302f150acea5e3898b629c719856a50bdd92",
+    "science_sha256": "19edaba69d1b2cd8b4d0235180d548eac6387b0b564863c0109a7fec6fb4c312"
+  },
+  "data": {
+    "data_commit_sha": "cbdc511215c26709037a893bebceaa782230570c",
+    "source_sha": "da9e8fcf746e418629e9b769f9e354c449562aa5",
+    "worker": {
+      "discovery": {
+        "dataset_id": "d091",
+        "estimates": {
+          "16": {
+            "ideal_upper": 0.006225778317863646,
+            "maximum_absolute_difference": 0.007306340153517166,
+            "n": 16,
+            "pad": 1e-12,
+            "padded_upper": 0.006225778318715753,
+            "point": 0.004794058554000699,
+            "point_threshold": 0.009588118108001397,
+            "prefix_sha256": "36295bc8d20cb72f0b8932366ab77961e23fd21a91d93875a3b9d4d2b2dc5636",
+            "q": 0.586781264966748,
+            "sum_squared_differences": 0.0002451519724713309,
+            "upper95_threshold": 0.012451557637431505
+          },
+          "256": {
+            "ideal_upper": 0.0053547896659338675,
+            "maximum_absolute_difference": 0.009554439311192597,
+            "n": 256,
+            "pad": 1e-12,
+            "padded_upper": 0.0053547896664943185,
+            "point": 0.0049747609669828895,
+            "point_threshold": 0.009949522933965779,
+            "prefix_sha256": "1024911736219a79682845df4ba2ab7c86720b7c9f205c8658592f3713eb7eeb",
+            "q": 0.8921395523689833,
+            "sum_squared_differences": 0.004223700766483888,
+            "upper95_threshold": 0.010709580332988636
+          },
+          "64": {
+            "ideal_upper": 0.006076689604069865,
+            "maximum_absolute_difference": 0.009554439311192597,
+            "n": 64,
+            "pad": 1e-12,
+            "padded_upper": 0.006076689604705873,
+            "point": 0.004770747924971509,
+            "point_threshold": 0.009541496849943017,
+            "prefix_sha256": "412059dc5eaa4cfdd62d53c3edb85d4d6055c75da522d690fe3d5ea23a616c63",
+            "q": 0.7861549571985302,
+            "sum_squared_differences": 0.0009710948592477847,
+            "upper95_threshold": 0.012153380209411745
+          }
+        },
+        "input_sha256": "b8999195db10de247804a78ae61db04bf0654a1af32dcfa491d0a88a89266ffe"
+      },
+      "error": null,
+      "receipt": {
+        "audit_open_attempts": [
+          "<stage>/Discovery/__init__.py",
+          "<stage>/Discovery/__pycache__/__init__.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/estimated_noise1_calibration.cpython-312.pyc",
+          "<stage>/Discovery/estimated_noise1_calibration.py"
+        ],
+        "cache_tag": "cpython-312",
+        "denied_unexpected_attempts": [],
+        "discovery_modules": [
+          "Discovery",
+          "Discovery.estimated_noise1_calibration"
+        ],
+        "expected_missing_cache_attempts": [
+          "<stage>/Discovery/__pycache__/__init__.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/estimated_noise1_calibration.cpython-312.pyc"
+        ],
+        "inventory_after": {
+          "Discovery": {
+            "kind": "directory"
+          },
+          "Discovery/__init__.py": {
+            "kind": "file",
+            "sha256": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078",
+            "size": 80
+          },
+          "Discovery/estimated_noise1_calibration.py": {
+            "kind": "file",
+            "sha256": "85165f6c6fc59e3ab24197d699089348e7c6f3783d9b20dfbac9327003f3c291",
+            "size": 3814
+          }
+        },
+        "inventory_before": {
+          "Discovery": {
+            "kind": "directory"
+          },
+          "Discovery/__init__.py": {
+            "kind": "file",
+            "sha256": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078",
+            "size": 80
+          },
+          "Discovery/estimated_noise1_calibration.py": {
+            "kind": "file",
+            "sha256": "85165f6c6fc59e3ab24197d699089348e7c6f3783d9b20dfbac9327003f3c291",
+            "size": 3814
+          }
+        },
+        "python_minor": "3.12",
+        "successful_opens": [
+          "<stage>/Discovery/__init__.py",
+          "<stage>/Discovery/estimated_noise1_calibration.py"
+        ],
+        "successful_reads": [
+          "<stage>/Discovery/__init__.py",
+          "<stage>/Discovery/estimated_noise1_calibration.py"
+        ],
+        "unexpected_modules": [],
+        "version": 2,
+        "worker_sha256": "76d33ccef70100351c3d1279a49de5656ceda8b97260e9492d83a583af34fbe3"
+      }
+    }
+  },
+  "revision": 1,
+  "schema": "tnp-estimated-noise/calibration-worker-v1",
+  "task": "NP-ESTIMATED-NOISE-01"
+}
