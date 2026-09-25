@@ -1,0 +1,26 @@
+{
+  "bindings": {
+    "actual_base_sha": "0b3d31269c7fde9a75e9d7045ff483e71b4b9f4f",
+    "freeze_sha": "e7670b8218f7cfd129529dc8afb8bc8f96ad2e09",
+    "preregistration_sha256": "eb9fdb0fa9f0cdcedd587b6dd8d0302f150acea5e3898b629c719856a50bdd92",
+    "science_sha256": "19edaba69d1b2cd8b4d0235180d548eac6387b0b564863c0109a7fec6fb4c312"
+  },
+  "data": {
+    "controls_sha256": "a4a4ee65e0ff12a4d9c99414c5e5dc201f53fce73c92d9c460ea6f7a2138c4f1",
+    "disposition": "ESTIMATED_NOISE_1_COMPLETE",
+    "evaluation_sha256": "5602b121eaf7940a6dc01965c7934265233f0b6735de0b61e86bbdf3749de2c1",
+    "evidence_integrity": "PASS",
+    "expected_datasets": 96,
+    "interpretable_datasets": 96,
+    "operational_status": "COMPLETED",
+    "outcome_blind": false,
+    "review_status": "PROVISIONAL — INDEPENDENT AUDIT PENDING",
+    "scientific_law_claim": false,
+    "selection_seal_commit_sha": "aeab31d9cc803b6b6932009d6ed70dc6f378317b",
+    "source_sha": "da9e8fcf746e418629e9b769f9e354c449562aa5",
+    "summary_sha256": "66f73b8b1d4539b299fefb2e18061390ff78f50be1608c6b0c8fea7dd6c5a3a4"
+  },
+  "revision": 1,
+  "schema": "tnp-estimated-noise/raw-result-v1",
+  "task": "NP-ESTIMATED-NOISE-01"
+}
