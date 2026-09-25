@@ -1,0 +1,50 @@
+{
+  "actual_base_sha": "0b3d31269c7fde9a75e9d7045ff483e71b4b9f4f",
+  "consumed_work_order": {
+    "bytes": 25665,
+    "drive_id": "1bJhHoxjzqIopMgASqmUIO71S1SBZP7ly",
+    "drive_modified_time": "2026-09-23T02:24:13.688Z",
+    "path": "work_order.r1.md",
+    "sha256": "21f0558af43835ba33c107cf8cf85bae869a4c8212f17c7c0ba2f1f74400ca1e"
+  },
+  "launch_authorization": "User explicitly authorized NP-ESTIMATED-NOISE-01 revision 1 implementation, freeze, fixed study, validation, one unmerged draft PR, and public publication of consumed instructions, preregistration, receipts, code and scientific evidence including embedded project references and Drive IDs. No credentials/unrelated private material; no sharing changes.",
+  "prepared_preregistration": {
+    "bytes": 24271,
+    "drive_id": "1KLnDl47Hpt-eiG-74Gd1IdKERSSEhsa4",
+    "drive_modified_time": "2026-09-23T02:15:53.988Z",
+    "path": "preregistration.prepared.json",
+    "sha256": "1c811c465f9d1d404d8a9f11dc4ef1628598045fd4616d50a5ed435cab6dd06f"
+  },
+  "reconciled_utc": "2026-09-25T14:50:39.615872+00:00",
+  "reconciliation": {
+    "affected_findings": [
+      "DM-090",
+      "DM-093",
+      "DM-094",
+      "DM-097",
+      "DM-098",
+      "DM-100"
+    ],
+    "claude_current": {
+      "drive_id": "11Jc9-qPUYoWPqurOqWvlziRdYK4DUX_x",
+      "drive_modified_time": "2026-09-19T14:18:40.007Z",
+      "sha256": "0e1f36a5aada263a8c66171b868214d5889e45acc4aae8d1e20f3499369b2999"
+    },
+    "finding_dispositions": "Unchanged; Claude owns independent closure; DM-093 review pending for estimated scale.",
+    "gpt_handoff": {
+      "drive_id": "145QAdhOeEC8Ef1j3gLnw8YuI_ej9e0sd",
+      "drive_modified_time": "2026-09-23T02:25:49.476Z",
+      "sha256": "6ea446eb8d08702e4d5a52ac9b9d07ca8fa505f2bb77bb8cba7d41071a677286"
+    },
+    "main_ci_conclusion": "success",
+    "main_ci_head": "0b3d31269c7fde9a75e9d7045ff483e71b4b9f4f",
+    "main_ci_run_id": 35800439539,
+    "matching_branch_or_prior_package": null,
+    "open_prs": [],
+    "pr60_independent_audit": "DEFERRED / NOT COMPLETED; not reopened"
+  },
+  "retrieval_completed_utc": "2026-09-25T14:47:15.323076+00:00",
+  "revision": 1,
+  "schema": "tnp-estimated-noise/work-order-receipt-v1",
+  "task": "NP-ESTIMATED-NOISE-01"
+}
