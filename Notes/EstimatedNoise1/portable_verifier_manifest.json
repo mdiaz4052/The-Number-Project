@@ -1,0 +1,35 @@
+{
+  "authority": "Consumed work order section 9: detached, separately source-pinned read-only post-outcome verifier correction.",
+  "failure_evidence": {
+    "Notes/EstimatedNoise1/operational_failures/ci-343.json": "11467186c2e5698a6377312c4d79e068b558bd500d6df398ec11070f8fcabc44",
+    "Notes/EstimatedNoise1/operational_failures/ci-343.python.log": "f8e3041c06d4a841dcc4e02967870917ee5cdaaca0074a66ef70d89b5104ccd3",
+    "Notes/EstimatedNoise1/operational_failures/ci-344.json": "ab2472e851b35c0e65c7a251d636ce2df17b509b0f6e5ab3a7ea9c712dc406fb",
+    "Notes/EstimatedNoise1/operational_failures/ci-344.python.log": "7f0e114af1736b02585e1868fe78429bfb1921abe9bfc40ae7e30e28fbdb4736"
+  },
+  "original_failed_head": "543ace1d15c033e2d0190401675dd9837278ba3b",
+  "revision": 1,
+  "schema": "tnp-estimated-noise/detached-portable-verifier-v1",
+  "scientific_source": "da9e8fcf746e418629e9b769f9e354c449562aa5",
+  "scope": "Only coefficient/feature exp provenance uses independent 80-digit arithmetic instead of exact equality to current-platform libm. One ULP is a faithful-rounding engineering criterion, not a changed scientific numeric allowance. All other generation checks are copied unchanged. Original raw result, checks, observations and source epoch unchanged.",
+  "source_manifest": {
+    "Discovery/estimated_noise1_portable_verifier.py": "f3dfe57431ec450d4643f5f5ca9af5e07e09d678b97dfb47fafc16052d6cfa65",
+    "tests/test_estimated_noise1.py": "041b97dfea4b50a8911da785ab65e308cc9bd09d097c56fccc102541ca6361e0",
+    "tests/test_estimated_noise1_portable.py": "da10c0c499924d2d0ae23d83b411fccaac72f506e16dd5036204a58152743e70"
+  },
+  "task": "NP-ESTIMATED-NOISE-01",
+  "unchanged_package_sources": {
+    "Discovery/estimated_noise1.py": "6d4109372089eae60fbc9e7911baffb8120fa49bd479e72c2e51c490611782b2",
+    "Discovery/estimated_noise1_calibration.py": "85165f6c6fc59e3ab24197d699089348e7c6f3783d9b20dfbac9327003f3c291",
+    "Discovery/estimated_noise1_failure.py": "4b6d100000f5aabf6908087a62a7107a69e9074c18e0acf611ada4c398e94aeb",
+    "Discovery/estimated_noise1_fixtures.py": "5b94f31052e367c4e0c238b819a4c7c07c6830205912aeeda2c0f7b560f89f8d",
+    "Discovery/estimated_noise1_launch.py": "7ea55fa4ac1ab2d92f07d2fb2982505ccb08f80ca393fdf7c47aaefa6cc85ac7",
+    "Discovery/estimated_noise1_mutations.py": "0749a160e132bdfaf65333162ebbd45c2f2e16f05fb21d6007f5e6521c84e290",
+    "Discovery/estimated_noise1_preflight.py": "f6e8ca2f09bc09fa8b53c1202d64be1688cf1d322d1396fceabe4091262f427b",
+    "Discovery/estimated_noise1_reference.py": "4a942351793c0a1c235465c5e392a97082dcb92f6f843c2200afb64847ef16dd",
+    "Discovery/estimated_noise1_schema.py": "f8f8e17ef90cc846dd71e7d439f1079029786ca75edcc736949e6dccead01b48",
+    "Discovery/estimated_noise1_science.py": "c6ce68e4fe002cba6c749db7f6c564623493d3864bf9281befa7da058ba5b37b",
+    "Discovery/estimated_noise1_selection.py": "127995a0a28083f5ce3c30f871e605458eb3bfbb43817217a5745b6b421aa4c5",
+    "Discovery/estimated_noise1_verifier.py": "556d8d9c5316c5e04fc3abe2bc3492d8adffa8fe19d45de95b9fd10a182ceb94",
+    "Discovery/estimated_noise1_workers.py": "61f5473a49f4df375069667f8dda8af9d185767927957ab35e92cdb17b21abc5"
+  }
+}

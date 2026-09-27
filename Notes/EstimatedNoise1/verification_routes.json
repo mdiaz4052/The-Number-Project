@@ -1,0 +1,39 @@
+{
+  "detached_verification": {
+    "manifest_path": "Notes/EstimatedNoise1/portable_verifier_manifest.json",
+    "manifest_sha256": "70e310fc57d6a1dd461bc71b95b2db7d402e0d06b7333ec0e019e312919cf6cc",
+    "module": "Discovery.estimated_noise1_portable_verifier",
+    "scientific_reconciliation": null
+  },
+  "post_science_operational_routes": [
+    {
+      "disposition": "RECOVERED_TRANSPORT_FAILURE",
+      "disposition_key": "disposition",
+      "path": "Notes/EstimatedNoise1/operational_failures/publication-01.json",
+      "sha256": "6032e849157be048f0e091016f600c05d9b067c7ade4c5da0ea910c1ea9bcdc6"
+    },
+    {
+      "disposition": "POST_SCIENCE_VERIFIER_PORTABILITY_FAILURE",
+      "disposition_key": "disposition",
+      "path": "Notes/EstimatedNoise1/operational_failures/ci-344.json",
+      "sha256": "ab2472e851b35c0e65c7a251d636ce2df17b509b0f6e5ab3a7ea9c712dc406fb"
+    },
+    {
+      "disposition": "POST_SCIENCE_VERIFIER_PORTABILITY_FAILURE",
+      "disposition_key": "disposition",
+      "path": "Notes/EstimatedNoise1/operational_failures/ci-343.json",
+      "sha256": "11467186c2e5698a6377312c4d79e068b558bd500d6df398ec11070f8fcabc44"
+    }
+  ],
+  "raw_result": {
+    "disposition_key": "data.disposition",
+    "path": "Experiments/SymbolicDiscovery/EstimatedNoise1/result.json",
+    "sha256": "279324653fb9556fc8460dc4ff41b1d6cd5e049c438870a07f8bc81992a2fb03"
+  },
+  "raw_science_routes": "Experiments/SymbolicDiscovery/EstimatedNoise1/verification_routes.json",
+  "revision": 1,
+  "schema": "tnp-estimated-noise/post-science-operational-routes-v1",
+  "scientific_reconciliation": null,
+  "separation": "Supplemental publication custody is outside the already sealed scientific evidence directory. It does not rewrite the raw result, its scientific route, source or evidence census.",
+  "task": "NP-ESTIMATED-NOISE-01"
+}

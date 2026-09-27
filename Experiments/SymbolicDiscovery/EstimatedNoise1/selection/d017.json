@@ -1,0 +1,646 @@
+{
+  "bindings": {
+    "actual_base_sha": "0b3d31269c7fde9a75e9d7045ff483e71b4b9f4f",
+    "freeze_sha": "e7670b8218f7cfd129529dc8afb8bc8f96ad2e09",
+    "preregistration_sha256": "eb9fdb0fa9f0cdcedd587b6dd8d0302f150acea5e3898b629c719856a50bdd92",
+    "science_sha256": "19edaba69d1b2cd8b4d0235180d548eac6387b0b564863c0109a7fec6fb4c312"
+  },
+  "data": {
+    "calibration_seal_commit_sha": "df5a9b733f441f739506595de80ca7c771274610",
+    "calibration_seal_sha256": "c1c00f69acc242efda712366f6b58fe2e74f5162f0a5610f02ed734eea88a05b",
+    "data_commit_sha": "cbdc511215c26709037a893bebceaa782230570c",
+    "dataset_id": "d017",
+    "operational": {
+      "approximation": true,
+      "independent_inventory": {
+        "t:-2|x:1": {
+          "t": "-2",
+          "x": "1"
+        },
+        "t:-2|x:1|z:-1": {
+          "t": "-2",
+          "x": "1",
+          "z": "-1"
+        },
+        "t:-2|x:1|z:-2": {
+          "t": "-2",
+          "x": "1",
+          "z": "-2"
+        },
+        "t:-2|x:1|z:1": {
+          "t": "-2",
+          "x": "1",
+          "z": "1"
+        },
+        "t:-2|x:1|z:2": {
+          "t": "-2",
+          "x": "1",
+          "z": "2"
+        }
+      },
+      "rank1_class": "t:-2|x:1|z:-1",
+      "rules": {
+        "point/16": {
+          "ablations": {
+            "t": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "t"
+              ],
+              "top_class": null
+            },
+            "x": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "x"
+              ],
+              "top_class": null
+            },
+            "z": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "z"
+              ],
+              "top_class": "t:-2|x:1"
+            }
+          },
+          "family_margin": -0.0003561930382755549,
+          "family_rejected": false,
+          "family_validation_rmse": 0.0027120054362848606,
+          "rank1_decision": "stable_candidate",
+          "rank1_margin": -0.0003561930382755549,
+          "rank1_validation_rmse": 0.0027120054362848606,
+          "threshold": 0.0030681984745604155
+        },
+        "point/256": {
+          "ablations": {
+            "t": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "t"
+              ],
+              "top_class": null
+            },
+            "x": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "x"
+              ],
+              "top_class": null
+            },
+            "z": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "z"
+              ],
+              "top_class": "t:-2|x:1"
+            }
+          },
+          "family_margin": -0.0004718425825841763,
+          "family_rejected": false,
+          "family_validation_rmse": 0.0027120054362848606,
+          "rank1_decision": "stable_candidate",
+          "rank1_margin": -0.0004718425825841763,
+          "rank1_validation_rmse": 0.0027120054362848606,
+          "threshold": 0.003183848018869037
+        },
+        "point/64": {
+          "ablations": {
+            "t": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "t"
+              ],
+              "top_class": null
+            },
+            "x": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "x"
+              ],
+              "top_class": null
+            },
+            "z": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "z"
+              ],
+              "top_class": "t:-2|x:1"
+            }
+          },
+          "family_margin": -0.0003412742356968066,
+          "family_rejected": false,
+          "family_validation_rmse": 0.0027120054362848606,
+          "rank1_decision": "stable_candidate",
+          "rank1_margin": -0.0003412742356968066,
+          "rank1_validation_rmse": 0.0027120054362848606,
+          "threshold": 0.0030532796719816672
+        },
+        "upper95/16": {
+          "ablations": {
+            "t": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "t"
+              ],
+              "top_class": null
+            },
+            "x": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "x"
+              ],
+              "top_class": null
+            },
+            "z": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "z"
+              ],
+              "top_class": "t:-2|x:1"
+            }
+          },
+          "family_margin": -0.0012724936888516922,
+          "family_rejected": false,
+          "family_validation_rmse": 0.0027120054362848606,
+          "rank1_decision": "stable_candidate",
+          "rank1_margin": -0.0012724936888516922,
+          "rank1_validation_rmse": 0.0027120054362848606,
+          "threshold": 0.003984499125136553
+        },
+        "upper95/256": {
+          "ablations": {
+            "t": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "t"
+              ],
+              "top_class": null
+            },
+            "x": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "x"
+              ],
+              "top_class": null
+            },
+            "z": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "z"
+              ],
+              "top_class": "t:-2|x:1"
+            }
+          },
+          "family_margin": -0.0007150609510337851,
+          "family_rejected": false,
+          "family_validation_rmse": 0.0027120054362848606,
+          "rank1_decision": "stable_candidate",
+          "rank1_margin": -0.0007150609510337851,
+          "rank1_validation_rmse": 0.0027120054362848606,
+          "threshold": 0.003427066387318646
+        },
+        "upper95/64": {
+          "ablations": {
+            "t": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "t"
+              ],
+              "top_class": null
+            },
+            "x": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "x"
+              ],
+              "top_class": null
+            },
+            "z": {
+              "decision": "no_stable_law",
+              "removed_features": [
+                "z"
+              ],
+              "top_class": "t:-2|x:1"
+            }
+          },
+          "family_margin": -0.001177076911591946,
+          "family_rejected": false,
+          "family_validation_rmse": 0.0027120054362848606,
+          "rank1_decision": "stable_candidate",
+          "rank1_margin": -0.001177076911591946,
+          "rank1_validation_rmse": 0.0027120054362848606,
+          "threshold": 0.0038890823478768067
+        }
+      }
+    },
+    "payload_sha256": "943e62cddc510abc9d87de30cc6c429fa9af92ca1b76f38344538a0f94212701",
+    "source_sha": "da9e8fcf746e418629e9b769f9e354c449562aa5",
+    "worker": {
+      "discovery": {
+        "ablations": {
+          "t": {
+            "decision": "no_stable_law",
+            "removed_features": [
+              "t"
+            ],
+            "top_class": null
+          },
+          "x": {
+            "decision": "no_stable_law",
+            "removed_features": [
+              "x"
+            ],
+            "top_class": null
+          },
+          "z": {
+            "decision": "no_stable_law",
+            "removed_features": [
+              "z"
+            ],
+            "top_class": "t:-2|x:1"
+          }
+        },
+        "approximation_status": "predictive_approximation",
+        "class_count": 5,
+        "decision": "stable_candidate",
+        "dimensional_system": {
+          "nullity": 1,
+          "rank": 2,
+          "status": "affine"
+        },
+        "equivalence_map": {
+          "t:-2|x:1": [
+            {
+              "t": "-2",
+              "x": "1"
+            }
+          ],
+          "t:-2|x:1|z:-1": [
+            {
+              "t": "-2",
+              "x": "1",
+              "z": "-1"
+            }
+          ],
+          "t:-2|x:1|z:-2": [
+            {
+              "t": "-2",
+              "x": "1",
+              "z": "-2"
+            }
+          ],
+          "t:-2|x:1|z:1": [
+            {
+              "t": "-2",
+              "x": "1",
+              "z": "1"
+            }
+          ],
+          "t:-2|x:1|z:2": [
+            {
+              "t": "-2",
+              "x": "1",
+              "z": "2"
+            }
+          ]
+        },
+        "evidence_class": "GENERATED/FITTED CANDIDATE",
+        "family_assessment": "contains_validation_adequate_member",
+        "group_diagnostics": {
+          "g0": {
+            "group_fitted_log_coefficient": -2.5988110714277584,
+            "group_fitted_training_rmse": 0.003253581802501519,
+            "training_rmse": 0.003253581802501519,
+            "validation_rmse": 0.0027120054362848606
+          }
+        },
+        "input_sha256": "943e62cddc510abc9d87de30cc6c429fa9af92ca1b76f38344538a0f94212701",
+        "minimum_validation_rmse": 0.0027120054362848606,
+        "ranking": [
+          {
+            "class_id": "t:-2|x:1|z:-1",
+            "coefficient": 0.07436193670919683,
+            "evidence_class": "GENERATED/FITTED CANDIDATE",
+            "expanded": {
+              "t": "-2",
+              "x": "1",
+              "z": "-1"
+            },
+            "expanded_complexity": 4,
+            "log_coefficient": -2.5988110714277584,
+            "members": [
+              {
+                "t": "-2",
+                "x": "1",
+                "z": "-1"
+              }
+            ],
+            "rank": 1,
+            "rank_score": 0.006712005436284861,
+            "representative": {
+              "t": "-2",
+              "x": "1",
+              "z": "-1"
+            },
+            "scientific_significance": "not_assigned",
+            "training_rmse": 0.003253581802501519,
+            "validation_rmse": 0.0027120054362848606
+          },
+          {
+            "class_id": "t:-2|x:1",
+            "coefficient": 0.07277443961594791,
+            "evidence_class": "GENERATED/FITTED CANDIDATE",
+            "expanded": {
+              "t": "-2",
+              "x": "1"
+            },
+            "expanded_complexity": 3,
+            "log_coefficient": -2.620390489607539,
+            "members": [
+              {
+                "t": "-2",
+                "x": "1"
+              }
+            ],
+            "rank": 2,
+            "rank_score": 0.6000263335738223,
+            "representative": {
+              "t": "-2",
+              "x": "1"
+            },
+            "scientific_significance": "not_assigned",
+            "training_rmse": 0.5902247371422432,
+            "validation_rmse": 0.5970263335738223
+          },
+          {
+            "class_id": "t:-2|x:1|z:-2",
+            "coefficient": 0.0759840633651655,
+            "evidence_class": "GENERATED/FITTED CANDIDATE",
+            "expanded": {
+              "t": "-2",
+              "x": "1",
+              "z": "-2"
+            },
+            "expanded_complexity": 5,
+            "log_coefficient": -2.5772316532479773,
+            "members": [
+              {
+                "t": "-2",
+                "x": "1",
+                "z": "-2"
+              }
+            ],
+            "rank": 3,
+            "rank_score": 0.6007000289565988,
+            "representative": {
+              "t": "-2",
+              "x": "1",
+              "z": "-2"
+            },
+            "scientific_significance": "not_assigned",
+            "training_rmse": 0.5913441569053679,
+            "validation_rmse": 0.5957000289565988
+          },
+          {
+            "class_id": "t:-2|x:1|z:1",
+            "coefficient": 0.07122083280491323,
+            "evidence_class": "GENERATED/FITTED CANDIDATE",
+            "expanded": {
+              "t": "-2",
+              "x": "1",
+              "z": "1"
+            },
+            "expanded_complexity": 4,
+            "log_coefficient": -2.64196990778732,
+            "members": [
+              {
+                "t": "-2",
+                "x": "1",
+                "z": "1"
+              }
+            ],
+            "rank": 4,
+            "rank_score": 1.197380822922941,
+            "representative": {
+              "t": "-2",
+              "x": "1",
+              "z": "1"
+            },
+            "scientific_significance": "not_assigned",
+            "training_rmse": 1.1809961369650512,
+            "validation_rmse": 1.193380822922941
+          },
+          {
+            "class_id": "t:-2|x:1|z:2",
+            "coefficient": 0.06970039277793118,
+            "evidence_class": "GENERATED/FITTED CANDIDATE",
+            "expanded": {
+              "t": "-2",
+              "x": "1",
+              "z": "2"
+            },
+            "expanded_complexity": 5,
+            "log_coefficient": -2.663549325967101,
+            "members": [
+              {
+                "t": "-2",
+                "x": "1",
+                "z": "2"
+              }
+            ],
+            "rank": 5,
+            "rank_score": 1.7947372409357725,
+            "representative": {
+              "t": "-2",
+              "x": "1",
+              "z": "2"
+            },
+            "scientific_significance": "not_assigned",
+            "training_rmse": 1.7717704398058394,
+            "validation_rmse": 1.7897372409357726
+          }
+        ],
+        "structural_recovery_claim": false,
+        "surface_count": 5,
+        "top_class": "t:-2|x:1|z:-1"
+      },
+      "error": null,
+      "receipt": {
+        "audit_open_attempts": [
+          "<stage>/Discovery/__init__.py",
+          "<stage>/Discovery/__pycache__/__init__.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/constants.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/dependency_definitions.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/dimensional_search.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/dimensions.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/monomial_constraints.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/planck_identities.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/symbolic_benchmark_engine.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/symbolic_suite_engine.cpython-312.pyc",
+          "<stage>/Discovery/constants.py",
+          "<stage>/Discovery/dependency_definitions.py",
+          "<stage>/Discovery/dimensional_search.py",
+          "<stage>/Discovery/dimensions.py",
+          "<stage>/Discovery/monomial_constraints.py",
+          "<stage>/Discovery/planck_identities.py",
+          "<stage>/Discovery/symbolic_benchmark_engine.py",
+          "<stage>/Discovery/symbolic_suite_engine.py"
+        ],
+        "cache_tag": "cpython-312",
+        "denied_unexpected_attempts": [],
+        "discovery_modules": [
+          "Discovery",
+          "Discovery.constants",
+          "Discovery.dependency_definitions",
+          "Discovery.dimensional_search",
+          "Discovery.dimensions",
+          "Discovery.monomial_constraints",
+          "Discovery.planck_identities",
+          "Discovery.symbolic_benchmark_engine",
+          "Discovery.symbolic_suite_engine"
+        ],
+        "expected_missing_cache_attempts": [
+          "<stage>/Discovery/__pycache__/__init__.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/constants.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/dependency_definitions.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/dimensional_search.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/dimensions.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/monomial_constraints.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/planck_identities.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/symbolic_benchmark_engine.cpython-312.pyc",
+          "<stage>/Discovery/__pycache__/symbolic_suite_engine.cpython-312.pyc"
+        ],
+        "inventory_after": {
+          "Discovery": {
+            "kind": "directory"
+          },
+          "Discovery/__init__.py": {
+            "kind": "file",
+            "sha256": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078",
+            "size": 80
+          },
+          "Discovery/constants.py": {
+            "kind": "file",
+            "sha256": "952c23a9b8219125c3a6a04a6266c2d2158529aa3ece4753198e11f20734fccb",
+            "size": 5629
+          },
+          "Discovery/dependency_definitions.py": {
+            "kind": "file",
+            "sha256": "66e6e8c1d90f8ca5bba7596828dcf33fad3dbca3e8458375df19d624fd47058f",
+            "size": 8652
+          },
+          "Discovery/dimensional_search.py": {
+            "kind": "file",
+            "sha256": "f9512b3c060b5c04c69045713f3cd0bbac8f484715188d5ee0e53fe88e708adf",
+            "size": 10218
+          },
+          "Discovery/dimensions.py": {
+            "kind": "file",
+            "sha256": "40c01117063c69e73c36aabf08d73776b3c50bd21b25a73b782cabae5489e2b2",
+            "size": 3508
+          },
+          "Discovery/monomial_constraints.py": {
+            "kind": "file",
+            "sha256": "6d972444722d702e5db9f1c188f21d405352c97bdd8abba565cde19680497a81",
+            "size": 8752
+          },
+          "Discovery/planck_identities.py": {
+            "kind": "file",
+            "sha256": "d1b561ab3ca7a91bb4f974cebff032bcd2d52c044b59df6befc40b1df58c988c",
+            "size": 7127
+          },
+          "Discovery/symbolic_benchmark_engine.py": {
+            "kind": "file",
+            "sha256": "91ac2e902efac1ba593b5934598aa5d3d394f2c4b966d466406e0b965f2e9841",
+            "size": 10219
+          },
+          "Discovery/symbolic_suite_engine.py": {
+            "kind": "file",
+            "sha256": "a2a39c214689957591355cd2943c5fa0315e5367848c18d4d7ec9912435325d6",
+            "size": 1962
+          }
+        },
+        "inventory_before": {
+          "Discovery": {
+            "kind": "directory"
+          },
+          "Discovery/__init__.py": {
+            "kind": "file",
+            "sha256": "da90719c4a2f8bd06ec0946b7b386a0171f44ae74fa724bdce779d5ee6c98078",
+            "size": 80
+          },
+          "Discovery/constants.py": {
+            "kind": "file",
+            "sha256": "952c23a9b8219125c3a6a04a6266c2d2158529aa3ece4753198e11f20734fccb",
+            "size": 5629
+          },
+          "Discovery/dependency_definitions.py": {
+            "kind": "file",
+            "sha256": "66e6e8c1d90f8ca5bba7596828dcf33fad3dbca3e8458375df19d624fd47058f",
+            "size": 8652
+          },
+          "Discovery/dimensional_search.py": {
+            "kind": "file",
+            "sha256": "f9512b3c060b5c04c69045713f3cd0bbac8f484715188d5ee0e53fe88e708adf",
+            "size": 10218
+          },
+          "Discovery/dimensions.py": {
+            "kind": "file",
+            "sha256": "40c01117063c69e73c36aabf08d73776b3c50bd21b25a73b782cabae5489e2b2",
+            "size": 3508
+          },
+          "Discovery/monomial_constraints.py": {
+            "kind": "file",
+            "sha256": "6d972444722d702e5db9f1c188f21d405352c97bdd8abba565cde19680497a81",
+            "size": 8752
+          },
+          "Discovery/planck_identities.py": {
+            "kind": "file",
+            "sha256": "d1b561ab3ca7a91bb4f974cebff032bcd2d52c044b59df6befc40b1df58c988c",
+            "size": 7127
+          },
+          "Discovery/symbolic_benchmark_engine.py": {
+            "kind": "file",
+            "sha256": "91ac2e902efac1ba593b5934598aa5d3d394f2c4b966d466406e0b965f2e9841",
+            "size": 10219
+          },
+          "Discovery/symbolic_suite_engine.py": {
+            "kind": "file",
+            "sha256": "a2a39c214689957591355cd2943c5fa0315e5367848c18d4d7ec9912435325d6",
+            "size": 1962
+          }
+        },
+        "python_minor": "3.12",
+        "successful_opens": [
+          "<stage>/Discovery/__init__.py",
+          "<stage>/Discovery/constants.py",
+          "<stage>/Discovery/dependency_definitions.py",
+          "<stage>/Discovery/dimensional_search.py",
+          "<stage>/Discovery/dimensions.py",
+          "<stage>/Discovery/monomial_constraints.py",
+          "<stage>/Discovery/planck_identities.py",
+          "<stage>/Discovery/symbolic_benchmark_engine.py",
+          "<stage>/Discovery/symbolic_suite_engine.py"
+        ],
+        "successful_reads": [
+          "<stage>/Discovery/__init__.py",
+          "<stage>/Discovery/constants.py",
+          "<stage>/Discovery/dependency_definitions.py",
+          "<stage>/Discovery/dimensional_search.py",
+          "<stage>/Discovery/dimensions.py",
+          "<stage>/Discovery/monomial_constraints.py",
+          "<stage>/Discovery/planck_identities.py",
+          "<stage>/Discovery/symbolic_benchmark_engine.py",
+          "<stage>/Discovery/symbolic_suite_engine.py"
+        ],
+        "unexpected_modules": [],
+        "version": 2,
+        "worker_sha256": "f6c6dfbabdd0e9f6ccb8d184c4970ecfb336e8c164920cab445023c1b810a054"
+      }
+    }
+  },
+  "revision": 1,
+  "schema": "tnp-estimated-noise/selection-v1",
+  "task": "NP-ESTIMATED-NOISE-01"
+}

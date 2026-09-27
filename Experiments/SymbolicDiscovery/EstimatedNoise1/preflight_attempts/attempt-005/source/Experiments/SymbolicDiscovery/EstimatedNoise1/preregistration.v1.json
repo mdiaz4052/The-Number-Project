@@ -1,0 +1,340 @@
+{
+  "binding_rule": "At authorized launch copy this file to preregistration.v1.json, change schema to tnp-estimated-noise/preregistration-v1 and state to FROZEN, and fill only the four launch_binding values from observed facts. Science and its digest must remain identical. Never use null bindings to execute. Freeze commit SHA/server PR anchor and later source/seed pins live in subsequent receipts, avoiding self-hashes.",
+  "execution_authorized_by_this_file": false,
+  "launch_binding": {
+    "actual_base_sha": "0b3d31269c7fde9a75e9d7045ff483e71b4b9f4f",
+    "consumed_work_order_sha256": "21f0558af43835ba33c107cf8cf85bae869a4c8212f17c7c0ba2f1f74400ca1e",
+    "instruction_snapshot_sha": "5c362165d80f60ccd7232a15ac459cdbff33f179",
+    "prepared_preregistration_sha256": "1c811c465f9d1d404d8a9f11dc4ef1628598045fd4616d50a5ed435cab6dd06f"
+  },
+  "prepared_utc": "2026-09-23",
+  "reference_base_sha": "0b3d31269c7fde9a75e9d7045ff483e71b4b9f4f",
+  "revision": 1,
+  "schema": "tnp-estimated-noise/preregistration-v1",
+  "science": {
+    "analysis": {
+      "aggregation": "For each law/noise/method/budget cell: expected=16, interpretable denominator, counts, all 16 block values, and exponent-stratified counts with expected=4. Paired comparisons report both rejection->nonrejection and nonrejection->rejection counts plus paired-block denominator. Estimate/epsilon and bound widths report median,min,max with explicit n. Counts may also be shown /16; no population intervals or p-values.",
+      "coverage_dependence": "Uniform normalized calibration banks are matched across conditions. Do not count copies at different scales/laws as independent calibration-coverage trials. Present all condition results; summarize distinct block coverage vectors at each budget, retaining any rounding-induced discrepancies.",
+      "interpretation": "Ideal analytic coverage is model-conditional mathematics; observed coverage/detection counts are finite designed-suite outcomes. Nonrejection does not prove adequacy or diagnose real-data causes.",
+      "no_adaptive_rules": [
+        "No tuning alpha, budgets, beta, epsilon, sample count, thresholds or rank penalty.",
+        "No exclusions, seed replacements or extra scientific runs.",
+        "No requirement for monotone recognition, improved performance, zero false rejection or observed 95 percent coverage."
+      ],
+      "per_dataset": [
+        "point/epsilon and ideal_upper/epsilon and padded_upper/epsilon",
+        "padded_upper>=epsilon and ideal_upper>=epsilon",
+        "family and rank1 validation/heldout errors",
+        "threshold and signed family/rank1 margin",
+        "all seven family and rank1 decisions",
+        "heldout approximation",
+        "structural match and credit by rule",
+        "reference disagreement direction"
+      ],
+      "primary": "At each of the three noise levels, compare upper95/64 with point/64 and known-noise reference using paired block rejection changes, adequate-control rejection and curved recognition. No data-dependent pooling or winning-method selection.",
+      "secondary": "Repeat the prespecified comparisons for m=16,256; report within-block budget changes, scale ratios, bound coverage and widths. Do not replace primary analysis with a favorable secondary budget."
+    },
+    "claim_scope": {
+      "assumptions": [
+        "Exact positive features; adequate truth is in the exhaustively enumerated family.",
+        "Independent centered Uniform[-epsilon,epsilon] log errors with a common scale within each dataset and its calibration pairs.",
+        "Same clean response for both measurements in a calibration pair; no drift or pair correlation.",
+        "Calibration, train, validation and heldout streams separate within each block; intentional matching across six conditions and nested budgets disclosed."
+      ],
+      "historical_claim": "Historical wrong stable selections may recover the base monomial while omitting curvature; they are not automatically wrong base-exponent selections.",
+      "known_information": "Designer knows historical Margin1 results, generator families, scale grid and formulas. No prospective scientific seed or target data exists during preparation. Uniform-distribution shape remains specified; only its scale is hidden from operational workers.",
+      "nonclaims": [
+        "Unknown noise distribution or arbitrary real-data performance.",
+        "A calibrated population detection rate from sixteen blocks.",
+        "Family acceptance proves the family or selected formula true.",
+        "A 95 percent posterior probability of formula correctness.",
+        "Simultaneous 95 percent coverage over budgets, blocks or study.",
+        "Bounds on rank-1 selection error or physical-law discovery.",
+        "External-engine comparison, PySR qualification, empirical gravity evidence, formal Lean proof or independent replication."
+      ],
+      "outcome_blind": false,
+      "primary": "A prospective, fixed, synthetic mechanism study of estimated-noise family rejection, with an analytic conditional error bound. Completion is independent of detector performance.",
+      "prospective_realized_outcomes_unseen_at_freeze": true
+    },
+    "design": {
+      "calibration_budgets": [
+        16,
+        64,
+        256
+      ],
+      "calibration_pairs_per_dataset": 256,
+      "calibration_response_values": 49152,
+      "conditions": [
+        "adequate",
+        "curved"
+      ],
+      "datasets": 96,
+      "discovery_observations": 16896,
+      "discovery_rows": {
+        "heldout": 64,
+        "train": 64,
+        "validation": 48
+      },
+      "estimated_methods": [
+        "point",
+        "upper95"
+      ],
+      "independent_blocks": 16,
+      "matched_conditions_per_block": 6,
+      "noise_half_widths": [
+        0.0001,
+        0.0016,
+        0.005
+      ],
+      "operational_assessments": 576,
+      "operational_assessments_per_dataset": 6,
+      "primary_budget": 64,
+      "primary_method": "upper95",
+      "reference_assessments": 96,
+      "reference_assessments_per_dataset": 1,
+      "sample_size_rationale": "A bounded balanced extension from four to sixteen blocks, not a power calculation or high-precision tail-rate estimation. No data-dependent expansion.",
+      "stratified_exponents": [
+        -2,
+        -1,
+        1,
+        2,
+        -2,
+        -1,
+        1,
+        2,
+        -2,
+        -1,
+        1,
+        2,
+        -2,
+        -1,
+        1,
+        2
+      ],
+      "total_assessments": 672,
+      "unit": "Block is the independent unit; four independently seeded blocks per deterministic exponent stratum. Conditions, paired methods, shared calibration noise and nested prefixes are dependent. The 672 assessments are not independent replicates."
+    },
+    "dispositions": {
+      "COMPLETE": "All 96 datasets have full calibrated estimates, complete candidate inventories, six sealed operational assessments, reference assessment, heldout evaluation and required integrity checks. Detector performance irrelevant.",
+      "FAIL": "Established custody, leakage, frozen-contract, numeric allowance, unsupported-credit or evidence-integrity violation; takes precedence even if other evidence is missing.",
+      "NO_GO": "Sound accounted prerequisite/capability failure with zero fully interpretable datasets.",
+      "PARTIAL": "Sound evidence for 1..95 fully interpretable datasets with every other expected record explicitly accounted for; no hidden exclusion.",
+      "UNRESOLVED": "Necessary evidence missing/conflicting so integrity or interpretation cannot be established; no established violation superseding it.",
+      "evidence_axis": "evidence_integrity PASS/FAIL/UNRESOLVED separate from study disposition; adverse scientifically valid outcomes can have PASS integrity.",
+      "fully_interpretable": "All six operational rules plus reference for a dataset evaluable; partial method records remain visible but do not count as a complete dataset.",
+      "operational_axis": "Operational failures stored as their own immutable events/routes; a reporting failure after scientific completion does not overwrite raw science.",
+      "precedence": [
+        "FAIL",
+        "UNRESOLVED",
+        "NO_GO",
+        "PARTIAL",
+        "COMPLETE"
+      ],
+      "prefix": "ESTIMATED_NOISE_1_",
+      "review_status": "PROVISIONAL — INDEPENDENT AUDIT PENDING"
+    },
+    "estimation": {
+      "alpha": 0.05,
+      "analytic_derivation": "Under iid uniform errors, F(t)=P(abs(e1-e2)/(2*epsilon)<=t)=2*t-t*t, 0<=t<=1. P(M/(2*epsilon)<q_m)=F(q_m)**m=alpha. Thus ideal upper coverage is 1-alpha for epsilon>0. Padded upper is conservative if observed maximum understates the ideal maximum by no more than the fixed pad.",
+      "calibration_seal": "Compute all six estimates and thresholds from calibration alone, seal and commit before any discovery evaluation. No residual-based update or selection of a budget.",
+      "coverage": 0.95,
+      "difference": "d_j=math.log(response_1)-math.log(response_2)",
+      "false_rejection_derivation": "For adequate truth, the true-class fitted log-intercept shifts by mean training noise; each validation residual <=2*epsilon. Conditional on upper>=epsilon, the exhaustive family cannot be rejected at 2*upper+delta in exact arithmetic. Therefore false FAMILY rejection is at most alpha marginally per prespecified m, under assumptions and numerical qualification; no guarantee for rank-1 selection or simultaneous study-wide decisions.",
+      "ideal_upper": "max(abs(d_j))/(2*q_m)",
+      "implemented_upper": "(max(abs(d_j)) + numeric_difference_pad)/(2*q_m)",
+      "numeric_difference_pad": 1e-12,
+      "pad_meaning": "A declared absolute log-difference rounding allowance, not estimated physical noise. Record ideal and padded bounds separately; decisions use padded bound. Preflight and post-reveal numerical checks must validate the allowance; never enlarge it after seeing scientific outcomes.",
+      "point": "sqrt(1.5*math.fsum(d_j*d_j for first m pairs)/m)",
+      "upper_quantile": "q_m = 1 - sqrt(-expm1(log(alpha)/m)); require finite 0<q_m<1.",
+      "zero_handling": "Fixtures only: if all observed differences vanish, point=0 and implemented_upper=pad/(2*q_m). Do not infer true epsilon=0. Empty/missing pairs, nonpositive/nonfinite/bool responses, duplicate pair IDs or wrong prefix lengths fail validation; do not replace with zeros."
+    },
+    "execution_controls": {
+      "chronology": [
+        "instruction snapshot + receipt + prepared preregistration committed",
+        "sole-file bound preregistration.v1.json freeze",
+        "GitHub draft PR server timestamp strictly after freeze",
+        "source/environment/fixtures/mutations/anchor committed",
+        "sole-file seed commitment published and remote readback",
+        "one data generation; public data + private hashes committed",
+        "all calibration estimates/thresholds committed",
+        "all rankings and six decisions per dataset committed in selection seal",
+        "oracle/heldout reveal and evaluation",
+        "immutable raw study result and explicit operational/result routes",
+        "Notes, offline verifier, exact-head CI, handoff for independent review"
+      ],
+      "ci": "New offline guard reached through ordinary unittest discovery; workflow unchanged. Focused local affected checks plus one final full Python suite at exact head (CI may supply it) and both existing protected CI jobs. Reuse unchanged evidence; no unrelated local Lean run or old benchmark campaign.",
+      "environment": "CPython 3.12, Python standard library and accepted internal modules; no external engine, new environment stack or native dependency.",
+      "failure_budget": "No scientific retries or replacement seeds. Stop the scientific pipeline at first stage failure; retain all completed and partial artifacts and mark unrun records NOT_EXECUTED. Pre-seed engineering fixes allowed with retained failed preflight and full affected-boundary requalification. After seed, deterministic transport/readback retries can only transfer existing identical bytes, never regenerate or refit. Any post-outcome verifier correction is detached, source-pinned, read-only and preserves the original failure.",
+      "mutation_acceptance": "All ten mutations killed by designated semantic assertions on deterministic fixtures; baseline and a semantically equivalent control survive. Crashes before intended assertion are failed calibration, not kills. No prospective target seed used.",
+      "mutations": [
+        "M1 use standard deviation as half-width.",
+        "M2 replace upper quantile lower tail alpha with 1-alpha.",
+        "M3 drop prescribed numeric pad in the primary rule.",
+        "M4 use true epsilon or fit residuals as estimator input.",
+        "M5 select calibration pairs by magnitude rather than fixed prefix.",
+        "M6 make family assessment from rank1 instead of family minimum.",
+        "M7 treat equality as rejection.",
+        "M8 use heldout rows in estimation, ranking or coefficient fit.",
+        "M9 award structural credit to stable curved-law approximation.",
+        "M10 drop/relabel failed or missing records to COMPLETE."
+      ],
+      "read_boundaries": "Calibration worker gets anonymous pairs only. Discovery worker gets anonymous train/validation payload and primary estimated policy only. Both run staged with explicit dependency inventories and fresh-cache receipts; evaluator/generator/seed/oracle/heldout/old results unavailable. Trusted operator isolation, not hostile-code/OS sandbox security.",
+      "scope": "Only new package-local modules/tests/artifacts/Notes. Existing tracked repository files, workflows, interpreter pins and historical artifacts byte-identical.",
+      "source_pins": "Pin exact committed source bytes used, checked before execution and against receipts. Later read-only verification reads committed source at source_sha, not an indefinite equality constraint on future shared working-tree files. Scientific artifacts/used-source epochs immutable; no new repository-wide live-source freeze.",
+      "tests": [
+        "Independent quantile/moment fixtures and numeric pads.",
+        "Threshold-only ranking invariance.",
+        "Exact complete five-class inventory and independent arithmetic.",
+        "Calibration-only input schema and forbidden-source/heldout poison probes.",
+        "Primary policy derives from sealed upper95/64, never true epsilon or candidate residuals.",
+        "Prefix nesting, independent streams, anonymization and preserved matching.",
+        "Equality, null/zero distinctions and malformed numeric rejection.",
+        "No exact structural credit for omitted curvature.",
+        "All disposition branches derived from evidence; FAIL precedence.",
+        "Chronology/hash tamper and current receipt/cache read semantics."
+      ]
+    },
+    "features": {
+      "t": {
+        "definition": null,
+        "dimension": {
+          "T": 1
+        },
+        "unit": "s"
+      },
+      "x": {
+        "definition": null,
+        "dimension": {
+          "L": 1
+        },
+        "unit": "m"
+      },
+      "z": {
+        "definition": null,
+        "dimension": {},
+        "unit": "1"
+      }
+    },
+    "generation": {
+      "adequate_beta": 0.0,
+      "anonymous_ids": "Enumerate tuples (b,condition_index,noise_index) in that order. Sort tuples by SHA256(UTF8(seed+\":estimated-noise1:anon:\"+str(b)+\":\"+str(condition_index)+\":\"+str(noise_index))), tie by tuple. Assign d001..d096. Keep mapping private until reveal. Public labels never encode law/noise/stratum.",
+      "base_offset_log_ranges": {
+        "t": [
+          -0.6,
+          0.6
+        ],
+        "x": [
+          -1,
+          1
+        ],
+        "z": [
+          -1,
+          1
+        ]
+      },
+      "block_seed": "SHA256(UTF8(seed + \":estimated-noise1:block:\" + str(b))) as lowercase hex; b=0..15.",
+      "calibration_measurement": "Retain actual positive response_1,response_2 for every pair, with pair_id and identical features. Estimator input strips features and includes only pair_id,response_1,response_2. Differences are computed from observed log responses, never generator errors or clean values.",
+      "calibration_streams": "Separate calibration:inputs draws x,t,z offsets per pair, using base ranges. calibration:noise:1 and calibration:noise:2 each draw one normalized Uniform[-1,1] error per pair. Pair members share exact features/clean signal; response values are independently perturbed. Reuse this separate bank across the six conditions. Budgets use the first m pairs in frozen generation order, never sorted or selected.",
+      "coefficient_log_range": [
+        -3,
+        3
+      ],
+      "curved_beta": 0.01,
+      "discovery_streams": "For split in train,validation,heldout: split+\":inputs\" draws x,t,z offsets per row; split+\":noise\" draws one normalized Uniform[-1,1] error per row. Features exp(center+offset). Generate each block bank once and reuse across both laws and all three scales.",
+      "feature_order": [
+        "x",
+        "t",
+        "z"
+      ],
+      "group_label": "g0 on every discovery row; preserve inherited group diagnostics as diagnostics only.",
+      "heldout_offset_log_ranges": {
+        "t": [
+          -0.8,
+          0.8
+        ],
+        "x": [
+          -1.3,
+          1.3
+        ],
+        "z": [
+          -1.3,
+          1.3
+        ]
+      },
+      "law": "log_y_clean = log(k) + log(x) - 2*log(t) + p*log(z) + beta*log(z)**2; y=exp(log_y_clean+epsilon*u)",
+      "law_draw_order": "Stream(child,\"law\"): log coefficient, x center, t center, z center, in that order; even the zero-width z center consumes a draw. coefficient=exp(log coefficient).",
+      "master_seed": "One secrets.token_hex(32), generated only after source/environment/fixture preflight is committed. Never replace. Scientific seed is not an engineering fixture seed.",
+      "proof_of_curved_nonmembership": "Every permitted monomial is affine in log(z) at fixed x,t; curved truth has second derivative 2*0.01. No curvature alias is supplied.",
+      "same_epoch_replay": "After reveal, explicit replay may reproduce this committed seed for deterministic reproducibility only; not new evidence. No historical benchmark regeneration.",
+      "scale_center_log_ranges": {
+        "t": [
+          -1,
+          1
+        ],
+        "x": [
+          -2,
+          2
+        ],
+        "z": [
+          0,
+          0
+        ]
+      },
+      "seed_commitment": "SHA256(UTF8(\"estimated-noise1:\" + seed)); publish sole-file seed commitment and verify remote head before any target generation.",
+      "stream_algorithm": "Reuse pinned symbolic_suite_worlds.Stream: counter starts 0; H=SHA256(UTF8(child+\":\"+name+\":\"+str(counter))); u64=int.from_bytes(H[:8],\"big\")/2**64; uniform(lo,hi)=lo+(hi-lo)*u64; increment after draw. Ideal continuous statements are analytical, not claims that the finite PRNG is truly continuous.",
+      "version": "estimated-noise1-v1"
+    },
+    "grammar": {
+      "coefficient_fit": "For each class, mean training [log(target)-log(monomial)]. Never refit on validation/heldout/calibration. Full ranking inventory required.",
+      "engine": "Pinned symbolic_suite_engine.discover through existing staged runner; acceptance_validation_rmse set to primary upper95 m=64 threshold. Fresh wrapper computes secondary decisions from same sealed ranking.",
+      "family": "Positive coefficient times dimensionally admissible monomials in x,t,z; five canonical signatures x^1*t^-2*z^j for j=-2,-1,0,1,2. Omit z from signature when j=0.",
+      "fits": "96 discovery evaluations of five principal candidate classes (480 principal coefficient fits). Inherited group diagnostic refits are recorded separately and do not become selections. No refit for alternate thresholds.",
+      "max_abs_power": 2,
+      "max_denominator": 1,
+      "max_factors": 3,
+      "preflight_invariant": "Changing threshold on engineering fixtures must leave all candidate expressions, coefficients, scores and ranking unchanged; threshold-dependent labels, input digests and ablation decisions may change. If this fails, stop before scientific seed.",
+      "ranking": "validation log RMSE + 0.001 * expanded exponent L1 complexity; ties by complexity then canonical class ID.",
+      "target": {
+        "dimension": {
+          "L": 1,
+          "T": -2
+        },
+        "key": "y"
+      }
+    },
+    "numerical_qualification": {
+      "arithmetic": "CPython 3.12 binary64 production with math.fsum; JSON disallows NaN/Infinity, booleans as numbers and duplicate keys. Frozen interpreter patch/platform recorded at preflight; no version change afterwards.",
+      "failure": "If the declared numerical allowance is violated, retain results and report FAIL for established contract violation or UNRESOLVED for unresolved numerical evidence; no pad inflation, reroll or favorable post-hoc recalibration.",
+      "independent_reference": "decimal localcontext precision=80, using Decimal.from_float on stored binary64 inputs, Decimal.ln/exp for independent checks; never import the production estimator into its independent oracle.",
+      "post_reveal": "Recompute every calibration observed-log difference at 80-digit precision; compare production difference and intended epsilon*(u1-u2) from revealed generator draws within 1e-12. Confirm any numerical underestimation of the ideal upper is covered by the fixed pad; compare production all-candidate metrics to independent calculation within 1e-10. Check adequate true-class residuals<=2*epsilon+1e-10. These checks diagnose numeric integrity; they never change sealed decisions.",
+      "preflight": "Deterministic engineering fixtures include every scientific parameter corner, zero/tiny error, equal/repeated differences, alternate alpha/budgets and threshold equality. Assert quantile inversion, difference and bound error allowances, safe finite positive observations, all-candidate arithmetic and analytic adequate-member residual inequality."
+    },
+    "question": "How does estimating a bounded uniform log-noise scale from independent replicate pairs change family-inadequacy decisions relative to known noise, and what is the calibration-budget tradeoff?",
+    "scoring": {
+      "adequacy_multiplier": 2.0,
+      "approximation": "rank1 validation RMSE<=0.04 before reveal; heldout check separately afterwards. Predictive approximation is distinct from adequacy and structural credit.",
+      "approximation_rmse_max": 0.04,
+      "coefficient_relative_error_max": 0.04,
+      "complexity_lambda": 0.001,
+      "error_labels": [
+        "curved_family_rejection",
+        "curved_missed_inadequacy",
+        "adequate_family_rejection",
+        "adequate_rank1_abstention",
+        "stable_selection_omits_curvature",
+        "rank1_base_signature_match"
+      ],
+      "family": "minimum raw validation RMSE across exactly five eligible classes > T. An absent/incomplete family is capability/integrity failure, never evidence of recognized inadequacy.",
+      "independent_metric_tolerance": 1e-10,
+      "missing": "Use null plus explicit stage/reason for undefined metrics, never zero or a fabricated negative result.",
+      "numeric_floor": 1e-09,
+      "rank1": "stable_candidate iff rank1 validation RMSE<=T; otherwise no_stable_law. Rank1 chosen by frozen ranking, not by oracle or family-minimum score.",
+      "reference": "After all operational decisions are sealed, compute known-noise labels using true epsilon and exactly the same fitted coefficients. No reference labels or true epsilon available before seal.",
+      "structural_credit": "Evaluation only, per method/budget/reference: adequate truth AND rank1 canonical signature matches truth AND sealed rank1 stable AND max(training,validation,heldout rank1 RMSE)<=that threshold AND abs(coefficient/k-1)<=0.04 AND eligibility/provenance intact. Curved truth always gets false. This is controlled synthetic structural credit, not empirical evidence.",
+      "threshold": "T=2*scale+1e-9; scale is point, padded upper or evaluator-only true epsilon. Equality is adequate; strict > means rejection. No fuzzy comparison or tolerance added to scientific cutoffs."
+    }
+  },
+  "science_sha256": "19edaba69d1b2cd8b4d0235180d548eac6387b0b564863c0109a7fec6fb4c312",
+  "state": "FROZEN",
+  "task": "NP-ESTIMATED-NOISE-01"
+}

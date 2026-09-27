@@ -1,0 +1,24 @@
+test_read_only_committed_evidence (tests.test_estimated_noise1.EstimatedNoise1CommittedEvidence.test_read_only_committed_evidence) ... skipped 'prospective epoch not executed at engineering preflight'
+test_all_dispositions_and_failure_precedence (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_all_dispositions_and_failure_precedence) ... ok
+test_calibration_only_schema (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_calibration_only_schema) ... ok
+test_closed_artifact_binding_hash_and_type_tamper (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_closed_artifact_binding_hash_and_type_tamper) ... ok
+test_discovery_heldout_denial_and_poison_sources (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_discovery_heldout_denial_and_poison_sources) ... ok
+test_discovery_threshold_invariance_inventory_and_numeric_reference (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_discovery_threshold_invariance_inventory_and_numeric_reference) ... ok
+test_duplicate_json_and_nonfinite_rejection (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_duplicate_json_and_nonfinite_rejection) ... ok
+test_family_rank1_equality_and_signed_margins (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_family_rank1_equality_and_signed_margins) ... ok
+test_fixed_design_matching_streams_and_anonymization (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_fixed_design_matching_streams_and_anonymization) ... ok
+test_invalid_pair_values_and_inventories (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_invalid_pair_values_and_inventories) ... ok
+test_inventory_is_derived_from_dimensions (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_inventory_is_derived_from_dimensions) ... ok
+test_no_curved_structural_credit_or_stale_policy (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_no_curved_structural_credit_or_stale_policy) ... ok
+test_numeric_moment_and_alternate_quantiles (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_numeric_moment_and_alternate_quantiles) ... ok
+test_primary_six_rules_and_end_to_end_fixture_report (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_primary_six_rules_and_end_to_end_fixture_report) ... ok
+test_real_git_chronology_rejects_reversed_ancestry (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_real_git_chronology_rejects_reversed_ancestry) ... ok
+test_staged_calibration_completed_reads_and_fresh_cache (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_staged_calibration_completed_reads_and_fresh_cache) ... ok
+test_stopped_evidence_dispositions_are_derived (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_stopped_evidence_dispositions_are_derived) ... ok
+test_ten_designated_semantic_mutations (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_ten_designated_semantic_mutations) ... ok
+test_zero_tiny_and_equal_differences (tests.test_estimated_noise1.EstimatedNoise1Fixtures.test_zero_tiny_and_equal_differences) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 1.415s
+
+OK (skipped=1)

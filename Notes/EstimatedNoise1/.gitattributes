@@ -1,0 +1,3 @@
+# Preserve exact decoded failed CI logs, including their original whitespace.
+operational_failures/ci-343.python.log -whitespace
+operational_failures/ci-344.python.log -whitespace

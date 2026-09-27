@@ -1,0 +1,43 @@
+{
+  "diagnosis": "HTTP 400 / sideband disconnect during publication. Root cause not established.",
+  "disposition": "RECOVERED_TRANSPORT_FAILURE",
+  "files": {
+    "publication-01.original-tool-output.txt": "08a166658516ee294b93dcd760540c9b6f2854d561effd8ccdee321678f9af47",
+    "publication-01.remote-after.txt": "e08bcf5daad43b400a406e0b25c2311c731aa8842458acc748cce9216f727d95",
+    "publication-01.remote-before.txt": "8a35934ccc5fceca152320ef2fb8f5a5918f921132ecfbc494cbfb5c33cc84ce",
+    "publication-01.retry.stderr": "cf390ccb5c2a9283bcf555f521b6cb3ab6a110e457d5e7c995417b9004ff4564",
+    "publication-01.retry.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "initial_command": [
+    "git",
+    "push",
+    "origin",
+    "experiment/np-estimated-noise-01"
+  ],
+  "initial_exit_code": 1,
+  "initial_retention": "Complete combined tool output from chunk 9d6ba7; initial separate OS stdout/stderr and exact failure timestamp were not captured. No separate-stream capture is claimed.",
+  "observed_remote_after": "5cf61eaa53c82195bd95eaa591741a7bb81c3c87",
+  "observed_remote_before": "dc7a04482a58fda9f97421d62efd90f98a3ed149",
+  "raw_result_commit_sha": "c4d43e48b36e88d78ddd1e4a1cd7c8e0d683eefe",
+  "raw_result_sha256": "279324653fb9556fc8460dc4ff41b1d6cd5e049c438870a07f8bc81992a2fb03",
+  "recorded_utc": "2026-09-25T15:54:22.362855+00:00",
+  "remote_delivery_verified": true,
+  "retry_command": [
+    "git",
+    "-c",
+    "http.postBuffer=52428800",
+    "push",
+    "origin",
+    "experiment/np-estimated-noise-01"
+  ],
+  "retry_count": 1,
+  "retry_exit_code": 0,
+  "retry_scope": "Existing identical Git commit objects only; HTTP buffering changed. No source, seed, observations, estimates, fits, decisions, held-out evaluation or immutable result changed or reran.",
+  "review_status": "PROVISIONAL — INDEPENDENT AUDIT PENDING",
+  "revision": 1,
+  "schema": "tnp-estimated-noise/post-science-publication-receipt-v1",
+  "scientific_disposition": "ESTIMATED_NOISE_1_COMPLETE",
+  "scientific_evidence_integrity": "PASS",
+  "task": "NP-ESTIMATED-NOISE-01",
+  "unchanged_attempted_and_delivered_head": "5cf61eaa53c82195bd95eaa591741a7bb81c3c87"
+}

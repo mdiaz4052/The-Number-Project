@@ -1,0 +1,43 @@
+{
+  "bindings": {
+    "actual_base_sha": "0b3d31269c7fde9a75e9d7045ff483e71b4b9f4f",
+    "freeze_sha": "e7670b8218f7cfd129529dc8afb8bc8f96ad2e09",
+    "preregistration_sha256": "eb9fdb0fa9f0cdcedd587b6dd8d0302f150acea5e3898b629c719856a50bdd92",
+    "science_sha256": "19edaba69d1b2cd8b4d0235180d548eac6387b0b564863c0109a7fec6fb4c312"
+  },
+  "data": {
+    "operational": [
+      {
+        "disposition": false,
+        "disposition_key": "qualified",
+        "meaning": "PRESEED_ENGINEERING_FAILURE; preserved, superseded by qualified attempt-005",
+        "path": "Experiments/SymbolicDiscovery/EstimatedNoise1/preflight_attempts/attempt-001/receipt.json",
+        "sha256": "1e4c48b335f3350074a9d917f21c84ec876ec1fa8b2b24459d1f7c29339aabc5"
+      },
+      {
+        "disposition": false,
+        "disposition_key": "qualified",
+        "meaning": "PRESEED_ENGINEERING_FAILURE; preserved, superseded by qualified attempt-005",
+        "path": "Experiments/SymbolicDiscovery/EstimatedNoise1/preflight_attempts/attempt-002/receipt.json",
+        "sha256": "993832211d522b9cdab51131d8d3db9571888ab3d54288217c7a7ee87293c0b2"
+      },
+      {
+        "disposition": false,
+        "disposition_key": "qualified",
+        "meaning": "PRESEED_ENGINEERING_FAILURE; preserved, superseded by qualified attempt-005",
+        "path": "Experiments/SymbolicDiscovery/EstimatedNoise1/preflight_attempts/attempt-004/receipt.json",
+        "sha256": "bfb941a63fed02379bfe59a41a26b3c47b0cd29831f837f4906b6a8a0e29d19e"
+      }
+    ],
+    "raw": {
+      "disposition": "ESTIMATED_NOISE_1_COMPLETE",
+      "disposition_key": "data.disposition",
+      "path": "Experiments/SymbolicDiscovery/EstimatedNoise1/result.json",
+      "sha256": "279324653fb9556fc8460dc4ff41b1d6cd5e049c438870a07f8bc81992a2fb03"
+    },
+    "reconciliation": null
+  },
+  "revision": 1,
+  "schema": "tnp-estimated-noise/verification-routes-v1",
+  "task": "NP-ESTIMATED-NOISE-01"
+}

@@ -1,0 +1,25 @@
+{
+  "checkout_merge_sha": "4bd80b32b050d0003301e6f8db1c81923ca54f1b",
+  "correction": "Detached read-only Decimal exp provenance check; original verifier and raw epoch retained. Final corrected validation is attested externally at its exact head.",
+  "disposition": "POST_SCIENCE_VERIFIER_PORTABILITY_FAILURE",
+  "failure": "ValueError: feature stream binding in original reference.generation exact libm exp comparison",
+  "head": "543ace1d15c033e2d0190401675dd9837278ba3b",
+  "job_id": 108144901332,
+  "lean_job_conclusion": "success",
+  "log_sha256": "7f0e114af1736b02585e1868fe78429bfb1921abe9bfc40ae7e30e28fbdb4736",
+  "python_suite": {
+    "errors": 1,
+    "exit_code": 1,
+    "tests": 912
+  },
+  "raw_result_sha256": "279324653fb9556fc8460dc4ff41b1d6cd5e049c438870a07f8bc81992a2fb03",
+  "retention": "Complete decoded GitHub job log, with GitHub credential masking; separate OS stdout/stderr unavailable from Actions log API.",
+  "review_status": "PROVISIONAL \u2014 INDEPENDENT AUDIT PENDING",
+  "revision": 1,
+  "run_id": 36157310724,
+  "run_url": "https://github.com/mdiaz4052/The-Number-Project/actions/runs/36157310724",
+  "schema": "tnp-estimated-noise/post-science-ci-failure-v1",
+  "scientific_disposition": "ESTIMATED_NOISE_1_COMPLETE",
+  "scientific_evidence_integrity": "PASS",
+  "task": "NP-ESTIMATED-NOISE-01"
+}

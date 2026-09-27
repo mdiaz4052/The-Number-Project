@@ -1,0 +1,80 @@
+{
+  "bindings": {
+    "actual_base_sha": "0b3d31269c7fde9a75e9d7045ff483e71b4b9f4f",
+    "freeze_sha": "e7670b8218f7cfd129529dc8afb8bc8f96ad2e09",
+    "preregistration_sha256": "eb9fdb0fa9f0cdcedd587b6dd8d0302f150acea5e3898b629c719856a50bdd92",
+    "science_sha256": "19edaba69d1b2cd8b4d0235180d548eac6387b0b564863c0109a7fec6fb4c312"
+  },
+  "data": {
+    "calibration": {
+      "budgets": {
+        "16": {
+          "ideal_upper_absolute_error": 9.092171768494888e-18,
+          "pad_covers_underestimate": true,
+          "point_absolute_error": 1.5748065513475535e-17,
+          "quantile_absolute_error": 2.769821570566074e-18
+        },
+        "256": {
+          "ideal_upper_absolute_error": 3.173050299076701e-18,
+          "pad_covers_underestimate": true,
+          "point_absolute_error": 5.288694918858292e-18,
+          "quantile_absolute_error": 7.133647781617226e-18
+        },
+        "64": {
+          "ideal_upper_absolute_error": 3.62690718407651e-18,
+          "pad_covers_underestimate": true,
+          "point_absolute_error": 6.942921719740835e-18,
+          "quantile_absolute_error": 5.659181285657837e-17
+        }
+      },
+      "max_intended_difference_error": 4.946695349452525e-16,
+      "max_observed_log_difference_error": 1.7832504766358112e-16,
+      "pair_count": 256,
+      "pass": true
+    },
+    "candidates": {
+      "classes": {
+        "t:-2|x:1": {
+          "coefficient_relative_numeric_error": 8.235067850936487e-17,
+          "heldout_rmse_error": 7.050190141134608e-18,
+          "log_coefficient_error": 1.3163745296719257e-17,
+          "training_rmse_error": 3.711242919012474e-17,
+          "validation_rmse_error": 1.8290102875238718e-17
+        },
+        "t:-2|x:1|z:-1": {
+          "coefficient_relative_numeric_error": 5.223845344996296e-17,
+          "heldout_rmse_error": 9.52900747450436e-18,
+          "log_coefficient_error": 4.099336855986254e-18,
+          "training_rmse_error": 1.17472529907064e-16,
+          "validation_rmse_error": 4.3064307399366344e-19
+        },
+        "t:-2|x:1|z:-2": {
+          "coefficient_relative_numeric_error": 6.054642097396869e-17,
+          "heldout_rmse_error": 1.230335502894299e-16,
+          "log_coefficient_error": 7.484631200877308e-18,
+          "training_rmse_error": 1.9107995494353043e-17,
+          "validation_rmse_error": 7.945768897718398e-19
+        },
+        "t:-2|x:1|z:1": {
+          "coefficient_relative_numeric_error": 2.4124638989228403e-17,
+          "heldout_rmse_error": 3.3117676942172364e-17,
+          "log_coefficient_error": 2.6712518337958543e-18,
+          "training_rmse_error": 2.787561335609005e-18,
+          "validation_rmse_error": 5.968842331945933e-19
+        },
+        "t:-2|x:1|z:2": {
+          "coefficient_relative_numeric_error": 3.5749264853070384e-17,
+          "heldout_rmse_error": 4.219105801861649e-17,
+          "log_coefficient_error": 8.8234772522032e-19,
+          "training_rmse_error": 6.699442667139259e-17,
+          "validation_rmse_error": 9.95907545524379e-17
+        }
+      },
+      "max_metric_error": 1.230335502894299e-16,
+      "pass": true
+    }
+  },
+  "revision": 1,
+  "schema": "tnp-estimated-noise/dataset-numerics-v1",
+  "task": "NP-ESTIMATED-NOISE-01"
+}

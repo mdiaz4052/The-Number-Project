@@ -1,0 +1,12 @@
+{
+  "base_sha": "0b3d31269c7fde9a75e9d7045ff483e71b4b9f4f",
+  "freeze_committed_at": "2026-09-25T14:51:04Z",
+  "freeze_sha": "e7670b8218f7cfd129529dc8afb8bc8f96ad2e09",
+  "pr_created_at": "2026-09-25T14:51:20Z",
+  "pr_number": 61,
+  "pr_url": "https://github.com/mdiaz4052/The-Number-Project/pull/61",
+  "revision": 1,
+  "schema": "tnp-estimated-noise/anchor-v1",
+  "snapshot_sha": "5c362165d80f60ccd7232a15ac459cdbff33f179",
+  "task": "NP-ESTIMATED-NOISE-01"
+}
