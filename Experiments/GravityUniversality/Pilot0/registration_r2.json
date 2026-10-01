@@ -1,0 +1,62 @@
+{
+  "task": "NP-GRAVITY-UNIVERSALITY-00",
+  "revision": 2,
+  "stage": "PHASE_A_CORRECTIONS",
+  "protocol_status": "PROPOSED_CHANGED_BOUNDARY_REVIEW_PENDING",
+  "blocking_findings_status": "B1_B2_OPEN_PENDING_INDEPENDENT_REVIEW",
+  "user_authorization_utc": "2026-10-01T01:12:36Z",
+  "outcome_blind": false,
+  "phase_b": "HELD_NOT_STARTED",
+  "scientific_disposition": "NOT_EVALUATED",
+  "repository": "mdiaz4052/The-Number-Project",
+  "pr_number": 62,
+  "branch": "experiment/gravity-universality-pilot0",
+  "main_base_commit": "6fd4b3060d3490e4a2b815ef11bc4570df06c999",
+  "previous_reviewed_head": "b9d123d9167102eeab5fef7bf34603319001ba89",
+  "protocol_commit": "dbfa9cec7c18a60e1bb4f84a7914a23b5d3cd2e3",
+  "protocol_commit_parent": "b9d123d9167102eeab5fef7bf34603319001ba89",
+  "protocol_commit_recorded_time_utc": "2026-10-01T01:18:18Z",
+  "protocol_path": "Experiments/GravityUniversality/Pilot0/protocol_r2.md",
+  "protocol_bytes": 27867,
+  "protocol_sha256": "255e390ea720c4f165666723999565a7ee20e72f7ec4c1783ab05b7bd99becf8",
+  "protocol_git_blob_sha1": "f8470f4083b06da2a4de179a8e4644ba5c7ef72a",
+  "protocol_readback": "Connected GitHub fetch_file at protocol_commit returned matching full-file blob SHA; locally hashed full UTF-8 bytes match that Git blob. Commit metadata confirms parent. Observed before support-file publication.",
+  "readback_clock_note": "Readback order is an author-recorded observation, not an independent server timestamp. Commit date alone is not publication evidence.",
+  "protocol_remote_run_observed": {
+    "run_id": 36800462368,
+    "run_number": 349,
+    "status_at_observation": "in_progress",
+    "commit": "dbfa9cec7c18a60e1bb4f84a7914a23b5d3cd2e3",
+    "scope": "protocol-only ancestor, not final-head CI"
+  },
+  "preserved_revision1": {
+    "path": "Experiments/GravityUniversality/Pilot0/protocol.md",
+    "bytes": 14770,
+    "sha256": "5e85cdcae0f9de2fc1a6cbafc2ec9a369c565b045c71bf8ac0831e08b2f413b9",
+    "git_blob_sha1": "9893336a60d8101204b573c5cd099e0a0f9ef824",
+    "receipt": "Experiments/GravityUniversality/Pilot0/registration.json"
+  },
+  "addressed_review_items": [
+    "B1",
+    "B2",
+    "DM-103",
+    "DM-104",
+    "FH-26",
+    "FH-27"
+  ],
+  "new_source_retrieval": "NONE",
+  "paper_byte_authentication": "NOT_PERFORMED",
+  "author_static_checks": {
+    "original_protocol_hash_match": true,
+    "source_pins_unchanged": 7,
+    "dimension_rows_unchanged": 10,
+    "section5_exactly_unchanged": true,
+    "empty_unit_cells": 30,
+    "empty_pair_cells": 30,
+    "typing_form_rows": 6,
+    "normalization_form_rows": 9
+  },
+  "independent_review": "NOT_PERFORMED_FOR_REVISION_2",
+  "environment_limitation": "Anonymous shell clone failed: github.com DNS resolution unavailable. Connected GitHub supplies publication/readback; no local full-suite or Lean execution claimed.",
+  "final_head_and_ci": "Report in PR conversation after publication; no self-referential commit identity or inherited final-head success is claimed."
+}
