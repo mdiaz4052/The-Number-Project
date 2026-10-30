@@ -38,7 +38,8 @@ def JacobianIsDerivative : Prop :=
 declared Jacobian with a real invertible eigenbasis (strong hyperbolicity). -/
 def RealEigenbasis : Prop :=
   ∀ (C : Coordinates) (P : Parameters) (U : State), 0 < P.c →
-    ∃ R L : Matrix (Fin 6) (Fin 6) ℝ, L * R = 1 ∧ jac C P U * R = R * Matrix.diagonal (eig C P U)
+    ∃ R L : Matrix (Fin 6) (Fin 6) ℝ, L * R = 1 ∧ R * L = 1 ∧
+      jac C P U * R = R * Matrix.diagonal (eig C P U)
 
 /-- S3: the Lax-Friedrichs dissipation speed dominates the declared eigenvalues at both states. -/
 def DissipationBound : Prop :=
@@ -46,19 +47,23 @@ def DissipationBound : Prop :=
     |eig CL P UL i| ≤ (xSpeedFamilyExprs CL CR UL UR P).speed2 ∧
     |eig CR P UR i| ≤ (xSpeedFamilyExprs CL CR UL UR P).speed2
 
+theorem zero_lit : (0.0 : ℝ) = 0 := by norm_num
+
+/-- A function whose increments are exactly `a` times the argument increment has derivative `a`. -/
+theorem hasDerivAt_of_affine {g : ℝ → ℝ} {a x : ℝ} (h : ∀ s, g s = g 0 + a * s) :
+    HasDerivAt g a x := by
+  have hg : g = fun s => a * s + g 0 := funext fun s => by rw [h s]; ring
+  rw [hg]
+  simpa using ((hasDerivAt_id x).const_mul a).add_const (g 0)
+
 theorem jacobianIsDerivative : JacobianIsDerivative := by
   intro C P U i j
+  apply hasDerivAt_of_affine
+  intro s
+  set_option simprocs false in
+    simp only [fluxVec, jac, gradVec, xFluxExprs, xFluxJacobianExprs, zero_lit]
   fin_cases i <;> fin_cases j <;>
-    simp [fluxVec, ofVec, toVec, jac, gradVec, xFluxExprs, xFluxJacobianExprs,
-      Function.update_apply] <;>
-    first
-      | exact hasDerivAt_const _ _
-      | exact hasDerivAt_id _
-      | exact (hasDerivAt_id _).neg
-      | exact hasDerivAt_mul_const _
-      | exact (hasDerivAt_mul_const _).neg
-      | exact ((hasDerivAt_id _).const_mul _).congr_deriv (by ring)
-      | exact (((hasDerivAt_id _).const_mul _).neg).congr_deriv (by ring)
+    simp [ofVec, toVec, Function.update_apply] <;> ring
 
 /-- Explicit eigenvectors (columns of `R`) and their dual basis (rows of `L`). -/
 noncomputable def eigvecs (c : ℝ) : Matrix (Fin 6) (Fin 6) ℝ :=
@@ -80,26 +85,31 @@ noncomputable def eigvecsInv (c : ℝ) : Matrix (Fin 6) (Fin 6) ℝ :=
 theorem realEigenbasis : RealEigenbasis := by
   intro C P U hc
   have hc0 : P.c ≠ 0 := hc.ne'
-  refine ⟨eigvecs P.c, eigvecsInv P.c, ?_, ?_⟩
+  refine ⟨eigvecs P.c, eigvecsInv P.c, ?_, ?_, ?_⟩
   · ext i j
     fin_cases i <;> fin_cases j <;>
       simp [eigvecs, eigvecsInv, Matrix.mul_apply, Fin.sum_univ_succ] <;> field_simp <;> ring
   · ext i j
     fin_cases i <;> fin_cases j <;>
-      simp [eigvecs, jac, eig, gradVec, xFluxJacobianExprs, xFluxJacobianEigenExprs,
-        Matrix.mul_apply, Fin.sum_univ_succ] <;> ring
+      simp [eigvecs, eigvecsInv, Matrix.mul_apply, Fin.sum_univ_succ] <;> field_simp <;> ring
+  · set_option simprocs false in
+      simp only [jac, eig, gradVec, xFluxJacobianExprs, xFluxJacobianEigenExprs, zero_lit]
+    ext i j
+    fin_cases i <;> fin_cases j <;>
+      simp [eigvecs, Matrix.mul_apply, Fin.sum_univ_succ] <;> ring
 
 theorem dissipationBound : DissipationBound := by
   intro CL CR UL UR P i
-  fin_cases i <;> simp [eig, xFluxJacobianEigenExprs, xSpeedFamilyExprs]
+  set_option simprocs false in
+    simp only [eig, xFluxJacobianEigenExprs, xSpeedFamilyExprs, zero_lit]
+  fin_cases i <;> simp
 
 /-! Similarity invariants used by the refutations: a real eigenbasis forces
 `trace J = Σ λ` and `trace (J * J) = Σ λ²`. -/
 
 theorem trace_eq_of_eigenbasis {n : Type*} [Fintype n] [DecidableEq n]
     {J R L D : Matrix n n ℝ}
-    (hLR : L * R = 1) (hJ : J * R = R * D) : J.trace = D.trace := by
-  have hRL : R * L = 1 := Matrix.mul_eq_one_comm.mp hLR
+    (hLR : L * R = 1) (hRL : R * L = 1) (hJ : J * R = R * D) : J.trace = D.trace := by
   have : J = R * D * L := by
     calc J = J * (R * L) := by rw [hRL, Matrix.mul_one]
       _ = R * D * L := by rw [← Matrix.mul_assoc, hJ]
@@ -107,9 +117,10 @@ theorem trace_eq_of_eigenbasis {n : Type*} [Fintype n] [DecidableEq n]
 
 theorem trace_sq_eq_of_eigenbasis {n : Type*} [Fintype n] [DecidableEq n]
     {J R L D : Matrix n n ℝ}
-    (hLR : L * R = 1) (hJ : J * R = R * D) : (J * J).trace = (D * D).trace := by
+    (hLR : L * R = 1) (hRL : R * L = 1) (hJ : J * R = R * D) :
+    (J * J).trace = (D * D).trace := by
   have hJJ : (J * J) * R = R * (D * D) := by
     rw [Matrix.mul_assoc, hJ, ← Matrix.mul_assoc, hJ, Matrix.mul_assoc]
-  exact trace_eq_of_eigenbasis hLR hJJ
+  exact trace_eq_of_eigenbasis hLR hRL hJJ
 
 end lsa_maxwell_1d

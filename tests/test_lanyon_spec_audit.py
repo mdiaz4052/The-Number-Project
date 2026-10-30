@@ -31,6 +31,10 @@ class LanyonSpecAuditTests(unittest.TestCase):
         self.assertEqual(audit.attribute(4, starts), ("theorem", "t"))
         self.assertEqual(audit.attribute(1, starts), ("def", "f"))
 
+    def test_qualified_theorem_names_follow_namespaces(self):
+        text = "namespace a\ntheorem t : True := trivial\nend a\ntheorem u : True := trivial\n"
+        self.assertEqual(audit.qualified_theorems(text), [("t", "a.t"), ("u", "u")])
+
 
 if __name__ == "__main__":
     unittest.main()

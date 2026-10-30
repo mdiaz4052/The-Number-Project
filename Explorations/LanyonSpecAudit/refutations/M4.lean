@@ -5,4 +5,6 @@ theorem refute_M4 :
     ∃ (C : Coordinates) (P : Parameters) (U : State),
       ¬ ((abs (xWaveSpeedExprs C P U).mu5) ≥ (abs (xFluxJacobianEigenExprs C P U).lambda5)) := by
   refine ⟨⟨0⟩, ⟨1⟩, ⟨0, 0, 0, 0, 0, 0⟩, ?_⟩
-  simp [xWaveSpeedExprs, xFluxJacobianEigenExprs]
+  set_option simprocs false in
+    simp only [xWaveSpeedExprs, xFluxJacobianEigenExprs, zero_lit]
+  norm_num

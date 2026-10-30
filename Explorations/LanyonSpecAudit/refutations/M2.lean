@@ -13,5 +13,7 @@ theorem refute_M2 : ¬ JacobianIsDerivative := by
       simp [Function.update_apply]
     · norm_num
   have := h1.unique h2
-  simp [jac, gradVec, xFluxJacobianExprs] at this
-  norm_num at this
+  set_option simprocs false in
+    simp only [jac, gradVec, xFluxJacobianExprs, zero_lit] at this
+  try simp at this
+  all_goals norm_num at this

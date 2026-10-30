@@ -3,7 +3,8 @@
 
 Appended by `audit.py` to the pinned (possibly mutated) upstream file; not standalone.
 The statements refer only to what the spec declares, so a mutated spec is judged by the
-same propositions.
+same propositions. Proofs first rewrite the scientific literal `0.0` to `0` with simprocs
+disabled (see README, "Numeral hazard").
 -/
 
 namespace lsa_inviscid_burgers_1d
@@ -24,7 +25,8 @@ def JacobianIsDerivative : Prop :=
 /-- S2: the declared eigenvalues diagonalize the declared Jacobian over the reals. -/
 def RealEigenbasis : Prop :=
   ∀ (C : Coordinates) (P : Parameters) (U : State),
-    ∃ R L : Matrix (Fin 1) (Fin 1) ℝ, L * R = 1 ∧ jac C P U * R = R * Matrix.diagonal (eig C P U)
+    ∃ R L : Matrix (Fin 1) (Fin 1) ℝ, L * R = 1 ∧ R * L = 1 ∧
+      jac C P U * R = R * Matrix.diagonal (eig C P U)
 
 /-- S3: the Lax-Friedrichs dissipation speed dominates the declared eigenvalues at both states. -/
 def DissipationBound : Prop :=
@@ -32,21 +34,29 @@ def DissipationBound : Prop :=
     |eig CL P UL i| ≤ (xSpeedFamilyExprs CL CR UL UR P).speed2 ∧
     |eig CR P UR i| ≤ (xSpeedFamilyExprs CL CR UL UR P).speed2
 
+theorem zero_lit : (0.0 : ℝ) = 0 := by norm_num
+
 theorem jacobianIsDerivative : JacobianIsDerivative := by
   intro C P U
+  have hj : jac C P U 0 0 = U.f := by
+    set_option simprocs false in
+      simp only [jac, Matrix.of_apply, xFluxJacobianExprs, zero_lit]
+    ring
+  have hf : (fun s : ℝ => (xFluxExprs C P ⟨s⟩).flux_f) = fun s => (1 / 2 : ℝ) * s * s := rfl
+  rw [hf, hj]
   have h := ((hasDerivAt_id U.f).const_mul (1 / 2 : ℝ)).mul (hasDerivAt_id U.f)
-  simp only [jac, xFluxExprs, xFluxJacobianExprs, Matrix.of_apply, id] at h ⊢
-  convert h using 1
-  norm_num
-  ring
+  exact h.congr_deriv (by simp only [id]; ring)
 
 theorem realEigenbasis : RealEigenbasis := by
   intro C P U
-  refine ⟨1, 1, by simp, ?_⟩
+  refine ⟨1, 1, Matrix.one_mul 1, Matrix.one_mul 1, ?_⟩
+  rw [Matrix.mul_one, Matrix.one_mul]
   ext i j
   fin_cases i
   fin_cases j
-  simp [jac, eig, xFluxJacobianExprs, xFluxJacobianEigenExprs]
+  set_option simprocs false in
+    simp only [jac, eig, Matrix.of_apply, xFluxJacobianExprs, xFluxJacobianEigenExprs, zero_lit]
+  simp [Matrix.diagonal]
   ring
 
 theorem dissipationBound : DissipationBound := by
@@ -58,8 +68,7 @@ theorem dissipationBound : DissipationBound := by
 
 theorem trace_eq_of_eigenbasis {n : Type*} [Fintype n] [DecidableEq n]
     {J R L D : Matrix n n ℝ}
-    (hLR : L * R = 1) (hJ : J * R = R * D) : J.trace = D.trace := by
-  have hRL : R * L = 1 := Matrix.mul_eq_one_comm.mp hLR
+    (hLR : L * R = 1) (hRL : R * L = 1) (hJ : J * R = R * D) : J.trace = D.trace := by
   have : J = R * D * L := by
     calc J = J * (R * L) := by rw [hRL, Matrix.mul_one]
       _ = R * D * L := by rw [← Matrix.mul_assoc, hJ]
@@ -67,9 +76,10 @@ theorem trace_eq_of_eigenbasis {n : Type*} [Fintype n] [DecidableEq n]
 
 theorem trace_sq_eq_of_eigenbasis {n : Type*} [Fintype n] [DecidableEq n]
     {J R L D : Matrix n n ℝ}
-    (hLR : L * R = 1) (hJ : J * R = R * D) : (J * J).trace = (D * D).trace := by
+    (hLR : L * R = 1) (hRL : R * L = 1) (hJ : J * R = R * D) :
+    (J * J).trace = (D * D).trace := by
   have hJJ : (J * J) * R = R * (D * D) := by
     rw [Matrix.mul_assoc, hJ, ← Matrix.mul_assoc, hJ, Matrix.mul_assoc]
-  exact trace_eq_of_eigenbasis hLR hJJ
+  exact trace_eq_of_eigenbasis hLR hRL hJJ
 
 end lsa_inviscid_burgers_1d

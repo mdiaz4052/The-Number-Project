@@ -245,6 +245,20 @@ def declaration_starts(text: str) -> list[tuple[int, str, str]]:
     return starts
 
 
+def qualified_theorems(text: str) -> list[tuple[str, str]]:
+    """(short name, fully qualified name) of every theorem, tracking `namespace`/`end`."""
+    stack: list[str] = []
+    out = []
+    for line in text.splitlines():
+        if m := re.match(r"^namespace\s+(\S+)", line):
+            stack.append(m.group(1))
+        elif (m := re.match(r"^end\s+(\S+)", line)) and stack and stack[-1] == m.group(1):
+            stack.pop()
+        elif (m := DECL.match(line)) and m.group(1) in ("theorem", "lemma"):
+            out.append((m.group(2), ".".join(stack + [m.group(2)])))
+    return out
+
+
 def attribute(line: int, starts: list[tuple[int, str, str]]) -> tuple[str, str]:
     owner = ("header", "")
     for n, kind, name in starts:
@@ -256,6 +270,13 @@ def attribute(line: int, starts: list[tuple[int, str, str]]) -> tuple[str, str]:
 
 def compile_variant(mutant: Mutant) -> dict:
     text = variant_text(mutant)
+    # A failed proof is still added to the environment with `sorry`, so anything that uses it
+    # would elaborate cleanly. Every judged theorem must therefore be axiom-checked.
+    if not text.endswith("\n"):
+        text += "\n"
+    probes = qualified_theorems(text)
+    first_probe = len(text.splitlines()) + 2
+    text += "\n" + "".join(f"#print axioms {q}\n" for _, q in probes)
     BUILD.mkdir(parents=True, exist_ok=True)
     path = BUILD / f"{mutant.id}.lean"
     path.write_text(text, encoding="utf-8")
@@ -267,6 +288,12 @@ def compile_variant(mutant: Mutant) -> dict:
         try:
             msg = json.loads(raw)
         except json.JSONDecodeError:
+            continue
+        line = msg["pos"]["line"]
+        if line >= first_probe:
+            name = probes[line - first_probe][0]
+            if "sorryAx" in msg["data"]:
+                failing.setdefault(name, []).append("depends on sorryAx")
             continue
         if msg.get("severity") != "error":
             continue

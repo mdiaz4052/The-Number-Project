@@ -4,5 +4,7 @@ open inviscid_burgers_1d inviscid_burgers_1d_lax_friedrichs lsa_inviscid_burgers
 theorem refute_B7 : ¬ DissipationBound := by
   intro h
   have := (h ⟨0⟩ ⟨0⟩ ⟨1⟩ ⟨1⟩ ⟨⟩ 0).1
-  simp [eig, xFluxJacobianEigenExprs, xSpeedFamilyExprs] at this
-  norm_num at this
+  set_option simprocs false in
+    simp only [eig, xFluxJacobianEigenExprs, xSpeedFamilyExprs, zero_lit] at this
+  try simp at this
+  all_goals norm_num at this

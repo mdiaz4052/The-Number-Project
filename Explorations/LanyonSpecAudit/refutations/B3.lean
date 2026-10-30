@@ -8,7 +8,9 @@ theorem refute_B3 : ¬ JacobianIsDerivative := by
     have := ((hasDerivAt_id (2 : ℝ)).const_mul (1 / 2 : ℝ)).mul (hasDerivAt_id (2 : ℝ))
     simp only [xFluxExprs, id] at this ⊢
     convert this using 1
-    norm_num
+    all_goals norm_num
   have := h1.unique h2
-  simp [jac, xFluxJacobianExprs] at this
-  norm_num at this
+  set_option simprocs false in
+    simp only [jac, xFluxJacobianExprs, zero_lit] at this
+  try simp at this
+  all_goals norm_num at this
