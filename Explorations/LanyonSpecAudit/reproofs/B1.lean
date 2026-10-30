@@ -15,6 +15,4 @@ theorem reprove_B1_dissipationBound : DissipationBound := by
   have a := abs_nonneg UL.f
   have b := abs_nonneg UR.f
   norm_num
-  constructor
-  · exact le_trans (by linarith) (le_max_left |UL.f| |UR.f|)
-  · exact le_trans (by linarith) (le_max_right |UL.f| |UR.f|)
+  refine ⟨?_, ?_⟩ <;> first | (left; linarith) | (right; linarith)

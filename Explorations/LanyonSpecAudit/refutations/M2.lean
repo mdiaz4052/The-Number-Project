@@ -11,9 +11,9 @@ theorem refute_M2 : ¬ JacobianIsDerivative := by
     set_option simprocs false in
       simp only [fluxVec, xFluxExprs, zero_lit]
     simp [ofVec, toVec, Function.update_apply]
-    ring
+    all_goals first | ring | simp
   have := h1.unique h2
   set_option simprocs false in
     simp only [jac, gradVec, xFluxJacobianExprs, zero_lit] at this
-  simp at this
-  norm_num at this
+  try simp at this
+  all_goals norm_num at this
