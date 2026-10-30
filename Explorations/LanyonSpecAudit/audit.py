@@ -380,6 +380,8 @@ def main(argv: list[str] | None = None) -> None:
         RESULTS.mkdir(exist_ok=True)
         (RESULTS / "results.json").write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
         (RESULTS / "table.md").write_text(render(results), encoding="utf-8")
+        print("=== table.md ===\n" + render(results), flush=True)
+        print("=== results.json ===\n" + json.dumps(results, sort_keys=True), flush=True)
 
 
 if __name__ == "__main__":
