@@ -271,7 +271,7 @@ def compile_variant(mutant: Mutant) -> dict:
         if msg.get("severity") != "error":
             continue
         kind, name = attribute(msg["pos"]["line"], starts)
-        failing.setdefault(name, []).append(msg["data"].splitlines()[0][:200])
+        failing.setdefault(name, []).append(f"line {msg['pos']['line']}: {msg['data'][:1500]}")
     theorems = [name for _, kind, name in starts if kind in ("theorem", "lemma")]
     upstream_theorems = [name for _, kind, name in declaration_starts(upstream_text(mutant.system))
                          if kind == "theorem"]
@@ -330,6 +330,7 @@ def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--run", action="store_true")
+    parser.add_argument("--verbose", action="store_true")
     parser.add_argument("--only", nargs="*", help="mutant ids to compile, or ALL")
     args = parser.parse_args(argv)
     check()
@@ -343,6 +344,10 @@ def main(argv: list[str] | None = None) -> None:
         print(f"{m.id}: L={r['observed']['lanyon']} L+S={r['observed']['strengthened']} "
               f"failing={r['lanyon_failed'] + r['strengthened_failed']} refutations={r['refutations']} "
               f"other={r['non_theorem_errors']}", flush=True)
+        if args.verbose:
+            for name, msgs in r["messages"].items():
+                for text in msgs:
+                    print(f"--- {m.id} {name}\n{text}", flush=True)
         results.append(r)
     if only is None:
         RESULTS.mkdir(exist_ok=True)

@@ -25,7 +25,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: lake exe cache get
-      - run: python -m Explorations.LanyonSpecAudit.audit --run --only $(cat Explorations/LanyonSpecAudit/ci_scope.txt)
+      - run: python -m Explorations.LanyonSpecAudit.audit --run --verbose --only $(cat Explorations/LanyonSpecAudit/ci_scope.txt)
       - uses: actions/upload-artifact@v4
         if: always()
         with:
