@@ -9,4 +9,4 @@ in `Experiments/`.
 
 | Exploration | Question | Status |
 |---|---|---|
-| [LanyonSpecAudit](LanyonSpecAudit/) | Do Lanyon AI's published Lean theorems catch physically wrong solver specs? | LSA-1 in progress |
+| [LanyonSpecAudit](LanyonSpecAudit/) | Do Lanyon AI's published Lean theorems catch physically wrong solver specs? | LSA-1 complete: gap confirmed, repair validated |

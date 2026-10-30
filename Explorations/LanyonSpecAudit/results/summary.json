@@ -1,0 +1,654 @@
+{
+  "run": "https://github.com/mdiaz4052/The-Number-Project/actions/runs/40997601940",
+  "commit": "5c57bcf",
+  "note": "Summary parsed from the run's table.md; full Lean messages are in the run log.",
+  "variants": [
+    {
+      "id": "B0",
+      "family": "curated",
+      "description": "unmutated control",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "failing": [],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "B1",
+      "family": "curated",
+      "description": "eigenvalue halved: lambda1 := f/2",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "xWaveStability",
+        "dissipationBound",
+        "realEigenbasis"
+      ],
+      "refuted": [
+        "refute_B1"
+      ],
+      "reproved": [
+        "reprove_B1_xWaveStability",
+        "reprove_B1_dissipationBound"
+      ]
+    },
+    {
+      "id": "B2",
+      "family": "curated",
+      "description": "eigenvalue sign-flipped: lambda1 := -f",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "realEigenbasis"
+      ],
+      "refuted": [
+        "refute_B2"
+      ],
+      "reproved": []
+    },
+    {
+      "id": "B3",
+      "family": "curated",
+      "description": "Jacobian wrong: d_f := f*f (eigenvalue left as f)",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "jacobianIsDerivative",
+        "realEigenbasis"
+      ],
+      "refuted": [
+        "refute_B3"
+      ],
+      "reproved": []
+    },
+    {
+      "id": "B4",
+      "family": "curated",
+      "description": "flux changed to f^3/3 in the flux only (waves still use f^2/2)",
+      "predicted": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "xFluxConservative",
+        "jacobianIsDerivative"
+      ],
+      "refuted": [
+        "refute_B4"
+      ],
+      "reproved": []
+    },
+    {
+      "id": "B5",
+      "family": "curated",
+      "description": "different PDE: flux f^3/3 in flux and Lax-Friedrichs waves; Jacobian, eigenvalue, wave speed left for f^2/2",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "jacobianIsDerivative"
+      ],
+      "refuted": [
+        "refute_B5"
+      ],
+      "reproved": []
+    },
+    {
+      "id": "B6",
+      "family": "curated",
+      "description": "wave-speed estimate halved: mu1 := f/2",
+      "predicted": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "xWaveStability"
+      ],
+      "refuted": [
+        "refute_B6"
+      ],
+      "reproved": []
+    },
+    {
+      "id": "B7",
+      "family": "curated",
+      "description": "Lax-Friedrichs dissipation speed halved consistently in waves, speeds and hypotheses",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "xFluxConservative",
+        "dissipationBound"
+      ],
+      "refuted": [
+        "refute_B7"
+      ],
+      "reproved": [
+        "reprove_B7_xFluxConservative"
+      ]
+    },
+    {
+      "id": "M0",
+      "family": "curated",
+      "description": "unmutated control",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "failing": [],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "M1",
+      "family": "curated",
+      "description": "eigenvalues lambda3, lambda4 := -c (spectrum all -c, -c, -c, -c, 0, 0)",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "realEigenbasis"
+      ],
+      "refuted": [
+        "refute_M1"
+      ],
+      "reproved": []
+    },
+    {
+      "id": "M2",
+      "family": "curated",
+      "description": "Jacobian entry dFlux_Ey/dBz := c instead of c^2",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "jacobianIsDerivative",
+        "realEigenbasis"
+      ],
+      "refuted": [
+        "refute_M2"
+      ],
+      "reproved": []
+    },
+    {
+      "id": "M3",
+      "family": "curated",
+      "description": "non-hyperbolic system: flux_Ey sign flipped consistently in flux, waves and Jacobian (spectrum becomes +-ic); listed eigenvalues unchanged",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "realEigenbasis"
+      ],
+      "refuted": [
+        "refute_M3"
+      ],
+      "reproved": []
+    },
+    {
+      "id": "M4",
+      "family": "curated",
+      "description": "zero eigenvalue moved: lambda5 := c",
+      "predicted": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "xWaveStability",
+        "realEigenbasis"
+      ],
+      "refuted": [
+        "refute_M4"
+      ],
+      "reproved": []
+    },
+    {
+      "id": "M5",
+      "family": "curated",
+      "description": "Lax-Friedrichs dissipation speed halved consistently in waves, speeds and hypotheses",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "xFluxConservative",
+        "dissipationBound"
+      ],
+      "refuted": [
+        "refute_M5"
+      ],
+      "reproved": [
+        "reprove_M5_xFluxConservative"
+      ]
+    },
+    {
+      "id": "BS01",
+      "family": "systematic-flux",
+      "description": "sign flip of xFluxExprs.flux_f",
+      "predicted": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "xFluxConservative",
+        "jacobianIsDerivative"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "BS02",
+      "family": "systematic-jacobian",
+      "description": "sign flip of xFluxJacobianExprs.flux_f.d_f",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "jacobianIsDerivative",
+        "realEigenbasis"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "BS03",
+      "family": "systematic-eigenvalue",
+      "description": "sign flip of xFluxJacobianEigenExprs.lambda1",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "realEigenbasis"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "BS04",
+      "family": "systematic-wavespeed",
+      "description": "sign flip of xWaveSpeedExprs.mu1",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "failing": [],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS01",
+      "family": "systematic-flux",
+      "description": "sign flip of xFluxExprs.flux_Ey",
+      "predicted": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "xFluxConservative",
+        "jacobianIsDerivative"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS02",
+      "family": "systematic-flux",
+      "description": "sign flip of xFluxExprs.flux_Ez",
+      "predicted": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "xFluxConservative",
+        "jacobianIsDerivative"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS03",
+      "family": "systematic-flux",
+      "description": "sign flip of xFluxExprs.flux_By",
+      "predicted": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "xFluxConservative",
+        "jacobianIsDerivative"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS04",
+      "family": "systematic-flux",
+      "description": "sign flip of xFluxExprs.flux_Bz",
+      "predicted": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "fail",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "xFluxConservative",
+        "jacobianIsDerivative"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS05",
+      "family": "systematic-jacobian",
+      "description": "sign flip of xFluxJacobianExprs.flux_Ey.d_Bz",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "jacobianIsDerivative",
+        "realEigenbasis"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS06",
+      "family": "systematic-jacobian",
+      "description": "sign flip of xFluxJacobianExprs.flux_Ez.d_By",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "jacobianIsDerivative",
+        "realEigenbasis"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS07",
+      "family": "systematic-jacobian",
+      "description": "sign flip of xFluxJacobianExprs.flux_By.d_Ez",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "jacobianIsDerivative",
+        "realEigenbasis"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS08",
+      "family": "systematic-jacobian",
+      "description": "sign flip of xFluxJacobianExprs.flux_Bz.d_Ey",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "jacobianIsDerivative",
+        "realEigenbasis"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS09",
+      "family": "systematic-eigenvalue",
+      "description": "sign flip of xFluxJacobianEigenExprs.lambda1",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "realEigenbasis"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS10",
+      "family": "systematic-eigenvalue",
+      "description": "sign flip of xFluxJacobianEigenExprs.lambda2",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "realEigenbasis"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS11",
+      "family": "systematic-eigenvalue",
+      "description": "sign flip of xFluxJacobianEigenExprs.lambda3",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "realEigenbasis"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS12",
+      "family": "systematic-eigenvalue",
+      "description": "sign flip of xFluxJacobianEigenExprs.lambda4",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "fail"
+      },
+      "failing": [
+        "realEigenbasis"
+      ],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS13",
+      "family": "systematic-wavespeed",
+      "description": "sign flip of xWaveSpeedExprs.mu1",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "failing": [],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS14",
+      "family": "systematic-wavespeed",
+      "description": "sign flip of xWaveSpeedExprs.mu2",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "failing": [],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS15",
+      "family": "systematic-wavespeed",
+      "description": "sign flip of xWaveSpeedExprs.mu3",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "failing": [],
+      "refuted": [],
+      "reproved": []
+    },
+    {
+      "id": "MS16",
+      "family": "systematic-wavespeed",
+      "description": "sign flip of xWaveSpeedExprs.mu4",
+      "predicted": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "observed": {
+        "lanyon": "pass",
+        "strengthened": "pass"
+      },
+      "failing": [],
+      "refuted": [],
+      "reproved": []
+    }
+  ]
+}

@@ -40,8 +40,9 @@ Observations from `MaxwellEquations/proofs/maxwell_1d.lean`:
    estimate dominates the listed eigenvalues). If the spec listed wrong eigenvalues, both
    theorems could still pass.
 3. **No floating-point semantics.** Lean reasons over `Real`; the C uses `double`. The
-   Lean-to-C link is the shared generator, not a refinement proof. Round-off, overflow,
-   CFL/time-step choice and the time integrator in `main` are outside the theorems.
+   Lean-to-C link is the shared generator, not a refinement proof. Round-off, overflow
+   and CFL/time-step choice are outside the theorems. The published C `main` contains
+   only the comment `// Insert simulation drivers here.`, so no time integrator ships.
 4. **No units.** Specs carry no physical dimensions; e.g. Maxwell's `c*c*Bz` flux is
    unit-correct only by convention.
 
@@ -59,6 +60,9 @@ numerical quality, which was not run.
 | Dimensional analysis | absent | exact rational dimension algebra |
 | Empirical / numerical validation | screencaps only | preregistered numerical studies |
 | Float-level guarantees | absent | absent |
+
+Follow-up: [`Explorations/LanyonSpecAudit`](../Explorations/LanyonSpecAudit/README.md) tests
+these observations with preregistered mutants.
 
 ## Candidate enhancements and expansions
 

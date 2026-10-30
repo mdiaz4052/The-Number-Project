@@ -37,7 +37,8 @@ v4.33.1, Mathlib at a fixed pin. Your theorems still go through for, among other
 - a Burgers spec whose flux is `f³/3` while the Jacobian, eigenvalue and wave speed
   still describe `f²/2`.
 
-Every Jacobian sign flip and every eigenvalue sign flip (12 of 12) also passes.
+Every single-field sign flip of a Jacobian entry or declared eigenvalue (10 of 10 across
+both files) also passes.
 Harness, mutants and per-variant results: `<link to the repository>`.
 
 ## Suggested strengthening

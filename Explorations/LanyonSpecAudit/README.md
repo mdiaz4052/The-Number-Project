@@ -64,6 +64,73 @@ a `norm_num`-generated term (`IsNat.of_raw` applied at the wrong type). The kern
 it, so no false theorem was accepted, but a tactic produced an ill-typed proof. We have
 not yet reduced this to a minimal reproduction, and it may be a known issue.
 
-## Results
+## Results (run 2)
 
-Pending the full run.
+Source: [workflow run 40997601940](https://github.com/mdiaz4052/The-Number-Project/actions/runs/40997601940)
+at commit `5c57bcf`. The per-variant table is in [`results/table.md`](results/table.md) and
+a parsed summary in [`results/summary.json`](results/summary.json). The first full run
+(`results/run1/`) gave the same pass/fail outcome for all 34 variants. Between the two runs
+only the diagnostic refutation and re-proof scripts changed.
+
+**H1 (gap): supported.** Six of the ten wrong-physics curated mutants pass every
+published Lanyon theorem. In each case a refutation compiled in Lean confirms that the
+spec really is wrong:
+
+- B2, eigenvalue `-f`
+- B3, Jacobian `f²`
+- B5, a different PDE (flux `f³/3`) with the Jacobian, eigenvalue and wave speed left
+  for `f²/2`
+- M1, Maxwell spectrum `-c,-c,-c,-c,0,0`
+- M2, Jacobian entry `c` in place of `c²`
+- M3, a sign-flipped Maxwell system with eigenvalues `±ic`, which is not hyperbolic,
+  certified alongside the listed real eigenvalues `±c`
+
+In the systematic family, all 10 single-field sign flips of Jacobian entries and
+declared eigenvalues pass Lanyon's suite.
+
+**H2 (repair): supported.** L+S passes both controls and fails all 12 curated mutants.
+Each of the 12 kills has a compiled Lean proof that the catching statement is false
+(column "refuted"). L+S also catches all 10 Jacobian and eigenvalue sign flips.
+
+**Prediction mismatches (3 of 34): B1, B7, M5.** The prediction was that Lanyon's suite
+passes these. It failed them, but only because the published proof scripts cannot close
+goals that are true:
+
+- B1 needs `2⁻¹ * |f| ≤ |f|`.
+- B7 and M5 need `x = x * m / m` with `m ≠ 0`.
+
+Re-proofs (`reproofs/`) of the same statements compile, so these are brittle false
+alarms, not detections. The strengthened S3 proof had the same brittleness on B1. In
+Lanyon's pipeline a failed proof blocks emission, so all three specs would be blocked by
+accident: B1 is wrong physics, while B7 and M5 under-dissipate.
+
+**Wave-speed sign flips (5 of 5) pass both suites, as predicted.** Every theorem uses
+`|mu|`, and the published C never reads `mu`, so these appear to be equivalent mutants.
+
+**Positive controls behaved as expected.** Lanyon's suite catches internal flux/wave
+inconsistency (B4 and all 5 flux sign flips, via `xFluxConservative`) and an
+underestimated wave speed (B6, M4, via `xWaveStability`).
+
+### What this does and does not show
+
+- It shows that the published theorem statements do not pin down the eigenstructure or
+  the Jacobian, so wrong physics can be certified. The new statements S1 to S3 close that
+  gap for these two files, using only the declared spec.
+- It does not show that any published Lanyon solver is wrong. Both unmutated files pass
+  L+S.
+- It says nothing about floating point, the C code, other solvers, or 2D/3D.
+- The curated mutants were chosen with knowledge of the weak points; the systematic
+  family covers only sign flips.
+
+A [draft issue](DRAFT_ISSUE.md) summarizing this for Lanyon exists only as a file here.
+Whether and how to share it is the repository owner's decision.
+
+## Possible next steps
+
+1. Run the same audit on a 2D/3D or DG solver (Euler or MHD), where eigenstructure is
+   harder and an empty hyperbolicity statement is more consequential.
+2. Add a units layer: check DSL flux and wave-speed expressions with
+   `Discovery/dimensions.py`.
+3. Reduce the `0.0` numeral hazard to a minimal reproduction and check whether it is a
+   known Lean/Mathlib issue.
+4. Preregistered convergence study of a compiled solver kernel with a driver we write.
