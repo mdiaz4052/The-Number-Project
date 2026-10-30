@@ -6,14 +6,14 @@ theorem refute_M2 : ¬ JacobianIsDerivative := by
   have h1 := h ⟨0⟩ ⟨2⟩ ⟨0, 0, 0, 0, 0, 0⟩ 1 5
   have h2 : HasDerivAt (fun s : ℝ => fluxVec ⟨0⟩ ⟨2⟩ (ofVec (Function.update (toVec ⟨0, 0, 0, 0, 0, 0⟩) 5 s)) 1)
       4 (toVec ⟨0, 0, 0, 0, 0, 0⟩ 5) := by
-    have := (hasDerivAt_id (toVec ⟨0, 0, 0, 0, 0, 0⟩ 5)).const_mul ((2 : ℝ) * 2)
-    simp only [fluxVec, ofVec, toVec, xFluxExprs, id] at this ⊢
-    convert this using 1
-    · funext s
-      simp [Function.update_apply]
-    · norm_num
+    apply hasDerivAt_of_affine
+    intro s
+    set_option simprocs false in
+      simp only [fluxVec, xFluxExprs, zero_lit]
+    simp [ofVec, toVec, Function.update_apply]
+    ring
   have := h1.unique h2
   set_option simprocs false in
     simp only [jac, gradVec, xFluxJacobianExprs, zero_lit] at this
-  try simp at this
-  all_goals norm_num at this
+  simp at this
+  norm_num at this

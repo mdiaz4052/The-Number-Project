@@ -8,4 +8,5 @@ theorem refute_B1 : ¬ RealEigenbasis := by
   set_option simprocs false in
     simp only [jac, eig, xFluxJacobianExprs, xFluxJacobianEigenExprs, Matrix.trace, zero_lit] at this
   try simp at this
-  all_goals norm_num at this
+  simp only [eig, xFluxJacobianEigenExprs] at this
+  norm_num at this

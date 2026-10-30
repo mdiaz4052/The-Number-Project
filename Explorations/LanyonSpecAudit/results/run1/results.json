@@ -1,0 +1,986 @@
+[
+  {
+    "description": "unmutated control",
+    "family": "curated",
+    "id": "B0",
+    "lanyon_failed": [],
+    "messages": {},
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "refutations": {},
+    "strengthened_failed": [],
+    "system": "burgers"
+  },
+  {
+    "description": "eigenvalue halved: lambda1 := f/2",
+    "family": "curated",
+    "id": "B1",
+    "lanyon_failed": [
+      "xWaveStability"
+    ],
+    "messages": {
+      "dissipationBound": [
+        "line 533: unsolved goals\nCL CR : Coordinates\nUL UR : State\nP : Parameters\ni : Fin 1\n\u22a2 (2\u207b\u00b9 * |UL.f| \u2264 |UL.f| \u2228 2\u207b\u00b9 * |UL.f| \u2264 |UR.f|) \u2227 (2\u207b\u00b9 * |UR.f| \u2264 |UL.f| \u2228 2\u207b\u00b9 * |UR.f| \u2264 |UR.f|)",
+        "depends on sorryAx"
+      ],
+      "realEigenbasis": [
+        "line 521: unsolved goals\ncase \u00ab0\u00bb.\u00ab0\u00bb\nC : Coordinates\nP : Parameters\nU : State\n\u22a2 U.f = 0",
+        "depends on sorryAx"
+      ],
+      "refute_B1": [
+        "line 561: unsolved goals\nh : RealEigenbasis\nR L : Matrix (Fin 1) (Fin 1) \u211d\nhLR : L * R = 1\nhRL : R * L = 1\nhJ : jac { x := 0 } { } { f := 1 } * R = R * Matrix.diagonal (eig { x := 0 } { } { f := 1 })\nthis : 1 = eig { x := 0 } { } { f := 1 } 0\n\u22a2 False",
+        "depends on sorryAx"
+      ],
+      "xWaveStability": [
+        "line 106: unsolved goals\nC : Coordinates\nP : Parameters\nU : State\n\u22a2 2\u207b\u00b9 * |U.f| \u2264 |U.f|",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {
+      "refute_B1": false
+    },
+    "strengthened_failed": [
+      "dissipationBound",
+      "realEigenbasis"
+    ],
+    "system": "burgers"
+  },
+  {
+    "description": "eigenvalue sign-flipped: lambda1 := -f",
+    "family": "curated",
+    "id": "B2",
+    "lanyon_failed": [],
+    "messages": {
+      "realEigenbasis": [
+        "line 521: unsolved goals\ncase \u00ab0\u00bb.\u00ab0\u00bb\nC : Coordinates\nP : Parameters\nU : State\n\u22a2 U.f = -U.f",
+        "depends on sorryAx"
+      ],
+      "refute_B2": [
+        "line 561: unsolved goals\nh : RealEigenbasis\nR L : Matrix (Fin 1) (Fin 1) \u211d\nhLR : L * R = 1\nhRL : R * L = 1\nhJ : jac { x := 0 } { } { f := 1 } * R = R * Matrix.diagonal (eig { x := 0 } { } { f := 1 })\nthis : 1 = eig { x := 0 } { } { f := 1 } 0\n\u22a2 False",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {
+      "refute_B2": false
+    },
+    "strengthened_failed": [
+      "realEigenbasis"
+    ],
+    "system": "burgers"
+  },
+  {
+    "description": "Jacobian wrong: d_f := f*f (eigenvalue left as f)",
+    "family": "curated",
+    "id": "B3",
+    "lanyon_failed": [],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 512: unsolved goals\nC : Coordinates\nP : Parameters\nU : State\n\u22a2 U.f ^ 2 = U.f",
+        "depends on sorryAx"
+      ],
+      "realEigenbasis": [
+        "line 521: unsolved goals\ncase \u00ab0\u00bb.\u00ab0\u00bb\nC : Coordinates\nP : Parameters\nU : State\n\u22a2 U.f ^ 2 = U.f",
+        "depends on sorryAx"
+      ],
+      "refute_B3": [
+        "line 564: unsolved goals\ncase e'_4\nh : JacobianIsDerivative\nh1 :\n  HasDerivAt (fun s => (xFluxExprs { x := 0 } { } { f := s }).flux_f) (jac { x := 0 } { } { f := 2 } 0 0) { f := 2 }.f\nthis : HasDerivAt ((fun y => 1 / 2 * y) * id) (1 / 2 * 1 * 2 + 1 / 2 * 2 * 1) 2\n\u22a2 Real.instAddCommGroup = Real.normedCommRing.toAddCommGroup\n\ncase e'_5\nh : JacobianIsDerivative\nh1 :\n  HasDerivAt (fun s => (xFluxExprs { x := 0 } { } { f := s }).flux_f) (jac { x := 0 } { } { f := 2 } 0 0) { f := 2 }.f\nthis : HasDerivAt ((fun y => 1 / 2 * y) * id) (1 / 2 * 1 * 2 + 1 / 2 * 2 * 1) 2\ne_4\u271d : Real.instAddCommGroup = Real.normedCommRing.toAddCommGroup\n\u22a2 Semiring.toModule = (NormedAlgebra.toNormedSpace \u211d).toModule\n\ncase e'_8\nh : JacobianIsDerivative\nh1 :\n  HasDerivAt (fun s => (xFluxExprs { x := 0 } { } { f := s }).flux_f) (jac { x := 0 } { } { f := 2 } 0 0) { f := 2 }.f\nthis : HasDerivAt ((fun y => 1 / 2 * y) * id) (1 / 2 * 1 * 2 + 1 / 2 * 2 * 1) 2\n\u22a2 (fun s => 1 / 2 * s * s) = (fun y => 1 / 2 * y) * id",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {
+      "refute_B3": false
+    },
+    "strengthened_failed": [
+      "jacobianIsDerivative",
+      "realEigenbasis"
+    ],
+    "system": "burgers"
+  },
+  {
+    "description": "flux changed to f^3/3 in the flux only (waves still use f^2/2)",
+    "family": "curated",
+    "id": "B4",
+    "lanyon_failed": [
+      "xFluxConservative"
+    ],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 516: Type mismatch\n  rfl\nhas type\n  ?m.36 = ?m.36\nbut is expected to have type\n  (fun s => (xFluxExprs C P { f := s }).flux_f) = fun s => 1 / 2 * s * s",
+        "depends on sorryAx"
+      ],
+      "xFluxConservative": [
+        "line 359: unsolved goals\nCL CR : Coordinates\nUL UR : State\nP : Parameters\nSpeed1Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let f_L := UL.f;\n  let f_R := UR.f;\n  -max |f_L| |f_R| \u2260 0\nSpeed2Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let f_L := UL.f;\n  let f_R := UR.f;\n  max |f_L| |f_R| \u2260 0\n\u22a2 4 * (UR.f ^ 3 - UL.f ^ 3) = 6 * (UR.f ^ 2 - UL.f ^ 2)",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "refutations": {
+      "refute_B4": true
+    },
+    "strengthened_failed": [
+      "jacobianIsDerivative"
+    ],
+    "system": "burgers"
+  },
+  {
+    "description": "different PDE: flux f^3/3 in flux and Lax-Friedrichs waves; Jacobian, eigenvalue, wave speed left for f^2/2",
+    "family": "curated",
+    "id": "B5",
+    "lanyon_failed": [],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 516: Type mismatch\n  rfl\nhas type\n  ?m.36 = ?m.36\nbut is expected to have type\n  (fun s => (xFluxExprs C P { f := s }).flux_f) = fun s => 1 / 2 * s * s",
+        "depends on sorryAx"
+      ],
+      "refute_B5": [
+        "line 564: unsolved goals\ncase e'_4\nh : JacobianIsDerivative\nh1 :\n  HasDerivAt (fun s => (xFluxExprs { x := 0 } { } { f := s }).flux_f) (jac { x := 0 } { } { f := 2 } 0 0) { f := 2 }.f\nthis :\n  HasDerivAt ((fun y => 1 / 3 * y) * id * id) ((1 / 3 * 1 * 2 + 1 / 3 * 2 * 1) * 2 + ((fun y => 1 / 3 * y) * id) 2 * 1)\n    2\n\u22a2 Real.instAddCommGroup = Real.normedCommRing.toAddCommGroup\n\ncase e'_5\nh : JacobianIsDerivative\nh1 :\n  HasDerivAt (fun s => (xFluxExprs { x := 0 } { } { f := s }).flux_f) (jac { x := 0 } { } { f := 2 } 0 0) { f := 2 }.f\nthis :\n  HasDerivAt ((fun y => 1 / 3 * y) * id * id) ((1 / 3 * 1 * 2 + 1 / 3 * 2 * 1) * 2 + ((fun y => 1 / 3 * y) * id) 2 * 1)\n    2\ne_4\u271d : Real.instAddCommGroup = Real.normedCommRing.toAddCommGroup\n\u22a2 Semiring.toModule = (NormedAlgebra.toNormedSpace \u211d).toModule\n\ncase e'_8\nh : JacobianIsDerivative\nh1 :\n  HasDerivAt (fun s => (xFluxExprs { x := 0 } { } { f := s }).flux_f) (jac { x := 0 } { } { f := 2 } 0 0) { f := 2 }.f\nthis :\n  HasDerivAt ((fun y => 1 / 3 * y) * id * id) ((1 / 3 * 1 * 2 + 1 / 3 * 2 * 1) * 2 + ((fun y => 1 / 3 * y) * id) 2 * 1)\n    2\n\u22a2 (fun s => 1 / 3 * s * s * s) = (fun y => 1 / 3 * y) * id * id",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {
+      "refute_B5": false
+    },
+    "strengthened_failed": [
+      "jacobianIsDerivative"
+    ],
+    "system": "burgers"
+  },
+  {
+    "description": "wave-speed estimate halved: mu1 := f/2",
+    "family": "curated",
+    "id": "B6",
+    "lanyon_failed": [
+      "xWaveStability"
+    ],
+    "messages": {
+      "xWaveStability": [
+        "line 106: unsolved goals\nC : Coordinates\nP : Parameters\nU : State\n\u22a2 |U.f| \u2264 2\u207b\u00b9 * |U.f|",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "refutations": {
+      "refute_B6": true
+    },
+    "strengthened_failed": [],
+    "system": "burgers"
+  },
+  {
+    "description": "Lax-Friedrichs dissipation speed halved consistently in waves, speeds and hypotheses",
+    "family": "curated",
+    "id": "B7",
+    "lanyon_failed": [
+      "xFluxConservative"
+    ],
+    "messages": {
+      "dissipationBound": [
+        "line 533: unsolved goals\nCL CR : Coordinates\nUL UR : State\nP : Parameters\ni : Fin 1\n\u22a2 |UL.f| \u2264 2\u207b\u00b9 * max |UL.f| |UR.f| \u2227 |UR.f| \u2264 2\u207b\u00b9 * max |UL.f| |UR.f|",
+        "depends on sorryAx"
+      ],
+      "xFluxConservative": [
+        "line 359: unsolved goals\nCL CR : Coordinates\nUL UR : State\nP : Parameters\nSpeed1Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let f_L := UL.f;\n  let f_R := UR.f;\n  -(1 / 2 * max |f_L| |f_R|) \u2260 0\nSpeed2Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let f_L := UL.f;\n  let f_R := UR.f;\n  1 / 2 * max |f_L| |f_R| \u2260 0\n\u22a2 UR.f ^ 2 - UL.f ^ 2 = (UR.f ^ 2 - UL.f ^ 2) * max |UL.f| |UR.f| / max |UL.f| |UR.f|",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {
+      "refute_B7": true
+    },
+    "strengthened_failed": [
+      "dissipationBound"
+    ],
+    "system": "burgers"
+  },
+  {
+    "description": "unmutated control",
+    "family": "curated",
+    "id": "M0",
+    "lanyon_failed": [],
+    "messages": {},
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "refutations": {},
+    "strengthened_failed": [],
+    "system": "maxwell"
+  },
+  {
+    "description": "eigenvalues lambda3, lambda4 := -c (spectrum all -c, -c, -c, -c, 0, 0)",
+    "family": "curated",
+    "id": "M1",
+    "lanyon_failed": [],
+    "messages": {
+      "realEigenbasis": [
+        "line 1282: unsolved goals\ncase refine_3.\u00ab1\u00bb.\u00ab2\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 P.c ^ 2 = -P.c ^ 2\n\ncase refine_3.\u00ab2\u00bb.\u00ab3\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 P.c ^ 2 = -P.c ^ 2\n\ncase refine_3.\u00ab4\u00bb.\u00ab3\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 -P.c = P.c\n\ncase refine_3.\u00ab5\u00bb.\u00ab2\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 P.c = -P.c",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {
+      "refute_M1": true
+    },
+    "strengthened_failed": [
+      "realEigenbasis"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "Jacobian entry dFlux_Ey/dBz := c instead of c^2",
+    "family": "curated",
+    "id": "M2",
+    "lanyon_failed": [],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 1246: unsolved goals\ncase \u00ab1\u00bb.\u00ab5\u00bb\nC : Coordinates\nP : Parameters\nU : State\ns : \u211d\n\u22a2 P.c ^ 2 = P.c \u2228 s = 0",
+        "depends on sorryAx"
+      ],
+      "realEigenbasis": [
+        "line 1282: unsolved goals\ncase refine_3.\u00ab1\u00bb.\u00ab0\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 P.c = P.c ^ 2\n\ncase refine_3.\u00ab1\u00bb.\u00ab2\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 P.c = P.c ^ 2",
+        "depends on sorryAx"
+      ],
+      "refute_M2": [
+        "line 1326: Tactic `apply` failed: could not unify the conclusion of `@funext`\n  ?f = ?g\nwith the goal\n  Real.instAddCommGroup = Real.normedCommRing.toAddCommGroup\n\nNote: The full type of `@funext` is\n  \u2200 {\u03b1 : Sort ?u.62} {\u03b2 : \u03b1 \u2192 Sort ?u.61} {f g : (x : \u03b1) \u2192 \u03b2 x}, (\u2200 (x : \u03b1), f x = g x) \u2192 f = g\n\ncase e'_4\nh : JacobianIsDerivative\nh1 :\n  HasDerivAt\n    (fun s =>\n      fluxVec { x := 0 } { c := 2 }\n        (ofVec (Function.update (toVec { Ex := 0, Ey := 0, Ez := 0, Bx := 0, By := 0, Bz := 0 }) 5 s)) 1)\n    (jac { x := 0 } { c := 2 } { Ex := 0, Ey := 0, Ez := 0, Bx := 0, By := 0, Bz := 0 } 1 5)\n    (toVec { Ex := 0, Ey := 0, Ez := 0, Bx := 0, By := 0, Bz := 0 } 5)\nthis : HasDerivAt (fun y => 2 * 2 * y) (2 * 2 * 1) (![0, 0, 0, 0, 0, 0] 5)\n\u22a2 Real.instAddCommGroup = Real.normedCommRing.toAddCommGroup",
+        "line 1328: unsolved goals\ncase e'_5\nh : JacobianIsDerivative\nh1 :\n  HasDerivAt\n    (fun s =>\n      fluxVec { x := 0 } { c := 2 }\n        (ofVec (Function.update (toVec { Ex := 0, Ey := 0, Ez := 0, Bx := 0, By := 0, Bz := 0 }) 5 s)) 1)\n    (jac { x := 0 } { c := 2 } { Ex := 0, Ey := 0, Ez := 0, Bx := 0, By := 0, Bz := 0 } 1 5)\n    (toVec { Ex := 0, Ey := 0, Ez := 0, Bx := 0, By := 0, Bz := 0 } 5)\nthis : HasDerivAt (fun y => 2 * 2 * y) (2 * 2 * 1) (![0, 0, 0, 0, 0, 0] 5)\ne_4\u271d : Real.instAddCommGroup = Real.normedCommRing.toAddCommGroup\n\u22a2 Semiring.toModule = (NormedAlgebra.toNormedSpace \u211d).toModule",
+        "line 1322: unsolved goals\ncase e'_8\nh : JacobianIsDerivative\nh1 :\n  HasDerivAt\n    (fun s =>\n      fluxVec { x := 0 } { c := 2 }\n        (ofVec (Function.update (toVec { Ex := 0, Ey := 0, Ez := 0, Bx := 0, By := 0, Bz := 0 }) 5 s)) 1)\n    (jac { x := 0 } { c := 2 } { Ex := 0, Ey := 0, Ez := 0, Bx := 0, By := 0, Bz := 0 } 1 5)\n    (toVec { Ex := 0, Ey := 0, Ez := 0, Bx := 0, By := 0, Bz := 0 } 5)\nthis : HasDerivAt (fun y => 2 * 2 * y) (2 * 2 * 1) (![0, 0, 0, 0, 0, 0] 5)\n\u22a2 (fun s =>\n      ![0.0, 2 * 2 * Function.update ![0, 0, 0, 0, 0, 0] 5 s 5, -(2 * 2 * Function.update ![0, 0, 0, 0, 0, 0] 5 s 4),\n          0.0, -Function.update ![0, 0, 0, 0, 0, 0] 5 s 2, Function.update ![0, 0, 0, 0, 0, 0] 5 s 1]\n        1) =\n    fun y => 2 * 2 * y\n\ncase e'_9\nh : JacobianIsDerivative\nh1 :\n  HasDerivAt\n    (fun s =>\n      fluxVec { x := 0 } { c := 2 }\n        (ofVec (Function.update (toVec { Ex := 0, Ey := 0, Ez := 0, Bx := 0, By := 0, Bz := 0 }) 5 s)) 1)\n    (jac { x := 0 } { c := 2 } { Ex := 0, Ey := 0, Ez := 0, Bx := 0, By := 0, Bz := 0 } 1 5)\n    (toVec { Ex := 0, Ey := 0, Ez := 0, Bx := 0, By := 0, Bz := 0 } 5)\nthis : HasDerivAt (fun y => 2 * 2 * y) (2 * 2 * 1) (![0, 0, 0, 0, 0, 0] 5)\n\u22a2 4 = 2 * 2 * 1",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {
+      "refute_M2": false
+    },
+    "strengthened_failed": [
+      "jacobianIsDerivative",
+      "realEigenbasis"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "non-hyperbolic system: flux_Ey sign flipped consistently in flux, waves and Jacobian (spectrum becomes +-ic); listed eigenvalues unchanged",
+    "family": "curated",
+    "id": "M3",
+    "lanyon_failed": [],
+    "messages": {
+      "realEigenbasis": [
+        "line 1282: unsolved goals\ncase refine_3.\u00ab1\u00bb.\u00ab0\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 -P.c ^ 2 = P.c ^ 2\n\ncase refine_3.\u00ab1\u00bb.\u00ab2\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 -P.c ^ 2 = P.c ^ 2",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {
+      "refute_M3": true
+    },
+    "strengthened_failed": [
+      "realEigenbasis"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "zero eigenvalue moved: lambda5 := c",
+    "family": "curated",
+    "id": "M4",
+    "lanyon_failed": [
+      "xWaveStability"
+    ],
+    "messages": {
+      "realEigenbasis": [
+        "line 1282: unsolved goals\ncase refine_3.\u00ab0\u00bb.\u00ab4\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 0 = P.c",
+        "depends on sorryAx"
+      ],
+      "xWaveStability": [
+        "line 250: unsolved goals\ncase right.right.right.right.left\nC : Coordinates\nP : Parameters\nU : State\n\u22a2 |P.c| \u2264 |0.0|",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "refutations": {
+      "refute_M4": true
+    },
+    "strengthened_failed": [
+      "realEigenbasis"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "Lax-Friedrichs dissipation speed halved consistently in waves, speeds and hypotheses",
+    "family": "curated",
+    "id": "M5",
+    "lanyon_failed": [
+      "xFluxConservative"
+    ],
+    "messages": {
+      "dissipationBound": [
+        "line 1288: unsolved goals\ncase \u00ab0\u00bb\nCL CR : Coordinates\nUL UR : State\nP : Parameters\n\u22a2 |P.c| \u2264 2\u207b\u00b9 * |P.c|\n\ncase \u00ab1\u00bb\nCL CR : Coordinates\nUL UR : State\nP : Parameters\n\u22a2 |P.c| \u2264 2\u207b\u00b9 * |P.c|\n\ncase \u00ab2\u00bb\nCL CR : Coordinates\nUL UR : State\nP : Parameters\n\u22a2 |P.c| \u2264 2\u207b\u00b9 * |P.c|\n\ncase \u00ab3\u00bb\nCL CR : Coordinates\nUL UR : State\nP : Parameters\n\u22a2 |P.c| \u2264 2\u207b\u00b9 * |P.c|",
+        "depends on sorryAx"
+      ],
+      "xFluxConservative": [
+        "line 835: unsolved goals\ncase right.left\nCL CR : Coordinates\nUL UR : State\nP : Parameters\nSpeed1Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  -(1 / 2 * |c|) \u2260 0\nSpeed2Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  1 / 2 * |c| \u2260 0\n\u22a2 P.c ^ 2 * (UR.Bz - UL.Bz) = P.c ^ 2 * (UR.Bz - UL.Bz) * |P.c| / |P.c|",
+        "line 843: unsolved goals\ncase right.right.left\nCL CR : Coordinates\nUL UR : State\nP : Parameters\nSpeed1Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  -(1 / 2 * |c|) \u2260 0\nSpeed2Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  1 / 2 * |c| \u2260 0\n\u22a2 P.c ^ 2 * (-UR.By + UL.By) = P.c ^ 2 * (-UR.By + UL.By) * |P.c| / |P.c|",
+        "line 858: unsolved goals\ncase right.right.right.right.left\nCL CR : Coordinates\nUL UR : State\nP : Parameters\nSpeed1Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  -(1 / 2 * |c|) \u2260 0\nSpeed2Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  1 / 2 * |c| \u2260 0\n\u22a2 -UR.Ez + UL.Ez = (-UR.Ez + UL.Ez) * |P.c| / |P.c|",
+        "line 865: unsolved goals\ncase right.right.right.right.right\nCL CR : Coordinates\nUL UR : State\nP : Parameters\nSpeed1Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  -(1 / 2 * |c|) \u2260 0\nSpeed2Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  1 / 2 * |c| \u2260 0\n\u22a2 UR.Ey - UL.Ey = (UR.Ey - UL.Ey) * |P.c| / |P.c|",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {
+      "refute_M5": true
+    },
+    "strengthened_failed": [
+      "dissipationBound"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xFluxExprs.flux_f",
+    "family": "systematic-flux",
+    "id": "BS01",
+    "lanyon_failed": [
+      "xFluxConservative"
+    ],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 516: Type mismatch\n  rfl\nhas type\n  ?m.36 = ?m.36\nbut is expected to have type\n  (fun s => (xFluxExprs C P { f := s }).flux_f) = fun s => 1 / 2 * s * s",
+        "depends on sorryAx"
+      ],
+      "xFluxConservative": [
+        "line 359: unsolved goals\nCL CR : Coordinates\nUL UR : State\nP : Parameters\nSpeed1Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let f_L := UL.f;\n  let f_R := UR.f;\n  -max |f_L| |f_R| \u2260 0\nSpeed2Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let f_L := UL.f;\n  let f_R := UR.f;\n  max |f_L| |f_R| \u2260 0\n\u22a2 -UR.f ^ 2 + UL.f ^ 2 = UR.f ^ 2 - UL.f ^ 2",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "jacobianIsDerivative"
+    ],
+    "system": "burgers"
+  },
+  {
+    "description": "sign flip of xFluxJacobianExprs.flux_f.d_f",
+    "family": "systematic-jacobian",
+    "id": "BS02",
+    "lanyon_failed": [],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 512: unsolved goals\nC : Coordinates\nP : Parameters\nU : State\n\u22a2 -U.f = U.f",
+        "depends on sorryAx"
+      ],
+      "realEigenbasis": [
+        "line 521: unsolved goals\ncase \u00ab0\u00bb.\u00ab0\u00bb\nC : Coordinates\nP : Parameters\nU : State\n\u22a2 -U.f = U.f",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "jacobianIsDerivative",
+      "realEigenbasis"
+    ],
+    "system": "burgers"
+  },
+  {
+    "description": "sign flip of xFluxJacobianEigenExprs.lambda1",
+    "family": "systematic-eigenvalue",
+    "id": "BS03",
+    "lanyon_failed": [],
+    "messages": {
+      "realEigenbasis": [
+        "line 521: unsolved goals\ncase \u00ab0\u00bb.\u00ab0\u00bb\nC : Coordinates\nP : Parameters\nU : State\n\u22a2 U.f = -U.f",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "realEigenbasis"
+    ],
+    "system": "burgers"
+  },
+  {
+    "description": "sign flip of xWaveSpeedExprs.mu1",
+    "family": "systematic-wavespeed",
+    "id": "BS04",
+    "lanyon_failed": [],
+    "messages": {},
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "refutations": {},
+    "strengthened_failed": [],
+    "system": "burgers"
+  },
+  {
+    "description": "sign flip of xFluxExprs.flux_Ey",
+    "family": "systematic-flux",
+    "id": "MS01",
+    "lanyon_failed": [
+      "xFluxConservative"
+    ],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 1246: unsolved goals\ncase \u00ab1\u00bb.\u00ab5\u00bb\nC : Coordinates\nP : Parameters\nU : State\ns : \u211d\n\u22a2 -(P.c ^ 2 * s) = P.c ^ 2 * s",
+        "depends on sorryAx"
+      ],
+      "xFluxConservative": [
+        "line 835: unsolved goals\ncase right.left\nCL CR : Coordinates\nUL UR : State\nP : Parameters\nSpeed1Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  -|c| \u2260 0\nSpeed2Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  |c| \u2260 0\n\u22a2 P.c ^ 2 * (-UR.Bz + UL.Bz) = P.c ^ 2 * (UR.Bz - UL.Bz)",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "jacobianIsDerivative"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xFluxExprs.flux_Ez",
+    "family": "systematic-flux",
+    "id": "MS02",
+    "lanyon_failed": [
+      "xFluxConservative"
+    ],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 1246: unsolved goals\ncase \u00ab2\u00bb.\u00ab4\u00bb\nC : Coordinates\nP : Parameters\nU : State\ns : \u211d\n\u22a2 P.c ^ 2 * s = -(P.c ^ 2 * s)",
+        "depends on sorryAx"
+      ],
+      "xFluxConservative": [
+        "line 843: unsolved goals\ncase right.right.left\nCL CR : Coordinates\nUL UR : State\nP : Parameters\nSpeed1Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  -|c| \u2260 0\nSpeed2Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  |c| \u2260 0\n\u22a2 P.c ^ 2 * (UR.By - UL.By) = P.c ^ 2 * (-UR.By + UL.By)",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "jacobianIsDerivative"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xFluxExprs.flux_By",
+    "family": "systematic-flux",
+    "id": "MS03",
+    "lanyon_failed": [
+      "xFluxConservative"
+    ],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 1246: unsolved goals\ncase \u00ab4\u00bb.\u00ab2\u00bb\nC : Coordinates\nP : Parameters\nU : State\ns : \u211d\n\u22a2 s = -s",
+        "depends on sorryAx"
+      ],
+      "xFluxConservative": [
+        "line 858: unsolved goals\ncase right.right.right.right.left\nCL CR : Coordinates\nUL UR : State\nP : Parameters\nSpeed1Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  -|c| \u2260 0\nSpeed2Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  |c| \u2260 0\n\u22a2 UR.Ez - UL.Ez = -UR.Ez + UL.Ez",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "jacobianIsDerivative"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xFluxExprs.flux_Bz",
+    "family": "systematic-flux",
+    "id": "MS04",
+    "lanyon_failed": [
+      "xFluxConservative"
+    ],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 1246: unsolved goals\ncase \u00ab5\u00bb.\u00ab1\u00bb\nC : Coordinates\nP : Parameters\nU : State\ns : \u211d\n\u22a2 -s = s",
+        "depends on sorryAx"
+      ],
+      "xFluxConservative": [
+        "line 865: unsolved goals\ncase right.right.right.right.right\nCL CR : Coordinates\nUL UR : State\nP : Parameters\nSpeed1Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  -|c| \u2260 0\nSpeed2Nondegenerate :\n  let x_L := CL.x;\n  let x_R := CR.x;\n  let Ex_L := UL.Ex;\n  let Ex_R := UR.Ex;\n  let Ey_L := UL.Ey;\n  let Ey_R := UR.Ey;\n  let Ez_L := UL.Ez;\n  let Ez_R := UR.Ez;\n  let Bx_L := UL.Bx;\n  let Bx_R := UR.Bx;\n  let By_L := UL.By;\n  let By_R := UR.By;\n  let Bz_L := UL.Bz;\n  let Bz_R := UR.Bz;\n  let c := P.c;\n  |c| \u2260 0\n\u22a2 -UR.Ey + UL.Ey = UR.Ey - UL.Ey",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "fail",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "jacobianIsDerivative"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xFluxJacobianExprs.flux_Ey.d_Bz",
+    "family": "systematic-jacobian",
+    "id": "MS05",
+    "lanyon_failed": [],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 1246: unsolved goals\ncase \u00ab1\u00bb.\u00ab5\u00bb\nC : Coordinates\nP : Parameters\nU : State\ns : \u211d\n\u22a2 P.c ^ 2 * s = -(P.c ^ 2 * s)",
+        "depends on sorryAx"
+      ],
+      "realEigenbasis": [
+        "line 1282: unsolved goals\ncase refine_3.\u00ab1\u00bb.\u00ab0\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 -P.c ^ 2 = P.c ^ 2\n\ncase refine_3.\u00ab1\u00bb.\u00ab2\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 -P.c ^ 2 = P.c ^ 2",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "jacobianIsDerivative",
+      "realEigenbasis"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xFluxJacobianExprs.flux_Ez.d_By",
+    "family": "systematic-jacobian",
+    "id": "MS06",
+    "lanyon_failed": [],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 1246: unsolved goals\ncase \u00ab2\u00bb.\u00ab4\u00bb\nC : Coordinates\nP : Parameters\nU : State\ns : \u211d\n\u22a2 -(P.c ^ 2 * s) = P.c ^ 2 * s",
+        "depends on sorryAx"
+      ],
+      "realEigenbasis": [
+        "line 1282: unsolved goals\ncase refine_3.\u00ab2\u00bb.\u00ab1\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 P.c ^ 2 = -P.c ^ 2\n\ncase refine_3.\u00ab2\u00bb.\u00ab3\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 -P.c ^ 2 = P.c ^ 2",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "jacobianIsDerivative",
+      "realEigenbasis"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xFluxJacobianExprs.flux_By.d_Ez",
+    "family": "systematic-jacobian",
+    "id": "MS07",
+    "lanyon_failed": [],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 1246: unsolved goals\ncase \u00ab4\u00bb.\u00ab2\u00bb\nC : Coordinates\nP : Parameters\nU : State\ns : \u211d\n\u22a2 -s = s",
+        "depends on sorryAx"
+      ],
+      "realEigenbasis": [
+        "line 1282: unsolved goals\ncase refine_3.\u00ab4\u00bb.\u00ab1\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 P.c = -P.c\n\ncase refine_3.\u00ab4\u00bb.\u00ab3\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 P.c = -P.c",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "jacobianIsDerivative",
+      "realEigenbasis"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xFluxJacobianExprs.flux_Bz.d_Ey",
+    "family": "systematic-jacobian",
+    "id": "MS08",
+    "lanyon_failed": [],
+    "messages": {
+      "jacobianIsDerivative": [
+        "line 1246: unsolved goals\ncase \u00ab5\u00bb.\u00ab1\u00bb\nC : Coordinates\nP : Parameters\nU : State\ns : \u211d\n\u22a2 s = -s",
+        "depends on sorryAx"
+      ],
+      "realEigenbasis": [
+        "line 1282: unsolved goals\ncase refine_3.\u00ab5\u00bb.\u00ab0\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 P.c = -P.c\n\ncase refine_3.\u00ab5\u00bb.\u00ab2\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 -P.c = P.c",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "jacobianIsDerivative",
+      "realEigenbasis"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xFluxJacobianEigenExprs.lambda1",
+    "family": "systematic-eigenvalue",
+    "id": "MS09",
+    "lanyon_failed": [],
+    "messages": {
+      "realEigenbasis": [
+        "line 1282: unsolved goals\ncase refine_3.\u00ab1\u00bb.\u00ab0\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 P.c ^ 2 = -P.c ^ 2\n\ncase refine_3.\u00ab5\u00bb.\u00ab0\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 -P.c = P.c",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "realEigenbasis"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xFluxJacobianEigenExprs.lambda2",
+    "family": "systematic-eigenvalue",
+    "id": "MS10",
+    "lanyon_failed": [],
+    "messages": {
+      "realEigenbasis": [
+        "line 1282: unsolved goals\ncase refine_3.\u00ab2\u00bb.\u00ab1\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 -P.c ^ 2 = P.c ^ 2\n\ncase refine_3.\u00ab4\u00bb.\u00ab1\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 -P.c = P.c",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "realEigenbasis"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xFluxJacobianEigenExprs.lambda3",
+    "family": "systematic-eigenvalue",
+    "id": "MS11",
+    "lanyon_failed": [],
+    "messages": {
+      "realEigenbasis": [
+        "line 1282: unsolved goals\ncase refine_3.\u00ab1\u00bb.\u00ab2\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 P.c ^ 2 = -P.c ^ 2\n\ncase refine_3.\u00ab5\u00bb.\u00ab2\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 P.c = -P.c",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "realEigenbasis"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xFluxJacobianEigenExprs.lambda4",
+    "family": "systematic-eigenvalue",
+    "id": "MS12",
+    "lanyon_failed": [],
+    "messages": {
+      "realEigenbasis": [
+        "line 1282: unsolved goals\ncase refine_3.\u00ab2\u00bb.\u00ab3\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 P.c ^ 2 = -P.c ^ 2\n\ncase refine_3.\u00ab4\u00bb.\u00ab3\u00bb\nC : Coordinates\nP : Parameters\nU : State\nhc : 0 < P.c\nhc0 : P.c \u2260 0\n\u22a2 -P.c = P.c",
+        "depends on sorryAx"
+      ]
+    },
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "fail"
+    },
+    "refutations": {},
+    "strengthened_failed": [
+      "realEigenbasis"
+    ],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xWaveSpeedExprs.mu1",
+    "family": "systematic-wavespeed",
+    "id": "MS13",
+    "lanyon_failed": [],
+    "messages": {},
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "refutations": {},
+    "strengthened_failed": [],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xWaveSpeedExprs.mu2",
+    "family": "systematic-wavespeed",
+    "id": "MS14",
+    "lanyon_failed": [],
+    "messages": {},
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "refutations": {},
+    "strengthened_failed": [],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xWaveSpeedExprs.mu3",
+    "family": "systematic-wavespeed",
+    "id": "MS15",
+    "lanyon_failed": [],
+    "messages": {},
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "refutations": {},
+    "strengthened_failed": [],
+    "system": "maxwell"
+  },
+  {
+    "description": "sign flip of xWaveSpeedExprs.mu4",
+    "family": "systematic-wavespeed",
+    "id": "MS16",
+    "lanyon_failed": [],
+    "messages": {},
+    "non_theorem_errors": [],
+    "observed": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "predicted": {
+      "lanyon": "pass",
+      "strengthened": "pass"
+    },
+    "refutations": {},
+    "strengthened_failed": [],
+    "system": "maxwell"
+  }
+]

@@ -1,1 +1,1 @@
-ALL
+B1 B2 B3 B5 B7 M2 M5

@@ -230,6 +230,9 @@ def variant_text(mutant: Mutant) -> str:
     parts = [spec, "\n", SYSTEMS[mutant.system]["addendum"].read_text(encoding="utf-8")]
     if mutant.refutation:
         parts += ["\n", (ROOT / "refutations" / f"{mutant.refutation}.lean").read_text(encoding="utf-8")]
+    reproof = ROOT / "reproofs" / f"{mutant.id}.lean"
+    if reproof.exists():
+        parts += ["\n", reproof.read_text(encoding="utf-8")]
     return "".join(parts)
 
 
@@ -303,6 +306,7 @@ def compile_variant(mutant: Mutant) -> dict:
     upstream_theorems = [name for _, kind, name in declaration_starts(upstream_text(mutant.system))
                          if kind == "theorem"]
     refutations = [name for name in theorems if name.startswith("refute_")]
+    reproofs = [name for name in theorems if name.startswith("reprove_")]
     spec_errors = sorted(n for n in failing if n not in theorems)
     lanyon_failed = sorted(n for n in upstream_theorems if n in failing)
     strengthened_failed = sorted(n for n in STRENGTHENED if n in failing)
@@ -319,6 +323,7 @@ def compile_variant(mutant: Mutant) -> dict:
         "lanyon_failed": lanyon_failed,
         "strengthened_failed": strengthened_failed,
         "refutations": {name: name not in failing for name in refutations},
+        "reproofs": {name: name not in failing for name in reproofs},
         "non_theorem_errors": spec_errors,
         "messages": {k: v for k, v in sorted(failing.items())},
     }
@@ -339,17 +344,18 @@ def check() -> None:
 
 
 def render(results: list[dict]) -> str:
-    rows = ["| id | family | mutation | predicted L / L+S | observed L / L+S | failing theorems | refuted |",
-            "|---|---|---|---|---|---|---|"]
+    rows = ["| id | family | mutation | predicted L / L+S | observed L / L+S | failing theorems | refuted | re-proved |",
+            "|---|---|---|---|---|---|---|---|"]
     for r in results:
         refuted = ", ".join(n for n, ok in r["refutations"].items() if ok) or "-"
+        reproved = ", ".join(n for n, ok in r["reproofs"].items() if ok) or "-"
         failing = ", ".join(r["lanyon_failed"] + r["strengthened_failed"]) or "-"
         if r["non_theorem_errors"]:
             failing += f" (non-theorem errors: {', '.join(r['non_theorem_errors'])})"
         rows.append(
             f"| {r['id']} | {r['family']} | {r['description']} | "
             f"{r['predicted']['lanyon']} / {r['predicted']['strengthened']} | "
-            f"{r['observed']['lanyon']} / {r['observed']['strengthened']} | {failing} | {refuted} |")
+            f"{r['observed']['lanyon']} / {r['observed']['strengthened']} | {failing} | {refuted} | {reproved} |")
     return "\n".join(rows) + "\n"
 
 
