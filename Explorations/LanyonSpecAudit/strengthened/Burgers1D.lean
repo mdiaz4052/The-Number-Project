@@ -56,8 +56,8 @@ theorem realEigenbasis : RealEigenbasis := by
   fin_cases j
   set_option simprocs false in
     simp only [jac, eig, Matrix.of_apply, xFluxJacobianExprs, xFluxJacobianEigenExprs, zero_lit]
-  simp [Matrix.diagonal]
-  ring
+  simp [Matrix.diagonal, eig, xFluxJacobianEigenExprs]
+  all_goals ring
 
 theorem dissipationBound : DissipationBound := by
   intro CL CR UL UR P i
