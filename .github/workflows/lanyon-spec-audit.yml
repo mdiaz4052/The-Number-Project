@@ -1,0 +1,36 @@
+name: Lanyon spec audit
+
+on:
+  push:
+    paths:
+      - "Explorations/LanyonSpecAudit/**"
+      - ".github/workflows/lanyon-spec-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Compile LSA-1 variants
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v6
+      - uses: leanprover/lean-action@v1.6.0
+        with:
+          build: false
+          use-mathlib-cache: true
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: lake exe cache get
+      - run: python -m Explorations.LanyonSpecAudit.audit --run --only $(cat Explorations/LanyonSpecAudit/ci_scope.txt)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lanyon-spec-audit
+          path: |
+            Explorations/LanyonSpecAudit/results
+            .lake/lanyon_audit
+          if-no-files-found: ignore

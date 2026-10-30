@@ -96,7 +96,8 @@ theorem dissipationBound : DissipationBound := by
 /-! Similarity invariants used by the refutations: a real eigenbasis forces
 `trace J = Σ λ` and `trace (J * J) = Σ λ²`. -/
 
-theorem trace_eq_of_eigenbasis {J R L D : Matrix (Fin 6) (Fin 6) ℝ}
+theorem trace_eq_of_eigenbasis {n : Type*} [Fintype n] [DecidableEq n]
+    {J R L D : Matrix n n ℝ}
     (hLR : L * R = 1) (hJ : J * R = R * D) : J.trace = D.trace := by
   have hRL : R * L = 1 := Matrix.mul_eq_one_comm.mp hLR
   have : J = R * D * L := by
@@ -104,7 +105,8 @@ theorem trace_eq_of_eigenbasis {J R L D : Matrix (Fin 6) (Fin 6) ℝ}
       _ = R * D * L := by rw [← Matrix.mul_assoc, hJ]
   rw [this, Matrix.trace_mul_comm, ← Matrix.mul_assoc, hLR, Matrix.one_mul]
 
-theorem trace_sq_eq_of_eigenbasis {J R L D : Matrix (Fin 6) (Fin 6) ℝ}
+theorem trace_sq_eq_of_eigenbasis {n : Type*} [Fintype n] [DecidableEq n]
+    {J R L D : Matrix n n ℝ}
     (hLR : L * R = 1) (hJ : J * R = R * D) : (J * J).trace = (D * D).trace := by
   have hJJ : (J * J) * R = R * (D * D) := by
     rw [Matrix.mul_assoc, hJ, ← Matrix.mul_assoc, hJ, Matrix.mul_assoc]

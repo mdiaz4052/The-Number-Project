@@ -53,4 +53,23 @@ theorem dissipationBound : DissipationBound := by
   intro CL CR UL UR P i
   simp [eig, xFluxJacobianEigenExprs, xSpeedFamilyExprs]
 
+/-! Similarity invariants used by the refutations: a real eigenbasis forces
+`trace J = Σ λ` and `trace (J * J) = Σ λ²`. -/
+
+theorem trace_eq_of_eigenbasis {n : Type*} [Fintype n] [DecidableEq n]
+    {J R L D : Matrix n n ℝ}
+    (hLR : L * R = 1) (hJ : J * R = R * D) : J.trace = D.trace := by
+  have hRL : R * L = 1 := Matrix.mul_eq_one_comm.mp hLR
+  have : J = R * D * L := by
+    calc J = J * (R * L) := by rw [hRL, Matrix.mul_one]
+      _ = R * D * L := by rw [← Matrix.mul_assoc, hJ]
+  rw [this, Matrix.trace_mul_comm, ← Matrix.mul_assoc, hLR, Matrix.one_mul]
+
+theorem trace_sq_eq_of_eigenbasis {n : Type*} [Fintype n] [DecidableEq n]
+    {J R L D : Matrix n n ℝ}
+    (hLR : L * R = 1) (hJ : J * R = R * D) : (J * J).trace = (D * D).trace := by
+  have hJJ : (J * J) * R = R * (D * D) := by
+    rw [Matrix.mul_assoc, hJ, ← Matrix.mul_assoc, hJ, Matrix.mul_assoc]
+  exact trace_eq_of_eigenbasis hLR hJJ
+
 end lsa_inviscid_burgers_1d

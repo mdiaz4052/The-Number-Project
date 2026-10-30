@@ -330,12 +330,13 @@ def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--check", action="store_true")
     parser.add_argument("--run", action="store_true")
-    parser.add_argument("--only", nargs="*", help="mutant ids to compile")
+    parser.add_argument("--only", nargs="*", help="mutant ids to compile, or ALL")
     args = parser.parse_args(argv)
     check()
     if not args.run:
         return
-    selected = [m for m in all_mutants() if not args.only or m.id in args.only]
+    only = None if not args.only or args.only == ["ALL"] else set(args.only)
+    selected = [m for m in all_mutants() if only is None or m.id in only]
     results = []
     for m in selected:
         r = compile_variant(m)
@@ -343,7 +344,7 @@ def main(argv: list[str] | None = None) -> None:
               f"failing={r['lanyon_failed'] + r['strengthened_failed']} refutations={r['refutations']} "
               f"other={r['non_theorem_errors']}", flush=True)
         results.append(r)
-    if not args.only:
+    if only is None:
         RESULTS.mkdir(exist_ok=True)
         (RESULTS / "results.json").write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
         (RESULTS / "table.md").write_text(render(results), encoding="utf-8")
